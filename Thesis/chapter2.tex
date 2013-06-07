@@ -1,0 +1,189 @@
+\chapter{REVIEW ON SENSORS AND RELATED WORK}\label{ch:Review}
+
+\section{SENSORS FOR OBSTACLE DETECTION}\label{sec:sensor}
+
+\subsection{Overview}\label{sec:SensorOverview}
+
+Many work in obstacle detection uses range sensors such as radar, laser 
+range finder, LIDAR, sonar. $[$reference goes here$]$. Radar and laser 
+range finder provides only point measurement at a given position and 
+orientation. To acquire a full 3D range map of a scene, mechanical 
+scanning mechanisms are required, which limits the data acquisition rate 
+of these device. LIDAR operate in the same manner as laser range finder, 
+except with the scanning mechanism built in. These sensors usually have 
+high power requirement and mass, and may not be suitable for small and 
+mid size UAV. Sonar is usually used in indoor or under water 
+applications, and have wide beam profile which make it difficult to 
+identify the origin of return signal, and results in low resolution 
+range map. 3D flash LIDAR is capable of acquire 3D range measurement 
+simultaneously by illuminating the entire field of view of the camera 
+with a single laser, and capturing the reflected laser with a 2D imaging 
+sensor $[$reference; wikipedia$]$. However, its high cost has limited 
+its use in commercial application.
+
+In recent years, many researches use optical sensor as a passive range 
+sensor for its low weight, low cost. With the help of computer vision 
+technology, optical sensors have been successfully used for range 
+mapping and obstacle detection in a number of platforms 
+$[$references$]$. There are several types of configuration in using 
+optical sensor for range mapping: monocular, binocular, or multi-camera. 
+Since optical sensors are bearing only sensors, the principle of range 
+measurement is through triangulation a common scene point in two or more 
+images captured. For binocular camera setups, two cameras are placed 
+apart from each other with their relative geometry known and captures 
+images simultaneously. If the position of a scene point can be 
+accurately found in the images by both cameras, its distance can be 
+calculated by using the difference in position of the projected point in 
+images, and the separation of the cameras. 
+
+\begin{itemize}
+  \item Radar, sonar, laser range finder, 3D flash lidarvs. optical sensors
+  \begin{itemize}
+    \item Radar, laser range finder have high power requirement and mass
+    \item Depth measurement can be obtained through optical sensors, which 
+    are inexpensive and light weight
+    \item Depth maps of a 3-D scene can be computed from a single pair of 
+    stereo camera. Stereo processing can require significant computational 
+    effort
+  \end{itemize}
+  \item Monocular camera characteristic: 
+  \begin{itemize}
+    \item bearing-only sensor, which provide the measurement on the 
+    direction of the feature, and not the range. Other sensors, such as 
+    radar, are range and bearing sensors. 
+  \end{itemize}
+\end{itemize}
+
+\subsection{Monocular Vision and Binocular Vision}\label{sec:MonoBino}
+\begin{itemize}
+  \item Optical flow vs. feature detection and tracking
+  \item The correspondence problem
+  \item Initialization problem (addressed by Inverse depth 
+  parameterization)
+  \item Lack of scale information of overall map -$>$ must work with other 
+  sensors which provide robot motion measurement. 
+\end{itemize}
+
+\subsection{Limitation of Optical Sensor in Recursive Algorithm}
+\label{sec:OpticalSensorLimitation}
+
+\begin{itemize}
+  \item Error Accumulation over Iterations
+  \begin{itemize}
+    \item Feature quality Decreases over Iterations
+  \end{itemize}
+\end{itemize}
+
+\subsection{GPS and IMU}\label{sec:gps_and_imu}
+GPS and IMU are generally available on UAVs. These sensors provide a 
+measurement on the robot motion. Odometry can provide the scale 
+information which is missing in the bearing only measurement. 
+Furthermore, odometry provides some prior information on the robot 
+motion which can help to disambiguate the solution.
+
+\section{SLAM as A Sensor Fusion Framework}
+\label{sec:SLAM}
+An essential aspect of autonomy for a mobile robot is the capability to 
+determine its location. This capability is known as localization. 
+Localization is typically a prerequisite for accomplishing real tasks, 
+whether it is exploration, navigation toward a known goal, 
+transportation of material, construction or site preparation. In many 
+applications, the mobile robot has an a priori map. Given a map, the 
+robot may localize by matching current sensor observations to features 
+in the map. Given enough features and an unambiguous geometry, the pose 
+of the robot can be determined or at least narrowed down to a set of 
+possible locations.
+
+Usable maps do not always exist, and it is not always possible to have 
+accurate externally referenced pose estimates. If an a priori map is not 
+available, the robot may need to construct one. With a precise, 
+externally referenced position estimate from GPS or similar means, the 
+robot can take its sensor observations, reference the observations to 
+its current pose, and insert features in the map in the appropriate 
+places. Without maps or externally referenced pose information, the 
+robot must produce its own map and concurrently localize within that 
+map. This problem has been referred to as concurrent localization and 
+mapping (CLM) and simultaneous localization and mapping (SLAM).
+
+\subsection{Recursive Probabilistic Estimation using Extended Kalman Filter}
+\label{sec:SLAM_using_EKF}
+
+Present the typical EKF model for SLAM problem. 
+
+\subsubsection{Properties of SLAM}
+\label{sec:SLAM_properties}
+
+Needs editing.Directly from papers.
+
+Dissanayake proved three important convergency properties of the EKF 
+solution to SLAM, namely that: (1) the determinant of any submatrix of 
+the map covariance matrix decreases monotonically as observations are 
+successively made; (2) in the limit as the number of observations 
+increases, the landmark estimates become fully correlated and (3) in the 
+limit the covariance associated with any single landmark location 
+estimate reaches a lower bound determined only by the initial covariance 
+in the vehicle location estimate at the time of the first sighting of 
+the first landmark.
+
+The properties imply:
+
+\begin{itemize}
+  \item The entire structure of the SLAM problem critically depends on 
+  maintaining complete knowledge of the cross correlation between landmark 
+  estimates. Minimizing or ignoring cross correlations is precisely 
+  contrary to thestructure of the problem. (Early EKF for OD work 
+  eliminate the cross correlations between features and veichel pose in an 
+  attempt to reduce computation complexity.)
+  \item As the vehicle progresses through the environment the errors in 
+  the estimates of any pair of landmarks become more and more correlated, 
+  and indeed never become less correlated.
+  \item In the limit, the errors in the estimates of any pair of landmarks 
+  become fully correlated. This means that given the exact location of any 
+  one landmark, the location of any other landmark in the map can also be 
+  determined withabsolute certainty.
+  \item As the map converges in the above manner, the error in the 
+  absolute location of every landmark (and thus the whole map) reaches a 
+  lower bound determined only by the error that existed when the first 
+  observation was made (Initialize the parameters using 1st frame as 
+  coordinate origin with minimum variance - Algorithm initialization).
+\end{itemize}
+It is important to note that these theoretical results only refer to the 
+evolution of the covariance matrices computed by EKF in the ideal linear 
+case. They overlook the fact that given that SLAM is a nonlinear 
+problem, there is no guarantee that the computed covariance will match 
+the actual estimation erros which is the true SLAM consistency issue. 
+
+\subsubsection{Linearization Error and Consistency}
+\label{sec:Linearization_error_and_consistency}
+
+Many research report filter divergence due to linearization error. 
+Literature review here:
+
+Huang investigate further on properties and consistency of nonlinear 
+two-dimentional EKF based SLAM problem, and conclude:
+
+\begin{itemize}
+  \item Most of the convergence properties in $[$3$]$ are still true for 
+  the nonlinear case provided that the Jacobians used in the EKF equations 
+  are evaluated at the true states.
+  \item The main reasons for inconsistency in EKF SLAM are due to (i) the 
+  violation of some fundamental constraints governing the relationship 
+  between various Jacobians when they are evaluated at the current state 
+  estimate, and (ii) the use of relative location information from robot 
+  to landmarks to update the absolute robot and landmark location 
+  estimates.
+\end{itemize}
+
+The robot orientation uncertainty plays an important role in both the 
+EKF SLAM convergence and the possible inconsistency. In the limit, the 
+inconsistency of EKF SLAM may cause the variance of the robot 
+orientation estimate to be incorrectly reduced to zero.
+
+Linearization error can be interpreted as error resulted from 
+calculating the Jacobian at the estimated state (wrong state) instead of 
+the true state. 
+
+\subsubsection{Camera Centric Coordinate System}
+\label{sec:cam_centric}
+
+\subsubsection{SLAM for Large Scale Maps}

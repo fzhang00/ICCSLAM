@@ -1,0 +1,108 @@
+\documentclass[12pt,letterpaper]{report}
+%
+% Review cuthesis.sty for more documentation on available options
+% for this package.
+
+% Leave the below option as "masters," as it generates "thesis" on title page. 
+% PhD generates "dissertation" and that word is not recognized by Carleton Library
+\usepackage[masters,2committee]{cuthesis}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{subfigure}
+\usepackage{amsmath}
+\usepackage[indent,bf]{caption}
+\usepackage{rotating}
+\usepackage{setspace}
+\usepackage{longtable}
+\usepackage{rotating}
+
+
+
+
+% Defines relative path to folder containing your figures
+\graphicspath{{figures/}}
+\providecommand{\norm}[1]{\lvert#1\rvert} 
+
+\begin{document}
+
+% ***** DEFINE VARIABLES *****
+%-----------------------------------------------------------------------
+% Define various variables required by cuthesis.sty to function properly
+
+% Below you must write the program name, NOT the name of your school
+% i.e: If you are getting a Doctor of Philosophy and are a student in NPSIA, you must write
+% below: International Affairs and Public Policy because you are not getting a PhD in NPSIA. 
+% If you are getting a Master of Engineering you must
+% write below: Aerospace or Civil or Electrical, etc. 
+\dept{Your Program Name Here}
+
+% Define thesis title and author
+\title{Thesis Title - DO NOT USE SYMBOLS}
+% Name used must be name under which you are registered at Carleton University
+\author{First then last name (eg: Jane Doe)}
+
+% Specify your Thesis Submission Date
+\submitdate{September 2011} \copyrightyear{2011}
+
+% Thesis committee information for the signature page
+% Be sure to specify size of committee in cuthesis options.
+% Department Chair does not count as a committee member.
+% ie: 1committee = supervisor + department chair
+%     2committee = supervisor + firstcommittee
+%     3committee = supervisor + firstcommittee + secondcommittee
+% Default setting is 1committee
+\supervisor{Dr. Leroy Seuss, Supervisor}
+\supervisor{other guy, Supervisor}
+%\firstcommittee{J. Doe}
+%\secondcommittee{F.Smith}
+%\thirdcommittee{A. Mack}
+%\fourthcommittee{B. Donner}
+% Specify department chair
+%\departmentchair{F. Hampson, Department Chair}
+%\dept{Program Name}
+% This is the name of the .bib files that holds all of your references.
+% It can be a comma separated list if there is more than one file.
+\reffile{ref}
+
+% Defines relative path to folder containing your figures
+%\graphicspath{{figures/}}
+%-----------------------------------------------------------------------
+
+% ***** Thesis Components *****
+%-----------------------------------------------------------------------
+% Start inserting Thesis components.  Title page, signature page,
+% Table of contents, list of figures and list of tables are inserted
+% automatically.
+
+% These are the names of the .tex files which hold the
+% respective section of the thesis.  If one of these sections
+% is not included, comment out the corresponding line.
+% If you want to print these sections, remove the percent sign (%)
+%\abstract{abstract}
+%\acknowledgements{acknowledgements}
+%\contributions{contributions}
+%\acronyms{acronyms}
+%\symbols{symbols}
+%\dedication{dedication}
+
+% Include the chapters.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics{./Figures/test/Figure3.png}
+  \caption{testing}
+  \label{fig:test}
+\end{figure}
+\include{chapter1}
+\include{chapter2}
+%\newchapter{chapter3}
+\include{chapter4}
+%\include{chapter5}
+\include{chapter6}
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

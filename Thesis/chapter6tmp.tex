@@ -1,0 +1,106 @@
+
+
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=15.24cm,height=5.30cm]{media/image59.eps}
+\end{figure}
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=15.24cm,height=5.36cm]{media/image60.eps}
+\end{figure}
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=15.24cm,height=8.85cm]{media/image61.eps}
+\end{figure}
+
+
+
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=15.24cm,height=9.67cm]{media/image62.eps}
+\end{figure}
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=15.24cm,height=9.66cm]{media/image63.eps}
+\caption{\label{figure:_Ref349492417} FY offset vs. estimated feature 
+coordinate error}
+\end{figure}
+
+
+
+ and show the features coordinates error for all the $ f_{x}, f_{y}$ 
+setting. The following characters can be observed from the plot:
+
+\begin{itemize}
+\item Deviation of fx has more affect feature position estimation on the 
+Y and X axis; deviation of fy from its true value affect feature 
+position estimation on Z and X axis.
+\item Deviation of fx or fy on either direction causes X component of 
+the estimated feature position to be smaller than the truth value. 
+\item Negative deviation of fx causes little mean error on Y, (fy on Z), 
+but the mean squared error is equivalent to the amount caused by the 
+positive deviation. This indicates that an offset on fx to negative side 
+is not any better than to the positive side. 
+\end{itemize}
+\begin{figure}[h]
+\centering
+\includegraphics[width=15.24cm,height=5.22cm]{media/image64.eps}
+\end{figure}
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=15.24cm,height=8.55cm]{media/image65.eps}
+\end{figure}
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=15.24cm,height=7.40cm]{media/image66.eps}
+\caption{\label{figure:_Ref349768778}}
+\end{figure}
+
+
+
+ shows the estimated feature position error versus the camera distortion. 
+Since in CC\_SLAM no camera distortion is included, the true value of 
+the distortion is $[$0, 0, 0, 0$]$. The calibrated distortion parameters 
+are marked at 100\% deviation from true value. Therefore, the simulation 
+results at 100\% offset shows the average error of the estimated feature 
+position resulted from the neglecting of the distortion factor in the 
+actual flight result. From , it can be found that lens distortion impact 
+on the X axis position error the most. At 100\%, the estimated value is 
+50 meters closer than true value on average. 
+
+Secondly, lens distortion has more impact on features located far from 
+the center of the image. shows feature position error vs projected 
+feature distance from the optical center on image. Feature position 
+error on X axis increases when feature lies further from the image 
+center. On axis Y and Z, there is no obvious correlation between 
+position error and feature distance from image center. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=15.71cm,height=5.41cm]{media/image67.eps}
+\end{figure}
+
+
+Figure 40 Estimated feature position error vs. feature distance on from 
+image center on image plane. 
+
+ 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=12.18cm,height=9.14cm]{media/image68.eps}
+\end{figure}

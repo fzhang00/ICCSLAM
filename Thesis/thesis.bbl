@@ -1,0 +1,22 @@
+\begin{thebibliography}{1}
+\newcommand{\enquote}[1]{``#1''}
+
+\bibitem{_athena_????}
+\enquote{Athena 111m integrated flight control system.}
+\newblock
+  {http://www.rockwellcollins.com/sitecore/content/Data/Products/Controls/Flight\_Controls/Athena\_111m\_Integrated\_Flight\_Control\_System.aspx}.
+
+\bibitem{_cgiar-csi_????}
+\enquote{{CGIAR-CSI} {SRTM} 90m {DEM} digital elevation database.}
+\newblock http://srtm.csi.cgiar.org/.
+
+\bibitem{_world_????}
+\enquote{World geodetic system - wikipedia, the free encyclopedia.}
+\newblock {https://en.wikipedia.org/wiki/World\_Geodetic\_System}.
+
+\bibitem{_pyproj_????}
+\enquote{pyproj - python interface to {PROJ.4} library - google project
+  hosting.}
+\newblock http://code.google.com/p/pyproj/.
+
+\end{thebibliography}
