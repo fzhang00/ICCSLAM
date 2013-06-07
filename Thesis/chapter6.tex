@@ -14,7 +14,7 @@ categories:
       plane $ [f_{x}, f_{y}]$
       \item Lens distortion parameters $[k_{1}, k_{2}, p_{1}, p_{2}]$
     \end{itemize}
-    \item Image resoluttion.
+    \item Image resolution.
     \item Accelerometer bias 
   \end{itemize}
   \item Error introduced by LK tracking algorithm. Reliable vision
@@ -446,7 +446,7 @@ UAS localization estimate.
   \label{fig:simfig45-46}
 \end{figure}
 
-Feature mapping, on the other hand, is unavoidly affected by the error
+Feature mapping, on the other hand, is unavoidably affected by the error
 in $(f_x, f_y)$ since these are the scaling factor that project
 features from 3D world onto image plane. Figure \ref{fig:simfig38-39}
 shows the error statistic of feature position estimation under
@@ -468,8 +468,8 @@ Plotting the feature mapping error against feature ground truth
 position reveals how error in $(f_x, f_y)$ estimate impact on feature
 position estimate. When $f_x$ estimate contains error, Y component of
 feature position is determined by the feature's ground truth position
-on X and Y components. The value of $Y_{error}$ is directly portional
-to the Y component of its ground trurth position, with the error in
+on X and Y components. The value of $Y_{error}$ is directly proportional
+to the Y component of its ground truth position, with the error in
 $f_x$ determines the function's slope. Same relation can be found for
 $Z_{error}$ with $f_y$, and $Z_{ground truth}$.
 
@@ -485,7 +485,28 @@ $Z_{error}$ with $f_y$, and $Z_{ground truth}$.
 
 \subsection{Effect from Distortion}
 
+The CC\_EKF\_SLAM algorithm does not consider camera lens distortion
+at this stage. Therefore, the simulation evaluate the effect of
+distortion varying from 0\% to 150\% of the calibrated result to
+evaluate the amount error resulted by ignoring the lens distortion. 
+
+Figure \ref{fig:simfig47} shows the UAS localization error for all
+lens distortion setting. 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure47.png}
+  \caption{Feature mapping error plotted against feature ground truth
+    for various $(f_x, f_y)$}
+  \label{fig:simfig47}
+\end{figure}
+
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "thesis"
 %%% End:
+
+
+
+
