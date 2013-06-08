@@ -26,32 +26,46 @@
 
 \begin{document}
 
-\message{ !name(chapter6.tex) !offset(475) }
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure47.png}
-  \caption{UAS localization error with lens distortion}
-  \label{fig:simfig47}
-\end{figure}
+\message{ !name(chapter6.tex) !offset(-15) }
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure48.png}
-  \caption{UAS localization error with lens distortion plotted against frame number}
-  \label{fig:simfig48}
-\end{figure}
+    \end{itemize}
+    \item Image resolution.
+    \item Accelerometer bias 
+  \end{itemize}
+  \item Error introduced by LK tracking algorithm. Reliable vision
+  tracking is an entire field of research in itself. Pyramid
+  implementation of Lucas-Kanade (LK) tracking is used in this work,
+  and there are a number of factors contribute to its performance.
+  Firstly, LK tracking algorithm tracks features by comparing the
+  intensity of a window of the image centered at the feature
+  coordinate in image from one frame to another. The searching process
+  terminates when the sum of error on the windowed image intensity is
+  lower than a value set by user, or when iteration of search has
+  reached a maximum number set by user. Secondly, as scene evolve from
+  frame to frame, the initial feature appears differently from frame
+  to frame as the viewing distance and angle is different. Thirdly,
+  sudden intensity change in the image sequences significant noise in
+  the tracking. In outdoor setting, intensity change can be introduced
+  by many factors, such as changes of sky area in a image, sun glare,
+  UAV enters or exits cloud shades, or camera auto-adjust its shuttle
+  speed, etc.
+  \item Error caused by the SLAM algorithm itself. The algorithm
+  estimated features coordinate through a model that represents the
+  relation between UAS location, feature location and UAS motion. As
+  the model is non-linear, the linearization process introduces error
+  into the result.
+\end{enumerate}
 
+To better understand the impact of the factors listed above. A 
+simulation is performed to examine the impact item 1 and item 3. 
 
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: "thesis"
-%%% End:
+The simulator first generates a 3D point cloud ranging from 100 meters
+to 3000 meters from the camera (Figure \ref{fig:simfig51}). At each
+frame, the coordinates of the 3D points are first transformed to the
+new camera frame using the measured UAS motion. Next, the 3D points
+are projected to the image plane using a camera model defined by
 
-
-
-
-
-\message{ !name(thesis.tex) !offset(47) }
+\message{ !name(thesis.tex) !offset(33) }
 
 \end{document}
 

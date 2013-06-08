@@ -1,12 +1,16 @@
 This is BibTeX, Version 0.99d (TeX Live 2012/W32TeX)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: thesis.aux
+A level-1 auxiliary file: chapter1.aux
+A level-1 auxiliary file: chapter2.aux
 A level-1 auxiliary file: chapter4.aux
+A level-1 auxiliary file: chapter6.aux
 The style file: cubiblio.bst
 Database file #1: ref.bib
+Warning--I didn't find a database entry for "."
 You've used 4 entries,
             2361 wiz_defined-function locations,
-            534 strings with 4646 characters,
+            537 strings with 4682 characters,
 and the built_in function-call counts, 618 in all, are:
 = -- 36
 > -- 4
@@ -45,3 +49,4 @@ warning$ -- 0
 while$ -- 0
 width$ -- 5
 write$ -- 31
+(There was 1 warning)

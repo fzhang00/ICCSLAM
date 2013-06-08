@@ -1,8 +1,5 @@
 (TeX-add-style-hook "_region_"
  (lambda ()
-    (LaTeX-add-labels
-     "fig:simfig47"
-     "fig:simfig48")
     (TeX-add-symbols
      '("norm" 1))
     (TeX-run-style-hooks

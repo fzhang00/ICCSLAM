@@ -1,8 +1,17 @@
 
 * Chapter6
 ** TODO chapter6 simfig38-39, merge into one figure showing only the related. (feature mapping error vs feature ground truth position) [[file:chapter6.tex::TODO%20simfig38-39:Merge%20these%20two%20into%20one,%20shoing%20only%20the%20related.][link]]
-** TODO Distortion analysis needs UAS localization error
-** TODO plot distortion error vs feature ground truth position.
+** Camera intrinsic parameter simulation
+*** $(c_x, c_y)$ simulation
+**** TODO Find out why features with Z position >200m are filtered for all c_x settings
+**** TODO Similar stuff happens with c_y settings. 
+*** $(f_x, f_y)$ simulation
+**** TODO Find out why features with Z position higher than 100m are filter for higher f_x f_y settings
+*** Lens distortion simulation
+**** DONE Distortion analysis needs UAS localization error
+**** DONE plot distortion error vs feature ground truth position.
+**** TODO Find relationship for feature X position error in distortion simulation
+**** TODO Find out why feature with Z position beyond 200m are filtered 
 ** TODO figure49 in SimulationFigures folder doesn't have title
 ** TODO All figure title and label size needs to be adjust
 ** TODO figure size in article needs to be adjust for better layout.

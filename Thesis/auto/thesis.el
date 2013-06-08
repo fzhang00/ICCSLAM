@@ -1,7 +1,5 @@
 (TeX-add-style-hook "thesis"
  (lambda ()
-    (LaTeX-add-labels
-     "fig:test")
     (TeX-add-symbols
      '("norm" 1))
     (TeX-run-style-hooks

@@ -44,12 +44,20 @@ categories:
 To better understand the impact of the factors listed above. A 
 simulation is performed to examine the impact item 1 and item 3. 
 
-The simulator first generates a 3D point cloud ranging from 100 meters 
-to 3000 meters from the camera. At each frame, the coordinates of the 3D 
-points are first transformed to the new camera frame using the measured 
-UAS motion. Next, the 3D points are projected to the image plane using a 
-camera model defined by $[c_{x}, c_{y}, f_{x}, f_{y}, k_{1}, k_{2}, 
-p_{1}, p_{2}]$, and digitized to a resolution of choice. 
+The simulator first generates a 3D point cloud ranging from 100 meters
+to 3000 meters from the camera (Figure \ref{fig:simfig51}). At each
+frame, the coordinates of the 3D points are first transformed to the
+new camera frame using the measured UAS motion. Next, the 3D points
+are projected to the image plane using a camera model defined by
+$[c_{x}, c_{y}, f_{x}, f_{y}, k_{1}, k_{2}, p_{1}, p_{2}]$, and
+digitized to a resolution of choice.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm, height=7cm]{./Figures/SimulationFigures/Figure51.png}
+\caption{Randomly Generated 3D Feature Points}
+\label{fig:simfig51}
+\end{figure}
 
 \section{An Ideal Case}
 First of all, understanding the algorithm's performance under no noise, 
@@ -85,7 +93,7 @@ on rotational motion less than 3e-3 degree.
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.3]{./Figures/SimulationFigures/Figure1.png}
+\includegraphics[width=15cm, height=7cm]{./Figures/SimulationFigures/Figure1.png}
 \caption{UAS localization error under no noise condition}
 \label{fig:simfig1}
 \end{figure}
@@ -115,10 +123,10 @@ error reduce to +/-0.02 meters
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.3]{./Figures/SimulationFigures/Figure6.png}
-\includegraphics[scale=0.3]{./Figures/SimulationFigures/Figure7.png}
-\includegraphics[scale=0.3]{./Figures/SimulationFigures/Figure5.png}
-\includegraphics[scale=0.3]{./Figures/SimulationFigures/Figure8.png}
+\includegraphics[width=7cm, height=5cm]{./Figures/SimulationFigures/Figure6.png}
+\includegraphics[width=7cm, height=5cm]{./Figures/SimulationFigures/Figure7.png}
+\includegraphics[width=7cm, height=5cm]{./Figures/SimulationFigures/Figure5.png}
+\includegraphics[width=7cm, height=5cm]{./Figures/SimulationFigures/Figure8.png}
 \caption{Features parameters and error convergence under no noise condition}
 \label{fig:simfig5-8}
 \end{figure}
@@ -140,12 +148,11 @@ rotation, the amplitude varies from 0.001 radius to 0.018 radius with
 
 \subsection{UAS Localization under Motion}
 
-Figure \ref{fig:simfig9-10} shows the UAS localization error statistic 
-under translation motion on Y and Z axis. Figure \ref{fig:simfig11-13}. 
-shows the UAS localization error statistic under rotation motion on X, 
-Y, and Z axis. The blue dots mark the mean value $\mu$ of the 
-error throughout the tracking, and the error bars mark the standard 
-deviation $\sigma$. 
+Figure \ref{fig:simfig9-10} shows the UAS localization error statistic
+under translation motion on Y and Z axis and rotation motion on X, Y,
+and Z axis. The blue dots mark the mean value $\mu$ of the error
+throughout the tracking, and the error bars mark the standard
+deviation $\sigma$.
 
 The translation motion clearly increases the error of UAS localization. 
 However, the amount of increase is insignificant. With the Sine 
@@ -168,20 +175,15 @@ axis yield significant error increase on the position of the UAS.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[scale=0.25]{./Figures/SimulationFigures/Figure9.png}
-  \includegraphics[scale=0.25]{./Figures/SimulationFigures/Figure10.png}
-  \caption{UAS localization error under translational \label{fig:simfig9-10}
+  \includegraphics[width=4.5cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure9.png}
+  \includegraphics[width=4.5cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure10.png}
+  \includegraphics[width=4.5cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure11.png}
+  \includegraphics[width=4.5cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure12.png}
+  \includegraphics[width=4.5cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure13.png}
+  \caption{UAS localization error under translational 
+  \label{fig:simfig9-10}
     motion}
   
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[scale=0.25]{./Figures/SimulationFigures/Figure11.png}
-  \includegraphics[scale=0.25]{./Figures/SimulationFigures/Figure12.png}
-  \includegraphics[scale=0.25]{./Figures/SimulationFigures/Figure13.png}
-  \caption{UAS localization error under rotatioanl motion}
-  \label{fig:simfig11-13}
 \end{figure}
 
 To understand how rotation motion affect the UAS localization
@@ -212,36 +214,28 @@ axis.
 
 \subsection{Feature Mapping Accuracy under Motion}
 
-Feature mapping error statistic are drawn from the feature error at last 
-frame, since features error converge to zero as tracking goes on. 
-Figure \ref{fig:simfig20-21} shows the feature mapping error statistic 
-with translation motion on Y and Z axis. Translation motions increase 
-both the error mean and standard deviation, but not by much. With the 
-motion maximum amplitude ranging from 1 meters to 19 meters, the 
-increases of features position error mean and standard deviation are 
-both in the scale of centimeters.
+Feature mapping error statistic are drawn from the feature error at
+last frame, since features error converge to zero as tracking goes on.
+Figure \ref{fig:simfig20-24} shows the feature mapping error statistic
+with added motions. Translation motions increase both the error mean
+and standard deviation, but not by much. With the motion maximum
+amplitude ranging from 1 meters to 19 meters, the increases of
+features position error mean and standard deviation are both in the
+scale of centimeters.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[scale=0.5]{./Figures/SimulationFigures/Figure20.png}
-  \includegraphics[scale=0.5]{./Figures/SimulationFigures/Figure21.png}
-  \caption{Feature mapping error under rotatioanl motion}
-  \label{fig:simfig20-21}
+  \includegraphics[width=7cm, height=2.5cm]{./Figures/SimulationFigures/Figure20.png}
+  \includegraphics[width=7cm, height=2.5cm]{./Figures/SimulationFigures/Figure21.png}
+  \includegraphics[width=7cm, height=2.5cm]{./Figures/SimulationFigures/Figure22.png}
+  \includegraphics[width=7cm, height=2.5cm]{./Figures/SimulationFigures/Figure23.png}
+  \includegraphics[width=7cm, height=2.5cm]{./Figures/SimulationFigures/Figure24.png}
+  \caption{Feature mapping error under added motion}
+  \label{fig:simfig20-24}
 \end{figure}
 
-Figure \ref{fig:simfig22-24}. shows the feature mapping error statistic 
-for rotation motion on X, Y and Z axis. With maximum rate of rotation 
-ranging from 0.001 rad/frame to 0.018 rad/frame
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[scale=0.5]{./Figures/SimulationFigures/Figure22.png}
-  \includegraphics[scale=0.5]{./Figures/SimulationFigures/Figure23.png}
-  \includegraphics[scale=0.5]{./Figures/SimulationFigures/Figure24.png}
-  \caption{Feature mapping error under rotatioanl motion}
-  \label{fig:simfig22-24}
-\end{figure}
-
+With maximum rate of rotation ranging from 0.001 rad/frame to 0.018
+rad/frame
 
 \begin{itemize}
   \item Rotation on all three axis yields significant error increase
@@ -476,6 +470,12 @@ $Z_{error}$ with $f_y$, and $Z_{ground truth}$.
 % TODO simfig38-39:Merge these two into one, showing only the related.
 \begin{figure}[h]
   \centering
+  \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure47.png}
+  \caption{Feature mapping error plotted against feature ground truth
+    for various $(f_x, f_y)$}
+  \label{fig:simfig47}
+\end{figure}\begin{figure}[h]
+  \centering
   \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure42.png}
   \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure43.png}
   \caption{Feature mapping error plotted against feature ground truth
@@ -491,17 +491,34 @@ distortion varying from 0\% to 150\% of the calibrated result to
 evaluate the amount error resulted by ignoring the lens distortion. 
 
 Figure \ref{fig:simfig47} shows the UAS localization error for all
-lens distortion setting. 
+lens distortion setting. Ignoring the distortion brings significant
+error into the UAS localization. UAS X position receives the most
+impact with error up to 100 meters with increasing standard deviation.
+Y and Z position shows less error, but standard deviation grows larger
+with distortion offset.Figure \ref{fig:simfig48} reveals the cause of
+increasing standard deviation. The UAS position error was growing
+larger with time. The UAS orientation estimates also experience error
+increase going from maximum mean error of 5e-6 rad in low noise
+simulation to 2.5e-4 rad. The standard deviation of orientation
+estimates also increases with lens distortion offset. Similarly, the
+orientation error vs. frame number plots show that the error amplitude
+increase with time, although it fluctuates around zero. 
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure47.png}
-  \caption{Feature mapping error plotted against feature ground truth
-    for various $(f_x, f_y)$}
+  \caption{UAS localization error with lens distortion}
   \label{fig:simfig47}
 \end{figure}
 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure48.png}
+  \caption{UAS localization error with lens distortion plotted against frame number}
+  \label{fig:simfig48}
+\end{figure}
 
+The feature
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "thesis"

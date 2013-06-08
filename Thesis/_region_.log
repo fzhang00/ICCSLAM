@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=prv_thesis 2013.6.7)  7 JUN 2013 16:40
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=prv_thesis 2013.6.7)  8 JUN 2013 14:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -157,79 +157,137 @@ Package: ltcaption 2013/02/03 v1.3-62 longtable captions (AR)
 Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
 
- !name(chapter6.tex) !offset(475) 
-! Preview: Snippet 1 started.
-<-><->
-      
-l.30 \begin{figure}
-                   [h]
-Not a real error.
+ !name(chapter6.tex) !offset(-15) 
 
-<./Figures/SimulationFigures/Figure47.png, id=1, 793.96625pt x 476.78125pt>
-File: ./Figures/SimulationFigures/Figure47.png Graphic file (type png)
+! LaTeX Error: \begin{document} ended by \end{itemize}.
 
-<use ./Figures/SimulationFigures/Figure47.png>
-Package pdftex.def Info: ./Figures/SimulationFigures/Figure47.png used on input
- line 32.
-(pdftex.def)             Requested size: 284.52756pt x 170.86267pt.
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.31     \end{itemize}
+                      
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
-Preview: Tightpage -32891 -32891 32891 32891
-! Preview: Snippet 1 ended.(12803287+0x28417720).
-<-><->
-      
-l.35 \end{figure}
-                 
-Not a real error.
-
-[1
-
-{d:/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+! Extra \endgroup.
+<recently read> \endgroup 
+                          
+l.31     \end{itemize}
+                      
+Things are pretty mixed up, but I think the worst is over.
 
 
- <./Figures/SimulationFigures/Figure47.png>]
-! Preview: Snippet 2 started.
-<-><->
-      
-l.37 \begin{figure}
-                   [h]
-Not a real error.
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
 
-<./Figures/SimulationFigures/Figure48.png, id=11, 869.2475pt x 476.78125pt>
-File: ./Figures/SimulationFigures/Figure48.png Graphic file (type png)
-
-<use ./Figures/SimulationFigures/Figure48.png>
-Package pdftex.def Info: ./Figures/SimulationFigures/Figure48.png used on input
- line 39.
-(pdftex.def)             Requested size: 284.52756pt x 156.06516pt.
-
-! Preview: Snippet 2 ended.(11833517+0x28417720).
-<-><->
-      
-l.42 \end{figure}
-                 
-Not a real error.
-
-[2
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.32     \item I
+                mage resolution.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
 
- <./Figures/SimulationFigures/Figure48.png>]  !name(thesis.tex) !offset(47) 
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.33     \item A
+                ccelerometer bias
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: \begin{document} ended by \end{itemize}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.34   \end{itemize}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Extra \endgroup.
+<recently read> \endgroup 
+                          
+l.34   \end{itemize}
+                    
+Things are pretty mixed up, but I think the worst is over.
+
+
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.35   \item E
+              rror introduced by LK tracking algorithm. Reliable vision
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.52   \item E
+              rror caused by the SLAM algorithm itself. The algorithm
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: \begin{document} ended by \end{enumerate}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.57 \end{enumerate}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Extra \endgroup.
+<recently read> \endgroup 
+                          
+l.57 \end{enumerate}
+                    
+Things are pretty mixed up, but I think the worst is over.
+
+
+LaTeX Warning: Reference `fig:simfig51' on page 1 undefined on input line 63.
+
+ !name(thesis.tex) !offset(33) 
 No file _region_.bbl.
 No file _region_bib.bbl.
+
+LaTeX Warning: There were undefined references.
+
  ) 
 Here is how much of TeX's memory you used:
- 890 strings out of 490366
- 14093 string characters out of 3099812
- 115929 words of memory out of 3000000
- 7233 multiletter control sequences out of 15000+200000
+ 875 strings out of 490366
+ 13633 string characters out of 3099812
+ 118929 words of memory out of 3000000
+ 7224 multiletter control sequences out of 15000+200000
  8837 words of font info for 32 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,7n,36p,246b,306s stack positions out of 5000i,500n,10000p,200000b,50000s
-<d:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><d:/tex
-live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-Output written on _region_.pdf (2 pages, 167549 bytes).
+ 38i,5n,23p,246b,123s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+No pages of output.
 PDF statistics:
- 24 PDF objects out of 1000 (max. 8388607)
- 13 compressed objects within 1 object stream
+ 0 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
