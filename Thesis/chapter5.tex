@@ -1,10 +1,17 @@
-\chapter{Result From Flight Data}\label{chapter:5}
+\chapter{Result From Flight Data}\label{ch:FlightResult}
 
+This chapter is divided into three main sections. Firstly, the
+algorithm's convergency and consistency was analyzed. Secondly, the
+accuracy of the algorithm is examined by comparing to ground truth
+data. The third section summarized test results for tuning the
+algorithm for better accuracy and effeciency. The forth section
+present the advantage of using IMU data. The fifth section outline
+the inadequacies of the CC\_EKF\_SLAM algorithm identified.
 Since all parameters are tracked in camera frame, their value is 
 different when viewed from a fixed point in world frame. Therefore, all 
 parameters are converted back to world frame before plotting. 
 
-\section{Convergence}\label{section:_Toc332876144}
+\section{Convergency and Consistency}
 
 
 \begin{figure}[h]
