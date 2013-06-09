@@ -7,13 +7,17 @@ data. The third section summarized test results for tuning the
 algorithm for better accuracy and effeciency. The forth section
 present the advantage of using IMU data. The fifth section outline
 the inadequacies of the CC\_EKF\_SLAM algorithm identified.
+
 Since all parameters are tracked in camera frame, their value is 
 different when viewed from a fixed point in world frame. Therefore, all 
 parameters are converted back to world frame before plotting. 
 
 \section{Convergency and Consistency}
 
-
+A video sequence of 400 frames was processed to test the CC\_EKF\_SLAM
+algorithm. The filter intialized 40 features at the first frame, and
+maintain the tracked features amount at this number by initializing
+new features when existing features moved out of FOV. 
 \begin{figure}[h]
 \centering
 \includegraphics[width=15.24cm,height=11.44cm]{media/image10.eps}
