@@ -253,9 +253,9 @@ rad/frame
 
 \begin{figure}[h]
   \centering
-  \includegraphics[scale=0.5]{./Figures/SimulationFigures/Figure17.png}
-  \includegraphics[scale=0.5]{./Figures/SimulationFigures/Figure18.png}
-  \includegraphics[scale=0.5]{./Figures/SimulationFigures/Figure19.png}
+  \includegraphics[width=7cm, height=5cm]{./Figures/SimulationFigures/Figure17.png}
+  \includegraphics[width=7cm, height=5cm]{./Figures/SimulationFigures/Figure18.png}
+  \includegraphics[width=7cm, height=5cm]{./Figures/SimulationFigures/Figure19.png}
   \caption{Feature mapping error under rotatioanl motion}
   \label{fig:simfig17-19}
 \end{figure}
@@ -307,19 +307,19 @@ mapping error came from error in UAS localization estimation.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[scale=0.5]{./Figures/SimulationFigures/Figure25.png}
+  \includegraphics[width=10cm, height=12cm]{./Figures/SimulationFigures/Figure25.png}
   \caption{Feature parameters error under rotatioanl motion}
   \label{fig:simfig25}
 \end{figure}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[scale=0.5]{./Figures/SimulationFigures/Figure26.png}
+  \includegraphics[width=10cm, height=7cm]{./Figures/SimulationFigures/Figure26.png}
   \caption{Error of $\phi$ in camera frame and world frame at initialization}
   \label{fig:simfig26}
 \end{figure}
 
-
+\FloatBarrier
 \section{Camera Intrinsic Parameters}
 This section summarizes the impact of inaccurate camera parameters 
 estimations. Error on camera intrinsic parameters is simulated by using 
@@ -340,8 +340,8 @@ error statistics with incorrect estimates of $ (c_{x}, c_{y})$.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[scale=0.5]{./Figures/SimulationFigures/Figure34.png}
-  \includegraphics[scale=0.5]{./Figures/SimulationFigures/Figure35.png}
+  \includegraphics[width=5cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure34.png}
+  \includegraphics[width=5cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure35.png}
   \caption{UAS localization error statistic with varying $(c_x, c_y)$}
   \label{fig:simfig34-35}
 \end{figure}
@@ -384,8 +384,8 @@ following characters can be observed from the plots:
 
 \begin{figure}[h]
   \centering
-  \includegraphics[scale=0.5]{./Figures/SimulationFigures/Figure28.png}
-  \includegraphics[scale=0.5]{./Figures/SimulationFigures/Figure29.png}
+  \includegraphics[width=5cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure28.png}
+  \includegraphics[width=5cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure29.png}
   \caption{Feature mapping error statistic with varying $(c_x, c_y)$}
   \label{fig:simfig28-29}
 \end{figure}
@@ -417,16 +417,17 @@ dependent on the ground truth position on Y.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[scale=0.5]{./Figures/SimulationFigures/Figure32.png}
-  \includegraphics[scale=0.5]{./Figures/SimulationFigures/Figure33.png}
+  \includegraphics[width=7cm, height=5cm]{./Figures/SimulationFigures/Figure32.png}
+  \includegraphics[width=7cm, height=5cm]{./Figures/SimulationFigures/Figure33.png}
   \caption{Feature mapping error vs. ground truth feature position}
   \label{fig:simfig32-33}
 \end{figure}
 
+\FloatBarrier
 \subsection{Effect from $(f_x, f_y)$}
 
 With $(f_x, f_y)$ varying from -50\% to +50\% of the calibrated
-value, the UAS localization error is shown in \ref{fig:simfig45-46}.
+value, the UAS localization error is shown in \ref{fig:simfig43-44}.
 For all $f_x$ and $f_y$ settings, UAS position error remained less than
 +/-0.05 meters, and orientation error remained in less than 8e-6
 radius. Compared to the error obtained from the ideal case simulation,
@@ -434,10 +435,10 @@ Error in $(f_x, f_y)$ estimation does not introduce any additional error into
 UAS localization estimate. 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=7cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure45.png}
-  \includegraphics[width=7cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure46.png}
+  \includegraphics[width=5cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure43.png}
+  \includegraphics[width=5cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure44.png}
   \caption{UAS localization error statistic with variable $(f_x, f_y)$}
-  \label{fig:simfig45-46}
+  \label{fig:simfig43-44}
 \end{figure}
 
 Feature mapping, on the other hand, is unavoidably affected by the error
@@ -452,8 +453,8 @@ $u = Y/X*f_x$. Same goes for the Z axis component of the feature
 position estimate and its relation to $f_y$.
 \begin{figure}[h]
   \centering
-  \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure38.png}
-  \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure39.png}
+  \includegraphics[width=7cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure38.png}
+  \includegraphics[width=7cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure39.png}
   \caption{Feature mapping error statistic with variable $(f_x, f_y)$}
   \label{fig:simfig38-39}
 \end{figure}
@@ -468,21 +469,23 @@ $f_x$ determines the function's slope. Same relation can be found for
 $Z_{error}$ with $f_y$, and $Z_{ground truth}$.
 
 % TODO simfig38-39:Merge these two into one, showing only the related.
+%\begin{figure}[h]
+%  \centering
+%  \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure47.png}
+%  \caption{Feature mapping error plotted against feature ground truth
+%    for various $(f_x, f_y)$}
+%  \label{fig:simfig47}
+%\end{figure}
 \begin{figure}[h]
   \centering
-  \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure47.png}
-  \caption{Feature mapping error plotted against feature ground truth
-    for various $(f_x, f_y)$}
-  \label{fig:simfig47}
-\end{figure}\begin{figure}[h]
-  \centering
-  \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure42.png}
-  \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure43.png}
+  \includegraphics[width=7cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure41.png}
+  \includegraphics[width=7cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure42.png}
   \caption{Feature mapping error plotted against feature ground truth
     for various $(f_x, f_y)$}
   \label{fig:simfig38-39}
 \end{figure}
 
+\FloatBarrier
 \subsection{Effect from Distortion}
 
 The CC\_EKF\_SLAM algorithm does not consider camera lens distortion
@@ -490,12 +493,12 @@ at this stage. Therefore, the simulation evaluate the effect of
 distortion varying from 0\% to 150\% of the calibrated result to
 evaluate the amount error resulted by ignoring the lens distortion. 
 
-Figure \ref{fig:simfig47} shows the UAS localization error for all
+Figure \ref{fig:simfig48} (left) shows the UAS localization error for all
 lens distortion setting. Ignoring the distortion brings significant
 error into the UAS localization. UAS X position receives the most
 impact with error up to 100 meters with increasing standard deviation.
 Y and Z position shows less error, but standard deviation grows larger
-with distortion offset.Figure \ref{fig:simfig48} reveals the cause of
+with distortion offset.Figure \ref{fig:simfig48} (right) reveals the cause of
 increasing standard deviation. The UAS position error was growing
 larger with time. The UAS orientation estimates also experience error
 increase going from maximum mean error of 5e-6 rad in low noise
@@ -506,19 +509,66 @@ increase with time, although it fluctuates around zero.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure47.png}
+  \includegraphics[width=5cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure47.png}
+  \includegraphics[width=9cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure48.png}
   \caption{UAS localization error with lens distortion}
-  \label{fig:simfig47}
+  \label{fig:simfig48}
+\end{figure}
+
+The feature mapping error statistic is shown in figure
+\ref{fig:simfig45}. The X axis of feature position shows the most
+error, with mean value reading -400 meters with distortion offset at
+\%150. Y, and Z axis position has less mean error, but the standard
+deviation is bigger. Plotting feature position error agains feature
+ground truth coordinate (figure \ref{fig:simfig46}) shows that the
+increasing standard deviation is due to the first order linear
+relation between the Y (or Z) and the Y (or Z) axis of feature ground
+truth coordinate, where distortion offset determine the slope of the
+line. 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure45.png}
+  \caption{UAS localization error with lens distortion}
+  \label{fig:simfig45}
 \end{figure}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure48.png}
-  \caption{UAS localization error with lens distortion plotted against frame number}
-  \label{fig:simfig48}
+  \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure46.png}
+  \caption{UAS localization error with lens distortion}
+  \label{fig:simfig46}
 \end{figure}
 
-The feature
+\FloatBarrier
+
+\subsection{Effect from Image Resolution}
+
+It is well known that higher resolution sensor will give more accuracy
+to the estimate. To know how high a resolution is good enough for the
+distance range that this work is targeting, a quantitive analysis is
+necessary. The ideal case simulation is ran with various image
+resolution setting, and the result is below (figure \ref{fig:simfig50}). 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure50.png}
+  \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure49.png}
+  \caption{Error statistic for various image resolution}
+  \label{fig:simfig50}
+\end{figure}
+
+This test confirmed that higher resolution the image sensor is, the
+more accuracy it will bring. The most siginificant error is seen at
+resolution 480x720 where the X axis of feature position error is +/-
+150m. At one 720x1080, which is one step up of 480x720, the X axis
+feature position error is hugely reduced to a few meters. For all
+other parameters, improvement at each level of resolution increase is
+nearly linear. This result suggests that to achieve reasonably good
+accuracy for obstacle detection, a resolution of 720x1080 or higher is
+preferred. 
+
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "thesis"
