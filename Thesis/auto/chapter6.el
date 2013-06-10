@@ -15,8 +15,10 @@
      "fig:simfig36-37"
      "fig:simfig28-29"
      "fig:simfig32-33"
-     "fig:simfig45-46"
+     "fig:simfig43-44"
      "fig:simfig38-39"
-     "fig:simfig47"
-     "fig:simfig48")))
+     "fig:simfig48"
+     "fig:simfig45"
+     "fig:simfig46"
+     "fig:simfig50")))
 

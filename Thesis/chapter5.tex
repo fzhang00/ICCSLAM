@@ -1,10 +1,10 @@
 \chapter{Result From Flight Data}\label{ch:FlightResult}
 
 This chapter is divided into three main sections. Firstly, the
-algorithm's convergency and consistency was analyzed. Secondly, the
+algorithm's convergence and consistency was analyzed. Secondly, the
 accuracy of the algorithm is examined by comparing to ground truth
 data. The third section summarized test results for tuning the
-algorithm for better accuracy and effeciency. The forth section
+algorithm for better accuracy and efficiency. The forth section
 present the advantage of using IMU data. The fifth section outline
 the inadequacies of the CC\_EKF\_SLAM algorithm identified.
 
@@ -12,10 +12,10 @@ Since all parameters are tracked in camera frame, their value is
 different when viewed from a fixed point in world frame. Therefore, all 
 parameters are converted back to world frame before plotting. 
 
-\section{Convergency and Consistency}
+\section{Convergence and Consistency}
 
 A video sequence of 400 frames was processed to test the CC\_EKF\_SLAM
-algorithm. The filter intialized 40 features at the first frame, and
+algorithm. The filter initialized 40 features at the first frame, and
 maintain the tracked features amount at this number by initializing
 new features when existing features moved out of FOV. 
 \begin{figure}[h]
