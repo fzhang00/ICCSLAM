@@ -33,3 +33,10 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+# Latex
+*.log
+*.aux
+*.tex~
+*.bbl
+_region_.prv
