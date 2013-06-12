@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2013.5.25)  9 JUN 2013 16:53
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2013.5.25)  11 JUN 2013 22:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -410,16 +410,571 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [13 <./Figures/towed_SUAS.jpg>] [14 <./Figures/SUAS.jpg> <./Figures/athena.jpg>
  <./Figures/GPS_antenna.jpg>] [15 <./Figures/CDAC_Rack.jpg>]) [16 <./Figures/vi
 deo_snapshot.jpg>]
-\openout2 = `chapter6.aux'.
+\openout2 = `chapter5.aux'.
 
- (./chapter6.tex
+ (./chapter5.tex
 Chapter 4.
+
+LaTeX Warning: Reference `fltfig:1' on page 17 undefined on input line 29.
+
 [17
 
 
 
 ]
-<./Figures/SimulationFigures/Figure51.png, id=71, 753.81625pt x 478.78876pt>
+! Missing $ inserted.
+<inserted text> 
+                $
+l.36   plot_1fpp_200f2p.jpg}
+                            
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+LaTeX Warning: File `./Figures/fltfig/d plot_1fpp_200f2p.jpg' not found on inpu
+t line 36.
+
+<./Figures/fltfig/d plot_1fpp_200f2p.jpg, id=71, 1204.5pt x 903.375pt>
+File: ./Figures/fltfig/d plot_1fpp_200f2p.jpg Graphic file (type jpg)
+
+<use ./Figures/fltfig/d plot_1fpp_200f2p.jpg>
+Package pdftex.def Info: ./Figures/fltfig/d plot_1fpp_200f2p.jpg used on input 
+line 36.
+(pdftex.def)             Requested size: 433.61967pt x 325.50423pt.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.36   plot_1fpp_200f2p.jpg}
+                            
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (199.22069pt too wide) in paragraph at lines 36--38
+ []\OT1/cmr/m/n/12 plot$[]\OML/cmm/m/it/12 fpp[]\OT1/cmr/m/n/12 00\OML/cmm/m/it
+/12 f\OT1/cmr/m/n/12 2\OML/cmm/m/it/12 p:jpgplot[]fpp[]\OT1/cmr/m/n/12 00\OML/c
+mm/m/it/12 f\OT1/cmr/m/n/12 2\OML/cmm/m/it/12 p:jpg[]$ 
+ []
+
+[18 <./Figures/fltfig/d plot_1fpp_200f2p.jpg>]
+
+LaTeX Warning: File `media/image11.eps' not found on input line 73.
+
+Package epstopdf Info: Source file: <media/image11.eps>
+(epstopdf)             Output file: <media/image11-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=media/image11-eps-converte
+d-to.pdf media/image11.eps>
+(epstopdf)             \includegraphics on input line 73.
+Package epstopdf Info: Output file is already uptodate.
+
+! Package pdftex.def Error: File `media/image11-eps-converted-to.pdf' not found
+.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.73 ...15.24cm,height=11.44cm]{media/image11.eps}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[19]
+
+LaTeX Warning: File `media/image12.eps' not found on input line 92.
+
+Package epstopdf Info: Source file: <media/image12.eps>
+(epstopdf)             Output file: <media/image12-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=media/image12-eps-converte
+d-to.pdf media/image12.eps>
+(epstopdf)             \includegraphics on input line 92.
+Package epstopdf Info: Output file is already uptodate.
+
+! Package pdftex.def Error: File `media/image12-eps-converted-to.pdf' not found
+.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.92 ...15.24cm,height=11.44cm]{media/image12.eps}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[20]
+
+LaTeX Warning: File `media/image13.eps' not found on input line 113.
+
+Package epstopdf Info: Source file: <media/image13.eps>
+(epstopdf)             Output file: <media/image13-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=media/image13-eps-converte
+d-to.pdf media/image13.eps>
+(epstopdf)             \includegraphics on input line 113.
+Package epstopdf Info: Output file is already uptodate.
+
+! Package pdftex.def Error: File `media/image13-eps-converted-to.pdf' not found
+.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.113 ...5.24cm,height=11.44cm]{media/image13.eps}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `media/image14.eps' not found on input line 123.
+
+Package epstopdf Info: Source file: <media/image14.eps>
+(epstopdf)             Output file: <media/image14-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=media/image14-eps-converte
+d-to.pdf media/image14.eps>
+(epstopdf)             \includegraphics on input line 123.
+Package epstopdf Info: Output file is already uptodate.
+
+! Package pdftex.def Error: File `media/image14-eps-converted-to.pdf' not found
+.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.123 ...5.24cm,height=11.44cm]{media/image14.eps}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[21] [22]
+
+LaTeX Warning: File `media/image15.eps' not found on input line 157.
+
+Package epstopdf Info: Source file: <media/image15.eps>
+(epstopdf)             Output file: <media/image15-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=media/image15-eps-converte
+d-to.pdf media/image15.eps>
+(epstopdf)             \includegraphics on input line 157.
+Package epstopdf Info: Output file is already uptodate.
+
+! Package pdftex.def Error: File `media/image15-eps-converted-to.pdf' not found
+.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.157 ...5.24cm,height=11.44cm]{media/image15.eps}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[23]
+
+LaTeX Warning: File `media/image16.eps' not found on input line 189.
+
+Package epstopdf Info: Source file: <media/image16.eps>
+(epstopdf)             Output file: <media/image16-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=media/image16-eps-converte
+d-to.pdf media/image16.eps>
+(epstopdf)             \includegraphics on input line 189.
+Package epstopdf Info: Output file is already uptodate.
+
+! Package pdftex.def Error: File `media/image16-eps-converted-to.pdf' not found
+.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.189 ...5.24cm,height=11.44cm]{media/image16.eps}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `media/image17.eps' not found on input line 197.
+
+Package epstopdf Info: Source file: <media/image17.eps>
+(epstopdf)             Output file: <media/image17-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=media/image17-eps-converte
+d-to.pdf media/image17.eps>
+(epstopdf)             \includegraphics on input line 197.
+Package epstopdf Info: Output file is already uptodate.
+
+! Package pdftex.def Error: File `media/image17-eps-converted-to.pdf' not found
+.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.197 ...5.24cm,height=11.44cm]{media/image17.eps}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: File `media/image18.eps' not found on input line 203.
+
+Package epstopdf Info: Source file: <media/image18.eps>
+(epstopdf)             Output file: <media/image18-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=media/image18-eps-converte
+d-to.pdf media/image18.eps>
+(epstopdf)             \includegraphics on input line 203.
+Package epstopdf Info: Output file is already uptodate.
+
+! Package pdftex.def Error: File `media/image18-eps-converted-to.pdf' not found
+.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.203 ...5.24cm,height=11.44cm]{media/image18.eps}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[24]
+
+LaTeX Warning: File `media/image19.eps' not found on input line 218.
+
+Package epstopdf Info: Source file: <media/image19.eps>
+(epstopdf)             Output file: <media/image19-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=media/image19-eps-converte
+d-to.pdf media/image19.eps>
+(epstopdf)             \includegraphics on input line 218.
+Package epstopdf Info: Output file is already uptodate.
+
+! Package pdftex.def Error: File `media/image19-eps-converted-to.pdf' not found
+.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.218 ...5.24cm,height=11.44cm]{media/image19.eps}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: File `media/image20.eps' not found on input line 228.
+
+Package epstopdf Info: Source file: <media/image20.eps>
+(epstopdf)             Output file: <media/image20-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=media/image20-eps-converte
+d-to.pdf media/image20.eps>
+(epstopdf)             \includegraphics on input line 228.
+Package epstopdf Info: Output file is already uptodate.
+
+! Package pdftex.def Error: File `media/image20-eps-converted-to.pdf' not found
+.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.228 ...5.24cm,height=11.44cm]{media/image20.eps}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: File `media/image21.eps' not found on input line 240.
+
+Package epstopdf Info: Source file: <media/image21.eps>
+(epstopdf)             Output file: <media/image21-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=media/image21-eps-converte
+d-to.pdf media/image21.eps>
+(epstopdf)             \includegraphics on input line 240.
+Package epstopdf Info: Output file is already uptodate.
+
+! Package pdftex.def Error: File `media/image21-eps-converted-to.pdf' not found
+.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.240 ...5.24cm,height=11.44cm]{media/image21.eps}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: File `media/image22.eps' not found on input line 246.
+
+Package epstopdf Info: Source file: <media/image22.eps>
+(epstopdf)             Output file: <media/image22-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=media/image22-eps-converte
+d-to.pdf media/image22.eps>
+(epstopdf)             \includegraphics on input line 246.
+Package epstopdf Info: Output file is already uptodate.
+
+! Package pdftex.def Error: File `media/image22-eps-converted-to.pdf' not found
+.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.246 ...5.24cm,height=11.44cm]{media/image22.eps}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: File `media/image23.eps' not found on input line 252.
+
+Package epstopdf Info: Source file: <media/image23.eps>
+(epstopdf)             Output file: <media/image23-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=media/image23-eps-converte
+d-to.pdf media/image23.eps>
+(epstopdf)             \includegraphics on input line 252.
+Package epstopdf Info: Output file is already uptodate.
+
+! Package pdftex.def Error: File `media/image23-eps-converted-to.pdf' not found
+.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.252 ...5.24cm,height=11.44cm]{media/image23.eps}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[25]
+
+LaTeX Warning: File `media/image24.eps' not found on input line 281.
+
+Package epstopdf Info: Source file: <media/image24.eps>
+(epstopdf)             Output file: <media/image24-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=media/image24-eps-converte
+d-to.pdf media/image24.eps>
+(epstopdf)             \includegraphics on input line 281.
+Package epstopdf Info: Output file is already uptodate.
+
+! Package pdftex.def Error: File `media/image24-eps-converted-to.pdf' not found
+.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.281 ...15.24cm,height=7.25cm]{media/image24.eps}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[26]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: File `media/image25.eps' not found on input line 287.
+
+Package epstopdf Info: Source file: <media/image25.eps>
+(epstopdf)             Output file: <media/image25-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=media/image25-eps-converte
+d-to.pdf media/image25.eps>
+(epstopdf)             \includegraphics on input line 287.
+Package epstopdf Info: Output file is already uptodate.
+
+! Package pdftex.def Error: File `media/image25-eps-converted-to.pdf' not found
+.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.287 ...5.24cm,height=11.37cm]{media/image25.eps}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[27]
+
+LaTeX Warning: File `media/image26.eps' not found on input line 317.
+
+Package epstopdf Info: Source file: <media/image26.eps>
+(epstopdf)             Output file: <media/image26-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=media/image26-eps-converte
+d-to.pdf media/image26.eps>
+(epstopdf)             \includegraphics on input line 317.
+Package epstopdf Info: Output file is already uptodate.
+
+! Package pdftex.def Error: File `media/image26-eps-converted-to.pdf' not found
+.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.317 ...=7.83cm,height=5.88cm]{media/image26.eps}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `media/image27.eps' not found on input line 318.
+
+Package epstopdf Info: Source file: <media/image27.eps>
+(epstopdf)             Output file: <media/image27-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=media/image27-eps-converte
+d-to.pdf media/image27.eps>
+(epstopdf)             \includegraphics on input line 318.
+Package epstopdf Info: Output file is already uptodate.
+
+! Package pdftex.def Error: File `media/image27-eps-converted-to.pdf' not found
+.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.318 ...=7.59cm,height=5.69cm]{media/image27.eps}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `media/image28.eps' not found on input line 321.
+
+Package epstopdf Info: Source file: <media/image28.eps>
+(epstopdf)             Output file: <media/image28-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=media/image28-eps-converte
+d-to.pdf media/image28.eps>
+(epstopdf)             \includegraphics on input line 321.
+Package epstopdf Info: Output file is already uptodate.
+
+! Package pdftex.def Error: File `media/image28-eps-converted-to.pdf' not found
+.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.321 ...=7.69cm,height=5.77cm]{media/image28.eps}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `media/image29.eps' not found on input line 322.
+
+Package epstopdf Info: Source file: <media/image29.eps>
+(epstopdf)             Output file: <media/image29-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=media/image29-eps-converte
+d-to.pdf media/image29.eps>
+(epstopdf)             \includegraphics on input line 322.
+Package epstopdf Info: Output file is already uptodate.
+
+! Package pdftex.def Error: File `media/image29-eps-converted-to.pdf' not found
+.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.322 ...=7.66cm,height=5.75cm]{media/image29.eps}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (32.33916pt too wide) in paragraph at lines 315--326
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+! Undefined control sequence.
+<recently read> \Hline 
+                       
+l.380 \Hline
+            
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) [28] [29] [30] [31] [32] [33] [34]
+\openout2 = `chapter6.aux'.
+
+ (./chapter6.tex
+Chapter 5.
+[35
+
+
+
+]
+<./Figures/SimulationFigures/Figure51.png, id=130, 753.81625pt x 478.78876pt>
 File: ./Figures/SimulationFigures/Figure51.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure51.png>
@@ -430,16 +985,16 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure51.png used on input
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[18] [19 <./Figures/SimulationFigures/Figure51.png>]
-<./Figures/SimulationFigures/Figure1.png, id=81, 1057.9525pt x 430.60875pt>
+[36] [37 <./Figures/SimulationFigures/Figure51.png>]
+<./Figures/SimulationFigures/Figure1.png, id=140, 1057.9525pt x 430.60875pt>
 File: ./Figures/SimulationFigures/Figure1.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure1.png>
 Package pdftex.def Info: ./Figures/SimulationFigures/Figure1.png used on input 
 line 96.
 (pdftex.def)             Requested size: 426.78955pt x 199.17313pt.
- [20 <./Figures/SimulationFigures/Figure1.png>]
-<./Figures/SimulationFigures/Figure6.png, id=86, 468.75125pt x 328.22626pt>
+ [38 <./Figures/SimulationFigures/Figure1.png>]
+<./Figures/SimulationFigures/Figure6.png, id=145, 468.75125pt x 328.22626pt>
 File: ./Figures/SimulationFigures/Figure6.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure6.png>
@@ -447,7 +1002,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure6.png used on input
 line 126.
 (pdftex.def)             Requested size: 199.163pt x 142.26642pt.
 
-<./Figures/SimulationFigures/Figure7.png, id=87, 473.77pt x 324.21124pt>
+<./Figures/SimulationFigures/Figure7.png, id=146, 473.77pt x 324.21124pt>
 File: ./Figures/SimulationFigures/Figure7.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure7.png>
@@ -455,7 +1010,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure7.png used on input
 line 127.
 (pdftex.def)             Requested size: 199.17pt x 142.26256pt.
 
-<./Figures/SimulationFigures/Figure5.png, id=88, 510.90875pt x 327.2225pt>
+<./Figures/SimulationFigures/Figure5.png, id=147, 510.90875pt x 327.2225pt>
 File: ./Figures/SimulationFigures/Figure5.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure5.png>
@@ -463,17 +1018,17 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure5.png used on input
 line 128.
 (pdftex.def)             Requested size: 199.16785pt x 142.26074pt.
 
-<./Figures/SimulationFigures/Figure8.png, id=89, 481.8pt x 353.32pt>
+<./Figures/SimulationFigures/Figure8.png, id=148, 481.8pt x 353.32pt>
 File: ./Figures/SimulationFigures/Figure8.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure8.png>
 Package pdftex.def Info: ./Figures/SimulationFigures/Figure8.png used on input 
 line 129.
 (pdftex.def)             Requested size: 199.16399pt x 142.26357pt.
- [21 <./Figures/SimulationFigures/Figure6.png> <./Figures/SimulationFigures/Fig
+ [39 <./Figures/SimulationFigures/Figure6.png> <./Figures/SimulationFigures/Fig
 ure7.png> <./Figures/SimulationFigures/Figure5.png> <./Figures/SimulationFigure
 s/Figure8.png>]
-<./Figures/SimulationFigures/Figure9.png, id=97, 357.335pt x 480.79625pt>
+<./Figures/SimulationFigures/Figure9.png, id=156, 357.335pt x 480.79625pt>
 File: ./Figures/SimulationFigures/Figure9.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure9.png>
@@ -481,7 +1036,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure9.png used on input
 line 178.
 (pdftex.def)             Requested size: 128.0374pt x 172.27217pt.
 
-<./Figures/SimulationFigures/Figure10.png, id=98, 358.33875pt x 482.80376pt>
+<./Figures/SimulationFigures/Figure10.png, id=157, 358.33875pt x 482.80376pt>
 File: ./Figures/SimulationFigures/Figure10.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure10.png>
@@ -489,7 +1044,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure10.png used on input
  line 179.
 (pdftex.def)             Requested size: 128.0374pt x 172.51263pt.
 
-<./Figures/SimulationFigures/Figure11.png, id=99, 365.365pt x 480.79625pt>
+<./Figures/SimulationFigures/Figure11.png, id=158, 365.365pt x 480.79625pt>
 File: ./Figures/SimulationFigures/Figure11.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure11.png>
@@ -497,7 +1052,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure11.png used on input
  line 180.
 (pdftex.def)             Requested size: 128.0374pt x 168.48662pt.
 
-<./Figures/SimulationFigures/Figure12.png, id=100, 358.33875pt x 482.80376pt>
+<./Figures/SimulationFigures/Figure12.png, id=159, 358.33875pt x 482.80376pt>
 File: ./Figures/SimulationFigures/Figure12.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure12.png>
@@ -505,7 +1060,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure12.png used on input
  line 181.
 (pdftex.def)             Requested size: 128.0374pt x 172.51263pt.
 
-<./Figures/SimulationFigures/Figure13.png, id=101, 357.335pt x 480.79625pt>
+<./Figures/SimulationFigures/Figure13.png, id=160, 357.335pt x 480.79625pt>
 File: ./Figures/SimulationFigures/Figure13.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure13.png>
@@ -516,18 +1071,18 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure13.png used on input
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[22]
-<./Figures/SimulationFigures/Figure14.png, id=105, 864.22874pt x 471.7625pt>
+[40]
+<./Figures/SimulationFigures/Figure14.png, id=164, 864.22874pt x 471.7625pt>
 File: ./Figures/SimulationFigures/Figure14.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure14.png>
 Package pdftex.def Info: ./Figures/SimulationFigures/Figure14.png used on input
  line 210.
 (pdftex.def)             Requested size: 398.33858pt x 217.44528pt.
- [23 <./Figures/SimulationFigures/Figure9.png> <./Figures/SimulationFigures/Fig
+ [41 <./Figures/SimulationFigures/Figure9.png> <./Figures/SimulationFigures/Fig
 ure10.png> <./Figures/SimulationFigures/Figure11.png> <./Figures/SimulationFigu
 res/Figure12.png> <./Figures/SimulationFigures/Figure13.png>]
-<./Figures/SimulationFigures/Figure20.png, id=114, 512.91624pt x 189.70876pt>
+<./Figures/SimulationFigures/Figure20.png, id=173, 512.91624pt x 189.70876pt>
 File: ./Figures/SimulationFigures/Figure20.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure20.png>
@@ -535,7 +1090,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure20.png used on input
  line 228.
 (pdftex.def)             Requested size: 199.16779pt x 71.13191pt.
 
-<./Figures/SimulationFigures/Figure21.png, id=115, 512.91624pt x 187.70125pt>
+<./Figures/SimulationFigures/Figure21.png, id=174, 512.91624pt x 187.70125pt>
 File: ./Figures/SimulationFigures/Figure21.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure21.png>
@@ -543,7 +1098,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure21.png used on input
  line 229.
 (pdftex.def)             Requested size: 199.16779pt x 71.13245pt.
 
-<./Figures/SimulationFigures/Figure22.png, id=116, 512.91624pt x 189.70876pt>
+<./Figures/SimulationFigures/Figure22.png, id=175, 512.91624pt x 189.70876pt>
 File: ./Figures/SimulationFigures/Figure22.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure22.png>
@@ -551,7 +1106,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure22.png used on input
  line 230.
 (pdftex.def)             Requested size: 199.16779pt x 71.13191pt.
 
-<./Figures/SimulationFigures/Figure23.png, id=117, 512.91624pt x 187.70125pt>
+<./Figures/SimulationFigures/Figure23.png, id=176, 512.91624pt x 187.70125pt>
 File: ./Figures/SimulationFigures/Figure23.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure23.png>
@@ -559,7 +1114,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure23.png used on input
  line 231.
 (pdftex.def)             Requested size: 199.16779pt x 71.13245pt.
 
-<./Figures/SimulationFigures/Figure24.png, id=118, 512.91624pt x 189.70876pt>
+<./Figures/SimulationFigures/Figure24.png, id=177, 512.91624pt x 189.70876pt>
 File: ./Figures/SimulationFigures/Figure24.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure24.png>
@@ -570,8 +1125,8 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure24.png used on input
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[24 <./Figures/SimulationFigures/Figure14.png>]
-<./Figures/SimulationFigures/Figure17.png, id=123, 558.085pt x 387.4475pt>
+[42 <./Figures/SimulationFigures/Figure14.png>]
+<./Figures/SimulationFigures/Figure17.png, id=182, 558.085pt x 387.4475pt>
 File: ./Figures/SimulationFigures/Figure17.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure17.png>
@@ -579,7 +1134,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure17.png used on input
  line 256.
 (pdftex.def)             Requested size: 199.16473pt x 142.26552pt.
 
-<./Figures/SimulationFigures/Figure18.png, id=124, 558.085pt x 387.4475pt>
+<./Figures/SimulationFigures/Figure18.png, id=183, 558.085pt x 387.4475pt>
 File: ./Figures/SimulationFigures/Figure18.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure18.png>
@@ -587,7 +1142,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure18.png used on input
  line 257.
 (pdftex.def)             Requested size: 199.16473pt x 142.26552pt.
 
-<./Figures/SimulationFigures/Figure19.png, id=125, 558.085pt x 387.4475pt>
+<./Figures/SimulationFigures/Figure19.png, id=184, 558.085pt x 387.4475pt>
 File: ./Figures/SimulationFigures/Figure19.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure19.png>
@@ -598,12 +1153,12 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure19.png used on input
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[25 <./Figures/SimulationFigures/Figure20.png> <./Figures/SimulationFigures/Fig
+[43 <./Figures/SimulationFigures/Figure20.png> <./Figures/SimulationFigures/Fig
 ure21.png> <./Figures/SimulationFigures/Figure22.png> <./Figures/SimulationFigu
-res/Figure23.png> <./Figures/SimulationFigures/Figure24.png>] [26 <./Figures/Si
+res/Figure23.png> <./Figures/SimulationFigures/Figure24.png>] [44 <./Figures/Si
 mulationFigures/Figure17.png> <./Figures/SimulationFigures/Figure18.png> <./Fig
 ures/SimulationFigures/Figure19.png>]
-<./Figures/SimulationFigures/Figure25.png, id=141, 650.43pt x 720.6925pt>
+<./Figures/SimulationFigures/Figure25.png, id=200, 650.43pt x 720.6925pt>
 File: ./Figures/SimulationFigures/Figure25.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure25.png>
@@ -614,7 +1169,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure25.png used on input
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./Figures/SimulationFigures/Figure26.png, id=142, 637.38126pt x 440.64626pt>
+<./Figures/SimulationFigures/Figure26.png, id=201, 637.38126pt x 440.64626pt>
 File: ./Figures/SimulationFigures/Figure26.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure26.png>
@@ -625,9 +1180,9 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure26.png used on input
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[27] [28 <./Figures/SimulationFigures/Figure25.png> <./Figures/SimulationFigure
+[45] [46 <./Figures/SimulationFigures/Figure25.png> <./Figures/SimulationFigure
 s/Figure26.png>]
-<./Figures/SimulationFigures/Figure34.png, id=151, 357.335pt x 480.79625pt>
+<./Figures/SimulationFigures/Figure34.png, id=210, 357.335pt x 480.79625pt>
 File: ./Figures/SimulationFigures/Figure34.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure34.png>
@@ -635,7 +1190,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure34.png used on input
  line 343.
 (pdftex.def)             Requested size: 142.26378pt x 191.4127pt.
 
-<./Figures/SimulationFigures/Figure35.png, id=152, 357.335pt x 482.80376pt>
+<./Figures/SimulationFigures/Figure35.png, id=211, 357.335pt x 482.80376pt>
 File: ./Figures/SimulationFigures/Figure35.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure35.png>
@@ -643,7 +1198,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure35.png used on input
  line 344.
 (pdftex.def)             Requested size: 142.26378pt x 192.21194pt.
 
-<./Figures/SimulationFigures/Figure36.png, id=153, 541.02126pt x 661.47125pt>
+<./Figures/SimulationFigures/Figure36.png, id=212, 541.02126pt x 661.47125pt>
 File: ./Figures/SimulationFigures/Figure36.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure36.png>
@@ -651,19 +1206,19 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure36.png used on input
  line 358.
 (pdftex.def)             Requested size: 199.16928pt x 243.50916pt.
 
-<./Figures/SimulationFigures/Figure37.png, id=154, 541.02126pt x 661.47125pt>
+<./Figures/SimulationFigures/Figure37.png, id=213, 541.02126pt x 661.47125pt>
 File: ./Figures/SimulationFigures/Figure37.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure37.png>
 Package pdftex.def Info: ./Figures/SimulationFigures/Figure37.png used on input
  line 359.
 (pdftex.def)             Requested size: 199.16928pt x 243.50916pt.
- [29
+ [47
 
  <./Figures/SimulationFigures/Figure34.png> <./Figures/SimulationFigures/Figure
-35.png>] [30 <./Figures/SimulationFigures/Figure36.png> <./Figures/SimulationFi
+35.png>] [48 <./Figures/SimulationFigures/Figure36.png> <./Figures/SimulationFi
 gures/Figure37.png>]
-<./Figures/SimulationFigures/Figure28.png, id=166, 512.91624pt x 189.70876pt>
+<./Figures/SimulationFigures/Figure28.png, id=225, 512.91624pt x 189.70876pt>
 File: ./Figures/SimulationFigures/Figure28.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure28.png>
@@ -671,7 +1226,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure28.png used on input
  line 387.
 (pdftex.def)             Requested size: 142.26378pt x 52.6173pt.
 
-<./Figures/SimulationFigures/Figure29.png, id=167, 512.91624pt x 187.70125pt>
+<./Figures/SimulationFigures/Figure29.png, id=226, 512.91624pt x 187.70125pt>
 File: ./Figures/SimulationFigures/Figure29.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure29.png>
@@ -679,7 +1234,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure29.png used on input
  line 388.
 (pdftex.def)             Requested size: 142.26378pt x 52.0605pt.
 
-<./Figures/SimulationFigures/Figure32.png, id=168, 700.6175pt x 505.89pt>
+<./Figures/SimulationFigures/Figure32.png, id=227, 700.6175pt x 505.89pt>
 File: ./Figures/SimulationFigures/Figure32.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure32.png>
@@ -687,7 +1242,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure32.png used on input
  line 420.
 (pdftex.def)             Requested size: 199.16492pt x 142.26576pt.
 
-<./Figures/SimulationFigures/Figure33.png, id=169, 699.61375pt x 505.89pt>
+<./Figures/SimulationFigures/Figure33.png, id=228, 699.61375pt x 505.89pt>
 File: ./Figures/SimulationFigures/Figure33.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure33.png>
@@ -698,9 +1253,9 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure33.png used on input
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[31 <./Figures/SimulationFigures/Figure28.png> <./Figures/SimulationFigures/Fig
+[49 <./Figures/SimulationFigures/Figure28.png> <./Figures/SimulationFigures/Fig
 ure29.png>]
-<./Figures/SimulationFigures/Figure43.png, id=176, 358.33875pt x 480.79625pt>
+<./Figures/SimulationFigures/Figure43.png, id=235, 358.33875pt x 480.79625pt>
 File: ./Figures/SimulationFigures/Figure43.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure43.png>
@@ -708,7 +1263,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure43.png used on input
  line 438.
 (pdftex.def)             Requested size: 142.26378pt x 190.88449pt.
 
-<./Figures/SimulationFigures/Figure44.png, id=177, 365.365pt x 482.80376pt>
+<./Figures/SimulationFigures/Figure44.png, id=236, 365.365pt x 482.80376pt>
 File: ./Figures/SimulationFigures/Figure44.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure44.png>
@@ -716,7 +1271,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure44.png used on input
  line 439.
 (pdftex.def)             Requested size: 142.26378pt x 187.99066pt.
 
-<./Figures/SimulationFigures/Figure38.png, id=178, 512.91624pt x 189.70876pt>
+<./Figures/SimulationFigures/Figure38.png, id=237, 512.91624pt x 189.70876pt>
 File: ./Figures/SimulationFigures/Figure38.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure38.png>
@@ -724,17 +1279,17 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure38.png used on input
  line 456.
 (pdftex.def)             Requested size: 199.16928pt x 73.6648pt.
 
-<./Figures/SimulationFigures/Figure39.png, id=179, 512.91624pt x 187.70125pt>
+<./Figures/SimulationFigures/Figure39.png, id=238, 512.91624pt x 187.70125pt>
 File: ./Figures/SimulationFigures/Figure39.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure39.png>
 Package pdftex.def Info: ./Figures/SimulationFigures/Figure39.png used on input
  line 457.
 (pdftex.def)             Requested size: 199.16928pt x 72.88527pt.
- [32 <./Figures/SimulationFigures/Figure32.png> <./Figures/SimulationFigures/Fi
+ [50 <./Figures/SimulationFigures/Figure32.png> <./Figures/SimulationFigures/Fi
 gure33.png> <./Figures/SimulationFigures/Figure43.png> <./Figures/SimulationFig
 ures/Figure44.png>]
-<./Figures/SimulationFigures/Figure41.png, id=187, 701.62125pt x 505.89pt>
+<./Figures/SimulationFigures/Figure41.png, id=247, 701.62125pt x 505.89pt>
 File: ./Figures/SimulationFigures/Figure41.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure41.png>
@@ -742,17 +1297,17 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure41.png used on input
  line 481.
 (pdftex.def)             Requested size: 199.16928pt x 143.60892pt.
 
-<./Figures/SimulationFigures/Figure42.png, id=188, 700.6175pt x 505.89pt>
+<./Figures/SimulationFigures/Figure42.png, id=248, 700.6175pt x 505.89pt>
 File: ./Figures/SimulationFigures/Figure42.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure42.png>
 Package pdftex.def Info: ./Figures/SimulationFigures/Figure42.png used on input
  line 482.
 (pdftex.def)             Requested size: 199.16928pt x 143.80962pt.
- [33 <./Figures/SimulationFigures/Figure38.png> <./Figures/SimulationFigures/Fi
+ [51 <./Figures/SimulationFigures/Figure38.png> <./Figures/SimulationFigures/Fi
 gure39.png> <./Figures/SimulationFigures/Figure41.png> <./Figures/SimulationFig
 ures/Figure42.png>]
-<./Figures/SimulationFigures/Figure47.png, id=196, 358.33875pt x 473.77pt>
+<./Figures/SimulationFigures/Figure47.png, id=256, 358.33875pt x 473.77pt>
 File: ./Figures/SimulationFigures/Figure47.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure47.png>
@@ -760,16 +1315,16 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure47.png used on input
  line 512.
 (pdftex.def)             Requested size: 142.26378pt x 188.09496pt.
 
-<./Figures/SimulationFigures/Figure48.png, id=197, 727.71875pt x 476.78125pt>
+<./Figures/SimulationFigures/Figure48.png, id=257, 727.71875pt x 476.78125pt>
 File: ./Figures/SimulationFigures/Figure48.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure48.png>
 Package pdftex.def Info: ./Figures/SimulationFigures/Figure48.png used on input
  line 513.
 (pdftex.def)             Requested size: 256.0748pt x 167.77805pt.
- [34 <./Figures/SimulationFigures/Figure47.png> <./Figures/SimulationFigures/Fi
+ [52 <./Figures/SimulationFigures/Figure47.png> <./Figures/SimulationFigures/Fi
 gure48.png>]
-<./Figures/SimulationFigures/Figure45.png, id=203, 512.91624pt x 188.705pt>
+<./Figures/SimulationFigures/Figure45.png, id=263, 512.91624pt x 188.705pt>
 File: ./Figures/SimulationFigures/Figure45.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure45.png>
@@ -777,16 +1332,16 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure45.png used on input
  line 531.
 (pdftex.def)             Requested size: 284.52756pt x 104.68068pt.
 
-<./Figures/SimulationFigures/Figure46.png, id=204, 745.78625pt x 505.89pt>
+<./Figures/SimulationFigures/Figure46.png, id=264, 745.78625pt x 505.89pt>
 File: ./Figures/SimulationFigures/Figure46.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure46.png>
 Package pdftex.def Info: ./Figures/SimulationFigures/Figure46.png used on input
  line 538.
 (pdftex.def)             Requested size: 284.52756pt x 193.0044pt.
- [35 <./Figures/SimulationFigures/Figure45.png> <./Figures/SimulationFigures/Fi
+ [53 <./Figures/SimulationFigures/Figure45.png> <./Figures/SimulationFigures/Fi
 gure46.png>]
-<./Figures/SimulationFigures/Figure50.png, id=210, 763.85374pt x 510.90875pt>
+<./Figures/SimulationFigures/Figure50.png, id=270, 763.85374pt x 510.90875pt>
 File: ./Figures/SimulationFigures/Figure50.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure50.png>
@@ -794,15 +1349,15 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure50.png used on input
  line 555.
 (pdftex.def)             Requested size: 284.52756pt x 190.304pt.
 
-<./Figures/SimulationFigures/Figure49.png, id=211, 767.86874pt x 314.17375pt>
+<./Figures/SimulationFigures/Figure49.png, id=271, 767.86874pt x 314.17375pt>
 File: ./Figures/SimulationFigures/Figure49.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure49.png>
 Package pdftex.def Info: ./Figures/SimulationFigures/Figure49.png used on input
  line 556.
 (pdftex.def)             Requested size: 284.52756pt x 116.41504pt.
-) [36 <./Figures/SimulationFigures/Figure50.png> <./Figures/SimulationFigures/F
-igure49.png>] [37] (./thesis.bbl
+) [54 <./Figures/SimulationFigures/Figure50.png> <./Figures/SimulationFigures/F
+igure49.png>] [55] (./thesis.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 5--8
 []\OT1/cmr/m/n/12 ``Athena 111m in-te-grated flight con-trol sys-tem.''
  []
@@ -831,13 +1386,13 @@ Underfull \hbox (badness 1552) in paragraph at lines 19--21
 ject host-ing.''
  []
 
-) [38
+) [56
 
 
 ]
 No file thesisbib.bbl.
 (./thesis.aux (./chapter1.aux) (./chapter2.aux) (./chapter4.aux)
-(./chapter6.aux))
+(./chapter5.aux) (./chapter6.aux))
 
 LaTeX Warning: There were undefined references.
 
@@ -846,13 +1401,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4178 strings out of 494856
- 66305 string characters out of 3175591
- 118735 words of memory out of 3000000
- 7265 multiletter control sequences out of 15000+200000
- 10240 words of font info for 37 fonts, out of 3000000 for 9000
- 81 hyphenation exceptions out of 8191
- 38i,8n,38p,290b,299s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 4220 strings out of 494382
+ 66859 string characters out of 3167781
+ 123197 words of memory out of 3000000
+ 7280 multiletter control sequences out of 15000+200000
+ 10409 words of font info for 38 fonts, out of 3000000 for 9000
+ 459 hyphenation exceptions out of 8191
+ 38i,11n,38p,290b,299s stack positions out of 5000i,500n,10000p,200000b,50000s
 <c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/tex
 live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2012
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2012/texmf-di
@@ -860,11 +1415,12 @@ st/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2012/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2012/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmr12.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmr8.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
-.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on thesis.pdf (38 pages, 2525138 bytes).
+.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/t
+exlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on thesis.pdf (56 pages, 2706613 bytes).
 PDF statistics:
- 257 PDF objects out of 1000 (max. 8388607)
- 115 compressed objects within 2 object streams
+ 319 PDF objects out of 1000 (max. 8388607)
+ 157 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 246 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 251 words of extra memory for PDF output out of 10000 (max. 10000000)
 

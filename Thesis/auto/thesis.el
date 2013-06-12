@@ -3,6 +3,7 @@
     (TeX-add-symbols
      '("norm" 1))
     (TeX-run-style-hooks
+     "placeins"
      "longtable"
      "setspace"
      "rotating"
@@ -25,5 +26,6 @@
      "chapter1"
      "chapter2"
      "chapter4"
+     "chapter5"
      "chapter6")))
 
