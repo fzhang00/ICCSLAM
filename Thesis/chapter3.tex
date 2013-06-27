@@ -1,5 +1,4 @@
-\subsection{Algorithm Description}\label{section:_Toc332876129}
-\textit{This section describes the algorithm. Same as my paper}
+\chapter{Algorithm Description}
 
 The algorithm described in Chapter!!!Unresolved reference!!!3 was 
 implemented in Python programming language. An open source machine 
@@ -8,8 +7,7 @@ tracking. The feature extraction method used was the Shi-Tomasi corner
 detector. Feature tracking was accomplished through the pyramid 
 implementation of Lucas-Kanade optical flow method . 
 
-\subsubsection{Camera Centric Inverse Depth 
-Parameterization}\label{section:_Toc332876130}
+\section{Camera Centric Inverse Depth Parameterization}
 The standard way of describing a feature's position is to use the 
 Euclidean XYZ parameterization. In practical outdoor range estimation 
 problem, the algorithm must deal with features located at near infinity. 
@@ -31,71 +29,54 @@ approach with minor modification to integrate the inertial measurements.
 \begin{figure}[h]
 \centering
 \includegraphics[width=250.55pt,height=109.45pt]{media/image2.eps}
+\caption{Figure 2 Inverse Parameterization}
+\label{fig:algo1}
 \end{figure}
-
-
-\begin{center}Figure 2 Inverse Parameterization\end{center}
 
 A scene point $p_{i}^{C}$ can be defined by 6 parameters, with the 
 superscript $C$ representing a camera reference frame. ():
 
-\begin{table}[h]
-\centering
-\begin{tabular}{|l|l|}
-\hline
+\begin{equation}
 $p_{i}^{C}=\lbrack \begin{matrix}
 x_{i}^{C} & y_{i}^{C} & z_{i}^{C} & \rho _{i} & \varphi _{i}^{C} & 
 \theta _{i}^{C} & \\
 \end{matrix}
 \rbrack $\\
  & \\
-\hline
-\end{tabular}
-\end{table}
+\end{equation}
+
 The first three parameters $[x_{i}^{C}, y_{i}^{C}, z_{i}^{C}]$ 
-represent the initial position where the feature is first observed. $
-\rho _{i}$is the inverse distance from the initialization position to 
-the feature. The elevation-azimuth pair $[\varphi _{i}^{C}, \theta 
-_{i}^{C}]$ encodes a unit vector pointing from the initialization point 
+represent the initial position where the feature is first observed. $\rho _{i}$ is the inverse distance from the initialization position to 
+the feature. The elevation-azimuth pair $[\phi_{i}^{C}, \theta_{i}^{C}]$ encodes a unit vector pointing from the initialization point 
 to the feature. The vector is given by
 
-\begin{table}[h]
-\centering
-\begin{tabular}{|l|l|}
-\hline
-$m(\varphi _{i}^{C}, \theta _{i}^{C})=\lbrack \begin{matrix}
+\begin{equation}
+$m(\phi_{i}^{C}, \theta_{i}^{C})=\lbrack \begin{matrix}
 cos\varphi _{i}^{C}\cos \theta _{i}^{C} & \\
 \cos \varphi _{i}^{C}\sin \theta _{i}^{C} & \\
 \sin \varphi _{i}^{C} & \\
 \end{matrix}
 \rbrack $\\
  & \\
-\hline
-\end{tabular}
-\end{table}
+\end{equation}
 
 
-\subsubsection{Modeling the System with Extended Kalman 
-Filter}\label{section:_Toc332876131}
-Full State Vector
+\section{Modeling the System with Extended Kalman 
+Filter}
+
+\subsection{Full State Vector}
 
 The EKF state vector is defined as 
 
-\begin{table}[h]
-\centering
-\begin{tabular}{|l|l|}
-\hline
+\begin{equation}
 $x=\lbrack \begin{matrix}
 OX_{W}^{C} & c^{C} & r^{C} & p_{1}^{C} & p_{2}^{C} & \ldots & \\
 \end{matrix}
 \rbrack ^{T}$\\
  & \\
-\hline
-\end{tabular}
-\end{table}
-Equation 1
+\end{equation}
 
-where$OX_{W}^{C}=\lbrack \begin{matrix}
+where $OX_{W}^{C}=\lbrack \begin{matrix}
 O_{x}^{C} & O_{y}^{C} & O_{z}^{C} & \\
 \end{matrix}
 \begin{matrix}
