@@ -20,6 +20,7 @@ parameters are converted back to world frame before plotting.
 
 \section{Convergence and Consistency}
 
+\subsection{Convergence and Tracking}
 Among the feature parameters, the feature initialization point were
 initialized to the zero which is the origin of the camera centric
 coordinate. $\phi$ and $\theta$ were calculated directly from the
@@ -41,25 +42,33 @@ such as 12 and 20.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=10cm, keepaspectratio=true]{./Figures/fltfig/d-plot-1fpp-200f2p.jpg}
+\includegraphics[width=10cm, keepaspectratio=true]
+{./Figures/fltfig/cut1/Figure10.png}
 \caption{Inverse Depth Convergence}
 \label{fltfig:1}
 \end{figure}
 
-Although the features initialization points coordinate $[x_i, y_i,
-z_i]$, and the deviation-elevation angle pair $[\phi, \theta]$ were
-initialized with good accuracy, they were updated and converted into
-the new camera coordinate using the estimated camera motion. As a
-result, the accuracy of these parameters varies, and related to the
-accuracy of sensor motion estimate. Figure \ref{fltfig:2} shows the
-tracking of these parameters over 200 frames. 
+Although the features initialization point $[x_i, y_i, z_i]$, and the
+deviation-elevation angle pair $[\phi, \theta]$ did not go through a
+converging stage, they do get updated and converted into the new
+camera coordinate using the estimated camera motion at every
+iteration. As a result, the accuracy of these parameters varies.
+Figure \ref{fltfig:2} shows the tracking of these parameters over 200
+frames. These parameters were stable for about 200 frames. Some
+features start to drift after 200 frames. This coninside with the
+introduction of new feature points into the system. 
+% are those featuers that drift are the one that's removed from the
+% filter? 
+% Does this prove that the filter altered the features parameter
+% estimate in order to compensate for the incorrect estimate of the
+% UAS localization. Since features removed from the filter were not
+% altered for the comppensation, they shows a drift. 
  
 \begin{figure}[h]
 \centering
-\includegraphics[width=7cm,keepaspectratio=true]{./Figures/fltfig/initPoint-1fpp-200f2p.jpg}
-\includegraphics[width=7cm,keepaspectratio=true]{./Figures/fltfig/phi-1fpp-200f2p.jpg}
-\includegraphics[width=7cm,keepaspectratio=true]{./Figures/fltfig/theta-1fpp-200f2p.jpg}
-\caption{Feature paramters over 200 frames (excluding $\rho$)}
+\includegraphics[width=12cm,keepaspectratio=true]
+{./Figures/fltfig/cut1/Figure20.jpg}
+\caption{Feature paramters (excluding $\rho$)}
 \label{fltfig:2}
 \end{figure}
 
