@@ -53,10 +53,12 @@ deviation-elevation angle pair $[\phi, \theta]$ did not go through a
 converging stage, they do get updated and converted into the new
 camera coordinate using the estimated camera motion at every
 iteration. As a result, the accuracy of these parameters varies.
-Figure \ref{fltfig:2} shows the tracking of these parameters over 200
-frames. These parameters were stable for about 200 frames. Some
-features start to drift after 200 frames. This coninside with the
-introduction of new feature points into the system. 
+Ideally, the coordinates should converge to a fixed value. However,
+the plot indicates a variation as the vehicle travels along. Figure
+\ref{fltfig:2} shows the tracking of these parameters over 200 frames.
+These parameters were stable for about 200 frames. Some features start
+to drift after 200 frames. This coninside with the introduction of new
+feature points into the system.
 % are those featuers that drift are the one that's removed from the
 % filter? 
 % Does this prove that the filter altered the features parameter
@@ -72,13 +74,9 @@ introduction of new feature points into the system.
 \label{fltfig:2}
 \end{figure}
 
-Figure 8 illustrate the tracking of feature initialization 
-points $[x_{i}, y_{i}, z_{i}]$ in world frame. Ideally, the 
-coordinates should converge to a fixed value. However, the plot 
-indicates a variation as the vehicle travels along. The plots for xi 
-appear to be quite flat because of the large scale of xi value. Figure 9 
-shows a more detail xi drift by removing the mean value from the 
-recorded sequence. Comparing the pattern of the drift, it is highly 
+% is the drift still correlated with UAS? Stop plotting those features
+% that's out of FOV to see what happen.
+Comparing the pattern of the drift, it is highly 
 correlated to the aircraft pitch and yaw rotation (figure?). The 
 significant of the drift is measured by the maximum drift seen 
 throughout the 200 processed frame, and are listed below (table?). The 
