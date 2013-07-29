@@ -121,7 +121,20 @@ Secondly, there is a strong inverse correlation between the Y and Z
 component of feature initialization position and the world frame
 position on Y and Z axis. Similarly, $\phi$ is correlated to world
 frame position Z component, $\theta$ is correlated to the world frame
-position Y component.
+position Y component. Since the features initialization coordinate has
+high correlation with the world frame Y and Z position, the main
+contributor all the drift comes from the world frame position
+correction. Figure \ref{fltfig:5} shows the Kalman Gain over the 5
+iteration for the first 35 elements in the state vector, which include
+world frame parameters, SUAS motion parameters, and parameters for the
+first 4 features. At $1^{st}$ iteration, the high gain is on the
+feature parameter $\rho$. Starting from the $2^{nd}$ iteration, more
+and more weight goes into the Y and Z component of world frame
+position, as well as the Y and Z component of features initialization
+position. Although the variance of these two parameters is small, it
+is possible that the linearization of the measurement model increased
+the correction gain on these parameter. This issue requires further
+digging, and will be analyze as a future work.  
 
 \begin{figure}[h]
 \centering
@@ -130,6 +143,27 @@ position Y component.
 \caption{State Vector Corrections}
 \label{fltfig:4}
 \end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=14cm, keepaspectratio=true]
+{./Figures/fltfig/cut1/Figure113.png}
+\caption{Kalman Gain Matrix for the first 35 State Vector Elememts}
+\label{fltfig:5}
+\end{figure}
+
+In summary of the consistency analysis, the filter has not moved into
+inconsistent state at 400 iterations. However, the variance of
+parameters does decrease at each iteration that it is only a matter of
+time that the filter will become inconsistent. Therefore, the filter
+will require a reset procedure to 
+
+\begin{enumerate}
+  \item Resync the SUAS location with GPS. 
+  \item Reset its covariance matrix. 
+\end{enumerate}
+
+\noindent for any large area operation. 
 
 \begin{figure}[h]
 \centering
