@@ -57,14 +57,14 @@ the plot indicates a variation as the vehicle travels along. Figure
 \ref{fltfig:2} shows the tracking of these parameters over the entired
 processed frames.
 These parameters were stable for about 200 frames. As soon as any
-feature got deleted from the filter and new features added, the
+feature was deleted from the filter and new features added, the
 paramters of the feature after being converted into world
 frame start to drift. In \ref{fltfig:2} the deletion of old feature is
 marked by a vertical gray dash line. It shows that the parameters of
 the deleted feature start to drift right after that line. The $y_i$
 and $z_i$ are most affected. The behavior is caused by the estimated
 error in the SUAS localization. In order to compensate the error in
-localization(\ref{fltfig:?}), the algorithm made adjustment on the
+localization(Figure \ref{fltfig:4}), the algorithm made adjustment on the
 estimate of  features parameters so that the combinational result
 agrees with the measurement. On the other hand, features mapping is
 not affected too much by the error in localization. Because their
@@ -76,26 +76,77 @@ estimated motion, the final result of features location in world frame
 is inaffected by the error in the SUAS localization. However, for
 feature removed from the filter, their parameters are no longer
 updated, therefore revealing the error in SUAS localization. 
-% are those featuers that drift are the one that's removed from the
-% filter? 
-% Does this prove that the filter altered the features parameter
-% estimate in order to compensate for the incorrect estimate of the
-% UAS localization. Since features removed from the filter were not
-% altered for the comppensation, they shows a drift. 
- 
-% \begin{figure}[h]
-% \centering
-% \includegraphics[width=12cm,keepaspectratio=true]{./Figures/fltfig/cut1/Figure20.jpg}
-% \caption{Feature paramters (excluding $\rho$)}
-% \label{fltfig:2}
-% \end{figure}
+
 \begin{figure}[h]
 \centering
-\includegraphics[width=10cm, keepaspectratio=true]
+\includegraphics[width=12cm, keepaspectratio=true]
 {./Figures/fltfig/cut1/Figure20.png}
-\caption{Inverse Depth Convergence}
+\caption{Feature parameters tracking}
 \label{fltfig:2}
 \end{figure}
+
+A EKF system becomes inconsistent when the variance of state vector
+element becomes too small and forbid an effective update. In addition,
+the uncertainty of the SUAS position should increases as it move away
+from the origin. To examine the consistency of the CC\_EKF\_SLAM
+algorithm, the variance of all state vectors for all procesed frames
+were extracted and plotted in figure \ref{fltfig:3}. The two plots on
+the left shows the variance of world frame position and orientation in
+camera frame. The three plots on the right show the variance of
+feature parameters. The variance of world frame position increases
+with iterations. On the other hand, world frame orientation decreases
+with iterations. Especially the orientation in Y and Z axis remain
+below 5e-7 for the most time. For feature parameters, all variance
+decreases with iterations, and their value is very small. 
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm, keepaspectratio=true]
+{./Figures/fltfig/cut1/Figure40.png}
+\caption{State vector variance}
+\label{fltfig:3}
+\end{figure}
+
+To see how variance affect the correction the filtered made on the
+state vector, the correction applied each iteration were plotted ni
+figure \ref{fltfig:4}. The $1^{st}$ column shows the correction on
+world frame position in camera frame. The $2^{nd}$ column shows the
+correction on feature initialization coordinate in camera frame. The
+$3^{rd}$ column shows the correction on features parameters $\rho$,
+$\phi$ and $\theta$. It can be observed that world frame position on Y
+and Z component receive more correction than the X component, despite
+their variance is smaller than the X axis. Similarly, feature
+parameter $\theta$ and $\phi$ receive more correction than $\rho$
+despite their variance is smaller than the variance of $\rho$.
+Secondly, there is a strong inverse correlation between the Y and Z
+component of feature initialization position and the world frame
+position on Y and Z axis. Similarly, $\phi$ is correlated to world
+frame position Z component, $\theta$ is correlated to the world frame
+position Y component.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm, keepaspectratio=true]
+{./Figures/fltfig/cut1/Figure112.png}
+\caption{State Vector Corrections}
+\label{fltfig:4}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm, keepaspectratio=true]
+{./Figures/fltfig/cut1/Figure30.png}
+\caption{Estimates of SUAS position and orientation}
+\label{fltfig:4}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm, keepaspectratio=true]
+{./Figures/fltfig/cut1/Figure50.png}
+\caption{Feature position error}
+\label{fltfig:5}
+\end{figure}
+
 % is the drift still correlated with UAS? Stop plotting those features
 % that's out of FOV to see what happen.
 Comparing the pattern of the drift, it is highly 
