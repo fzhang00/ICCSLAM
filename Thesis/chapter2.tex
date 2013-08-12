@@ -108,7 +108,60 @@ mapping (CLM) and simultaneous localization and mapping (SLAM).
 \subsection{Recursive Probabilistic Estimation using Extended Kalman Filter}
 \label{sec:SLAM_using_EKF}
 
-Present the typical EKF model for SLAM problem. 
+\subsubsection{Kalman Filter}
+The Kalman filter \cite{Kalman's original paper}published by R. E.
+Kalman in 1960 is a very powerful recursive data processing algorithm
+for dynamic stochastic processes. The filter find extensive use in
+control and navigation application for its ability of estimating past,
+present and even future state. It is an attractive candidate for data
+fusion framework as it can process all available measurements
+including previous knowledge of the process, regardless of their
+precision, to estimate the current value of the variable of interest.
+Given a dynamic process that satisfy the assumptions that Kalman
+filter is based on, the filter is the optimal algorithm in minimzing
+the mean of squared error of the state variable. This section briefly
+summerized assumption and formation of Kalman filter that's described
+in detail in \cite{from the following}[Sorenson70; Gelb74; Grewal93;
+Maybeck79; Lewis86; Brown92; Jacobs93]. A more intuitive introduction
+can be found in chapter 1 of [Maybeck79]
+%reference in Welch and bishop
+% intro to Kalman filter.
+
+The Kalman filter has three assumptions. 1) The system model is
+linear. The linearity is deisred in that the system model is more
+esily manipulated with engineering tool. When nonlinearities do exist,
+the typical approach is to linearize system model at some nominal
+points. 2)The noise embedded in system control and measurement is
+white. This assumption implies that the noise value is not correlated
+in time, and has equal power in all frequency. 3)The probability
+density function (PDF) of system and measurement noise is Gaussian. A
+Gaussian distribution is fully represented by the first and second
+order statistic (mean and variance) of a process. Most other densities
+require endless number of orders of statistic to describe the shape
+fully. Hence, when the probability density function of a noise process
+is non-Gaussian, the Kalman filter that propagates the first and
+second order statistic only include some of the information of the
+PDF, instead of all, as would be the case with Gaussian noise.
+
+\paragraph{Kalman Filter Models}
+The Kalman filter requires two models. The process model define a
+discrete-time controlled process by a linear stochastic difference
+equation. The $n\times n$ matrix $A$ relates the state variables
+$x_{k-1}$ in previous time step $k-1$ to the state variabl $x_{k}$ in
+the current time step $k$. The matrix $B$ relates the optional control
+input $\mu$ to the state variables $x$. Given measurement vecor $z_k$
+of size $1 \times m$, the measurement model relates the state
+variables to the measurements by matrix H of size $n \times m$. The
+random variable $w$ and $v$ represent the uncertainty or noise of the
+process model, and measurement noise. The $w$ and $v$ are assumed to
+unrelated to each other, and has Gaussian distribution.
+
+\begin{align}
+&\text{Process Model: }x_k = Ax_{k-1}+B\mu_{k-1}+w_{k-1}\\
+&\text{Measurement Model: }z_k = Hx_k+v_k
+\end{align}
+
+
 
 \subsubsection{Properties of SLAM}
 \label{sec:SLAM_properties}
@@ -191,3 +244,9 @@ the true state.
 \label{sec:cam_centric}
 
 \subsubsection{SLAM for Large Scale Maps}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "thesis"
+%%% End:
+
