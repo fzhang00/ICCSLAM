@@ -76,20 +76,27 @@ OX_{W}^{C} & c^{C} & r^{C} & p_{1}^{C} & p_{2}^{C} & \ldots & \\
  & \\
 \end{equation}
 
-where $OX_{W}^{C}=\lbrack \begin{matrix}
+where 
+
+\begin{equation}
+OX_{W}^{C}=\lbrack 
+\begin{matrix}
 O_{x}^{C} & O_{y}^{C} & O_{z}^{C} & \\
 \end{matrix}
 \begin{matrix}
 W_{x}^{C} & W_{y}^{C} & W_{z}^{C} & \\
 \end{matrix}
-\rbrack ^{T}$contains translation parameters $O_{x,y,z}^{C}$ and 
+\rbrack ^{T}
+\end{equation}
+
+contains translation parameters $O_{x,y,z}^{C}$ and 
 rotation parameters $W_{x,y,z}^{C}$ to transform the camera reference 
 frame to the world reference frame. $\lbrack c^{C},r^{C}\rbrack ^{T}$
 represents the camera translation and rotation motion frame by frame in 
 Euclidean coordinates, and $p_{i}^{C}$contains the feature parameters 
 as described in the previous section. 
 
-Prediction (Will be updated to a more complete form)
+\subsection{Prediction} (Will be updated to a more complete form)
 
 For a prediction step at time $k$, the world frame and features 
 parameters are kept unchanged from time $k-1$. The camera parameters 
@@ -97,10 +104,7 @@ are updated using the new inertial measurements: velocity $v^{C}$,
 acceleration $a^{C}$, and rate of change in roll/pitch/yaw $w^{C}$
 . The camera motion parameters at time $k$ are then
 
-Equation 2
-
-
-
+\begin{equation}
 \begin{center}$\lbrack \begin{matrix}
 \begin{matrix}
 OX_{W}^{C} & \\
@@ -158,25 +162,21 @@ p_{2}^{C} & \\
  & \\
 \end{matrix}
 \rbrack _{k}$\end{center}
+\end{equation}
 
 Where 
 
-\begin{table}[h]
-\centering
-\begin{tabular}{|l|l|}
-\hline
+\begin{equation}
 $c_{k}^{C}=v^{C}\Delta t+ \frac{1}{2}a^{C}\Delta t^{2}$\\
 $r_{k}^{C}=r_{k-1}^{C}+ w^{C}$\\
- & \\
-\hline
-\end{tabular}
-\end{table}
+\end{equation}
+
 Writing the above in the form of $x_{k}= F_{k-1}x_{k-1}+ 
 B_{k}u_{k}+w_{k-1}$ , without INS measurement, $F_{k}$\textbf{ }is 
 simply\textbf{ }$I$. With INS input, 
 
 
-
+\begin{equation}
 $x_{k}=\lbrack \begin{matrix}
 \begin{matrix}
 I_{6\times 6} & & & \\
@@ -250,9 +250,9 @@ w_{z}^{C} & \\
  & \\
 \end{matrix}
 \rbrack +w_{k-1}$\\
+\end{equation}
 
-
-Measurement Model
+\subsection{Measurement Model}
 
 Each observed feature is related to the camera motion through the 
 measurement model (). This relationship enables a correction on the 
@@ -262,10 +262,7 @@ observed in the image.
 For a feature $p_{i}^{C}$, the vector $h^{R}$pointing from the 
 predicted camera location to the feature initialization position is 
 
-\begin{table}[h]
-\centering
-\begin{tabular}{|l|l|}
-\hline
+\begin{equation}
 $h_{k}^{R}=\lbrack \begin{matrix}
 x_{i}^{C} & \\
 y_{i}^{C} & \\
@@ -276,32 +273,22 @@ c_{x}^{C} & \\
 c_{y}^{C} & \\
 c_{z}^{C} & \\
 \end{matrix}
-\rbrack _{k}$\\
- & Equation 3 \\
-\hline
-\end{tabular}
-\end{table}
+\rbrack _{k}$\
+\end{equation}
+
 The normalized vector pointing from the predicted camera position to the 
 feature at time k is then 
 
-\begin{table}[h]
-\centering
-\begin{tabular}{|l|l|}
-\hline
+\begin{equation}
 $h_{ k}^{C}=Q^{-1}(r_{k}^{C})(\rho _{k}h_{k}^{R}+m(\varphi _{ 
 k}^{C},\theta _{k}^{C}))$\\
- & Equation 4 \\
-\hline
-\end{tabular}
-\end{table}
+\end{equatio}
+
 where$Q^{-1}(r_{k}^{C})$ is the inverse rotation matrix from the 
 camera frame at time $k-1$ to camera frame at time $k$. From vector 
 $h_{ k}^{C}$, the feature location on image plane can be found by
 
-\begin{table}[h]
-\centering
-\begin{tabular}{|l|l|}
-\hline
+\begin{equation}
 $h_{k}^{U}= \lbrack \begin{matrix}
 u_{k} & \\
 v_{k} & \\
@@ -311,11 +298,7 @@ v_{k} & \\
 \frac{s_{y}h_{z,k}^{C}}{h_{x,k}^{C}} & \\
 \end{matrix}
 \rbrack $\\
- & \\
-\hline
-\end{tabular}
-\end{table}
-Equation 5
+\end{equation}
 
 where$s_{x}$ and $s_{y}$ is the scaling factor of the projection, 
 obtained through camera calibration.
@@ -323,23 +306,18 @@ obtained through camera calibration.
 \begin{figure}[h]
 \centering
 \includegraphics[width=252.3pt,height=157.25pt]{media/image3.eps}
-\end{figure}
+\caption{Measurement Model}
+\label{ch3fig:3}
 
-
-\begin{center}Figure 3 Measurement Model\end{center}
-
-
-
-
-
-Composition Step (will include more detail formulas)
+\subsection{Composition Step} (will include more detail formulas)
 
 Update step corrects the camera motion and feature location in camera 
 frame k-1. To continue to the next cycle of tracking, all parameter must 
 be transform to camera frame k. World reference point coordinate and 
 orientation from k-1 to k is related by
 
-\begin{center}$\lbrack \begin{matrix}
+\begin{equation}
+$\lbrack \begin{matrix}
 O_{x}^{C_{k}} & \\
 O_{y}^{C} & \\
 O_{z}^{C} & \\
@@ -355,10 +333,9 @@ c_{y}^{C_{k-1}} & \\
 c_{z}^{C_{k-1}} & \\
 \end{matrix}
 \rbrack _{k})$\\
-\end{center}
+\end{equation}
 
-Equation 6
-
+\begin{equation}
 $\lbrack \begin{matrix}
  W_{x}^{C_{k}} & \\
 W_{y}^{C_{k}} & \\
@@ -370,13 +347,12 @@ W_{y}^{C_{k-1}} & \\
 W_{z}^{C_{k-1}} & \\
 \end{matrix}
 \rbrack _{k}-r^{C_{k-1}}$\\
-
-
-Equation 7
+\end{equation}
 
 Feature parameters in new camera frame are related to the previous frame 
 by
 
+\begin{equation}
 $\lbrack \begin{matrix}
 x_{i}^{C_{k}} & \\
 y_{i}^{C_{k}} & \\
@@ -393,11 +369,10 @@ c_{y}^{C_{k-1}} & \\
 c_{z}^{C_{k-1}} & \\
 \end{matrix}
 \rbrack _{k})$\\
+\end{equation}
 
-
-Equation 8
-
-\begin{center}$\lbrack \begin{matrix}
+\begin{equation}
+$\lbrack \begin{matrix}
 \rho _{i} & \\
 \varphi _{i}^{C_{k}} & \\
 \theta _{i}^{C_{k}} & \\
@@ -408,9 +383,7 @@ m^{-1}(R^{-1}(r^{C_{k-1}})m(\varphi _{i, k}^{C_{k-1}}, \theta _{i,
 k}^{C_{k-1}}) & \\
 \end{matrix}
 )$\\
-\end{center}
-
-Equation 9
+\end{equation}
 
 where$m(\varphi _{i, k}^{C_{k-1}}, \theta _{i, k}^{C_{k-1}})$ is the 
 unit vector pointing from the initialization point to the feature seen 
@@ -419,11 +392,10 @@ by the camera at step k-1
 The covariance matrix is also affected by this transform. Therefore must 
 be updated. The new covariance matrix is related to the old one by 
 
+\begin{equation}
 $P_{k}^{C_{k}}=J_{C_{k-1}\to C_{k}}P_{k}^{C_{k-1}}J_{C_{k-1}\to 
 C_{k}}^{T}$\\
-
-
-Equation 10
+\end{equation}
 
 The calculation of $J_{C_{k-1}\to C_{k}}$ is the same as the 
 linearization of prediction matrix in section Method 2.
@@ -435,44 +407,35 @@ by applying reference frame transformation from the camera location at
 time k-1 to camera location at time k. The EKF covariance matrix $P_{k}
 $ is also updated through
 
-\begin{table}[h]
-\centering
-\begin{tabular}{|l|l|}
-\hline
+\begin{equation}
 $P_{k}=JP_{k}J^{T}$\\
  & (8) \\
-\hline
-\end{tabular}
-\end{table}
+\end{equation}
 where$J$ is the Jacobian of the composition equations. 
 
-\subsubsection{Initialization}\label{section:_Toc332876137}
-Initialize the State Vector
+\section{Initialization}
+\subsection{Initialize the State Vector}
 
 State vectors are initialized at the first frame. The world origin 
 coordinate and orientation, camera motions, and the feature reference 
 points are all initialized to zeros, with variance equals to the 
 smallest machine number. Thus, 
 
-$OX_{W}^{C}=\lbrack 0 0 0 0 0 0\rbrack $\\
+\begin{equation}
+OX_{W}^{C}=\lbrack 0 0 0 0 0 0\rbrack 
+\end{equation}
 
+\begin{equation}
+c^{C}=[0 0 0]
+\end{equation}
 
-Equation 11
+\begin{equation}
+r^{C}=[0 0 0]
+\end{equation}
 
-$c^{C}=[0 0 0]$\\
-
-
-Equation 12
-
-$r^{C}=[0 0 0]$\\
-
-
-Equation 13
-
-$p_{i}^{C}=[0 0 0 \rho _{i}\varphi _{i}\theta _{i} ]$\\
-
-
-Equation 14
+\begin{equation}
+p_{i}^{C}=[0 0 0 \rho _{i}\varphi _{i}\theta _{i} ]
+\end{equation}
 
 The inverse distance $\rho $ of all features are initialized to 0.1 
 because we are dealing with long distance object. The features 
@@ -480,6 +443,7 @@ elevation-azimuth pair $[\varphi _{i}^{C}, \theta _{i}^{C}]$ is
 extracted from features coordinates in image plane. First, a vector 
 pointing from camera optical center to feature can be defined by
 
+\begin{equation}
 $h^{C}=\lbrack \begin{matrix}
 h_{x}^{C} & \\
 h_{y}^{C} & \\
@@ -491,58 +455,53 @@ u\cdot s_{x} & \\
 v\cdot s_{y} & \\
 \end{matrix}
 \rbrack $\\
-
-
-Equation 15
+\end{equatiion}
 
 Where $[u v]$ is the feature coordinate in the image, and $
 [s_{x}s_{y}] $is the scaling factor of the projection from the scene to 
 image plane. The elevation-azimuth pair $[\varphi _{i}^{C}, \theta 
 _{i}^{C}]$ can then be directly calculated from $h^{C}$
 
-\begin{center}$\varphi 
-=arctan(\frac{h_{z}^{C}}{\sqrt{h_{x}^{C}^{2}+h_{y}^{C}^{2}}})$\\
-\end{center}
+\begin{equation}
+\varphi 
+=arctan(\frac{h_{z}^{C}}{\sqrt{h_{x}^{C}^{2}+h_{y}^{C}^{2}}})
+\end{equation}
 
-Equation 16
+\begin{equation}
+\theta =arctan(\frac{h_{y}^{C}}{h_{x}^{C}})
+\end{equation}
 
-$\theta =arctan(\frac{h_{y}^{C}}{h_{x}^{C}})$\\
-
-
-Equation 17
-
-Initialized the State Covariance Matrix
+\subsection{Initialized the State Covariance Matrix}
 
 Because the world origin is defined at the first frame, it enables 
 initializing the filter with minimum variance, which helps reducing the 
 lower bound of the filter error. The covariance matrix of the world 
 coordinate and orientation, and the camera motion is 
 
-$P=I_{12\times 12}\cdot \epsilon $\\
-
-
-Equation 18
+\begin{equation}
+P=I_{12\times 12}\cdot \epsilon 
+\end{equation}
 
 where$I$ is a 12-by-12 identity matrix, and $\epsilon $ is the 
 lowest significant bit (LSB) of a machine.
 
-\ \ \ \ The covariance of features is added one by one as there is 
+The covariance of features is added one by one as there is 
 correlation between them. For every new feature added, the new 
 covariance matrix becomes
 
-$P_{new}=J\lbrack \begin{matrix}
+\begin{equation}
+P_{new}=J\lbrack \begin{matrix}
 P_{old} & 0 & \\
 0 & R & \\
 \end{matrix}
-\rbrack J^{T}$\\
-
-
-Equation 19
+\rbrack J^{T}
+\end{equation}
 
 where$P_{old}$ isthe covariance matrix of the existing state vector, 
 and the initial $P_{old}$is defined in . Matrix R is the covariance 
 matrix of the variable in features initialization - .
 
+\begin{equation}
 $R=\lbrack \begin{matrix}
 \sigma _{x_{i}^{C}} & & & & & & \\
  & \sigma _{y_{i}^{C}} & & & 0 & & \\
@@ -559,22 +518,21 @@ $R=\lbrack \begin{matrix}
  & 0 & & & 1 & & \\
  & & & & & 1 & \\
 \end{matrix}
-\rbrack $\\
+\rbrack 
+\end{equation}
 
-
-Equation 20
 
 where$[\sigma _{x_{i}^{C}}\sigma _{y_{i}^{C}}\sigma _{z_{i}^{C}}$$]$ 
 is the uncertainty of the camera optical center position, initialized to 
 $\epsilon $.$\sigma _{image}$is the image plane pixel variance, 
 set to 1. $\sigma _{\rho }$is the uncertainty of the inverse 
 distance. Because the filter mainly deals with distance feature, $
-\sigma _{\rho }$ is initialized to 0.1 to cover any distance from 50 
-meters to infinity. 
+\sigma _{\rho }$ is initialized to 0.1 to cover any distance from 50 meters to infinity. 
 
-$J$in!!!Unresolved reference!!!Equation 1 is the Jacobian matrix for 
+$J$ in equation\ref{equation?} is the Jacobian matrix for 
 the initialization equation. 
 
+\begin{equation}
 $J=\lbrack \begin{matrix}
 I & \begin{matrix}
 0 & \\
@@ -595,36 +553,32 @@ p_{i}}{\partial c^{C}} & \frac{\partial p_{i}}{\partial r^{C}} & \\
  & \frac{\partial p_{i}}{\partial g_{i}} & \\
 \end{matrix}
 \rbrack $\\
-
-
-Equation 21
+\end{equation}
 
 Whenever a new feature is added, it's initial position is always $
 \lbrack 0 0 0\rbrack $ in the camera centric coordinate, and the $
 \lbrack \rho \varphi \theta \rbrack $ parameters are not a function of$
 OX_{W}^{C}$, $c^{C}$,or$r^{C}$, therefore
 
-$\frac{\partial p_{i}}{\partial OX_{W}^{C}}=0_{6\times 6}$\\
+\begin{equation}
+\frac{\partial p_{i}}{\partial OX_{W}^{C}}=0_{6\times 6}
+\end{equation}
 
+\begin{equation}
+\frac{\partial p_{i}}{\partial c^{C}}=0_{6\times 3}\frac{\partial 
+p_{i}}{\partial r^{C}}= 0_{6\times 3}
+\end{equation}
 
-\begin{center}Equation 22\end{center}
+$J$ can then be simplified as
 
-$\frac{\partial p_{i}}{\partial c^{C}}=0_{6\times 3}\frac{\partial 
-p_{i}}{\partial r^{C}}= 0_{6\times 3}$\\
-
-
-\begin{center}Equation 23\end{center}
-
-$J$canthen be simplified as
-
-$J=\lbrack \begin{matrix}
+\begin{equation}
+J=\lbrack \begin{matrix}
 I & 0 & \\
 0 & \frac{\partial p_{i}}{\partial g_{i}} & \\
 \end{matrix}
-\rbrack $\\
+\rbrack 
+\end{equation}
 
-
-\begin{center}Equation 24\end{center}
 
 Where$g_{i}$ includes the variable in matrix $R$: $
 g_{i}=[\begin{matrix}

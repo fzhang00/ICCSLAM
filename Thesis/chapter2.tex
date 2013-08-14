@@ -122,8 +122,8 @@ filter is based on, the filter is the optimal algorithm in minimzing
 the mean of squared error of the state variable. This section briefly
 summerized assumption and formation of Kalman filter that's described
 in detail in \cite{from the following}[Sorenson70; Gelb74; Grewal93;
-Maybeck79; Lewis86; Brown92; Jacobs93]. A more intuitive introduction
-can be found in chapter 1 of [Maybeck79]
+Lewis86; Brown92]. A more intuitive introduction can be found in
+chapter 1 of [Maybeck79]
 %reference in Welch and bishop
 % intro to Kalman filter.
 
@@ -153,16 +153,53 @@ input $\mu$ to the state variables $x$. Given measurement vecor $z_k$
 of size $1 \times m$, the measurement model relates the state
 variables to the measurements by matrix H of size $n \times m$. The
 random variable $w$ and $v$ represent the uncertainty or noise of the
-process model, and measurement noise. The $w$ and $v$ are assumed to
-unrelated to each other, and has Gaussian distribution.
+process model, and measurement. $w$ and $v$ are assumed to be
+unrelated to each other, and has Gaussian distribution with covariance
+$Q$ and $R$. 
 
 \begin{align}
 &\text{Process Model: }x_k = Ax_{k-1}+B\mu_{k-1}+w_{k-1}\\
 &\text{Measurement Model: }z_k = Hx_k+v_k
 \end{align}
 
+\paragraph{The Algorithm}
+The Kalman filter operates in prediction and correction cycle after
+being initialized \ref{fig?}, with the state vector estimate
+$\hat{x}^-_k, \hat{x}^+_k$ contains the variable of interest at time
+step k, and state covariance matrix $P^-_k, P^+_k$ representing the
+error covariance of the estimate. The superscript - indicate the
+estimate is a priori (or predicted) estimate, and + indicate the
+estimate is a posteriori (or corrected) estimate. The equations used
+for prediction and correction are listed in \ref{table?}. In
+prediction, an estimate of the state variables are made based on the
+known knowledge of the process (the process model). Since there are
+always unknown factor not fully described by the process model, the
+error of the estimate almost always increase in the prediction. During
+correction, a series of calculation were carried out to correct the a
+priori estimate. First, the predicted measurement $H\hat{x}^-_k$ are
+compared to the new measurement $z_k$. Their difference $z_k -
+H\hat{x}^-_k$ is called the measurement innovation, or residual. Next,
+the amount of residual is weighted by the Kalman gain $K$, and added
+to $\hat{x}^-_k$ as correction. The Kalman gain is fomulated so that
+it minimize the a posteriori error covariance matrix $P^+_k$. 
 
-
+\begin{table}
+\caption{Kalman Filter Operation Equations}
+\label{tab:KF}
+\centering
+\begin{tabular}{|l|c r|}
+\hline
+\multirow{2}{*}{Prediction} 
+& $\hat{x}^-_k=A\hat{x}^+_{k-1}+B\mu_{k-1}$ & \stepcounter{equation}\tetab{\theequation}\\
+& $P^-_k = AP^+_{k-1}A^T+Q$ & \stepcounter{equation}\tetab{\theequation}\\
+\hline
+\multirow{3}{*}{Correction}
+& $K_k=P^-_kH^T(HP^-_kH^T+R)^{-1}$  & \stepcounter{equation}\tetab{\theequation}\\
+& $\hat{x}^+_k = \hat{x}^-_k+K_k(z_k-H\hat{x}^-_k)$ & \stepcounter{equation}\tetab{\theequation}\\
+& $P^+_k = (I-K_kH)P^-_k$ & \stepcounter{equation}\tetab{\theequation}\\
+\hline
+\end{tabular}
+\end{table}
 \subsubsection{Properties of SLAM}
 \label{sec:SLAM_properties}
 
