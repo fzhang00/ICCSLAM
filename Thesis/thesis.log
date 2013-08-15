@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2013.7.4)  14 AUG 2013 15:37
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2013.7.4)  15 AUG 2013 16:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -205,35 +205,43 @@ Package: placeins 2005/04/18  v 2.2
 )
 (d:/texlive/2012/texmf-dist/tex/latex/multirow/multirow.sty
 \bigstrutjot=\dimen125
+)
+(d:/texlive/2012/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count118
+\float@exts=\toks23
+\float@box=\box33
+\@float@everytoks=\toks24
+\@floatcapt=\box34
 ) (./thesis.aux
 (./chapter2.aux))
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
  (d:/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count118
+\scratchcounter=\count119
 \scratchdimen=\dimen126
-\scratchbox=\box33
-\nofMPsegments=\count119
-\nofMParguments=\count120
-\everyMPshowfont=\toks23
-\MPscratchCnt=\count121
+\scratchbox=\box35
+\nofMPsegments=\count120
+\nofMParguments=\count121
+\everyMPshowfont=\toks25
+\MPscratchCnt=\count122
 \MPscratchDim=\dimen127
-\MPnumerator=\count122
-\makeMPintoPDFobject=\count123
-\everyMPtoPDFconversion=\toks24
+\MPnumerator=\count123
+\makeMPintoPDFobject=\count124
+\everyMPtoPDFconversion=\toks26
 ) (d:/texlive/2012/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -283,6 +291,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
 Package caption Info: longtable package is loaded.
 
 (d:/texlive/2012/texmf-dist/tex/latex/caption/ltcaption.sty
@@ -320,16 +329,15 @@ ne 112.
 LaTeX Warning: Citation `fromthefollowing' on page 4 undefined on input line 12
 4.
 
-[4]
+[4] [5] <./Figures/KalmanOperation.jpg, id=25, 430.60875pt x 170.6375pt>
+File: ./Figures/KalmanOperation.jpg Graphic file (type jpg)
 
-LaTeX Warning: Reference `fig?' on page 5 undefined on input line 167.
+<use ./Figures/KalmanOperation.jpg>
+Package pdftex.def Info: ./Figures/KalmanOperation.jpg used on input line 188.
+(pdftex.def)             Requested size: 284.52756pt x 112.75127pt.
 
-
-LaTeX Warning: Reference `table?' on page 5 undefined on input line 173.
-
-[5]
 ! Undefined control sequence.
-l.193 ...\mu_{k-1}$ & \stepcounter{equation}\tetab
+l.200 ...\mu_{k-1}$ & \stepcounter{equation}\tetab
                                                   {\theequation}\\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -338,7 +346,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.194 ...k-1}A^T+Q$ & \stepcounter{equation}\tetab
+l.201 ...k-1}A^T+Q$ & \stepcounter{equation}\tetab
                                                   {\theequation}\\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -347,7 +355,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.197 ...+R)^{-1}$  & \stepcounter{equation}\tetab
+l.204 ...+R)^{-1}$  & \stepcounter{equation}\tetab
                                                   {\theequation}\\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -356,7 +364,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.198 ...t{x}^-_k)$ & \stepcounter{equation}\tetab
+l.205 ...t{x}^-_k)$ & \stepcounter{equation}\tetab
                                                   {\theequation}\\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -365,7 +373,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.199 ..._kH)P^-_k$ & \stepcounter{equation}\tetab
+l.206 ..._kH)P^-_k$ & \stepcounter{equation}\tetab
                                                   {\theequation}\\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -373,17 +381,63 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[6] [7]
+[6 <./Figures/KalmanOperation.jpg>]
+! Undefined control sequence.
+l.237 ..._{k-1},0)$ & \stepcounter{equation}\tetab
+                                                  {\theequation}\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-LaTeX Warning: Citation `Huang_2008' on page 8 undefined on input line 252.
+! Undefined control sequence.
+l.238 ...k-1}W_k^T$ & \stepcounter{equation}\tetab
+                                                  {\theequation}\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.241 ...^T)^{-1}$  & \stepcounter{equation}\tetab
+                                                  {\theequation}\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.242 ...}^-_k,0))$ & \stepcounter{equation}\tetab
+                                                  {\theequation}\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.243 ..._kH)P^-_k$ & \stepcounter{equation}\tetab
+                                                  {\theequation}\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[7] [8] [9]
+
+LaTeX Warning: Citation `Huang_2008' on page 10 undefined on input line 317.
 
 
-Overfull \hbox (11.50038pt too wide) in paragraph at lines 256--258
+Overfull \hbox (11.50038pt too wide) in paragraph at lines 321--323
 []\OT1/cmr/m/n/12 Huang in-ves-ti-gate fur-ther on prop-er-ties and con-sis-ten
 cy of non-lin-ear two-dimentional
  []
 
-) [8] [9] (./thesis.bbl
+) [10] [11] (./thesis.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 5--8
 []\OT1/cmr/m/n/12 ``Athena 111m in-te-grated flight con-trol sys-tem.''
  []
@@ -412,7 +466,7 @@ Underfull \hbox (badness 1552) in paragraph at lines 19--21
 ject host-ing.''
  []
 
-) [10
+) [12
 
 
 ]
@@ -421,15 +475,18 @@ No file thesisbib.bbl.
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 3859 strings out of 493488
- 56327 string characters out of 3144749
- 121269 words of memory out of 3000000
- 7101 multiletter control sequences out of 15000+200000
+ 3917 strings out of 493488
+ 57172 string characters out of 3144749
+ 121699 words of memory out of 3000000
+ 7152 multiletter control sequences out of 15000+200000
  9174 words of font info for 33 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,11n,38p,242b,265s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,11n,38p,242b,287s stack positions out of 5000i,500n,10000p,200000b,50000s
 <d:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><d:/tex
 live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><d:/texlive/2012
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/texlive/2012/texmf-dis
@@ -437,10 +494,10 @@ t/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/texlive/2012/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmr8.pfb><d:/texlive/2012/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmsy10.pfb><d:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmsy8.pfb>
-Output written on thesis.pdf (10 pages, 96195 bytes).
+Output written on thesis.pdf (12 pages, 109979 bytes).
 PDF statistics:
- 65 PDF objects out of 1000 (max. 8388607)
- 45 compressed objects within 1 object stream
+ 72 PDF objects out of 1000 (max. 8388607)
+ 49 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

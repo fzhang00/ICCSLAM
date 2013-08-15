@@ -164,13 +164,13 @@ $Q$ and $R$.
 
 \paragraph{The Algorithm}
 The Kalman filter operates in prediction and correction cycle after
-being initialized \ref{fig?}, with the state vector estimate
+being initialized \ref{figch2:1}, with the state vector estimate
 $\hat{x}^-_k, \hat{x}^+_k$ contains the variable of interest at time
 step k, and state covariance matrix $P^-_k, P^+_k$ representing the
 error covariance of the estimate. The superscript - indicate the
 estimate is a priori (or predicted) estimate, and + indicate the
 estimate is a posteriori (or corrected) estimate. The equations used
-for prediction and correction are listed in \ref{table?}. In
+for prediction and correction are listed in \ref{tab:KF}. In
 prediction, an estimate of the state variables are made based on the
 known knowledge of the process (the process model). Since there are
 always unknown factor not fully described by the process model, the
@@ -182,6 +182,13 @@ H\hat{x}^-_k$ is called the measurement innovation, or residual. Next,
 the amount of residual is weighted by the Kalman gain $K$, and added
 to $\hat{x}^-_k$ as correction. The Kalman gain is fomulated so that
 it minimize the a posteriori error covariance matrix $P^+_k$. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm, keepaspectratio=true]{./Figures/KalmanOperation.jpg}
+\caption{Kalman Operation Flow Diagram}
+\label{figch2:1}
+\end{figure}
 
 \begin{table}
 \caption{Kalman Filter Operation Equations}
@@ -200,6 +207,64 @@ it minimize the a posteriori error covariance matrix $P^+_k$.
 \hline
 \end{tabular}
 \end{table}
+\FloatBarrier
+
+\paragraph{Extended Kalman Filter}
+For a discrete-time controlled process, or its relationship with the
+measurements are non-linear, a Kalman filter must be linearized about
+the estimated trajectory, and is referred to as an extended Kalman
+filter or EKF. A process with state vector $x$ and measurement $z$
+that is governed by non-linear stochastic difference equation has
+process and measurement model 
+\begin{equation}
+x_k=f(x_{k-1}, u_{k-1}+w_{k-1}),
+\end{equation}
+\begin{equation}
+z_k=h(x_k+v_k),
+\end{equation}
+\noindent where the random varialbe $w_k$ and $v_k$ represent the
+process and measurement noise with variance $Q$ and $R$. The the
+Kalman filter operation equations are given in table
+\ref{tab:EKF},
+
+\begin{table}[H]
+\caption{Extended Kalman Filter Operation Equations}
+\label{tab:EKF}
+\centering
+\begin{tabular}{|l|c r|}
+\hline
+\multirow{2}{*}{Prediction} 
+& $\hat{x}^-_k=f(\hat{x}^+_{k-1},\mu_{k-1},0)$ & \stepcounter{equation}\tetab{\theequation}\\
+& $P^-_k = A_kP^+_{k-1}A_k^T+W_kQ_{k-1}W_k^T$ & \stepcounter{equation}\tetab{\theequation}\\
+\hline
+\multirow{3}{*}{Correction}
+& $K_k=P^-_kH_k^T(H_kP^-_kH_k^T+V_kR_kV_k^T)^{-1}$  & \stepcounter{equation}\tetab{\theequation}\\
+& $\hat{x}^+_k = \hat{x}^-_k+K_k(z_k-h(\hat{x}^-_k,0))$ & \stepcounter{equation}\tetab{\theequation}\\
+& $P^+_k = (I-K_kH)P^-_k$ & \stepcounter{equation}\tetab{\theequation}\\
+\hline
+\end{tabular}
+\end{table}
+\FloatBarrier
+\noindent where (subscript $k$ omitted)
+\begin{itemize}
+  \item $A$ is the Jacobian matrix of partial derivatives of $f$ with
+  respect to $x$, $$A_{[i,j]}= \frac{\partial f_i(\hat{x}_{k-1}^+, \mu_{k-1},
+    0)}{\partial x_j}$$
+  \item $W$ is the Jacobian matrix of partial derivatives of $f$ with
+  respect to $w$, $$W_{[i,j]}= \frac{\partial f_i(\hat{x}_{k-1}^+, \mu_{k-1},
+    0)}{\partial w_j}$$
+  \item $H$ is the Jacobian matrix of partial derivatives of $h$ with
+  respect to $x$, $$H_{[i,j]}= \frac{\partial h_i(\hat{x}_k^-, 0)}{\partial x_j}$$
+  \item $V$ is the Jacobian matrix of partial derivatives of $h$ with
+  respect to $v$, $$V_{[i,j]}= \frac{\partial h_i(\hat{x}_k^-,0)}{\partial v_j}$$
+\end{itemize}
+
+\noindent Note that when $w$ and $v$ directly describe the noise of
+state vector and measurement, the table \ref{tab:EKF} is the same as
+table \ref{tab:KF}. 
+
+\paragraph{Tuning}
+
 \subsubsection{Properties of SLAM}
 \label{sec:SLAM_properties}
 
