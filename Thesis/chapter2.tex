@@ -108,7 +108,6 @@ mapping (CLM) and simultaneous localization and mapping (SLAM).
 \subsection{Recursive Probabilistic Estimation using Extended Kalman Filter}
 \label{sec:SLAM_using_EKF}
 
-\subsubsection{Kalman Filter}
 The Kalman filter \cite{Kalman's original paper}published by R. E.
 Kalman in 1960 is a very powerful recursive data processing algorithm
 for dynamic stochastic processes. The filter find extensive use in
@@ -143,7 +142,7 @@ is non-Gaussian, the Kalman filter that propagates the first and
 second order statistic only include some of the information of the
 PDF, instead of all, as would be the case with Gaussian noise.
 
-\paragraph{Kalman Filter Models}
+\subsubsection{Kalman Filter Models}
 The Kalman filter requires two models. The process model define a
 discrete-time controlled process by a linear stochastic difference
 equation. The $n\times n$ matrix $A$ relates the state variables
@@ -162,7 +161,7 @@ $Q$ and $R$.
 &\text{Measurement Model: }z_k = Hx_k+v_k
 \end{align}
 
-\paragraph{The Algorithm}
+\subsubsection{The Algorithm}
 The Kalman filter operates in prediction and correction cycle after
 being initialized \ref{figch2:1}, with the state vector estimate
 $\hat{x}^-_k, \hat{x}^+_k$ contains the variable of interest at time
@@ -209,7 +208,7 @@ it minimize the a posteriori error covariance matrix $P^+_k$.
 \end{table}
 \FloatBarrier
 
-\paragraph{Extended Kalman Filter}
+\subsubsection{Extended Kalman Filter}
 For a discrete-time controlled process, or its relationship with the
 measurements are non-linear, a Kalman filter must be linearized about
 the estimated trajectory, and is referred to as an extended Kalman
@@ -263,10 +262,46 @@ Kalman filter operation equations are given in table
 state vector and measurement, the table \ref{tab:EKF} is the same as
 table \ref{tab:KF}. 
 
-\paragraph{Tuning}
+\subsubsection{Tuning}
+
+The tuning of the filter can be achieved by adjusting noise covariance
+matrix $Q$ and $R$. The measurement noise covariance $R$ is usually
+easy to estimate, ie., by taking some offline measurements to compute
+the variance. On the other hand, process noise covariance $Q$ is more
+difficult. One common way is to inject enough uncertainty into the
+process noise, and only rely on reliable measurements. 
+ 
+\subsection{SLAM with Extended Kalman Filter}
+
+The simultaneous localization and mapping(SLAM) problem answers to
+whether a robot can be make truly autonomous if it is plaed at an
+unknown location in an unknown environment. AFter many decades of
+research, the stucture of SLAM problem now has evolved to a standard
+Bayesian form. Two key approaches to solving a SLAM problem is to use
+the extended Kalman filter (EKF-SLAM) and through the use of
+Rao-Blackwellized particle filter (FastSLAM). A thourough tutorial to
+the SLAM problem is given in \cite{durrant-whyte_simultaneous_2006}
+\cite{bailey_simultaneous_2006}.
+\subsubsection{General EKF Model for SLAM}
+
 
 \subsubsection{Properties of SLAM}
 \label{sec:SLAM_properties}
+
+There is a high degree of correlation betwee the estimates of the
+location of the landmarks in map \cite{smith_representation_1986}
+\cite{durrant-whyte_uncertain_1988}. This correlation exists because
+of the common error in the estimated vehicle location
+\cite{leonard_simultaneous_1991}. The implication of these works is
+that a consistent full solution to the SLAM problem require a joint
+state composed of the vehicle pose and every landmark position
+\cite{durrant-whyte_simultaneous_2006}. When the vehicle pose and
+landmarks position are fomulated as one single estimation problem, the
+result was convergent. The correlation between landmark play an
+important role in the quality of the solution. The more these
+correlation grew, the better the
+solution.\cite{durrant-whyte_localization_1996}
+\cite{csorba_new_1996} \cite{csorba_simultaneous_1997}
 
 Needs editing.Directly from papers.
 
