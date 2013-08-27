@@ -1,22 +1,101 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 \newcommand{\enquote}[1]{``#1''}
 
-\bibitem{_athena_????}
-\enquote{Athena 111m integrated flight control system.}
-\newblock
-  {http://www.rockwellcollins.com/sitecore/content/Data/Products/Controls/Flight\_Controls/Athena\_111m\_Integrated\_Flight\_Control\_System.aspx}.
+\bibitem{kalman_new_1960}
+R.~E. Kalman.
+\newblock \enquote{A new approach to linear filtering and prediction problems.}
+\newblock \emph{Journal of Basic Engineering} \textbf{82}(1), 35--45.
+\newblock ISSN 0098-2202 (1960).
 
-\bibitem{_cgiar-csi_????}
-\enquote{{CGIAR-CSI} {SRTM} 90m {DEM} digital elevation database.}
-\newblock http://srtm.csi.cgiar.org/.
+\bibitem{sorenson_least-squares_1970}
+H.~Sorenson.
+\newblock \enquote{Least-squares estimation: from gauss to kalman.}
+\newblock \emph{{IEEE} Spectrum} \textbf{7}(7), 63--68.
+\newblock ISSN 0018-9235 (1970).
 
-\bibitem{_world_????}
-\enquote{World geodetic system - wikipedia, the free encyclopedia.}
-\newblock {https://en.wikipedia.org/wiki/World\_Geodetic\_System}.
+\bibitem{analytic_sciences_corporation_applied_1974}
+{Analytic Sciences Corporation}.
+\newblock \emph{Applied optimal estimation}.
+\newblock {M.I.T.} Press, Cambridge, Mass.
+\newblock ISBN 0262200279 (1974).
 
-\bibitem{_pyproj_????}
-\enquote{pyproj - python interface to {PROJ.4} library - google project
-  hosting.}
-\newblock http://code.google.com/p/pyproj/.
+\bibitem{grewal_kalman_1993}
+M.~S. Grewal.
+\newblock \emph{Kalman filtering: theory and practice}.
+\newblock Prentice-Hall information and system sciences series. Prentice-Hall,
+  Englewood Cliffs, {N.J}.
+\newblock ISBN {013211335X} (1993).
+
+\bibitem{lewis_optimal_1986}
+F.~L. Lewis.
+\newblock \emph{Optimal estimation: with an introduction to stochastic control
+  theory}.
+\newblock Wiley, New York.
+\newblock ISBN 0471837415 (1986).
+
+\bibitem{brown_introduction_1993}
+R.~G. Brown.
+\newblock \emph{Introduction to random signals and applied Kalman filtering}.
+\newblock John Wiley \& Sons, Inc., New York, 2nd ed edition.
+\newblock ISBN 0471525731 (1993).
+
+\bibitem{maybeck_stochastic_1979}
+P.~S. Maybeck.
+\newblock \emph{Stochastic models, estimation and control}.
+\newblock Number v.141 in Mathematics in science and engineering. Academic
+  Press, New York.
+\newblock ISBN 0124807011 (1979).
+
+\bibitem{durrant-whyte_simultaneous_2006}
+H.~Durrant-Whyte and T.~Bailey.
+\newblock \enquote{Simultaneous localization and mapping: part i.}
+\newblock \emph{{IEEE} Robotics Automation Magazine} \textbf{13}(2), 99--110.
+\newblock ISSN 1070-9932 (2006).
+
+\bibitem{bailey_simultaneous_2006}
+T.~Bailey and H.~Durrant-Whyte.
+\newblock \enquote{Simultaneous localization and mapping ({SLAM):} part {II}.}
+\newblock \emph{{IEEE} Robotics Automation Magazine} \textbf{13}(3), 108--117.
+\newblock ISSN 1070-9932 (2006).
+
+\bibitem{smith_representation_1986}
+R.~C. Smith and P.~Cheeseman.
+\newblock \enquote{On the representation and estimation of spatial
+  uncertainty.}
+\newblock \emph{The International Journal of Robotics Research} \textbf{5}(4),
+  56--68.
+\newblock ISSN 0278-3649, 1741-3176 (1986).
+
+\bibitem{durrant-whyte_uncertain_1988}
+H.~Durrant-Whyte.
+\newblock \enquote{Uncertain geometry in robotics.}
+\newblock \emph{{IEEE} Journal of Robotics and Automation} \textbf{4}(1),
+  23--31.
+\newblock ISSN 0882-4967 (1988).
+
+\bibitem{leonard_simultaneous_1991}
+J.~Leonard and H.~Durrant-Whyte.
+\newblock \enquote{Simultaneous map building and localization for an autonomous
+  mobile robot.}
+\newblock In \enquote{{IEEE/RSJ} International Workshop on Intelligent Robots
+  and Systems '91. {'Intelligence} for Mechanical Systems, Proceedings {IROS}
+  '91,} pages 1442--1447 vol.3 (1991).
+
+\bibitem{durrant-whyte_localization_1996}
+H.~Durrant-Whyte, D.~Rye, and E.~Nebot.
+\newblock \enquote{Localization of autonomous guided vehicles.}
+\newblock In G.~Giralt and G.~H.~P. Dr.-Ing, editors, \enquote{Robotics
+  Research,} pages 613--625. Springer London.
+\newblock ISBN 978-1-4471-1257-0, 978-1-4471-1021-7 (1996).
+
+\bibitem{csorba_new_1996}
+M.~Csorba, J.~K. Uhlmann, and H.~F. Durrant-Whyte.
+\newblock \enquote{New approach to simultaneous localization and dynamic map
+  building.}
+\newblock volume 2738, pages 26--36 (1996).
+
+\bibitem{csorba_simultaneous_1997}
+M.~Csorba.
+\newblock \emph{Simultaneous Localisation and Map Building} (1997).
 
 \end{thebibliography}

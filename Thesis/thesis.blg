@@ -1,52 +1,51 @@
 This is BibTeX, Version 0.99d (TeX Live 2012/W32TeX)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: thesis.aux
-A level-1 auxiliary file: chapter1.aux
 A level-1 auxiliary file: chapter2.aux
-A level-1 auxiliary file: chapter4.aux
-A level-1 auxiliary file: chapter6.aux
 The style file: cubiblio.bst
 Database file #1: ref.bib
-Warning--I didn't find a database entry for "."
-You've used 4 entries,
+Warning--I didn't find a database entry for "Huang_2008"
+Warning--empty booktitle in csorba_new_1996
+Warning--missing publisher in csorba_simultaneous_1997
+You've used 15 entries,
             2361 wiz_defined-function locations,
-            537 strings with 4682 characters,
-and the built_in function-call counts, 618 in all, are:
-= -- 36
-> -- 4
-< -- 0
-+ -- 4
-- -- 0
-* -- 14
-:= -- 53
-add.period$ -- 12
-call.type$ -- 4
-change.case$ -- 4
+            627 strings with 6552 characters,
+and the built_in function-call counts, 5603 in all, are:
+= -- 443
+> -- 98
+< -- 5
++ -- 40
+- -- 25
+* -- 310
+:= -- 647
+add.period$ -- 70
+call.type$ -- 15
+change.case$ -- 16
 chr.to.int$ -- 0
-cite$ -- 4
-duplicate$ -- 64
-empty$ -- 93
-format.name$ -- 0
-if$ -- 145
+cite$ -- 17
+duplicate$ -- 579
+empty$ -- 599
+format.name$ -- 32
+if$ -- 1261
 int.to.chr$ -- 0
-int.to.str$ -- 4
-missing$ -- 12
-newline$ -- 20
-num.names$ -- 0
-pop$ -- 40
+int.to.str$ -- 15
+missing$ -- 142
+newline$ -- 90
+num.names$ -- 17
+pop$ -- 203
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 36
+skip$ -- 112
 stack$ -- 0
-substring$ -- 0
-swap$ -- 32
-text.length$ -- 0
+substring$ -- 239
+swap$ -- 378
+text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 0
-width$ -- 5
-write$ -- 31
-(There was 1 warning)
+warning$ -- 2
+while$ -- 37
+width$ -- 17
+write$ -- 188
+(There were 3 warnings)

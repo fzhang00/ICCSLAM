@@ -108,21 +108,23 @@ mapping (CLM) and simultaneous localization and mapping (SLAM).
 \subsection{Recursive Probabilistic Estimation using Extended Kalman Filter}
 \label{sec:SLAM_using_EKF}
 
-The Kalman filter \cite{Kalman's original paper}published by R. E.
-Kalman in 1960 is a very powerful recursive data processing algorithm
-for dynamic stochastic processes. The filter find extensive use in
-control and navigation application for its ability of estimating past,
-present and even future state. It is an attractive candidate for data
-fusion framework as it can process all available measurements
-including previous knowledge of the process, regardless of their
-precision, to estimate the current value of the variable of interest.
-Given a dynamic process that satisfy the assumptions that Kalman
-filter is based on, the filter is the optimal algorithm in minimzing
-the mean of squared error of the state variable. This section briefly
-summerized assumption and formation of Kalman filter that's described
-in detail in \cite{from the following}[Sorenson70; Gelb74; Grewal93;
-Lewis86; Brown92]. A more intuitive introduction can be found in
-chapter 1 of [Maybeck79]
+The Kalman filter \cite{kalman_new_1960}published by R. E. Kalman in
+1960 is a very powerful recursive data processing algorithm for
+dynamic stochastic processes. The filter find extensive use in control
+and navigation application for its ability of estimating past, present
+and even future state. It is an attractive candidate for data fusion
+framework as it can process all available measurements including
+previous knowledge of the process, regardless of their precision, to
+estimate the current value of the variable of interest. Given a
+dynamic process that satisfy the assumptions that Kalman filter is
+based on, the filter is the optimal algorithm in minimzing the mean of
+squared error of the state variable. This section briefly summerized
+assumption and formation of Kalman filter that's described in detail
+in \cite{sorenson_least-squares_1970}
+\cite{analytic_sciences_corporation_applied_1974}
+\cite{grewal_kalman_1993} \cite{lewis_optimal_1986}
+\cite{brown_introduction_1993}. A more intuitive introduction can be
+found in chapter 1 of \cite{maybeck_stochastic_1979}.
 %reference in Welch and bishop
 % intro to Kalman filter.
 
@@ -189,24 +191,24 @@ it minimize the a posteriori error covariance matrix $P^+_k$.
 \label{figch2:1}
 \end{figure}
 
-\begin{table}
-\caption{Kalman Filter Operation Equations}
-\label{tab:KF}
-\centering
-\begin{tabular}{|l|c r|}
-\hline
-\multirow{2}{*}{Prediction} 
-& $\hat{x}^-_k=A\hat{x}^+_{k-1}+B\mu_{k-1}$ & \stepcounter{equation}\tetab{\theequation}\\
-& $P^-_k = AP^+_{k-1}A^T+Q$ & \stepcounter{equation}\tetab{\theequation}\\
-\hline
-\multirow{3}{*}{Correction}
-& $K_k=P^-_kH^T(HP^-_kH^T+R)^{-1}$  & \stepcounter{equation}\tetab{\theequation}\\
-& $\hat{x}^+_k = \hat{x}^-_k+K_k(z_k-H\hat{x}^-_k)$ & \stepcounter{equation}\tetab{\theequation}\\
-& $P^+_k = (I-K_kH)P^-_k$ & \stepcounter{equation}\tetab{\theequation}\\
-\hline
-\end{tabular}
-\end{table}
-\FloatBarrier
+% \begin{table}
+% \caption{Kalman Filter Operation Equations}
+% \label{tab:KF}
+% \centering
+% \begin{tabular}{|l|c r|}
+% \hline
+% \multirow{2}{*}{Prediction} 
+% & $\hat{x}^-_k=A\hat{x}^+_{k-1}+B\mu_{k-1}$ & \stepcounter{equation}\tag{\theequation}\\
+% & $P^-_k = AP^+_{k-1}A^T+Q$ & \stepcounter{equation}\tag{\theequation}\\
+% \hline
+% \multirow{3}{*}{Correction}
+% & $K_k=P^-_kH^T(HP^-_kH^T+R)^{-1}$  & \stepcounter{equation}\tag{\theequation}\\
+% & $\hat{x}^+_k = \hat{x}^-_k+K_k(z_k-H\hat{x}^-_k)$ & \stepcounter{equation}\tag{\theequation}\\
+% & $P^+_k = (I-K_kH)P^-_k$ & \stepcounter{equation}\tag{\theequation}\\
+% \hline
+% \end{tabular}
+% \end{table}
+% \FloatBarrier
 
 \subsubsection{Extended Kalman Filter}
 For a discrete-time controlled process, or its relationship with the
@@ -226,24 +228,25 @@ process and measurement noise with variance $Q$ and $R$. The the
 Kalman filter operation equations are given in table
 \ref{tab:EKF},
 
-\begin{table}[H]
-\caption{Extended Kalman Filter Operation Equations}
-\label{tab:EKF}
-\centering
-\begin{tabular}{|l|c r|}
-\hline
-\multirow{2}{*}{Prediction} 
-& $\hat{x}^-_k=f(\hat{x}^+_{k-1},\mu_{k-1},0)$ & \stepcounter{equation}\tetab{\theequation}\\
-& $P^-_k = A_kP^+_{k-1}A_k^T+W_kQ_{k-1}W_k^T$ & \stepcounter{equation}\tetab{\theequation}\\
-\hline
-\multirow{3}{*}{Correction}
-& $K_k=P^-_kH_k^T(H_kP^-_kH_k^T+V_kR_kV_k^T)^{-1}$  & \stepcounter{equation}\tetab{\theequation}\\
-& $\hat{x}^+_k = \hat{x}^-_k+K_k(z_k-h(\hat{x}^-_k,0))$ & \stepcounter{equation}\tetab{\theequation}\\
-& $P^+_k = (I-K_kH)P^-_k$ & \stepcounter{equation}\tetab{\theequation}\\
-\hline
-\end{tabular}
-\end{table}
+% \begin{table}[H]
+% \caption{Extended Kalman Filter Operation Equations}
+% \label{tab:EKF}
+% \centering
+% \begin{tabular}{|l|c r|}
+% \hline
+% \multirow{2}{*}{Prediction} 
+% & $\hat{x}^-_k=f(\hat{x}^+_{k-1},\mu_{k-1},0)$ & \stepcounter{equation}\tag{\theequation}\\
+% & $P^-_k = A_kP^+_{k-1}A_k^T+W_kQ_{k-1}W_k^T$ & \stepcounter{equation}\tag{\theequation}\\
+% \hline
+% \multirow{3}{*}{Correction}
+% & $K_k=P^-_kH_k^T(H_kP^-_kH_k^T+V_kR_kV_k^T)^{-1}$  & \stepcounter{equation}\tag{\theequation}\\
+% & $\hat{x}^+_k = \hat{x}^-_k+K_k(z_k-h(\hat{x}^-_k,0))$ & \stepcounter{equation}\tag{\theequation}\\
+% & $P^+_k = (I-K_kH)P^-_k$ & \stepcounter{equation}\tag{\theequation}\\
+% \hline
+% \end{tabular}
+% \end{table}
 \FloatBarrier
+
 \noindent where (subscript $k$ omitted)
 \begin{itemize}
   \item $A$ is the Jacobian matrix of partial derivatives of $f$ with
@@ -282,12 +285,8 @@ the extended Kalman filter (EKF-SLAM) and through the use of
 Rao-Blackwellized particle filter (FastSLAM). A thourough tutorial to
 the SLAM problem is given in \cite{durrant-whyte_simultaneous_2006}
 \cite{bailey_simultaneous_2006}.
+
 \subsubsection{General EKF Model for SLAM}
-
-
-\subsubsection{Properties of SLAM}
-\label{sec:SLAM_properties}
-
 There is a high degree of correlation betwee the estimates of the
 location of the landmarks in map \cite{smith_representation_1986}
 \cite{durrant-whyte_uncertain_1988}. This correlation exists because
@@ -299,9 +298,37 @@ state composed of the vehicle pose and every landmark position
 landmarks position are fomulated as one single estimation problem, the
 result was convergent. The correlation between landmark play an
 important role in the quality of the solution. The more these
-correlation grew, the better the
-solution.\cite{durrant-whyte_localization_1996}
-\cite{csorba_new_1996} \cite{csorba_simultaneous_1997}
+correlation grew, the better the solution.
+\cite{durrant-whyte_localization_1996} \cite{csorba_new_1996}
+\cite{csorba_simultaneous_1997}
+
+At a given time step $k$, the following variables are defined
+\begin{itemize}
+  \item $x_k$ describe the vehicle position and orientation.
+  \item $u_k$ the control vector applied at time $k-1$ to drive the
+  vehicle to $x_k$ at time k
+  \item $p_i$ a vector desecribe the location of the ith landmark. All
+  landmarks locations are assumed to be time invariant.  
+  \item $z_{ik}$ observation of the location of the ith landmark taken
+  from the vehicle's location at time $k$
+\end{itemize}
+
+Then a complete state vector contains
+$$\begin{bmatrix}\hat{x}_k \\ \hat{p}_k \end{bmatrix}$$
+\noindent and the state covariance matrix contains
+$$\begin{bmatrix}
+P_{xx} & P_{xp} \\
+P_{px} & P_{pp} 
+\end{bmatrix} $$
+
+The prediction and correction procedure can then be carried out
+following the standard EKF formulation. The lamdmarks are generally
+not updated at the prediction (ie. only $x_k$ and $P_{xx}$ are
+updated) unless they are moving.
+
+\subsubsection{Properties of SLAM}
+\label{sec:SLAM_properties}
+
 
 Needs editing.Directly from papers.
 
