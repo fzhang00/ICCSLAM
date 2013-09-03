@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2013.5.25)  26 AUG 2013 15:48
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2013.5.25)  2 SEP 2013 19:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -215,7 +215,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks24
 \@floatcapt=\box34
 ) (./thesis.aux
-(./chapter2.aux))
+(./chapter3.aux))
 \openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
@@ -300,91 +300,52 @@ Package: ltcaption 2013/02/03 v1.3-62 longtable captions (AR)
 )
 Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\openout2 = `chapter2.aux'.
+\openout2 = `chapter3.aux'.
 
- (./chapter2.tex
+ (./chapter3.tex
 Chapter 1.
 [1
 
 
 
-{c:/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 40.
+{c:/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
+[4] [5] [6] [7]
 
-(c:/texlive/2012/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 40.
- [2] [3]
-Overfull \hbox (28.88951pt too wide) in paragraph at lines 108--108
-[]\OT1/cmr/bx/n/14.4 Recursive Prob-a-bilis-tic Es-ti-ma-tion us-ing Ex-tended 
-Kalman
- []
+LaTeX Warning: Reference `equation?' on page 8 undefined on input line 362.
 
-[4]
-
-LaTeX Warning: Reference `tab:KF' on page 5 undefined on input line 174.
-
-[5] <./Figures/KalmanOperation.jpg, id=25, 430.60875pt x 170.6375pt>
-File: ./Figures/KalmanOperation.jpg Graphic file (type jpg)
-
-<use ./Figures/KalmanOperation.jpg>
-Package pdftex.def Info: ./Figures/KalmanOperation.jpg used on input line 189.
-(pdftex.def)             Requested size: 284.52756pt x 112.75127pt.
- [6 <./Figures/KalmanOperation.jpg>]
-
-LaTeX Warning: Reference `tab:EKF' on page 7 undefined on input line 229.
+[8]) [9] (./thesis.bbl [10
 
 
-LaTeX Warning: Reference `tab:EKF' on page 7 undefined on input line 265.
-
-
-LaTeX Warning: Reference `tab:KF' on page 7 undefined on input line 266.
-
-[7] [8] [9] [10]
-
-LaTeX Warning: Citation `Huang_2008' on page 11 undefined on input line 381.
-
-
-Overfull \hbox (11.50038pt too wide) in paragraph at lines 385--387
-[]\OT1/cmr/m/n/12 Huang in-ves-ti-gate fur-ther on prop-er-ties and con-sis-ten
-cy of non-lin-ear two-dimentional
- []
-
-[11]) [12] (./thesis.bbl [13
-
-
-]) [14]
+]) [11]
 No file thesisbib.bbl.
-(./thesis.aux (./chapter2.aux))
+(./thesis.aux (./chapter3.aux))
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 3954 strings out of 494856
- 58013 string characters out of 3175591
- 120402 words of memory out of 3000000
- 7103 multiletter control sequences out of 15000+200000
+ 3911 strings out of 494856
+ 57249 string characters out of 3175591
+ 122258 words of memory out of 3000000
+ 7066 multiletter control sequences out of 15000+200000
  9521 words of font info for 34 fonts, out of 3000000 for 9000
  81 hyphenation exceptions out of 8191
- 38i,10n,38p,242b,283s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,14n,38p,242b,215s stack positions out of 5000i,500n,10000p,200000b,50000s
 <c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/tex
 live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2012
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2012/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2012/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2012/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr8.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy10.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.
-pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (14 pages, 138268 bytes).
+st/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2012/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2012/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr12.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr6.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pf
+b><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/tex
+live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2012/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2012/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on thesis.pdf (11 pages, 157489 bytes).
 PDF statistics:
- 87 PDF objects out of 1000 (max. 8388607)
- 60 compressed objects within 1 object stream
+ 88 PDF objects out of 1000 (max. 8388607)
+ 62 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

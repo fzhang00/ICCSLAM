@@ -35,19 +35,16 @@ approach with minor modification to integrate the inertial measurements.
 
 A scene point $p_{i}^{C}$ can be defined by 6 parameters, with the 
 superscript $C$ representing a camera reference frame. ():
-
 \begin{equation}
 p_{i}^{C}=\begin{bmatrix}
 x_{i}^{C} & y_{i}^{C} & z_{i}^{C} & \rho _{i} & \varphi _{i}^{C} & 
 \theta _{i}^{C} 
 \end{bmatrix}
 \end{equation}
-
 The first three parameters $[x_{i}^{C}, y_{i}^{C}, z_{i}^{C}]$ 
 represent the initial position where the feature is first observed. $\rho _{i}$ is the inverse distance from the initialization position to 
 the feature. The elevation-azimuth pair $[\phi_{i}^{C}, \theta_{i}^{C}]$ encodes a unit vector pointing from the initialization point 
 to the feature. The vector is given by
-
 \begin{equation}
 m(\phi_{i}^{C}, \theta_{i}^{C})=\begin{bmatrix}
 \cos\varphi_{i}^{C}\cos\theta _{i}^{C} \\
@@ -55,7 +52,6 @@ m(\phi_{i}^{C}, \theta_{i}^{C})=\begin{bmatrix}
 \sin\varphi_{i}^{C}
 \end{bmatrix}
 \end{equation}
-
 
 \section{Modeling the System with Extended Kalman 
 Filter}
@@ -65,135 +61,41 @@ Filter}
 The EKF state vector is defined as 
 
 \begin{equation}
-$x=\begin{bmatrix}
-OX_{W}^{C} & c^{C} & r^{C} & p_{1}^{C} & p_{2}^{C} & \ldots & \\
+x=\begin{bmatrix}
+OX_{W}^{C} & c^{C} & r^{C} & p_{1}^{C} & p_{2}^{C} & \ldots 
 \end{bmatrix}
 \end{equation}
 
-where 
-
-$OX_{W}^{C}= \left[O_{x}^{C} O_{y}^{C} O_{z}^{C} W_{x}^{C} W_{y}^{C}
-  W_{z}^{C} \right]^{T}$ contains translation parameters
-$O_{x,y,z}^{C}$ and rotation parameters $W_{x,y,z}^{C}$ to transform
-the camera reference frame to the world reference frame.
-$\left(c^{C},r^{C}\right)^{T}$ represents the camera translation and
-rotation motion frame by frame in Euclidean coordinates, and
-$p_{i}^{C}$ contains the feature parameters as described in the
-previous section.
+\noindent where $OX_{W}^{C}= \begin{bmatrix}O_{x}^{C} & O_{y}^{C} &
+  O_{z}^{C} & W_{x}^{C} & W_{y}^{C} & W_{z}^{C} \end{bmatrix}^{T}$
+contains translation parameters $O_{x,y,z}^{C}$ and rotation
+parameters $W_{x,y,z}^{C}$ to transform the camera reference frame to
+the world reference frame. $\left(c^{C},r^{C}\right)^{T}$ represents
+the camera translation and rotation motion frame by frame in Euclidean
+coordinates, and $p_{i}^{C}$ contains the feature parameters as
+described in the previous section.
 
 \subsection{Prediction} (Will be updated to a more complete form)
 
-For a prediction step at time $k$, the world frame and features 
-parameters are kept unchanged from time $k-1$. The camera parameters 
-are updated using the new inertial measurements: velocity $v^{C}$, 
-acceleration $a^{C}$, and rate of change in roll/pitch/yaw $w^{C}$
-. The camera motion parameters at time $k$ are then
-
-\begin{equation}
+For a prediction step at time $k$, the world frame and features
+parameters are kept unchanged from time $k-1$. The camera parameters
+are updated using the new inertial measurements: velocity $v^{C}$,
+acceleration $a^{C}$, and rate of change in roll/pitch/yaw $w^{C}$.
+The camera motion parameters at time $k$ are then
+\begin{multline}
 \begin{bmatrix}
-OX_{W}^{C}\\
-c^{C}\\
-r^{C}\\
-p_{1}^{C}\\
-p_{2}^{C}\\
-\vdots\\
-p_n^C
-\end{bmatrix}_{k}=
-\begin{bmatrix}
-OX_{W}_{k-1}^{C}\\
-c_{measured}^{C}\\
-r_{measured}^{C}\\
-p_{1}_{k-1}^{C}\\
-p_{2}_{k-1}^{C}\\
-\vdots\\
-p_n_{k-1}^C
-\end{bmatrix}_{k-1}
-\end{equation}
+OX_{W}^{C} & c^{C} & r^{C} & p_{1}^{C}& p_{2}^{C} & \vdots & p_n^C
+\end{bmatrix}_{k}^T \\
+=\begin{bmatrix}
+OX_{W,k-1}^{C} & c_{measured}^{C} & r_{measured}^{C} & p_{1,k-1}^{C} &
+p_{2,k-1}^{C} & \vdots & p_{n,k-1}^C
+\end{bmatrix}_{k-1}^T
+\end{multline}
 
 Where 
 
-$$c_{k}^{C}=v^{C}\Delta t+ \frac{1}{2}a^{C}\Delta t^{2}$$
-$$r_{k}^{C}=r_{k-1}^{C}+ w^{C}$$
-
-Writing the above in the form of $x_{k}= F_{k-1}x_{k-1}+ 
-B_{k}u_{k}+w_{k-1}$ , without INS measurement, $F_{k}$ is  
-simply $I$. With INS input, 
-
-% need to look at docx file for this equation. 
-\begin{equation}
-$x_{k}=\begin{bmatrix}
-I_{6\times 6} & & \\
- & 0_{3\times 3} & \\
- & & 0_{3\times 3}\\
-\end{bmatrix}
- & 0 & \\
-0 & \begin{bmatrix}
-I_{6\times 6} & & & \\
- & \ddots & & \\
- & & I_{6\times 6} & \\
-\end{bmatrix}
- & \\
-\end{bmatrix}
-\rbrack \lbrack \begin{bmatrix}
-\begin{bmatrix}
-OX_{W}^{C} & \\
-c^{C} & \\
-r^{C} & \\
-\end{bmatrix}
- & \\
-\begin{bmatrix}
-p_{1}^{C} & \\
-\vdots & \\
-p_{n}^{C} & \\
-\end{bmatrix}
- & \\
-\end{bmatrix}
-\rbrack _{k-1}+\lbrack \begin{bmatrix}
-0_{6\times 9 } & \\
-\begin{bmatrix}
-\begin{bmatrix}
-1 & 0 & 0 & \\
-0 & 1 & 0 & \\
-0 & 0 & 1 & \\
-\end{bmatrix}
- & \begin{bmatrix}
-1 & 0 & 0 & \\
-0 & 1 & 0 & \\
-0 & 0 & 1 & \\
-\end{bmatrix}
- & 0_{3\times 3} & \\
-0_{3\times 3} & 0_{3\times 3} & \begin{bmatrix}
-1 & 0 & 0 & \\
-0 & 1 & 0 & \\
-0 & 0 & 1 & \\
-\end{bmatrix}
- & \\
-\end{bmatrix}
- & \\
-0_{6n\times 9} & \\
-\end{bmatrix}
-\rbrack \lbrack \begin{bmatrix}
-\begin{bmatrix}
-v_{x}^{C}\Delta t & \\
-v_{y}^{C}\Delta t & \\
-v_{z}^{C}\Delta t & \\
-\end{bmatrix}
- & \\
-\begin{bmatrix}
-\frac{1}{2}a_{x}^{C}\Delta t^{2} & \\
-\frac{1}{2}a_{y}^{C}\Delta t^{2} & \\
-\frac{1}{2}a_{z}^{C}\Delta t^{2} & \\
-\end{bmatrix}
- & \\
-\begin{bmatrix}
-w_{x}^{C} & \\
-w_{y}^{C} & \\
-w_{z}^{C} & \\
-\end{bmatrix}
- & \\
-\end{bmatrix}
-\rbrack +w_{k-1}$\\
-\end{equation}
+$$c_{measured}^{C}=v_{measured}^{C}\Delta t+ \frac{1}{2}a_{measured}^{C}\Delta t^{2}$$
+$$r_{measured}^{C}=r_{k-1}^{C}+ w_{measured}^{C}$$
 
 \subsection{Measurement Model}
 
@@ -206,7 +108,7 @@ For a feature $p_{i}^{C}$, the vector $h^{R}$pointing from the
 predicted camera location to the feature initialization position is 
 
 \begin{equation}
-$h_{k}^{R}=\begin{bmatrix}
+h_{k}^{R}=\begin{bmatrix}
 x_{i}^{C} \\
 y_{i}^{C} \\
 z_{i}^{C} \\
@@ -221,16 +123,16 @@ The normalized vector pointing from the predicted camera position to the
 feature at time k is then 
 
 \begin{equation}
-h_{ k}^{C}=Q^{-1}(r_{k}^{C})(\rho _{k}h_{k}^{R}+m(\varphi _{ 
-k}^{C},\theta _{k}^{C}))
-\end{equatio}
+  h_{k}^{C}=Q^{-1}\left(r_{k}^{C}\right)\left(\rho _{k}h_{k}^{R}+m\left(\varphi_{ 
+        k}^{C},\theta _{k}^{C}\right)\right)
+\end{equation}
 
-where $Q^{-1}(r_{k}^{C})$ is the inverse rotation matrix from the 
+\noindent where $Q^{-1}(r_{k}^{C})$ is the inverse rotation matrix from the 
 camera frame at time $k-1$ to camera frame at time $k$. From vector 
-$h_{ k}^{C}$, the feature location on image plane can be found by
+$h_{k}^{C}$, the feature location on image plane can be found by
 
 \begin{equation}
-$h_{k}^{U}= \begin{bmatrix}
+h_{k}^{U}= \begin{bmatrix}
 u_{k} \\
 v_{k} \\
 \end{bmatrix}=\begin{bmatrix}
@@ -248,7 +150,7 @@ obtained through camera calibration.
 % \caption{Measurement Model}
 % \label{ch3fig:3}
 
-\subsection{Composition Step} (will include more detail formulas)
+\subsection{Composition Step}
 
 Update step corrects the camera motion and feature location in camera 
 frame k-1. To continue to the next cycle of tracking, all parameter must 
@@ -260,7 +162,7 @@ orientation from k-1 to k is related by
 O_{x}^{C_{k}} \\
 O_{y}^{C} \\
 O_{z}^{C} \\
-\end{bmatrix}_{k}=R^{-1}(r_{k}^{C_{k-1}})(
+\end{bmatrix}_{k}=R^{-1}(r_{k}^{C_{k-1}})\left(
 \begin{bmatrix}
 O_{x}^{C_{k-1}} \\
 O_{y}^{C_{k-1}} \\
@@ -269,7 +171,7 @@ O_{z}^{C_{k-1}} \\
 c_{x}^{C_{k-1}} \\
 c_{y}^{C_{k-1}} \\
 c_{z}^{C_{k-1}} \\
-\end{bmatrix}_{k})
+\end{bmatrix}_{k}\right)
 \end{equation}
 
 \begin{equation}
@@ -292,7 +194,7 @@ by
 x_{i}^{C_{k}} \\
 y_{i}^{C_{k}} \\
 z_{i}^{C_{k}} \\
-\end{bmatrix}_{k}=Q^{-1}(r^{C_{k-1}})(
+\end{bmatrix}_{k}=Q^{-1}(r^{C_{k-1}})\left(
 \begin{bmatrix}
 x_{i}^{C_{k-1}} \\
 y_{i}^{C_{k-1}} \\
@@ -301,7 +203,7 @@ z_{i}^{C_{k-1}} \\
 c_{x}^{C_{k-1}} \\
 c_{y}^{C_{k-1}} \\
 c_{z}^{C_{k-1}} \\
-\end{bmatrix}_{k})
+\end{bmatrix}_{k}\right)
 \end{equation}
 
 \begin{equation}
@@ -316,7 +218,7 @@ m^{-1}(R^{-1}(r^{C_{k-1}})m(\varphi _{i, k}^{C_{k-1}}, \theta _{i, k}^{C_{k-1}})
 \end{bmatrix}
 \end{equation}
 
-where $m(\varphi_{i, k}^{C_{k-1}}, \theta_{i, k}^{C_{k-1}})$ is the 
+\noindent where $m(\varphi_{i, k}^{C_{k-1}}, \theta_{i, k}^{C_{k-1}})$ is the 
 unit vector pointing from the initialization point to the feature seen 
 by the camera at step $k-1$
 
@@ -324,7 +226,7 @@ The covariance matrix is also affected by this transform. Therefore must
 be updated. The new covariance matrix is related to the old one by 
 
 \begin{equation}
-P_{k}^{C_{k}}=J_{C_{k-1}\to C_{k}}P_{k}^{C_{k-1}}J_{C_{k-1}\to C_{k}}^{T}\\
+P_{k}^{C_{k}}=J_{C_{k-1}\to C_{k}}P_{k}^{C_{k-1}}J_{C_{k-1}\to C_{k}}^{T}
 \end{equation}
 
 The calculation of $J_{C_{k-1}\to C_{k}}$ is the same as the 
@@ -341,8 +243,7 @@ EKF covariance matrix $P_{k}$ is also updated through
 P_{k}=JP_{k}J^{T}
 \end{equation}
 
-where $J$ is the Jacobian of the composition equations. 
-
+\noindent where $J$ is the Jacobian of the composition equations. 
 \section{Initialization}
 \subsection{Initialize the State Vector}
 
@@ -352,19 +253,19 @@ points are all initialized to zeros, with variance equals to the
 smallest machine number. Thus, 
 
 \begin{equation}
-OX_{W}^{C}=\left[ 0 0 0 0 0 0 \right] 
+OX_{W}^{C}=\begin{bmatrix}0&0&0&0&0&0\end{bmatrix} 
 \end{equation}
 
 \begin{equation}
-c^{C}=[0 0 0]
+c^{C}=\begin{bmatrix}0&0&0\end{bmatrix}
 \end{equation}
 
 \begin{equation}
-r^{C}=[0 0 0]
+r^{C}=\begin{bmatrix}0&0&0\end{bmatrix}
 \end{equation}
 
 \begin{equation}
-p_{i}^{C}=[0 0 0 \rho _{i}\varphi _{i}\theta _{i} ]
+p_{i}^{C}=\begin{bmatrix}0&0&0&\rho _{i}&\varphi_{i}&\theta_{i}\end{bmatrix}
 \end{equation}
 
 The inverse distance $\rho $ of all features are initialized to 0.1 
@@ -374,18 +275,17 @@ extracted from features coordinates in image plane. First, a vector
 pointing from camera optical center to feature can be defined by
 
 \begin{equation}
-$h^{C}=\lbrack \begin{bmatrix}
-h_{x}^{C} & \\
-h_{y}^{C} & \\
-h_{z}^{C} & \\
+h^{C}=\begin{bmatrix}
+h_{x}^{C}\\
+h_{y}^{C}\\
+h_{z}^{C}\\
 \end{bmatrix}
-\rbrack =\lbrack \begin{bmatrix}
-1 & \\
-u\cdot s_{x} & \\
-v\cdot s_{y} & \\
+ = \begin{bmatrix}
+1 \\
+u\cdot s_{x} \\
+v\cdot s_{y} \\
 \end{bmatrix}
-\rbrack $\\
-\end{equatiion}
+\end{equation}
 
 Where $[u v]$ is the feature coordinate in the image, and $
 [s_{x}s_{y}] $is the scaling factor of the projection from the scene to 
@@ -394,12 +294,13 @@ _{i}^{C}]$ can then be directly calculated from $h^{C}$
 
 \begin{equation}
 \varphi 
-=arctan(\frac{h_{z}^{C}}{\sqrt{h_{x}^{C}^{2}+h_{y}^{C}^{2}}})
+=arctan\left(\frac{h_{z}^{C}}{\sqrt{{h_{x}^{C}}^{2}+{h_{y}^{C}}^{2}}}\right)
 \end{equation}
 
 \begin{equation}
-\theta =arctan(\frac{h_{y}^{C}}{h_{x}^{C}})
+\theta =arctan\left(\frac{h_{y}^{C}}{h_{x}^{C}}\right)
 \end{equation}
+
 
 \subsection{Initialized the State Covariance Matrix}
 
@@ -412,7 +313,7 @@ coordinate and orientation, and the camera motion is
 P=I_{12\times 12}\cdot \epsilon 
 \end{equation}
 
-where$I$ is a 12-by-12 identity matrix, and $\epsilon $ is the 
+where $I$ is a $12\times12$ identity matrix, and $\epsilon $ is the 
 lowest significant bit (LSB) of a machine.
 
 The covariance of features is added one by one as there is 
@@ -420,19 +321,19 @@ correlation between them. For every new feature added, the new
 covariance matrix becomes
 
 \begin{equation}
-P_{new}=J\lbrack \begin{bmatrix}
-P_{old} & 0 & \\
-0 & R & \\
+P_{new}=J\begin{bmatrix}
+P_{old} & 0 \\
+0 & R \\
 \end{bmatrix}
-\rbrack J^{T}
+J^{T}
 \end{equation}
 
-where$P_{old}$ isthe covariance matrix of the existing state vector, 
-and the initial $P_{old}$is defined in . Matrix R is the covariance 
-matrix of the variable in features initialization - .
+\noindent where $P_{old}$ isthe covariance matrix of the existing state vector, 
+and the initial $P_{old}$ is defined in . Matrix R is the covariance 
+matrix of the variable in features initialization.
 
 \begin{equation}
-$R=\lbrack \begin{bmatrix}
+R=\begin{bmatrix}
 \sigma _{x_{i}^{C}} & & & & & & \\
  & \sigma _{y_{i}^{C}} & & & 0 & & \\
  & & \sigma _{z_{i}^{C}} & & & & \\
@@ -440,55 +341,44 @@ $R=\lbrack \begin{bmatrix}
  & 0 & & & \sigma _{image} & & \\
  & & & & & \sigma _{image} & \\
 \end{bmatrix}
-\rbrack =\lbrack \begin{bmatrix}
+ = \begin{bmatrix}
 \epsilon & & & & & & \\
  & \epsilon & & & 0 & & \\
  & & \epsilon & & & & \\
  & & & 0.1 & & & \\
  & 0 & & & 1 & & \\
  & & & & & 1 & \\
-\end{bmatrix}
-\rbrack 
+\end{bmatrix} 
 \end{equation}
 
-
-where$[\sigma _{x_{i}^{C}}\sigma _{y_{i}^{C}}\sigma _{z_{i}^{C}}$$]$ 
-is the uncertainty of the camera optical center position, initialized to 
-$\epsilon $.$\sigma _{image}$is the image plane pixel variance, 
-set to 1. $\sigma _{\rho }$is the uncertainty of the inverse 
-distance. Because the filter mainly deals with distance feature, $
-\sigma _{\rho }$ is initialized to 0.1 to cover any distance from 50 meters to infinity. 
+\noindent where$[\sigma _{x_{i}^{C}}\sigma _{y_{i}^{C}}\sigma
+_{z_{i}^{C}}$$]$ is the uncertainty of the camera optical center
+position, initialized to $\epsilon $.$\sigma _{image}$is the image
+plane pixel variance, set to 1. $\sigma _{\rho }$is the uncertainty of
+the inverse distance. Because the filter mainly deals with distance
+feature, $ \sigma _{\rho }$ is initialized to 0.1 to cover any
+distance from 50 meters to infinity.
 
 $J$ in equation\ref{equation?} is the Jacobian matrix for 
 the initialization equation. 
 
 \begin{equation}
-$J=\lbrack \begin{bmatrix}
-I & \begin{bmatrix}
-0 & \\
-\vdots & \\
-0 & \\
+J=\begin{bmatrix}
+ & & & & & &0\\
+ & &I& & & &\vdots\\ 
+ & & & & & &0\\
+\frac{\partial p_{i}}{\partial OX_{W}^{C}} &
+\frac{\partial p_{i}}{\partial c^{C}} & 
+\frac{\partial p_{i}}{\partial r^{C}} & 
+0 & \ldots & 0 & 
+\frac{\partial p_{i}}{\partial g_{i}} 
 \end{bmatrix}
- & \\
-\begin{bmatrix}
-\begin{bmatrix}
-\frac{\partial p_{i}}{\partial OX_{W}^{C}} & \frac{\partial 
-p_{i}}{\partial c^{C}} & \frac{\partial p_{i}}{\partial r^{C}} & \\
-\end{bmatrix}
- & \begin{bmatrix}
-0 & \ldots & 0 & \\
-\end{bmatrix}
- & \\
-\end{bmatrix}
- & \frac{\partial p_{i}}{\partial g_{i}} & \\
-\end{bmatrix}
-\rbrack $\\
 \end{equation}
 
 Whenever a new feature is added, it's initial position is always $
-\lbrack 0 0 0\rbrack $ in the camera centric coordinate, and the $
-\lbrack \rho \varphi \theta \rbrack $ parameters are not a function of$
-OX_{W}^{C}$, $c^{C}$,or$r^{C}$, therefore
+\begin{bmatrix}0&0&0\end{bmatrix}$ in the camera centric coordinate,
+and the $\begin{bmatrix}\rho&\varphi&\theta\end{bmatrix}$ parameters
+are not a function of $ OX_{W}^{C}$, $c^{C}$,or$r^{C}$, therefore
 
 \begin{equation}
 \frac{\partial p_{i}}{\partial OX_{W}^{C}}=0_{6\times 6}
@@ -502,27 +392,21 @@ p_{i}}{\partial r^{C}}= 0_{6\times 3}
 $J$ can then be simplified as
 
 \begin{equation}
-J=\lbrack \begin{bmatrix}
+J=\begin{bmatrix}
 I & 0 & \\
 0 & \frac{\partial p_{i}}{\partial g_{i}} & \\
-\end{bmatrix}
-\rbrack 
+\end{bmatrix} 
 \end{equation}
 
 
-Where$g_{i}$ includes the variable in matrix $R$: $
-g_{i}=[\begin{bmatrix}
-\begin{bmatrix}
-x_{i}^{C} & y_{i}^{C} & z_{i}^{C} & \\
-\end{bmatrix}
- & \begin{bmatrix}
-\rho _{i} & u_{i} & v_{i} & \\
-\end{bmatrix}
- & \\
-\end{bmatrix}
+\noindent where$g_{i}$ includes the variable in matrix $R$: $
+g_{i}=[\begin{matrix}
+x_{i}^{C} & y_{i}^{C} & z_{i}^{C} & \rho _{i} & u_{i} & v_{i}
+\end{matrix}
 ]$. Then 
 
-$\frac{\partial p_{i}}{\partial g_{i}}=\lbrack \begin{bmatrix}
+\begin{equation}
+\frac{\partial p_{i}}{\partial g_{i}}=\lbrack \begin{bmatrix}
 I_{3\times 3} & 0_{3\times 3} & \\
 0_{3\times 3} & \begin{bmatrix}
 \frac{\partial \rho _{i}}{\partial \rho _{i}} & \frac{\partial \rho 
@@ -548,593 +432,7 @@ I_{3\times 3} & 0_{3\times 3} & \\
  & \\
 \end{bmatrix}
 \rbrack $\\
-
-
-Equation 25
-
-Based on the rule of derivation, 
-
-$\frac{\partial \varphi _{i}^{C}}{\partial u_{i}}=\frac{\partial 
-\varphi _{i}^{C}}{\partial h^{C}}\frac{\partial h^{C}}{\partial u_{i}}$
-\\
-
-
-$\frac{\partial \theta _{i}^{C}}{\partial u_{i}}=\frac{\partial \theta 
-_{i}^{C}}{\partial h^{C}}\frac{\partial h^{C}}{\partial u_{i}}$\\
-
-
-$\frac{\partial \varphi _{i}^{C}}{\partial v_{i}}=\frac{\partial 
-\varphi _{i}^{C}}{\partial h^{C}}\frac{\partial h^{C}}{\partial v_{i}}$
-\\
-
-
-$\frac{\partial \theta _{i}^{C}}{\partial v_{i}}=\frac{\partial \theta 
-_{i}^{C}}{\partial h^{C}}\frac{\partial h^{C}}{\partial v_{i}}$\\
-
-
-Equation 26
-
-and
-
-$\frac{\partial \varphi _{i}^{C}}{\partial h^{C}}=\lbrack 
-\begin{bmatrix}
-\frac{\partial \varphi _{i}^{C}}{\partial h_{x}^{C}} & \frac{\partial 
-\varphi _{i}^{C}}{\partial h_{y}^{C}} & \frac{\partial \varphi 
-_{i}^{C}}{\partial h_{z}^{C}} & \\
-\end{bmatrix}
-\rbrack =\lbrack \begin{bmatrix}
-\frac{-h_{x}^{C}\cdot 
-h_{z}^{C}}{(h_{x}^{C}^{2}+h_{y}^{C}^{2}+h_{z}^{C}^{2})\sqrt{h_{x}^{C}^{2}+h_{y}^{C}^{2}}} 
-& \\
-\frac{-h_{y}^{W}\cdot 
-h_{z}^{W}}{(h_{x}^{C}^{2}+h_{y}^{C}^{2}+h_{z}^{C}^{2})\sqrt{h_{x}^{C}^{2}+h_{y}^{C}^{2}}} 
-& \\
-
-\frac{\sqrt{h_{x}^{C}^{2}+h_{y}^{C}^{2}}}{(h_{x}^{C}^{2}+h_{y}^{C}^{2}+h_{z}^{C}^{2})} 
-& \\
-\end{bmatrix}
-\rbrack ^{T}$\\
-
-
-Equation 27
-
-$\frac{\partial \theta _{i}^{C}}{\partial h^{C}}=\lbrack \begin{bmatrix}
-\frac{\partial \theta _{i}^{C}}{\partial h_{x}^{C}} & \frac{\partial 
-\theta _{i}^{C}}{\partial h_{y}^{C}} & \frac{\partial \theta 
-_{i}^{C}}{\partial h_{z}^{C}} & \\
-\end{bmatrix}
-\rbrack =\lbrack \begin{bmatrix}
--\frac{h_{y}^{C}}{h_{x}^{C}^{2}+h_{y}^{C}^{2}} & 
-\frac{h_{x}^{C}}{h_{x}^{C}^{2}+h_{y}^{C}^{2}} & 0 & \\
-\end{bmatrix}
-\rbrack $\\
-
-
-Equation 28
-
-\ \ \ \ 
-
-$\frac{\partial h^{C}}{\partial u_{i}}=\lbrack \begin{bmatrix}
-\frac{\partial h_{x}^{C}}{\partial u_{i}} & \\
-\frac{\partial h_{y}^{C}}{\partial u_{i}} & \\
-\frac{\partial h_{z}^{C}}{\partial u_{i}} & \\
-\end{bmatrix}
-\rbrack =\lbrack \begin{bmatrix}
-0 & \\
-s_{x} & \\
-0 & \\
-\end{bmatrix}
-\rbrack $\\
-
-
-Equation 29
-
-
-
-$\frac{\partial h^{C}}{\partial v_{i}}=\lbrack \begin{bmatrix}
-\frac{\partial h_{x}^{C}}{\partial v_{i}} & \\
-\frac{\partial h_{y}^{C}}{\partial v_{i}} & \\
-\frac{\partial h_{z}^{C}}{\partial v_{i}} & \\
-\end{bmatrix}
-\rbrack =\lbrack \begin{bmatrix}
-0 & \\
-0 & \\
-s_{y} & \\
-\end{bmatrix}
-\rbrack $\\
-
-
-Equation 30
-
-
-
-\subsubsection{Linearization of Measurement Model}
-The measurement model of the algorithm is not linear, and must be 
-linearized by evaluating first derivative of the measurement equation at 
-the predicted camera location. Since the measurement model is not a 
-function of world origin coordinate and orientation, the Jacobian matrix 
-of the measurement model is\ \ \ \ 
-
-$\frac{\partial h_{k}^{U}(x)}{\partial x}=\lbrack \begin{bmatrix}
-\begin{bmatrix}
-0_{2n\times 6} & \frac{\partial h_{k}^{U}(x)}{\partial c^{C}} & 
-\frac{\partial h_{k}^{U}(x)}{\partial r^{C}} & \\
-\end{bmatrix}
- & \begin{bmatrix}
-\frac{\partial h_{k}^{U}(x)}{\partial p_{1}} & \ldots & \frac{\partial 
-h_{k}^{U}(x)}{\partial p_{n}} & \\
-\end{bmatrix}
- & \\
-\end{bmatrix}
-\rbrack =\lbrack \begin{bmatrix}
-\begin{bmatrix}
-0_{2n\times 6} & \frac{\partial h_{k}^{U}}{\partial h_{k}^{C}}\cdot 
-\frac{\partial h_{k}^{C}}{\partial c^{C}} & \frac{\partial 
-h_{k}^{U}}{\partial h_{k}^{C}}\cdot \frac{\partial h_{k}^{C}}{\partial 
-r^{C}} & \\
-\end{bmatrix}
- & \begin{bmatrix}
-\frac{\partial h_{k}^{U}}{\partial h_{k}^{C}}\cdot \frac{\partial 
-h_{k}^{C}}{\partial p_{1}} & \ldots & \frac{\partial h_{k}^{U}}{\partial 
-h_{k}^{C}}\cdot \frac{\partial h_{k}^{C}}{\partial p_{n}} & \\
-\end{bmatrix}
- & \\
-\end{bmatrix}
-\rbrack $\\
-
-
-Equation 31
-
-Elements in the matrix above are given in - . The formula for 
-calculating $Q^{-1}$in - can be found in 
-
-\begin{center}$\frac{\partial h_{k}^{U}}{\partial h_{ k}^{C}}= \lbrack 
-\begin{bmatrix}
--\frac{s_{x}h_{y,k}^{C}}{h_{x,k}^{C}^{2}} & \frac{s_{x}}{h_{x,k}^{C}} & 
-0 & \\
--\frac{s_{y}h_{z,k}^{C}}{h_{x,k}^{C}^{2}} & 0 & 
-\frac{s_{y}}{h_{x,k}^{C}} & \\
-\end{bmatrix}
-\rbrack $\\
-\end{center}
-
-Equation 32
-
-
-
-$\frac{\partial h^{C}}{\partial c^{C}}=-R^{-1}(r_{k}^{C})\rho _{k}$\\
-
-
-Equation 33
-
-$\frac{\partial h(x)}{\partial r^{C}}=\lbrack \frac{\partial 
-h^{C}}{\partial r_{x}^{C}}\frac{\partial h^{C}}{\partial 
-r_{y}^{C}}\frac{\partial h^{C}}{\partial r_{z}^{C}}\rbrack $\\
-
-
-Equation 34
-
-$\frac{\partial h^{C}}{\partial r_{x}}=\lbrack \begin{bmatrix}
-0 & \\
-
-h_{x}^{C}(sin(r_{x})sin(r_{z})+cos(r_{x})cos(r_{z})sin(r_{y}))+h_{y}^{C}(-cos(r_{z})sin(r_{x})+cos(r_{x})sin(r_{y})sin(r_{z})) 
-+ h_{z}^{C}cos(r_{x})cos(r_{y}) & \\
-h_{x}^{C}(cos(r_{x})\sin 
-(r_{z})-cos(r_{z})sin(r_{x})sin(r_{y}))+h_{y}^{C}(-cos(r_{x})cos(r_{z})-sin(r_{x})sin(r_{y})sin(r_{z})) 
-- h_{z}^{C}cos(r_{y})sin(r_{x}) & \\
-\end{bmatrix}
-\rbrack $\\
-
-
-Equation 35
-
-$\frac{\partial h^{C}}{\partial r_{y}}=\lbrack \begin{bmatrix}
--h_{z}^{C}\cos (r_{y})- h_{x}^{C}\cos (r_{z})sin(r_{y})- 
-h_{y}^{C}sin(r_{y})sin(r_{z}) & \\
-
--h_{z}^{C}sin(r_{x})sin(r_{y})+h_{x}^{C}cos(r_{y})cos(r_{z})sin(r_{x})+h_{y}^{C}cos(r_{y})sin(r_{x})sin(r_{z}) 
-& \\
-
--h_{z}^{C}cos(r_{x})sin(r_{y})+h_{x}^{C}cos(r_{x})cos(r_{y})cos(r_{z})+h_{y}^{C}cos(r_{x})cos(r_{y})sin(r_{z}) 
-& \\
-\end{bmatrix}
-\rbrack $\\
-
-
-Equation 36
-
-$\frac{\partial h^{C}}{\partial r_{z}}=\lbrack \begin{bmatrix}
-h_{y}^{C}cos(r_{y})cos(r_{z})-h_{x}^{C}cos(r_{y})sin(r_{z}) & \\
-h_{x}^{C}(-cos(r_{x})\cos (r_{z})- sin(r_{x})\sin (r_{y})\sin (r_{z}))+ 
-h_{y}^{C}(-cos(r_{x})sin(r_{z})+cos(r_{z})sin(r_{x})sin(r_{y})) & \\
-
-h_{x}^{C}(cos(r_{z})sin(r_{x})-cos(r_{x})sin(r_{y})sin(r_{z}))+h_{y}^{C}(sin(r_{x})sin(r_{z})+cos(r_{x})cos(r_{z})sin(r_{y})) 
-& \\
-\end{bmatrix}
-\rbrack $\\
-
-
-Equation 37
-
-
-
-\begin{center}$\frac{\partial h^{C}}{\partial p_{i}}=\lbrack 
-\begin{bmatrix}
-\frac{\partial h^{C}}{\partial x_{i}^{C}} & \frac{\partial 
-h^{C}}{\partial y_{i}^{C}} & \frac{\partial h^{C}}{\partial z_{i}^{C}} & 
-\\
-\end{bmatrix}
-\frac{\partial h^{C}}{\partial \rho _{i}}\frac{\partial h^{C}}{\partial 
-\theta _{i}}\frac{\partial h^{C}}{\partial \varphi _{i}}\rbrack $\\
-\end{center}
-
-Equation 38 is a 3x6 matrix
-
-$\lbrack \begin{bmatrix}
-\frac{\partial h^{C}}{\partial x_{i}^{C}} & \frac{\partial 
-h^{C}}{\partial y_{i}^{C}} & \frac{\partial h^{C}}{\partial z_{i}^{C}} & 
-\\
-\end{bmatrix}
-\rbrack =Q^{-1}(r_{k}^{C})\rho _{k}$\\
-
-
-Equation 39
-
-$\frac{\partial h^{C}}{\partial \rho _{i}}=-Q^{-1}(r_{k}^{C})\cdot 
-c_{k}$\\
-
-
-Equation 40
-
-$\frac{\partial h^{C}}{\partial \theta _{i}}=Q^{-1}(r_{k}^{C})\lbrack 
-\begin{bmatrix}
--cos(\varphi _{i})\sin (\theta _{i}) & \\
-\cos (\varphi _{i})cos?(\theta _{i}) & \\
-0 & \\
-\end{bmatrix}
-\rbrack $\\
-
-
-Equation 41
-
-$\frac{\partial h^{C}}{\partial \varphi _{i}}= Q^{-1}(r_{k}^{C})\lbrack 
-\begin{bmatrix}
--cos(\varphi _{i})sin?(\theta _{i}) & \\
--sin(\varphi _{i})sin?(\theta _{i}) & \\
-cos?(\varphi _{i}) & \\
-\end{bmatrix}
-\rbrack $\\
-
-
-Equation 42
-
-\subsubsection{Jacobian Matrix of Composition Equations}
-$J_{C_{k-1}\to C_{k}}=\frac{\partial x_{k}}{\partial x_{k-1}}=\lbrack 
-\frac{\partial x_{k}}{\partial OX_{W, k-1}^{C}}\begin{bmatrix}
-\frac{\partial x_{k}}{\partial c_{k-1}} & \frac{\partial x_{k}}{\partial 
-r_{k-1}} & \\
-\end{bmatrix}
-\frac{\partial x_{k}}{\partial p_{1, k-1}^{C}}\frac{\partial 
-x_{k}}{\partial p_{2, k-1}^{C}} \cdots \rbrack $\\
-
-
-Equation 43
-
-$\frac{\partial x_{k}}{\partial OX_{W, k-1}^{C}}$is given by:
-
-$\frac{\partial x_{k}}{\partial OX_{W, k-1}^{C}}=\lbrack \begin{bmatrix}
-\frac{\partial O_{W,k}^{C}}{\partial O_{W,k-1}^{C}} & \frac{\partial 
-O_{W,k}^{C}}{\partial W_{W,k-1}^{C}} & \\
-\begin{bmatrix}
-\frac{\partial W_{W,k}^{C}}{\partial O_{W,k-1}^{C}} & \\
-\frac{\partial c_{k}}{\partial O_{W,k-1}^{C}} & \\
-\frac{\partial r_{k}}{\partial O_{W,k-1}^{C}} & \\
-\end{bmatrix}
- & \begin{bmatrix}
-\frac{\partial W_{W,k}^{C}}{\partial W_{W,k-1}^{C}} & \\
-\frac{\partial c_{k}}{\partial W_{W,k-1}^{C}} & \\
-\frac{\partial r_{k}}{\partial W_{W,k-1}^{C}} & \\
-\end{bmatrix}
- & \\
-\frac{\partial p_{i}^{C}}{\partial O_{W,k-1}^{C}} & \frac{\partial 
-p_{i}^{C}}{\partial W_{W,k-1}^{C}} & \\
-\end{bmatrix}
-\rbrack =\lbrack \begin{bmatrix}
-Q^{-1}(r^{C}) & 0 & \\
-0 & I_{3\times 3} & \\
-0 & 0 & \\
-0 & 0 & \\
-0 & 0 & \\
-\end{bmatrix}
-\rbrack $\\
-
-
-Equation 44
-
-Derivatives of $x_{k}$with respect to $c$ and $p$are given in - 
-. 
-
-$\lbrack \begin{bmatrix}
-\frac{\partial O_{W,k}^{C}}{\partial c_{k-1}} & \frac{\partial 
-O_{W,k}^{C}}{\partial r_{k-1}} & \\
-\begin{bmatrix}
-\frac{\partial W_{W,k}^{C}}{\partial c_{k-1}} & \\
-\frac{\partial c_{k}}{\partial c_{k-1}} & \\
-\frac{\partial r_{k}}{\partial c_{k-1}} & \\
-\end{bmatrix}
- & \begin{bmatrix}
-\frac{\partial W_{W,k}^{C}}{\partial r_{k-1}} & \\
-\frac{\partial c_{k}}{\partial r_{k-1}} & \\
-\frac{\partial r_{k}}{\partial r_{k-1}} & \\
-\end{bmatrix}
- & \\
-\frac{\partial p(0:2)_{i}^{C}}{\partial c_{k-1}} & \frac{\partial 
-p(0:2)_{i}^{C}}{\partial r_{k-1}} & \\
-\frac{\partial p(3:5)_{i}^{C}}{\partial c_{k-1}} & \frac{\partial 
-p(3:5)_{i}^{C}}{\partial r_{k-1}} & \\
-\end{bmatrix}
-\rbrack =\lbrack \begin{bmatrix}
--Q^{-1}(r_{k}^{C_{k-1}}) & \frac{\partial 
-Q^{-1}(r_{k}^{C_{k-1}})}{\partial r_{k-1}} & \\
-0_{3\times 3} & -I_{3\times 3} & \\
-I_{3\times 3} & 0_{3\times 3} & \\
-0_{3\times 3} & I_{3\times 3} & \\
--Q^{-1}(r_{k}^{C_{k-1}}) & \frac{\partial 
-Q^{-1}(r_{k}^{C_{k-1}})}{\partial r_{k-1}} & \\
-0_{3\times 3} & pr & \\
-\end{bmatrix}
-\rbrack $\\
-
-
-Equation 45
-
-where
-
-$pr=\lbrack \begin{bmatrix}
-\begin{bmatrix}
-1 & 0 & 0 & \\
-\end{bmatrix}
- & \\
-\frac{\partial \varphi _{i, k}^{C}}{\partial r_{k-1}} & \\
-\frac{\partial \theta _{i, k}^{C}}{\partial r_{k-1}} & \\
-\end{bmatrix}
-\rbrack =\lbrack \begin{bmatrix}
-\begin{bmatrix}
-1 & 0 & 0 & \\
-\end{bmatrix}
- & \\
-\frac{\partial m^{-1}(Q^{-1}(r_{k}^{C_{k-1}})m(\varphi _{i, 
-k}^{C_{k-1}}, \theta _{i, k}^{C_{k-1}}))}{\partial r_{k-1}} & \\
-\end{bmatrix}
-\rbrack $\\
-
-
-Equation 46
-
-Let $M=Q^{-1}(r_{k}^{C_{k-1}})m(\varphi _{i, k}^{C_{k-1}}, \theta _{i, 
-k}^{C_{k-1}})$, and $m^{-1}=m^{-1}(M)$, then
-
-$\frac{\partial m^{-1}}{\partial r_{k}^{C_{k-1}}}=\frac{\partial 
-m^{-1}}{\partial M}\cdot \frac{\partial M}{\partial r_{k}^{C_{k-1}}}$
-\\
-
-
-Equation 47
-
-where
-
-$\frac{\partial M}{\partial r_{k}^{C_{k-1}}}= \frac{\partial 
-Q^{-1}(r_{k}^{C_{k-1}})}{\partial r_{k-1}}\cdot m(\varphi _{i, 
-k}^{C_{k-1}}, \theta _{i, k}^{C_{k-1}})$\\
-
-
-Equation 48
-
-as$m^{-1}$isthe function that calculate$[\varphi \theta ]$ from a 
-vector,$\frac{\partial m^{-1}}{\partial M}$ is the same as and .
-
-Derivatives of $x_{k}$with respect to feature parameters$p_{i}^{C}
-$are given in - 
-
-$\frac{\partial x_{k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}}=\lbrack 
-\begin{bmatrix}
-\begin{bmatrix}
-\frac{\partial O_{W,k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}} & \\
-\frac{\partial W_{W,k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}} & \\
-\frac{\partial c_{k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}} & \\
-\end{bmatrix}
- & \\
-\begin{bmatrix}
-\frac{\partial r_{k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}} & \\
-\frac{\partial p_{i, k}^{C}}{\partial p_{i,k}^{C_{k-1 }}} & \\
-\end{bmatrix}
- & \\
-\end{bmatrix}
-\rbrack =\lbrack \begin{bmatrix}
-0 & \\
-0 & \\
-0 & \\
-0 & \\
-\frac{\partial p_{i,k}^{C_{k }}}{\partial p_{i,k}^{C_{k-1 }}} & \\
-\end{bmatrix}
-\rbrack $\\
-
-
-Equation 49
-
-$\frac{\partial p_{i,k}^{C_{k }}}{\partial p_{i,k}^{C_{k-1 }}}=\lbrack 
-\begin{bmatrix}
-\frac{\partial x_{i,k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}} & \\
-\frac{\partial y_{i,k}^{C}}{\partial p_{i,k}^{C_{k-1 }}} & \\
-\frac{\partial z_{i,k}^{C}}{\partial p_{i,k}^{C_{k-1 }}} & \\
-\frac{\partial \rho _{i,k}^{C}}{\partial p_{i,k}^{C_{k-1 }}} & \\
-\frac{\partial \varphi _{i, k}^{C}}{\partial p_{i,k}^{C_{k-1 }}} & \\
-\frac{\partial \theta _{i, k}^{C}}{\partial p_{i,k}^{C_{k-1 }}} & \\
-\end{bmatrix}
-\rbrack =\lbrack \begin{bmatrix}
-Q^{-1}(r_{k}^{C_{k-1}}) & 0_{3\times 3} & \\
-0_{3\times 3} & \frac{\partial p(3:5)_{i,k}^{C_{k}}}{\partial 
-p(3:5)_{i,k}^{C_{k-1}}} & \\
-\end{bmatrix}
-\rbrack $\\
-
-
-Equation 50
-
-
-
-$\frac{\partial p(3:5)_{i,k}^{C_{k}}}{\partial 
-p(3:5)_{i,k}^{C_{k-1}}}=\lbrack \begin{bmatrix}
-1 & 0 & 0 & \\
-0 & \frac{\partial \varphi _{i, k}^{C_{k}}}{\partial \varphi _{i, 
-k}^{C_{k-1}}} & \frac{\partial \varphi _{i, k}^{C_{k}}}{\partial \theta 
-_{i, k}^{C_{k-1}}} & \\
-0 & \frac{\partial \theta _{i, k}^{C_{k}}}{\partial \varphi _{i, 
-k}^{C_{k-1}}} & \frac{\partial \theta _{i, k}^{C_{k}}}{\partial \theta 
-_{i, k}^{C_{k-1}}} & \\
-\end{bmatrix}
-\rbrack =\lbrack \begin{bmatrix}
-1 & 0 & 0 & \\
-0 & \frac{\partial \varphi _{i, k}^{C_{k}}}{\partial M}\frac{\partial 
-M}{\partial \varphi _{i, k}^{C_{k-1}}} & \frac{\partial \varphi _{i, 
-k}^{C_{k}}}{\partial M}\frac{\partial M}{\partial \theta _{i, 
-k}^{C_{k-1}}} & \\
-0 & \frac{\partial \theta _{i, k}^{C_{k}}}{\partial M}\frac{\partial 
-M}{\partial \varphi _{i, k}^{C_{k-1}}} & \frac{\partial \theta _{i, 
-k}^{C_{k}}}{\partial M}\frac{\partial M}{\partial \theta _{i, 
-k}^{C_{k-1}}} & \\
-\end{bmatrix}
-\rbrack $\\
-
-
-Equation 51
-
-$\frac{\partial \varphi _{i, k}^{C_{k}}}{\partial M}$is the same as . 
-$\frac{\partial \theta _{i, k}^{C_{k}}}{\partial M}$is the same as . 
-$\frac{\partial M}{\partial \varphi _{i,k}^{C_{k-1}}}$and$
-\frac{\partial M}{\partial \theta _{i, k}^{C_{k-1}}}$ is given below.
-
-$\frac{\partial M}{\partial \varphi 
-_{i,k}^{C_{k-1}}}=R^{-1}(r^{C})\lbrack \begin{bmatrix}
--\cos (\theta _{i, k}^{C_{k-1}})\sin (\varphi _{i,k}^{C_{k-1}}) & \\
--\sin (\varphi _{i,k}^{C_{k-1}})\sin (\theta _{i, k}^{C_{k-1}}) & \\
-\cos (\varphi _{i,k}^{C_{k-1}}) & \\
-\end{bmatrix}
-\rbrack $\\
-
-
-Equation 52
-
-$\frac{\partial M}{\partial \theta _{i, 
-k}^{C_{k-1}}}=R^{-1}(r^{C})\lbrack \begin{bmatrix}
--\cos (\varphi _{i,k}^{C_{k-1}})\sin (\theta _{i, k}^{C_{k-1}}) & \\
-\cos (\varphi _{i,k}^{C_{k-1}})\cos (\theta _{i, k}^{C_{k-1}}) & \\
-0 & \\
-\end{bmatrix}
-\rbrack $\\
-
-
-Equation 53
-
-\subsubsection{Adding and Deleting 
-Features}\label{section:_Toc332876136}
-Features that move out of the camera's FOI are removed from the filter. 
-The removal is done by directly deleting the parameters from the state 
-vector, and the related rows and columns from the state covariance 
-matrix. The parameters of the deleted features are still recorded into 
-the database, and remained unchanged for all iteration after the removal 
-unless a GPS bundle correction occurs. 
-
-To maintain sufficient amount of features to generate map, new features 
-are acquired and added to the filter if a feature deletion procedure 
-occurred, or number of tracked feature is lower than a threshold. The 
-feature addition procedure occurs after the composition step of an 
-iteration, and follows the same procedure as described in section . 
-
-\subsubsection{Bundle Correction with GPS (not yet 
-implemented)}\label{section:_Toc332876138}
-Apply overall correction on the map at a sparser time interval using the 
-GPS positions. 
-
-\subsubsection{Processing for Comparison to Ground Truth Data}
-The accuracy of the result was analyzed by comparing to the digital 
-elevation models (DEM) .To make the comparison, the features coordinate 
-and the DEM data must be brought to the same coordinate system. For ease 
-of viewing, the world coordinate is used. The features' positions can be 
-converted to Euclidean representation in world frame by: 
-
-$\lbrack \begin{bmatrix}
-X_{i}^{W} & \\
-Y_{i}^{W} & \\
-Z_{i}^{W} & \\
-\end{bmatrix}
-\rbrack =Q^{-1}(O_{XYZ}^{c}, W_{XYZ}^{c})(\lbrack \begin{bmatrix}
-x_{i}^{C} & \\
-y_{i}^{C} & \\
-z_{i}^{C} & \\
-\end{bmatrix}
-\rbrack +\frac{1}{\rho _{i}}m(\varphi _{i}^{C}, \theta _{i}^{C}))$\\
-
-
-The DEM is converted into the world frame using the UAV's initial GPS 
-location$[\begin{bmatrix}
-Latitude_{init} & Longitude_{init} & Height_{init} & \\
-\end{bmatrix}
-]$ and orientation$\lbrack \begin{bmatrix}
-Roll_{init} & Pitch_{init } & Azimuth_{init} & \\
-\end{bmatrix}
-\rbrack $. First, the UAV's GPS latitude and longitude is converted 
-into UTM representation$\begin{bmatrix}
-[Northing_{init} & Easting_{init} & Height_{init}] & \\
-\end{bmatrix}
-$. Then, a transformation matrix can be defined as followed:
-
-$Q_{Roll}^{-1}=\lbrack \begin{bmatrix}
-1 & 0 & 0 & 0 & \\
-0 & \cos (Roll_{init}) & \sin (Roll_{init}) & 0 & \\
-0 & -sin(Roll_{init}) & \cos (Roll_{init}) & 0 & \\
-0 & 0 & 0 & 1 & \\
-\end{bmatrix}
-\rbrack $\\
-
-
-$Q_{Pitch}^{-1}=\lbrack \begin{bmatrix}
-\cos (Pitch_{init}+\pi ) & 0 & -\sin (Pitcch_{init}+\pi ) & 0 & \\
-0 & 1 & 0 & 0 & \\
-\sin (Pitch_{init}+\pi ) & 0 & \cos (Pitch_{init}+\pi ) & 0 & \\
-0 & 0 & 0 & 1 & \\
-\end{bmatrix}
-\rbrack $\\
-
-
-$Q_{Azimuth}^{-1}=\lbrack \begin{bmatrix}
-\cos (Azimuth_{init}+\frac{\pi }{2}) & \sin (Azimuth_{init}+\frac{\pi 
-}{2}) & 0 & 0 & \\
--sin(Azimuth_{init}+\frac{\pi }{2}) & \cos (Azimuth_{init}+\frac{\pi 
-}{2}) & 0 & 0 & \\
-0 & 0 & 1 & 0 & \\
-0 & 0 & 0 & 1 & \\
-\end{bmatrix}
-\rbrack $\\
-
-
-$Q_{T}^{-1}=\lbrack \begin{bmatrix}
-1 & 0 & 0 & -Northing_{init} & \\
-0 & 1 & 0 & -Easting_{init} & \\
-0 & 0 & 1 & -Height_{init} & \\
-0 & 0 & 0 & 1 & \\
-\end{bmatrix}
-\rbrack $\\
-
-
-$Q^{-1}=Q_{T}^{-1}\cdot Q_{Roll}^{-1}\cdot Q_{Pitch}^{-1}\cdot 
-Q_{Azimuth}^{-1}$\\
-
-
-At last, the DEM in world coordinate is given by
-
-$DEM_{World}=Q^{-1}\cdot DEM_{UTM}$\\
-
+\end{equation}
 
 %%% Local Variables:
 %%% mode: latex
