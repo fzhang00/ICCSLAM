@@ -191,24 +191,24 @@ it minimize the a posteriori error covariance matrix $P^+_k$.
 \label{figch2:1}
 \end{figure}
 
-% \begin{table}
-% \caption{Kalman Filter Operation Equations}
-% \label{tab:KF}
-% \centering
-% \begin{tabular}{|l|c r|}
-% \hline
-% \multirow{2}{*}{Prediction} 
-% & $\hat{x}^-_k=A\hat{x}^+_{k-1}+B\mu_{k-1}$ & \stepcounter{equation}\tag{\theequation}\\
-% & $P^-_k = AP^+_{k-1}A^T+Q$ & \stepcounter{equation}\tag{\theequation}\\
-% \hline
-% \multirow{3}{*}{Correction}
-% & $K_k=P^-_kH^T(HP^-_kH^T+R)^{-1}$  & \stepcounter{equation}\tag{\theequation}\\
-% & $\hat{x}^+_k = \hat{x}^-_k+K_k(z_k-H\hat{x}^-_k)$ & \stepcounter{equation}\tag{\theequation}\\
-% & $P^+_k = (I-K_kH)P^-_k$ & \stepcounter{equation}\tag{\theequation}\\
-% \hline
-% \end{tabular}
-% \end{table}
-% \FloatBarrier
+\begin{table}
+\caption{Kalman Filter Operation Equations}
+\label{tab:KF}
+\centering
+\begin{tabular}{|l|c r|}
+\hline
+\multirow{2}{*}{Prediction} 
+& $\hat{x}^-_k=A\hat{x}^+_{k-1}+B\mu_{k-1}$ & \stepcounter{equation}\thetag{\theequation}\\
+& $P^-_k = AP^+_{k-1}A^T+Q$ & \stepcounter{equation}\thetag{\theequation}\\
+\hline
+\multirow{3}{*}{Correction}
+& $K_k=P^-_kH^T(HP^-_kH^T+R)^{-1}$  & \stepcounter{equation}\thetag{\theequation}\\
+& $\hat{x}^+_k = \hat{x}^-_k+K_k(z_k-H\hat{x}^-_k)$ & \stepcounter{equation}\thetag{\theequation}\\
+& $P^+_k = (I-K_kH)P^-_k$ & \stepcounter{equation}\thetag{\theequation}\\
+\hline
+\end{tabular}
+\end{table}
+\FloatBarrier
 
 \subsubsection{Extended Kalman Filter}
 For a discrete-time controlled process, or its relationship with the
@@ -228,23 +228,23 @@ process and measurement noise with variance $Q$ and $R$. The the
 Kalman filter operation equations are given in table
 \ref{tab:EKF},
 
-% \begin{table}[H]
-% \caption{Extended Kalman Filter Operation Equations}
-% \label{tab:EKF}
-% \centering
-% \begin{tabular}{|l|c r|}
-% \hline
-% \multirow{2}{*}{Prediction} 
-% & $\hat{x}^-_k=f(\hat{x}^+_{k-1},\mu_{k-1},0)$ & \stepcounter{equation}\tag{\theequation}\\
-% & $P^-_k = A_kP^+_{k-1}A_k^T+W_kQ_{k-1}W_k^T$ & \stepcounter{equation}\tag{\theequation}\\
-% \hline
-% \multirow{3}{*}{Correction}
-% & $K_k=P^-_kH_k^T(H_kP^-_kH_k^T+V_kR_kV_k^T)^{-1}$  & \stepcounter{equation}\tag{\theequation}\\
-% & $\hat{x}^+_k = \hat{x}^-_k+K_k(z_k-h(\hat{x}^-_k,0))$ & \stepcounter{equation}\tag{\theequation}\\
-% & $P^+_k = (I-K_kH)P^-_k$ & \stepcounter{equation}\tag{\theequation}\\
-% \hline
-% \end{tabular}
-% \end{table}
+\begin{table}[H]
+\caption{Extended Kalman Filter Operation Equations}
+\label{tab:EKF}
+\centering
+\begin{tabular}{|l|c r|}
+\hline
+\multirow{2}{*}{Prediction} 
+& $\hat{x}^-_k=f(\hat{x}^+_{k-1},\mu_{k-1},0)$ & \stepcounter{equation}\thetag{\theequation}\\
+& $P^-_k = A_kP^+_{k-1}A_k^T+W_kQ_{k-1}W_k^T$ & \stepcounter{equation}\thetag{\theequation}\\
+\hline
+\multirow{3}{*}{Correction}
+& $K_k=P^-_kH_k^T(H_kP^-_kH_k^T+V_kR_kV_k^T)^{-1}$  & \stepcounter{equation}\thetag{\theequation}\\
+& $\hat{x}^+_k = \hat{x}^-_k+K_k(z_k-h(\hat{x}^-_k,0))$ & \stepcounter{equation}\thetag{\theequation}\\
+& $P^+_k = (I-K_kH)P^-_k$ & \stepcounter{equation}\thetag{\theequation}\\
+\hline
+\end{tabular}
+\end{table}
 \FloatBarrier
 
 \noindent where (subscript $k$ omitted)
@@ -300,7 +300,7 @@ result was convergent. The correlation between landmark play an
 important role in the quality of the solution. The more these
 correlation grew, the better the solution.
 \cite{durrant-whyte_localization_1996} \cite{csorba_new_1996}
-\cite{csorba_simultaneous_1997}
+\cite{csorba_simultaneous_1997} \cite{dissanayake_solution_2001}
 
 At a given time step $k$, the following variables are defined
 \begin{itemize}
@@ -329,20 +329,22 @@ updated) unless they are moving.
 \subsubsection{Properties of SLAM}
 \label{sec:SLAM_properties}
 
+Dissanayake \cite{dissanayake_solution_2001} reached three important
+convergency properties of Kalman filter based SLAM, namely that: 
+\textit{
+\begin{enumerate}
+  \item the determinant of any submatrix of the map covariance matrix
+  decreases monotonically as observations are successively made;
+  \item in the limit as the number of observations increases, the
+  landmark estimates become fully correlated;
+  \item in the limit the covariance associated with any single
+  landmark location estimate reaches a lower bound determined only by
+  the initial covariance in the vehicle location estimate at the time
+  of the first sighting of the first landmark.
+\end{enumerate}}
 
-Needs editing.Directly from papers.
-
-Dissanayake proved three important convergency properties of the EKF 
-solution to SLAM, namely that: (1) the determinant of any submatrix of 
-the map covariance matrix decreases monotonically as observations are 
-successively made; (2) in the limit as the number of observations 
-increases, the landmark estimates become fully correlated and (3) in the 
-limit the covariance associated with any single landmark location 
-estimate reaches a lower bound determined only by the initial covariance 
-in the vehicle location estimate at the time of the first sighting of 
-the first landmark.
-
-The properties imply:
+These result shows that the importance of analysis of cross
+correlation between landmark estimates in a SLAM problem. 
 
 \begin{itemize}
   \item The entire structure of the SLAM problem critically depends on 
@@ -376,17 +378,19 @@ the actual estimation erros which is the true SLAM consistency issue.
 Many research report filter divergence due to linearization error. 
 Literature review here:
 % the citation is a paper that cited the definition from a book.
-As defined in \cite{Huang_2008}, a state estimator is consistent
+As defined in \cite{huang_analysis_2008}, a state estimator is consistent
 if the estimation errors (i) are zero-mean, and (ii) have
 covariance matrix smaller or equal to the one calculated by the filter.
 
-Huang investigate further on properties and consistency of nonlinear 
-two-dimentional EKF based SLAM problem, and conclude:
+Huang investigated \cite{huang_convergence_2007} on properties and
+consistency of nonlinear two-dimentional EKF based SLAM problem, and
+conclude:
 
 \begin{itemize}
-  \item Most of the convergence properties in $[$3$]$ are still true for 
-  the nonlinear case provided that the Jacobians used in the EKF equations 
-  are evaluated at the true states.
+  \item Most of the convergence properties in
+  \cite{dissanayake_solution_2001} are still true for the nonlinear
+  case provided that the Jacobians used in the EKF equations are
+  evaluated at the true states.
   \item The main reasons for inconsistency in EKF SLAM are due to (i) the 
   violation of some fundamental constraints governing the relationship 
   between various Jacobians when they are evaluated at the current state 

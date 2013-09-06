@@ -98,4 +98,26 @@ M.~Csorba, J.~K. Uhlmann, and H.~F. Durrant-Whyte.
 M.~Csorba.
 \newblock \emph{Simultaneous Localisation and Map Building} (1997).
 
+\bibitem{dissanayake_solution_2001}
+M.~W. M.~G. Dissanayake, P.~Newman, S.~Clark, H.~Durrant-Whyte, and M.~Csorba.
+\newblock \enquote{A solution to the simultaneous localization and map building
+  ({SLAM)} problem.}
+\newblock \emph{{IEEE} Transactions on Robotics and Automation} \textbf{17}(3),
+  229--241.
+\newblock ISSN 1042-{296X} (2001).
+
+\bibitem{huang_analysis_2008}
+G.~P. Huang, A.~Mourikis, and S.~Roumeliotis.
+\newblock \enquote{Analysis and improvement of the consistency of extended
+  kalman filter based {SLAM}.}
+\newblock In \enquote{{IEEE} International Conference on Robotics and
+  Automation, 2008. {ICRA} 2008,} pages 473--479 (2008).
+
+\bibitem{huang_convergence_2007}
+S.~Huang and G.~Dissanayake.
+\newblock \enquote{Convergence and consistency analysis for extended kalman
+  filter based {SLAM}.}
+\newblock \emph{{IEEE} Transactions on Robotics} \textbf{23}(5), 1036--1049.
+\newblock ISSN 1552-3098 (2007).
+
 \end{thebibliography}
