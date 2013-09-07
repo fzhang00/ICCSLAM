@@ -1,18 +1,5 @@
 
 
-Equation 34
-
-$\frac{\partial h^{C}}{\partial r_{x}}=\lbrack \begin{bmatrix}
-0 & \\
-
-h_{x}^{C}(sin(r_{x})sin(r_{z})+cos(r_{x})cos(r_{z})sin(r_{y}))+h_{y}^{C}(-cos(r_{z})sin(r_{x})+cos(r_{x})sin(r_{y})sin(r_{z})) 
-+ h_{z}^{C}cos(r_{x})cos(r_{y}) & \\
-h_{x}^{C}(cos(r_{x})\sin 
-(r_{z})-cos(r_{z})sin(r_{x})sin(r_{y}))+h_{y}^{C}(-cos(r_{x})cos(r_{z})-sin(r_{x})sin(r_{y})sin(r_{z})) 
-- h_{z}^{C}cos(r_{y})sin(r_{x}) & \\
-\end{bmatrix}
-\rbrack $\\
-
 
 Equation 35
 
