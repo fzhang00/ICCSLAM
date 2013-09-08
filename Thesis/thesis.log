@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2013.5.25)  6 SEP 2013 23:20
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2013.5.25)  7 SEP 2013 23:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -313,10 +313,20 @@ Chapter 1.
 
 LaTeX Warning: Reference `equation?' on page 8 undefined on input line 362.
 
-[8] [9] [10] [11]) [12] (./thesis.bbl [13
+[8] [9] [10] [11]
+Overfull \hbox (179.80344pt too wide) detected at line 558
+[] \OT1/cmr/m/n/12 = []
+ []
 
 
-]) [14]
+Overfull \hbox (89.81136pt too wide) detected at line 581
+[] \OT1/cmr/m/n/12 = []
+ []
+
+[12] [13]) [14] (./thesis.bbl [15
+
+
+]) [16]
 No file thesisbib.bbl.
 (./thesis.aux (./chapter3.aux))
 
@@ -342,10 +352,10 @@ b><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/tex
 live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2012/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2012/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (14 pages, 165325 bytes).
+Output written on thesis.pdf (16 pages, 172337 bytes).
 PDF statistics:
- 98 PDF objects out of 1000 (max. 8388607)
- 69 compressed objects within 1 object stream
+ 104 PDF objects out of 1000 (max. 8388607)
+ 73 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
