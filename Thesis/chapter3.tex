@@ -691,6 +691,231 @@ I_{3\times 3} & 0_{3\times 3} \\
 \end{bmatrix}
 \end{equation}
 
+\noindent where
+
+\begin{equation}
+pr=\begin{bmatrix}
+1 & 0 & 0 & \\
+&\frac{\partial \varphi _{i, k}^{C}}{\partial r_{k-1}} & \\
+&\frac{\partial \theta _{i, k}^{C}}{\partial r_{k-1}} & \\
+\end{bmatrix}= \begin{bmatrix}
+1 & 0 & 0 \\
+&\frac{\partial m^{-1}(Q^{-1}(r_{k}^{C_{k-1}})m(\varphi _{i, 
+k}^{C_{k-1}}, \theta _{i, k}^{C_{k-1}}))}{\partial r_{k-1}} & \\
+\end{bmatrix}
+\end{equation}
+
+Let $M=Q^{-1}(r_{k}^{C_{k-1}})m(\varphi_{i, k}^{C_{k-1}}, \theta _{i, 
+k}^{C_{k-1}})$, and $m^{-1}=m^{-1}(M)$, then
+
+\begin{equation}
+\frac{\partial m^{-1}}{\partial r_{k}^{C_{k-1}}}=
+\frac{\partial m^{-1}}{\partial M}\cdot 
+\frac{\partial M}{\partial r_{k}^{C_{k-1}}}
+\end{equation}
+
+\noindent where
+
+\begin{equation}
+\frac{\partial M}{\partial r_{k}^{C_{k-1}}}= 
+\frac{\partial Q^{-1}(r_{k}^{C_{k-1}})}{\partial r_{k-1}}
+\cdot m(\varphi_{i, k}^{C_{k-1}}, \theta_{i, k}^{C_{k-1}})
+\end{equation}
+
+
+\noindent as $m^{-1}$ isthe function that calculate
+$\begin{bmatrix}\varphi & \theta \end{bmatrix}$ from a 
+vector,$\frac{\partial m^{-1}}{\partial M}$ is the same as and .
+
+Derivatives of $x_{k}$ with respect to feature parameters $p_{i}^{C}
+$are given in
+
+\begin{equation}
+\frac{\partial x_{k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}}=
+\begin{bmatrix}
+\frac{\partial O_{W,k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\frac{\partial W_{W,k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\frac{\partial c_{k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\frac{\partial r_{k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\frac{\partial p_{i, k}^{C}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\end{bmatrix} = \begin{bmatrix}
+0 \\
+0 \\
+0 \\
+0 \\
+\frac{\partial p_{i,k}^{C_{k }}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\end{bmatrix}
+\end{equation}
+
+
+\begin{equation}
+\frac{\partial p_{i,k}^{C_{k }}}{\partial p_{i,k}^{C_{k-1 }}}=
+\begin{bmatrix}
+\frac{\partial x_{i,k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\frac{\partial y_{i,k}^{C}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\frac{\partial z_{i,k}^{C}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\frac{\partial \rho _{i,k}^{C}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\frac{\partial \varphi _{i, k}^{C}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\frac{\partial \theta _{i, k}^{C}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\end{bmatrix}=\begin{bmatrix}
+Q^{-1}(r_{k}^{C_{k-1}}) & 0_{3\times 3} \\
+0_{3\times 3} & 
+\frac{\partial p(3:5)_{i,k}^{C_{k}}}{\partial p(3:5)_{i,k}^{C_{k-1}}} \\
+\end{bmatrix}
+\end{equation}
+
+
+\begin{equation}
+\frac{\partial p(3:5)_{i,k}^{C_{k}}}{\partial p(3:5)_{i,k}^{C_{k-1}}}=
+ \begin{bmatrix}
+1 & 0 & 0 \\
+0 & 
+\frac{\partial \varphi_{i, k}^{C_{k}}}
+{\partial \varphi_{i,k}^{C_{k-1}}} & 
+\frac{\partial \varphi _{i, k}^{C_{k}}}
+{\partial \theta _{i, k}^{C_{k-1}}} \\
+0 & 
+\frac{\partial \theta _{i, k}^{C_{k}}}
+{\partial \varphi _{i, k}^{C_{k-1}}} & 
+\frac{\partial \theta _{i, k}^{C_{k}}}
+{\partial \theta _{i, k}^{C_{k-1}}} \\
+\end{bmatrix}=\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 
+\frac{\partial \varphi _{i, k}^{C_{k}}}{\partial M}
+\frac{\partial M}{\partial \varphi _{i, k}^{C_{k-1}}} & 
+\frac{\partial \varphi _{i,k}^{C_{k}}}
+{\partial M}\frac{\partial M}{\partial \theta _{i,k}^{C_{k-1}}}\\
+0 & 
+\frac{\partial \theta _{i, k}^{C_{k}}}{\partial M}
+\frac{\partial M}{\partial \varphi _{i, k}^{C_{k-1}}} & 
+\frac{\partial \theta _{i,k}^{C_{k}}}{\partial M}
+\frac{\partial M}{\partial \theta _{i, k}^{C_{k-1}}} \\
+\end{bmatrix}
+\end{equation}
+
+\noindent in which $\frac{\partial \varphi _{i, k}^{C_{k}}}{\partial
+  M}$ is the same as equation \ref{}. $\frac{\partial \theta _{i,
+    k}^{C_{k}}}{\partial M}$ is the same as equation \ref{} . $\frac{\partial
+  M}{\partial \varphi _{i,k}^{C_{k-1}}}$ and $ \frac{\partial
+  M}{\partial \theta _{i, k}^{C_{k-1}}}$ is given below.
+
+\begin{equation}
+\frac{\partial M}{\partial \varphi_{i,k}^{C_{k-1}}}=
+R^{-1}(r^{C})\begin{bmatrix}
+-\cos(\theta_{i, k}^{C_{k-1}})\sin(\varphi_{i,k}^{C_{k-1}}) \\
+-\sin(\varphi_{i,k}^{C_{k-1}})\sin(\theta_{i, k}^{C_{k-1}}) \\
+\cos (\varphi_{i,k}^{C_{k-1}})
+\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+\frac{\partial M}{\partial \theta _{i,k}^{C_{k-1}}}=
+R^{-1}(r^{C}) \begin{bmatrix}
+-\cos(\varphi_{i,k}^{C_{k-1}})\sin(\theta_{i, k}^{C_{k-1}})\\
+\cos(\varphi_{i,k}^{C_{k-1}})\cos(\theta_{i, k}^{C_{k-1}})\\
+0\\
+\end{bmatrix}
+\end{equation}
+
+\subsubsection{Adding and Deleting Features}\label{section:_Toc332876136}
+Features that move out of the camera's FOI are removed from the filter. 
+The removal is done by directly deleting the parameters from the state 
+vector, and the related rows and columns from the state covariance 
+matrix. The parameters of the deleted features are still recorded into 
+the database, and remained unchanged for all iteration after the removal 
+unless a GPS bundle correction occurs. 
+
+To maintain sufficient amount of features to generate map, new features 
+are acquired and added to the filter if a feature deletion procedure 
+occurred, or number of tracked feature is lower than a threshold. The 
+feature addition procedure occurs after the composition step of an 
+iteration, and follows the same procedure as described in section . 
+
+\subsubsection{Bundle Correction with GPS (not yet implemented)}
+Apply overall correction on the map at a sparser time interval using the 
+GPS positions. 
+
+\subsubsection{Processing for Comparison to Ground Truth Data}
+The accuracy of the result was analyzed by comparing to the digital 
+elevation models (DEM) .To make the comparison, the features coordinate 
+and the DEM data must be brought to the same coordinate system. For ease 
+of viewing, the world coordinate is used. The features' positions can be 
+converted to Euclidean representation in world frame by: 
+
+\begin{equation} 
+\begin{bmatrix}
+X_{i}^{W} \\
+Y_{i}^{W} \\
+Z_{i}^{W} \\
+\end{bmatrix}
+=Q^{-1}(O_{XYZ}^{c}, W_{XYZ}^{c})(\begin{bmatrix}
+x_{i}^{C} \\
+y_{i}^{C} \\
+z_{i}^{C} \\
+\end{bmatrix}
++\frac{1}{\rho _{i}}m(\varphi _{i}^{C}, \theta _{i}^{C}))
+\end{equation}
+
+The DEM is converted into the world frame using the UAV's initial GPS
+location $\begin{bmatrix} Latitude_{init} & Longitude_{init} &
+  Height_{init} \end{bmatrix}$ and orientation$\begin{bmatrix}
+  Roll_{init} & Pitch_{init } & Azimuth_{init} \end{bmatrix}$. First,
+the UAV's GPS latitude and longitude is converted into UTM
+representation $\begin{bmatrix} Northing_{init} & Easting_{init} &
+  Height_{init} \end{bmatrix}$. Then, a transformation matrix can be
+defined as followed:
+
+
+\begin{equation}
+Q_{Roll}^{-1}=\begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & \cos (Roll_{init}) & \sin (Roll_{init}) & 0 \\
+0 & -sin(Roll_{init}) & \cos (Roll_{init}) & 0 \\
+0 & 0 & 0 & 1 \\
+\end{bmatrix}
+\end{equation}
+
+
+\begin{equation}
+Q_{Pitch}^{-1}=\begin{bmatrix}
+\cos (Pitch_{init}+\pi ) & 0 & -\sin (Pitcch_{init}+\pi ) & 0 \\
+0 & 1 & 0 & 0 \\
+\sin (Pitch_{init}+\pi ) & 0 & \cos (Pitch_{init}+\pi ) & 0 \\
+0 & 0 & 0 & 1 \\
+\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+Q_{Azimuth}^{-1}=\begin{bmatrix}
+\cos (Azimuth_{init}+\frac{\pi }{2}) & \sin (Azimuth_{init}+\frac{\pi 
+}{2}) & 0 & 0\\
+-sin(Azimuth_{init}+\frac{\pi }{2}) & \cos (Azimuth_{init}+\frac{\pi 
+}{2}) & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+\end{bmatrix}
+\end{equation}
+
+
+\begin{equation}
+Q_{T}^{-1}=\begin{bmatrix}
+1 & 0 & 0 & -Northing_{init} \\
+0 & 1 & 0 & -Easting_{init} \\
+0 & 0 & 1 & -Height_{init} \\
+0 & 0 & 0 & 1 \\
+\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+Q^{-1}=Q_{T}^{-1}\cdot Q_{Roll}^{-1}\cdot Q_{Pitch}^{-1}\cdot Q_{Azimuth}^{-1}
+\end{equation}
+
+At last, the DEM in world coordinate is given by
+
+$DEM_{World}=Q^{-1}\cdot DEM_{UTM}$
+
+
 
 %%% Local Variables:
 %%% mode: latex
