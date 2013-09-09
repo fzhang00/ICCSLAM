@@ -3,6 +3,8 @@
     (TeX-add-symbols
      '("norm" 1))
     (TeX-run-style-hooks
+     "float"
+     "multirow"
      "placeins"
      "longtable"
      "setspace"
@@ -23,9 +25,6 @@
      "report"
      "12pt"
      "letterpaper"
-     "chapter1"
-     "chapter2"
-     "chapter4"
-     "chapter5"
-     "chapter6")))
+     "chapter3"
+     "appendix")))
 

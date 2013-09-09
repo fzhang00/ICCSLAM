@@ -1,0 +1,81 @@
+\chapter{Coordinate Transformation}
+
+For a mobile robot traveling in world. A point in space has coordinate 
+$\begin{bmatrix}x & y & z\end{bmatrix}$ 
+in world frame, and  
+$\begin{bmatrix}x' & y' & z' \end{bmatrix}$ in the mobile frame. The
+two coordinate is related by 
+\begin{equation}
+\begin{matrix}
+x \\
+y \\
+z \\
+1 \\
+\end{matrix}_{World}=Q\cdot\begin{matrix}
+x' \\
+y' \\
+z' \\
+1  \\
+\end{matrix}_{mobile}
+\end{equation}
+
+
+where Q is the transformation matrix composed by rotation matrix on X, 
+Y, and Z axis and a translation matrix. Q follows the TR?Y 
+convention\ldots (fig)
+
+$Q(r_{x}, r_{y}, r_{z}, T)=Q_{Rz}(r_{z})\cdot Q_{Ry}(r_{y})\cdot 
+Q_{Rx}(r_{x})\cdot Q_{T}(T)$\\
+
+
+$Q^{-1}(r_{x}, r_{y}, r_{z}, T)=Q_{T}^{-1}(T)\cdot 
+Q_{Rx}^{-1}(r_{x})\cdot Q_{Ry}^{-1}(r_{y})\cdot Q_{Rz}^{-1}(r_{z})$\\
+
+
+$Q_{Rx}(r_{x})=\lbrack \begin{matrix}
+1 & 0 & 0 & 0 & \\
+0 & \cos (r_{x}) & -\sin (r_{x}) & 0 & \\
+0 & \sin (r_{x}) & \cos (r_{x}) & 0 & \\
+0 & 0 & 0 & 1 & \\
+\end{matrix}
+\rbrack $\\
+
+
+$Q_{Ry}(r_{y})=\lbrack \begin{matrix}
+\cos (r_{y}) & 0 & \sin (r_{y}) & 0 & \\
+0 & 1 & 0 & 0 & \\
+-sin(r_{y}) & 0 & \cos (r_{y}) & 0 & \\
+0 & 0 & 0 & 1 & \\
+\end{matrix}
+\rbrack $\\
+
+
+$Q_{Rz}(r_{z})=\lbrack \begin{matrix}
+\cos (r_{z}) & -\sin (r_{z}) & 0 & 0 & \\
+\sin (r_{z}) & \cos (r_{z}) & 0 & 0 & \\
+0 & 0 & 1 & 0 & \\
+0 & 0 & 0 & 1 & \\
+\end{matrix}
+\rbrack $\\
+
+
+$Q_{T}=\lbrack \begin{matrix}
+1 & 0 & 0 & T_{x} & \\
+0 & 1 & 0 & T_{y} & \\
+0 & 0 & 1 & T_{z} & \\
+0 & 0 & 0 & 1 & \\
+\end{matrix}
+\rbrack $\\
+
+
+$Q_{Rx}^{-1}=Q_{Rx}^{T}$\\
+
+
+$Q_{Ry}^{-1}=Q_{Ry}^{T}$\\
+
+
+$Q_{Rz}^{-1}=Q_{Rz}^{T}$\\
+
+
+$Q_{T}^{-1}=Q_{T}$?
+
