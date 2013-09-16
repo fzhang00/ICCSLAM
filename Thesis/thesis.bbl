@@ -106,6 +106,38 @@ M.~W. M.~G. Dissanayake, P.~Newman, S.~Clark, H.~Durrant-Whyte, and M.~Csorba.
   229--241.
 \newblock ISSN 1042-{296X} (2001).
 
+\bibitem{martinelli_results_2005}
+A.~Martinelli, N.~Tomatis, and R.~Siegwart.
+\newblock \enquote{Some results on {SLAM} and the closing the loop problem.}
+\newblock In \enquote{2005 {IEEE/RSJ} International Conference on Intelligent
+  Robots and Systems, 2005. ({IROS} 2005),} pages 2917--2922 (2005).
+
+\bibitem{julier_counter_2001}
+S.~Julier and J.~Uhlmann.
+\newblock \enquote{A counter example to the theory of simultaneous localization
+  and map building.}
+\newblock In \enquote{{IEEE} International Conference on Robotics and
+  Automation, 2001. Proceedings 2001 {ICRA},} volume~4, pages 4238--4243 vol.4
+  (2001).
+
+\bibitem{bailey_consistency_2006}
+T.~Bailey, J.~Nieto, J.~Guivant, M.~Stevens, and E.~Nebot.
+\newblock \enquote{Consistency of the {EKF-SLAM} algorithm.}
+\newblock In \enquote{2006 {IEEE/RSJ} International Conference on Intelligent
+  Robots and Systems,} pages 3562--3568 (2006).
+
+\bibitem{frese_discussion_2006}
+U.~Frese.
+\newblock \enquote{A discussion of simultaneous localization and mapping.}
+\newblock \emph{Autonomous Robots} \textbf{20}(1), 25--42.
+\newblock ISSN 0929-5593, 1573-7527 (2006).
+
+\bibitem{castellanos_limits_2004}
+J.~A. Castellanos, J.~Neira, and J.~D. Tardós.
+\newblock \enquote{Limits to the consistency of ekf-based slam.}
+\newblock In \enquote{5th {IFAC} Symp. Intell. Autonom. Veh., {IAV’04},}
+  Lisbon, Portugal (2004).
+
 \bibitem{huang_analysis_2008}
 G.~P. Huang, A.~Mourikis, and S.~Roumeliotis.
 \newblock \enquote{Analysis and improvement of the consistency of extended

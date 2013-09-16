@@ -359,32 +359,35 @@ the computed covariance does not match the true estimation error. This
 leads SLAM consistency issue.
 
 \subsubsection{Linearization Error and Consistency}
-\label{sec:Linearization_error_and_consistency}
 
-Many research reported and analyzed filter divergence due to
-linearization error \cite{martinelli_results_????},
-\cite{julier_counter_2001},\cite{bailey_consistency_2006},
+Many researches reported and analyzed filter divergence due to
+linearization error \cite{martinelli_results_2005},
+\cite{julier_counter_2001}, \cite{bailey_consistency_2006},
 \cite{frese_discussion_2006}, \cite{castellanos_limits_2004}. As
 defined in \cite{huang_analysis_2008}, a state estimator is consistent
 if the estimation errors (i) are zero-mean, and (ii) have covariance
 matrix smaller or equal to the one calculated by the filter.
 
 Huang investigated \cite{huang_convergence_2007} on properties and
-consistency of nonlinear two-dimentional EKF based SLAM problem, and
-conclude:
+consistency of nonlinear two-dimensional EKF based SLAM problem, and
+concluded:
 
+\textit{
 \begin{itemize}
   \item Most of the convergence properties in
   \cite{dissanayake_solution_2001} are still true for the nonlinear
   case provided that the Jacobians used in the EKF equations are
   evaluated at the true states.
-  \item The main reasons for inconsistency in EKF SLAM are due to (i) the 
-  violation of some fundamental constraints governing the relationship 
-  between various Jacobians when they are evaluated at the current state 
-  estimate, and (ii) the use of relative location information from robot 
-  to landmarks to update the absolute robot and landmark location 
-  estimates.
-\end{itemize}
+  \item The main reasons for inconsistency in EKF SLAM are due to 
+  \begin{enumerate}
+    \item the violation of some fundamental constraints governing the
+    relationship between various Jacobians when they are evaluated at
+    the current state estimate,
+    \item the use of relative location information from robot to
+    landmarks to update the absolute robot and landmark location
+    estimates.
+  \end{enumerate}
+\end{itemize}}
 
 The robot orientation uncertainty plays an important role in both the 
 EKF SLAM convergence and the possible inconsistency. In the limit, the 
@@ -404,4 +407,8 @@ the true state.
 %%% mode: latex
 %%% TeX-master: "thesis"
 %%% End:
+
+
+
+
 

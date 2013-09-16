@@ -15,23 +15,25 @@ Inverse depth parameterization overcomes this problem by representing
 range $d$ in its inverse form $\rho =1/d$. In addition, features at 
 infinity contribute in estimating the camera rotational motion even 
 though they offer little information on camera translational motion. 
-Furthermore, inverse depth parameterization allows us to initialize 
+Furthermore, inverse depth parameterization allows for initializing 
 features into the EKF framework before it is safely triangulated.
 
-The inverse depth parameterization used in this work was first 
-introduced in . All features and camera positions are referred to a 
-world reference frame. When used in an Extended Kalman Filter framework, 
-the system suffers decreasing linearity when camera is moving away from 
-the world origin. A modified method which uses the camera center as the 
-origin was proposed in . Our work has adopted the camera centered 
-approach with minor modification to integrate the inertial measurements.
+The inverse depth parameterization used in this work was first
+introduced in \cite{civera_inverse_2008}. All features and camera
+positions are referred to a world reference frame. When used in an
+Extended Kalman Filter framework, the system suffers decreasing
+linearity when camera is moving away from the world origin. A modified
+method which uses the camera center as the origin was proposed in
+\cite{civera_1-point_2009} . Our work has adopted the camera centered
+approach with minor modification to integrate the inertial
+measurements.
 
-% \begin{figure}[h]
-% \centering
-% \includegraphics[width=250.55pt,height=109.45pt]{media/image2.eps}
-% \caption{Figure 2 Inverse Parameterization}
-% \label{fig:algo1}
-% \end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm, keepaspectratio=true]{./Figures/idp.jpg}
+\caption{Inverse Depth Parameterization}
+\label{fig:algo1}
+\end{figure}
 
 A scene point $p_{i}^{C}$ can be defined by 6 parameters, with the 
 superscript $C$ representing a camera reference frame. ():

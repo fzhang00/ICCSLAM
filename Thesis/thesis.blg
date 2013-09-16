@@ -2,49 +2,50 @@ This is BibTeX, Version 0.99d (TeX Live 2012/W32TeX)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: thesis.aux
 A level-1 auxiliary file: chapter2.aux
+A level-1 auxiliary file: appendix.aux
 The style file: cubiblio.bst
 Database file #1: ref.bib
 Warning--empty booktitle in csorba_new_1996
 Warning--missing publisher in csorba_simultaneous_1997
-You've used 18 entries,
+You've used 23 entries,
             2361 wiz_defined-function locations,
-            647 strings with 7237 characters,
-and the built_in function-call counts, 7038 in all, are:
-= -- 556
-> -- 134
-< -- 6
-+ -- 53
-- -- 35
-* -- 402
-:= -- 808
-add.period$ -- 85
-call.type$ -- 18
-change.case$ -- 21
+            677 strings with 8259 characters,
+and the built_in function-call counts, 9583 in all, are:
+= -- 764
+> -- 185
+< -- 10
++ -- 72
+- -- 49
+* -- 539
+:= -- 1077
+add.period$ -- 110
+call.type$ -- 23
+change.case$ -- 34
 chr.to.int$ -- 0
-cite$ -- 20
-duplicate$ -- 721
-empty$ -- 739
-format.name$ -- 45
-if$ -- 1577
+cite$ -- 25
+duplicate$ -- 977
+empty$ -- 994
+format.name$ -- 63
+if$ -- 2163
 int.to.chr$ -- 0
-int.to.str$ -- 18
-missing$ -- 176
-newline$ -- 107
-num.names$ -- 20
-pop$ -- 250
+int.to.str$ -- 23
+missing$ -- 232
+newline$ -- 133
+num.names$ -- 25
+pop$ -- 351
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 141
+skip$ -- 223
 stack$ -- 0
-substring$ -- 328
-swap$ -- 477
-text.length$ -- 6
+substring$ -- 489
+swap$ -- 638
+text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 47
-width$ -- 20
-write$ -- 225
+while$ -- 63
+width$ -- 25
+write$ -- 283
 (There were 2 warnings)

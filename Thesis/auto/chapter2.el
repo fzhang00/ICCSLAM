@@ -9,7 +9,9 @@
      "sec:gps_and_imu"
      "sec:SLAM"
      "sec:SLAM_using_EKF"
+     "figch2:1"
+     "tab:KF"
+     "tab:EKF"
      "sec:SLAM_properties"
-     "sec:Linearization_error_and_consistency"
      "sec:cam_centric")))
 
