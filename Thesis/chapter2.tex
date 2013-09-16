@@ -343,44 +343,31 @@ convergency properties of Kalman filter based SLAM, namely that:
   of the first sighting of the first landmark.
 \end{enumerate}}
 
-These result shows that the importance of analysis of cross
-correlation between landmark estimates in a SLAM problem. 
+These result shows that the complete knowledge of cross correlation
+between landmark estimates is critical in maintaining the structure of
+a SLAM problem. The error in estimates of landmarks becomes more and
+more correlated as the vehicle venture throuth the unknown
+environment. The error eventually becomes fully correlated which means
+given the location of one landmark, the location of any other landmark
+can be determined with absolute certainty. As the map converges, the
+error in the estimates of landmarks reduce to a lower bound determined
+by the error when the first observation was made. 
 
-\begin{itemize}
-  \item The entire structure of the SLAM problem critically depends on 
-  maintaining complete knowledge of the cross correlation between landmark 
-  estimates. Minimizing or ignoring cross correlations is precisely 
-  contrary to the structure of the problem. (Early EKF for OD work 
-  eliminate the cross correlations between features and veichel pose in an 
-  attempt to reduce computation complexity.)
-  \item As the vehicle progresses through the environment the errors in 
-  the estimates of any pair of landmarks become more and more correlated, 
-  and indeed never become less correlated.
-  \item In the limit, the errors in the estimates of any pair of landmarks 
-  become fully correlated. This means that given the exact location of any 
-  one landmark, the location of any other landmark in the map can also be 
-  determined withabsolute certainty.
-  \item As the map converges in the above manner, the error in the 
-  absolute location of every landmark (and thus the whole map) reaches a 
-  lower bound determined only by the error that existed when the first 
-  observation was made (Initialize the parameters using 1st frame as 
-  coordinate origin with minimum variance - Algorithm initialization).
-\end{itemize}
-It is important to note that these theoretical results only refer to the 
-evolution of the covariance matrices computed by EKF in the ideal linear 
-case. They overlook the fact that given that SLAM is a nonlinear 
-problem, there is no guarantee that the computed covariance will match 
-the actual estimation erros which is the true SLAM consistency issue. 
+The results above only refer to the evolution of covariance matrices
+computed by linear model. In reality, SLAM problem is nonlinear, and
+the computed covariance does not match the true estimation error. This
+leads SLAM consistency issue.
 
 \subsubsection{Linearization Error and Consistency}
 \label{sec:Linearization_error_and_consistency}
 
-Many research report filter divergence due to linearization error. 
-Literature review here:
-% the citation is a paper that cited the definition from a book.
-As defined in \cite{huang_analysis_2008}, a state estimator is consistent
-if the estimation errors (i) are zero-mean, and (ii) have
-covariance matrix smaller or equal to the one calculated by the filter.
+Many research reported and analyzed filter divergence due to
+linearization error \cite{martinelli_results_????},
+\cite{julier_counter_2001},\cite{bailey_consistency_2006},
+\cite{frese_discussion_2006}, \cite{castellanos_limits_2004}. As
+defined in \cite{huang_analysis_2008}, a state estimator is consistent
+if the estimation errors (i) are zero-mean, and (ii) have covariance
+matrix smaller or equal to the one calculated by the filter.
 
 Huang investigated \cite{huang_convergence_2007} on properties and
 consistency of nonlinear two-dimentional EKF based SLAM problem, and

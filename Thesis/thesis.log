@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2013.5.25)  8 SEP 2013 23:08
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2013.5.25)  15 SEP 2013 13:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -215,7 +215,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks24
 \@floatcapt=\box34
 ) (./thesis.aux
-(./chapter3.aux))
+(./chapter2.aux) (./appendix.aux))
 \openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
@@ -230,7 +230,8 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
 LaTeX Font Info:    ... okay on input line 29.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
 LaTeX Font Info:    ... okay on input line 29.
- (c:/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
+
+(c:/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count119
 \scratchdimen=\dimen127
@@ -300,74 +301,122 @@ Package: ltcaption 2013/02/03 v1.3-62 longtable captions (AR)
 )
 Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\openout2 = `chapter3.aux'.
+\openout2 = `chapter2.aux'.
 
- (./chapter3.tex
+ (./chapter2.tex
 Chapter 1.
 [1
 
 
 
-{c:/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
-[4] [5] [6] [7]
+{c:/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 40.
 
-LaTeX Warning: Reference `equation?' on page 8 undefined on input line 362.
+(c:/texlive/2012/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 40.
+ [2] [3]
+Overfull \hbox (28.88951pt too wide) in paragraph at lines 108--108
+[]\OT1/cmr/bx/n/14.4 Recursive Prob-a-bilis-tic Es-ti-ma-tion us-ing Ex-tended 
+Kalman
+ []
 
-[8] [9] [10] [11]
-Overfull \hbox (179.80344pt too wide) detected at line 558
-[] \OT1/cmr/m/n/12 = []
+[4] [5] <./Figures/KalmanOperation.jpg, id=25, 430.60875pt x 170.6375pt>
+File: ./Figures/KalmanOperation.jpg Graphic file (type jpg)
+
+<use ./Figures/KalmanOperation.jpg>
+Package pdftex.def Info: ./Figures/KalmanOperation.jpg used on input line 189.
+(pdftex.def)             Requested size: 284.52756pt x 112.75127pt.
+ [6 <./Figures/KalmanOperation.jpg>]
+[7] [8] [9] [10]
+Overfull \hbox (0.72966pt too wide) in paragraph at lines 371--374
+[]\OT1/cmr/m/n/12 Huang in-ves-ti-gated [18] on prop-er-ties and con-sis-tency 
+of non-lin-ear two-dimentional
+ []
+
+[11]) [12]
+\openout2 = `appendix.aux'.
+
+ (./appendix.tex
+Appendix A.
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--29
+
  []
 
 
-Overfull \hbox (89.81136pt too wide) detected at line 581
-[] \OT1/cmr/m/n/12 = []
+Underfull \hbox (badness 10000) in paragraph at lines 31--33
+
  []
 
-[12] [13] [14] [15]
 
-LaTeX Warning: Reference `' on page 16 undefined on input line 798.
+Underfull \hbox (badness 10000) in paragraph at lines 35--42
 
-
-LaTeX Warning: Reference `' on page 16 undefined on input line 799.
-
-[16]
-Overfull \hbox (37.99101pt too wide) in paragraph at lines 860--868
-[]$ \OT1/cmr/m/n/12 and orientation$[]$.
  []
 
-[17] [18]) [19] (./thesis.bbl [20
+[13
 
 
-]) [21]
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 44--51
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--60
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--69
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 71--72
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--75
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 77--78
+
+ []
+
+[14]) [15] (./thesis.bbl [16
+
+
+]) [17]
 No file thesisbib.bbl.
-(./thesis.aux (./chapter3.aux))
-
-LaTeX Warning: There were undefined references.
-
- ) 
+(./thesis.aux (./chapter2.aux) (./appendix.aux)) ) 
 Here is how much of TeX's memory you used:
- 3916 strings out of 494856
- 57346 string characters out of 3175591
- 127283 words of memory out of 3000000
- 7071 multiletter control sequences out of 15000+200000
+ 3966 strings out of 494856
+ 58204 string characters out of 3175591
+ 120985 words of memory out of 3000000
+ 7109 multiletter control sequences out of 15000+200000
  9521 words of font info for 34 fonts, out of 3000000 for 9000
  81 hyphenation exceptions out of 8191
- 38i,14n,38p,242b,215s stack positions out of 5000i,500n,10000p,200000b,50000s
-<c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/tex
-live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2012
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2012/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2012/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2012/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr12.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr6.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pf
-b><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/tex
-live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2012/
+ 38i,11n,38p,242b,283s stack positions out of 5000i,500n,10000p,200000b,50000s
+<c:/texlive/2012/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2012/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmmi12.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmmi8.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.p
+fb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texl
+ive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2012/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2012/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (21 pages, 186485 bytes).
+Output written on thesis.pdf (17 pages, 148647 bytes).
 PDF statistics:
- 120 PDF objects out of 1000 (max. 8388607)
- 84 compressed objects within 1 object stream
+ 96 PDF objects out of 1000 (max. 8388607)
+ 66 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
