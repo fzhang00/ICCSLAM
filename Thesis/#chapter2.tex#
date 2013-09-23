@@ -406,6 +406,12 @@ local map joining to produce a large map gives better result.
 
 \paragraph{Map Joining}
 
+When it comes to building large scale map, submap method are the most
+common approach. There are two main catagories of submap methods, global
+submaps or relative submap \cite{bailey_simultaneous_2006}. Schleicher \cite{schleicher_real-time_2009} uses two level of SLAM
+algorithm to generate and join local map. Other research build large
+scale map from independent local maps \cite{aulinas_local_2010} or
+conditionally independent local maps \cite{pinies_large-scale_2008}. 
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "thesis"
