@@ -92,7 +92,8 @@ H.~Durrant-Whyte, D.~Rye, and E.~Nebot.
 M.~Csorba, J.~K. Uhlmann, and H.~F. Durrant-Whyte.
 \newblock \enquote{New approach to simultaneous localization and dynamic map
   building.}
-\newblock volume 2738, pages 26--36 (1996).
+\newblock In \enquote{Proc. {SPIE} 2738, Navigation and Control Technologies
+  for Unmanned Systems,} volume 2738, pages 26--36. Orlando, {FL} (1996).
 
 \bibitem{csorba_simultaneous_1997}
 M.~Csorba.
@@ -151,5 +152,47 @@ S.~Huang and G.~Dissanayake.
   filter based {SLAM}.}
 \newblock \emph{{IEEE} Transactions on Robotics} \textbf{23}(5), 1036--1049.
 \newblock ISSN 1552-3098 (2007).
+
+\bibitem{civera_1-point_2009}
+J.~Civera, O.~G. Grasa, A.~J. Davison, and J.~M.~M. Montiel.
+\newblock \enquote{1-point {RANSAC} for {EKF-based} structure from motion.}
+\newblock In \enquote{Proceedings of the 2009 {IEEE/RSJ} international
+  conference on Intelligent robots and systems,} {IROS'09}, page 3498–3504.
+  {IEEE} Press, Piscataway, {NJ}, {USA}.
+\newblock ISBN 978-1-4244-3803-7 (2009).
+
+\bibitem{estrada_hierarchical_2005}
+C.~Estrada, J.~Neira, and J.~Tardos.
+\newblock \enquote{Hierarchical {SLAM:} real-time accurate mapping of large
+  environments.}
+\newblock \emph{{IEEE} Transactions on Robotics} \textbf{21}(4), 588--596.
+\newblock ISSN 1552-3098 (2005).
+
+\bibitem{leonard_consistent_2003}
+J.~Leonard and P.~Newman.
+\newblock \enquote{Consistent, convergent, and constant-time slam.}
+\newblock In \enquote{In {IJCAI},}  (2003).
+
+\bibitem{chong_feature-based_1999}
+K.~S. Chong and L.~Kleeman.
+\newblock \emph{Feature-based Mapping in Real, Large Scale Environments using
+  an Ultrasonic Array} (1999).
+
+\bibitem{williams_efficient_2001}
+S.~B. Williams.
+\newblock \emph{Efficient Solutions to Autonomous Mapping and Navigation
+  Problems} (2001).
+
+\bibitem{bosse_slam_2004}
+M.~Bosse, P.~Newman, J.~Leonard, and S.~Teller.
+\newblock \enquote{{SLAM} in large-scale cyclic environments using the atlas
+  framework.}
+\newblock \emph{International Journal of Robotics Research} page 1113–1139
+  (2004).
+
+\bibitem{bailey_mobile_2002}
+T.~Bailey.
+\newblock \emph{Mobile Robot Localisation and Mapping in Extensive Outdoor
+  Environments} (2002).
 
 \end{thebibliography}

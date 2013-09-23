@@ -394,7 +394,6 @@ and consistency issue, and concluded:
 
 \subsubsection{SLAM for Building Large Scale Maps}
 
-
 \paragraph{Robot Centric Coordinate System}In response to the
 consistency problem of classic EKF SLAM solution, some research
 adopted the \emph{robotcentric mapping} \cite{castellanos_limits_2004}
@@ -404,8 +403,22 @@ and estimations are referred to the robot frame. This method was shown
 to improve the consistency of EKF based solution to SLAM, but using
 local map joining to produce a large map gives better result. 
 
-\paragraph{Map Joining}
-
+\paragraph{Submap Methods}The submap methods are another mean to
+tackle large scale map problem. The submaps can be either globally
+referenced or relatively referenced. Global submaps estimate the
+location of the submap referenced to a common base frame
+\cite{estrada_hierarchical_2005} \cite{leonard_consistent_2003}.
+However, as the submap frames are referred to a common base frame,
+global submap does not improve the consistency issue caused by the
+robot pose uncertainty.\cite{bailey_simultaneous_2006}. Relatively
+referenced submap record its location referenced to the neighboring
+submaps \cite{chong_feature-based_1999}
+\cite{williams_efficient_2001}. Global map is then obtained through
+vector summation. The relative submap is able to alleviate
+linearization problem in large scale map, but does
+not converge on global level without an independent submap structure.
+This problem can be solved by using Atlas framework and network
+coupled feature maps \cite{bosse_slam_2004} \cite{bailey_mobile_2002}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "thesis"

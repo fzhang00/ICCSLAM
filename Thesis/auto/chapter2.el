@@ -12,6 +12,5 @@
      "figch2:1"
      "tab:KF"
      "tab:EKF"
-     "sec:SLAM_properties"
-     "sec:cam_centric")))
+     "sec:SLAM_properties")))
 

@@ -5,47 +5,49 @@ A level-1 auxiliary file: chapter2.aux
 A level-1 auxiliary file: appendix.aux
 The style file: cubiblio.bst
 Database file #1: ref.bib
-Warning--empty booktitle in csorba_new_1996
 Warning--missing publisher in csorba_simultaneous_1997
-You've used 23 entries,
+Warning--missing publisher in chong_feature-based_1999
+Warning--missing publisher in williams_efficient_2001
+Warning--missing publisher in bailey_mobile_2002
+You've used 30 entries,
             2361 wiz_defined-function locations,
-            677 strings with 8259 characters,
-and the built_in function-call counts, 9583 in all, are:
-= -- 764
-> -- 185
-< -- 10
-+ -- 72
-- -- 49
-* -- 539
-:= -- 1077
-add.period$ -- 110
-call.type$ -- 23
-change.case$ -- 34
+            715 strings with 9487 characters,
+and the built_in function-call counts, 12332 in all, are:
+= -- 978
+> -- 248
+< -- 12
++ -- 96
+- -- 66
+* -- 663
+:= -- 1364
+add.period$ -- 139
+call.type$ -- 30
+change.case$ -- 44
 chr.to.int$ -- 0
-cite$ -- 25
-duplicate$ -- 977
-empty$ -- 994
-format.name$ -- 63
-if$ -- 2163
+cite$ -- 34
+duplicate$ -- 1285
+empty$ -- 1267
+format.name$ -- 85
+if$ -- 2807
 int.to.chr$ -- 0
-int.to.str$ -- 23
-missing$ -- 232
-newline$ -- 133
-num.names$ -- 25
-pop$ -- 351
+int.to.str$ -- 30
+missing$ -- 300
+newline$ -- 167
+num.names$ -- 32
+pop$ -- 470
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 223
+skip$ -- 334
 stack$ -- 0
-substring$ -- 489
-swap$ -- 638
-text.length$ -- 10
+substring$ -- 561
+swap$ -- 839
+text.length$ -- 12
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 2
-while$ -- 63
-width$ -- 25
-write$ -- 283
-(There were 2 warnings)
+warning$ -- 4
+while$ -- 74
+width$ -- 32
+write$ -- 358
+(There were 4 warnings)
