@@ -1,25 +1,35 @@
-\chapter{REVIEW ON SENSORS AND RELATED WORK}\label{ch:Review}
+\chapter{REVIEW}\label{ch:Review}
 
 \section{SENSORS FOR OBSTACLE DETECTION}\label{sec:sensor}
 
 \subsection{Overview}\label{sec:SensorOverview}
 
-Many work in obstacle detection uses range sensors such as radar, laser 
-range finder, LIDAR, sonar. $[$reference goes here$]$. Radar and laser 
-range finder provides only point measurement at a given position and 
-orientation. To acquire a full 3D range map of a scene, mechanical 
-scanning mechanisms are required, which limits the data acquisition rate 
-of these device. LIDAR operate in the same manner as laser range finder, 
-except with the scanning mechanism built in. These sensors usually have 
-high power requirement and mass, and may not be suitable for small and 
-mid size UAV. Sonar is usually used in indoor or under water 
-applications, and have wide beam profile which make it difficult to 
-identify the origin of return signal, and results in low resolution 
-range map. 3D flash LIDAR is capable of acquire 3D range measurement 
-simultaneously by illuminating the entire field of view of the camera 
-with a single laser, and capturing the reflected laser with a 2D imaging 
-sensor $[$reference; wikipedia$]$. However, its high cost has limited 
-its use in commercial application.
+Many sensors can be used for obstacle detection such as ultrasonic
+sensor, laser range finder, sonar, or image sensor, 3D flash LIDAR
+\cite{de_angelis_low-cost_2007} \cite{alonge_novel_2009}
+\cite{harb_neural_2008} \cite{saad_robust_2011}
+\cite{williams_efficient_2001} \cite{chong_feature-based_1999}
+\cite{hanna_obstacle_2008} \cite{lu_distance_2010}
+\cite{civera_inverse_2008} \cite{jirawimut_visual_2003}
+\cite{amzajerdian_lidar_2011}. Ultrasonic sensors such as radar and
+sonar, and laser range finder are capable of providing high accuracy
+range measurement up to centimeter level, but only provides point
+measurement at a given position and orientation. To acquire a full 3D
+range map of a scene, mechanical scanning mechanisms are required,
+which limits the data acquisition rate of these device. LIDAR operate
+in the same manner as laser range finder, except with the scanning
+mechanism built in. Although LIDAR is becoming more and more popular
+on land robot platform, it is usually expensive
+\cite{subharsanan_low_2013} or have high power requirement and mass
+when long range is required \cite{lemmens_airborne_2007}. Sonar is
+usually used in indoor or under water applications, and have wide beam
+profile which make it difficult to identify the origin of return
+signal, and results in low resolution range map. 3D flash LIDAR is
+capable of acquire 3D range measurement simultaneously by illuminating
+the entire field of view of the camera with a single laser, and
+capturing the reflected laser with a 2D imaging sensor
+\cite{amzajerdian_lidar_2011}. However, its high cost has limited its use in commercial
+application.
 
 In recent years, many researches use optical sensor as a passive range 
 sensor for its low weight, low cost. With the help of computer vision 
