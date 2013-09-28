@@ -28,23 +28,28 @@ signal, and results in low resolution range map. 3D flash LIDAR is
 capable of acquire 3D range measurement simultaneously by illuminating
 the entire field of view of the camera with a single laser, and
 capturing the reflected laser with a 2D imaging sensor
-\cite{amzajerdian_lidar_2011}. However, its high cost has limited its use in commercial
-application.
+\cite{amzajerdian_lidar_2011}. However, its high cost has limited its
+use in commercial application.
 
-In recent years, many researches use optical sensor as a passive range 
-sensor for its low weight, low cost. With the help of computer vision 
-technology, optical sensors have been successfully used for range 
-mapping and obstacle detection in a number of platforms 
-$[$references$]$. There are several types of configuration in using 
-optical sensor for range mapping: monocular, binocular, or multi-camera. 
-Since optical sensors are bearing only sensors, the principle of range 
-measurement is through triangulation a common scene point in two or more 
-images captured. For binocular camera setups, two cameras are placed 
-apart from each other with their relative geometry known and captures 
-images simultaneously. If the position of a scene point can be 
-accurately found in the images by both cameras, its distance can be 
-calculated by using the difference in position of the projected point in 
-images, and the separation of the cameras. 
+In recent years, many researches use optical sensor as a passive range
+sensor for its low weight, low cost. With the help of computer vision
+technology, optical sensors have been successfully used for range
+mapping and obstacle detection in a number of platforms
+\cite{einhorn_cant_2010} \cite{hashimoto_detection_1996}
+\cite{yamaguchi_moving_2006} \cite{zhang_obstacle_2012}
+\cite{maier_self-supervised_2011} \cite{kubota_global_2007}
+\cite{xu_method_2009} \cite{hanna_obstacle_2008}
+\cite{zhang_real-time_2012} \cite{van_der_mark_stereo_2007}
+\cite{broggi_stereo_2011}. There are several types of configuration in
+using optical sensor for range mapping: monocular, binocular, or
+multi-camera. Since optical sensors are bearing only sensors, the
+principle of range measurement is through triangulation a common scene
+point in two or more images captured. For binocular camera setups, two
+cameras are placed apart from each other with their relative geometry
+known and captures images simultaneously. If the position of a scene
+point can be accurately found in the images by both cameras, its
+distance can be calculated by using the difference in position of the
+projected point in images, and the separation of the cameras.
 
 \begin{itemize}
   \item Radar, sonar, laser range finder, 3D flash lidars. optical sensors

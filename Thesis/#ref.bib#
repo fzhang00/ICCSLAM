@@ -62,6 +62,47 @@
 	file = {Snapshot:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\X9MMUXTH\978-1-4471-1021-7_69.html:text/html}
 },
 
+@inproceedings{hashimoto_detection_1996,
+	title = {Detection of obstacle from monocular vision based on histogram matching method},
+	volume = {2},
+	doi = {10.1109/IECON.1996.566023},
+	abstract = {This paper proposes a detection method of an unknown obstacle trespassing upon the field of view from a monocular vision installed in an autonomous land vehicle which moves in the unknown static environment. Taking account of the motion restriction of the vehicle, we investigate the vanishing point of motion and the direction of each optical flow as the motion vector observed on a {2D-image.} Then, in the case of no obstacles, it is shown that the vector field forms a uniform radial configuration centered at the vanishing point of motion. In this paper, the obstacle detection is performed by extracting a certain disturbed region in the vector field caused by the trespassing obstacle. The normalized histogram matching method suitable for obtaining the vector field is introduced. The experimental result for the real images in the case of an obstacle trespassing upon the field of view is shown},
+	booktitle = {, Proceedings of the 1996 {IEEE} {IECON} 22nd International Conference on Industrial Electronics, Control, and Instrumentation, 1996},
+	author = {Hashimoto, H. and Yamaura, T. and Higashiguchi, M.},
+	year = {1996},
+	keywords = {{2D-image}, Automotive engineering, autonomous land vehicle, Cameras, histogram matching method, Histograms, Image motion analysis, Land vehicles, mobile robots, monocular vision, motion vanishing point, object detection, obstacle detection, optical flow direction, Optical noise, Remotely operated vehicles, robot vision, Testing, uniform radial configuration, unknown static environment, Vehicle detection, Working environment noise},
+	pages = {1047--1051 vol.2},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\4QFTC654\articleDetails.html:text/html}
+},
+
+@article{estrada_hierarchical_2005,
+	title = {Hierarchical {SLAM:} Real-Time Accurate Mapping of Large Environments},
+	volume = {21},
+	issn = {1552-3098},
+	shorttitle = {Hierarchical {SLAM}},
+	doi = {10.1109/TRO.2005.844673},
+	abstract = {In this paper, we present a hierarchical mapping method that allows us to obtain accurate metric maps of large environments in real time. The lower (or local) map level is composed of a set of local maps that are guaranteed to be statistically independent. The upper (or global) level is an adjacency graph whose arcs are labeled with the relative location between local maps. An estimation of these relative locations is maintained at this level in a relative stochastic map. We propose a close to optimal loop closing method that, while maintaining independence at the local level, imposes consistency at the global level at a computational cost that is linear with the size of the loop. Experimental results demonstrate the efficiency and precision of the proposed method by mapping the Ada Byron building at our campus. We also analyze, using simulations, the precision and convergence of our method for larger loops.},
+	number = {4},
+	journal = {{IEEE} Transactions on Robotics},
+	author = {Estrada, C. and Neira, J. and Tardos, {J.D.}},
+	year = {2005},
+	keywords = {Ada Byron building, Analytical models, closed loop systems, computational complexity, Computational efficiency, Computational modeling, Convergence, hierarchical mapping method, Information filtering, Information filters, Large maps, Local maps, loop closing, metric maps, mobile robots, optimal loop closing method, path planning, Robots, Simultaneous localization and mapping, stochastic mapping, Stochastic processes},
+	pages = {588--596},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\KHAZV68K\login.html:text/html}
+},
+
+@inproceedings{harb_neural_2008,
+	title = {Neural Networks for Environmental Recognition and Navigation of a Mobile Robot},
+	doi = {10.1109/IMTC.2008.4547207},
+	abstract = {Mobile robots could play a significant role in places where it is impossible for the human to work. In such environments, neural networks, instead of traditional methods, are suitable solutions to locally navigate and recognize the environment's subspaces. In order to learn and perform two important functions "environmental recognition " and "local navigation ", multi-layered neural networks are trained to process distance measurements received from a laser range-finder. These neural networks are a major component of the control system of a mobile robot dedicated for industrial applications. This paper will focus on a computer based design and test of a neural system, that includes three neural controllers for local navigation, and two neural networks for environmental recognition, fed off-line by a simulated model of a laser range-finder.},
+	booktitle = {{IEEE} Instrumentation and Measurement Technology Conference Proceedings, 2008. {IMTC} 2008},
+	author = {Harb, M. and Abielmona, R. and Naji, K. and Petriu, E.},
+	year = {2008},
+	keywords = {Autonomous Robotic Navigation, Control systems, distance measurement, distance measurements, Electrical equipment industry, environmental recognition, Humans, Industrial control, laser range-finder, laser ranging, mobile robot, mobile robots, Multi-layer neural network, Navigation, neural controllers, neural nets, neural networks, neurocontrollers, object recognition, path planning, Performance evaluation, robot navigation},
+	pages = {1123--1128},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\26ZWAT6T\login.html:text/html}
+},
+
 @article{sorenson_least-squares_1970,
 	title = {Least-squares estimation: from Gauss to Kalman},
 	volume = {7},
@@ -78,9 +119,33 @@
 	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\34NDCUA7\login.html:text/html}
 },
 
+@inproceedings{lu_distance_2010,
+	title = {Distance and angle measurement of distant objects on an oblique plane based on pixel variation of {CCD} image},
+	doi = {10.1109/IMTC.2010.5488218},
+	abstract = {This paper presents an image-based system for measuring target objects on an oblique plane based on pixel variation of {CCD} images for digital cameras by referencing to two arbitrarily designated points in image frames. Based on an established relationship between the displacement of the camera movement along the photographing direction and the difference in pixel counts between reference points in the images, photographing distance between the camera and an object on the oblique target plane can be calculated via the proposed method.},
+	booktitle = {2010 {IEEE} Instrumentation and Measurement Technology Conference ({I2MTC)}},
+	author = {Lu, Ming-Chih and Hsu, Chen-Chien and Lu, Yin-Yu},
+	year = {2010},
+	keywords = {angle measurement, angular measurement, Area measurement, {CCD} image, {CCD} image sensors, {CCD} images, Charge coupled devices, Charge-coupled image sensors, digital camera, Digital cameras, distance measurement, distant object, Goniometers, Image analysis, image based system, image-based measuring systems, incline angle, oblique plane, Pattern recognition, photographing direction, photographing distance, Pixel, pixel variation, pixels, target object measurement, Ultrasonic variables measurement},
+	pages = {318--322},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\H6DMTCJU\login.html:text/html}
+},
+
 @misc{_gps_????,
 	title = {{GPS} Accuracy},
 	url = {http://www.gps.gov/systems/gps/performance/accuracy/}
+},
+
+@inproceedings{van_der_mark_stereo_2007,
+	title = {Stereo based Obstacle Detection with Uncertainty in Rough Terrain},
+	doi = {10.1109/IVS.2007.4290248},
+	abstract = {Autonomous robot vehicles that operate in off-road terrain should avoid obstacle hazards. In this paper we present a stereo vision based method that is able to cluster reconstructed terrain points into obstacles by evaluating their relative angles and distances. In our approach, constraints are enforced on these geometric properties by a set of pixel threshold values. Because these values are all computed during an initialisation step, only simple pixel threshold operations remain to be performed during the real-time obstacle detection. An advantage of this novel approach is that the distance uncertainties can be incorporated into the thresholds. Detected obstacle points are clustered into objects on the basis of their pixel connectivity. Objects with insufficient pixels, elevation and slope are rejected. Remaining non-obstacle pixels are regarded as ground surface points. They are used to update the orientation of the stereo camera relative to the ground surface. This prevents orientation errors during stereo reconstruction and the subsequent obstacle detection steps. Our results show the drawbacks of ignoring the uncertainties in the stereo distance estimates for obstacle detection. It leads to over-segmentation and increases the number of falsely detected obstacles. Because our method incorporates these uncertainties, it can detect more of the obstacle surface pixels at larger distances. This leads to significantly less false obstacle detections.},
+	booktitle = {2007 {IEEE} Intelligent Vehicles Symposium},
+	author = {Van der Mark, W. and Van Den Heuvel, {J.C.} and Groen, F. C A},
+	year = {2007},
+	keywords = {autonomous robot vehicles, Cameras, collision avoidance, geometric properties, Hazards, image reconstruction, image segmentation, mobile robots, nonobstacle pixels, obstacle hazard avoidance, off-road terrain, orientation errors, over-segmentation, pattern clustering, pixel threshold values, reconstructed terrain point clustering, relative angles, relative distances, Remotely operated vehicles, road vehicles, Robot sensing systems, robot vision, Robot vision systems, rough terrain, stereo based obstacle detection, stereo image processing, stereo reconstruction, stereo vision, stereo vision based method, Surface reconstruction, terrain mapping, Uncertainty, uncertainty handling, Vehicle detection},
+	pages = {1005--1012},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\M9NW3K3R\articleDetails.html:text/html}
 },
 
 @misc{_proj.4_????,
@@ -88,6 +153,18 @@
 	url = {https://trac.osgeo.org/proj/},
 	urldate = {2013-06-02},
 	file = {PROJ.4:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\XHNWZAPV\proj.html:text/html}
+},
+
+@inproceedings{xu_method_2009,
+	title = {A method of stereo obstacle detection based on image symmetrical move},
+	doi = {10.1109/IVS.2009.5164249},
+	abstract = {A stereo obstacle detection method based on images symmetrical move and cell partition is presented in this paper. This algorithm gets each cell's optimum offset by calculating the minimum non-similarity of cell, and merges Cell of Interests ({COIs)} to calculate obstacles in the most probably obstacle regions, and gives information of these obstacles. The paper introduces the perspective projection model at first, and then gives two conclusions which are the basic of the algorithm, the part of cell partition and cell optimum offset calculation are presented. Finally, algorithm performance tested by experiment on the test vehicle {JJUV-I} is shown in the paper.},
+	booktitle = {2009 {IEEE} Intelligent Vehicles Symposium},
+	author = {Xu, Youchun and Zhao, Ming and Wang, Xiao and Zhang, Yongjin and Peng, Yongshen and Yuan, Yi and Liu, Hongquan},
+	year = {2009},
+	keywords = {automated highways, cell partition, Image motion analysis, image symmetrical move, intelligent vehicle environment, Intelligent vehicles, lane marker, Laser radar, object detection, obstacle detection, Partitioning algorithms, perspective projection model, Radar detection, road vehicles, stereo image processing, stereo obstacle detection, stereo vision, Testing, Transportation, Vehicle detection, Vehicle safety},
+	pages = {36--41},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\HM9EGSFQ\articleDetails.html:text/html}
 },
 
 @article{pinies_large-scale_2008,
@@ -128,6 +205,18 @@
 	year = {2001}
 },
 
+@inproceedings{amzajerdian_lidar_2011,
+	title = {Lidar systems for precision navigation and safe landing on planetary bodies},
+	volume = {8192},
+	url = {http://dx.doi.org/10.1117/12.904062},
+	doi = {10.1117/12.904062},
+	abstract = {The ability of lidar technology to provide three-dimensional elevation maps of the terrain, high precision distance to the ground, and approach velocity can enable safe landing of robotic and manned vehicles with a high degree of precision. Currently, {NASAis} developing novel lidar sensors aimed at the needs of future planetary landing {missions.These} lidar sensors are a 3-Dimensional Imaging Flash Lidar, a Doppler Lidar, and a Laser Altimeter. The Flash Lidar is capable of generating elevation maps of theterrain toindicate hazardous features such as rocks, craters, and steep slopes. The elevation maps, which arecollected during the approach phase of a landing vehicle from about 1 km above the ground, can be used to determine the most suitable safe landing site. The Doppler Lidar provides highly accurate ground relative velocity and distance data thusenablingprecision navigation to the landing site. Our Doppler lidar utilizes three laser beams that are pointed indifferent directions to measure line-of-sight velocities and ranges to the ground from altitudes of over 2 {km.Starting} at altitudes of about 20km and throughout the landing trajectory,the Laser Altimeter can provide very accurate ground relative altitude measurements that are used to improve the vehicle position knowledge obtained from the vehicle'snavigation system. Betweenaltitudesof approximately 15 km and 10 km, either the Laser Altimeter or the Flash Lidar can be used to generate contour maps of the terrain, identifying known surface features such as craters to perform Terrain relative Navigation thus further reducing the vehicle's relative position error. This paper describes the operational capabilities of each lidar sensorand provides a status of their development.},
+	urldate = {2013-09-26},
+	author = {Amzajerdian, Farzin and Pierrottet, Diego and Petway, Larry and Hines, Glenn and Roback, Vincent},
+	year = {2011},
+	pages = {819202--819202-7}
+},
+
 @inproceedings{julier_counter_2001,
 	title = {A counter example to the theory of simultaneous localization and map building},
 	volume = {4},
@@ -151,6 +240,65 @@
 	keywords = {Computer science, extended Kalman filter, Filters, first estimates Jacobian, Jacobian matrices, Kalman filters, linearized error-state system model, Observability, Robotics and automation, Robots, Simultaneous localization and mapping, {SLAM}, {SLAM} (robots), State estimation, Time measurement, {USA} Councils},
 	pages = {473--479},
 	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\CDPCFBZN\login.html:text/html}
+},
+
+@article{mir_definition_2012,
+	title = {On the Definition of Radar Range Resolution for Targets of Greatly Differing {RCS}},
+	volume = {61},
+	issn = {0018-9456},
+	doi = {10.1109/TIM.2011.2170371},
+	abstract = {Conventional radar system design uses only waveform bandwidth to measure the range resolution. This paper examines the effect of both bandwidth and the difference in target radar cross section on range resolution. In the context of the subject scenario, the nature of the pulse-compressed return is studied, and a commonly used measurement definition of range resolution that assumes equally reflective targets is extended to account for the difference in target reflectivity as well. Results are presented as an application of the derived results to depict how resolution performance is affected by various parameters and how a more comprehensive definition of range resolution can be used during the system design.},
+	number = {3},
+	journal = {{IEEE} Transactions on Instrumentation and Measurement},
+	author = {Mir, {H.S.} and Carlson, {B.D.}},
+	year = {2012},
+	keywords = {Measurement, object detection, pulse-compressed return, Radar, Radar cross section, radar cross section ({RCS)}, radar cross-sections, radar range resolution, radar resolution, radar system design, range resolution, {RCS}, Receivers, resolution bound, Signal resolution, target radar cross section, target reflectivity, unequal targets, waveform bandwidth, Wideband},
+	pages = {655--663},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\KVQUVHKX\login.html:text/html}
+},
+
+@inproceedings{zhang_obstacle_2012,
+	title = {Obstacle detection for low flying {UAS} using monocular camera},
+	doi = {10.1109/I2MTC.2012.6229318},
+	abstract = {This paper describes an obstacle detection algorithm for low flying unmanned aircraft system ({UAS)} using an inertial aided inverse depth Extended Kalman Filter ({EKF)} framework. The {EKF} framework fuses inertial measurements with monocular image sensor measurements to estimate the positions of a number of landmarks as well as the position and orientation of the {UAS.} A high resolution sparse terrain elevation map and {UAS} trajectory can then be computed from the filter state vector. An inverse depth parameterization is used to describe the position of the landmarks so that features at all ranges can be tracked by the filter. A test flight was conducted to test the algorithm in a realistic scenario. The result shows that the algorithm produces accurate terrain elevation model, and is capable of generating accurate high resolution terrain elevation map when image sensor with high resolution and dynamic range is used.},
+	booktitle = {Instrumentation and Measurement Technology Conference ({I2MTC)}, 2012 {IEEE} International},
+	author = {Zhang, F. and Goubran, R. and Straznicky, P.},
+	year = {2012},
+	keywords = {Aircraft, Cameras, {EKF} framework, feature extraction, filter state vector, Filters, Geophysical measurements, Global Positioning System, Heuristic algorithms, high resolution sparse terrain elevation map, Image resolution, image sensors, inertial aided inverse depth extended Kalman filter framework, inertial measurements, inverse depth parameterization, Kalman filters, low flying {UAS}, low flying unmanned aircraft system, monocular camera, monocular image sensor measurements, Motion Stereo, nonlinear filters, obstacle detection, obstacle detection algorithm, Range Estimate, terrain elevation model, test flight, {UAS}, Vectors},
+	pages = {2133--2137},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\DWTQB4Z5\articleDetails.html:text/html}
+},
+
+@misc{lemmens_airborne_2007,
+	title = {Airborne {LiDAR} Sensors},
+	url = {http://gim-international.com/files/productsurvey_v_pdfdocument_11.pdf},
+	publisher = {{GIM} International},
+	author = {Lemmens, Mathias},
+	month = feb,
+	year = {2007}
+},
+
+@book{bailey_mobile_2002,
+	title = {Mobile Robot Localisation and Mapping in Extensive Outdoor Environments},
+	abstract = {This thesis addresses the issues of scale for practical implementations of simultaneous localisation and mapping ({SLAM)} in extensive outdoor environments. Building an incremental map while also using it for localisation is of prime importance for mobile robot navigation but, until recently, has been confined to small-scale, mostly indoor, environments. The critical problems for large-scale implementations are as follows. First, data association--- finding correspondences between map landmarks and robot sensor measurements---becomes difficult in complex, cluttered environments, especially if the robot location is uncertain. Second, the information required to maintain a consistent map using traditional methods imposes a prohibitive computational burden as the map increases in size. And third, the mathematics for {SLAM} relies on assumptions of small errors and near-linearity, and these become invalid for larger maps.},
+	author = {Bailey, Tim},
+	year = {2002},
+	file = {Citeseer - Full Text PDF:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\FZ3EP2TG\Bailey - 2002 - Mobile Robot Localisation and Mapping in Extensive.pdf:application/pdf;Citeseer - Snapshot:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\S48KND8I\summary.html:text/html}
+},
+
+@article{saad_robust_2011,
+	title = {Robust High-Accuracy Ultrasonic Range Measurement System},
+	volume = {60},
+	issn = {0018-9456},
+	doi = {10.1109/TIM.2011.2128950},
+	abstract = {This paper presents a novel method for ultrasonic range estimation. The method uses a wideband frequency-hop spread spectrum ultrasonic signal to increase robustness to noise and reverberation. The method applies cross-correlation with earliest peak search and a novel minimum variance search technique to correct the error in the cross-correlation time-of-flight estimate to within one wavelength of the carrier before applying a phase-shift technique for subwavelength range refinement. The method can be implemented digitally in software and only requires low-cost hardware for signal transmission and acquisition. Experimental results show an accuracy of better than 0.5 mm in a typical office environment.},
+	number = {10},
+	journal = {{IEEE} Transactions on Instrumentation and Measurement},
+	author = {Saad, M. M. and Bleakley, Chris J. and Dobson, Simon},
+	year = {2011},
+	keywords = {Accuracy, Acoustics, correlation theory, cross-correlation, distance measurement, estimation, frequency hop communication, frequency hop spread spectrum, frequency-hop spread spectrum ({FHSS)}, Noise, phase shift, phase shift technique, range estimation, Receivers, reverberation, signal acquisition, signal detection, signal transmission, spread spectrum communication, subwavelength range refinement, time of flight estimate, Transmitters, ultrasonic, ultrasonic measurement, ultrasonic range measurement, Ultrasonic variables measurement},
+	pages = {3334--3341},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\MSIX37R6\login.html:text/html}
 },
 
 @article{civera_inverse_2008,
@@ -190,6 +338,18 @@
 	collaborator = {Gelb, Arthur},
 	year = {1974},
 	keywords = {Estimation theory, Mathematical optimization, System analysis}
+},
+
+@inproceedings{maier_self-supervised_2011,
+	title = {Self-supervised obstacle detection for humanoid navigation using monocular vision and sparse laser data},
+	doi = {10.1109/ICRA.2011.5979661},
+	abstract = {In this paper, we present an approach to obstacle detection for collision-free, efficient humanoid robot navigation based on monocular images and sparse laser range data. To detect arbitrary obstacles in the surroundings of the robot, we analyze {3D} data points obtained from a {2D} laser range finder installed in the robot's head. Relying only on this laser data, however, can be problematic. While walking, the floor close to the robot's feet is not observable by the laser sensor, which inherently increases the risk of collisions, especially in nonstatic scenes. Furthermore, it is time-consuming to frequently stop walking and tilting the head to obtain reliable information about close obstacles. We therefore present a technique to train obstacle detectors for images obtained from a monocular camera also located in the robot's head. The training is done online based on sparse laser data in a self-supervised fashion. Our approach projects the obstacles identified from the laser data into the camera image and learns a classifier that considers color and texture information. While the robot is walking, it then applies the learned classifiers to the images to decide which areas are traversable. As we illustrate in experiments with a real humanoid, our approach enables the robot to reliably avoid obstacles during navigation. Furthermore, the results show that our technique leads to significantly more efficient navigation compared to extracting obstacles solely based on {3D} laser range data acquired while the robot is standing at certain intervals.},
+	booktitle = {2011 {IEEE} International Conference on Robotics and Automation ({ICRA)}},
+	author = {Maier, D. and Bennewitz, M. and Stachniss, C.},
+	year = {2011},
+	keywords = {arbitrary obstacle detection, close obstacles, collision avoidance, color information, control engineering computing, humanoid robot navigation, humanoid robots, Lasers, Legged locomotion, monocular images, monocular vision, Navigation, robot feet, robot head, Robot sensing systems, robot vision, self-supervised obstacle detection, sparse laser range data, texture information, Three dimensional displays},
+	pages = {1263--1269},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\KMCZMTWR\articleDetails.html:text/html}
 },
 
 @article{bailey_simultaneous_2006,
@@ -238,6 +398,16 @@
 	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\EJ2I6RJ6\login.html:text/html}
 },
 
+@article{bosse_slam_2004,
+	title = {{SLAM} in large-scale cyclic environments using the Atlas framework},
+	abstract = {This paper describes Atlas, a hybrid metrical/topological approach to simultaneous localization and mapping ({SLAM)} that achieves efficient mapping of large-scale environments. The representation is a graph of coordinate frames, with each vertex in the graph representing a local frame and each edge representing the transformation between adjacent frames. In each frame, we build a map that captures the local environment and the current robot pose along with the uncertainties of each. Each map’s uncertainties are modeled with respect to its own frame. Probabilities of entities with respect to arbitrary frames are generated by following a path formed by the edges between adjacent frames, computed using either Dijkstra’s shortest path algorithm or breath-first search. Loop closing is achieved via an efficient map matching algorithm coupled with a cycle verification step. We demonstrate the performance of the technique for post-processing large data sets, including an indoor structured environment (2.2 km path length) with multiple nested loops using laser or ultrasonic ranging sensors. 1},
+	journal = {International Journal of Robotics Research},
+	author = {Bosse, Michael and Newman, Paul and Leonard, John and Teller, Seth},
+	year = {2004},
+	pages = {1113–1139},
+	file = {Citeseer - Full Text PDF:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\HWSPDWKX\Bosse et al. - 2004 - SLAM in large-scale cyclic environments using the .pdf:application/pdf;Citeseer - Snapshot:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\C96Q38VU\summary.html:text/html}
+},
+
 @book{csorba_simultaneous_1997,
 	title = {Simultaneous Localisation and Map Building},
 	abstract = {This thesis examines the problem of localising an Autonomous Guided Vehicle ({AGV)} travelling in an unknown environment. In this problem, the {AGV} faces the dual task of modeling the environment and simultaneously localising its position within it. The Simultaneous Localisation and Map Building ({SLAM)} problem is currently one of the most important goals of {AGV} research. Solving this problem would allow {anAGV} to be deployed easily, with very little initial preparation. The {AGV} would also be exible and able to cope with modi cations in the environment. A solution to the {SLAM} problem would enable an {AGV} to would be truly {\textbackslash}autonomous." The thesis examines the {SLAM} problem from an estimation theoretic point ofview. The estimation approach provides a rigorous framework for the analysis and has also proven to be successful in actual applications. The most signi cant contribution of this thesis is to provide, for the rst time, a detailed development of the theory of the {SLAM} problem. It is shown that correlations arise between errors in the vehicle and the map estimates, and these correlations are identi ed as fundamentally important to the solution of the {SLAM} problem. It is demonstrated that ignoring these correlations results in the loss of the fundamental structure of the {SLAM} problem and leads to inconsistency in map},
@@ -256,6 +426,21 @@
 	keywords = {Barium, Buildings, bundle adjustment, Cameras, Computational efficiency, estimation, feature detection, feature extraction, map joining, monocular {SLAM}, random sample consensus paradigm, scale invariant feature transform, Simultaneous localization and mapping, {SLAM} (robots), Three dimensional displays, Visual {SLAM}},
 	pages = {431--436},
 	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\AIPMUI9U\articleDetails.html:text/html}
+},
+
+@article{wooden_guide_2006,
+	title = {A guide to vision-based map building},
+	volume = {13},
+	issn = {1070-9932},
+	doi = {10.1109/MRA.2006.1638021},
+	abstract = {This paper describes a simple vision-based mapping system for mobile robot navigation in an unknown outdoor environment, consistent with the efforts of Georgia Tech's team for the {DARPA-sponsored} Learning Applied to Ground Robots ({LAGR)} project. This approach, which has been robust to different environments and responsive to time-critical constraints, is a good example of robotics in practice},
+	number = {2},
+	journal = {{IEEE} Robotics Automation Magazine},
+	author = {Wooden, D.},
+	year = {2006},
+	keywords = {camera frames, Cameras, Computational geometry, coordinate transformations, cost maps, Global Positioning System, Hardware, Learning Applied to Ground Robots project, Linux, map building, mobile robot navigation, mobile robots, outdoor real-time robotics platform, Robot kinematics, Robot sensing systems, robot vision, Robot vision systems, Robotics and automation, stereo depth maps, Switches, unknown outdoor course, vision-based mapping system},
+	pages = {94--98},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\2JNW7UIQ\login.html:text/html}
 },
 
 @article{frese_discussion_2006,
@@ -277,11 +462,35 @@
 	file = {Snapshot:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\GJKX8ZVT\10.html:text/html}
 },
 
+@inproceedings{hanna_obstacle_2008,
+	title = {Obstacle Detection for Low Flying Unmanned Aerial Vehicles Using Stereoscopic Imaging},
+	doi = {10.1109/IMTC.2008.4547014},
+	abstract = {This paper describes a stereoscopic imaging algorithm that is modified for obstacle detection in low flying unmanned aerial vehicles ({UAVs).} In this type of flight, obstacle detection must be carried out quickly for the system to be effective in real time. Additionally, since the aircraft is close to the ground, the horizon is usually at the top of the field of view and obstacles must be distinguished from the clutter of the terrain. The sparse edge detection and reconstruction algorithm proposed, produces fast but partial reconstructions of the environment. One image is passed through a series of edge detectors to generate a very sparse outline of the environment. This outline is then correlated to the second image and the resulting reconstruction is added to a model of the environment. Although each individual reconstruction is incomplete, the overall result after a short initialization period is a model of the environment that is more comprehensive than a single stereoscopic correlation run with a more detailed edge detector. Simulation of the algorithm on test image patterns showed an increase in performance relative to the length of the sequence of stereo pairs. On average, the signal to noise ratio ({SNR)} for sparse edge reconstruction was significantly higher than that for single correlation with more detailed edge detectors. Additionally it was found that the processing speed of the sparse edge detection algorithm on a pair of stereoscopic images is faster than the processing carried out by a more detailed edge detector. A test flight was also carried out to test the algorithm in a more realistic scenario. The test confirmed that the sparse edge reconstruction algorithm resulted in a much more detailed view of the environment than if a single, more detailed edge detector had been used.},
+	booktitle = {{IEEE} Instrumentation and Measurement Technology Conference Proceedings, 2008. {IMTC} 2008},
+	author = {Hanna, E. and Straznicky, P. and Goubran, R.},
+	year = {2008},
+	keywords = {Aircraft, collision avoidance, computer vision, Detectors, distance measurement, edge detection, Image edge detection, image reconstruction, image sequence, image sequences, low flying unmanned aerial vehicles, obstacle detection, Obstacle Detection and Avoidance, Real time systems, Real-time Processing, Reconstruction algorithms, Remotely operated vehicles, Signal to noise ratio, sparse edge detection, stereo image processing, stereoscopic imaging, Testing, Unmanned aerial vehicles, Unmanned Aerial Vehicles ({UAV)}, Vehicle detection},
+	pages = {113--118},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\WHF3VXHQ\login.html:text/html}
+},
+
 @misc{_world_????,
 	title = {World Geodetic System - Wikipedia, the free encyclopedia},
 	url = {https://en.wikipedia.org/wiki/World_Geodetic_System},
 	urldate = {2013-06-02},
 	file = {World Geodetic System - Wikipedia, the free encyclopedia:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\PV4H27F8\World_Geodetic_System.html:text/html}
+},
+
+@inproceedings{yamaguchi_moving_2006,
+	title = {Moving Obstacle Detection using Monocular Vision},
+	doi = {10.1109/IVS.2006.1689643},
+	abstract = {This paper proposes a method for detecting moving obstacles on roads, by using a vehicle mounted monocular camera. To detect various moving obstacles, such as vehicles and pedestrians, the ego-motion of the vehicle is initially estimated from images captured by the camera. There are two problems in ego-motion estimation. Firstly, a typical road scene contains moving obstacles. This causes false estimation of the ego-motion. Secondly, roads possess fewer features, when compared to the number associated with background structures. This reduces the accuracy of ego-motion estimation. In our approach, the ego-motion is estimated from the correspondences of dispersed feature points extracted from various regions other than those that contain moving obstacles. After estimating the ego-motion, any moving obstacles are detected by tracking the feature points over consecutive frames. In our experiments, it has been shown that the proposed method is able to detect moving obstacles},
+	booktitle = {2006 {IEEE} Intelligent Vehicles Symposium},
+	author = {Yamaguchi, K. and Kato, T. and Ninomiya, Y.},
+	year = {2006},
+	keywords = {Cameras, ego-motion estimation, feature extraction, feature point extraction, Image motion analysis, Laser radar, Layout, monocular vision, motion estimation, moving obstacle detection, Nonlinear optics, object detection, Optical sensors, Radar detection, road vehicles, Robustness, traffic engineering computing, Vehicle detection},
+	pages = {288--293},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\2JIKQF6H\articleDetails.html:text/html}
 },
 
 @article{huang_convergence_2007,
@@ -297,6 +506,14 @@
 	keywords = {Algorithm design and analysis, Australia Council, consistency analysis, Convergence, extended information filter, extended Kalman filter, inconsistency, Information filters, Jacobian matrices, Kalman filters, landmark position estimates, nonlinear filters, nonlinear two-dimensional problem, path planning, range-and-bearing sensor, robot, Robot sensing systems, Robotics and automation, Robots, Simultaneous localization and mapping, simultaneous localization and mapping ({SLAM)}, simultaneous localization and mapping algorithms, {SLAM}, State estimation, Uncertainty},
 	pages = {1036--1049},
 	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\DMA8EH8K\login.html:text/html}
+},
+
+@book{chong_feature-based_1999,
+	title = {Feature-based Mapping in Real, Large Scale Environments using an Ultrasonic Array},
+	abstract = {This paper presents a strategy for achieving practical mapping navigation using a wheeled  mobile robot equipped with an advanced sonar sensor. The original mapping navigation  experiment, carried out with the same robot configuration, builds a feature map consisting of  commonplace indoor landmarks crucial for localisation, namely planes, corners and edges. The  map exhaustively maintains covariance matrices among all features, thus presents a time and  memory impediment to practical navigation in large environments. The new local mapping  strategy proposed here breaks down a large environment into a topology of local regions, only  maintaining the covariance among features in the same local region, and the covariance among  local maps. This notion of two hierarchy representation drastically improves the memory and  processing time requirements of the original global approach, while preserving the statistical  details, in the authors' opinions, necessary for an accurate map and prolon...},
+	author = {Chong, Kok Seng and Kleeman, Lindsay},
+	year = {1999},
+	file = {Citeseer - Full Text PDF:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\3B5J8IGP\Chong and Kleeman - 1999 - Feature-based Mapping in Real, Large Scale Environ.pdf:application/pdf;Citeseer - Snapshot:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\SN5CP6G5\summary.html:text/html}
 },
 
 @inproceedings{martinelli_results_2005,
@@ -323,6 +540,33 @@
 	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\A7IJUFCF\login.html:text/html}
 },
 
+@article{laganiere_robust_2006,
+	title = {Robust object pose estimation from feature-based stereo},
+	volume = {55},
+	issn = {0018-9456},
+	doi = {10.1109/TIM.2006.876521},
+	abstract = {This paper addresses the problem of computing the three-dimensional (3-D) path of a moving rigid object using a calibrated stereoscopic vision setup. The proposed system begins by detecting feature points on the moving object. By tracking these points over time, it produces clouds of 3-D points that can be registered, thus giving information about the underlying camera motion. A novel correction scheme that compensates for the accumulated error in the computed positions by automatic detection of loop-back points in the movement of the object is also proposed. An application to object modeling is presented in which a handheld object is moved in front of a camera and is reconstructed using silhouette intersection.},
+	number = {4},
+	journal = {{IEEE} Transactions on Instrumentation and Measurement},
+	author = {Laganiere, R. and Gilbert, S. and Roth, G.},
+	year = {2006},
+	keywords = {{3D} path, {3D} points, automatic detection, Calibration, Camera calibration, Cameras, computer vision, Design automation, Error correction, error correction scheme, feature matching, feature point detection, feature tracking, feature-based stereo, image reconstruction, Information technology, Layout, loop-back points, object detection, object pose estimation, pose estimation, Robot vision systems, Robustness, shape-from-silhouette, silhouette intersection, stereo image processing, stereoscopic vision, stereovision, three-dimensional (3-D) reconstruction},
+	pages = {1270--1280},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\UCHPQAD2\articleDetails.html:text/html}
+},
+
+@inproceedings{de_angelis_experimental_2008,
+	title = {An Experimental {UWB} Distance Measurement System},
+	doi = {10.1109/IMTC.2008.4547186},
+	abstract = {This paper presents a distance-measuring system based on the accurate round-trip time-of-flight measurement of single ultra-wideband pulses, propagating between two transceiver devices. The architectures of two realized devices, referred to as master and slave, are described. The master device implements the time-interval measuring function, by means of a time-to-digital converter integrated circuit, while the slave acts as pulse repeater. Both devices are designed for low-cost realization and low-power operations. This paper also presents and discusses some experimental results obtained from the system prototype. Finally, some numerical simulations results are shown, which could provide an explanation for the non-idealities in the observed distance-measuring behaviour of the system.},
+	booktitle = {{IEEE} Instrumentation and Measurement Technology Conference Proceedings, 2008. {IMTC} 2008},
+	author = {De Angelis, A. and Dionigi, M. and Moschitta, A. and Giglietti, R. and Carbone, P.},
+	year = {2008},
+	keywords = {accurate round-trip time-of-flight measurement, convertors, distance measurement, Integrated circuit measurements, integrated circuits, Master-slave, Numerical simulation, Prototypes, Pulse circuits, Pulse measurements, pulse repeater, Repeaters, round-trip-time, time-interval measuring function, time-to-digital converter integrated circuit, transceiver devices, transceivers, ultra wideband technology, ultra-wideband pulses, ultra-wideband ranging, {UWB} distance measurement system},
+	pages = {1016--1020},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\33A7I7IG\login.html:text/html}
+},
+
 @misc{_pyproj_????,
 	title = {pyproj - Python interface to {PROJ.4} library - Google Project Hosting},
 	url = {http://code.google.com/p/pyproj/},
@@ -343,6 +587,18 @@
 	keywords = {constrained minimisation, global stochastic map, graph theory, Kalman filters, large scale {SLAM}, local map update, minimisation, simultaneous localisation and mapping, {SLAM} (robots)},
 	pages = {564--566},
 	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\WWEWV9E6\login.html:text/html}
+},
+
+@inproceedings{kubota_global_2007,
+	title = {A Global Optimization Algorithm for Real-Time On-Board Stereo Obstacle Detection Systems},
+	doi = {10.1109/IVS.2007.4290083},
+	abstract = {A fast and robust stereo algorithm for on-board obstacle detection systems is proposed. The proposed method finds the optimum road-obstacle boundary which provides the most consistent interpretation of the input stereo image pair. Global optimization combined with a robust matching measure enables stable detection of obstacles under various circumstances, such as heavy rain and severe lighting conditions. The processing time for {VGA} size image pair is about 15 msec on a 3.6 {GHz} pentium {IV} processor, which is fast enough for realtime applications.},
+	booktitle = {2007 {IEEE} Intelligent Vehicles Symposium},
+	author = {Kubota, S. and Nakano, T. and Okamoto, Y.},
+	year = {2007},
+	keywords = {Apertures, Cameras, Computational efficiency, global optimization algorithm, object detection, optimisation, optimum road-obstacle boundary, Rain, Real time systems, real-time on-board stereo obstacle detection systems, road safety, road traffic, Roads, Robustness, Search methods, stereo image, stereo image processing, stereo vision, traffic engineering computing, Vehicle detection},
+	pages = {7--12},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\V4J275UG\articleDetails.html:text/html}
 },
 
 @article{schleicher_real-time_2009,
@@ -387,6 +643,51 @@
 	keywords = {Control theory, Estimation theory, System analysis}
 },
 
+@misc{subharsanan_low_2013,
+	title = {Low Cost  Scanning {LiDAR} Imager},
+	url = {http://www.lidarnews.com/PDF/LiDARMagazine_SudharsananMoss-LowCostLiDARImager_Vol3No2.pdf},
+	publisher = {{LiDAR} News},
+	author = {Subharsanan, Rengarajan and Moss, Robert},
+	month = mar,
+	year = {2013}
+},
+
+@article{yu_robust_2008,
+	title = {Robust 3-D Motion Tracking From Stereo Images: A Model-Less Method},
+	volume = {57},
+	issn = {0018-9456},
+	shorttitle = {Robust 3-D Motion Tracking From Stereo Images},
+	doi = {10.1109/TIM.2007.911641},
+	abstract = {Traditional vision-based 3-D motion-estimation algorithms require given or calculated 3-D models while the motion is being tracked. We propose a high-speed extended-Kalman-filter-based approach that recovers camera position and orientation from stereo image sequences without prior knowledge, as well as the procedure for the reconstruction of 3-D structures. Empowered by the use of a trifocal tensor, the computation step of 3-D models can be eliminated. The algorithm is thus flexible and can be applied to a wide range of domains. The twist motion model is also adopted to parameterize the 3-D motion. It is minimal since it only has six parameters as opposed to seven parameters in quaternion and 12 parameters in matrix representation. The motion representation is robust because it does not suffer from singularities as Euler angles. Due to the fact that the number of parameters to be estimated is reduced, our algorithm is more efficient, stable, and accurate than traditional approaches. The proposed method has been applied to recover the motion from stereo image sequences taken by a robot and a handheld stereo rig. The results are accurate compared to the ground truths. It is shown in the experiment that our algorithm is not susceptible to outlying point features with the application of a validation gate.},
+	number = {3},
+	journal = {{IEEE} Transactions on Instrumentation and Measurement},
+	author = {Yu, Ying-Kin and Wong, Kin Hong and Or, Siu Hang and Chang, {M.M.-Y.}},
+	year = {2008},
+	keywords = {computer vision, Euler angles, extended-Kalman-fllter-based approach, filtering theory, image sequences, Kalman filtering, Kalman filters, matrix algebra, matrix representation, motion estimation, pose tracking, robot vision, robust {3D} motion tracking, stereo image processing, stereo image sequences, stereo images, stereo vision, structure and motion, trifocal tensor, twist, validation gate, vision-based {3D} motion-estimation algorithms, visual servoing},
+	pages = {622--630},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\Q8JBTE7M\login.html:text/html}
+},
+
+@inproceedings{zhang_real-time_2012,
+	title = {Real-time obstacle detection based on stereo vision for automotive applications},
+	doi = {10.1109/EDERC.2012.6532272},
+	abstract = {This paper presents a novel algorithm for on-road obstacle detection based on stereo cameras. The proposed algorithm significantly reduces the complexity disparity calculations involved when using a stereo vision technique. Many recent stereo-vision based obstacle detection systems require a dense disparity map and, then, locate the obstacles according to the depth information. However, calculating the correspondence for each pixel is very time consuming. In automotive applications object detection must be performed in real-time. The proposed algorithm uses given parameters of stereo cameras to determine the disparity search range of the pixels assuming all the pixels are on the road surface. According to the predefined search range for the road surface, the true disparities of obstacles are not included. Therefore, large errors will be introduced during block matching which indicate obstacle positions. This new system only consumes less than 10\% of the traditional block-based disparity calculations. The core part of the proposed algorithm was implemented on the {TI} {DM648} platform and achieved real-time performance.},
+	booktitle = {Education and Research Conference ({EDERC)}, 2012 5th European {DSP}},
+	author = {Zhang, Zhen and Wang, Yifei and Brand, J. and Dahnoun, N.},
+	year = {2012},
+	keywords = {automotive applications, Automotive engineering, block matching, block-based disparity calculations, Cameras, complexity disparity calculations, dense disparity map, depth information, image matching, object detection, obstacle positions, on-road obstacle detection, real-time obstacle detection, road surface, stereo cameras, stereo image processing, stereo vision technique, stereo-vision based obstacle detection systems, {TI} {DM648} platform},
+	pages = {281--285},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\593QXZRF\articleDetails.html:text/html}
+},
+
+@book{williams_efficient_2001,
+	title = {Efficient Solutions to Autonomous Mapping and Navigation Problems},
+	abstract = {This thesis deals with the Simultaneous Localisation and Mapping algorithm as it pertains to the deployment of mobile systems in unknown environments. Simultaneous Localisation and Mapping ({SLAM)} as defined in this thesis is the process of concurrently building up a map of the environment and using this map to obtain improved estimates of the location of the vehicle. In essence, the vehicle relies on its ability to extract useful navigation information from the data returned by its sensors. The vehicle typically starts at an unknown location with no a priori knowledge of landmark locations. From relative observations of landmarks, it simultaneously computes an estimate of vehicle location and an estimate of landmark locations. While continuing in motion, the vehicle builds a complete map of landmarks and uses these to provide continuous estimates of the vehicle location. The potential for this type of navigation system for autonomous systems operating in unknown environments is enormous. One significant obstacle on the road to the implementation and deployment of large scale {SLAM} algorithms is the computational effort required to maintain the correlation information between features in the map and between the features and the vehicle. Performing the update of the covariance matrix is of O(n3) for a straightforward implementation of the Kalman Filter. In the case of the {SLAM} algorithm, this complexity can be reduced to O(n2) given the sparse nature of typical observations. Even so, this implies that the computational effort will grow with the square of the number of features maintained in the map. For maps containing more than a few tens of features, this computational burden will quickly make the update intractable - especially if the observation rates are high. An effective map-management technique is therefore required in order to help manage this complexity. The major contributions of this thesis arise from the formulation of a new approach to the mapping of terrain features that provides improved computational efficiency in the {SLAM} algorithm. Rather than incorporating every observation directly into the global map of the environment, the Constrained Local Submap Filter ({CLSF)} relies on creating an independent, local submap of the features in the immediate vicinity of the vehicle. This local submap is then periodically fused into the global map of the environment. This representation is shown to reduce the computational complexity of maintaining the global map estimates as well as improving the data association process by allowing the association decisions to be deferred until an improved local picture of the environment is available. This approach also lends itself well to three natural extensions to the representation that are also outlined in the thesis. These include the prospect of deploying multi-vehicle {SLAM}, the Constrained Relative Submap Filter and a novel feature initialisation technique. Results of this work are presented both in simulation and using real data collected during deployment of a submersible vehicle equipped with scanning sonar.},
+	author = {Williams, Stefan Bernard},
+	year = {2001},
+	file = {Citeseer - Full Text PDF:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\SSDC6TVK\Williams - 2001 - Efficient Solutions to Autonomous Mapping and Navi.pdf:application/pdf;Citeseer - Snapshot:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\GV3C2SI9\summary.html:text/html}
+},
+
 @inproceedings{leonard_simultaneous_1991,
 	title = {Simultaneous map building and localization for an autonomous mobile robot},
 	doi = {10.1109/IROS.1991.174711},
@@ -415,6 +716,19 @@
 	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\B6EXJIJM\login.html:text/html}
 },
 
+@inproceedings{broggi_stereo_2011,
+	title = {Stereo obstacle detection in challenging environments: The {VIAC} experience},
+	shorttitle = {Stereo obstacle detection in challenging environments},
+	doi = {10.1109/IROS.2011.6094535},
+	abstract = {Obstacle detection by means of stereo-vision is a fundamental task in computer vision, which has spurred a lot of research over the years, especially in the field of vehicular robotics. The information provided by this class of algorithms is used both in driving assistance systems and in autonomous vehicles, so the quality of the results and the processing times become critical, as detection failures or delays can have serious consequences. The obstacle detection system presented in this paper has been extensively tested during {VIAC}, the {VisLab} Intercontinental Autonomous Challenge [1], [2], which has offered a unique chance to face a number of different scenarios along the roads of two continents, in a variety of conditions; data collected during the expedition has also become a reference benchmark for further algorithm improvements.},
+	booktitle = {2011 {IEEE/RSJ} International Conference on Intelligent Robots and Systems ({IROS)}},
+	author = {Broggi, A. and Buzzoni, M. and Felisa, M. and Zani, P.},
+	year = {2011},
+	keywords = {autonomous vehicle, Cameras, collision avoidance, computer vision, delay systems, delays, detection failures, driving assistance system, Hardware, image reconstruction, Image resolution, Measurement, mobile robots, road vehicles, Roads, robot vision, stereo image processing, stereo obstacle detection, stereo-vision, Vehicles, vehicular robotics, {VIAC}, {VisLab} Intercontinental Autonomous Challenge},
+	pages = {1599--1604},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\UQ36CH7U\articleDetails.html:text/html}
+},
+
 @inproceedings{civera_1-point_2009,
 	address = {Piscataway, {NJ}, {USA}},
 	series = {{IROS'09}},
@@ -428,6 +742,21 @@
 	author = {Civera, Javier and Grasa, Oscar G. and Davison, Andrew J. and Montiel, J. M. M.},
 	year = {2009},
 	pages = {3498–3504}
+},
+
+@article{jirawimut_visual_2003,
+	title = {Visual odometer for pedestrian navigation},
+	volume = {52},
+	issn = {0018-9456},
+	doi = {10.1109/TIM.2003.815996},
+	abstract = {This paper presents a visual odometer system using stereo cameras for pedestrian navigation. A novel method for pedestrian navigation based on the knowledge of gait analysis and robust ego-motion estimation is proposed. Two major problems of implementing the system on a pedestrian are stated. Firstly, the features collected from cameras attached on a walking pedestrian normally have winding trajectory resulting in inaccurate tracking. Secondly, the observed object moving independently leads to incorrect ego-motion estimation. Using gait analysis, capturing images at the same stage of the walking cycle produces a less winding trajectory that allows tracking without stabilizing the images. Robust ego motion is also introduced to eliminate outliers that are independently moving features, mismatched features in the stereo matching step and incorrectly assigned features in the tracking step. Data processing techniques including corner detection, stereo matching, triangulation, tracking, and ego-motion estimation are employed. The outcome is the estimated incremental ego motion of the stereo cameras. The approach not only enables the system to operate on walking users but also improves the accuracy of ego-motion estimation.},
+	number = {4},
+	journal = {{IEEE} Transactions on Instrumentation and Measurement},
+	author = {Jirawimut, R. and Prakoonwit, S. and Cecelja, F. and Balachandran, W.},
+	year = {2003},
+	keywords = {blind person, Cameras, corner detection, data processing, distance measurement, feature detection, gait analysis, Global Positioning System, handicapped aids, image capture, Layout, Legged locomotion, motion estimation, Navigation, pedestrian navigation, Robot vision systems, robust ego-motion estimation, Robustness, stereo camera, stereo image processing, stereo matching, Systems engineering and theory, Tracking, Trajectory, triangulation, visual odometer, visually impaired person, walking cycle, winding trajectory},
+	pages = {1166--1173},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\T33EPG34\login.html:text/html}
 },
 
 @article{kalman_new_1960,
@@ -461,6 +790,15 @@
 	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\E8QX76HP\login.html:text/html}
 },
 
+@inproceedings{leonard_consistent_2003,
+	title = {Consistent, convergent, and constant-time slam},
+	abstract = {This paper presents a new efficient algorithm for simultaneous localization and mapping ({SLAM)}, using multiple overlapping submaps, each built with respect to a local frame of reference defined by one of the features in the submap. The global position of each submap is estimated using information from other submaps in an efficient, provably consistent manner. For situations where the mobile robot is able to make repeated visits to all regions of the environment, the method achieves convergence to a near-optimal result with time complexity while maintaining consistent error bounds. Simulation results demonstrate the ability of the technique to converge to errors that are only slightly greater than the full solution, while maintaining consistency. 1},
+	booktitle = {In {IJCAI}},
+	author = {Leonard, J. and Newman, P.},
+	year = {2003},
+	file = {Citeseer - Full Text PDF:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\HVNAF68I\Leonard and Newman - 2003 - Consistent, convergent, and constant-time slam.pdf:application/pdf;Citeseer - Snapshot:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\FQJ6N758\summary.html:text/html}
+},
+
 @book{brown_introduction_1993,
 	address = {New York},
 	edition = {2nd ed},
@@ -479,6 +817,71 @@
 	month = mar,
 	year = {2008},
 	file = {GeoSurvII System Requirements Document-SRD_E_31-Mar-08.pdf:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\8IQKHQ2W\GeoSurvII System Requirements Document-SRD_E_31-Mar-08.pdf:application/pdf}
+},
+
+@article{alonge_novel_2009,
+	title = {A Novel Method of Distance Measurement Based on Pulse Position Modulation and Synchronization of Chaotic Signals Using Ultrasonic Radar Systems},
+	volume = {58},
+	issn = {0018-9456},
+	doi = {10.1109/TIM.2008.2003309},
+	abstract = {This paper deals with a novel method of transmission and receipt of a signal based on both the property of two chaotic systems generating the same chaotic signal when they are synchronized and the property of pulse position modulation ({PPM)} to be insensitive to the distortions of the transmission channel. The method is discussed in the context of ultrasonic radar systems, in which the transmitter and receiver, which consist of ultrasonic sensors, are near each other, and the received signal consists of the transmitted signal reflected by an obstacle. A reference sinusoidal signal is superimposed to a chaotic signal generated by a master chaotic system, and the whole signal is modulated according to the {PPM} method and transmitted by the sensor. The received signal is demodulated, and the demodulated signal forces a slave chaotic system to generate the chaotic signal embedded in it, which allows recovery of the sinusoidal signal by subtracting this chaotic signal from the demodulated echo. The difference of the phases of the reference sinusoidal signal and the recovered sinusoidal signal allows computation of the time of flight of the signal and, consequently, the distance of the radar system from the obstacle. The novel method is illustrated and tested by both simulation and experiments. The interference problem between the considered radar system and other radar systems ( crosstalk) is also addressed, and a solution is proposed to avoid it.},
+	number = {2},
+	journal = {{IEEE} Transactions on Instrumentation and Measurement},
+	author = {Alonge, F. and Branciforte, M. and Motta, F.},
+	year = {2009},
+	keywords = {chaos, Chaotic pulse position modulation ({CPPM)}, chaotic signal synchronization, chaotic system synchronization, chaotic systems, crosstalk, demodulation, distance measurement, multipath fading, {PPM}, pulse position modulation, radar applications, reference sinusoidal signal, time of flight, ultrasonic devices, ultrasonic radar systems, ultrasonic sensors},
+	pages = {318--329},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\35MNKUTG\login.html:text/html}
+},
+
+@inproceedings{julier_non-divergent_1997,
+	title = {A non-divergent estimation algorithm in the presence of unknown correlations},
+	volume = {4},
+	doi = {10.1109/ACC.1997.609105},
+	abstract = {This paper addresses the problem of estimation when the cross-correlation in the errors between different random variables are unknown. A new data fusion algorithm, the covariance intersection algorithm ({CI)}, is presented. It is proved that this algorithm yields consistent estimates irrespective of the actual correlations. This property is illustrated in an application of decentralised estimation where it is impossible to consistently use a Kalman filter},
+	booktitle = {American Control Conference, 1997. Proceedings of the 1997},
+	author = {Julier, {S.J.} and Uhlmann, {J.K.}},
+	year = {1997},
+	keywords = {covariance intersection algorithm, covariance matrix, cross-correlation, data fusion algorithm, filtering theory, Information filtering, Information filters, nondivergent estimation algorithm, Predictive models, random variables, sensor fusion, Sensor systems, State estimation, unknown correlations, Vehicles, Yield estimation},
+	pages = {2369--2373 vol.4},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\I8FW65U2\login.html:text/html}
+},
+
+@inproceedings{garcia_multi-sensory_2008,
+	title = {Multi-sensory system for obstacle detection on railways},
+	doi = {10.1109/IMTC.2008.4547393},
+	abstract = {In the current railway systems, it is becoming more necessary to have safety elements in order to avoid accidents. One of the causes that can provoke serious accidents is the existence of obstacles on the tracks. In this work, a multi-sensory barrier - consisting of infrared ({IR)} and ultrasonic ({US)} sensors- and a vision system, is proposed in order to inform the monitoring system of the existence of obstacles. Due to the fact that any sensor has detection problems which are strongly dependent on meteorological conditions, the use of different sensors for the same task is justified so that the drawback of one sensor is compensated for by the others. The high degree of reliability needed in these environments, where the safety is fundamental, recommends the use of a multi-sensory system. Principal components analysis is applied to the data obtain from the barrier and from the vision system. The use of this technique with the barrier permits concluding if there are obstacles on the tracks; and with the vision system information about moving objects is obtained.},
+	booktitle = {{IEEE} Instrumentation and Measurement Technology Conference Proceedings, 2008. {IMTC} 2008},
+	author = {Garcia, {J.J.D.} and Urena, {J.U.} and Hernandez, {A.A.} and Mazo, {M.Q.} and Vazquez, {J.F.} and Diaz, M.-J.},
+	year = {2008},
+	keywords = {accident prevention, Accidents, collision avoidance, false alarms reduction, infrared detectors, infrared sensor, Laser radar, Machine vision, meteorological condition, multisensory system, Multi-sensory system, object detection, obstacle detection, obstacle monitoring system, principal component analysis, principal components analysis, Proposals, Rail transportation, railway accidents, railway engineering, railway safety, railway tracks, railways, safety elements, sensor emission codification, Sensor systems, ultrasonic devices, ultrasonic sensors, Vehicles, vision system information},
+	pages = {2091--2096},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\KB5KU8Z4\login.html:text/html}
+},
+
+@inproceedings{de_angelis_low-cost_2007,
+	title = {A Low-Cost Ultra-Wideband Indoor Ranging Technique},
+	doi = {10.1109/IMTC.2007.379419},
+	abstract = {This paper presents the development of a low-cost indoor ranging technique based on time-of-arrival ({TOA)} estimation, using short-pulse ultra-wideband ({UWB)} signals. The realized system includes two identical {UWB} transceiver devices, in which the receiver section is based on a tunnel diode detector and the pulse generation is performed by a common bipolar transistor driven in avalanche mode. An indirect measurement of the distance between the devices is obtained by measuring the frequency of the generated pulse train. A theoretical model of the system is described and a statistical analysis is presented, including the evaluation of the Cramer-Rao lower bound ({CRLB)} on the distance estimation. Furthermore the principle of operation of the realized system prototypes is described, along with some implementation issues. Finally experimental results are shown and discussed.},
+	booktitle = {{IEEE} Instrumentation and Measurement Technology Conference Proceedings, 2007. {IMTC} 2007},
+	author = {De Angelis, A. and Dionigi, M. and Moschitta, A. and Carbone, P.},
+	year = {2007},
+	keywords = {avalanche diodes, avalanche mode, Bandwidth, common bipolar transistor, Cramer-Rao lower bound, Delay, distance measurement, {FCC}, Frequency measurement, geolocation, Ground penetrating radar, indoor ranging, Instrumentation and measurement, pulse generation, Pulse measurements, short-pulse ultra-wideband signals, statistical analysis, time-of-arrival estimation, time-of-flight, {TOA} estimation, transceivers, tunnel diode detector, tunnel diodes, ultra wideband communication, ultra wideband technology, ultra-wideband, ultra-wideband indoor ranging technique, {UWB} signals, {UWB} transceiver devices},
+	pages = {1--6},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\BFTRFJ68\login.html:text/html}
+},
+
+@inproceedings{curtis_integrated_2005,
+	title = {An Integrated Robotic Multi-Modal Range Sensing System},
+	volume = {3},
+	doi = {10.1109/IMTC.2005.1604520},
+	abstract = {Creating 3-D surface representation of large objects or wide working areas is a tedious and error-prone process using the currently available sensor technologies. The primary problem comes from the fact that laser range sensors allow to capture at most one line of points from a given position and orientation, and stereo vision systems accuracy is dependent upon the initial camera calibration, the extraction of features, and the matching of features. When the registration process is not properly controlled, registration errors tend to significantly degrade the accuracy of measurements, which is revealed to be critical in telerobotic operations where occupancy models are built directly from these range measurements. The reliability of range measurements within a singular range sensor technique can drastically distort the registration process, especially within environments unsuitable for the system. Instead of utilizing a single range sensor, we adopt the use of a multi-modal system allowing diverse modes of range sensing techniques to complement each other in the hope that one system's strength could be used to compensate for another system's weakness. Using a mixture of active and passive range sensing techniques, both giving dense and sparse datasets, this multi-modal range sensing system is integrated seamlessly with minimal processing overhead and optimal workspace},
+	booktitle = {Proceedings of the {IEEE} Instrumentation and Measurement Technology Conference, 2005. {IMTC} 2005},
+	author = {Curtis, P. and Yang, {C.S.} and Payeur, P.},
+	year = {2005},
+	keywords = {active range sensing, Calibration, Cameras, data fusion, Degradation, distance measurement, Distortion measurement, diverse modes, Error correction, feature extraction, integrated robotic multi modal range sensing, multi-modal data collection, passive range sensing, range measurements, Robot sensing systems, robotic sensing systems, Robots, sensor fusion, Sensor phenomena and characterization, Sensor systems, stereo vision},
+	pages = {1991--1996},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\XWFJ7F6W\login.html:text/html}
 },
 
 @article{smith_representation_1986,
@@ -514,4 +917,17 @@
 	author = {Castellanos, José A. and Neira, José and Tardós, Juan D.},
 	year = {2004},
 	file = {Citeseer - Full Text PDF:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\D4546G2M\Castellanos et al. - Limits to the Consistency of Ekf-Based Slam 1.pdf:application/pdf;Citeseer - Snapshot:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\HA7KZK3R\summary.html:text/html}
+},
+
+@inproceedings{einhorn_cant_2010,
+	title = {Can't take my eye off you: Attention-driven monocular obstacle detection and {3D} mapping},
+	shorttitle = {Can't take my eye off you},
+	doi = {10.1109/IROS.2010.5651741},
+	abstract = {Robust and reliable obstacle detection is an important capability for mobile robots. In our previous works we have presented an approach for visual obstacle detection based on feature based monocular scene-reconstruction. Most existing feature-based approaches for visual {SLAM} and scene reconstruction select their features uniformly over the whole image based on visual saliency only. In this paper we present a novel attention-driven approach that guides the feature selection to image areas that provide the most information for mapping and obstacle detection. Therefore, we present an information theoretic derivation of the expected information gain that results from the selection of new image features. Additionally, we present a method for building a volumetric representation of the robots environment in terms of an occupancy voxel map. The voxel map provides top-down information that is needed for computing the expected information gain. We show that our approach for guided feature selection improves the quality of the created voxel maps and improves the obstacle detection by reducing the risk of missing obstacles.},
+	booktitle = {2010 {IEEE/RSJ} International Conference on Intelligent Robots and Systems ({IROS)}},
+	author = {Einhorn, E. and Schröter, C. and Gross, H. -M},
+	year = {2010},
+	keywords = {{3D} mapping, attention driven approach, attention driven monocular obstacle detection, collision avoidance, {EKF}, feature selection, image feature, information gain, mobile robots, monocular scene reconstruction, shape-from-motion, {SLAM} (robots), visual attention, visual obstacle detection, visual saliency, Visual {SLAM}, volumetric representation, voxel map, voxel mapping},
+	pages = {816--821},
+	file = {IEEE Xplore Abstract Record:C:\Users\fan\AppData\Roaming\Mozilla\Firefox\Profiles\ovsi675t.default\zotero\storage\QTVFTQ6G\articleDetails.html:text/html}
 }
