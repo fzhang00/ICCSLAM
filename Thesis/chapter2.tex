@@ -29,55 +29,108 @@ capable of acquire 3D range measurement simultaneously by illuminating
 the entire field of view of the camera with a single laser, and
 capturing the reflected laser with a 2D imaging sensor
 \cite{amzajerdian_lidar_2011}. However, its high cost has limited its
-use in commercial application.
-
-In recent years, many researches use optical sensor as a passive range
-sensor for its low weight, low cost. With the help of computer vision
-technology, optical sensors have been successfully used for range
-mapping and obstacle detection in a number of platforms
-\cite{einhorn_cant_2010} \cite{hashimoto_detection_1996}
+use in commercial application. In recent years, many researches use
+optical sensor as a passive range sensor for its low weight, low cost.
+With the help of computer vision technology, optical sensors have been
+successfully used for range mapping and obstacle detection in a number
+of platforms \cite{einhorn_cant_2010} \cite{hashimoto_detection_1996}
 \cite{yamaguchi_moving_2006} \cite{zhang_obstacle_2012}
 \cite{maier_self-supervised_2011} \cite{kubota_global_2007}
 \cite{xu_method_2009} \cite{hanna_obstacle_2008}
 \cite{zhang_real-time_2012} \cite{van_der_mark_stereo_2007}
-\cite{broggi_stereo_2011}. There are several types of configuration in
-using optical sensor for range mapping: monocular, binocular, or
-multi-camera. Since optical sensors are bearing only sensors, the
-principle of range measurement is through triangulation a common scene
-point in two or more images captured. For binocular camera setups, two
-cameras are placed apart from each other with their relative geometry
-known and captures images simultaneously. If the position of a scene
-point can be accurately found in the images by both cameras, its
-distance can be calculated by using the difference in position of the
-projected point in images, and the separation of the cameras.
+\cite{broggi_stereo_2011}.
 
-\begin{itemize}
-  \item Radar, sonar, laser range finder, 3D flash lidars. optical sensors
-  \begin{itemize}
-    \item Radar, laser range finder have high power requirement and mass
-    \item Depth measurement can be obtained through optical sensors, which 
-    are inexpensive and light weight
-    \item Depth maps of a 3-D scene can be computed from a single pair of 
-    stereo camera. Stereo processing can require significant computational 
-    effort
-  \end{itemize}
-  \item Monocular camera characteristic: 
-  \begin{itemize}
-    \item bearing-only sensor, which provide the measurement on the 
-    direction of the feature, and not the range. Other sensors, such as 
-    radar, are range and bearing sensors. 
-  \end{itemize}
-\end{itemize}
+\subsection{Monocular Vision and Binocular Vision}
+Image sensors are bearing-only sensors, which provide the measurement
+on the direction of the features, and not the range. Other sensor
+mentioned above, such as radar, LIDAR, are range and bearing sensor.
+the principle of range measurement is through triangulating a common
+scene point in two or more images captured. There are two types of
+configuration in using optical sensor for range mapping through
+triangulation: monocular, binocular. 
 
-\subsection{Monocular Vision and Binocular Vision}\label{sec:MonoBino}
-\begin{itemize}
-  \item Optical flow vs. feature detection and tracking
-  \item The correspondence problem
-  \item Initialization problem (addressed by Inverse depth 
-  parameterization)
-  \item Lack of scale information of overall map -$>$ must work with other 
-  sensors which provide robot motion measurement. 
-\end{itemize}
+For binocular camera setups, two cameras are placed
+apart from each other with their relative geometry (baseline
+separation) known and captures images simultaneously. If the position
+of a scene point can be accurately found in the images by both
+cameras, its distance can be calculated by using the difference in
+position of the projected point in images, and the separation of the
+cameras. Because binocular setup acquires two images simultaneously,
+the feature distance can be obtained at time 0. The challenge in
+binocular range sensing is feature correspondence between the two
+images. In addition, because of the limited distance in separation
+between the camera, and the vibration noise caused by vehicle motion,
+binocular range sensing are usually applied in short to medium range
+measurement. 
+
+For monocular camera setup, only one camera is used with an odometry
+sensors providing camera displacement measurement between frames. Then
+similar principle applies to triangulate the common scene point in two
+frames to measurement the distance of the point. If camera is facing
+the direction of travel, data association is less difficult as image
+difference from frame to frame is usually small. Secondly, the
+baseline separation can be selected according to the targeted object
+distance by processing every frame, every other frames, or every n
+frames captured which enable monocular camera being used for longer
+range measurement. On the other hand, since monocular camera
+configuration capture 1 frames at a time, the earliest range
+measurement is available until two frames of images has been captured.
+
+\subsection{Camera Calibration}
+
+Camera model is what relating measurement on image plane to
+measurement of the real world. Without it, measurement of the 3D world
+through camera will be incorrect by a scale factor. Camera calibration
+gives a model of the camera's geometry and a distortion model of the
+lens. These models define the \textit{intrinsic parameters} of a
+camera. 
+
+\subsubsection{Basic Projection Geometry}
+
+For a 3D scene point $Q=(X, Y, Z)$ and the correspondent point $q=(x_{screen},
+y_{screen})$ on the image plane, they are related by equation \cite{learning_opencv}
+
+\begin{equation}
+\begin{matrix}
+x_{screen} = f_x\left(\frac{X}{Z}\right)+c_x, &
+y_{screen}=f_y\left(\frac{Y}{Z}\right)+c_y
+\end{matrix}
+\end{equation}
+
+\noindent where $(c_x, c_y)$ is the image plane coordinate at which optical axis
+intersects the image plane, $f_x$ and $f_y$ is the product of focal
+length $f$ (unit millimeter) with the scaling factor $s_x$ and $s_y$
+(unit pixel/millimeter) for X and Y. Therefore $f_x$ and $f_y$ is in
+unit pixel. The parameter $c_x$, $c_y$, $f_x$, $f_y$ define the camera
+intrinsics matrix \cite{learning_opencv} \cite{Heikkila_four_1997}.
+
+\begin{equation}
+M = \begin{bmatrix}
+f_x & 0 & c_x \\
+0& f_y & c_y \\
+0 & 0 & 1 \end{bmatrix}
+\end{equation}
+
+\subsubsection{Lens Distortion}
+There are two main contributor to lens distortion. Radial distortion
+and tangential distortion. Radial distortion arise as a result of the
+shape of lens. It cause noticeable distortion to the pixels close to
+the edge of the imager, resulting in ``fish-eye'' effect. The radial
+distortion is zero at the center of the imager, and increases with the
+distance to the optical center. It is characterized by the first few
+terms of a Taylor series expansion
+
+$$ x_{corrected} = x(1+k_1r^2+k_2r^4+k_3r^6)$$
+$$ y_{corrected} = y(1+k_1r^2+k_2r^4+k_3r^6)$$
+
+\noindent Tangential distortion arise from the misalignment
+between the image sensor and the lens. It is minimally characterized
+by two additional parameters $p_1$ and $p_2$
+
+$$x_{corrected} = x+[2p_1y+p_2(r^2+2x^2)]$$
+$$y_{corrected} = y+[p_1(r^2+2y^2)+2p_2x]$$
+
+\subsubsection{Camera Calibration Algorithm}
 
 \subsection{Limitation of Optical Sensor in Recursive Algorithm}
 \label{sec:OpticalSensorLimitation}

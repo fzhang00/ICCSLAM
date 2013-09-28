@@ -4,7 +4,6 @@
      "ch:Review"
      "sec:sensor"
      "sec:SensorOverview"
-     "sec:MonoBino"
      "sec:OpticalSensorLimitation"
      "sec:gps_and_imu"
      "sec:SLAM"

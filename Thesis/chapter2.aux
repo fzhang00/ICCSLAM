@@ -1,5 +1,30 @@
 \relax 
-\@writefile{toc}{\contentsline {chapter}{ \numberline {1}REVIEW ON SENSORS AND RELATED WORK}{1}}
+\citation{de_angelis_low-cost_2007}
+\citation{alonge_novel_2009}
+\citation{harb_neural_2008}
+\citation{saad_robust_2011}
+\citation{williams_efficient_2001}
+\citation{chong_feature-based_1999}
+\citation{hanna_obstacle_2008}
+\citation{lu_distance_2010}
+\citation{civera_inverse_2008}
+\citation{jirawimut_visual_2003}
+\citation{amzajerdian_lidar_2011}
+\citation{subharsanan_low_2013}
+\citation{lemmens_airborne_2007}
+\citation{amzajerdian_lidar_2011}
+\citation{einhorn_cant_2010}
+\citation{hashimoto_detection_1996}
+\citation{yamaguchi_moving_2006}
+\citation{zhang_obstacle_2012}
+\citation{maier_self-supervised_2011}
+\citation{kubota_global_2007}
+\citation{xu_method_2009}
+\citation{hanna_obstacle_2008}
+\citation{zhang_real-time_2012}
+\citation{van_der_mark_stereo_2007}
+\citation{broggi_stereo_2011}
+\@writefile{toc}{\contentsline {chapter}{ \numberline {1}REVIEW}{1}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \newlabel{ch:Review}{{1}{1}}
@@ -7,14 +32,11 @@
 \newlabel{sec:sensor}{{1.1}{1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.1.1}Overview}{1}}
 \newlabel{sec:SensorOverview}{{1.1.1}{1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.2}Monocular Vision and Binocular Vision}{3}}
-\newlabel{sec:MonoBino}{{1.1.2}{3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.3}Limitation of Optical Sensor in Recursive Algorithm}{3}}
-\newlabel{sec:OpticalSensorLimitation}{{1.1.3}{3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.4}GPS and IMU}{3}}
-\newlabel{sec:gps_and_imu}{{1.1.4}{3}}
-\@writefile{toc}{\contentsline {section}{\numberline {1.2}SLAM as A Sensor Fusion Framework}{3}}
-\newlabel{sec:SLAM}{{1.2}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.2}Monocular Vision and Binocular Vision}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.3}Camera Calibration}{3}}
+\@writefile{toc}{\contentsline {subsubsection}{Basic Projection Geometry}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.4}Limitation of Optical Sensor in Recursive Algorithm}{3}}
+\newlabel{sec:OpticalSensorLimitation}{{1.1.4}{3}}
 \citation{kalman_new_1960}
 \citation{sorenson_least-squares_1970}
 \citation{analytic_sciences_corporation_applied_1974}
@@ -22,15 +44,19 @@
 \citation{lewis_optimal_1986}
 \citation{brown_introduction_1993}
 \citation{maybeck_stochastic_1979}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.1}Recursive Probabilistic Estimation using Extended Kalman Filter}{4}}
-\newlabel{sec:SLAM_using_EKF}{{1.2.1}{4}}
-\@writefile{toc}{\contentsline {subsubsection}{Kalman Filter Models}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.5}GPS and IMU}{4}}
+\newlabel{sec:gps_and_imu}{{1.1.5}{4}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.2}SLAM as A Sensor Fusion Framework}{4}}
+\newlabel{sec:SLAM}{{1.2}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.1}Recursive Probabilistic Estimation using Extended Kalman Filter}{5}}
+\newlabel{sec:SLAM_using_EKF}{{1.2.1}{5}}
+\@writefile{toc}{\contentsline {subsubsection}{Kalman Filter Models}{6}}
 \@writefile{toc}{\contentsline {subsubsection}{The Algorithm}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 1}{\ignorespaces Kalman Operation Flow Diagram\relax }}{6}}
-\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{figch2:1}{{\global \advance \c@myfigcount \c@figure \relax 1}{6}}
 \@writefile{lot}{\contentsline {table}{\numberline {\global \advance \c@mytablecount \c@table \relax 1}{\ignorespaces Kalman Filter Operation Equations\relax }}{7}}
 \newlabel{tab:KF}{{\global \advance \c@mytablecount \c@table \relax 1}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 1}{\ignorespaces Kalman Operation Flow Diagram\relax }}{7}}
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{figch2:1}{{\global \advance \c@myfigcount \c@figure \relax 1}{7}}
 \@writefile{toc}{\contentsline {subsubsection}{Extended Kalman Filter}{7}}
 \@writefile{lot}{\contentsline {table}{\numberline {\global \advance \c@mytablecount \c@table \relax 2}{\ignorespaces Extended Kalman Filter Operation Equations\relax }}{8}}
 \newlabel{tab:EKF}{{\global \advance \c@mytablecount \c@table \relax 2}{8}}
@@ -48,19 +74,21 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.2.2}SLAM with Extended Kalman Filter}{9}}
 \@writefile{toc}{\contentsline {subsubsection}{General EKF Model for SLAM}{9}}
 \citation{dissanayake_solution_2001}
-\@writefile{toc}{\contentsline {subsubsection}{Properties of SLAM}{10}}
-\newlabel{sec:SLAM_properties}{{1.2.2}{10}}
 \citation{martinelli_results_2005}
 \citation{julier_counter_2001}
 \citation{bailey_consistency_2006}
 \citation{frese_discussion_2006}
 \citation{castellanos_limits_2004}
 \citation{huang_analysis_2008}
-\citation{huang_convergence_2007}
+\@writefile{toc}{\contentsline {subsubsection}{Properties of SLAM}{11}}
+\newlabel{sec:SLAM_properties}{{1.2.2}{11}}
 \@writefile{toc}{\contentsline {subsubsection}{Linearization Error and Consistency}{11}}
+\citation{huang_convergence_2007}
 \citation{dissanayake_solution_2001}
 \citation{castellanos_limits_2004}
 \citation{civera_1-point_2009}
+\@writefile{toc}{\contentsline {subsubsection}{SLAM for Building Large Scale Maps}{12}}
+\@writefile{toc}{\contentsline {paragraph}{Robot Centric Coordinate System}{12}}
 \citation{estrada_hierarchical_2005}
 \citation{leonard_consistent_2003}
 \citation{bailey_simultaneous_2006}
@@ -68,12 +96,10 @@
 \citation{williams_efficient_2001}
 \citation{bosse_slam_2004}
 \citation{bailey_mobile_2002}
-\@writefile{toc}{\contentsline {subsubsection}{SLAM for Building Large Scale Maps}{12}}
-\@writefile{toc}{\contentsline {paragraph}{Robot Centric Coordinate System}{12}}
-\@writefile{toc}{\contentsline {paragraph}{Submap Methods}{12}}
+\@writefile{toc}{\contentsline {paragraph}{Submap Methods}{13}}
 \@setckpt{chapter2}{
 \setcounter{page}{14}
-\setcounter{equation}{14}
+\setcounter{equation}{15}
 \setcounter{enumi}{2}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
