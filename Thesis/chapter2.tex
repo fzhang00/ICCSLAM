@@ -131,7 +131,25 @@ $$x_{corrected} = x+[2p_1y+p_2(r^2+2x^2)]$$
 $$y_{corrected} = y+[p_1(r^2+2y^2)+2p_2x]$$
 
 \subsubsection{Camera Calibration Algorithm}
-
+Camera calibration is a process of finding the intrinsic parameter of
+a camera. In addition, since the camera's reference frame related to
+the world frame is usually unknown, the calibration process also
+calculate the status of the camera frame referenced to the world
+frame, which is referred as the extrinsic parameters of the camera.
+There are two popular camera calibration methods. Tsai \cite{tsai}
+requires at least 5 points in 3D space with known coordinate, and their
+corresponse coordinate in the image plane. With Tsai's method, only
+one snapshot of the calibration target is needed. The disavantage of
+this method is that the 3D position of the points is difficult to
+obtained. Zhang \cite{zhang} proposed a more flexible method that
+requires at least two different views of a coplanar target, which is
+usually a black and white checker boards. However, to get more
+reliable result, 10 view fo the checkboard with different translation
+and rotation from the camera is desired. The target's coordinate in
+world frame need not to be known in advance. Instead, algorithm
+requires the size of the square on the check boards. Zhang's method is
+implemented in OpenCV, and is used to calibrate the camera for this
+work. 
 \subsection{Limitation of Optical Sensor in Recursive Algorithm}
 \label{sec:OpticalSensorLimitation}
 
