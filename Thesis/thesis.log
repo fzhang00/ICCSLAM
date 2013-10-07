@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2013.7.4)  28 SEP 2013 15:32
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2013.7.4)  7 OCT 2013 17:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -214,7 +214,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks24
 \@floatcapt=\box34
 ) (./thesis.aux
-(./chapter2.aux) (./appendix.aux))
+(./chapter4.aux) (./appendix.aux))
 \openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
@@ -300,43 +300,77 @@ Package: ltcaption 2011/09/12 v1.3 longtable captions (AR)
 )
 Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\openout2 = `chapter2.aux'.
+\openout2 = `chapter4.aux'.
 
- (./chapter2.tex
+ (./chapter4.tex
 Chapter 1.
+<./Figures/towed_SUAS.jpg, id=1, 223.58531pt x 252.945pt>
+File: ./Figures/towed_SUAS.jpg Graphic file (type jpg)
+
+<use ./Figures/towed_SUAS.jpg>
+Package pdftex.def Info: ./Figures/towed_SUAS.jpg used on input line 20.
+(pdftex.def)             Requested size: 220.50885pt x 249.47072pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 [1
 
 
 
-{d:/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 104.
+{d:/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+<./Figures/SUAS.jpg, id=9, 434.37282pt x 103.88812pt>
+File: ./Figures/SUAS.jpg Graphic file (type jpg)
+ <use ./Figures/SUAS.jpg>
+Package pdftex.def Info: ./Figures/SUAS.jpg used on input line 46.
+(pdftex.def)             Requested size: 398.33858pt x 95.27545pt.
+
+<./Figures/athena.jpg, id=10, 246.9225pt x 155.58125pt>
+File: ./Figures/athena.jpg Graphic file (type jpg)
+
+<use ./Figures/athena.jpg>
+Package pdftex.def Info: ./Figures/athena.jpg used on input line 47.
+(pdftex.def)             Requested size: 170.71652pt x 107.56482pt.
+
+<./Figures/GPS_antenna.jpg, id=11, 148.555pt x 100.375pt>
+File: ./Figures/GPS_antenna.jpg Graphic file (type jpg)
+
+<use ./Figures/GPS_antenna.jpg>
+Package pdftex.def Info: ./Figures/GPS_antenna.jpg used on input line 48.
+(pdftex.def)             Requested size: 170.71652pt x 115.35374pt.
 
 
-(d:/texlive/2012/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 104.
- [3]
-Overfull \hbox (28.88951pt too wide) in paragraph at lines 141--141
-[]\OT1/cmr/bx/n/14.4 Recursive Prob-a-bilis-tic Es-ti-ma-tion us-ing Ex-tended 
-Kalman
- []
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-[4] [5] [6] <./Figures/KalmanOperation.jpg, id=30, 430.60875pt x 170.6375pt>
-File: ./Figures/KalmanOperation.jpg Graphic file (type jpg)
+<./Figures/CDAC_Rack.jpg, id=12, 723.70375pt x 542.025pt>
+File: ./Figures/CDAC_Rack.jpg Graphic file (type jpg)
 
-<use ./Figures/KalmanOperation.jpg>
-Package pdftex.def Info: ./Figures/KalmanOperation.jpg used on input line 222.
-(pdftex.def)             Requested size: 284.52756pt x 112.75127pt.
- [7 <./Figures/KalmanOperation.jpg>]
-[8] [9] [10] [11]
-Overfull \hbox (1.12132pt too wide) in paragraph at lines 404--408
-[]\OT1/cmr/m/n/12 Huang in-ves-ti-gated [46] on prop-er-ties and con-sis-tency 
-of non-lin-ear two-dimensional
- []
+<use ./Figures/CDAC_Rack.jpg>
+Package pdftex.def Info: ./Figures/CDAC_Rack.jpg used on input line 56.
+(pdftex.def)             Requested size: 341.43306pt x 255.71944pt.
 
-[12]) [13]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<./Figures/video_snapshot.jpg, id=13, 283.81032pt x 190.46156pt>
+File: ./Figures/video_snapshot.jpg Graphic file (type jpg)
+
+<use ./Figures/video_snapshot.jpg>
+Package pdftex.def Info: ./Figures/video_snapshot.jpg used on input line 63.
+(pdftex.def)             Requested size: 341.43306pt x 229.15428pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: Reference `fig:camcal' on page 2 undefined on input line 74.
+
+
+LaTeX Warning: Reference `tab:calresult' on page 2 undefined on input line 76.
+
+[2 <./Figures/towed_SUAS.jpg>] [3 <./Figures/SUAS.jpg> <./Figures/athena.jpg> <
+./Figures/GPS_antenna.jpg>] [4 <./Figures/CDAC_Rack.jpg>] [5 <./Figures/video_s
+napshot.jpg>]) [6]
 \openout2 = `appendix.aux'.
 
  (./appendix.tex
@@ -356,7 +390,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 35--42
 
  []
 
-[14
+[7
 
 
 
@@ -390,48 +424,36 @@ Underfull \hbox (badness 10000) in paragraph at lines 77--78
 
  []
 
-[15]) [16] (./thesis.bbl [17
+[8]) [9] (./thesis.bbl) [10
 
 
 ]
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no ¶ in font cmr12!
- [18] [19] [20]
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no ³ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no “ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no “ in font cmr12!
-) [21]
 No file thesisbib.bbl.
-(./thesis.aux (./chapter2.aux) (./appendix.aux)) ) 
+(./thesis.aux (./chapter4.aux) (./appendix.aux))
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3967 strings out of 493488
- 58302 string characters out of 3144749
- 122381 words of memory out of 3000000
- 7195 multiletter control sequences out of 15000+200000
- 9521 words of font info for 34 fonts, out of 3000000 for 9000
+ 3918 strings out of 493488
+ 57312 string characters out of 3144749
+ 122113 words of memory out of 3000000
+ 7145 multiletter control sequences out of 15000+200000
+ 8569 words of font info for 31 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,11n,38p,242b,287s stack positions out of 5000i,500n,10000p,200000b,50000s
-<d:/texlive/2012/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmbx12.pfb><d:/texlive/2012/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmex10.pfb><d:/texlive/2012/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmmi12.pfb><d:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmmi8.pfb><d:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.p
-fb><d:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/texl
-ive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/texlive/2012/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/texlive/2012/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (21 pages, 162716 bytes).
+ 38i,8n,38p,289b,311s stack positions out of 5000i,500n,10000p,200000b,50000s
+<d:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><d:/tex
+live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/texlive/2012
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><d:/texlive/2012/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/texlive/2012/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr12.pfb><d:/texlive/2012/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr8.pfb><d:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy10.pfb><d:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.
+pfb>
+Output written on thesis.pdf (10 pages, 391695 bytes).
 PDF statistics:
- 109 PDF objects out of 1000 (max. 8388607)
- 75 compressed objects within 1 object stream
+ 75 PDF objects out of 1000 (max. 8388607)
+ 48 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

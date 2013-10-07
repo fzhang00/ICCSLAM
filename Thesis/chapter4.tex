@@ -66,6 +66,33 @@ figure \ref{fig:video_snapshot}.
 \end{figure}
 
 \section{Camera Calibration}
+
+A camera calibration was performed after the flight by taking a piece
+of video of a checker board pattern with various translation and
+rotation motion. A total of 20 views of the calibration target was
+chosen from the video, and fed to the calibration algorithm. A few
+examples were shown in figure \ref{fig:camcal}. The
+algorithm,``calibration.exe'', used for calibrating the camera comes
+with the OpenCV installation. Table \ref{tab:calresult} below listed
+the calibration results.
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+Image Width & 720 pixels \\ \hline
+Image height & 480 pixels\\ \hline
+$f_x$ & 887.6\\ \hline
+$f_y$ & 805.7\\ \hline
+$c_x$ & 381.8 \\ \hline
+$c_y$ & 293.7 \\ \hline
+$k_1$ & -0.102 \\ \hline
+$k_2$ & -0.535 \\ \hline
+$p_1$ & 1.15e-003 \\ \hline
+$p_2$ & 8.40e-003 \\
+\hline
+\end{tabular}
+\end{center}
+
 \section{Ground Truth Data Collection and Comparison}
 
 UAS localization ground truth are obtained through onboard flight
