@@ -4,6 +4,12 @@
      "ch:FlightResult"
      "fltfig:1"
      "fltfig:2"
-     "figure:_Ref349487278"
-     "section:_Toc332876148")))
+     "fltfig:3"
+     "fltfig:4"
+     "fltfig:5"
+     "fltfig:6"
+     "fltfig:7"
+     "fltfig:8"
+     "fltfig:9"
+     "fltfig:10")))
 

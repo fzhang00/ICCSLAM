@@ -65,23 +65,41 @@ figure \ref{fig:video_snapshot}.
   \label{fig:video_snapshot}
 \end{figure}
 
+\FloatBarrier
+
 \section{Camera Calibration}
 
 A camera calibration was performed after the flight by taking a piece
 of video of a checker board pattern with various translation and
 rotation motion. A total of 20 views of the calibration target was
 chosen from the video, and fed to the calibration algorithm. A few
-examples were shown in figure \ref{fig:camcal}. The
-algorithm,``calibration.exe'', used for calibrating the camera comes
-with the OpenCV installation. Table \ref{tab:calresult} below listed
-the calibration results.
+examples were shown in figure \ref{fig:camcal}.
 
-\begin{center}
+\begin{figure}
+  \centering
+  \includegraphics[width=4cm,keepaspectratio=true]{./Figures/camcal/camcal1_130.jpeg}
+  \includegraphics[width=4cm,keepaspectratio=true]{./Figures/camcal/camcal1_140.jpeg}
+  \includegraphics[width=4cm,keepaspectratio=true]{./Figures/camcal/camcal1_160.jpeg}
+  \includegraphics[width=4cm,keepaspectratio=true]{./Figures/camcal/camcal1_180.jpeg}
+  \includegraphics[width=4cm,keepaspectratio=true]{./Figures/camcal/camcal1_210.jpeg}
+  \includegraphics[width=4cm,keepaspectratio=true]{./Figures/camcal/camcal1_240.jpeg}
+  \caption{Camera Calibration Inputs}
+  \label{fig:camcal}
+\end{figure}
+
+The algorithm,``calibration.exe'', used for calibrating the camera
+comes with the OpenCV installation. The digitized images has a
+resolution of 720 pixels in width and 480 pixels in height. Table
+\ref{tab:camccalresult} below listed the calibration results.
+
+\begin{table}
+\caption{Camera Calibration Result}
+\label{tab:camcalresult}
+\centering
 \begin{tabular}{|c|c|}
 \hline
-Image Width & 720 pixels \\ \hline
-Image height & 480 pixels\\ \hline
-$f_x$ & 887.6\\ \hline
+Parameter & Result(pixels)\\ \hline
+$f_x$ & 887.6 \\ \hline
 $f_y$ & 805.7\\ \hline
 $c_x$ & 381.8 \\ \hline
 $c_y$ & 293.7 \\ \hline
@@ -91,11 +109,12 @@ $p_1$ & 1.15e-003 \\ \hline
 $p_2$ & 8.40e-003 \\
 \hline
 \end{tabular}
-\end{center}
+\end{table}
+\FloatBarrier
 
 \section{Ground Truth Data Collection and Comparison}
 
-UAS localization ground truth are obtained through onboard flight
+UAS localization ground truth are obtained through on board flight
 control unit GS-111m. The unit records the SUAS position in GPS
 longitude and latitude coordinate. Orientation is obtained from the
 roll pitch and heading measurements. Roll and pitch accuracy has
@@ -120,7 +139,7 @@ are readily available to do the conversion by taking GPS coordinate
 and zone number as input. The library used in this work is a python
 interface to PROJ.4 library \cite{_pyproj_????} called pyproj
 \cite{_pyproj_????}. Secondly, the DEM data in UTM were converted into
-world frame using transformation matrix with intial SUAS position and
+world frame using transformation matrix with initial SUAS position and
 orientation as input.
 
 To bring result from the CC\_EKF\_SLAM algorithm to world frame, feature

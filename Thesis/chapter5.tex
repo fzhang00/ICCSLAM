@@ -8,7 +8,7 @@ algorithm for better accuracy and efficiency. The forth section
 present the advantage of using IMU data. The fifth section outline
 the inadequacies of the CC\_EKF\_SLAM algorithm identified.
 
-To test the performace of CC\_EKF\_SLAM algorithm, 4 segments of video
+To test the performance of CC\_EKF\_SLAM algorithm, 4 segments of video
 were selected from the test flight video, and 400 frames were
 processed in each piece. The filter initialized 40 features at the
 first frame, and maintain the tracked features amount at this number
@@ -58,7 +58,7 @@ the plot indicates a variation as the vehicle travels along. Figure
 processed frames.
 These parameters were stable for about 200 frames. As soon as any
 feature was deleted from the filter and new features added, the
-paramters of the feature after being converted into world
+parameters of the feature after being converted into world
 frame start to drift. In \ref{fltfig:2} the deletion of old feature is
 marked by a vertical gray dash line. It shows that the parameters of
 the deleted feature start to drift right after that line. The $y_i$
@@ -70,7 +70,7 @@ agrees with the measurement. On the other hand, features mapping is
 not affected too much by the error in localization. Because their
 parameters are transformed in each iteration to the new camera frame
 using the estimated SUAS motion which carries the error. As long as
-their paramters are updated together with the estimated motion on that
+their parameters are updated together with the estimated motion on that
 iteration, and transformed back to the world frame using the same
 estimated motion, the final result of features location in world frame
 is inaffected by the error in the SUAS localization. However, for
@@ -85,7 +85,7 @@ updated, therefore revealing the error in SUAS localization.
 \label{fltfig:2}
 \end{figure}
 
-\subsection{Consistency Analsysis}
+\subsection{Consistency Analysis}
 A EKF system becomes inconsistent when the variance of state vector
 element becomes too small and forbid an effective update. In addition,
 the uncertainty of the SUAS position should increases as it move away
@@ -149,7 +149,7 @@ digging, and will be analyze as a future work.
 \centering
 \includegraphics[width=14cm, keepaspectratio=true]
 {./Figures/fltfig/cut1/Figure113.png}
-\caption{Kalman Gain Matrix for the first 35 State Vector Elememts}
+\caption{Kalman Gain Matrix for the first 35 State Vector Elements}
 \label{fltfig:5}
 \end{figure}
 
@@ -172,17 +172,17 @@ will require a reset procedure to
 The SUAS location and orientation were verified in UTM coordinate.
 Ground truth data comes from the GPS for position, and magnetometer
 for orientation. The GPS positioning can generally achieve 7.8 meters
-in accuracy \cite{GPS_ACCURACY}. For orientation, accuracy on the
+in accuracy \cite{_gps_????}. For orientation, accuracy on the
 datasheet specified $0.1^{\circ}$ for roll and pitch, and
 $0.5^{\circ}$ for heading. Figure \ref{fltfig:6} shows the estimated
-SUAS position and orientation, groundtruth data, and the error. From
+SUAS position and orientation, ground truth data, and the error. From
 the comparison, X position error reached 20m maximum, while Y and Z
-position error is bigguer, reaching 50 meter and 30 meters respectly.
-For orientation, the etimated value agrees with the ground truth
+position error is bigger, reaching 50 meter and 30 meters respectly.
+For orientation, the estimated value agrees with the ground truth
 pattern, with maximum error within 0.02 rad or $1.15^{\circ}$.
 Although the error of pitch is biased to the negative side, and error
 of heading is biased to the positive side. there was not sign of error
-diverging within the 400 frames procesed.
+diverging within the 400 frames processed.
 
 \begin{figure}[h]
 \centering

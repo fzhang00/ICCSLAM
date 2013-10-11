@@ -88,7 +88,7 @@ camera.
 \subsubsection{Basic Projection Geometry}
 
 For a 3D scene point $Q=(X, Y, Z)$ and the correspondent point $q=(x_{screen},
-y_{screen})$ on the image plane, they are related by equation \cite{learning_opencv}
+y_{screen})$ on the image plane, they are related by equation \cite{bradski_learning_2008}
 
 \begin{equation}
 \begin{matrix}
@@ -102,7 +102,7 @@ intersects the image plane, $f_x$ and $f_y$ is the product of focal
 length $f$ (unit millimeter) with the scaling factor $s_x$ and $s_y$
 (unit pixel/millimeter) for X and Y. Therefore $f_x$ and $f_y$ is in
 unit pixel. The parameter $c_x$, $c_y$, $f_x$, $f_y$ define the camera
-intrinsics matrix \cite{learning_opencv} \cite{Heikkila_four_1997}.
+intrinsics matrix \cite{bradski_learning_2008} \cite{heikkila_four-step_1997}.
 
 \begin{equation}
 M = \begin{bmatrix}
@@ -136,19 +136,19 @@ a camera. In addition, since the camera's reference frame related to
 the world frame is usually unknown, the calibration process also
 calculate the status of the camera frame referenced to the world
 frame, which is referred as the extrinsic parameters of the camera.
-There are two popular camera calibration methods. Tsai \cite{tsai}
+There are two popular camera calibration methods. Tsai \cite{tsai_efficient_1986}
 requires at least 5 points in 3D space with known coordinate, and their
-corresponse coordinate in the image plane. With Tsai's method, only
-one snapshot of the calibration target is needed. The disavantage of
+corresponded coordinate in the image plane. With Tsai's method, only
+one snapshot of the calibration target is needed. The disadvantage of
 this method is that the 3D position of the points is difficult to
-obtained. Zhang \cite{zhang} proposed a more flexible method that
+obtained. Zhang \cite{zhang_flexible_2000} proposed a more flexible method that
 requires at least two different views of a coplanar target, which is
 usually a black and white checker boards. However, to get more
-reliable result, 10 view fo the checkboard with different translation
+reliable result, 10 view of the checkerboard with different translation
 and rotation from the camera is desired. The target's coordinate in
 world frame need not to be known in advance. Instead, algorithm
 requires the size of the square on the check boards. Zhang's method is
-implemented in OpenCV, and is used to calibrate the camera for this
+implemented in OpenCV \cite{bradski_learning_2008}, and is used to calibrate the camera for this
 work. 
 
 \subsection{Computer Vision}
@@ -163,11 +163,11 @@ matrix, we are considering quantities that are invariant also to
 rotation, which is important because objects that we are tracking
 might rotate as well as move. Harris¡¯s original definition involved
 taking the determinant of H(p), subtracting the trace of H(p) (with
-some weighting coeffi cient), and then comparing this difference to a
+some weighting coefficient), and then comparing this difference to a
 predetermined threshold. It was later found by Shi and Tomasi [Shi94]
 that good corners resulted as long as the smaller of the two
 eigenvalues was greater than a minimum threshold. Shi and Tomasi¡¯s
-method was not only suffi cient but in many cases gave more
+method was not only sufficient but in many cases gave more
 satisfactory results than Harris¡¯s method. (from opencv)
 
 \subsection{Limitation of Optical Sensor in Recursive Algorithm}

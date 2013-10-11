@@ -4,5 +4,7 @@
      "fig:towedSUAS"
      "fig:SUAS"
      "fig:CDAC"
-     "fig:video_snapshot")))
+     "fig:video_snapshot"
+     "fig:camcal"
+     "tab:camcalresult")))
 
