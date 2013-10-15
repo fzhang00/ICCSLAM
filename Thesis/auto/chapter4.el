@@ -5,6 +5,7 @@
      "fig:SUAS"
      "fig:CDAC"
      "fig:video_snapshot"
+     "sec:camcal"
      "fig:camcal"
      "tab:camcalresult")))
 

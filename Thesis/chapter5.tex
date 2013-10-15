@@ -34,8 +34,7 @@ approximate 20 frames, most estimtors settles to a stable value. The
 estimated features distance ranged from 400 meters to about 1500
 meters, confirming the algorithm's capability for estimating features
 at great distance. On the other hands, some features take a long time
-to settle, such as feature 9, 27, ??, while some other never settled,
-such as 12 and 20.
+to settle, while some other never settled, such as 12 and 20.
 % is the non and slowly settled feature has any character in its
 % pattern? ie. is a line feature, instead of corner? A outlier filter
 % should be in place to get rid of the poor features (future work).
@@ -238,11 +237,11 @@ axis the SUAS is traveling) of feature position converge to near zero
 in general with maximum error less than 120m for the converged
 features. Y component shows a clear offset for features not
 initialized at first frame. This behavior is similar to what's seen in
-the simulation analysis \ref{section?} where offset in features
+the simulation analysis \ref{sec:featureMotion} where offset in features
 position estimates are caused by drift in SUAS localization
 estimation. In this case, the features position were converted into
-world frame using the the estimated SUAS position, while the ground
-truth feature positio are found using the ground truth SUAS position,
+world frame using the estimated SUAS position, while the ground
+truth feature position are found using the ground truth SUAS position,
 which is different than the estimated. Therefore the offset error can
 be seen. Z component does not show such offset, but some features' Z
 component position drift away after new features were added into the
@@ -284,7 +283,7 @@ located within 600 meters to the camera.
 \end{figure}
 
 Using the estimated feature position, a terrain map can be generated.
-Figure \ref{fltfit:10} shows the terrain map generated from the
+Figure \ref{fltfig:10} shows the terrain map generated from the
 feature position analyzed above. On the right, the ground truth DEM is
 also shown for comparison. 
 

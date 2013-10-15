@@ -325,6 +325,7 @@ correlation between them. For every new feature added, the new
 covariance matrix becomes
 
 \begin{equation}
+\label{eq:Pnew}
 P_{new}=J\begin{bmatrix}
 P_{old} & 0 \\
 0 & R \\
@@ -332,7 +333,7 @@ P_{old} & 0 \\
 J^{T}
 \end{equation}
 
-\noindent where $P_{old}$ isthe covariance matrix of the existing state vector, 
+\noindent where $P_{old}$ is the covariance matrix of the existing state vector, 
 and the initial $P_{old}$ is defined in . Matrix R is the covariance 
 matrix of the variable in features initialization.
 
@@ -355,15 +356,15 @@ R=\begin{bmatrix}
 \end{bmatrix} 
 \end{equation}
 
-\noindent where$[\sigma _{x_{i}^{C}}\sigma _{y_{i}^{C}}\sigma
-_{z_{i}^{C}}$$]$ is the uncertainty of the camera optical center
+\noindent where$[\sigma_{x_{i}}^{C}, \sigma_{y_{i}}^{C}, \sigma
+_{z_{i}}^{C}]$ is the uncertainty of the camera optical center
 position, initialized to $\epsilon $.$\sigma _{image}$is the image
 plane pixel variance, set to 1. $\sigma _{\rho }$is the uncertainty of
 the inverse distance. Because the filter mainly deals with distance
 feature, $ \sigma _{\rho }$ is initialized to 0.1 to cover any
 distance from 50 meters to infinity.
 
-$J$ in equation\ref{equation?} is the Jacobian matrix for 
+$J$ in equation(\ref{eq:Pnew}) is the Jacobian matrix for 
 the initialization equation. 
 
 \begin{equation}
@@ -625,7 +626,7 @@ Q^{-1}(r_{k}^{C}) \begin{bmatrix}
 Q^{-1}(r_{k}^{C}) \begin{bmatrix}
 -cos(\varphi _{i})sin(\theta _{i}) \\
 -sin(\varphi _{i})sin(\theta _{i}) \\
-cos?(\varphi _{i})
+cos(\varphi _{i})
 \end{bmatrix}
 \end{equation}
 

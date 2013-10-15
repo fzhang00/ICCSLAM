@@ -101,22 +101,23 @@ on rotational motion less than 3e-3 degree.
 
 \subsection{Features Mapping - Convergence and Accuracy}
 
-Figure \ref{fig:simfig5-8} left shows feature parameters $[d, \varphi
-,\theta]$ (where $d=1/\rho $) plotted against frame number for the
-first 50 frames. The feature depth $d$ for all features converged
+Figure \ref{fig:simfig5-8} top left shows feature parameters $[d,
+\varphi ,\theta]$ (where $d=1/\rho $) plotted against frame number for
+the first 50 frames. The feature depth $d$ for all features converged
 within 3 frames; elevation-azimuth angles $[\varphi ,\theta]$ stay
 almost constant after initialization. A more detail graph can be seen
 from the error convergence plot for these parameters (Figure
-\ref{fig:simfig5-8} right.) which shows the tracking error of these
-parameters for 400 frames. The error of feature distance$ d$ continues
-to approach zero as the tracking continues. $[\varphi ,\theta]$ show
-small drift within $+/-0.0002^{\circ}$ respectively. However, as
-tracking continue into later frames, error of $[\varphi ,\theta]$
-gradually grew bigger. The resulting error for feature coordinate in
-world frame represented in standard Euclidean XYZ parameterization is
-plotted in ??. The features positions errors in world frame converge
-to zero as tracking continues. During the process, certain features
-moved out of the FOV, and therefore its position estimation remained
+\ref{fig:simfig5-8} top right.) which shows the tracking error of
+these parameters for 400 frames. The error of feature distance$ d$
+continues to approach zero as the tracking continues. $[\varphi
+,\theta]$ show small drift within $+/-0.0002^{\circ}$ respectively.
+However, as tracking continue into later frames, error of $[\varphi
+,\theta]$ gradually grew bigger. The resulting error for feature
+coordinate in world frame represented in standard Euclidean XYZ
+parameterization is plotted in figure \ref{fig:simfig5-8} bottom left
+and right. The features positions errors in world frame converge to
+zero as tracking continues. During the process, certain features moved
+out of the FOV, and therefore its position estimation remained
 unchanged since then. At the end of the 400 frames, the x axis
 position error of the feature reduced to +/-0.2 meters; y and z axis
 error reduce to +/-0.02 meters
@@ -212,7 +213,7 @@ axis.
   \label{fig:simfig14}
 \end{figure}
 
-\subsection{Feature Mapping Accuracy under Motion}
+\subsection{Feature Mapping Accuracy under Motion}\label{sec:featureMotion}
 
 Feature mapping error statistic are drawn from the feature error at
 last frame, since features error converge to zero as tracking goes on.
@@ -328,7 +329,7 @@ to project 3D points onto image plane, and the other is used in the
 measurement model of CC-LK-SLAM. $c_{x}$, $c_{y}$, $f_{x}$, and 
 $f_{y}$ are simulated individually and distortion parameters $[k1, 
 k2, p1, p2]$ are simulated as a group. Using the calibrated camera 
-model (see section ???) as a base model,$ c_{x}$, $c_{y}$, $f_{x}
+model (see section \ref{sec:camcal}) as a base model,$ c_{x}$, $c_{y}$, $f_{x}
 $, and $f_{y}$ in simulator camera model varied from -50\% to 50\% of 
 the base model. Distortion parameters varied from 0\% to 140\% of the 
 base model. 

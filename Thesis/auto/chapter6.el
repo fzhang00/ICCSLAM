@@ -7,6 +7,7 @@
      "fig:simfig5-8"
      "fig:simfig9-10"
      "fig:simfig14"
+     "sec:featureMotion"
      "fig:simfig20-24"
      "fig:simfig17-19"
      "fig:simfig25"
