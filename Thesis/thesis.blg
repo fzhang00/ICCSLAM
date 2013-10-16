@@ -10,51 +10,51 @@ A level-1 auxiliary file: chapter6.aux
 A level-1 auxiliary file: appendix.aux
 The style file: cubiblio.bst
 Database file #1: ref.bib
-Warning--I didn't find a database entry for "."
+Warning--missing institution in james_geosurv_2008
 Warning--missing publisher in williams_efficient_2001
 Warning--missing publisher in chong_feature-based_1999
 Warning--empty booktitle in amzajerdian_lidar_2011
 Warning--missing publisher in csorba_simultaneous_1997
 Warning--missing publisher in bailey_mobile_2002
-You've used 60 entries,
+You've used 64 entries,
             2361 wiz_defined-function locations,
-            863 strings with 14839 characters,
-and the built_in function-call counts, 25447 in all, are:
-= -- 2020
-> -- 531
-< -- 31
-+ -- 203
-- -- 143
-* -- 1353
-:= -- 2735
-add.period$ -- 269
-call.type$ -- 60
-change.case$ -- 105
+            878 strings with 15322 characters,
+and the built_in function-call counts, 26580 in all, are:
+= -- 2101
+> -- 552
+< -- 32
++ -- 212
+- -- 148
+* -- 1401
+:= -- 2856
+add.period$ -- 284
+call.type$ -- 64
+change.case$ -- 112
 chr.to.int$ -- 0
-cite$ -- 65
-duplicate$ -- 2588
-empty$ -- 2607
-format.name$ -- 184
-if$ -- 5828
+cite$ -- 70
+duplicate$ -- 2714
+empty$ -- 2728
+format.name$ -- 191
+if$ -- 6081
 int.to.chr$ -- 0
-int.to.str$ -- 60
-missing$ -- 585
-newline$ -- 311
-num.names$ -- 57
-pop$ -- 1010
+int.to.str$ -- 64
+missing$ -- 613
+newline$ -- 329
+num.names$ -- 60
+pop$ -- 1071
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 783
+skip$ -- 825
 stack$ -- 0
-substring$ -- 1331
-swap$ -- 1664
-text.length$ -- 31
+substring$ -- 1364
+swap$ -- 1736
+text.length$ -- 32
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 5
-while$ -- 160
-width$ -- 62
-write$ -- 665
+warning$ -- 6
+while$ -- 166
+width$ -- 66
+write$ -- 701
 (There were 6 warnings)

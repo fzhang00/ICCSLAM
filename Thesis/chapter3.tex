@@ -1,32 +1,22 @@
 \chapter{Algorithm Description}
 
-The algorithm described in Chapter!!!Unresolved reference!!!3 was 
-implemented in Python programming language. An open source machine 
-vision library OpenCV was utilized to perform feature extraction and 
-tracking. The feature extraction method used was the Shi-Tomasi corner 
-detector. Feature tracking was accomplished through the pyramid 
-implementation of Lucas-Kanade optical flow method . 
+The algorithm described in this chapter and its preliminary test
+result on real flight data was published in
+\cite{zhang_obstacle_2012}. The program was implemented in Python
+programming language \cite{_python_????}. An open source machine
+vision library OpenCV was utilized to perform feature extraction and
+tracking. The feature extraction method used was the Shi-Tomasi corner
+detector \cite{shi_good_1994}. Feature tracking was accomplished
+through the pyramid implementation of Lucas-Kanade optical flow method
+\cite{bouguet_pyramidal_1999}. Both algorithms were implemented in
+OpenCV. 
 
 \section{Camera Centric Inverse Depth Parameterization}
-The standard way of describing a feature's position is to use the 
-Euclidean XYZ parameterization. In practical outdoor range estimation 
-problem, the algorithm must deal with features located at near infinity. 
-Inverse depth parameterization overcomes this problem by representing 
-range $d$ in its inverse form $\rho =1/d$. In addition, features at 
-infinity contribute in estimating the camera rotational motion even 
-though they offer little information on camera translational motion. 
-Furthermore, inverse depth parameterization allows for initializing 
-features into the EKF framework before it is safely triangulated. 
-The inverse depth parameterization used in this work was first
-introduced in \cite{civera_inverse_2008}. All features and camera
-positions are referred to a world reference frame. When used in an
-Extended Kalman Filter framework, the system suffers decreasing
-linearity when camera is moving away from the world origin.
-To improve the filter consistency for large scale map, a modified
-method which uses the camera center as the origin \cite{civera_1-point_2009} 
-was used. This work has adopted the camera centered
-approach with minor modification to integrate the inertial
-measurements.
+The inverse depth parametrization by Civera \cite{civera_inverse_2008}
+and camera centric coordinate system was adopted in this work with
+some modification to integrate the inertial measurements. Figure
+\ref{fig:algo1} shows the parameters definition in inverse depth
+parameterization.
 
 \begin{figure}[h]
 \centering
@@ -35,8 +25,9 @@ measurements.
 \label{fig:algo1}
 \end{figure}
 
-A scene point $p_{i}^{C}$ can be defined by 6 parameters, with the 
-superscript $C$ representing a camera reference frame.:
+A 3D scene point $p_{i}^{C}$ can be defined by 6 parameters, with the 
+superscript $C$ representing a camera reference frame and $i$
+representing the feature number.:
 \begin{equation}
 p_{i}^{C}=\begin{bmatrix}
 x_{i}^{C} & y_{i}^{C} & z_{i}^{C} & \rho _{i} & \varphi _{i}^{C} & 
@@ -45,7 +36,7 @@ x_{i}^{C} & y_{i}^{C} & z_{i}^{C} & \rho _{i} & \varphi _{i}^{C} &
 \end{equation}
 The first three parameters $[x_{i}^{C}, y_{i}^{C}, z_{i}^{C}]$
 represent the initial position where the feature is first observed.
-$\rho _{i}$ is the inverse distance from the initialization position
+$\rho_{i} = 1/d_i$ is the inverse distance of from the initialization position
 to the feature. The elevation-azimuth pair $[\phi_{i}^{C},
 \theta_{i}^{C}]$ encodes a unit vector pointing from the
 initialization point to the feature. The vector is given by
@@ -67,25 +58,25 @@ The EKF state vector is defined as
 \begin{equation}
 x=\begin{bmatrix}
 OX_{W}^{C} & c^{C} & r^{C} & p_{1}^{C} & p_{2}^{C} & \ldots 
-\end{bmatrix}
+\end{bmatrix}^T
 \end{equation}
 
 \noindent where $OX_{W}^{C}= \begin{bmatrix}O_{x}^{C} & O_{y}^{C} &
   O_{z}^{C} & W_{x}^{C} & W_{y}^{C} & W_{z}^{C} \end{bmatrix}^{T}$
 contains translation parameters $O_{x,y,z}^{C}$ and rotation
-parameters $W_{x,y,z}^{C}$ to transform the camera reference frame to
-the world reference frame. $\left(c^{C},r^{C}\right)^{T}$ represents
-the camera translation and rotation motion frame by frame in Euclidean
-coordinates, and $p_{i}^{C}$ contains the feature parameters as
-described in the previous section.
+parameters $W_{x,y,z}^{C}$ to transform the camera reference frame
+back to the world reference frame. $\left(c^{C},r^{C}\right)^{T}$
+represents the camera translation and rotation motion frame by frame
+in Euclidean coordinates, and $p_{i}^{C}$ contains the feature
+parameters as described in the previous section.
 
-\subsection{Prediction} (Will be updated to a more complete form)
+\subsection{Prediction}
 
 For a prediction step at time $k$, the world frame and features
 parameters are kept unchanged from time $k-1$. The camera parameters
 are updated using the new inertial measurements: velocity $v^{C}$,
-acceleration $a^{C}$, and rate of change in roll/pitch/yaw $w^{C}$.
-The camera motion parameters at time $k$ are then
+acceleration $a^{C}$, and rate of change $w^{C}$ in roll, pitch, and
+azimuth. The camera motion parameters at time $k$ are then
 \begin{multline}
 \begin{bmatrix}
 OX_{W}^{C} & c^{C} & r^{C} & p_{1}^{C}& p_{2}^{C} & \vdots & p_n^C
@@ -93,22 +84,31 @@ OX_{W}^{C} & c^{C} & r^{C} & p_{1}^{C}& p_{2}^{C} & \vdots & p_n^C
 =\begin{bmatrix}
 OX_{W,k-1}^{C} & c_{measured}^{C} & r_{measured}^{C} & p_{1,k-1}^{C} &
 p_{2,k-1}^{C} & \vdots & p_{n,k-1}^C
-\end{bmatrix}_{k-1}^T
+\end{bmatrix}^T
 \end{multline}
 
-Where 
+\noindent where 
 
 $$c_{measured}^{C}=v_{measured}^{C}\Delta t+ \frac{1}{2}a_{measured}^{C}\Delta t^{2}$$
 $$r_{measured}^{C}=r_{k-1}^{C}+ w_{measured}^{C}$$
 
+\noindent and $\Delta t$ is the time elapsed from frame to frame. 
+
 \subsection{Measurement Model}
 
-Each observed feature is related to the camera motion through the 
-measurement model (). This relationship enables a correction on the 
-camera motion and features parameters based on the features' locations 
-observed in the image. 
+Each observed feature is related to the camera motion through the
+measurement model (figure \ref{fig:measurement_model}). This
+relationship enables a correction on the camera motion and features
+parameters based on the features locations observed in the image.
 
-For a feature $p_{i}^{C}$, the vector $h^{R}$pointing from the 
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm, keepaspectratio=true]{./Figures/measurement_model.jpg}
+\caption{Measurement Model}
+\label{fig:measurement_model}
+\end{figure}
+
+For a feature $p_{i}^{C}$, the vector $h^{R}$ pointing from the 
 predicted camera location to the feature initialization position is 
 
 \begin{equation}
@@ -140,19 +140,13 @@ h_{k}^{U}= \begin{bmatrix}
 u_{k} \\
 v_{k} \\
 \end{bmatrix}=\begin{bmatrix}
-\frac{s_{x}h_{y,k}^{C}}{h_{x,k}^{C}} \\
-\frac{s_{y}h_{z,k}^{C}}{h_{x,k}^{C}} \\
+\frac{f_{x}h_{y,k}^{C}}{h_{x,k}^{C}} \\
+\frac{f_{y}h_{z,k}^{C}}{h_{x,k}^{C}} \\
 \end{bmatrix}
 \end{equation}
 
-where $s_{x}$ and $s_{y}$ is the scaling factor of the projection, 
+\noindent where $f_{x}$ and $f_{y}$ is the scaling factor of the projection, 
 obtained through camera calibration.
-
-% \begin{figure}[h]
-% \centering
-% \includegraphics[width=252.3pt,height=157.25pt]{media/image3.eps}
-% \caption{Measurement Model}
-% \label{ch3fig:3}
 
 \subsection{Composition Step}
 

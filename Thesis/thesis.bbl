@@ -1,6 +1,11 @@
 \begin{thebibliography}{10}
 \newcommand{\enquote}[1]{``#1''}
 
+\bibitem{james_geosurv_2008}
+T.~James.
+\newblock \enquote{{GeoSurv} {II} {UAV} system requirements document.}
+\newblock Technical report (2008).
+
 \bibitem{de_angelis_low-cost_2007}
 A.~De~Angelis, M.~Dionigi, A.~Moschitta, and P.~Carbone.
 \newblock \enquote{A low-cost ultra-wideband indoor ranging technique.}
@@ -361,6 +366,23 @@ M.~Bosse, P.~Newman, J.~Leonard, and S.~Teller.
 T.~Bailey.
 \newblock \emph{Mobile Robot Localisation and Mapping in Extensive Outdoor
   Environments} (2002).
+
+\bibitem{_python_????}
+\enquote{Python.}
+
+\bibitem{shi_good_1994}
+J.~Shi and C.~Tomasi.
+\newblock \enquote{Good features to track.}
+\newblock In \enquote{, 1994 {IEEE} Computer Society Conference on Computer
+  Vision and Pattern Recognition, 1994. Proceedings {CVPR} '94,} pages 593--600
+  (1994).
+
+\bibitem{bouguet_pyramidal_1999}
+J.~Y. Bouguet \emph{et~al.}
+\newblock \enquote{Pyramidal implementation of the lucas kanade feature tracker
+  description of the algorithm.}
+\newblock \emph{Intel Corporation, Microprocessor Research Labs, {OpenCV}
+  Documents}  (1999).
 
 \bibitem{_athena_????}
 \enquote{Athena 111m integrated flight control system.}

@@ -525,6 +525,19 @@ linearization problem in large scale map, but does
 not converge on global level without an independent submap structure.
 This problem can be solved by using Atlas framework and network
 coupled feature maps \cite{bosse_slam_2004} \cite{bailey_mobile_2002}
+
+\section{Inverse Depth Parameterization for Distance Object}
+The standard way of describing a feature's position is to use the 
+Euclidean XYZ parameterization. In practical outdoor range estimation 
+problem, the algorithm must deal with features located at near infinity. 
+Inverse depth parameterization overcomes this problem by representing 
+range $d$ in its inverse form $\rho =1/d$. In addition, features at 
+infinity contribute in estimating the camera rotational motion even 
+though they offer little information on camera translational motion. 
+Furthermore, inverse depth parameterization allows for initializing 
+features into the EKF framework before it is safely triangulated. 
+The inverse depth parameterization used in this work was first
+introduced in \cite{civera_inverse_2008}.
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "thesis"
