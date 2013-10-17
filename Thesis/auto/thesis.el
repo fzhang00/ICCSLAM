@@ -31,5 +31,7 @@
      "chapter4"
      "chapter5"
      "chapter6"
-     "appendix")))
+     "appendix"
+     "appendix2"
+     "appendix3")))
 

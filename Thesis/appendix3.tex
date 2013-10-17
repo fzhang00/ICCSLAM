@@ -1,0 +1,323 @@
+\chapter{Linearization of Measurement Model}
+The measurement model of the algorithm is not linear, and must be 
+linearized by evaluating first derivative of the measurement equation at 
+the predicted camera location. Since the measurement model is not a 
+function of world origin coordinate and orientation, the Jacobian matrix 
+of the measurement model is
+
+\begin{multline}
+\frac{\partial h_{k}^{U}(x)}{\partial x}=
+\begin{bmatrix}
+0_{2n\times 6} & \frac{\partial h_{k}^{U}(x)}{\partial c^{C}} &
+\frac{\partial h_{k}^{U}(x)}{\partial r^{C}} &
+\frac{\partial h_{k}^{U}(x)}{\partial p_{1}} & 
+\ldots & \frac{\partial h_{k}^{U}(x)}{\partial p_{n}}
+\end{bmatrix} = \\ \begin{bmatrix}
+0_{2n\times 6} & 
+\frac{\partial h_{k}^{U}}{\partial h_{k}^{C}} \cdot 
+\frac{\partial h_{k}^{C}}{\partial c^{C}} & 
+\frac{\partial h_{k}^{U}}{\partial h_{k}^{C}} \cdot 
+\frac{\partial h_{k}^{C}}{\partial r^{C}} & 
+\frac{\partial h_{k}^{U}}{\partial h_{k}^{C}} \cdot 
+\frac{\partial h_{k}^{C}}{\partial p_{1}} & 
+\ldots & 
+\frac{\partial h_{k}^{U}}{\partial h_{k}^{C}} \cdot 
+\frac{\partial h_{k}^{C}}{\partial p_{n}}
+\end{bmatrix}
+\end{multline}
+
+
+Elements in the matrix above are given in - . The formula for 
+calculating $Q^{-1}$in - can be found in 
+
+\begin{equation}
+\frac{\partial h_{k}^{U}}{\partial h_{k}^{C}}= \begin{bmatrix}
+-\frac{s_{x}h_{y,k}^{C}}{{h_{x,k}^{C}}^{2}} & \frac{s_{x}}{h_{x,k}^{C}} & 0 \\
+-\frac{s_{y}h_{z,k}^{C}}{{h_{x,k}^{C}}^{2}} & 0 & \frac{s_{y}}{h_{x,k}^{C}}
+\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+\frac{\partial h^{C}}{\partial c^{C}}=-R^{-1}(r_{k}^{C})\rho _{k}
+\end{equation}
+
+\begin{equation}
+\frac{\partial h(x)}{\partial r^{C}}=\begin{bmatrix} 
+\frac{\partial h^{C}}{\partial r_{x}^{C}} & 
+\frac{\partial h^{C}}{\partial r_{y}^{C}} & 
+\frac{\partial h^{C}}{\partial r_{z}^{C}}\end{bmatrix}
+\end{equation}
+
+
+\begin{equation}
+\frac{\partial h^{C}}{\partial r_{x}}=\begin{bmatrix}
+0 \\
+h_{x}^{C}(sin(r_{x})sin(r_{z})+cos(r_{x})cos(r_{z})sin(r_{y}))
++h_{y}^{C}(-cos(r_{z})sin(r_{x})+cos(r_{x})sin(r_{y})sin(r_{z})) 
++ h_{z}^{C}cos(r_{x})cos(r_{y}) \\
+h_{x}^{C}(cos(r_{x})\sin(r_{z})-cos(r_{z})sin(r_{x})sin(r_{y}))+
+h_{y}^{C}(-cos(r_{x})cos(r_{z})-sin(r_{x})sin(r_{y})sin(r_{z})) 
+- h_{z}^{C}cos(r_{y})sin(r_{x}) \\
+\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+\frac{\partial h^{C}}{\partial r_{y}}=\begin{bmatrix}
+-h_{z}^{C}\cos(r_{y})-h_{x}^{C}\cos(r_{z})sin(r_{y})- 
+h_{y}^{C}sin(r_{y})sin(r_{z}) \\
+-h_{z}^{C}sin(r_{x})sin(r_{y})+
+h_{x}^{C}cos(r_{y})cos(r_{z})sin(r_{x})+
+h_{y}^{C}cos(r_{y})sin(r_{x})sin(r_{z}) \\
+-h_{z}^{C}cos(r_{x})sin(r_{y})+
+h_{x}^{C}cos(r_{x})cos(r_{y})cos(r_{z})+
+h_{y}^{C}cos(r_{x})cos(r_{y})sin(r_{z}) \\
+\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+\frac{\partial h^{C}}{\partial r_{z}}=\begin{bmatrix}
+h_{y}^{C}cos(r_{y})cos(r_{z})-h_{x}^{C}cos(r_{y})sin(r_{z})\\
+h_{x}^{C}(-cos(r_{x})\cos (r_{z})-sin(r_{x})\sin(r_{y})\sin (r_{z}))+ 
+h_{y}^{C}(-cos(r_{x})sin(r_{z})+cos(r_{z})sin(r_{x})sin(r_{y}))\\
+h_{x}^{C}(cos(r_{z})sin(r_{x})-cos(r_{x})sin(r_{y})sin(r_{z}))+
+h_{y}^{C}(sin(r_{x})sin(r_{z})+cos(r_{x})cos(r_{z})sin(r_{y}))\\
+\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+\frac{\partial h^{C}}{\partial p_{i}}=\begin{bmatrix}
+\frac{\partial h^{C}}{\partial x_{i}^{C}} & 
+\frac{\partial h^{C}}{\partial y_{i}^{C}} & 
+\frac{\partial h^{C}}{\partial z_{i}^{C}} & 
+\frac{\partial h^{C}}{\partial \rho _{i}} &
+\frac{\partial h^{C}}{\partial \theta _{i}} &
+\frac{\partial h^{C}}{\partial \varphi _{i}}
+\end{bmatrix}
+\end{equation}
+
+Equation above is a 3x6 matrix
+
+\begin{equation}
+\begin{bmatrix}
+\frac{\partial h^{C}}{\partial x_{i}^{C}} & 
+\frac{\partial h^{C}}{\partial y_{i}^{C}} & 
+\frac{\partial h^{C}}{\partial z_{i}^{C}}
+\end{bmatrix}
+ =Q^{-1}(r_{k}^{C})\rho _{k}
+\end{equation}
+
+
+\begin{equation}
+\frac{\partial h^{C}}{\partial \rho _{i}}=-Q^{-1}(r_{k}^{C})\cdot c_{k}
+\end{equation}
+
+
+\begin{equation}
+\frac{\partial h^{C}}{\partial \theta _{i}}=
+Q^{-1}(r_{k}^{C}) \begin{bmatrix}
+-cos(\varphi _{i})\sin(\theta _{i}) \\
+\cos (\varphi _{i})cos(\theta _{i}) \\
+0 \end{bmatrix}
+\end{equation}
+
+\begin{equation}
+\frac{\partial h^{C}}{\partial \varphi _{i}}= 
+Q^{-1}(r_{k}^{C}) \begin{bmatrix}
+-cos(\varphi _{i})sin(\theta _{i}) \\
+-sin(\varphi _{i})sin(\theta _{i}) \\
+cos(\varphi _{i})
+\end{bmatrix}
+\end{equation}
+
+\subsubsection{Jacobian Matrix of Composition Equations}
+
+\begin{equation}
+J_{C_{k-1}\to C_{k}}=\frac{\partial x_{k}}{\partial x_{k-1}}=\begin{bmatrix}
+\frac{\partial x_{k}}{\partial OX_{W, k-1}^{C}} &
+\frac{\partial x_{k}}{\partial c_{k-1}} & 
+\frac{\partial x_{k}}{\partial r_{k-1}} & 
+\frac{\partial x_{k}}{\partial p_{1, k-1}^{C}} &
+\frac{\partial x_{k}}{\partial p_{2, k-1}^{C}} &
+\cdots 
+\end{bmatrix}
+\end{equation}
+
+$\frac{\partial x_{k}}{\partial OX_{W, k-1}^{C}}$is given by:
+
+\begin{equation}
+\frac{\partial x_{k}}{\partial OX_{W, k-1}^{C}}=\begin{bmatrix}
+\frac{\partial O_{W,k}^{C}}{\partial O_{W,k-1}^{C}} & 
+\frac{\partial O_{W,k}^{C}}{\partial W_{W,k-1}^{C}} \\
+\frac{\partial W_{W,k}^{C}}{\partial O_{W,k-1}^{C}} & 
+\frac{\partial W_{W,k}^{C}}{\partial W_{W,k-1}^{C}} \\
+\frac{\partial c_{k}}{\partial O_{W,k-1}^{C}} &
+\frac{\partial c_{k}}{\partial W_{W,k-1}^{C}} \\
+\frac{\partial r_{k}}{\partial O_{W,k-1}^{C}} &
+\frac{\partial r_{k}}{\partial W_{W,k-1}^{C}} \\
+\frac{\partial p_{i}^{C}}{\partial O_{W,k-1}^{C}} & 
+\frac{\partial p_{i}^{C}}{\partial W_{W,k-1}^{C}} \\
+\end{bmatrix}= \begin{bmatrix}
+Q^{-1}(r^{C}) & 0 \\
+0 & I_{3\times 3} \\
+0 & 0 \\
+0 & 0 \\
+0 & 0 
+\end{bmatrix}
+\end{equation}
+
+
+Derivatives of $x_{k}$with respect to $c$ and $p$are given in - 
+
+
+\begin{equation}
+\begin{bmatrix}
+\frac{\partial O_{W,k}^{C}}{\partial c_{k-1}} & 
+\frac{\partial O_{W,k}^{C}}{\partial r_{k-1}} \\
+\frac{\partial W_{W,k}^{C}}{\partial c_{k-1}} &
+\frac{\partial W_{W,k}^{C}}{\partial r_{k-1}} \\
+\frac{\partial c_{k}}{\partial c_{k-1}} & 
+\frac{\partial c_{k}}{\partial r_{k-1}} \\
+\frac{\partial r_{k}}{\partial c_{k-1}} & 
+\frac{\partial r_{k}}{\partial r_{k-1}} \\
+\frac{\partial p(0:2)_{i}^{C}}{\partial c_{k-1}} & 
+\frac{\partial p(0:2)_{i}^{C}}{\partial r_{k-1}} \\
+\frac{\partial p(3:5)_{i}^{C}}{\partial c_{k-1}} & 
+\frac{\partial p(3:5)_{i}^{C}}{\partial r_{k-1}} \\
+\end{bmatrix}= \begin{bmatrix}
+-Q^{-1}(r_{k}^{C_{k-1}}) & 
+\frac{\partial Q^{-1}(r_{k}^{C_{k-1}})}{\partial r_{k-1}} \\
+0_{3\times 3} & -I_{3\times 3} \\
+I_{3\times 3} & 0_{3\times 3} \\
+0_{3\times 3} & I_{3\times 3} \\
+-Q^{-1}(r_{k}^{C_{k-1}}) & 
+\frac{\partial Q^{-1}(r_{k}^{C_{k-1}})}{\partial r_{k-1}} \\
+0_{3\times 3} & pr 
+\end{bmatrix}
+\end{equation}
+
+\noindent where
+
+\begin{equation}
+pr=\begin{bmatrix}
+1 & 0 & 0 & \\
+&\frac{\partial \varphi _{i, k}^{C}}{\partial r_{k-1}} & \\
+&\frac{\partial \theta _{i, k}^{C}}{\partial r_{k-1}} & \\
+\end{bmatrix}= \begin{bmatrix}
+1 & 0 & 0 \\
+&\frac{\partial m^{-1}(Q^{-1}(r_{k}^{C_{k-1}})m(\varphi _{i, 
+k}^{C_{k-1}}, \theta _{i, k}^{C_{k-1}}))}{\partial r_{k-1}} & \\
+\end{bmatrix}
+\end{equation}
+
+Let $M=Q^{-1}(r_{k}^{C_{k-1}})m(\varphi_{i, k}^{C_{k-1}}, \theta _{i, 
+k}^{C_{k-1}})$, and $m^{-1}=m^{-1}(M)$, then
+
+\begin{equation}
+\frac{\partial m^{-1}}{\partial r_{k}^{C_{k-1}}}=
+\frac{\partial m^{-1}}{\partial M}\cdot 
+\frac{\partial M}{\partial r_{k}^{C_{k-1}}}
+\end{equation}
+
+\noindent where
+
+\begin{equation}
+\frac{\partial M}{\partial r_{k}^{C_{k-1}}}= 
+\frac{\partial Q^{-1}(r_{k}^{C_{k-1}})}{\partial r_{k-1}}
+\cdot m(\varphi_{i, k}^{C_{k-1}}, \theta_{i, k}^{C_{k-1}})
+\end{equation}
+
+
+\noindent as $m^{-1}$ isthe function that calculate
+$\begin{bmatrix}\varphi & \theta \end{bmatrix}$ from a 
+vector,$\frac{\partial m^{-1}}{\partial M}$ is the same as and .
+
+Derivatives of $x_{k}$ with respect to feature parameters $p_{i}^{C}
+$are given in
+
+\begin{equation}
+\frac{\partial x_{k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}}=
+\begin{bmatrix}
+\frac{\partial O_{W,k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\frac{\partial W_{W,k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\frac{\partial c_{k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\frac{\partial r_{k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\frac{\partial p_{i, k}^{C}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\end{bmatrix} = \begin{bmatrix}
+0 \\
+0 \\
+0 \\
+0 \\
+\frac{\partial p_{i,k}^{C_{k }}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\end{bmatrix}
+\end{equation}
+
+
+\begin{equation}
+\frac{\partial p_{i,k}^{C_{k }}}{\partial p_{i,k}^{C_{k-1 }}}=
+\begin{bmatrix}
+\frac{\partial x_{i,k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\frac{\partial y_{i,k}^{C}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\frac{\partial z_{i,k}^{C}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\frac{\partial \rho _{i,k}^{C}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\frac{\partial \varphi _{i, k}^{C}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\frac{\partial \theta _{i, k}^{C}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\end{bmatrix}=\begin{bmatrix}
+Q^{-1}(r_{k}^{C_{k-1}}) & 0_{3\times 3} \\
+0_{3\times 3} & 
+\frac{\partial p(3:5)_{i,k}^{C_{k}}}{\partial p(3:5)_{i,k}^{C_{k-1}}} \\
+\end{bmatrix}
+\end{equation}
+
+
+\begin{equation}
+\frac{\partial p(3:5)_{i,k}^{C_{k}}}{\partial p(3:5)_{i,k}^{C_{k-1}}}=
+ \begin{bmatrix}
+1 & 0 & 0 \\
+0 & 
+\frac{\partial \varphi_{i, k}^{C_{k}}}
+{\partial \varphi_{i,k}^{C_{k-1}}} & 
+\frac{\partial \varphi _{i, k}^{C_{k}}}
+{\partial \theta _{i, k}^{C_{k-1}}} \\
+0 & 
+\frac{\partial \theta _{i, k}^{C_{k}}}
+{\partial \varphi _{i, k}^{C_{k-1}}} & 
+\frac{\partial \theta _{i, k}^{C_{k}}}
+{\partial \theta _{i, k}^{C_{k-1}}} \\
+\end{bmatrix}=\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 
+\frac{\partial \varphi _{i, k}^{C_{k}}}{\partial M}
+\frac{\partial M}{\partial \varphi _{i, k}^{C_{k-1}}} & 
+\frac{\partial \varphi _{i,k}^{C_{k}}}
+{\partial M}\frac{\partial M}{\partial \theta _{i,k}^{C_{k-1}}}\\
+0 & 
+\frac{\partial \theta _{i, k}^{C_{k}}}{\partial M}
+\frac{\partial M}{\partial \varphi _{i, k}^{C_{k-1}}} & 
+\frac{\partial \theta _{i,k}^{C_{k}}}{\partial M}
+\frac{\partial M}{\partial \theta _{i, k}^{C_{k-1}}} \\
+\end{bmatrix}
+\end{equation}
+
+\noindent in which $\frac{\partial \varphi _{i, k}^{C_{k}}}{\partial
+  M}$ is the same as equation \ref{}. $\frac{\partial \theta _{i,
+    k}^{C_{k}}}{\partial M}$ is the same as equation \ref{} . $\frac{\partial
+  M}{\partial \varphi _{i,k}^{C_{k-1}}}$ and $ \frac{\partial
+  M}{\partial \theta _{i, k}^{C_{k-1}}}$ is given below.
+
+\begin{equation}
+\frac{\partial M}{\partial \varphi_{i,k}^{C_{k-1}}}=
+R^{-1}(r^{C})\begin{bmatrix}
+-\cos(\theta_{i, k}^{C_{k-1}})\sin(\varphi_{i,k}^{C_{k-1}}) \\
+-\sin(\varphi_{i,k}^{C_{k-1}})\sin(\theta_{i, k}^{C_{k-1}}) \\
+\cos (\varphi_{i,k}^{C_{k-1}})
+\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+\frac{\partial M}{\partial \theta _{i,k}^{C_{k-1}}}=
+R^{-1}(r^{C}) \begin{bmatrix}
+-\cos(\varphi_{i,k}^{C_{k-1}})\sin(\theta_{i, k}^{C_{k-1}})\\
+\cos(\varphi_{i,k}^{C_{k-1}})\cos(\theta_{i, k}^{C_{k-1}})\\
+0\\
+\end{bmatrix}
+\end{equation}
