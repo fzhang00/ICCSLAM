@@ -1,28 +1,27 @@
 \chapter{Coordinate Transformation}
 
-For a mobile robot traveling in world. A point in space has coordinate 
-$\begin{bmatrix}x & y & z\end{bmatrix}$ 
-in world frame, and  
-$\begin{bmatrix}x' & y' & z' \end{bmatrix}$ in the mobile frame. The
-two coordinate is related by 
+For a mobile robot traveling in world. A point in space has coordinate
+$[\begin{matrix}x & y & z\end{matrix}]$ in world frame, and
+$[\begin{matrix}x' & y' & z' \end{matrix}]$ in the mobile frame. The
+two coordinate is related by
 \begin{equation}
-\begin{matrix}
+\begin{bmatrix}
 x \\
 y \\
 z \\
 1 \\
-\end{matrix}_{World}=Q\cdot\begin{matrix}
+\end{bmatrix}_{World}=Q\cdot\begin{bmatrix}
 x' \\
 y' \\
 z' \\
 1  \\
-\end{matrix}_{mobile}
+\end{bmatrix}_{mobile}
 \end{equation}
 
 
-where Q is the transformation matrix composed by rotation matrix on X, 
-Y, and Z axis and a translation matrix. Q follows the TR?Y 
-convention\ldots (fig)
+\noindent where Q is the transformation matrix composed by rotation
+matrix on X, Y, and Z axis and a translation matrix. Q follows the
+TR?Y convention\ldots (fig)
 
 $Q(r_{x}, r_{y}, r_{z}, T)=Q_{Rz}(r_{z})\cdot Q_{Ry}(r_{y})\cdot 
 Q_{Rx}(r_{x})\cdot Q_{T}(T)$\\
@@ -79,3 +78,7 @@ $Q_{Rz}^{-1}=Q_{Rz}^{T}$\\
 
 $Q_{T}^{-1}=Q_{T}$?
 
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "thesis"
+%%% End:
