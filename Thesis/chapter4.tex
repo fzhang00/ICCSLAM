@@ -161,6 +161,65 @@ the feature coordinate in world frame, it can be calculated by
   \right]+\frac{1}{\rho _{i}}m(\varphi _{i}^{C},\theta_{i}^{C})\right)
 \end{equation}
 
+The DEM is converted into the world frame using the UAV's initial GPS
+location $[\begin{matrix} Latitude_{init} & Longitude_{init} &
+  Height_{init} \end{matrix}]$ and orientation $[\begin{matrix}
+  Roll_{init} & Pitch_{init } & Azimuth_{init} \end{matrix}]$. First,
+the UAV's GPS latitude and longitude is converted into UTM
+representation $[\begin{matrix} Northing_{init} & Easting_{init} &
+  Height_{init} \end{matrix}]$. Then, a transformation matrix can be
+defined as followed:
+
+
+\begin{equation}
+Q_{Roll}^{-1}=\begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & \cos (Roll_{init}) & \sin (Roll_{init}) & 0 \\
+0 & -sin(Roll_{init}) & \cos (Roll_{init}) & 0 \\
+0 & 0 & 0 & 1 \\
+\end{bmatrix}
+\end{equation}
+
+
+\begin{equation}
+Q_{Pitch}^{-1}=\begin{bmatrix}
+\cos (Pitch_{init}+\pi ) & 0 & -\sin (Pitcch_{init}+\pi ) & 0 \\
+0 & 1 & 0 & 0 \\
+\sin (Pitch_{init}+\pi ) & 0 & \cos (Pitch_{init}+\pi ) & 0 \\
+0 & 0 & 0 & 1 \\
+\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+Q_{Azimuth}^{-1}=\begin{bmatrix}
+\cos (Azimuth_{init}+\frac{\pi }{2}) & \sin (Azimuth_{init}+\frac{\pi 
+}{2}) & 0 & 0\\
+-sin(Azimuth_{init}+\frac{\pi }{2}) & \cos (Azimuth_{init}+\frac{\pi 
+}{2}) & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+\end{bmatrix}
+\end{equation}
+
+
+\begin{equation}
+Q_{T}^{-1}=\begin{bmatrix}
+1 & 0 & 0 & -Northing_{init} \\
+0 & 1 & 0 & -Easting_{init} \\
+0 & 0 & 1 & -Height_{init} \\
+0 & 0 & 0 & 1 \\
+\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+Q^{-1}=Q_{T}^{-1}\cdot Q_{Roll}^{-1}\cdot Q_{Pitch}^{-1}\cdot Q_{Azimuth}^{-1}
+\end{equation}
+
+At last, the DEM in world coordinate is given by
+
+$DEM_{World}=Q^{-1}\cdot DEM_{UTM}$
+
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "thesis.tex"

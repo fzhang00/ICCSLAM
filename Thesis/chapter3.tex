@@ -255,8 +255,8 @@ P_{k}^{C_{k}}=J_{C_{k-1}\to C_{k}}P_{k}^{C_{k-1}}J_{C_{k-1}\to C_{k}}^{T}
 composition equations. Detail derivation of the Jacobian matrix is
 given in appendix \ref{?}  
 
-\section{Filter Initialization}
-\subsection{Initialize the State Vector}
+\subsection{Filter Initialization}
+\subsubsection{Initialize the State Vector}
 
 State vectors are initialized at the first frame. The world origin 
 coordinate and orientation, camera motions, and the feature reference 
@@ -307,7 +307,7 @@ intersects the image plane. The elevation-azimuth pair $[\varphi
 _{i}^{C}, \theta _{i}^{C}]$ can then be directly calculated from
 $h^{C}$ using equation (\ref{eq:m_inv_varphi}) and (\ref{eq:m_inv_theta})
 
-\subsection{Initialized the State Covariance Matrix}
+\subsubsection{Initialized the State Covariance Matrix}
 
 Because the world origin is defined at the first frame, it enables 
 initializing the filter with minimum variance, which helps reducing the 
@@ -375,103 +375,25 @@ formulation of the Jacobian matrix is given in appendix \ref{?}.
 
 
 
-\subsubsection{Adding and Deleting Features}\label{section:_Toc332876136}
-Features that move out of the camera's FOI are removed from the filter. 
-The removal is done by directly deleting the parameters from the state 
+\subsection{Adding and Deleting Features}
+Features that move out of the camera's FOI are removed from the filter
+state vector and covariance matrix to keep filter size managable. 
+The removal is done by deleting the parameters from the state 
 vector, and the related rows and columns from the state covariance 
-matrix. The parameters of the deleted features are still recorded into 
-the database, and remained unchanged for all iteration after the removal 
-unless a GPS bundle correction occurs. 
+matrix. All tracked features are recorded into a database. The deleted
+ones still gets their parameters updated based on the camera motion,
+but no Kalman corection is done.
 
-To maintain sufficient amount of features to generate map, new features 
-are acquired and added to the filter if a feature deletion procedure 
-occurred, or number of tracked feature is lower than a threshold. The 
-feature addition procedure occurs after the composition step of an 
-iteration, and follows the same procedure as described in section . 
+To maintain sufficient amount of features for mapping, new features 
+are acquired and added to the filter should a feature deletion 
+occurred, or the number of tracked feature is lower than a threshold. The 
+feature addition occurs after the composition step of an 
+iteration, and follows the same procedure as the feature
+initialization described previously. 
 
-\subsubsection{Bundle Correction with GPS (not yet implemented)}
-Apply overall correction on the map at a sparser time interval using the 
-GPS positions. 
-
-\subsubsection{Processing for Comparison to Ground Truth Data}
-The accuracy of the result was analyzed by comparing to the digital 
-elevation models (DEM) .To make the comparison, the features coordinate 
-and the DEM data must be brought to the same coordinate system. For ease 
-of viewing, the world coordinate is used. The features' positions can be 
-converted to Euclidean representation in world frame by: 
-
-\begin{equation} 
-\begin{bmatrix}
-X_{i}^{W} \\
-Y_{i}^{W} \\
-Z_{i}^{W} \\
-\end{bmatrix}
-=Q^{-1}(O_{XYZ}^{c}, W_{XYZ}^{c})(\begin{bmatrix}
-x_{i}^{C} \\
-y_{i}^{C} \\
-z_{i}^{C} \\
-\end{bmatrix}
-+\frac{1}{\rho _{i}}m(\varphi _{i}^{C}, \theta _{i}^{C}))
-\end{equation}
-
-The DEM is converted into the world frame using the UAV's initial GPS
-location $\begin{bmatrix} Latitude_{init} & Longitude_{init} &
-  Height_{init} \end{bmatrix}$ and orientation$\begin{bmatrix}
-  Roll_{init} & Pitch_{init } & Azimuth_{init} \end{bmatrix}$. First,
-the UAV's GPS latitude and longitude is converted into UTM
-representation $\begin{bmatrix} Northing_{init} & Easting_{init} &
-  Height_{init} \end{bmatrix}$. Then, a transformation matrix can be
-defined as followed:
-
-
-\begin{equation}
-Q_{Roll}^{-1}=\begin{bmatrix}
-1 & 0 & 0 & 0 \\
-0 & \cos (Roll_{init}) & \sin (Roll_{init}) & 0 \\
-0 & -sin(Roll_{init}) & \cos (Roll_{init}) & 0 \\
-0 & 0 & 0 & 1 \\
-\end{bmatrix}
-\end{equation}
-
-
-\begin{equation}
-Q_{Pitch}^{-1}=\begin{bmatrix}
-\cos (Pitch_{init}+\pi ) & 0 & -\sin (Pitcch_{init}+\pi ) & 0 \\
-0 & 1 & 0 & 0 \\
-\sin (Pitch_{init}+\pi ) & 0 & \cos (Pitch_{init}+\pi ) & 0 \\
-0 & 0 & 0 & 1 \\
-\end{bmatrix}
-\end{equation}
-
-\begin{equation}
-Q_{Azimuth}^{-1}=\begin{bmatrix}
-\cos (Azimuth_{init}+\frac{\pi }{2}) & \sin (Azimuth_{init}+\frac{\pi 
-}{2}) & 0 & 0\\
--sin(Azimuth_{init}+\frac{\pi }{2}) & \cos (Azimuth_{init}+\frac{\pi 
-}{2}) & 0 & 0 \\
-0 & 0 & 1 & 0 \\
-0 & 0 & 0 & 1 \\
-\end{bmatrix}
-\end{equation}
-
-
-\begin{equation}
-Q_{T}^{-1}=\begin{bmatrix}
-1 & 0 & 0 & -Northing_{init} \\
-0 & 1 & 0 & -Easting_{init} \\
-0 & 0 & 1 & -Height_{init} \\
-0 & 0 & 0 & 1 \\
-\end{bmatrix}
-\end{equation}
-
-\begin{equation}
-Q^{-1}=Q_{T}^{-1}\cdot Q_{Roll}^{-1}\cdot Q_{Pitch}^{-1}\cdot Q_{Azimuth}^{-1}
-\end{equation}
-
-At last, the DEM in world coordinate is given by
-
-$DEM_{World}=Q^{-1}\cdot DEM_{UTM}$
-
+% \subsubsection{Bundle Correction with GPS (not yet implemented)}
+% Apply overall correction on the map at a sparser time interval using the 
+% GPS positions. 
 
 
 %%% Local Variables:
