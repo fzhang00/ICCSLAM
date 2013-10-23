@@ -295,6 +295,77 @@ also shown for comparison.
 \label{fltfig:10}
 \end{figure}
 
+\section{Compare to Visually Corresponded Feature}
+Because it is hard to correspond feature extracted from video to the
+actual data on DEM, a second piece of video was processed with
+man-made structure in the scene so that feature correspondence can be
+made manually. Figure \ref{fltfig:11} shows a zoomed in view of the
+features extracted by the CC\_EKF\_SLAM. All features are located at
+the bottom left corner of the image. Figure \ref{fltfig:12} shows the
+common features found manually on the satalite imaging on Google Earth
+\cite{}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm, keepaspectratio=true]
+{./Figures/fltfig/airport/frame398_features.jpg}
+\caption{Feature identified by algorithm }
+\label{fltfig:11}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=13cm, keepaspectratio=true]
+{./Figures/fltfig/airport/uav_and_identified_landmark.png}
+\caption{Common features idetified manually on Google Earth }
+\label{fltfig:12}
+\end{figure}
+\FloatBarrier
+
+The SUAS position and orientation were compared to onboard GPS and INS
+recording, and the result are plotted in figure \ref{fltfig:13} and
+figure \ref{fltfig:14}. Similar to the natual scene video, SUAS
+location is more accurate on X, and shows more drift on Y and Z
+coordinate. The drift become significant when frame number exceeds
+200. However, with the SUAS decending, drift on Z is less than when it
+is ascending. For orientation error, roll and pitch error oscillate
+around zero, but azimuth error drift away as frame number increases. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm, keepaspectratio=true]
+{./Figures/fltfig/airport/UAV_position_and_error.png}
+\caption{SUAS position accuracy compared to GPS}
+\label{fltfig:13}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm, keepaspectratio=true]
+{./Figures/fltfig/airport/UAV_orientation_and_error.png}
+\caption{SUAS orientation accuracy compared to ??}
+\label{fltfig:14}
+\end{figure}
+\FloatBarrier
+
+Figure \ref{fltfig:15} shows the features location in X and Y axis.
+The google earth map provide a very rough elevation data, and was not
+used. The ground truth X and Y coordinate of the features were
+measured on Google Earth in GPS coordinates and converted into UTM.
+This plot shows a clear offset error between the ground truth and the
+estimated. X axis coordinate has a mean offset is about 100 meters,
+and Y axis coordinate has a offset of about 130m. Since all features
+are located in the bottom left corner of the FOV, it is possible that
+lens distortion plays a important part in contributing to these error. 
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=13cm, keepaspectratio=true]
+{./Figures/fltfig/airport/Feature_plot_(x,y).png}
+\caption{Feature error on X and Y axis. }
+\label{fltfig:15}
+\end{figure}
 
 %%% Local Variables:
 %%% mode: latex

@@ -1,4 +1,8 @@
 \chapter{Jacobian Matrix for Filter Initialization}
+The Jacobian matrix used in state covariance matrix initialization
+equation (\ref{eq:Pnew}) is derived in this section. The complete
+Jacobian matrix $J$ for initializing a feature covariance is given by
+
 \begin{equation}
 J=\begin{bmatrix}
  & & & & & &0\\
@@ -12,21 +16,20 @@ J=\begin{bmatrix}
 \end{bmatrix}
 \end{equation}
 
-Whenever a new feature is added, it's initial position is always $
-\begin{bmatrix}0&0&0\end{bmatrix}$ in the camera centric coordinate,
-and the $\begin{bmatrix}\rho&\varphi&\theta\end{bmatrix}$ parameters
-are not a function of $ OX_{W}^{C}$, $c^{C}$,or$r^{C}$, therefore
+\noindent Whenever a new feature is added, it's initial position is
+always $[\begin{matrix}0&0&0\end{matrix}]$ in the camera frame, and
+the $[\begin{matrix}\rho&\varphi&\theta\end{matrix}]$ parameters are
+not a function of $ OX_{W}^{C}$, $c^{C}$,or $r^{C}$, therefore
 
 \begin{equation}
-\frac{\partial p_{i}}{\partial OX_{W}^{C}}=0_{6\times 6}
+\begin{matrix}
+\frac{\partial p_{i}}{\partial OX_{W}^{C}}=0_{6\times 6}, & 
+\frac{\partial p_{i}}{\partial c^{C}}=0_{6\times 3}, &
+\frac{\partial p_{i}}{\partial r^{C}}= 0_{6\times 3}
+\end{matrix}
 \end{equation}
 
-\begin{equation}
-\frac{\partial p_{i}}{\partial c^{C}}=0_{6\times 3}\frac{\partial 
-p_{i}}{\partial r^{C}}= 0_{6\times 3}
-\end{equation}
-
-$J$ can then be simplified as
+\noindent $J$ can then be simplified as
 
 \begin{equation}
 J=\begin{bmatrix}
@@ -36,11 +39,9 @@ I & 0 & \\
 \end{equation}
 
 
-\noindent where$g_{i}$ includes the variable in matrix $R$: $
-g_{i}=[\begin{matrix}
-x_{i}^{C} & y_{i}^{C} & z_{i}^{C} & \rho _{i} & u_{i} & v_{i}
-\end{matrix}
-]$. Then 
+\noindent where $g_{i}$ includes the variable in matrix $R$ given in
+equation(\ref{eq:R}): $ g_{i}=[\begin{matrix} x_{i}^{C} & y_{i}^{C} &
+  z_{i}^{C} & \rho _{i} & u_{i} & v_{i}\end{matrix}]$. Then 
 
 \begin{equation}
 \frac{\partial p_{i}}{\partial g_{i}}=\begin{bmatrix}
@@ -64,7 +65,7 @@ I_{3\times 3} & & 0_{3\times 3} & \\
 \end{bmatrix}
 \end{equation}
 
-Based on the rule of derivation, 
+\noindent Based on the rule of derivation, 
 
 $$\frac{\partial \varphi_{i}^{C}}{\partial u_{i}}=\frac{\partial 
 \varphi_{i}^{C}}{\partial h^{C}}\frac{\partial h^{C}}{\partial u_{i}}$$
@@ -81,7 +82,7 @@ $$\frac{\partial \theta _{i}^{C}}{\partial v_{i}}=\frac{\partial \theta
 _{i}^{C}}{\partial h^{C}}\frac{\partial h^{C}}{\partial v_{i}}$$
 
 
-\noindent and
+\noindent When lens distortion is ignored,
 
 \begin{equation}
 \frac{\partial \varphi_{i}^{C}}{\partial h^{C}}= 
@@ -130,3 +131,10 @@ s_{x}\\
 s_{y}\\
 \end{bmatrix}
 \end{equation}
+
+Equations given above completes the Jacobian matrix calculation.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "thesis"
+%%% End:

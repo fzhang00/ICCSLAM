@@ -1,9 +1,10 @@
 \chapter{Linearization of Measurement Model}
-The measurement model of the algorithm is not linear, and must be 
-linearized by evaluating first derivative of the measurement equation at 
-the predicted camera location. Since the measurement model is not a 
-function of world origin coordinate and orientation, the Jacobian matrix 
-of the measurement model is
+The Jacobian matrix used in linearizing the measurement equations is
+derived in this section. The measurement model of the algorithm is not
+linear, and must be linearized by evaluating first derivative of the
+measurement equation at the predicted camera location. Since the
+measurement model is not a function of world origin coordinate and
+orientation, the Jacobian matrix of the measurement model is
 
 \begin{multline}
 \frac{\partial h_{k}^{U}(x)}{\partial x}=
@@ -321,3 +322,8 @@ R^{-1}(r^{C}) \begin{bmatrix}
 0\\
 \end{bmatrix}
 \end{equation}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "thesis"
+%%% End:
