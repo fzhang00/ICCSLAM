@@ -1,11 +1,22 @@
 (TeX-add-style-hook "thesis"
  (lambda ()
     (TeX-add-symbols
-     '("norm" 1))
+     '("Comment" 1)
+     '("Eq" 1)
+     '("Figure" 1)
+     '("Fig" 1)
+     '("App" 1)
+     '("Ch" 1)
+     '("Sec" 1)
+     "ie"
+     "eg")
     (TeX-run-style-hooks
      "float"
      "multirow"
      "placeins"
+     "pdfsync"
+     "hyperref"
+     "pdftex"
      "longtable"
      "setspace"
      "rotating"
@@ -20,18 +31,11 @@
      "cuthesis"
      "masters"
      "2committee"
+     "standard"
+     "nonsequential"
      "latex2e"
      "rep12"
      "report"
      "12pt"
-     "letterpaper"
-     "chapter1"
-     "chapter2"
-     "chapter3"
-     "chapter4"
-     "chapter5"
-     "chapter6"
-     "appendix"
-     "appendix2"
-     "appendix3")))
+     "letterpaper")))
 

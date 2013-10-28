@@ -5,7 +5,7 @@
 
 % Leave the below option as "masters," as it generates "thesis" on title page. 
 % PhD generates "dissertation" and that word is not recognized by Carleton Library
-\usepackage[masters,2committee]{cuthesis}
+\usepackage[masters,2committee,standard,nonsequential]{cuthesis}
 \usepackage{array}
 \usepackage{graphicx}
 \usepackage{cite}
@@ -15,16 +15,35 @@
 \usepackage{rotating}
 \usepackage{setspace}
 \usepackage{longtable}
-\usepackage{rotating}
+\usepackage[colorlinks=true,pdftex,bookmarks=true,bookmarksnumbered=true,breaklinks=true]{hyperref}
+\usepackage{pdfsync}
 \usepackage{placeins}
 \usepackage{multirow}
 \usepackage{float}
 
-
-
 % Defines relative path to folder containing your figures
 \graphicspath{{figures/}}
-\providecommand{\norm}[1]{\lvert#1\rvert} 
+%\providecommand{\norm}[1]{\lvert#1\rvert} 
+
+% Set the document text spacing
+%\singlespacing
+\onehalfspacing
+%\doublespacing
+
+% Some definitions that could be useful
+\newcommand{\Sec}[1]{Sec.~\ref{#1}}
+\newcommand{\Ch}[1]{Chap.~\ref{#1}}
+%\newcommand{\App}[1]{\appendixname~\ref{#1}}
+\newcommand{\App}[1]{Appendix~\ref{#1}}
+\newcommand{\Fig}[1]{Fig.~\ref{#1}}
+\newcommand{\Figure}[1]{Figure~\ref{#1}}
+\newcommand{\Eq}[1]{(\ref{#1})}
+\setcounter{page}{1}
+\newcommand{\ie}{i.e.}
+\newcommand{\eg}{e.g.}
+
+%\newcommand{\Comment}[1]{{\textbf{\underline{[#1]}}}}
+\newcommand{\Comment}[1]{{\color{green} [#1]}}
 
 \begin{document}
 
@@ -32,20 +51,16 @@
 %-----------------------------------------------------------------------
 % Define various variables required by cuthesis.sty to function properly
 
-% Below you must write the program name, NOT the name of your school
-% i.e: If you are getting a Doctor of Philosophy and are a student in NPSIA, you must write
-% below: International Affairs and Public Policy because you are not getting a PhD in NPSIA. 
-% If you are getting a Master of Engineering you must
-% write below: Aerospace or Civil or Electrical, etc. 
-\dept{Your Program Name Here}
-
 % Define thesis title and author
-\title{Thesis Title - DO NOT USE SYMBOLS}
+\title{Obstacle Detection Using Monocular Camera for Low Flying
+  Simulated Unmanned Aerial Vehicle (SUAS)}
 % Name used must be name under which you are registered at Carleton University
-\author{First then last name (eg: Jane Doe)}
-
+\author{Fan Zhang}
+\pastdegrees{B.Sc.}
+\dept{Systems and Computer Engineering}
+\degreename{Master of Applied Science in Electrical Engineering}
 % Specify your Thesis Submission Date
-\submitdate{September 2011} \copyrightyear{2011}
+\submitdate{October 2013} \copyrightyear{2013} \copyrightmonth{October}
 
 % Thesis committee information for the signature page
 % Be sure to specify size of committee in cuthesis options.
@@ -54,21 +69,22 @@
 %     2committee = supervisor + firstcommittee
 %     3committee = supervisor + firstcommittee + secondcommittee
 % Default setting is 1committee
-\supervisor{Dr. Leroy Seuss, Supervisor}
-\supervisor{other guy, Supervisor}
-%\firstcommittee{J. Doe}
-%\secondcommittee{F.Smith}
+%\supervisor{Dr. Rafik Goubran, Supervisor}
+%\supervisor{Professor Paul Straznicky, Supervisor}
+\firstcommittee{Dr. Rafik Goubran, Thesis Supervisor}
+\secondcommittee{Professor Paul Straznicky, Thesis Co-supervisor}
 %\thirdcommittee{A. Mack}
 %\fourthcommittee{B. Donner}
 % Specify department chair
-%\departmentchair{F. Hampson, Department Chair}
-%\dept{Program Name}
+\departmentchair{Roshdy Hafez, Department Chair, \\Department of
+  Systems and computer Engineering}
+
 % This is the name of the .bib files that holds all of your references.
 % It can be a comma separated list if there is more than one file.
 \reffile{ref}
 
 % Defines relative path to folder containing your figures
-%\graphicspath{{figures/}}
+\graphicspath{{figures/}}
 %-----------------------------------------------------------------------
 
 % ***** Thesis Components *****
@@ -81,24 +97,27 @@
 % respective section of the thesis.  If one of these sections
 % is not included, comment out the corresponding line.
 % If you want to print these sections, remove the percent sign (%)
-%\abstract{abstract}
-%\acknowledgements{acknowledgements}
+\abstract{abstract}
+%\nomenclature{nomenclature}
+%\tableofcontents
+\acknowledgements{acknowledgements}
 %\contributions{contributions}
 %\acronyms{acronyms}
 %\symbols{symbols}
-%\dedication{dedication}
+\preface{preface}
+\dedication{dedication}
 
 % Include the chapters.
-\include{chapter1}
-\include{chapter2}
-\include{chapter3}
-\include{chapter4}
-\include{chapter5}
-\include{chapter6}
+\newchapter{chapter1}
+\newchapter{chapter2}
+\newchapter{chapter3}
+\newchapter{chapter4}
+\newchapter{chapter5}
+\newchapter{chapter6}
 \appendix
-\include{appendix}
-\include{appendix2}
-\include{appendix3}
+\newappendix{appendix}
+\newappendix{appendix2}
+\newappendix{appendix3}
 \end{document}
 
 %%% Local Variables: 

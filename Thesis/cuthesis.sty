@@ -1,11 +1,12 @@
-%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % This LaTeX package is used to create theses and dissertations at
 % the Carleton University.  It was was written by UNIVERSITY OF RHODE ISLAND
 % and modified for use at Carleton University by Calvin Rans from the
-% Department of Mechanical and Aerospace Engineering.  It has several
+% Department of Mechanical and Aerospace Engineering.  And then modified
+% by Richard Dansereau from the Department of Systems and Computer Engineering.
+% It has several
 % options which are described below.  Multiple options can be included
-% as a comma separated list.  See the examples section for common uses. Some further alterations were made on behalf of the Carleton University Library by Joshua Kilberg.
+% as a comma separated list.  See the examples section for common uses.
 %
 %
 %
@@ -17,9 +18,7 @@
 %
 %   phd,masters: this specifies whether this is a PhD. dissertation
 %     or a masters thesis.  masters is the default.
-%   DUE TO NEW CHANGES TO THE CARLETON LIBRARY SYSTEM, KEEP MASTERS
-%  SELECTED, EVEN IF YOU ARE GETTING A PHD
-
+%
 %   1committee, 2committee, 3committee,4committee,5committee: this is the number of people
 %     on your committee (in addition to the department chair), which determines how many signature lines
 %     are needed.  Remember that the chairman of the committee
@@ -36,7 +35,7 @@
 % Examples:
 %   For a standard format masters thesis:
 %     \usepackage{cuthesis}
-%   CARLETON DOES NOT USE THE WORD DISSERTATION, SO STICK WITH MASTERS
+%
 %   For a manuscript format PhD. dissertation:
 %     \usepackage[manuscript,phd]{cuthesis}
 %
@@ -45,7 +44,7 @@
 %
 %
 % Notes:
-%   Portions of this package were derived from the chapterbib
+%   Portions of this package were derived frome the chapterbib
 %   package (Version 1.5 (09-OCT-1995) Donald Arseneau), therefore
 %   you should be sure not to use that package with this one due
 %   to inevitable conflicts.
@@ -53,8 +52,8 @@
 %   You will also need the file cubiblio.bst for creating the
 %   bibliography.
 %
-%   This package has been designed to comply with the library's
-%   format guidelines using either a 10pt or 12pt font, which is
+%   This package has been disigned to comply with the library's
+%   format guidlines using either a 10pt or 12pt font, which is
 %   specified in the \documentclass line.
 %
 %   By default the department named on the title page is Mechanical
@@ -63,14 +62,14 @@
 %     \dept{My Department}
 %   in the main .tex file before any of the chapters are included.
 %
-%   The acknowledgements, contributions, and dedication sections are not
+%   The acknowledgements, preface, and dedication sections are not
 %   required, but the abstract section is.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 
 \@ifundefined{DeclareOption}{}{% LaTeX2e option
-\ProvidesPackage{cuthesis}[2003/04/04 \space  v 1.2]
+\ProvidesPackage{cuthesis}[2008/08/24 \space  v 1.2]
 
 \DeclareOption{manuscript}{\def\@wantmanuscript{true}}
 \DeclareOption{standard}{}
@@ -97,7 +96,7 @@
 \DeclareOption{5committee}{\def\@fivecommittee{true}}
 \DeclareOption{3committee}{\def\@threecommittee{true}}
 \DeclareOption{2committee}{\def\@twocommittee{true}}
-\DeclareOption{1committee}{}
+\DeclareOption{1committee}{\def\@onecommittee{true}}
 
 \ProcessOptions
 }
@@ -169,7 +168,7 @@
      {\@citea\let\@citea\citepunct%
       \edef\@citeb{\expandafter\@iden\@citeb}%
       \ifnum0=\value{mychapcitecount}%
-      \if@filesw\immediate\write\@auxout{\string\bibstyle{cubiblio}}\fi%
+      \if@filesw\immediate\write\@auxout{\string\bibstyle{ieeetr}}\fi%
       \if@filesw\immediate\write\@auxout{\string\bibdata{\@reffile}}\fi%
       \setcounter{mychapcitecount}{1}%
       \fi%
@@ -317,7 +316,26 @@
     \thechapter.\arabic{equation}%
   }}
 
-
+% This xfloat definition was apparently originally created to allow single spacing
+% within floats such as figures and tables.  Also, this was originally written for
+% LaTeX2.09 and not updated for LaTeX2e.  Hence, with the setspace package now
+% available, I'm commenting this definition out since there are known conflicts
+% with this and using the color package.
+%\def\@xfloat#1[#2]{\ifhmode \@bsphack\@floatpenalty -\@Mii\else
+%   \@floatpenalty-\@Miii\fi\def\@captype{#1}\ifinner
+%      \@parmoderr\@floatpenalty\z@
+%    \else\@next\@currbox\@freelist{\@tempcnta\csname ftype@#1\endcsname
+%       \multiply\@tempcnta\@xxxii\advance\@tempcnta\sixt@@n
+%       \@tfor \@tempa :=#2\do
+%                        {\if\@tempa h\advance\@tempcnta \@ne\fi
+%                         \if\@tempa t\advance\@tempcnta \tw@\fi
+%                         \if\@tempa b\advance\@tempcnta 4\relax\fi
+%                         \if\@tempa p\advance\@tempcnta 8\relax\fi
+%         }\global\count\@currbox\@tempcnta}\@fltovf\fi
+%    \global\setbox\@currbox\vbox\bgroup
+%    \def\baselinestretch{1}\@normalsize
+%    \boxmaxdepth\z@
+%    \hsize\columnwidth \@parboxrestore}
 
 \long\def\@footnotetext#1{\insert\footins{\def\baselinestretch{1}\footnotesize
     \interlinepenalty\interfootnotelinepenalty
@@ -349,6 +367,8 @@
 \let\endthesisbib=\endtrivlist
 
 \def\dept#1{\gdef\@dept{#1}}
+\def\pastdegrees#1{\gdef\@pastdegrees{#1}}
+\def\degreename#1{\gdef\@degreename{#1}}
 \def\supervisor#1{\gdef\@supervisor{#1}}
 \def\firstcommittee#1{\gdef\@firstcommittee{#1}}
 \def\secondcommittee#1{\gdef\@secondcommittee{#1}}
@@ -356,7 +376,8 @@
 \def\fourthcommittee#1{\gdef\@fourthcommittee{#1}}
 \def\departmentchair#1{\gdef\@departmentchair{#1}}
 \def\copyrightyear#1{\gdef\@copyrightyear{#1}} % \author, \title in report
-\def\@title{}\def\@author{}\def\@dept{Mechanical and Aerospace Engineering}
+\def\copyrightmonth#1{\gdef\@copyrightmonth{#1}}
+\def\@title{}\def\@author{}\def\@dept{Systems and Computer Engineering}
 \def\@supervisor{} \def\@firstcommittee{} \def\@secondcommittee{}
 \def\@thirdcommittee{} \def\@fourthcommittee{} \def\@departmentchair{}
 \def\@copyrightyear{\number\the\year}
@@ -376,20 +397,16 @@
   \def\@acknowledgements{#1}
 }
 
-\def\contributions#1{%
-  \def\@contributions{#1}
+\def\preface#1{%
+  \def\@preface{#1}
 }
 
 \def\dedication#1{%
   \def\@dedication{#1}
 }
 
-\def\acronyms#1{%
-  \def\@acronyms{#1}
-}
-
-\def\symbols#1{%
-  \def\@symbols{#1}
+\def\nomenclature#1{%
+  \def\@nomenclature{#1}
 }
 
 
@@ -413,48 +430,37 @@
         by\\
         \mbox{}\\
         \mbox{}\\
-        {\textbf{\@author}}\\
+        {\textbf{\@author}\@ifundefined{@pastdegrees}{}{, \textbf{\@pastdegrees}}}\\
     \end{center}
     \mbox{}
     \begin{center}
-        A \@ifundefined{@phddissertation}{
-      Thesis
-    }{
-       Dissertation
-    } submitted to \\
-    the Faculty of Graduate Studies and Research\\
-    in partial fulfilment of\\
-    the requirements for the degree of\\
-    \@ifundefined{@phddissertation}{
-    % CHAGE BELOW MASTER OF ARTS TO MASTER OF SCIENCE OR DOCTOR OF PHIL...
- \textbf{Master of Arts}\\
-}{
- \textbf{Doctor of Philosophy}\\
-}
-\mbox{in}
+        A \@ifundefined{@phddissertation}{thesis}{dissertation} submitted to the\\
+    Faculty of Graduate and Postdoctoral Affairs\\
+    in partial fulfillment of the requirements for the degree of\\
+    \mbox{}\\
+    \mbox{}\\
+    \bf{\@degreename}\\
     \end{center}
-    \mbox{}
-   % \begin{center}
-       % Norman Paterson School of International Affairs
-    %\end{center}
-    \mbox{}
+    \mbox{}\\
+    \mbox{}\\
     \begin{center}
-        \@dept\\
+        Ottawa-Carleton Institute for Electrical and Computer Engineering\\
+        Department of \@dept\\
         Carleton University\\
-        Ottawa, Ontario, Canada\\
+        Ottawa, Ontario\\
         \submitdate\\
     \end{center}
     \mbox{}
     \begin{center}
-        Copyright \copyright\\
-        \@copyrightyear\ - \@author
+        \copyright Copyright \\
+        \@author, \@copyrightyear
     \end{center}\clearpage}
 
 
 \long\def\signature#1{%
-  \begin{minipage}[t]{4in}
+  \begin{minipage}[t]{7in}
     \vspace{.4in}
-    \hbox{\hfil\shortstack{\vrule width 3in height 0.4pt \\#1}}
+    \hbox{\hfil\shortstack{\vrule width 4in height 0.4pt \\#1}}
   \end{minipage}}
 
 \def\comprof{%
@@ -474,13 +480,9 @@
 \def\signaturepage{%
 \thispagestyle{plain}%
 \begin{center}
-    The undersigned recommend to\\
-    the Faculty of Graduate Studies and Research\\
-    acceptance of the \@ifundefined{@phddissertation}{
-      Thesis
-    }{
-       Dissertation
-    }\\
+    The undersigned hereby recommends to the\\
+    Faculty of Graduate and Postdoctoral Affairs\\
+    acceptance of the \@ifundefined{@phddissertation}{thesis}{dissertation}\\
 \end{center}
 \mbox{}
 \begin{center}
@@ -488,18 +490,15 @@
 \end{center}
 \mbox{}
 \begin{center}
-    Submitted by \textbf{\@author}\\
-    in partial fulfilment of the requirements for the degree of\\
-        \@ifundefined{@phddissertation}{
- \textbf{\bf{Master of Science}}\\
-}{
- \textbf{\bf{Doctor of Philosophy}}\\
-}
+    submitted by \textbf{\@author}\@ifundefined{@pastdegrees}{}{, \textbf{\@pastdegrees}}\\
+    \mbox{}\\
+    in partial fulfillment of the requirements for the degree of\\
+    \mbox{}\\
+    \bf{\@degreename}\\
 \end{center}
 \vfill
 \begin{center}
   \begin{tabular}{rl}
-      & \signature{\@supervisor}\\
     \@ifundefined{@twocommittee}{}
     {
       & \signature\@firstcommittee\\
@@ -528,8 +527,10 @@
 \end{center}
 \vfill
 \begin{center}{
+  Ottawa-Carleton Institute for Electrical and Computer Engineering\\
+  Department of \@dept\\
   Carleton University\\
-  \@copyrightyear}
+  \@copyrightmonth, \@copyrightyear}
 \end{center}}
 
 \def\startingpages{%
@@ -537,7 +538,7 @@
   \pagestyle{plain}
   \pagenumbering{roman}
   \titlep
- % \signaturepage
+  \signaturepage
   \immediate\openout12=\@bibliofile.aux
   \immediate\write12{\string\bibstyle{cubiblio}}
   \immediate\write12{\string\bibdata{\@reffile}}
@@ -550,15 +551,12 @@
   \@ifundefined{@acknowledgements}{}{
     \doouracknowledgements{\@acknowledgements}
   }
-  \@ifundefined{@contributions}{}{
-    \doourcontributions{\@contributions}
+  \@ifundefined{@preface}{}{
+    \doourpreface{\@preface}
   }
   \contentspages
-  \@ifundefined{@acronyms}{}{
-    \doouracronyms{\@acronyms}
-  }
-  \@ifundefined{@symbols}{}{
-    \dooursymbols{\@symbols}
+  \@ifundefined{@nomenclature}{}{
+    \doournomenclature{\@nomenclature}
   }
   \pagenumbering{arabic}
   \pagestyle{myheadings}
@@ -567,6 +565,7 @@
 \def\doourabstract#1{%
   \sloppy
   \chapter*{Abstract}
+  \phantomsection
   \addcontentsline{toc}{chapter}{Abstract}
   \@ifundefined{@phddissertation}{
     \thispagestyle{plain}
@@ -583,6 +582,7 @@
 
 \def\doouracknowledgements#1{%
   \chapter*{Acknowledgments}
+  \phantomsection  
   \addcontentsline{toc}{chapter}{Acknowledgments}
   \input{#1}
 }
@@ -593,27 +593,23 @@
   \include{#1}
 }
 
-\def\doourcontributions#1{%
-  \chapter*{Contributions}
-  \addcontentsline{toc}{chapter}{Contributions}
+\def\doourpreface#1{%
+  \chapter*{Preface}
+  \phantomsection  
+  \addcontentsline{toc}{chapter}{Preface}
   \input{#1}
 }
 
-\def\doouracronyms#1{%
-  \chapter*{List of Acronyms}
-  \addcontentsline{toc}{chapter}{List of Acronyms}
-  \input{#1}
-  \newpage
-}
-
-\def\dooursymbols#1{%
-  \chapter*{List of Symbols}
-  \addcontentsline{toc}{chapter}{List of Symbols}
+\def\doournomenclature#1{%
+  \chapter*{Nomenclature}
+  \phantomsection  
+  \addcontentsline{toc}{chapter}{Nomenclature}
   \input{#1}
   \newpage
 }
 
 \def\contentspages{\newpage
+  \phantomsection
   \addcontentsline{toc}{chapter}{Table of Contents}
   \tableofcontents
   \newpage
@@ -621,6 +617,7 @@
     {\addvspace{10pt}
     \let\saveaddvspace=\addvspace
     \def\addvspace##1{}
+    \phantomsection    
     \addcontentsline{toc}{chapter}{List of Tables}
     \listoftables
     \let\addvspace=\saveaddvspace}
@@ -630,6 +627,7 @@
     {\addvspace{10pt}
     \let\saveaddvspace=\addvspace
     \def\addvspace##1{}
+    \phantomsection    
     \addcontentsline{toc}{chapter}{List of Figures}
     \listoffigures
     \let\addvspace=\saveaddvspace}
@@ -650,9 +648,11 @@
 \def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
                          \refstepcounter{chapter}%
                          \typeout{\@chapapp\space\thechapter.}%
+                         \phantomsection
                          \addcontentsline{toc}{chapter}%
                                    {\ele@chapapp\space \protect\numberline{\thechapter}#1}%
                     \else
+                      \phantomsection
                       \addcontentsline{toc}{chapter}{#1}%
                     \fi
                     \chaptermark{#1}%
@@ -677,8 +677,9 @@
 \def\startappendix{%
   \def\ele@chapapp{Appendix}
   \@ifundefined{@wantmanuscript}{
+    \phantomsection
     \addcontentsline{toc}{chapter}{List of References}
-     \bibliographystyle{cubiblio}
+     \bibliographystyle{ieeetr}
     \@ifundefined{@norefbib}{
       \bibliography{\@reffile}
     }{}
@@ -701,10 +702,11 @@
       \relax
     \else
       \newpage
+      \phantomsection
       \addcontentsline{toc}{section}{List of References}
 %      \addcontentsline{toc}{chapter}{List of References}
       \bibliography{\@reffile}
-      \bibliographystyle{cubiblio}
+      \bibliographystyle{ieeetr}
       \newpage
     \fi
   }
@@ -724,6 +726,7 @@
   \else
     \if@filesw\immediate\write\@auxout{\string\myusetablespage}\fi
   \fi
+  \phantomsection
   \addcontentsline{toc}{chapter}{Bibliography}
   \@input{\@bibliofile.bbl}
 }
