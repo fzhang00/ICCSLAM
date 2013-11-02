@@ -69,8 +69,9 @@
 \contentsline {subsection}{\numberline {6.3.2}Effect from $(f_x, f_y)$}{60}{subsection.6.3.2}
 \contentsline {subsection}{\numberline {6.3.3}Effect from Distortion}{61}{subsection.6.3.3}
 \contentsline {subsection}{\numberline {6.3.4}Effect from Image Resolution}{63}{subsection.6.3.4}
-\contentsline {chapter}{List of References}{65}{section*.82}
-\contentsline {chapter}{Appendix \numberline {A}Coordinate Transformation}{70}{section*.84}
-\contentsline {chapter}{Appendix \numberline {B}Jacobian Matrix for Filter Initialization}{72}{section*.85}
-\contentsline {chapter}{Appendix \numberline {C}Linearization of Measurement Model}{75}{section*.86}
-\contentsline {subsubsection}{Jacobian Matrix of Composition Equations}{77}{section*.87}
+\contentsline {chapter}{ \numberline {7}Conclusion}{65}{section*.82}
+\contentsline {chapter}{List of References}{66}{section*.83}
+\contentsline {chapter}{Appendix \numberline {A}Coordinate Transformation}{71}{section*.85}
+\contentsline {chapter}{Appendix \numberline {B}Jacobian Matrix for Filter Initialization}{74}{section*.87}
+\contentsline {chapter}{Appendix \numberline {C}Linearization of Measurement Model}{77}{section*.88}
+\contentsline {subsubsection}{Jacobian Matrix of Composition Equations}{79}{section*.89}

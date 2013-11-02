@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2013.7.4)  28 OCT 2013 11:05
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2013.7.4)  2 NOV 2013 17:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -338,7 +338,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 
 LaTeX Warning: Label `fig:simfig38-39' multiply defined.
 
-) (./appendix.aux) (./appendix2.aux) (./appendix3.aux))
+) (./chapter7.aux) (./appendix.aux) (./appendix2.aux) (./appendix3.aux))
 \openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
@@ -501,7 +501,7 @@ Chapter 1.
 [1
 
 
-] <./Figures/ProblemStatement.png, id=466, 395.4775pt x 187.70125pt>
+] <./Figures/ProblemStatement.png, id=473, 395.4775pt x 187.70125pt>
 File: ./Figures/ProblemStatement.png Graphic file (type png)
 
 <use ./Figures/ProblemStatement.png>
@@ -530,7 +530,7 @@ Missing character: There is no ¯ in font cmr12!
 Missing character: There is no ¡ in font cmr12!
 Missing character: There is no ¯ in font cmr12!
  [8] [9] [10]
-<./Figures/KalmanOperation.jpg, id=592, 430.60875pt x 170.6375pt>
+<./Figures/KalmanOperation.jpg, id=599, 430.60875pt x 170.6375pt>
 File: ./Figures/KalmanOperation.jpg Graphic file (type jpg)
 
 <use ./Figures/KalmanOperation.jpg>
@@ -548,7 +548,7 @@ n-sis-tency of non-lin-ear two-
 
  (./chapter3.tex
 Chapter 3.
-<./Figures/idp.jpg, id=700, 453.94594pt x 199.49532pt>
+<./Figures/idp.jpg, id=707, 453.94594pt x 199.49532pt>
 File: ./Figures/idp.jpg Graphic file (type jpg)
  <use ./Figures/idp.jpg>
 Package pdftex.def Info: ./Figures/idp.jpg used on input line 23.
@@ -559,7 +559,7 @@ Package pdftex.def Info: ./Figures/idp.jpg used on input line 23.
 
 
  <./Figures/idp.jpg>] [19]
-<./Figures/measurement_model.jpg, id=720, 267.24844pt x 166.37157pt>
+<./Figures/measurement_model.jpg, id=727, 267.24844pt x 166.37157pt>
 File: ./Figures/measurement_model.jpg Graphic file (type jpg)
 
 <use ./Figures/measurement_model.jpg>
@@ -587,7 +587,7 @@ LaTeX Warning: Reference `?' on page 24 undefined on input line 375.
 
  (./chapter4.tex
 Chapter 4.
-<./Figures/towed_SUAS.jpg, id=780, 223.58531pt x 252.945pt>
+<./Figures/towed_SUAS.jpg, id=787, 223.58531pt x 252.945pt>
 File: ./Figures/towed_SUAS.jpg Graphic file (type jpg)
 
 <use ./Figures/towed_SUAS.jpg>
@@ -601,21 +601,21 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-] <./Figures/SUAS.jpg, id=791, 434.37282pt x 103.88812pt>
+] <./Figures/SUAS.jpg, id=798, 434.37282pt x 103.88812pt>
 File: ./Figures/SUAS.jpg Graphic file (type jpg)
 
 <use ./Figures/SUAS.jpg>
 Package pdftex.def Info: ./Figures/SUAS.jpg used on input line 46.
 (pdftex.def)             Requested size: 398.33858pt x 95.27545pt.
 
-<./Figures/athena.jpg, id=792, 246.9225pt x 155.58125pt>
+<./Figures/athena.jpg, id=799, 246.9225pt x 155.58125pt>
 File: ./Figures/athena.jpg Graphic file (type jpg)
 
 <use ./Figures/athena.jpg>
 Package pdftex.def Info: ./Figures/athena.jpg used on input line 47.
 (pdftex.def)             Requested size: 170.71652pt x 107.56482pt.
 
-<./Figures/GPS_antenna.jpg, id=793, 148.555pt x 100.375pt>
+<./Figures/GPS_antenna.jpg, id=800, 148.555pt x 100.375pt>
 File: ./Figures/GPS_antenna.jpg Graphic file (type jpg)
 
 <use ./Figures/GPS_antenna.jpg>
@@ -625,7 +625,7 @@ Package pdftex.def Info: ./Figures/GPS_antenna.jpg used on input line 48.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./Figures/CDAC_Rack.jpg, id=794, 723.70375pt x 542.025pt>
+<./Figures/CDAC_Rack.jpg, id=801, 723.70375pt x 542.025pt>
 File: ./Figures/CDAC_Rack.jpg Graphic file (type jpg)
 
 <use ./Figures/CDAC_Rack.jpg>
@@ -635,7 +635,7 @@ Package pdftex.def Info: ./Figures/CDAC_Rack.jpg used on input line 56.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./Figures/video_snapshot.jpg, id=795, 283.81032pt x 190.46156pt>
+<./Figures/video_snapshot.jpg, id=802, 283.81032pt x 190.46156pt>
 File: ./Figures/video_snapshot.jpg Graphic file (type jpg)
 
 <use ./Figures/video_snapshot.jpg>
@@ -647,7 +647,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [27 <./Figures/towed_SUAS.jpg>] [28 <./Figures/SUAS.jpg> <./Figures/athena.jpg>
  <./Figures/GPS_antenna.jpg> <./Figures/CDAC_Rack.jpg>] [29 <./Figures/video_sn
-apshot.jpg>] <./Figures/camcal/camcal1_130.jpeg, id=809, 722.7pt x 481.8pt>
+apshot.jpg>] <./Figures/camcal/camcal1_130.jpeg, id=816, 722.7pt x 481.8pt>
 File: ./Figures/camcal/camcal1_130.jpeg Graphic file (type jpg)
 
 <use ./Figures/camcal/camcal1_130.jpeg>
@@ -655,7 +655,7 @@ Package pdftex.def Info: ./Figures/camcal/camcal1_130.jpeg used on input line 8
 0.
 (pdftex.def)             Requested size: 113.81102pt x 75.86919pt.
 
-<./Figures/camcal/camcal1_140.jpeg, id=810, 722.7pt x 481.8pt>
+<./Figures/camcal/camcal1_140.jpeg, id=817, 722.7pt x 481.8pt>
 File: ./Figures/camcal/camcal1_140.jpeg Graphic file (type jpg)
 
 <use ./Figures/camcal/camcal1_140.jpeg>
@@ -663,7 +663,7 @@ Package pdftex.def Info: ./Figures/camcal/camcal1_140.jpeg used on input line 8
 1.
 (pdftex.def)             Requested size: 113.81102pt x 75.86919pt.
 
-<./Figures/camcal/camcal1_160.jpeg, id=811, 722.7pt x 481.8pt>
+<./Figures/camcal/camcal1_160.jpeg, id=818, 722.7pt x 481.8pt>
 File: ./Figures/camcal/camcal1_160.jpeg Graphic file (type jpg)
 
 <use ./Figures/camcal/camcal1_160.jpeg>
@@ -671,7 +671,7 @@ Package pdftex.def Info: ./Figures/camcal/camcal1_160.jpeg used on input line 8
 2.
 (pdftex.def)             Requested size: 113.81102pt x 75.86919pt.
 
-<./Figures/camcal/camcal1_180.jpeg, id=812, 722.7pt x 481.8pt>
+<./Figures/camcal/camcal1_180.jpeg, id=819, 722.7pt x 481.8pt>
 File: ./Figures/camcal/camcal1_180.jpeg Graphic file (type jpg)
 
 <use ./Figures/camcal/camcal1_180.jpeg>
@@ -679,7 +679,7 @@ Package pdftex.def Info: ./Figures/camcal/camcal1_180.jpeg used on input line 8
 3.
 (pdftex.def)             Requested size: 113.81102pt x 75.86919pt.
 
-<./Figures/camcal/camcal1_210.jpeg, id=813, 722.7pt x 481.8pt>
+<./Figures/camcal/camcal1_210.jpeg, id=820, 722.7pt x 481.8pt>
 File: ./Figures/camcal/camcal1_210.jpeg Graphic file (type jpg)
 
 <use ./Figures/camcal/camcal1_210.jpeg>
@@ -687,7 +687,7 @@ Package pdftex.def Info: ./Figures/camcal/camcal1_210.jpeg used on input line 8
 4.
 (pdftex.def)             Requested size: 113.81102pt x 75.86919pt.
 
-<./Figures/camcal/camcal1_240.jpeg, id=814, 722.7pt x 481.8pt>
+<./Figures/camcal/camcal1_240.jpeg, id=821, 722.7pt x 481.8pt>
 File: ./Figures/camcal/camcal1_240.jpeg Graphic file (type jpg)
 
 <use ./Figures/camcal/camcal1_240.jpeg>
@@ -723,7 +723,7 @@ Chapter 5.
 
 
 
-] <./Figures/fltfig/cut1/Figure10.png, id=853, 630.355pt x 440.64626pt>
+] <./Figures/fltfig/cut1/Figure10.png, id=860, 630.355pt x 440.64626pt>
 File: ./Figures/fltfig/cut1/Figure10.png Graphic file (type png)
 
 <use ./Figures/fltfig/cut1/Figure10.png>
@@ -731,7 +731,7 @@ Package pdftex.def Info: ./Figures/fltfig/cut1/Figure10.png used on input line
 44.
 (pdftex.def)             Requested size: 284.52756pt x 198.8941pt.
  [35 <./Figures/fltfig/cut1/Figure10.png>] <./Figures/fltfig/cut1/Figure20.png,
- id=863, 864.22874pt x 440.64626pt>
+ id=870, 864.22874pt x 440.64626pt>
 File: ./Figures/fltfig/cut1/Figure20.png Graphic file (type png)
 
 <use ./Figures/fltfig/cut1/Figure20.png>
@@ -739,7 +739,7 @@ Package pdftex.def Info: ./Figures/fltfig/cut1/Figure20.png used on input line
 82.
 (pdftex.def)             Requested size: 341.43306pt x 174.08362pt.
 
-<./Figures/fltfig/cut1/Figure40.png, id=865, 865.2325pt x 431.6125pt>
+<./Figures/fltfig/cut1/Figure40.png, id=872, 865.2325pt x 431.6125pt>
 File: ./Figures/fltfig/cut1/Figure40.png Graphic file (type png)
 
 <use ./Figures/fltfig/cut1/Figure40.png>
@@ -751,7 +751,7 @@ Package pdftex.def Info: ./Figures/fltfig/cut1/Figure40.png used on input line
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [36 <./Figures/fltfig/cut1/Figure20.png>]
-<./Figures/fltfig/cut1/Figure112.png, id=873, 840.13875pt x 599.23875pt>
+<./Figures/fltfig/cut1/Figure112.png, id=881, 840.13875pt x 599.23875pt>
 File: ./Figures/fltfig/cut1/Figure112.png Graphic file (type png)
 
 <use ./Figures/fltfig/cut1/Figure112.png>
@@ -759,7 +759,7 @@ Package pdftex.def Info: ./Figures/fltfig/cut1/Figure112.png used on input line
  142.
 (pdftex.def)             Requested size: 341.43306pt x 243.53157pt.
  [37 <./Figures/fltfig/cut1/Figure40.png>] <./Figures/fltfig/cut1/Figure113.png
-, id=881, 880.28876pt x 627.34375pt>
+, id=888, 880.28876pt x 627.34375pt>
 File: ./Figures/fltfig/cut1/Figure113.png Graphic file (type png)
 
 <use ./Figures/fltfig/cut1/Figure113.png>
@@ -771,7 +771,7 @@ Package pdftex.def Info: ./Figures/fltfig/cut1/Figure113.png used on input line
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [38 <./Figures/fltfig/cut1/Figure112.png>]
-<./Figures/fltfig/cut1/Figure30.png, id=891, 886.31125pt x 431.6125pt>
+<./Figures/fltfig/cut1/Figure30.png, id=898, 886.31125pt x 431.6125pt>
 File: ./Figures/fltfig/cut1/Figure30.png Graphic file (type png)
 
 <use ./Figures/fltfig/cut1/Figure30.png>
@@ -783,7 +783,7 @@ Package pdftex.def Info: ./Figures/fltfig/cut1/Figure30.png used on input line
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [39 <./Figures/fltfig/cut1/Figure113.png>]
-<./Figures/fltfig/cut1/intersect0_0.png, id=901, 455.7025pt x 311.1625pt>
+<./Figures/fltfig/cut1/intersect0_0.png, id=908, 455.7025pt x 311.1625pt>
 File: ./Figures/fltfig/cut1/intersect0_0.png Graphic file (type png)
 
 <use ./Figures/fltfig/cut1/intersect0_0.png>
@@ -795,7 +795,7 @@ ine 225.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [40 <./Figures/fltfig/cut1/Figure30.png>]
-<./Figures/fltfig/cut1/Figure50.png, id=916, 639.38875pt x 438.63875pt>
+<./Figures/fltfig/cut1/Figure50.png, id=923, 639.38875pt x 438.63875pt>
 File: ./Figures/fltfig/cut1/Figure50.png Graphic file (type png)
 
 <use ./Figures/fltfig/cut1/Figure50.png>
@@ -803,7 +803,7 @@ Package pdftex.def Info: ./Figures/fltfig/cut1/Figure50.png used on input line
 254.
 (pdftex.def)             Requested size: 199.16928pt x 136.63252pt.
 
-<./Figures/fltfig/cut1/Figure80.png, id=917, 639.38875pt x 456.70625pt>
+<./Figures/fltfig/cut1/Figure80.png, id=924, 639.38875pt x 456.70625pt>
 File: ./Figures/fltfig/cut1/Figure80.png Graphic file (type png)
 
 <use ./Figures/fltfig/cut1/Figure80.png>
@@ -815,7 +815,7 @@ Package pdftex.def Info: ./Figures/fltfig/cut1/Figure80.png used on input line
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [41 <./Figures/fltfig/cut1/intersect0_0.png>]
-<./Figures/fltfig/cut1/Figure60.png, id=925, 1154.3125pt x 369.38pt>
+<./Figures/fltfig/cut1/Figure60.png, id=932, 1154.3125pt x 369.38pt>
 File: ./Figures/fltfig/cut1/Figure60.png Graphic file (type png)
 
 <use ./Figures/fltfig/cut1/Figure60.png>
@@ -823,7 +823,7 @@ Package pdftex.def Info: ./Figures/fltfig/cut1/Figure60.png used on input line
 280.
 (pdftex.def)             Requested size: 398.33858pt x 127.47005pt.
 
-<./Figures/fltfig/cut1/terrain/terrain_map_cmp.png, id=927, 953.81343pt x 391.4
+<./Figures/fltfig/cut1/terrain/terrain_map_cmp.png, id=934, 953.81343pt x 391.4
 625pt>
 File: ./Figures/fltfig/cut1/terrain/terrain_map_cmp.png Graphic file (type png)
 
@@ -837,14 +837,14 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [42 <./Figures/fltfig/cut1/Figure50.png> <./Figures/fltfig/cut1/Figure80.png> <
 ./Figures/fltfig/cut1/Figure60.png>]
-<./Figures/fltfig/airport/frame398_features.jpg, id=937, 481.8pt x 158.84344pt>
+<./Figures/fltfig/airport/frame398_features.jpg, id=944, 481.8pt x 158.84344pt>
 File: ./Figures/fltfig/airport/frame398_features.jpg Graphic file (type jpg)
 <use ./Figures/fltfig/airport/frame398_features.jpg>
 Package pdftex.def Info: ./Figures/fltfig/airport/frame398_features.jpg used on
  input line 311.
 (pdftex.def)             Requested size: 284.52756pt x 93.80649pt.
 
-<./Figures/fltfig/airport/uav_and_identified_landmark.png, id=938, 858.20625pt 
+<./Figures/fltfig/airport/uav_and_identified_landmark.png, id=945, 858.20625pt 
 x 474.77374pt>
 File: ./Figures/fltfig/airport/uav_and_identified_landmark.png Graphic file (ty
 pe png)
@@ -858,7 +858,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [43 <./Figures/fltfig/cut1/terrain/terrain_map_cmp.png (PNG copy)> <./Figures/f
 ltfig/airport/frame398_features.jpg>]
-<./Figures/fltfig/airport/UAV_position_and_error.png, id=946, 730.6497pt x 621.
+<./Figures/fltfig/airport/UAV_position_and_error.png, id=953, 730.6497pt x 621.
 522pt>
 File: ./Figures/fltfig/airport/UAV_position_and_error.png Graphic file (type pn
 g)
@@ -871,7 +871,7 @@ ed on input line 337.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-<./Figures/fltfig/airport/UAV_orientation_and_error.png, id=947, 771.8436pt x 6
+<./Figures/fltfig/airport/UAV_orientation_and_error.png, id=954, 771.8436pt x 6
 43.203pt>
 File: ./Figures/fltfig/airport/UAV_orientation_and_error.png Graphic file (type
  png)
@@ -886,7 +886,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [44 <./Figures/fltfig/airport/uav_and_identified_landmark.png>] [45 <./Figures/
 fltfig/airport/UAV_position_and_error.png> <./Figures/fltfig/airport/UAV_orient
 ation_and_error.png>]
-<./Figures/fltfig/airport/Feature_plot_(x,y).png, id=960, 578.16pt x 431.4519pt
+<./Figures/fltfig/airport/Feature_plot_(x,y).png, id=967, 578.16pt x 431.4519pt
 >
 File: ./Figures/fltfig/airport/Feature_plot_(x,y).png Graphic file (type png)
  <use ./Figures/fltfig/airport/Feature_plot_(x,y).png>
@@ -905,7 +905,7 @@ Chapter 6.
 
 
 ]
-<./Figures/SimulationFigures/Figure51.png, id=974, 753.81625pt x 478.78876pt>
+<./Figures/SimulationFigures/Figure51.png, id=981, 753.81625pt x 478.78876pt>
 File: ./Figures/SimulationFigures/Figure51.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure51.png>
@@ -913,7 +913,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure51.png used on input
  line 57.
 (pdftex.def)             Requested size: 341.42262pt x 199.1685pt.
  [48 <./Figures/SimulationFigures/Figure51.png>]
-<./Figures/SimulationFigures/Figure1.png, id=982, 1057.9525pt x 430.60875pt>
+<./Figures/SimulationFigures/Figure1.png, id=989, 1057.9525pt x 430.60875pt>
 File: ./Figures/SimulationFigures/Figure1.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure1.png>
@@ -925,7 +925,7 @@ line 96.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [49]
-<./Figures/SimulationFigures/Figure6.png, id=991, 468.75125pt x 328.22626pt>
+<./Figures/SimulationFigures/Figure6.png, id=998, 468.75125pt x 328.22626pt>
 File: ./Figures/SimulationFigures/Figure6.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure6.png>
@@ -933,7 +933,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure6.png used on input
 line 127.
 (pdftex.def)             Requested size: 199.163pt x 142.26642pt.
 
-<./Figures/SimulationFigures/Figure7.png, id=992, 473.77pt x 324.21124pt>
+<./Figures/SimulationFigures/Figure7.png, id=999, 473.77pt x 324.21124pt>
 File: ./Figures/SimulationFigures/Figure7.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure7.png>
@@ -941,7 +941,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure7.png used on input
 line 128.
 (pdftex.def)             Requested size: 199.17pt x 142.26256pt.
 
-<./Figures/SimulationFigures/Figure5.png, id=993, 510.90875pt x 327.2225pt>
+<./Figures/SimulationFigures/Figure5.png, id=1000, 510.90875pt x 327.2225pt>
 File: ./Figures/SimulationFigures/Figure5.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure5.png>
@@ -949,7 +949,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure5.png used on input
 line 129.
 (pdftex.def)             Requested size: 199.16785pt x 142.26074pt.
 
-<./Figures/SimulationFigures/Figure8.png, id=994, 481.8pt x 353.32pt>
+<./Figures/SimulationFigures/Figure8.png, id=1001, 481.8pt x 353.32pt>
 File: ./Figures/SimulationFigures/Figure8.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure8.png>
@@ -963,7 +963,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [50 <./Figures/SimulationFigures/Figure1.png>] [51 <./Figures/SimulationFigures
 /Figure6.png> <./Figures/SimulationFigures/Figure7.png> <./Figures/SimulationFi
 gures/Figure5.png> <./Figures/SimulationFigures/Figure8.png>]
-<./Figures/SimulationFigures/Figure9.png, id=1010, 357.335pt x 480.79625pt>
+<./Figures/SimulationFigures/Figure9.png, id=1017, 357.335pt x 480.79625pt>
 File: ./Figures/SimulationFigures/Figure9.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure9.png>
@@ -971,7 +971,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure9.png used on input
 line 179.
 (pdftex.def)             Requested size: 128.0374pt x 172.27217pt.
 
-<./Figures/SimulationFigures/Figure10.png, id=1011, 358.33875pt x 482.80376pt>
+<./Figures/SimulationFigures/Figure10.png, id=1018, 358.33875pt x 482.80376pt>
 File: ./Figures/SimulationFigures/Figure10.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure10.png>
@@ -979,7 +979,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure10.png used on input
  line 180.
 (pdftex.def)             Requested size: 128.0374pt x 172.51263pt.
 
-<./Figures/SimulationFigures/Figure11.png, id=1012, 365.365pt x 480.79625pt>
+<./Figures/SimulationFigures/Figure11.png, id=1019, 365.365pt x 480.79625pt>
 File: ./Figures/SimulationFigures/Figure11.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure11.png>
@@ -987,7 +987,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure11.png used on input
  line 181.
 (pdftex.def)             Requested size: 128.0374pt x 168.48662pt.
 
-<./Figures/SimulationFigures/Figure12.png, id=1013, 358.33875pt x 482.80376pt>
+<./Figures/SimulationFigures/Figure12.png, id=1020, 358.33875pt x 482.80376pt>
 File: ./Figures/SimulationFigures/Figure12.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure12.png>
@@ -995,7 +995,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure12.png used on input
  line 182.
 (pdftex.def)             Requested size: 128.0374pt x 172.51263pt.
 
-<./Figures/SimulationFigures/Figure13.png, id=1014, 357.335pt x 480.79625pt>
+<./Figures/SimulationFigures/Figure13.png, id=1021, 357.335pt x 480.79625pt>
 File: ./Figures/SimulationFigures/Figure13.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure13.png>
@@ -1005,7 +1005,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure13.png used on input
  [52 <./Figures/SimulationFigures/Figure9.png> <./Figures/SimulationFigures/Fig
 ure10.png> <./Figures/SimulationFigures/Figure11.png> <./Figures/SimulationFigu
 res/Figure12.png> <./Figures/SimulationFigures/Figure13.png>]
-<./Figures/SimulationFigures/Figure14.png, id=1025, 864.22874pt x 471.7625pt>
+<./Figures/SimulationFigures/Figure14.png, id=1032, 864.22874pt x 471.7625pt>
 File: ./Figures/SimulationFigures/Figure14.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure14.png>
@@ -1013,7 +1013,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure14.png used on input
  line 211.
 (pdftex.def)             Requested size: 398.33858pt x 217.44528pt.
 
-<./Figures/SimulationFigures/Figure20.png, id=1027, 512.91624pt x 189.70876pt>
+<./Figures/SimulationFigures/Figure20.png, id=1034, 512.91624pt x 189.70876pt>
 File: ./Figures/SimulationFigures/Figure20.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure20.png>
@@ -1021,7 +1021,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure20.png used on input
  line 229.
 (pdftex.def)             Requested size: 199.16779pt x 71.13191pt.
 
-<./Figures/SimulationFigures/Figure21.png, id=1028, 512.91624pt x 187.70125pt>
+<./Figures/SimulationFigures/Figure21.png, id=1035, 512.91624pt x 187.70125pt>
 File: ./Figures/SimulationFigures/Figure21.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure21.png>
@@ -1029,7 +1029,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure21.png used on input
  line 230.
 (pdftex.def)             Requested size: 199.16779pt x 71.13245pt.
 
-<./Figures/SimulationFigures/Figure22.png, id=1029, 512.91624pt x 189.70876pt>
+<./Figures/SimulationFigures/Figure22.png, id=1036, 512.91624pt x 189.70876pt>
 File: ./Figures/SimulationFigures/Figure22.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure22.png>
@@ -1037,7 +1037,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure22.png used on input
  line 231.
 (pdftex.def)             Requested size: 199.16779pt x 71.13191pt.
 
-<./Figures/SimulationFigures/Figure23.png, id=1030, 512.91624pt x 187.70125pt>
+<./Figures/SimulationFigures/Figure23.png, id=1037, 512.91624pt x 187.70125pt>
 File: ./Figures/SimulationFigures/Figure23.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure23.png>
@@ -1045,7 +1045,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure23.png used on input
  line 232.
 (pdftex.def)             Requested size: 199.16779pt x 71.13245pt.
 
-<./Figures/SimulationFigures/Figure24.png, id=1031, 512.91624pt x 189.70876pt>
+<./Figures/SimulationFigures/Figure24.png, id=1038, 512.91624pt x 189.70876pt>
 File: ./Figures/SimulationFigures/Figure24.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure24.png>
@@ -1057,7 +1057,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure24.png used on input
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [53 <./Figures/SimulationFigures/Figure14.png>]
-<./Figures/SimulationFigures/Figure17.png, id=1037, 558.085pt x 387.4475pt>
+<./Figures/SimulationFigures/Figure17.png, id=1044, 558.085pt x 387.4475pt>
 File: ./Figures/SimulationFigures/Figure17.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure17.png>
@@ -1065,7 +1065,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure17.png used on input
  line 257.
 (pdftex.def)             Requested size: 199.16473pt x 142.26552pt.
 
-<./Figures/SimulationFigures/Figure18.png, id=1038, 558.085pt x 387.4475pt>
+<./Figures/SimulationFigures/Figure18.png, id=1045, 558.085pt x 387.4475pt>
 File: ./Figures/SimulationFigures/Figure18.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure18.png>
@@ -1073,7 +1073,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure18.png used on input
  line 258.
 (pdftex.def)             Requested size: 199.16473pt x 142.26552pt.
 
-<./Figures/SimulationFigures/Figure19.png, id=1039, 558.085pt x 387.4475pt>
+<./Figures/SimulationFigures/Figure19.png, id=1046, 558.085pt x 387.4475pt>
 File: ./Figures/SimulationFigures/Figure19.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure19.png>
@@ -1089,7 +1089,7 @@ ure21.png> <./Figures/SimulationFigures/Figure22.png> <./Figures/SimulationFigu
 res/Figure23.png> <./Figures/SimulationFigures/Figure24.png>] [55 <./Figures/Si
 mulationFigures/Figure17.png> <./Figures/SimulationFigures/Figure18.png> <./Fig
 ures/SimulationFigures/Figure19.png>]
-<./Figures/SimulationFigures/Figure25.png, id=1060, 650.43pt x 720.6925pt>
+<./Figures/SimulationFigures/Figure25.png, id=1067, 650.43pt x 720.6925pt>
 File: ./Figures/SimulationFigures/Figure25.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure25.png>
@@ -1097,7 +1097,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure25.png used on input
  line 311.
 (pdftex.def)             Requested size: 284.53264pt x 341.43076pt.
 
-<./Figures/SimulationFigures/Figure26.png, id=1061, 637.38126pt x 440.64626pt>
+<./Figures/SimulationFigures/Figure26.png, id=1068, 637.38126pt x 440.64626pt>
 File: ./Figures/SimulationFigures/Figure26.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure26.png>
@@ -1125,7 +1125,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 337.
 
-<./Figures/SimulationFigures/Figure34.png, id=1069, 357.335pt x 480.79625pt>
+<./Figures/SimulationFigures/Figure34.png, id=1076, 357.335pt x 480.79625pt>
 File: ./Figures/SimulationFigures/Figure34.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure34.png>
@@ -1133,7 +1133,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure34.png used on input
  line 344.
 (pdftex.def)             Requested size: 142.26378pt x 191.4127pt.
 
-<./Figures/SimulationFigures/Figure35.png, id=1070, 357.335pt x 482.80376pt>
+<./Figures/SimulationFigures/Figure35.png, id=1077, 357.335pt x 482.80376pt>
 File: ./Figures/SimulationFigures/Figure35.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure35.png>
@@ -1145,7 +1145,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure35.png used on input
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-<./Figures/SimulationFigures/Figure36.png, id=1072, 541.02126pt x 661.47125pt>
+<./Figures/SimulationFigures/Figure36.png, id=1079, 541.02126pt x 661.47125pt>
 File: ./Figures/SimulationFigures/Figure36.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure36.png>
@@ -1153,7 +1153,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure36.png used on input
  line 359.
 (pdftex.def)             Requested size: 199.16928pt x 243.50916pt.
 
-<./Figures/SimulationFigures/Figure37.png, id=1073, 541.02126pt x 661.47125pt>
+<./Figures/SimulationFigures/Figure37.png, id=1080, 541.02126pt x 661.47125pt>
 File: ./Figures/SimulationFigures/Figure37.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure37.png>
@@ -1165,7 +1165,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure37.png used on input
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [57 <./Figures/SimulationFigures/Figure26.png>]
-<./Figures/SimulationFigures/Figure28.png, id=1081, 512.91624pt x 189.70876pt>
+<./Figures/SimulationFigures/Figure28.png, id=1088, 512.91624pt x 189.70876pt>
 File: ./Figures/SimulationFigures/Figure28.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure28.png>
@@ -1173,7 +1173,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure28.png used on input
  line 388.
 (pdftex.def)             Requested size: 142.26378pt x 52.6173pt.
 
-<./Figures/SimulationFigures/Figure29.png, id=1082, 512.91624pt x 187.70125pt>
+<./Figures/SimulationFigures/Figure29.png, id=1089, 512.91624pt x 187.70125pt>
 File: ./Figures/SimulationFigures/Figure29.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure29.png>
@@ -1186,7 +1186,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [58 <./Figures/SimulationFigures/Figure34.png> <./Figures/SimulationFigures/Fig
 ure35.png>]
-<./Figures/SimulationFigures/Figure32.png, id=1091, 700.6175pt x 505.89pt>
+<./Figures/SimulationFigures/Figure32.png, id=1098, 700.6175pt x 505.89pt>
 File: ./Figures/SimulationFigures/Figure32.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure32.png>
@@ -1194,7 +1194,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure32.png used on input
  line 421.
 (pdftex.def)             Requested size: 199.16492pt x 142.26576pt.
 
-<./Figures/SimulationFigures/Figure33.png, id=1092, 699.61375pt x 505.89pt>
+<./Figures/SimulationFigures/Figure33.png, id=1099, 699.61375pt x 505.89pt>
 File: ./Figures/SimulationFigures/Figure33.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure33.png>
@@ -1225,7 +1225,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 428.
 
 
-<./Figures/SimulationFigures/Figure43.png, id=1102, 358.33875pt x 480.79625pt>
+<./Figures/SimulationFigures/Figure43.png, id=1109, 358.33875pt x 480.79625pt>
 File: ./Figures/SimulationFigures/Figure43.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure43.png>
@@ -1233,7 +1233,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure43.png used on input
  line 439.
 (pdftex.def)             Requested size: 142.26378pt x 190.88449pt.
 
-<./Figures/SimulationFigures/Figure44.png, id=1103, 365.365pt x 482.80376pt>
+<./Figures/SimulationFigures/Figure44.png, id=1110, 365.365pt x 482.80376pt>
 File: ./Figures/SimulationFigures/Figure44.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure44.png>
@@ -1241,7 +1241,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure44.png used on input
  line 440.
 (pdftex.def)             Requested size: 142.26378pt x 187.99066pt.
 
-<./Figures/SimulationFigures/Figure38.png, id=1105, 512.91624pt x 189.70876pt>
+<./Figures/SimulationFigures/Figure38.png, id=1112, 512.91624pt x 189.70876pt>
 File: ./Figures/SimulationFigures/Figure38.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure38.png>
@@ -1249,7 +1249,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure38.png used on input
  line 457.
 (pdftex.def)             Requested size: 199.16928pt x 73.6648pt.
 
-<./Figures/SimulationFigures/Figure39.png, id=1106, 512.91624pt x 187.70125pt>
+<./Figures/SimulationFigures/Figure39.png, id=1113, 512.91624pt x 187.70125pt>
 File: ./Figures/SimulationFigures/Figure39.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure39.png>
@@ -1259,7 +1259,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure39.png used on input
  [60 <./Figures/SimulationFigures/Figure32.png> <./Figures/SimulationFigures/Fi
 gure33.png> <./Figures/SimulationFigures/Figure43.png> <./Figures/SimulationFig
 ures/Figure44.png>]
-<./Figures/SimulationFigures/Figure41.png, id=1115, 701.62125pt x 505.89pt>
+<./Figures/SimulationFigures/Figure41.png, id=1122, 701.62125pt x 505.89pt>
 File: ./Figures/SimulationFigures/Figure41.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure41.png>
@@ -1267,7 +1267,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure41.png used on input
  line 482.
 (pdftex.def)             Requested size: 199.16928pt x 143.60892pt.
 
-<./Figures/SimulationFigures/Figure42.png, id=1116, 700.6175pt x 505.89pt>
+<./Figures/SimulationFigures/Figure42.png, id=1123, 700.6175pt x 505.89pt>
 File: ./Figures/SimulationFigures/Figure42.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure42.png>
@@ -1277,7 +1277,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure42.png used on input
  [61 <./Figures/SimulationFigures/Figure38.png> <./Figures/SimulationFigures/Fi
 gure39.png> <./Figures/SimulationFigures/Figure41.png> <./Figures/SimulationFig
 ures/Figure42.png>]
-<./Figures/SimulationFigures/Figure47.png, id=1128, 358.33875pt x 473.77pt>
+<./Figures/SimulationFigures/Figure47.png, id=1135, 358.33875pt x 473.77pt>
 File: ./Figures/SimulationFigures/Figure47.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure47.png>
@@ -1285,7 +1285,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure47.png used on input
  line 513.
 (pdftex.def)             Requested size: 142.26378pt x 188.09496pt.
 
-<./Figures/SimulationFigures/Figure48.png, id=1129, 727.71875pt x 476.78125pt>
+<./Figures/SimulationFigures/Figure48.png, id=1136, 727.71875pt x 476.78125pt>
 File: ./Figures/SimulationFigures/Figure48.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure48.png>
@@ -1293,7 +1293,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure48.png used on input
  line 514.
 (pdftex.def)             Requested size: 256.0748pt x 167.77805pt.
 
-<./Figures/SimulationFigures/Figure45.png, id=1132, 512.91624pt x 188.705pt>
+<./Figures/SimulationFigures/Figure45.png, id=1139, 512.91624pt x 188.705pt>
 File: ./Figures/SimulationFigures/Figure45.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure45.png>
@@ -1304,7 +1304,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure45.png used on input
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./Figures/SimulationFigures/Figure46.png, id=1133, 745.78625pt x 505.89pt>
+<./Figures/SimulationFigures/Figure46.png, id=1140, 745.78625pt x 505.89pt>
 File: ./Figures/SimulationFigures/Figure46.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure46.png>
@@ -1317,7 +1317,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [62 <./Figures/SimulationFigures/Figure47.png> <./Figures/SimulationFigures/Fig
 ure48.png>]
-<./Figures/SimulationFigures/Figure50.png, id=1141, 763.85374pt x 510.90875pt>
+<./Figures/SimulationFigures/Figure50.png, id=1148, 763.85374pt x 510.90875pt>
 File: ./Figures/SimulationFigures/Figure50.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure50.png>
@@ -1325,7 +1325,7 @@ Package pdftex.def Info: ./Figures/SimulationFigures/Figure50.png used on input
  line 556.
 (pdftex.def)             Requested size: 284.52756pt x 190.304pt.
 
-<./Figures/SimulationFigures/Figure49.png, id=1142, 767.86874pt x 314.17375pt>
+<./Figures/SimulationFigures/Figure49.png, id=1149, 767.86874pt x 314.17375pt>
 File: ./Figures/SimulationFigures/Figure49.png Graphic file (type png)
 
 <use ./Figures/SimulationFigures/Figure49.png>
@@ -1338,13 +1338,22 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [63 <./Figures/SimulationFigures/Figure45.png> <./Figures/SimulationFigures/Fig
 ure46.png>]) [64 <./Figures/SimulationFigures/Figure50.png> <./Figures/Simulati
-onFigures/Figure49.png>] (./thesis.bbl [65
+onFigures/Figure49.png>]
+\openout2 = `chapter7.aux'.
+
+ (./chapter7.tex
+Chapter 7.
+) [65
+
+
+
+] (./thesis.bbl [66
 
 
 ]
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¶ in font cmr12!
- [66] [67]
+ [67] [68]
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ³ in font cmr12!
 Missing character: There is no â in font cmti12!
@@ -1353,65 +1362,31 @@ Missing character: There is no ™ in font cmti12!
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no “ in font cmr12!
- [68]
+ [69]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no “ in font cmr12!
-) [69]
+) [70]
 \openout2 = `appendix.aux'.
 
-
-(./appendix.tex
+ (./appendix.tex
 Appendix A.
 
-Underfull \hbox (badness 10000) in paragraph at lines 26--28
+<./Figures/coordinate_transformation/coordinate_transformation.png, id=1193, 61
+1.28375pt x 367.3725pt>
+File: ./Figures/coordinate_transformation/coordinate_transformation.png Graphic
+ file (type png)
 
- []
+<use ./Figures/coordinate_transformation/coordinate_transformation.png>
+Package pdftex.def Info: ./Figures/coordinate_transformation/coordinate_transfo
+rmation.png used on input line 10.
+(pdftex.def)             Requested size: 341.43306pt x 205.19464pt.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 30--32
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 34--41
-
- []
+[71
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 43--50
-
- []
-
-[70
-
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 52--59
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 61--68
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 70--71
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 73--74
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 76--77
-
- []
-
-) [71]
+ <./Figures/coordinate_transformation/coordinate_transformation.png>]
+[72]) [73]
 \openout2 = `appendix2.aux'.
 
  (./appendix2.tex
@@ -1423,11 +1398,11 @@ the vari-able in ma-trix $[][]\OML/cmm/m/it/12 R$ \OT1/cmr/m/n/12 given in equa
 -tion([][]3.22[][]): $[][]\OML/cmm/m/it/12 g[] \OT1/cmr/m/n/12 =
  []
 
-[72
+[74
 
 
 
-] [73]) [74]
+] [75]) [76]
 \openout2 = `appendix3.aux'.
 
  (./appendix3.tex
@@ -1437,7 +1412,7 @@ Overfull \hbox (179.80344pt too wide) detected at line 63
 [][] \OT1/cmr/m/n/12 = []
  []
 
-[75
+[77
 
 
 
@@ -1446,24 +1421,24 @@ Overfull \hbox (89.81136pt too wide) detected at line 86
 [][] \OT1/cmr/m/n/12 = []
  []
 
-[76] [77] [78]
+[78] [79] [80]
 
-LaTeX Warning: Reference `' on page 79 undefined on input line 303.
+LaTeX Warning: Reference `' on page 81 undefined on input line 303.
 
 
-LaTeX Warning: Reference `' on page 79 undefined on input line 304.
+LaTeX Warning: Reference `' on page 81 undefined on input line 304.
 
-) [79]
+) [81]
 No file thesisbib.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 121.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 121.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 122.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 122.
 (./thesis.aux (./dedication.aux) (./chapter1.aux) (./chapter2.aux)
 (./chapter3.aux) (./chapter4.aux) (./chapter5.aux) (./chapter6.aux)
-(./appendix.aux) (./appendix2.aux) (./appendix3.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 121.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 121.
+(./chapter7.aux) (./appendix.aux) (./appendix2.aux) (./appendix3.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 122.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 122.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: E37EACCEE6D06C84F6791280A99F0D03;4535.
+(rerunfilecheck)             Checksum: DB3F4D4A651838C65470071C9D2DCB69;4586.
 
 
 LaTeX Warning: There were undefined references.
@@ -1471,13 +1446,13 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 121.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 122.
  ) 
 Here is how much of TeX's memory you used:
- 8440 strings out of 493488
- 133156 string characters out of 3144749
- 232007 words of memory out of 3000000
- 11114 multiletter control sequences out of 15000+200000
+ 8482 strings out of 493488
+ 133950 string characters out of 3144749
+ 233349 words of memory out of 3000000
+ 11132 multiletter control sequences out of 15000+200000
  10939 words of font info for 39 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  36i,24n,42p,311b,448s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1493,10 +1468,10 @@ live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/texlive/2012
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><d:/texlive/2012/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/texlive/2012/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (91 pages, 5649001 bytes).
+Output written on thesis.pdf (93 pages, 5668665 bytes).
 PDF statistics:
- 1385 PDF objects out of 1440 (max. 8388607)
- 1137 compressed objects within 12 object streams
- 376 named destinations out of 1000 (max. 500000)
- 843 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1422 PDF objects out of 1440 (max. 8388607)
+ 1171 compressed objects within 12 object streams
+ 391 named destinations out of 1000 (max. 500000)
+ 856 words of extra memory for PDF output out of 10000 (max. 10000000)
 

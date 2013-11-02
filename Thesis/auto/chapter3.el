@@ -1,6 +1,7 @@
 (TeX-add-style-hook "chapter3"
  (lambda ()
     (LaTeX-add-labels
+     "ch:algorithm"
      "fig:algo1"
      "eq:m"
      "eq:m_inv_varphi"
@@ -10,5 +11,5 @@
      "eq:init_feature_unit_vec"
      "eq:Pinit"
      "eq:Pnew"
-     "section:_Toc332876136")))
+     "eq:R")))
 
