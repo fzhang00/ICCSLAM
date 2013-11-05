@@ -58,20 +58,20 @@
 \contentsline {subsection}{\numberline {5.2.2}Features Mapping}{39}{subsection.5.2.2}
 \contentsline {section}{\numberline {5.3}Compare to Visually Corresponded Feature}{42}{section.5.3}
 \contentsline {chapter}{ \numberline {6}Error Analysis via Simulation}{47}{section*.61}
-\contentsline {section}{\numberline {6.1}An Ideal Case}{48}{section.6.1}
+\contentsline {section}{\numberline {6.1}An Ideal Case}{49}{section.6.1}
 \contentsline {subsection}{\numberline {6.1.1}UAS Localization}{49}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Features Mapping - Convergence and Accuracy}{49}{subsection.6.1.2}
-\contentsline {section}{\numberline {6.2}Effect of UAS Motion}{50}{section.6.2}
+\contentsline {subsection}{\numberline {6.1.2}Features Mapping - Convergence and Accuracy}{50}{subsection.6.1.2}
+\contentsline {section}{\numberline {6.2}Effect of UAS Motion}{51}{section.6.2}
 \contentsline {subsection}{\numberline {6.2.1}UAS Localization under Motion}{51}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Feature Mapping Accuracy under Motion}{53}{subsection.6.2.2}
-\contentsline {section}{\numberline {6.3}Camera Intrinsic Parameters}{57}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Effect from $(c_{x}, c_{y})$}{57}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.2.2}Feature Mapping Accuracy under Motion}{54}{subsection.6.2.2}
+\contentsline {section}{\numberline {6.3}Camera Intrinsic Parameters}{58}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Effect from $(c_{x}, c_{y})$}{58}{subsection.6.3.1}
 \contentsline {subsection}{\numberline {6.3.2}Effect from $(f_x, f_y)$}{60}{subsection.6.3.2}
-\contentsline {subsection}{\numberline {6.3.3}Effect from Distortion}{61}{subsection.6.3.3}
-\contentsline {subsection}{\numberline {6.3.4}Effect from Image Resolution}{63}{subsection.6.3.4}
-\contentsline {chapter}{ \numberline {7}Conclusion}{65}{section*.82}
-\contentsline {chapter}{List of References}{66}{section*.83}
-\contentsline {chapter}{Appendix \numberline {A}Coordinate Transformation}{71}{section*.85}
-\contentsline {chapter}{Appendix \numberline {B}Jacobian Matrix for Filter Initialization}{74}{section*.87}
-\contentsline {chapter}{Appendix \numberline {C}Linearization of Measurement Model}{77}{section*.88}
-\contentsline {subsubsection}{Jacobian Matrix of Composition Equations}{79}{section*.89}
+\contentsline {subsection}{\numberline {6.3.3}Effect from Distortion}{62}{subsection.6.3.3}
+\contentsline {subsection}{\numberline {6.3.4}Effect from Image Resolution}{64}{subsection.6.3.4}
+\contentsline {chapter}{ \numberline {7}Conclusion}{66}{section*.82}
+\contentsline {chapter}{List of References}{67}{section*.83}
+\contentsline {chapter}{Appendix \numberline {A}Coordinate Transformation}{72}{section*.85}
+\contentsline {chapter}{Appendix \numberline {B}Jacobian Matrix for Filter Initialization}{75}{section*.87}
+\contentsline {chapter}{Appendix \numberline {C}Linearization of Measurement Model}{78}{section*.88}
+\contentsline {subsubsection}{Jacobian Matrix of Composition Equations}{80}{section*.89}

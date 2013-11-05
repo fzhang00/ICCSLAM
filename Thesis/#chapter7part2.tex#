@@ -1,0 +1,24 @@
+% chapter 6 summary
+Chapter 6 describes a series of simulation done in the goal of
+better understanding the noise source in CC\_EKF\_SLAM algorithm. An
+nearly no noise environment was first simulated with SUAS moving
+forward only, with no error introduced from image digitization or
+camera model mismatch. Effect from various SUAS motion was simulated
+next. Then various image resolution settings, and camera model mismatch were
+simulated. 
+
+Under forward only motion, SUAS translation error is less than 1cm,
+orientation error under $3e-3^\circ$; feature position error is under
+0.2 meters for X component, and under 0.02 meters for Y and Z
+components. The result above shows error introduced by the algorithm
+itself under simple forward motion is very minor.
+
+The effect from complex SUAS motion was analyzed next. The SUAS remain
+forward traveling. The other 5 d.o.f. motion was simulated with a 1Hz
+sine wave with variable amplitude setting, and added on top of the
+forward motion one at a time. Result shows that translational motion
+and rotation around X axis has little effect on the SUAS localization
+accuracy. Rotation around Y axis (pitch) and rotation around Z axis
+(azimuth) causes SUAS positioning error on Z and Y respectfully to up to
+30 meters peak-to-peak depending on the magnitude of the rotation. For
+feature mapping accuracy, translation motion

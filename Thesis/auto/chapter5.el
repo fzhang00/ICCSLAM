@@ -11,5 +11,10 @@
      "fltfig:7"
      "fltfig:8"
      "fltfig:9"
-     "fltfig:10")))
+     "fltfig:10"
+     "fltfig:11"
+     "fltfig:12"
+     "fltfig:13"
+     "fltfig:14"
+     "fltfig:15")))
 

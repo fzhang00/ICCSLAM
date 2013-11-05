@@ -4,6 +4,11 @@ feature position estimation, and they can be sorted into three main
 categories: 
 
 \begin{enumerate}
+  \item Error caused by the SLAM algorithm itself. The algorithm
+  estimated features coordinate through a model that describe the
+  relation between SUAS location, feature location and SUAS motion. As
+  the model is non-linear, the linearization process introduces error
+  into the result.
   \item Noise in system intrinsic parameters. The system intrinsic
   parameters includes
   \begin{itemize}
@@ -23,34 +28,32 @@ categories:
   and there are a number of factors contribute to its performance.
   Firstly, LK tracking algorithm tracks features by comparing the
   intensity of a window of the image centered at the feature
-  coordinate in image from one frame to another. The searching process
-  terminates when the sum of error on the windowed image intensity is
-  lower than a value set by user, or when iteration of search has
-  reached a maximum number set by user. Secondly, as scene evolve from
+  coordinate from one frame to another. The searching process
+  terminates when the sum of error on the windowed image is lower than
+  a value set by user, or when iteration of search has reached a
+  maximum number (also set by user). Secondly, as scene evolve from
   frame to frame, the initial feature appears differently from frame
   to frame as the viewing distance and angle is different. Thirdly,
   sudden intensity change in the image sequences significant noise in
   the tracking. In outdoor setting, intensity change can be introduced
   by many factors, such as changes of sky area in a image, sun glare,
-  UAV enters or exits cloud shades, or camera auto-adjust its shuttle
+  SUAS enters or exits cloud shades, or camera auto-adjust its shutter
   speed, etc.
-  \item Error caused by the SLAM algorithm itself. The algorithm
-  estimated features coordinate through a model that represents the
-  relation between UAS location, feature location and UAS motion. As
-  the model is non-linear, the linearization process introduces error
-  into the result.
+
 \end{enumerate}
 
-To better understand the impact of the factors listed above. A 
-simulation is performed to examine the impact item 1 and item 3. 
-
-The simulator first generates a 3D point cloud ranging from 100 meters
-to 3000 meters from the camera (Figure \ref{fig:simfig51}). At each
-frame, the coordinates of the 3D points are first transformed to the
-new camera frame using the measured UAS motion. Next, the 3D points
-are projected to the image plane using a camera model defined by
-$[c_{x}, c_{y}, f_{x}, f_{y}, k_{1}, k_{2}, p_{1}, p_{2}]$, and
-digitized to a resolution of choice.
+To better understand the impact from the noise of system intrinsic
+parameters listed above. A simulation is performed to examine item 1
+and 2. The simulator first generates a 3D point cloud ranging between
+100 meters to 3000 meters from the camera (Figure \ref{fig:simfig51}).
+At each frame, the coordinates of the 3D points are first transformed
+to the new camera frame using the measured SUAS motion. Next, the 3D
+points are projected to the image plane using a camera model defined
+by $[c_{x}, c_{y}, f_{x}, f_{y}, k_{1}, k_{2}, p_{1}, p_{2}]$, and
+digitized to a resolution of choice. To simulate the error contributed
+from camera intrinsic parameters, the camera model used by simulator
+for projecting the 3D point cloud onto image plane, and the one used
+by the CC\_EKF\_SLAM may be different.
 
 \begin{figure}[h]
 \centering
@@ -58,6 +61,7 @@ digitized to a resolution of choice.
 \caption{Randomly Generated 3D Feature Points}
 \label{fig:simfig51}
 \end{figure}
+\FloatBarrier
 
 \section{An Ideal Case}
 First of all, understanding the algorithm's performance under no noise, 
@@ -67,10 +71,10 @@ generates under the most basic flying condition, which is moving forward
 at constant speed. The low noise environment is configure as such,
 
 \begin{itemize}
-  \item UAS is moving forward (X axis) with constant speed at 60 knots. 
+  \item SUAS is moving forward (X axis) with constant speed at 60 knots. 
   \item Y axis and Z axis translational movement are limited to white
   noise with standard deviation of 0.08 meters and a mean of 0.
-  \item UAS rotation are modelled by white noise with standard
+  \item SUAS rotation are modelled by white noise with standard
   deviation of 0.01 degree and a mean of 0
   \item No error was introduced due to image digitization. (i.e. the
   projected feature position on image plane was not digitized to any
@@ -97,7 +101,7 @@ on rotational motion less than 3e-3 degree.
 \caption{UAS localization error under no noise condition}
 \label{fig:simfig1}
 \end{figure}
-
+\FloatBarrier
 
 \subsection{Features Mapping - Convergence and Accuracy}
 
@@ -184,8 +188,8 @@ axis yield significant error increase on the position of the UAS.
   \caption{UAS localization error under translational 
   \label{fig:simfig9-10}
     motion}
-  
 \end{figure}
+%\FloatBarrier
 
 To understand how rotation motion affect the UAS localization
 estimation, the UAS position on X, Y, Z in world frame are plotted
@@ -199,20 +203,20 @@ increasing (diverging) as tracking goes on. The X position error of
 the UAS increases in positive value with both rotation on Y and Z, but
 the most significant impact happens on the Z position (for rotation on
 Y) and Y position (for rotation on Z), with error reaching 20 meters
-at the end of the video sequence. With rotation rate increases
-(amplitude of the sine wave), the rate of error diverging from zero
-also increases, hence, resulting in an increasing error standard
-deviation in error statistic plots. This simulation result suggests
-that CC\_EKF\_SLAM algorithm is very sensitive to rotation on Y and Z
-axis.
+peak-to-peak at the end of the video sequence. With rotation rate
+increases (amplitude of the sine wave), the rate of error diverging
+from zero also increases, hence, resulting in an increasing error
+standard deviation in error statistic plots. This simulation result
+suggests that CC\_EKF\_SLAM algorithm is very sensitive to rotation on
+Y and Z axis.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=14cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure14.png}
+  \includegraphics[width=13cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure14.png}
   \caption{UAS estimated position in world frame}
   \label{fig:simfig14}
 \end{figure}
-
+\FloatBarrier
 \subsection{Feature Mapping Accuracy under Motion}\label{sec:featureMotion}
 
 Feature mapping error statistic are drawn from the feature error at
