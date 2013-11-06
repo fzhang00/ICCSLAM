@@ -14,10 +14,46 @@ accuracy of the algorithm, digital terrain map of the survey zone was
 processed to compare to the result from the algorithm. 
 
 The flight data was processed, and result was discussed in chapter
-\ref{ch:FlightResult}. The proposed SLAM algorithm generates an
-estimated terrain map and the trajectory of the SUAS. The estimated
-terrain map was compared to the downloaded DEM, and the SUAS
-trajectory was compared to the on-board GPS recording. 
+\ref{ch:FlightResult}. Sparse corner features were extracted from the
+flight image sequence, and were tracked by the CC\_EKF\_SLAM
+algorithm. An estimated terrain map and the trajectory of the SUAS is
+generated from the video sequence. The estimated terrain map was
+compared to the downloaded DEM, and the SUAS trajectory was compared
+to the on-board GPS recording. Result from the flight data are as
+followed:
+\begin{itemize}
+  \item Analysis of the result shows that most features tracked by the
+  filter has their inverse depth converged to a stable value, with the
+  furtherest feature at 1600 meters.
+  \item For the accuracy of the estimated feature location, X
+  components achieve a maximum error of 120 meters; for Y and Z
+  components, error converged to less than 20 meters for features
+  initialized at first frame.
+  \item Feature added during tracking shows a offset error for its Y
+  component estimation. This is due to the error in the SUAS
+  localization error and the propogation of this error into the
+  features mapping through the camera frame to world frame
+  transformation.
+  \item For SUAS localization accuracy, coordinate error on X
+  component has a maximum of 20 meters, 50 meters on Y component and
+  30 meter on Z component. The error for orientation estimates are
+  within $1.15^\circ$ for all three components. .
+\end{itemize}
+
+Due to the difficulty of corresponding the extracted feature to the
+DEM, an extra video was processed with the airport buildings in the
+scence. All features was corresponded to the satilite images with eye
+that's avaible through google earth. In this test, features position
+has 100 meters error on both X and Y components. Given that they are
+located at the corner of the image plane, this error was likely to be
+the result of len distortion, which shows up to 400 meters error X
+component, up to 150 meters error for Y component, and up to 100
+meters error for Z component. 
+
+To better understand how camera calibration error contribute to the
+error seen in the flight data result, a series of simulation was done
+with variable error setting for the camera intrinsic parameters. The
+detail of the simulation was presented in chapter \ref{ch:simulation}
 
 %%% Local Variables:
 %%% mode: latex
