@@ -31,7 +31,7 @@ followed:
   initialized at first frame.
   \item Feature added during tracking shows a offset error for its Y
   component estimation. This is due to the error in the SUAS
-  localization error and the propogation of this error into the
+  localization error and the propagation of this error into the
   features mapping through the camera frame to world frame
   transformation.
   \item For SUAS localization accuracy, coordinate error on X
@@ -42,18 +42,38 @@ followed:
 
 Due to the difficulty of corresponding the extracted feature to the
 DEM, an extra video was processed with the airport buildings in the
-scence. All features was corresponded to the satilite images with eye
-that's avaible through google earth. In this test, features position
+scenes. All features was corresponded to the satellite images with eye
+that's available through Google Earth. In this test, features position
 has 100 meters error on both X and Y components. Given that they are
 located at the corner of the image plane, this error was likely to be
-the result of len distortion, which shows up to 400 meters error X
+the result of lens distortion, which shows up to 400 meters error X
 component, up to 150 meters error for Y component, and up to 100
 meters error for Z component. 
 
-To better understand how camera calibration error contribute to the
-error seen in the flight data result, a series of simulation was done
-with variable error setting for the camera intrinsic parameters. The
-detail of the simulation was presented in chapter \ref{ch:simulation}
+To better understand noise source in CC\_EKF\_SLAM algorithm, a series
+of simulation was done with variable error setting for the camera
+intrinsic parameters. The detail of the simulation was presented in
+chapter \ref{ch:simulation}. 
+
+An nearly no noise environment was first simulated with SUAS moving
+forward only, with no error introduced from image digitization or
+camera model mismatch. Effect from various SUAS motion was simulated
+next. Then various image resolution settings, and camera model
+mismatch were simulated. Under forward only motion, SUAS translation
+error is less than 1cm, orientation error under $3e-3^\circ$; feature
+position error is under 0.2 meters for X component, and under 0.02
+meters for Y and Z components. The result above shows error introduced
+by the algorithm itself under simple forward motion is very minor.
+
+The effect from complex SUAS motion was analyzed next. The SUAS remain
+forward traveling. The other 5 d.o.f. motion was simulated with a 1Hz
+sine wave with variable amplitude setting, and added on top of the
+forward motion one at a time. Result shows that translational motion
+and rotation around X axis has little effect on the SUAS localization
+accuracy. Rotation around Y axis (pitch) and rotation around Z axis
+(azimuth) causes SUAS positioning error on Z and Y respectfully to up to
+30 meters peak-to-peak depending on the magnitude of the rotation. For
+feature mapping accuracy, translation motion
 
 %%% Local Variables:
 %%% mode: latex
