@@ -70,8 +70,9 @@
 \contentsline {subsection}{\numberline {6.3.3}Effect from Distortion}{62}{subsection.6.3.3}
 \contentsline {subsection}{\numberline {6.3.4}Effect from Image Resolution}{64}{subsection.6.3.4}
 \contentsline {chapter}{ \numberline {7}Conclusion}{66}{section*.82}
-\contentsline {chapter}{List of References}{67}{section*.83}
-\contentsline {chapter}{Appendix \numberline {A}Coordinate Transformation}{72}{section*.85}
-\contentsline {chapter}{Appendix \numberline {B}Jacobian Matrix for Filter Initialization}{75}{section*.87}
-\contentsline {chapter}{Appendix \numberline {C}Linearization of Measurement Model}{78}{section*.88}
-\contentsline {subsubsection}{Jacobian Matrix of Composition Equations}{80}{section*.89}
+\contentsline {paragraph}{Effect from ($c_x, c_y$)}{68}{section*.83}
+\contentsline {chapter}{List of References}{69}{section*.84}
+\contentsline {chapter}{Appendix \numberline {A}Coordinate Transformation}{74}{section*.86}
+\contentsline {chapter}{Appendix \numberline {B}Jacobian Matrix for Filter Initialization}{77}{section*.88}
+\contentsline {chapter}{Appendix \numberline {C}Linearization of Measurement Model}{80}{section*.89}
+\contentsline {subsubsection}{Jacobian Matrix of Composition Equations}{82}{section*.90}

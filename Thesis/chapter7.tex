@@ -71,9 +71,35 @@ sine wave with variable amplitude setting, and added on top of the
 forward motion one at a time. Result shows that translational motion
 and rotation around X axis has little effect on the SUAS localization
 accuracy. Rotation around Y axis (pitch) and rotation around Z axis
-(azimuth) causes SUAS positioning error on Z and Y respectfully to up to
-30 meters peak-to-peak depending on the magnitude of the rotation. For
-feature mapping accuracy, translation motion
+(azimuth) causes SUAS positioning error on Z and Y respectfully to up
+to 30 meters peak-to-peak depending on the magnitude of the rotation.
+For feature mapping accuracy, translation motion does not increase
+feature position error by centimeters; rotational motion increase
+feature position error by meters for X rotation, and hundreds of
+meters by Y and Z rotation. Most error appear on features added after
+first frame, caused by an initialization offset on parameter
+$\varphi^W$ origined from the error in SUAS localization.
+
+Second part of chapter \ref{ch:simulation} analyze the error from
+camera calibration. Results are summarized below:
+
+\paragraph{Effect from ($c_x, c_y$)}
+\begin{itemize}
+  \item Error on $c_x$ or $c_y$ causes SUAS position estimate to
+  diverge from the correct value with time.
+  \item Error on $c_x$ or $c_y$ causes error on all three axis of the
+  feature position estimates. $c_x$ affect X and Y component greater
+  than Z component. $c_y$ affect X and Z component more. The amount of
+  error is related to the distance of the feature from camera. 
+\end{itemize}
+
+\paragraph{Effect fom ($f_x, f_y$)}
+\begin{itemize}
+  \item Error on $f_x$ or $f_y$ introduce little error in SUAS
+  localization estimates. 
+  \item Error on $f_x$ affect the feature position on Y component,
+  error on $f_y$ affect the Z component. The amount of error is
+  dependent on the actual
 
 %%% Local Variables:
 %%% mode: latex
