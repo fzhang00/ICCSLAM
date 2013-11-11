@@ -13,6 +13,8 @@ the performance of the algorithm. In addition, to evaluate the
 accuracy of the algorithm, digital terrain map of the survey zone was
 processed to compare to the result from the algorithm. 
 
+\section{Result Summaries}
+\subsection{Flight Data Processing}
 The flight data was processed, and result was discussed in chapter
 \ref{ch:FlightResult}. Sparse corner features were extracted from the
 flight image sequence, and were tracked by the CC\_EKF\_SLAM
@@ -50,11 +52,13 @@ the result of lens distortion, which shows up to 400 meters error X
 component, up to 150 meters error for Y component, and up to 100
 meters error for Z component. 
 
+\subsection{Noise Analysis through Simulation}
 To better understand noise source in CC\_EKF\_SLAM algorithm, a series
 of simulation was done with variable error setting for the camera
 intrinsic parameters. The detail of the simulation was presented in
 chapter \ref{ch:simulation}. 
 
+\subsubsection{Low noise environment}
 An nearly no noise environment was first simulated with SUAS moving
 forward only, with no error introduced from image digitization or
 camera model mismatch. Effect from various SUAS motion was simulated
@@ -65,6 +69,7 @@ position error is under 0.2 meters for X component, and under 0.02
 meters for Y and Z components. The result above shows error introduced
 by the algorithm itself under simple forward motion is very minor.
 
+\subsubsection{Impact from aircraft motion}
 The effect from complex SUAS motion was analyzed next. The SUAS remain
 forward traveling. The other 5 d.o.f. motion was simulated with a 1Hz
 sine wave with variable amplitude setting, and added on top of the
@@ -78,8 +83,9 @@ feature position error by centimeters; rotational motion increase
 feature position error by meters for X rotation, and hundreds of
 meters by Y and Z rotation. Most error appear on features added after
 first frame, caused by an initialization offset on parameter
-$\varphi^W$ origined from the error in SUAS localization.
+$\varphi^W$ originated from the error in SUAS localization.
 
+\subsubsection{Impact from error in camera calibration}
 Second part of chapter \ref{ch:simulation} analyze the error from
 camera calibration. Results are summarized below:
 
@@ -93,13 +99,67 @@ camera calibration. Results are summarized below:
   error is related to the distance of the feature from camera. 
 \end{itemize}
 
-\paragraph{Effect fom ($f_x, f_y$)}
+\paragraph{Effect from ($f_x, f_y$)}
 \begin{itemize}
   \item Error on $f_x$ or $f_y$ introduce little error in SUAS
   localization estimates. 
   \item Error on $f_x$ affect the feature position on Y component,
   error on $f_y$ affect the Z component. The amount of error is
-  dependent on the actual
+  dependent on the actual feature distance from camera. 
+\end{itemize}
+
+\paragraph{Effect from Distortion}
+\begin{itemize}
+  \item Ignoring distortion brings error into all six parameters of
+  SUAS localization. The localization error on X axis is diverging
+  from the true value with time. All other parameters oscillate around
+  zero, but the amount of error grow bigger in time. 
+  \item Error on feature mapping resulted from distortion is related
+  to the Y and Z component of the actual position of the feature
+  respected to the camera. In another word, the further the feature is
+  positioned from the optical center, the greater the error becomes. 
+\end{itemize}
+
+\paragraph{Effect from Image Resolution}
+\begin{itemize}
+  \item To achieve good accuracy on both aircraft localization and
+  feature mapping, higher image resolution is a must. 
+  \item The 480x720 resolution used in the flight test brings feature
+  mapping error of +/-150 meters on X axis.
+  \item Increasing resolution to 720x1080 significantly reduced the
+  variance on both localization and mapping estimates. 
+\end{itemize}
+
+\section{Future Research}
+This research presented a basic SLAM framework for obstacle detection
+through a monocular camera. Flight test proves the capability of the
+algorithm for mapping feature as far as more than 1 thousand meters.
+To make the algorithm practical in real survey environment, a number
+of improvements can be made to increase the accuracy of the algorithm.
+\begin{enumerate}
+  \item In the current implementation, lens distortion is ignored. As
+  the simulation suggests, this introduced significant error to
+  features position close to the border of FOV. Including the
+  distortion into the measurement model should improve the accuracy of
+  the algorithm.
+  \item Sensor resolution should be increased should future flight
+  test opportunity arises. 
+  \item A filter for checking feature quality should be
+  added. Feature that has poor corner signature lead to greater
+  tracking error. In addition, due to the accumulated tracking error,
+  some features can be completely lost after a long a few seconds of
+  tracking. Due to the correlation between features, these tracking
+  error has impact on other feature and SUAS estimates. Removing the
+  bad features, and replace them with good quality one is necessary to
+  make the algorithm more robust. 
+  \item Localization error has a big impact on the accuracy of the
+  map. To minimize localization error, when GPS data is available,
+  which is the case most of the time, all parameters should be
+  synchronized to GPS periodically. This procedure should also help
+  to prevent consistency problem. 
+\end{enumerate}
+
+Besides improvement mentioned above, adding a map joining algorithm is
 
 %%% Local Variables:
 %%% mode: latex
