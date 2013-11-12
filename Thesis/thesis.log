@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2013.7.4)  11 NOV 2013 15:36
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2013.7.4)  12 NOV 2013 11:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1369,7 +1369,7 @@ Missing character: There is no “ in font cmr12!
 (./appendix.tex
 Appendix A.
 
-<./Figures/coordinate_transformation/coordinate_transformation.png, id=1248, 61
+<./Figures/coordinate_transformation/coordinate_transformation.png, id=1249, 61
 1.28375pt x 367.3725pt>
 File: ./Figures/coordinate_transformation/coordinate_transformation.png Graphic
  file (type png)
@@ -1446,8 +1446,8 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 122.
  ) 
 Here is how much of TeX's memory you used:
- 8506 strings out of 493488
- 134206 string characters out of 3144749
+ 8507 strings out of 493488
+ 134213 string characters out of 3144749
  233349 words of memory out of 3000000
  11136 multiletter control sequences out of 15000+200000
  10939 words of font info for 39 fonts, out of 3000000 for 9000
@@ -1465,10 +1465,10 @@ live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/texlive/2012
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><d:/texlive/2012/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/texlive/2012/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (98 pages, 5657489 bytes).
+Output written on thesis.pdf (98 pages, 5657759 bytes).
 PDF statistics:
- 1481 PDF objects out of 1728 (max. 8388607)
- 1224 compressed objects within 13 object streams
- 411 named destinations out of 1000 (max. 500000)
+ 1482 PDF objects out of 1728 (max. 8388607)
+ 1225 compressed objects within 13 object streams
+ 412 named destinations out of 1000 (max. 500000)
  888 words of extra memory for PDF output out of 10000 (max. 10000000)
 

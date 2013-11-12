@@ -152,14 +152,19 @@ of improvements can be made to increase the accuracy of the algorithm.
   error has impact on other feature and SUAS estimates. Removing the
   bad features, and replace them with good quality one is necessary to
   make the algorithm more robust. 
+  \item To enable large area mapping, a map joining algorithm should
+  be added.
   \item Localization error has a big impact on the accuracy of the
   map. To minimize localization error, when GPS data is available,
   which is the case most of the time, all parameters should be
   synchronized to GPS periodically. This procedure should also help
-  to prevent consistency problem. 
+  to prevent consistency problem. This could be integrated into the
+  map joining algorithm.  
 \end{enumerate}
 
-Besides improvement mentioned above, adding a map joining algorithm is
+Besides improvements listed above, the cause of sensitivity of the
+algorithm to Y and Z axis rotation should be studied further, and a
+way of compensating the error should be developed. 
 
 %%% Local Variables:
 %%% mode: latex
