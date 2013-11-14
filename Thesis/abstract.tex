@@ -1,1 +1,33 @@
-Type your abstract here
+This research describes an obstacle detection algorithm for low flying
+unmanned aircraft system (UAS) using an inertial aided inverse depth
+extended Kalman filter (EKF) based simultaneous localization and
+mappign (SLAM) framework. The SLAM framework fuses inertial
+measurements with monocular image sensor measurements to estimate the
+positions of a number of landmarks as well as the position and
+orientation of the UAS. A high resolution sparse terrain elevation map
+and UAS trajectory can then be computed from the filter state vector.
+An inverse depth parameterization is used to describe the positions of
+the landmarks so that features at all ranges can be tracked by the
+filter. Camera centric coordinate system was adopted to improve the
+consistency of the framework for large area mapping. A test flight is
+conducted to test the algorithm in a realistic scenario, and two video
+sequences of 400 frames were processed with the described algorithm.
+The result shows that when quality features can be extracted from the
+image sequence, the algorithm is capable of mapping features ranging
+as far as 1600 meters. The accuracy of the feature position estimates
+are quite good for those initialized at first frames. Features added
+at higher frame number carry offset error due to the error in aircraft
+localization estimates. To better understand the contributing factors
+of error seen in the flight data result, an series of simulations were
+performed to analyze the algorithm under different circumstanstance,
+including simple forward travel motion, oscillatory motion for all
+other 5 degree of freedom, error embedded in calibration result of the
+camera intrinsic parameters, and image resolution. The simulation
+proved that the algorithm perform very well under simple forward
+motion, but is very sensitive to rotational motion. Error in camera
+intrisic paramters all contribute to localization error and feature
+mappping error. Although not all of these error can be prevented, the
+len distortion correction procedure should be included into the
+algorithm.  The minimum image resultion suggested by the
+simulation is 720x1080, beyond which localization and mapping error
+were significantly reduced. 
