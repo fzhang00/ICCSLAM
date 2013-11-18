@@ -1,13 +1,13 @@
 This is BibTeX, Version 0.99d (TeX Live 2012/W32TeX)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: thesis.aux
-A level-1 auxiliary file: dedication.aux
 A level-1 auxiliary file: chapter1.aux
 A level-1 auxiliary file: chapter2.aux
 A level-1 auxiliary file: chapter3.aux
 A level-1 auxiliary file: chapter4.aux
 A level-1 auxiliary file: chapter5.aux
 A level-1 auxiliary file: chapter6.aux
+A level-1 auxiliary file: chapter7.aux
 The style file: ieeetr.bst
 A level-1 auxiliary file: appendix.aux
 A level-1 auxiliary file: appendix2.aux
@@ -22,7 +22,7 @@ Warning--empty publisher in csorba_simultaneous_1997
 Warning--empty publisher in bailey_mobile_2002
 You've used 64 entries,
             1876 wiz_defined-function locations,
-            817 strings with 14491 characters,
+            817 strings with 14489 characters,
 and the built_in function-call counts, 18388 in all, are:
 = -- 1869
 > -- 552
