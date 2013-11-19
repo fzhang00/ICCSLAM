@@ -20,48 +20,48 @@ Traditional 2D SLAM algorithms are well established in the past
 decade. A SLAM algorithm typically utilises measurements from several
 types of sensor which can be divided into two groups, those that
 provide vehicles pose and orientation measurements, such as wheel
-odometry, or GPS; and those that provide landmark bearing and range
+odometer, or GPS; and those that provide landmark bearing and range
 measurements, such as radar, sonar, laser range finder. In recent
 years, optical sensors are actively being incorporated into SLAM
 algorithm and successfully used in ground vehicle navigation. For
 aerial vehicles, the experiments are mostly limited to simulation, and
-results from realistic aerial video data is rare \ref{nemra_robust_2010}
-\ref{jianli_unscented_2011} \ref{sunderhauf_using_2007} \ref{artieda_visual_2009}.
+results from realistic aerial video data are rare \cite{nemra_robust_2010}
+\cite{jianli_unscented_2011} \cite{sunderhauf_using_2007} \cite{artieda_visual_2009}.
 
 \section{Problem Statement}\label{section:ProblemStatement}
-Obstacle detection has received a lot of research interest in recent 
-years. Various algorithms were developed for ground, under water and 
-aerial vehicle using different sensor such as sonar, radar, LIDAR, and 
-vision. Most research focus on utilizing with only one sensor. Yet, 
-research shows that using multiple sensors produces a better measurement 
-than single sensor [reference in proposal]. With various sensors 
-readily available on most UAV navigation hardware; such as 
-accelerometers, gyroscope, GPS receiver, altimeter, etc., fully 
-utilizing these sensors to aid the main OD sensor helps to improve the 
-accuracy and robustness of the range measurement, especially in harsh 
-flying condition. 
+Obstacle detection has received a lot of research interest in recent
+years. Various algorithms were developed for ground, under water and
+aerial vehicle using different sensor such as sonar, radar, LIDAR, and
+vision. Most research focus on utilizing with only one sensor. Yet,
+research shows that using multiple sensors produces a better
+measurement than single sensor \cite{smith_approaches_2006}. With
+various sensors readily available on most UAV navigation hardware;
+such as accelerometers, gyroscope, GPS receiver, altimeter, etc.,
+fully utilizing these sensors to aid the main obstacle detection (OD)
+sensor helps to improve the accuracy and robustness of the range
+measurement, especially in harsh flying condition.
 
-This thesis focuses on developing an obstacle detection system by using
-a SLAM algorithm as a sensor fusion framework for medium size UAV
-conduction low altitude terrain following flight in natural
-environment.The obstacles are static objects on ground, and moving
+This thesis focuses on developing an obstacle detection system by
+using a SLAM algorithm as a sensor fusion framework for medium size
+UAV conducting low altitude terrain following flight in natural
+environment. The obstacles are static objects on ground, and moving
 objects are not considered. Research presented in this thesis
-contributes to the project of developing a mid size UAV to perform
-geological survey, carried out by Carleton in collaborated with Sander
-Geophysics Ltd., an Ottawa based company specialized in high precision
-geophysical survey. To achieve high resolution data acquisition, the
-UAV must be able to perform terrain following flight with altitude
-from ground as low as 10 meters at speed ranging from 60 knots (30
-m/s) to 100 knots (51.4 m/s). The rate of climb for the UAV is
-specified to 400ft of vertical rise per minutes (122 meters per
-minutes) \cite{james_geosurv_2008}. A quick analysis on the UAV specification and
-aerodynamic behavior reveals the requirement of a practical obstacle
-detection system. Assuming a tree height of 20 meters, which is the
-average height for oak or pine, to allow for enough time to avoid
-obstacle, the UAV must be able to detect the threat at least 610
-meters away from it (Figure \ref{ob}). This analysis indicates that
-the obstacle detection must be able to map object up to a few
-thousands away from the UAV.
+contributes to the project of developing a mid-size UAV to perform
+geological survey, carried out by Carleton University in collaborated
+with Sander Geophysics Ltd., an Ottawa based company specialized in
+high precision geophysical survey. To achieve high resolution data
+acquisition, the UAV must be able to perform terrain following flight
+with altitude from ground as low as 10 meters at speed ranging from 60
+knots (30 m/s) to 100 knots (51.4 m/s). The rate of climb for the UAV
+is specified to 400ft of vertical rise per minutes (122 meters per
+minutes) \cite{james_geosurv_2008}. A quick analysis on the UAV
+specification and aerodynamic behavior reveals the requirement of a
+practical obstacle detection system. Assuming a tree height of 20
+meters, which is the average height for oak or pine, to allow for
+enough time to avoid obstacle, the UAV must be able to detect the
+threat at least 610 meters away from it (Figure \ref{ob}). This
+analysis indicates that the obstacle detection must be able to map
+object up to a thousand meters away from the UAV.
 
 \begin{figure}[h]
 \centering
@@ -78,49 +78,69 @@ be in place to detect discrete threat, and operate automatically with
 minimum intervene from the operator. 
 
 \section{Contributions}\label{section:Contribution}
-The thesis reviews the properties and consistency of a typical Extended 
-Kalman Filter (EKF) based SLAM algorithm, and discusses the advantage 
-and limitation of vision based SLAM method. The analysis motivates the 
-development of an improved method by fusing multiple sensors into a mono 
-vision EKF based SLAM framework.
+The thesis first reviews pros and cons of various sensors for obstacle
+detection, and point out the advantage and disadvantage of using
+imaging sensor in OD application. Different type of imaging sensor
+configurations and sensor calibration method was described. Next, the
+thesis reviews the formulation and properties of a typical Extended
+Kalman Filter (EKF) based SLAM algorithm, and discusses the advantage
+and limitation of a typical SLAM algorithm. An inverse
+parameterization method was also described. 
 
-Using a monocular vision for mapping is a bearing only SLAM problem. The 
-measurement is through projection, which loses information about the 
-relative position of the feature since the range is unknown. Without 
-camera motion measurements, map created by monocular vision can be 
-scaled arbitrarily. For a SLAM application in aerial scenario, camera 
-vibration and sudden movement is common when aircraft is hit by cross 
-wind, which can cause the lost of tracked features. A recursive EKF 
-based SLAM algorithm is described in this thesis. The method utilizes 
-sensor onboard the UAV to provide motion measurement of the camera, and 
-improve the robustness of the algorithm under rough flying condition. 
-Real aerial data were collected to test the performance and accuracy of 
-the algorithm in a scenario similar to the one where the UAV will be 
-eventually deployed. The preliminary result of the test flight was 
-published in []. This paper is one of the first ones in the field 
-that successfully applying monocular vision SLAM in large scale aerial 
-application. A more thorough analysis on the behavior of the algorithm 
-and its error is presented in this thesis.Furthermore, a number of 
-baseline separations for the cameraare tested to optimize the 
-performance and computation cost of the algorithm. 
+These reviews and discussions motivates the development of an improved
+method by fusing multiple sensors into a mono vision EKF based SLAM
+framework. Using a monocular vision for mapping is a bearing only
+problem. The measurement is through projection, which loses
+information about the relative position of the feature since the range
+is unknown. Without camera motion measurements, map created by
+monocular vision can be scaled arbitrarily. A camera centric EKF based
+SLAM algorithm (referred as CC\_EKF\_SLAM in the rest of the article)
+is described in this thesis. The algorithm utilizes an extended Kalman
+filter to fuse camera motion measurements from inertial and gyroscope
+sensors onboard the UAV and measurement from a single wide angle
+camera to estimate absolute landmark location and the position of the
+SUAS. Inverse parameterization was adopted to describe the landmark
+position so that distanced landmark can be included into the framework
+at initialization. Camera centric coordinate was used to improve the
+consistency of the framework for large area mapping. 
+
+Aerial flight data were collected to test the performance and accuracy
+of the algorithm in a scenario similar to the one where the UAV will
+be eventually deployed. The data was collected by installing all
+sensors on a simulated unmanned aerial vehicle (SUAS) which is towed
+by a helicopter. The test result proved that CC\_EKF\_SLAM algorithm
+is capable of mapping features over 1000 meters away. The preliminary
+result of the test flight was published in \cite{zhang_obstacle_2012}.
+This paper is one of the first ones in the field that successfully
+applying monocular vision SLAM in large scale aerial SLAM application.
+In addition, a series simulations was done to thoroughly analyze the
+behavior of the algorithm under various circumstances, including
+simple forward motion, oscillatory motion for all other 5 d.o.f.,
+error embedded in calibration result of the camera intrinsic
+parameters, and image resolution. The result of these simulation is
+valuable for the design of suitable data acquisition requirement for
+obstacle detection purpose, and future improvement of the
+CC\_EKF\_SLAM algorithm.
 
 \section{Organization}\label{section:Organization}
 The thesis is organized as follows:
 
 \begin{itemize}
-\item Chapter 2 presents an overview on sensors, computer vision 
-algorithms, SLAM algorithm related to obstacle detection and range 
-measurement.
-\item Chapter 3 describes the detail implementation of the proposed 
-multisensory monocular SLAM algorithm.
-\item Chapter 4 describes camera calibration procedure, equipments setup 
-for the aerial data collection, and data preparation steps. 
-\item Chapter 5 presents detail analysis on the performance of the 
-algorithm. Convergence and consistency of the algorithm is discussed in 
-section and . Error analysis compared to ground truth data is presented 
-in and . The effect of using multiple sensors in improving the 
-robustness is discussed in . At last, the camera baseline optimization 
-is given in .
+  \item Chapter 2 presents an overview on sensors, and data fusion
+  framework (EKF AND SLAM) related to obstacle detection and range measurement.
+  \item Chapter 3 describes the detail implementation of the proposed
+  CC\_EKF\_SLAM algorithm.
+  \item Chapter 4 describes camera calibration procedure and result, equipments
+  setup for the aerial data collection, and data preparation steps.
+  \item Chapter 5 presents detail analysis on the performance of the
+  algorithm. Convergence and consistency of the algorithm is
+  discussed. Error analysis compared to ground truth data is presented
+  in and . 
+  \item Chapter 6 presents result of the simulations for understanding
+  the behavior of the CC\_EKF\_SLAM algorithm under different
+  conditions.  
+  \item Chapter 7 gives an overall summary of the result obtained in
+  this research, and a recommendation for future research items. 
 \end{itemize}
 
 %%% Local Variables:

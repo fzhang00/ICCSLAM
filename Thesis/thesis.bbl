@@ -1,5 +1,32 @@
 \begin{thebibliography}{10}
 
+\bibitem{nemra_robust_2010}
+A.~Nemra and N.~Aouf, ``Robust cooperative {UAV} visual {SLAM},'' in {\em 2010
+  {IEEE} 9th International Conference on Cybernetic Intelligent Systems
+  ({CIS)}}, pp.~1--6, 2010.
+
+\bibitem{jianli_unscented_2011}
+S.~Jianli, P.~Shuang, W.~Yugiang, and W.~Xibin, ``Unscented {FastSLAM} for
+  {UAV},'' in {\em 2011 International Conference on Computer Science and
+  Network Technology ({ICCSNT)}}, vol.~4, pp.~2529--2532, 2011.
+
+\bibitem{sunderhauf_using_2007}
+N.~Sunderhauf, S.~Lange, and P.~Protzel, ``Using the unscented kalman filter in
+  mono-{SLAM} with inverse depth parametrization for autonomous airship
+  control,'' in {\em {IEEE} International Workshop on Safety, Security and
+  Rescue Robotics, 2007. {SSRR} 2007}, pp.~1--6, 2007.
+
+\bibitem{artieda_visual_2009}
+J.~Artieda, J.~M. Sebastian, P.~Campoy, J.~F. Correa, I.~F. Mondragón,
+  C.~Martínez, and M.~Olivares, ``Visual 3-d {SLAM} from {UAVs},'' {\em
+  Journal of Intelligent and Robotic Systems}, vol.~55, pp.~299--321, Aug.
+  2009.
+
+\bibitem{smith_approaches_2006}
+D.~Smith and S.~Singh, ``Approaches to multisensor data fusion in target
+  tracking: A survey,'' {\em {IEEE} Transactions on Knowledge and Data
+  Engineering}, vol.~18, no.~12, pp.~1696--1710, 2006.
+
 \bibitem{james_geosurv_2008}
 T.~James, ``{GeoSurv} {II} {UAV} system requirements document,'' tech. rep.,
   Mar. 2008.
