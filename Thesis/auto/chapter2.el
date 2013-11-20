@@ -4,8 +4,6 @@
      "ch:Review"
      "sec:sensor"
      "sec:SensorOverview"
-     "sec:OpticalSensorLimitation"
-     "sec:gps_and_imu"
      "sec:SLAM"
      "sec:SLAM_using_EKF"
      "figch2:1"

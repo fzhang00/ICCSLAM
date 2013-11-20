@@ -11,6 +11,7 @@
      "ie"
      "eg")
     (TeX-run-style-hooks
+     "color"
      "float"
      "multirow"
      "placeins"

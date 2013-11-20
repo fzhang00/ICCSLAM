@@ -1,55 +1,55 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 1.1}{\ignorespaces Case study for obstacle detection requirement\relax }}{3}{figure.caption.14}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 2.1}{\ignorespaces Kalman Operation Flow Diagram\relax }}{11}{figure.caption.22}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 2.1}{\ignorespaces Kalman Operation Flow Diagram\relax }}{11}{figure.caption.21}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 3.1}{\ignorespaces Inverse Depth Parameterization\relax }}{18}{figure.caption.34}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 3.2}{\ignorespaces Measurement Model\relax }}{21}{figure.caption.35}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 3.1}{\ignorespaces Inverse Depth Parameterization\relax }}{17}{figure.caption.33}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 3.2}{\ignorespaces Measurement Model\relax }}{20}{figure.caption.34}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 4.1}{\ignorespaces Simulated UAS towed by helicopter\relax }}{27}{figure.caption.39}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 4.2}{\ignorespaces Sensors mounted on SUAS. Top: the SUAS, bottom left: Athena GS-111m, bottom right: GPS antenna\relax }}{28}{figure.caption.40}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 4.3}{\ignorespaces Compact PCI data acquisition system (CDAC)\relax }}{28}{figure.caption.41}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 4.4}{\ignorespaces Image from monocular camera with GPS second timestamp\relax }}{29}{figure.caption.42}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 4.5}{\ignorespaces Camera Calibration Inputs\relax }}{30}{figure.caption.43}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 4.1}{\ignorespaces Simulated UAS towed by helicopter\relax }}{26}{figure.caption.38}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 4.2}{\ignorespaces Sensors mounted on SUAS. Top: the SUAS, bottom left: Athena GS-111m, bottom right: GPS antenna\relax }}{27}{figure.caption.39}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 4.3}{\ignorespaces Compact PCI data acquisition system (CDAC)\relax }}{27}{figure.caption.40}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 4.4}{\ignorespaces Image from monocular camera with GPS second timestamp\relax }}{28}{figure.caption.41}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 4.5}{\ignorespaces Camera Calibration Inputs\relax }}{29}{figure.caption.42}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.1}{\ignorespaces Inverse Depth Convergence\relax }}{35}{figure.caption.46}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.2}{\ignorespaces Feature parameters tracking\relax }}{36}{figure.caption.47}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.3}{\ignorespaces State vector variance\relax }}{37}{figure.caption.48}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.4}{\ignorespaces State Vector Corrections\relax }}{38}{figure.caption.49}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.5}{\ignorespaces Kalman Gain Matrix for the first 35 State Vector Elements\relax }}{39}{figure.caption.50}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.6}{\ignorespaces SUAS position and orientation\relax }}{40}{figure.caption.51}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.7}{\ignorespaces Feature position error\relax }}{41}{figure.caption.52}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.8}{\ignorespaces Left: , right: \relax }}{42}{figure.caption.53}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.9}{\ignorespaces Feature position and error. Left: , right: \relax }}{42}{figure.caption.54}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.10}{\ignorespaces Terrain map. Left: estimated, right: ground truth \relax }}{43}{figure.caption.55}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.11}{\ignorespaces Feature identified by algorithm \relax }}{43}{figure.caption.56}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.12}{\ignorespaces Common features idetified manually on Google Earth \relax }}{44}{figure.caption.57}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.13}{\ignorespaces SUAS position accuracy compared to GPS\relax }}{45}{figure.caption.58}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.14}{\ignorespaces SUAS orientation accuracy compared to ??\relax }}{45}{figure.caption.59}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.15}{\ignorespaces Feature error on X and Y axis. \relax }}{46}{figure.caption.60}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.1}{\ignorespaces Inverse Depth Convergence\relax }}{34}{figure.caption.45}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.2}{\ignorespaces Feature parameters tracking\relax }}{35}{figure.caption.46}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.3}{\ignorespaces State vector variance\relax }}{36}{figure.caption.47}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.4}{\ignorespaces State Vector Corrections\relax }}{37}{figure.caption.48}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.5}{\ignorespaces Kalman Gain Matrix for the first 35 State Vector Elements\relax }}{38}{figure.caption.49}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.6}{\ignorespaces SUAS position and orientation\relax }}{39}{figure.caption.50}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.7}{\ignorespaces Feature position error\relax }}{40}{figure.caption.51}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.8}{\ignorespaces Left: , right: \relax }}{41}{figure.caption.52}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.9}{\ignorespaces Feature position and error. Left: , right: \relax }}{41}{figure.caption.53}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.10}{\ignorespaces Terrain map. Left: estimated, right: ground truth \relax }}{42}{figure.caption.54}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.11}{\ignorespaces Feature identified by algorithm \relax }}{42}{figure.caption.55}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.12}{\ignorespaces Common features idetified manually on Google Earth \relax }}{43}{figure.caption.56}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.13}{\ignorespaces SUAS position accuracy compared to GPS\relax }}{44}{figure.caption.57}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.14}{\ignorespaces SUAS orientation accuracy compared to ??\relax }}{44}{figure.caption.58}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.15}{\ignorespaces Feature error on X and Y axis. \relax }}{45}{figure.caption.59}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.1}{\ignorespaces Randomly Generated 3D Feature Points\relax }}{48}{figure.caption.62}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.2}{\ignorespaces UAS localization error under no noise condition\relax }}{50}{figure.caption.63}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.3}{\ignorespaces Features parameters and error convergence under no noise condition\relax }}{51}{figure.caption.64}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.4}{\ignorespaces UAS localization error under translational motion\relax }}{53}{figure.caption.65}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.5}{\ignorespaces UAS estimated position in world frame\relax }}{53}{figure.caption.66}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.6}{\ignorespaces Feature mapping error under added motion\relax }}{54}{figure.caption.67}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.7}{\ignorespaces Feature mapping error under rotatioanl motion\relax }}{55}{figure.caption.68}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.8}{\ignorespaces Feature parameters error under rotatioanl motion\relax }}{57}{figure.caption.69}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.9}{\ignorespaces Error of $\phi $ in camera frame and world frame at initialization\relax }}{57}{figure.caption.70}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.10}{\ignorespaces UAS localization error statistic with varying $(c_x, c_y)$\relax }}{58}{figure.caption.71}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.11}{\ignorespaces Diverging UAS position error\relax }}{59}{figure.caption.72}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.12}{\ignorespaces Feature mapping error statistic with varying $(c_x, c_y)$\relax }}{59}{figure.caption.73}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.13}{\ignorespaces Feature mapping error vs. ground truth feature position\relax }}{60}{figure.caption.74}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.14}{\ignorespaces UAS localization error statistic with variable $(f_x, f_y)$\relax }}{61}{figure.caption.75}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.15}{\ignorespaces Feature mapping error statistic with variable $(f_x, f_y)$\relax }}{61}{figure.caption.76}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.16}{\ignorespaces Feature mapping error plotted against feature ground truth for various $(f_x, f_y)$\relax }}{62}{figure.caption.77}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.17}{\ignorespaces UAS localization error with lens distortion\relax }}{63}{figure.caption.78}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.18}{\ignorespaces UAS localization error with lens distortion\relax }}{63}{figure.caption.79}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.19}{\ignorespaces UAS localization error with lens distortion\relax }}{64}{figure.caption.80}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.20}{\ignorespaces Error statistic for various image resolution\relax }}{65}{figure.caption.81}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.1}{\ignorespaces Randomly Generated 3D Feature Points\relax }}{47}{figure.caption.61}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.2}{\ignorespaces UAS localization error under no noise condition\relax }}{49}{figure.caption.62}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.3}{\ignorespaces Features parameters and error convergence under no noise condition\relax }}{50}{figure.caption.63}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.4}{\ignorespaces UAS localization error under translational motion\relax }}{52}{figure.caption.64}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.5}{\ignorespaces UAS estimated position in world frame\relax }}{52}{figure.caption.65}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.6}{\ignorespaces Feature mapping error under added motion\relax }}{53}{figure.caption.66}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.7}{\ignorespaces Feature mapping error under rotatioanl motion\relax }}{54}{figure.caption.67}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.8}{\ignorespaces Feature parameters error under rotatioanl motion\relax }}{56}{figure.caption.68}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.9}{\ignorespaces Error of $\phi $ in camera frame and world frame at initialization\relax }}{56}{figure.caption.69}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.10}{\ignorespaces UAS localization error statistic with varying $(c_x, c_y)$\relax }}{57}{figure.caption.70}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.11}{\ignorespaces Diverging UAS position error\relax }}{58}{figure.caption.71}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.12}{\ignorespaces Feature mapping error statistic with varying $(c_x, c_y)$\relax }}{58}{figure.caption.72}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.13}{\ignorespaces Feature mapping error vs. ground truth feature position\relax }}{59}{figure.caption.73}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.14}{\ignorespaces UAS localization error statistic with variable $(f_x, f_y)$\relax }}{60}{figure.caption.74}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.15}{\ignorespaces Feature mapping error statistic with variable $(f_x, f_y)$\relax }}{60}{figure.caption.75}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.16}{\ignorespaces Feature mapping error plotted against feature ground truth for various $(f_x, f_y)$\relax }}{61}{figure.caption.76}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.17}{\ignorespaces UAS localization error with lens distortion\relax }}{62}{figure.caption.77}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.18}{\ignorespaces UAS localization error with lens distortion\relax }}{62}{figure.caption.78}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.19}{\ignorespaces UAS localization error with lens distortion\relax }}{63}{figure.caption.79}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.20}{\ignorespaces Error statistic for various image resolution\relax }}{64}{figure.caption.80}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax A.1}{\ignorespaces A point in world and mobile frame\relax }}{76}{figure.caption.93}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax A.1}{\ignorespaces A point in world and mobile frame\relax }}{75}{figure.caption.92}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
