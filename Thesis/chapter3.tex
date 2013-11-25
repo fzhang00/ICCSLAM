@@ -12,11 +12,8 @@ through the pyramid implementation of Lucas-Kanade optical flow method
 OpenCV. 
 
 \section{Camera Centric Inverse Depth Parameterization}
-The inverse depth parametrization by Civera \cite{civera_inverse_2008}
-and camera centric coordinate system was adopted in this work with
-some modification to integrate the inertial measurements. Figure
-\ref{fig:algo1} shows the parameters definition in inverse depth
-parameterization.
+Figure \ref{fig:algo1} shows the parameters definition in inverse
+depth parameterization.
 
 \begin{figure}[h]
 \centering
@@ -25,9 +22,9 @@ parameterization.
 \label{fig:algo1}
 \end{figure}
 
-A 3D scene point $p_{i}^{C}$ can be defined by 6 parameters, with the 
+A 3D scene point $p_{i}^{C}$ can be defined by 6 parameters with the 
 superscript $C$ representing a camera reference frame and $i$
-representing the feature number.:
+representing the feature number:
 \begin{equation}
 p_{i}^{C}=\begin{bmatrix}
 x_{i}^{C} & y_{i}^{C} & z_{i}^{C} & \rho _{i} & \varphi _{i}^{C} & 
@@ -36,7 +33,7 @@ x_{i}^{C} & y_{i}^{C} & z_{i}^{C} & \rho _{i} & \varphi _{i}^{C} &
 \end{equation}
 The first three parameters $[x_{i}^{C}, y_{i}^{C}, z_{i}^{C}]$
 represent the initial position where the feature is first observed.
-$\rho_{i} = 1/d_i$ is the inverse distance of from the initialization position
+$\rho_{i} = 1/d_i$ is the inverse distance from the initialization position
 to the feature. The elevation-azimuth pair $[\varphi_{i}^{C},
 \theta_{i}^{C}]$ encodes a unit vector pointing from the
 initialization point to the feature. The vector is given by
@@ -49,7 +46,8 @@ m(\phi_{i}^{C}, \theta_{i}^{C})=\begin{bmatrix}
 \end{bmatrix}
 \end{equation}
 
-Given the unit vector $[h_x, h_y, h_z]$, one can also find $[\varphi, \theta]$ by
+\noindent Given the a vector $[h_x, h_y, h_z]$, one can also find the
+elevation-azimuth angles $[\varphi, \theta]$ by
 
 \begin{equation}
 \label{eq:m_inv_varphi}
@@ -68,7 +66,7 @@ Filter}
 
 \subsection{Full State Vector}
 
-The EKF state vector is defined as 
+The EKF full state vector is defined as 
 
 \begin{equation}
 x=\begin{bmatrix}
@@ -79,19 +77,20 @@ OX_{W}^{C} & c^{C} & r^{C} & p_{1}^{C} & p_{2}^{C} & \ldots
 \noindent where $OX_{W}^{C}= \begin{bmatrix}O_{x}^{C} & O_{y}^{C} &
   O_{z}^{C} & W_{x}^{C} & W_{y}^{C} & W_{z}^{C} \end{bmatrix}^{T}$
 contains translation parameters $O_{x,y,z}^{C}$ and rotation
-parameters $W_{x,y,z}^{C}$ to transform the camera reference frame
-back to the world reference frame. $\left(c^{C},r^{C}\right)^{T}$
-represents the camera translation and rotation motion frame by frame
-in Euclidean coordinates, and $p_{i}^{C}$ contains the feature
+parameters $W_{x,y,z}^{C}$ that represents the world frame position
+and orientation referenced to the camera frame.
+$\left(c^{C},r^{C}\right)^{T}$ represents the camera translation and
+rotation motion frame by frame, and $p_{i}^{C}$ contains the feature
 parameters as described in the previous section.
 
 \subsection{Prediction}
 
-For a prediction step at time $k$, the world frame and features
-parameters are kept unchanged from time $k-1$. The camera parameters
-are updated using the new inertial measurements: velocity $v^{C}$,
-acceleration $a^{C}$, and rate of change $w^{C}$ in roll, pitch, and
-azimuth. The camera motion parameters at time $k$ are then
+For a prediction step at time $k$, the world frame parameter $OX_W^C$
+and features parameters $p_i^C$ are kept unchanged from time $k-1$.
+The camera parameters are updated using the new inertial measurements:
+velocity $v^{C}$, acceleration $a^{C}$, and rate of change $w^{C}$ in
+roll, pitch, and azimuth. The camera motion parameters at time $k$ are
+then
 \begin{multline}
 \begin{bmatrix}
 OX_{W}^{C} & c^{C} & r^{C} & p_{1}^{C}& p_{2}^{C} & \vdots & p_n^C
@@ -160,21 +159,21 @@ v_{k} \\
 \end{bmatrix}
 \end{equation}
 
-\noindent where $f_{x}$ and $f_{y}$ is the scaling factor of the projection, 
+\noindent where $f_{x}$ and $f_{y}$ is the scaling factor of the projection 
 obtained through camera calibration.
 
 Since the measurement model is non-linear, the equation must be
 linearized to calculate the Kalman gain $K$. Detail formulation for
-linearization is given in appendix \ref{??}
+linearization is given in appendix \ref{ch:appendix3}.
 
 \subsection{Composition Step}
 
-The correction using measurement model described above has its camera
-frame at step $k-1$ as its reference frame. Therefore, a coordinate
-transformation must be done to transform all parameters, and error
-matrix into camera frame at step k so that the next cycle of tracking
-can be continued. World reference frame parameters
-from step $k-1$ to step $k$ is related by
+The correction using measurement model described above still has all
+its parameters defined in camera frame at step $k-1$. Therefore, a
+coordinate transformation must be done to transform all parameters,
+and error matrix into camera frame at step k so that the next cycle of
+tracking can be continued. World reference frame parameters from step
+$k-1$ to step $k$ is related by
 
 \begin{equation}
 \begin{bmatrix}
@@ -253,7 +252,7 @@ P_{k}^{C_{k}}=J_{C_{k-1}\to C_{k}}P_{k}^{C_{k-1}}J_{C_{k-1}\to C_{k}}^{T}
 
 \noindent where $J_{C_{k-1} \to C_k}$ is the Jacobian matrix of the
 composition equations. Detail derivation of the Jacobian matrix is
-given in appendix \ref{?}  
+given in appendix D \ref{?}  
 
 \subsection{Filter Initialization}
 \subsubsection{Initialize the State Vector}
@@ -261,7 +260,7 @@ given in appendix \ref{?}
 State vectors are initialized at the first frame. The world origin 
 coordinate and orientation, camera motions, and the feature reference 
 points are all initialized to zeros, with variance equals to the 
-smallest machine number. Thus, 
+smallest machine number. 
 
 \begin{equation}
 \label{eq:OX_init}
