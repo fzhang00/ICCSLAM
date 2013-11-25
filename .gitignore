@@ -35,8 +35,8 @@ nosetests.xml
 .pydevproject
 
 # Latex
-*.log
-*.aux
-*.tex~
-*.bbl
+.log
+.aux
+.tex~
+.bbl
 _region_.prv
