@@ -194,27 +194,22 @@ Just use them straight out of the opencv library. }
 
 \section{SLAM as A Sensor Fusion Framework}
 \label{sec:SLAM}
-An essential aspect of autonomy for a mobile robot is the capability to 
-determine its location. This capability is known as localization. 
-Localization is typically a prerequisite for accomplishing real tasks, 
-whether it is exploration, navigation toward a known goal, 
-transportation of material, construction or site preparation. In many 
-applications, the mobile robot has an a priori map. Given a map, the 
-robot may localize by matching current sensor observations to features 
-in the map. Given enough features and an unambiguous geometry, the pose 
-of the robot can be determined or at least narrowed down to a set of 
-possible locations.
-
-Usable maps do not always exist, and it is not always possible to have 
-accurate externally referenced pose estimates. If an a priori map is not 
-available, the robot may need to construct one. With a precise, 
-externally referenced position estimate from GPS or similar means, the 
-robot can take its sensor observations, reference the observations to 
-its current pose, and insert features in the map in the appropriate 
-places. Without maps or externally referenced pose information, the 
-robot must produce its own map and concurrently localize within that 
-map. This problem has been referred to as concurrent localization and 
-mapping (CLM) and simultaneous localization and mapping (SLAM).
+An essential aspect of autonomy for a mobile robot is the capability
+of determining its location. This capability is known as localization.
+Localization is typically a prerequisite for accomplishing real tasks,
+whether it is exploration, or navigation toward a known goal. In many
+applications, the mobile robot has an a priori map. Given a map, the
+robot may localize by matching current sensor observations to features
+in the map. Without maps or externally referenced pose information,
+the robot must produce its own map and concurrently localize within
+that map. This problem has been referred to as concurrent localization
+and mapping (CLM) and simultaneous localization and mapping (SLAM).
+There were considerably amount of research done on the SLAM problem in
+the last two decades, and the theoretical SLAM can now be considered
+solved. The standard structure of a SLAM problem is a Bayesian form,
+and explain the evolution of the SLAM process. Most common
+computational solution is through the use of the extended Kalman filter
+(EKF). 
 
 \subsection{Recursive Probabilistic Estimation using Extended Kalman Filter}
 \label{sec:SLAM_using_EKF}
@@ -228,9 +223,9 @@ framework as it can process all available measurements including
 previous knowledge of the process, regardless of their precision, to
 estimate the current value of the variable of interest. Given a
 dynamic process that satisfy the assumptions that Kalman filter is
-based on, the filter is the optimal algorithm in minimzing the mean of
-squared error of the state variable. This section briefly summerized
-assumption and formation of Kalman filter that's described in detail
+based on, the filter is the optimal algorithm in minimizing the mean of
+squared error of the state variable. This section briefly summarized
+assumption and formulation of Kalman filter that's described in detail
 in \cite{sorenson_least-squares_1970}
 \cite{analytic_sciences_corporation_applied_1974}
 \cite{grewal_kalman_1993} \cite{lewis_optimal_1986}
@@ -240,8 +235,8 @@ found in chapter 1 of \cite{maybeck_stochastic_1979}.
 % intro to Kalman filter.
 
 The Kalman filter has three assumptions. 1) The system model is
-linear. The linearity is deisred in that the system model is more
-esily manipulated with engineering tool. When nonlinearities do exist,
+linear. The linearity is desired in that the system model is more
+easily manipulated with engineering tool. When nonlinearities do exist,
 the typical approach is to linearize system model at some nominal
 points. 2)The noise embedded in system control and measurement is
 white. This assumption implies that the noise value is not correlated
@@ -253,19 +248,19 @@ require endless number of orders of statistic to describe the shape
 fully. Hence, when the probability density function of a noise process
 is non-Gaussian, the Kalman filter that propagates the first and
 second order statistic only include some of the information of the
-PDF, instead of all, as would be the case with Gaussian noise.
+PDF, instead of all.
 
 \subsubsection{Kalman Filter Models}
-The Kalman filter requires two models. The process model define a
+The Kalman filter requires two models. The process model defines a
 discrete-time controlled process by a linear stochastic difference
 equation. The $n\times n$ matrix $A$ relates the state variables
-$x_{k-1}$ in previous time step $k-1$ to the state variabl $x_{k}$ in
+$x_{k-1}$ in previous time step $k-1$ to the state variable $x_{k}$ in
 the current time step $k$. The matrix $B$ relates the optional control
-input $\mu$ to the state variables $x$. Given measurement vecor $z_k$
+input $\mu$ to the state variables $x$. Given measurement vector $z_k$
 of size $1 \times m$, the measurement model relates the state
 variables to the measurements by matrix H of size $n \times m$. The
-random variable $w$ and $v$ represent the uncertainty or noise of the
-process model, and measurement. $w$ and $v$ are assumed to be
+random variables $w$ and $v$ represent the uncertainty or noise of the
+process model, and the measurement. $w$ and $v$ are assumed to be
 unrelated to each other, and has Gaussian distribution with covariance
 $Q$ and $R$. 
 
@@ -276,24 +271,25 @@ $Q$ and $R$.
 
 \subsubsection{The Algorithm}
 The Kalman filter operates in prediction and correction cycle after
-being initialized \ref{figch2:1}, with the state vector estimate
-$\hat{x}^-_k, \hat{x}^+_k$ contains the variable of interest at time
-step k, and state covariance matrix $P^-_k, P^+_k$ representing the
-error covariance of the estimate. The superscript - indicate the
-estimate is a priori (or predicted) estimate, and + indicate the
-estimate is a posteriori (or corrected) estimate. The equations used
-for prediction and correction are listed in \ref{tab:KF}. In
-prediction, an estimate of the state variables are made based on the
+being initialized (figure \ref{figch2:1}). The state vector estimates
+$\hat{x}^-_k, \hat{x}^+_k$ contain the variables of interest at time
+step k, and state covariance matrices $P^-_k, P^+_k$ represent the
+error covariance of the estimate. The superscript - indicates that the
+estimate is a priori (or predicted) estimate, and + indicates that the
+estimate is a posteriori (or corrected) estimate. The equations for
+prediction and correction cycles are listed in table \ref{tab:KF}. In
+prediction, an estimate of the state variables is made based on the
 known knowledge of the process (the process model). Since there are
 always unknown factor not fully described by the process model, the
 error of the estimate almost always increase in the prediction. During
 correction, a series of calculation were carried out to correct the a
-priori estimate. First, the predicted measurement $H\hat{x}^-_k$ are
-compared to the new measurement $z_k$. Their difference $z_k -
-H\hat{x}^-_k$ is called the measurement innovation, or residual. Next,
-the amount of residual is weighted by the Kalman gain $K$, and added
-to $\hat{x}^-_k$ as correction. The Kalman gain is fomulated so that
-it minimize the a posteriori error covariance matrix $P^+_k$. 
+priori estimate. First, the predicted measurements $H\hat{x}^-_k$ are
+made through the measurement model, and are compared to the new
+measurement $z_k$. Their difference $z_k - H\hat{x}^-_k$ is called the
+measurement innovation, or residual. Next, the amount of residual is
+weighted by the Kalman gain $K$, and added to $\hat{x}^-_k$ as
+correction. The Kalman gain is formulated so that it minimize the a
+posteriori error covariance matrix $P^+_k$.
 
 \begin{figure}[h]
 \centering
@@ -322,22 +318,21 @@ it minimize the a posteriori error covariance matrix $P^+_k$.
 \FloatBarrier
 
 \subsubsection{Extended Kalman Filter}
-For a discrete-time controlled process, or its relationship with the
-measurements are non-linear, a Kalman filter must be linearized about
+When a discrete-time controlled process, or its relationship with the
+measurements is non-linear, a Kalman filter must be linearized about
 the estimated trajectory, and is referred to as an extended Kalman
 filter or EKF. A process with state vector $x$ and measurement $z$
 that is governed by non-linear stochastic difference equation has
 process and measurement model 
 \begin{equation}
-x_k=f(x_{k-1}, u_{k-1}+w_{k-1}),
+x_k=f(x_{k-1}, u_{k-1}, w_{k-1}),
 \end{equation}
 \begin{equation}
-z_k=h(x_k+v_k),
+z_k=h(x_k, v_k),
 \end{equation}
-\noindent where the random varialbe $w_k$ and $v_k$ represent the
-process and measurement noise with variance $Q$ and $R$. The the
-Kalman filter operation equations are given in table
-\ref{tab:EKF},
+\noindent where the random variable $w_k$ and $v_k$ represent the
+process and measurement noise with variance $Q$ and $R$. The Extended
+Kalman filter operation equations are given in table \ref{tab:EKF},
 
 \begin{table}[H]
 \caption{Extended Kalman Filter Operation Equations}
@@ -387,44 +382,42 @@ process noise, and only rely on reliable measurements.
  
 \subsection{SLAM with Extended Kalman Filter}
 
-The simultaneous localization and mapping(SLAM) problem answers to
-whether a robot can be make truly autonomous if it is plaed at an
-unknown location in an unknown environment. AFter many decades of
-research, the stucture of SLAM problem now has evolved to a standard
-Bayesian form. Two key approaches to solving a SLAM problem is to use
-the extended Kalman filter (EKF-SLAM) and through the use of
-Rao-Blackwellized particle filter (FastSLAM). A thourough tutorial to
-the SLAM problem is given in \cite{durrant-whyte_simultaneous_2006}
+The SLAM problem answers to whether a robot can be make truly
+autonomous if it is placed at an unknown location in an unknown
+environment. The structure of SLAM problem has evolved to a standard
+Bayesian form. The EKF implementation of a SLAM problem is reviewed in
+this section. A more complete tutorial to the SLAM problem is given in
+\cite{durrant-whyte_simultaneous_2006}
 \cite{bailey_simultaneous_2006}.
 
 \subsubsection{General EKF Model for SLAM}
-There is a high degree of correlation betwee the estimates of the
-location of the landmarks in map \cite{smith_representation_1986}
-\cite{durrant-whyte_uncertain_1988}. This correlation exists because
-of the common error in the estimated vehicle location
-\cite{leonard_simultaneous_1991}. The implication of these works is
-that a consistent full solution to the SLAM problem require a joint
-state composed of the vehicle pose and every landmark position
-\cite{durrant-whyte_simultaneous_2006}. When the vehicle pose and
-landmarks position are fomulated as one single estimation problem, the
-result was convergent. The correlation between landmark play an
+Previous researches shows that there is a high degree of correlation
+between the estimates of the landmark locations in map
+\cite{smith_representation_1986} \cite{durrant-whyte_uncertain_1988}.
+This correlation exists because of the common error in the estimated
+vehicle location \cite{leonard_simultaneous_1991}. The implication of
+these works is that a consistent full solution to the SLAM problem
+require a joint state composed of the vehicle pose and every landmark
+position \cite{durrant-whyte_simultaneous_2006}. When the vehicle pose
+and landmarks positions are formulated as one single estimation problem,
+the result is convergent. The correlation between landmarks plays an
 important role in the quality of the solution. The more these
-correlation grew, the better the solution.
+correlation grows, the better the solution becomes.
 \cite{durrant-whyte_localization_1996} \cite{csorba_new_1996}
 \cite{csorba_simultaneous_1997} \cite{dissanayake_solution_2001}
 
 At a given time step $k$, the following variables are defined
 \begin{itemize}
-  \item $x_k$ describe the vehicle position and orientation.
-  \item $u_k$ the control vector applied at time $k-1$ to drive the
+  \item $x_k$: a vector that describes the vehicle position and orientation.
+  \item $u_k$: the control vector applied at time $k-1$ to drive the
   vehicle to $x_k$ at time k
-  \item $p_i$ a vector desecribe the location of the ith landmark. All
-  landmarks locations are assumed to be time invariant.  
-  \item $z_{ik}$ observation of the location of the ith landmark taken
+  \item $p_i$: a vector that describes the location of the $i^{th}$
+  landmark. All landmarks locations are assumed to be time invariant.
+  \item $z_{i,k}$: observation of the location of the $i^{th}$ landmark taken
   from the vehicle's location at time $k$
 \end{itemize}
 
-Then a complete state vector contains
+\noindent Then a complete state vector contains
 $$\begin{bmatrix}\hat{x}_k \\ \hat{p}_k \end{bmatrix}$$
 \noindent and the state covariance matrix contains
 $$\begin{bmatrix}
@@ -433,7 +426,7 @@ P_{px} & P_{pp}
 \end{bmatrix} $$
 
 The prediction and correction procedure can then be carried out
-following the standard EKF formulation. The lamdmarks are generally
+following the standard EKF formulation. The landmarks are generally
 not updated at the prediction (ie. only $x_k$ and $P_{xx}$ are
 updated) unless they are moving.
 
@@ -441,7 +434,7 @@ updated) unless they are moving.
 \label{sec:SLAM_properties}
 
 Dissanayake \cite{dissanayake_solution_2001} reached three important
-convergency properties of Kalman filter based SLAM, namely that: 
+convergence properties of Kalman filter based SLAM, namely that: 
 \textit{
 \begin{enumerate}
   \item the determinant of any submatrix of the map covariance matrix
@@ -454,15 +447,15 @@ convergency properties of Kalman filter based SLAM, namely that:
   of the first sighting of the first landmark.
 \end{enumerate}}
 
-These result shows that the complete knowledge of cross correlation
+These results show that the complete knowledge of cross correlation
 between landmark estimates is critical in maintaining the structure of
 a SLAM problem. The error in estimates of landmarks becomes more and
 more correlated as the vehicle venture throuth the unknown
 environment. The error eventually becomes fully correlated which means
-given the location of one landmark, the location of any other landmark
-can be determined with absolute certainty. As the map converges, the
-error in the estimates of landmarks reduce to a lower bound determined
-by the error when the first observation was made. 
+that given the location of one landmark, the location of any other
+landmark can be determined with absolute certainty. As the map
+converges, the error in the estimates of landmarks reduce to a lower
+bound determined by the error when the first observation was made.
 
 The results above only refer to the evolution of covariance matrices
 computed by linear model. In reality, SLAM problem is nonlinear, and
@@ -481,8 +474,8 @@ matrix smaller or equal to the one calculated by the filter.
 
 Huang investigated \cite{huang_convergence_2007} on properties and
 consistency of nonlinear two-dimensional EKF based SLAM problem,
-derived and proved a number of theorem applied to EKF SLAM convergence
-and consistency issue, and concluded:
+derived and proved a number of theorems applicable to EKF SLAM
+convergence and consistency issue, and concluded:
 
 \begin{itemize}
   \item Most of the convergence properties in
@@ -532,17 +525,27 @@ This problem can be solved by using Atlas framework and network
 coupled feature maps \cite{bosse_slam_2004} \cite{bailey_mobile_2002}
 
 \section{Inverse Depth Parameterization for Distance Object}
-The standard way of describing a feature's position is to use the 
-Euclidean XYZ parameterization. In practical outdoor range estimation 
-problem, the algorithm must deal with features located at near infinity. 
-Inverse depth parameterization overcomes this problem by representing 
-range $d$ in its inverse form $\rho =1/d$. In addition, features at 
-infinity contribute in estimating the camera rotational motion even 
-though they offer little information on camera translational motion. 
-Furthermore, inverse depth parameterization allows for initializing 
-features into the EKF framework before it is safely triangulated. 
-The inverse depth parameterization used in this work was first
-introduced in \cite{civera_inverse_2008}.
+The standard way of describing a feature's position is to use the
+Euclidean XYZ parameterization. In practical outdoor range estimation
+problem, the algorithm must deal with features located at near
+infinity. Inverse depth parameterization overcomes this problem by
+representing range $d$ in its inverse form $\rho =1/d$. In addition,
+features at infinity contribute in estimating the camera rotational
+motion even though they offer little information on camera
+translational motion. Furthermore, inverse depth parameterization
+allows for initializing features into the EKF framework before it is
+safely triangulated. Inverse depth concept is widely used in computer
+vision for its relation with the image disparity in stereo vision, and
+the optical flow vectors in motion stereo
+\cite{okutomi_multiple-baseline_1991}, \cite{jepson_fast_1991},
+\cite{chowdhury_stochastic_2003}. Aidala et al.
+\cite{aidala_utilization_1983} shows that modified polar coordinates
+leads to a stable extended Kalman filter in bearing-only target motion
+analysis. Civera et al. \cite{civera_inverse_2008} introduced an
+inverse depth parameterization in polar coordinates. The inverse depth
+of target is referenced to the position at which the landmarks were
+first observed. This method results in a measurement equations with
+high degree of linearity.
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "thesis"

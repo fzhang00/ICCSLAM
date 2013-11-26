@@ -43,3 +43,7 @@ nosetests.xml
 thesis.pdf
 thesis.pdfsync
 thesis.synctex.gz
+*.lot
+*.lof
+*.toc
+*.out

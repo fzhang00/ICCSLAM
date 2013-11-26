@@ -31,6 +31,12 @@ D.~Smith and S.~Singh, ``Approaches to multisensor data fusion in target
 T.~James, ``{GeoSurv} {II} {UAV} system requirements document,'' tech. rep.,
   Mar. 2008.
 
+\bibitem{zhang_obstacle_2012}
+F.~Zhang, R.~Goubran, and P.~Straznicky, ``Obstacle detection for low flying
+  {UAS} using monocular camera,'' in {\em Instrumentation and Measurement
+  Technology Conference ({I2MTC)}, 2012 {IEEE} International}, pp.~2133--2137,
+  2012.
+
 \bibitem{de_angelis_low-cost_2007}
 A.~De~Angelis, M.~Dionigi, A.~Moschitta, and P.~Carbone, ``A low-cost
   ultra-wideband indoor ranging technique,'' in {\em {IEEE} Instrumentation and
@@ -114,12 +120,6 @@ H.~Hashimoto, T.~Yamaura, and M.~Higashiguchi, ``Detection of obstacle from
 K.~Yamaguchi, T.~Kato, and Y.~Ninomiya, ``Moving obstacle detection using
   monocular vision,'' in {\em 2006 {IEEE} Intelligent Vehicles Symposium},
   pp.~288--293, 2006.
-
-\bibitem{zhang_obstacle_2012}
-F.~Zhang, R.~Goubran, and P.~Straznicky, ``Obstacle detection for low flying
-  {UAS} using monocular camera,'' in {\em Instrumentation and Measurement
-  Technology Conference ({I2MTC)}, 2012 {IEEE} International}, pp.~2133--2137,
-  2012.
 
 \bibitem{maier_self-supervised_2011}
 D.~Maier, M.~Bennewitz, and C.~Stachniss, ``Self-supervised obstacle detection
@@ -312,6 +312,26 @@ M.~Bosse, P.~Newman, J.~Leonard, and S.~Teller, ``{SLAM} in large-scale cyclic
 T.~Bailey, {\em Mobile Robot Localisation and Mapping in Extensive Outdoor
   Environments}.
 \newblock 2002.
+
+\bibitem{okutomi_multiple-baseline_1991}
+M.~Okutomi and T.~Kanade, ``A multiple-baseline stereo,'' in {\em , {IEEE}
+  Computer Society Conference on Computer Vision and Pattern Recognition, 1991.
+  Proceedings {CVPR} '91}, pp.~63--69, 1991.
+
+\bibitem{jepson_fast_1991}
+A.~Jepson and D.~Heeger, ``A fast subspace algorithm for recovering rigid
+  motion,'' in {\em , Proceedings of the {IEEE} Workshop on Visual Motion,
+  1991}, pp.~124--131, 1991.
+
+\bibitem{chowdhury_stochastic_2003}
+A.~K.~R. Chowdhury and R.~Chellappa, ``Stochastic approximation and
+  rate-distortion analysis for robust structure and motion estimation,'' {\em
+  International Journal of Computer Vision}, vol.~55, pp.~27--53, Oct. 2003.
+
+\bibitem{aidala_utilization_1983}
+V.~Aidala and S.~Hammel, ``Utilization of modified polar coordinates for
+  bearings-only tracking,'' {\em {IEEE} Transactions on Automatic Control},
+  vol.~28, no.~3, pp.~283--294, 1983.
 
 \bibitem{_python_????}
 ``Python.''
