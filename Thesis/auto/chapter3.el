@@ -11,5 +11,6 @@
      "eq:init_feature_unit_vec"
      "eq:Pinit"
      "eq:Pnew"
-     "eq:R")))
+     "eq:R"
+     "fig:flowchart")))
 

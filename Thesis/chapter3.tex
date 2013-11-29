@@ -257,10 +257,10 @@ given in appendix D \ref{?}
 \subsection{Filter Initialization}
 \subsubsection{Initialize the State Vector}
 
-State vectors are initialized at the first frame. The world origin 
-coordinate and orientation, camera motions, and the feature reference 
-points are all initialized to zeros, with variance equals to the 
-smallest machine number. 
+State vectors are initialized at the first frame. The world frame
+position and orientation, camera motions, and the feature
+initialization points are all initialized to zeros, with variance
+equals to the smallest machine number.
 
 \begin{equation}
 \label{eq:OX_init}
@@ -280,7 +280,7 @@ p_{i}^{C}=\begin{bmatrix}0&0&0&\rho _{i}&\varphi_{i}^C&\theta_{i}^C\end{bmatrix}
 \end{equation}
 
 The inverse distance $\rho$ of all features are initialized to 0.1
-($d=100m$). The features elevation-azimuth pair $[\varphi _{i}^{C},
+($d=100 meters$). The features elevation-azimuth pair $[\varphi _{i}^{C},
 \theta _{i}^{C}]$ is extracted from features coordinates in image
 plane. First, a vector pointing from camera optical center to feature
 can be defined by
@@ -308,18 +308,18 @@ $h^{C}$ using equation (\ref{eq:m_inv_varphi}) and (\ref{eq:m_inv_theta})
 
 \subsubsection{Initialized the State Covariance Matrix}
 
-Because the world origin is defined at the first frame, it enables 
-initializing the filter with minimum variance, which helps reducing the 
-lower bound of the filter error. The covariance matrix of the world frame
-coordinate and orientation, and the camera motion is 
+Because the world frame is defined at the first frame, it enables 
+initializing the filter with minimum variance, which helps to reduce the 
+lower bound of the filter error. The covariance matrix for the world frame
+position and orientation, and the camera motion is 
 
 \begin{equation}
 \label{eq:Pinit}
 P=I_{12\times 12}\cdot \epsilon 
 \end{equation}
 
-\noindent where $I$ is a $12\times12$ identity matrix, and $\epsilon $ is the 
-lowest significant bit (LSB) of a machine.
+\noindent where $I$ is a $12\times12$ identity matrix, and $\epsilon $
+is the lowest significant bit (LSB) of a computer.
 
 The covariance of features is added one by one as there is 
 correlation between them. For every new feature added, the new 
@@ -358,38 +358,46 @@ R=\begin{bmatrix}
 \end{bmatrix} 
 \end{equation}
 
-\noindent where$[\sigma_{x_{i}}^{C}, \sigma_{y_{i}}^{C}, \sigma
+\noindent where $[\sigma_{x_{i}}^{C}, \sigma_{y_{i}}^{C}, \sigma
 _{z_{i}}^{C}]$ is the uncertainty of the camera optical center
-position, which is the same as the world frame coordinate, initialized
-to $\epsilon$. $\sigma_{image}$ is the variance of feature coordinate
-on image plane, set to 1 pixel. $\sigma _{\rho } $is the uncertainty
-of the inverse distance. Because the filter mainly deals with distance
-feature, $ \sigma _{\rho }$ is initialized to 0.1 to cover any
-distance from 50 meters to infinity.
+position, initialized to $\epsilon$. $\sigma_{image}$ is the
+variance of feature coordinate on image plane, set to 1 pixel. $\sigma
+_{\rho }$ is the uncertainty of the inverse distance. Because the
+filter mainly deals with distance feature, $ \sigma _{\rho }$ is
+initialized to 0.1 to cover any distance from 50 meters to infinity.
 
-$J$ in equation(\ref{eq:Pnew}) is the Jacobian matrix for the feature
-initialization equations given by
-equation(\ref{eq:OX_init})-(\ref{eq:init_feature_unit_vec}),
+$J$ in equation (\ref{eq:Pnew}) is the Jacobian matrix for the feature
+initialization equations given by equations
+(\ref{eq:OX_init})-(\ref{eq:init_feature_unit_vec}),
 (\ref{eq:m_inv_varphi}), and (\ref{eq:m_inv_theta}). Detail
-formulation of the Jacobian matrix is given in appendix \ref{?}.
+formulation of the Jacobian matrix is given in appendix
+\ref{ch:appendix2}.
 
 
 
 \subsection{Adding and Deleting Features}
-Features that move out of the camera's FOI are removed from the filter
-state vector and covariance matrix to keep filter size managable. 
-The removal is done by deleting the parameters from the state 
-vector, and the related rows and columns from the state covariance 
-matrix. All tracked features are recorded into a database. The deleted
-ones still gets their parameters updated based on the camera motion,
-but no Kalman corection is done.
+Features that move out of the camera's field of view (FOV) are removed
+from the filter state vector and covariance matrix to keep filter size
+manageable. The removal is done by deleting the parameters from the
+state vector, and the related rows and columns from the state
+covariance matrix. All tracked features are recorded into a database.
+The deleted ones still gets their parameters updated based on the
+camera motion, but no Kalman correction is done.
 
 To maintain sufficient amount of features for mapping, new features 
 are acquired and added to the filter should a feature deletion 
 occurred, or the number of tracked feature is lower than a threshold. The 
 feature addition occurs after the composition step of an 
 iteration, and follows the same procedure as the feature
-initialization described previously. 
+initialization described previously. Flow chart of the entire
+algorithm is shown in figure \ref{fig:flowcharg}. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm, keepaspectratio=true]{./Figures/flow_chart.jpg}
+\caption{Algorithm Flow Chart}
+\label{fig:flowchart}
+\end{figure}
 
 % \subsubsection{Bundle Correction with GPS (not yet implemented)}
 % Apply overall correction on the map at a sparser time interval using the 
