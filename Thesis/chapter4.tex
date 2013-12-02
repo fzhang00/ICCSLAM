@@ -1,12 +1,12 @@
 \chapter{Experiments with Real Data}
 \section{Equipment Setup and Data Collection}
-In order to examine the accuracy and feasibility of the algorithm
+In order to examine the accuracy and feasibility of the algorithm for
 being used in low flying UAV for obstacle detection purpose, realistic
 aerial video and navigation data are collected through a test flight
 with the support of Sander Geophysics Ltd. A main purpose of the test
 flight is to obtain a piece of aerial video with the camera close to
 the ground as much as possible. This is difficult to achieve with any
-manned fixed wing aircraft. Therefore, a simulated unmanned aircraft
+manned fixed wing aircraft. A simulated unmanned aircraft
 system (SUAS) was used to carry all sensors. The SUAS is then towed by
 a helicopter via a tow rope of 33 meters long (Figure
 \ref{fig:towedSUAS})to complete the survey. Yet, to prevent the SUAS
@@ -17,29 +17,27 @@ approximately 70 meters above ground.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=7.75cm,keepaspectratio=true]{./Figures/towed_SUAS.jpg}
+\includegraphics[width=5cm,keepaspectratio=true]{./Figures/towed_SUAS.jpg}
 \caption{Simulated UAS towed by helicopter}
 \label{fig:towedSUAS}
 \end{figure}
-
+\FloatBarrier
 Sensors mounted on the SUAS included one wide angle CCD camera with 6
 mm focal length lens capturing monocular image sequence at 30 fps, a
 pair of narrow angle CCD cameras for binocular images, one GPS
 antenna, and one flight control INS/GPS navigation unit Athena GS-111m
-\cite{_athena_????}(Figure \ref{fig:SUAS}). Analog video and
+\cite{_athena_????} (Figure \ref{fig:SUAS}). Analog video and
 navigation data are sent to the helicopter via three BNC cables and
-one data cable. Installed in the helicopter are two SGL data
-acquisition system CDAC. This system records video and data from SUAS,
-as well as data from sensors installed on the helicopter, including
-GPS, radar and laser altimeter, air pressure, temperature, humility,
-etc. Navigation data from the SUAS were sent in RS485, and were
-directly recorded via the UART port of the computer (figure
-\ref{fig:CDAC}). Videos from the three cameras were digitized to
-720x480 resolution images using a PC/104+ MPEG4 video encoder from
-Parvus installed in CDAC. The video were time-stamped with GPS second
-on the image screen for post-flight synchronization with the
-navigation measurements. A snapshot of the digitized video is shown in
-figure \ref{fig:video_snapshot}.
+one data cable for recording. Installed in the helicopter are two SGL
+data acquisition system CDAC. This system records video and data from
+SUAS, as well as data from sensors installed on the helicopter,
+including GPS, radar and laser altimeter, air pressure, temperature,
+humility, etc. (figure \ref{fig:CDAC}). Videos from the three cameras
+were digitized to 720x480 resolution using an MPEG4 video encoder from
+Parvus. The video were time-stamped with GPS second on the image
+screen for post-flight synchronization with the navigation data. A
+snapshot of the digitized video is shown in figure
+\ref{fig:video_snapshot}.
 
 \begin{figure}[h]
   \centering
@@ -69,13 +67,13 @@ figure \ref{fig:video_snapshot}.
 
 \section{Camera Calibration}\label{sec:camcal}
 
-A camera calibration was performed after the flight by taking a piece
-of video of a checker board pattern with various translation and
-rotation motion. A total of 20 views of the calibration target was
+A camera calibration was performed after the flight by taking a video
+of a checker board pattern with various translation and orientation
+from the camera. A total of 20 views of the calibration target was
 chosen from the video, and fed to the calibration algorithm. A few
 examples were shown in figure \ref{fig:camcal}.
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \includegraphics[width=4cm,keepaspectratio=true]{./Figures/camcal/camcal1_130.jpeg}
   \includegraphics[width=4cm,keepaspectratio=true]{./Figures/camcal/camcal1_140.jpeg}
@@ -83,26 +81,26 @@ examples were shown in figure \ref{fig:camcal}.
   \includegraphics[width=4cm,keepaspectratio=true]{./Figures/camcal/camcal1_180.jpeg}
   \includegraphics[width=4cm,keepaspectratio=true]{./Figures/camcal/camcal1_210.jpeg}
   \includegraphics[width=4cm,keepaspectratio=true]{./Figures/camcal/camcal1_240.jpeg}
-  \caption{Camera Calibration Inputs}
+  \caption{A Subset of Camera Calibration Inputs}
   \label{fig:camcal}
 \end{figure}
 
-The algorithm,``calibration.exe'', used for calibrating the camera
-comes with the OpenCV installation. The digitized images has a
+The program ``calibration.exe'' was used to calibrate the camera. This
+program comes with the OpenCV installation. The digitized images has a
 resolution of 720 pixels in width and 480 pixels in height. Table
 \ref{tab:camcalresult} below listed the calibration results.
 
-\begin{table}
+\begin{table}[h]
 \caption{Camera Calibration Result}
 \label{tab:camcalresult}
 \centering
 \begin{tabular}{|c|c|}
 \hline
-Parameter & Result(pixels)\\ \hline
-$f_x$ & 887.6 \\ \hline
-$f_y$ & 805.7\\ \hline
-$c_x$ & 381.8 \\ \hline
-$c_y$ & 293.7 \\ \hline
+Parameter & Result\\ \hline
+$f_x$ & 887.6 pixels \\ \hline
+$f_y$ & 805.7 pixels\\ \hline
+$c_x$ & 381.8 pixels\\ \hline
+$c_y$ & 293.7 pixels\\ \hline
 $k_1$ & -0.102 \\ \hline
 $k_2$ & -0.535 \\ \hline
 $p_1$ & 1.15e-003 \\ \hline
@@ -112,7 +110,7 @@ $p_2$ & 8.40e-003 \\
 \end{table}
 \FloatBarrier
 
-\section{Ground Truth Data Collection and Comparison}
+\section{Ground Truth Data Collection}
 
 UAS localization ground truth are obtained through on board flight
 control unit GS-111m. The unit records the SUAS position in GPS
@@ -122,16 +120,18 @@ $0.1^\circ$ mean and $0.1^\circ$ standard deviation. Heading accuracy can
 achieve $0.5^\circ$.\cite{_athena_????}
 
 The estimated SUAS position can be directly obtained from the inverse
-of world origin estimation in the CC\_EKF\_SLAM state vector:
-$[O_{XYZ}^{c}, W_{XYZ}^{c}]$.
+of world frame estimation in the CC\_EKF\_SLAM state vector:
 
-Digital elevation map (DEM) are downloaded from CGIAR-CSI website
+$$[\text{SUAS position}, \text{SUAS orientation}] = 
+[-O_{XYZ}^{C}, -W_{XYZ}^{C}]$$.
+
+Digital elevation map (DEM) was downloaded from CGIAR-CSI website
 \cite{_cgiar-csi_????} and used as ground truth data for feature
-mapping. The downloaded DEM contains longitude, latitude and see level
+mapping. The downloaded DEM contains longitude, latitude and sea level
 elevation of the terrain with a resolution approximately 100 meters by
-100 meters. To compare estimated feature position to the the DEM, some
+100 meters. To compare the estimated feature position to the the DEM, some
 conversion are necessary to bring both data to the same coordinate
-system. In this work, the comparison are done in UTM coordinate. 
+system. In this work, the comparison are done in world frame. 
 
 First, the longitude and latitude in DEM data are converted into UTM
 using the WGS84 world geodetic system \cite{_world_????}. Many library
@@ -140,7 +140,15 @@ and zone number as input. The library used in this work is a python
 interface to PROJ.4 library \cite{_pyproj_????} called pyproj
 \cite{_pyproj_????}. Secondly, the DEM data in UTM were converted into
 world frame using transformation matrix with initial SUAS position and
-orientation as input.
+orientation as input. The UTM to world frame transformation is
+illustrated in figure \ref{fig:utm_to_world}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=12cm,keepaspectratio=true]{./Figures/utm_to_world.jpg}
+  \caption{Coordinate transformation from UTM to world frame}
+  \label{fig:utm_to_world}
+\end{figure}
 
 To bring result from the CC\_EKF\_SLAM algorithm to world frame, feature
 coordinates must be first converted into world frame using the

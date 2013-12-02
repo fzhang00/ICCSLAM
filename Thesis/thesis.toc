@@ -45,8 +45,8 @@
 \contentsline {chapter}{ \numberline {4}Experiments with Real Data}{25}{section*.38}
 \contentsline {section}{\numberline {4.1}Equipment Setup and Data Collection}{25}{section.4.1}
 \contentsline {section}{\numberline {4.2}Camera Calibration}{29}{section.4.2}
-\contentsline {section}{\numberline {4.3}Ground Truth Data Collection and Comparison}{30}{section.4.3}
-\contentsline {chapter}{ \numberline {5}Result From Flight Data}{33}{section*.45}
+\contentsline {section}{\numberline {4.3}Ground Truth Data Collection}{30}{section.4.3}
+\contentsline {chapter}{ \numberline {5}Result From Flight Data}{33}{section*.46}
 \contentsline {section}{\numberline {5.1}Convergence and Consistency}{33}{section.5.1}
 \contentsline {subsection}{\numberline {5.1.1}Convergence and Tracking}{33}{subsection.5.1.1}
 \contentsline {subsection}{\numberline {5.1.2}Consistency Analysis}{35}{subsection.5.1.2}
@@ -54,7 +54,7 @@
 \contentsline {subsection}{\numberline {5.2.1}SUAS Localization}{37}{subsection.5.2.1}
 \contentsline {subsection}{\numberline {5.2.2}Features Mapping}{38}{subsection.5.2.2}
 \contentsline {section}{\numberline {5.3}Compare to Visually Corresponded Feature}{41}{section.5.3}
-\contentsline {chapter}{ \numberline {6}Error Analysis via Simulation}{46}{section*.61}
+\contentsline {chapter}{ \numberline {6}Error Analysis via Simulation}{46}{section*.62}
 \contentsline {section}{\numberline {6.1}An Ideal Case}{48}{section.6.1}
 \contentsline {subsection}{\numberline {6.1.1}UAS Localization}{48}{subsection.6.1.1}
 \contentsline {subsection}{\numberline {6.1.2}Features Mapping - Convergence and Accuracy}{49}{subsection.6.1.2}
@@ -66,20 +66,20 @@
 \contentsline {subsection}{\numberline {6.3.2}Effect from $(f_x, f_y)$}{59}{subsection.6.3.2}
 \contentsline {subsection}{\numberline {6.3.3}Effect from Distortion}{61}{subsection.6.3.3}
 \contentsline {subsection}{\numberline {6.3.4}Effect from Image Resolution}{63}{subsection.6.3.4}
-\contentsline {chapter}{ \numberline {7}Conclusion}{65}{section*.82}
+\contentsline {chapter}{ \numberline {7}Conclusion}{65}{section*.83}
 \contentsline {section}{\numberline {7.1}Result Summaries}{65}{section.7.1}
 \contentsline {subsection}{\numberline {7.1.1}Flight Data Processing}{65}{subsection.7.1.1}
 \contentsline {subsection}{\numberline {7.1.2}Noise Analysis through Simulation}{66}{subsection.7.1.2}
-\contentsline {subsubsection}{Low noise environment}{66}{section*.83}
-\contentsline {subsubsection}{Impact from aircraft motion}{67}{section*.84}
-\contentsline {subsubsection}{Impact from error in camera calibration}{67}{section*.85}
-\contentsline {paragraph}{Effect from ($c_x, c_y$)}{67}{section*.86}
-\contentsline {paragraph}{Effect from ($f_x, f_y$)}{67}{section*.87}
-\contentsline {paragraph}{Effect from Distortion}{68}{section*.88}
-\contentsline {paragraph}{Effect from Image Resolution}{68}{section*.89}
+\contentsline {subsubsection}{Low noise environment}{66}{section*.84}
+\contentsline {subsubsection}{Impact from aircraft motion}{67}{section*.85}
+\contentsline {subsubsection}{Impact from error in camera calibration}{67}{section*.86}
+\contentsline {paragraph}{Effect from ($c_x, c_y$)}{67}{section*.87}
+\contentsline {paragraph}{Effect from ($f_x, f_y$)}{67}{section*.88}
+\contentsline {paragraph}{Effect from Distortion}{68}{section*.89}
+\contentsline {paragraph}{Effect from Image Resolution}{68}{section*.90}
 \contentsline {section}{\numberline {7.2}Future Research}{68}{section.7.2}
-\contentsline {chapter}{List of References}{70}{section*.90}
-\contentsline {chapter}{Appendix \numberline {A}Coordinate Transformation}{76}{section*.92}
-\contentsline {chapter}{Appendix \numberline {B}Jacobian Matrix for Filter Initialization}{79}{section*.94}
-\contentsline {chapter}{Appendix \numberline {C}Linearization of Measurement Model}{82}{section*.95}
-\contentsline {subsubsection}{Jacobian Matrix of Composition Equations}{84}{section*.96}
+\contentsline {chapter}{List of References}{70}{section*.91}
+\contentsline {chapter}{Appendix \numberline {A}Coordinate Transformation}{76}{section*.93}
+\contentsline {chapter}{Appendix \numberline {B}Jacobian Matrix for Filter Initialization}{79}{section*.95}
+\contentsline {chapter}{Appendix \numberline {C}Linearization of Measurement Model}{82}{section*.96}
+\contentsline {subsubsection}{Jacobian Matrix of Composition Equations}{84}{section*.97}
