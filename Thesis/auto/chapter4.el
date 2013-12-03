@@ -7,5 +7,6 @@
      "fig:video_snapshot"
      "sec:camcal"
      "fig:camcal"
-     "tab:camcalresult")))
+     "tab:camcalresult"
+     "fig:utm_to_world")))
 

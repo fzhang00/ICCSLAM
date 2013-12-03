@@ -1,22 +1,11 @@
 \chapter{Result From Flight Data}\label{ch:FlightResult}
 
-This chapter is divided into three main sections. Firstly, the
-algorithm's convergence and consistency was analyzed. Secondly, the
-accuracy of the algorithm is examined by comparing to ground truth
-data. The third section summarized test results for tuning the
-algorithm for better accuracy and efficiency. The forth section
-present the advantage of using IMU data. The fifth section outline
-the inadequacies of the CC\_EKF\_SLAM algorithm identified.
-
-To test the performance of CC\_EKF\_SLAM algorithm, 4 segments of video
-were selected from the test flight video, and 400 frames were
-processed in each piece. The filter initialized 40 features at the
-first frame, and maintain the tracked features amount at this number
-by initializing new features when existing features moved out of FOV.
-
-Since all parameters are tracked in camera frame, their value is 
-different when viewed from a fixed point in world frame. Therefore, all 
-parameters are converted back to world frame before plotting. 
+This chapter is divided into three main sections. Firstly, a piece of
+video of 400 frames were processed and the algorithm's convergence and
+consistency was analyzed. Secondly, the accuracy of the algorithm is
+examined by comparing to ground truth data. An another video where
+features can be manually matched was processed, and result was
+summarized in section three.
 
 \section{Convergence and Consistency}
 
@@ -28,13 +17,15 @@ feature position on image plane, have high accuracy and don't require
 convergence. The only parameter that goes through a converging process
 is the features' inverse depth $\rho$, which were initialized to 0.1
 for all features. Figure \ref{fltfig:1} shows the $1/\rho$ plot for
-video segment1 over 200 frames. The depth estimators went through
-rapid changes for several frames after their initialization. Within
-approximate 20 frames, most estimators settles to a stable value. The
-estimated features distance ranged from 400 meters to about 1500
+the entire 40 frames. The depth estimators went through rapid changes
+for several frames after their initialization. Within approximate 20
+frames, most estimators settles to a stable value. Sharp spike in the
+middle of the tracking is due to feature added into filter. The
+estimated features distance ranged from 400 meters to about 1200
 meters, confirming the algorithm's capability for estimating features
 at great distance. On the other hands, some features take a long time
-to settle, while some other never settled, such as 12 and 20.
+to settle, while some other never settled and drift away as tracking
+continues, such as feature 32.
 % is the non and slowly settled feature has any character in its
 % pattern? ie. is a line feature, instead of corner? A outlier filter
 % should be in place to get rid of the poor features (future work).
@@ -51,34 +42,32 @@ deviation-elevation angle pair $[\phi, \theta]$ did not go through a
 converging stage, they do get updated and converted into the new
 camera coordinate using the estimated camera motion at every
 iteration. As a result, the accuracy of these parameters varies.
-Ideally, the coordinates should converge to a fixed value. However,
-the plot indicates a variation as the vehicle travels along. Figure
-\ref{fltfig:2} shows the tracking of these parameters over the entired
-processed frames.
-These parameters were stable for about 200 frames. As soon as any
-feature was deleted from the filter and new features added, the
-parameters of the feature after being converted into world
-frame start to drift. In \ref{fltfig:2} the deletion of old feature is
-marked by a vertical gray dash line. It shows that the parameters of
-the deleted feature start to drift right after that line. The $y_i$
-and $z_i$ are most affected. The behavior is caused by the estimated
-error in the SUAS localization. In order to compensate the error in
-localization(Figure \ref{fltfig:4}), the algorithm made adjustment on the
-estimate of  features parameters so that the combinational result
-agrees with the measurement. On the other hand, features mapping is
-not affected too much by the error in localization. Because their
-parameters are transformed in each iteration to the new camera frame
-using the estimated SUAS motion which carries the error. As long as
-their parameters are updated together with the estimated motion on that
+Ideally, the coordinates should stay at a relatively fixed value.
+However, the plot indicates a variation as the vehicle travels along.
+Figure \ref{fltfig:2} shows the tracking of these parameters over the
+entire processed frames. All features parameters were stable for about
+200 frames. As soon as any feature was deleted from the filter and new
+features added, the parameters of the deleted feature started to
+drift. In figure \ref{fltfig:2} the deletion and addition of features is
+marked by a vertical gray dash line. The $y_i$ and $z_i$ are most
+affected. The behavior is caused by the estimators error in the SUAS
+localization. In order to compensate the error in localization (Figure
+\ref{fltfig:4}), the algorithm made adjustment on the estimate of
+features parameters so that the combinational result agrees with the
+measurement. On the other hand, features mapping is not affected too
+much by the error in localization. Because their parameters are
+transformed in each iteration to the new camera frame using the
+estimated SUAS motion which carries the error. As long as their
+parameters are updated together with the estimated motion on that
 iteration, and transformed back to the world frame using the same
 estimated motion, the final result of features location in world frame
 is inaffected by the error in the SUAS localization. However, for
 feature removed from the filter, their parameters are no longer
-updated, therefore revealing the error in SUAS localization. 
+updated, therefore revealing the error in SUAS localization.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=12cm, keepaspectratio=true]
+\includegraphics[width=14cm, keepaspectratio=true]
 {./Figures/fltfig/cut1/Figure20.png}
 \caption{Feature parameters tracking}
 \label{fltfig:2}
