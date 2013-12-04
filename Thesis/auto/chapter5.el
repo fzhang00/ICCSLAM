@@ -3,6 +3,7 @@
     (LaTeX-add-labels
      "ch:FlightResult"
      "fltfig:1"
+     "fltfig:1_1"
      "fltfig:2"
      "fltfig:3"
      "fltfig:4"

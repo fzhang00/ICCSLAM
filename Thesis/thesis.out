@@ -39,24 +39,24 @@
 \BOOKMARK [2][-]{subsection.5.2.1}{5.2.1 SUAS Localization}{section.5.2}% 39
 \BOOKMARK [2][-]{subsection.5.2.2}{5.2.2 Features Mapping}{section.5.2}% 40
 \BOOKMARK [1][-]{section.5.3}{5.3 Compare to Visually Corresponded Feature}{section*.46}% 41
-\BOOKMARK [0][-]{section*.62}{ 6 Error Analysis via Simulation}{}% 42
-\BOOKMARK [1][-]{section.6.1}{6.1 An Ideal Case}{section*.62}% 43
+\BOOKMARK [0][-]{section*.63}{ 6 Error Analysis via Simulation}{}% 42
+\BOOKMARK [1][-]{section.6.1}{6.1 An Ideal Case}{section*.63}% 43
 \BOOKMARK [2][-]{subsection.6.1.1}{6.1.1 UAS Localization}{section.6.1}% 44
 \BOOKMARK [2][-]{subsection.6.1.2}{6.1.2 Features Mapping - Convergence and Accuracy}{section.6.1}% 45
-\BOOKMARK [1][-]{section.6.2}{6.2 Effect of UAS Motion}{section*.62}% 46
+\BOOKMARK [1][-]{section.6.2}{6.2 Effect of UAS Motion}{section*.63}% 46
 \BOOKMARK [2][-]{subsection.6.2.1}{6.2.1 UAS Localization under Motion}{section.6.2}% 47
 \BOOKMARK [2][-]{subsection.6.2.2}{6.2.2 Feature Mapping Accuracy under Motion}{section.6.2}% 48
-\BOOKMARK [1][-]{section.6.3}{6.3 Camera Intrinsic Parameters}{section*.62}% 49
+\BOOKMARK [1][-]{section.6.3}{6.3 Camera Intrinsic Parameters}{section*.63}% 49
 \BOOKMARK [2][-]{subsection.6.3.1}{6.3.1 Effect from \(cx, cy\)}{section.6.3}% 50
 \BOOKMARK [2][-]{subsection.6.3.2}{6.3.2 Effect from \(fx, fy\)}{section.6.3}% 51
 \BOOKMARK [2][-]{subsection.6.3.3}{6.3.3 Effect from Distortion}{section.6.3}% 52
 \BOOKMARK [2][-]{subsection.6.3.4}{6.3.4 Effect from Image Resolution}{section.6.3}% 53
-\BOOKMARK [0][-]{section*.83}{ 7 Conclusion}{}% 54
-\BOOKMARK [1][-]{section.7.1}{7.1 Result Summaries}{section*.83}% 55
+\BOOKMARK [0][-]{section*.84}{ 7 Conclusion}{}% 54
+\BOOKMARK [1][-]{section.7.1}{7.1 Result Summaries}{section*.84}% 55
 \BOOKMARK [2][-]{subsection.7.1.1}{7.1.1 Flight Data Processing}{section.7.1}% 56
 \BOOKMARK [2][-]{subsection.7.1.2}{7.1.2 Noise Analysis through Simulation}{section.7.1}% 57
-\BOOKMARK [1][-]{section.7.2}{7.2 Future Research}{section*.83}% 58
-\BOOKMARK [0][-]{section*.91}{List of References}{}% 59
-\BOOKMARK [0][-]{section*.93}{Appendix A Coordinate Transformation}{}% 60
-\BOOKMARK [0][-]{section*.95}{Appendix B Jacobian Matrix for Filter Initialization}{}% 61
-\BOOKMARK [0][-]{section*.96}{Appendix C Linearization of Measurement Model}{}% 62
+\BOOKMARK [1][-]{section.7.2}{7.2 Future Research}{section*.84}% 58
+\BOOKMARK [0][-]{section*.92}{List of References}{}% 59
+\BOOKMARK [0][-]{section*.94}{Appendix A Coordinate Transformation}{}% 60
+\BOOKMARK [0][-]{section*.96}{Appendix B Jacobian Matrix for Filter Initialization}{}% 61
+\BOOKMARK [0][-]{section*.97}{Appendix C Linearization of Measurement Model}{}% 62

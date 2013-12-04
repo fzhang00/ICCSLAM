@@ -16,25 +16,59 @@ coordinate. $\phi$ and $\theta$ were calculated directly from the
 feature position on image plane, have high accuracy and don't require
 convergence. The only parameter that goes through a converging process
 is the features' inverse depth $\rho$, which were initialized to 0.1
-for all features. Figure \ref{fltfig:1} shows the $1/\rho$ plot for
-the entire 40 frames. The depth estimators went through rapid changes
-for several frames after their initialization. Within approximate 20
-frames, most estimators settles to a stable value. Sharp spike in the
-middle of the tracking is due to feature added into filter. The
-estimated features distance ranged from 400 meters to about 1200
-meters, confirming the algorithm's capability for estimating features
-at great distance. On the other hands, some features take a long time
-to settle, while some other never settled and drift away as tracking
-continues, such as feature 32.
+for all features. 
+
+Figure \ref{fltfig:1} shows the $1/\rho$ plot for the entire 400
+frames. Features ID was shown on the right side of the plot for the
+features whose values were still changing rapidly. The depth
+estimators went through rapid changes for several frames after their
+initialization. Within approximate 20 frames, most estimators settles
+to a stable value. Sharp spike in the middle of the tracking is due to
+feature added into filter. The estimated features distance ranged from
+400 meters to about 1200 meters, confirming the algorithm's capability
+for estimating features at great distance. On the other hands, some
+features take a long time to settle, while some other never settled
+and drift away as tracking continues, such as feature 32, 13, and 53.
 % is the non and slowly settled feature has any character in its
 % pattern? ie. is a line feature, instead of corner? A outlier filter
 % should be in place to get rid of the poor features (future work).
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=10cm, keepaspectratio=true]{./Figures/fltfig/cut1/Figure10.png}
+\includegraphics[width=12cm, keepaspectratio=true]{./Figures/fltfig/cut1/Figure10.png}
 \caption{Inverse Depth Convergence}
 \label{fltfig:1}
+\end{figure}
+
+As an example, pattern of feature 13 at frame 50, 100, 150, 200, 250,
+300, 350 and 400 are shown in figure \ref{fltfig:1_1}. It can be seen
+that the initial feature was detected at the edge of a hill top. As
+frame number advances, the view the camera becomes different. As the
+pattern comparison in tracking algorithm allows for a small error at
+each iteration, this error accumulate slowly and eventually the
+tracked target becomes a pattern located at a different location and
+causing the estimated depth change slowly. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=3cm,
+keepaspectratio=true]{./Figures/fltfig/cut1/features/uav2_cut1_050_fID13.jpg}
+\includegraphics[width=3cm,
+keepaspectratio=true]{./Figures/fltfig/cut1/features/uav2_cut1_100_fID13.jpg}
+\includegraphics[width=3cm,
+keepaspectratio=true]{./Figures/fltfig/cut1/features/uav2_cut1_150_fID13.jpg}
+\includegraphics[width=3cm,
+keepaspectratio=true]{./Figures/fltfig/cut1/features/uav2_cut1_200_fID13.jpg}
+\includegraphics[width=3cm,
+keepaspectratio=true]{./Figures/fltfig/cut1/features/uav2_cut1_250_fID13.jpg}
+\includegraphics[width=3cm,
+keepaspectratio=true]{./Figures/fltfig/cut1/features/uav2_cut1_300_fID13.jpg}
+\includegraphics[width=3cm,
+keepaspectratio=true]{./Figures/fltfig/cut1/features/uav2_cut1_350_fID13.jpg}
+\includegraphics[width=3cm,
+keepaspectratio=true]{./Figures/fltfig/cut1/features/uav2_cut1_397_fID13.jpg}
+\caption{Feature 13 at frame 50, 100, 150, 200, 250, 300, 350, and 400}
+\label{fltfig:1_1}
 \end{figure}
 
 Although the features initialization point $[x_i, y_i, z_i]$, and the
