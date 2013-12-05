@@ -1,0 +1,66 @@
+* frame:193
+** composition
+f.Rw2c=
+[[ 1.     0.004 -0.005]
+ [-0.004  1.     0.002]
+ [ 0.005 -0.001  1.   ]]
+
+f.c = [ 1.358 -0.079  0.008]
+
+before composition
+f.x_p_k[0:3]=
+[-253.876   25.278   13.366]
+after composition
+f.x_p_k[0:3]
+[-255.201   26.377   11.957]
+
+** inserting deleted features
+Index2copy = [7, 18, 26]
+self.ds_corrected_i = 193
+f.Rw2c= (save as composition. checked.)
+[[ 1.     0.004 -0.005]
+ [-0.004  1.     0.002]
+ [ 0.005 -0.001  1.   ]]
+f.c = [ 1.358 -0.079  0.008] (same as above, checked.)
+xyz_i of feature 7, 18, 26 from previous frame is
+self.ds_features[self.ds_corrected_i-1,Index2copy,0:3]
+[[-253.906   25.21    13.026]
+ [-253.94    25.059   12.747]
+ [-253.906   25.21    13.026]]
+
+after applying camera motion
+self.ds_features[self.ds_corrected_i,Index2copy,0:3]
+[[-255.229   26.309   11.617]
+ [-255.261   26.158   11.338]
+ [-255.229   26.309   11.617]]
+
+* frame 194
+** composition
+f.Rw2c = 
+[[ 1.     0.001 -0.004]
+ [-0.002  1.    -0.011]
+ [ 0.004  0.011  1.   ]]
+f.c = [ 1.355 -0.082  0.016]
+before composition
+f.x_p_k[0:3] = [-255.178   26.427   12.18 ]
+after composition
+f.x_p_k[0:3] = [-256.538   26.757   11.524]
+** inserting deleted features
+f.Rw2c = 
+[[ 1.     0.001 -0.004]
+ [-0.002  1.    -0.011]
+ [ 0.004  0.011  1.   ]]
+f.c = [ 1.355 -0.082  0.016]
+Index2copy = [7, 18, 19, 26]
+before applying camera motion
+self.ds_features[self.ds_corrected_i-1,Index2copy,0:3] = 
+[[-255.229   26.309   11.617]
+ [-255.261   26.158   11.338]
+ [-255.199   26.412   11.988]
+ [-255.229   26.309   11.617]]
+after applying camera motion
+self.ds_features[self.ds_corrected_i,Index2copy,0:3] = 
+[[-256.586   26.646   10.96 ]
+ [-256.618   26.498   10.679]
+ [-256.558   26.745   11.333]
+ [-256.586   26.646   10.96 ]]

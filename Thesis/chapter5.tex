@@ -43,11 +43,12 @@ and drift away as tracking continues, such as feature 32, 13, and 53.
 As an example, pattern of feature 13 at frame 50, 100, 150, 200, 250,
 300, 350 and 400 are shown in figure \ref{fltfig:1_1}. It can be seen
 that the initial feature was detected at the edge of a hill top. As
-frame number advances, the view the camera becomes different. As the
-pattern comparison in tracking algorithm allows for a small error at
-each iteration, this error accumulate slowly and eventually the
-tracked target becomes a pattern located at a different location and
-causing the estimated depth change slowly. 
+frame number advances, the view the camera becomes different. The
+pattern comparison in tracking algorithm normally allows for a small
+error at each iteration to tolerate the slight view change of the
+camera. This error accumulate slowly and eventually causes the tracked
+target to become a pattern located at a different location, which caused
+the estimated depth to change slowly.
 
 \begin{figure}[h]
 \centering
@@ -66,8 +67,8 @@ keepaspectratio=true]{./Figures/fltfig/cut1/features/uav2_cut1_300_fID13.jpg}
 \includegraphics[width=3cm,
 keepaspectratio=true]{./Figures/fltfig/cut1/features/uav2_cut1_350_fID13.jpg}
 \includegraphics[width=3cm,
-keepaspectratio=true]{./Figures/fltfig/cut1/features/uav2_cut1_397_fID13.jpg}
-\caption{Feature 13 at frame 50, 100, 150, 200, 250, 300, 350, and 400}
+keepaspectratio=true]{./Figures/fltfig/cut1/features/uav2_cut1_398_fID13.jpg}
+\caption{Feature 13 at frame 50, 100, 150, 200, 250, 300, 350, and 398}
 \label{fltfig:1_1}
 \end{figure}
 
@@ -82,20 +83,29 @@ Figure \ref{fltfig:2} shows the tracking of these parameters over the
 entire processed frames. All features parameters were stable for about
 200 frames. As soon as any feature was deleted from the filter and new
 features added, the parameters of the deleted feature started to
-drift. In figure \ref{fltfig:2} the deletion and addition of features is
-marked by a vertical gray dash line. The $y_i$ and $z_i$ are most
-affected. The behavior is caused by the estimators error in the SUAS
-localization. In order to compensate the error in localization (Figure
-\ref{fltfig:4}), the algorithm made adjustment on the estimate of
-features parameters so that the combinational result agrees with the
-measurement. On the other hand, features mapping is not affected too
-much by the error in localization. Because their parameters are
-transformed in each iteration to the new camera frame using the
-estimated SUAS motion which carries the error. As long as their
-parameters are updated together with the estimated motion on that
-iteration, and transformed back to the world frame using the same
+drift. In figure \ref{fltfig:2} the deletion and addition of features
+is marked by a vertical gray dash line. Parameters $y_i$ and $z_i$ are
+most affected. 
+
+The drift in deleted features parameters are due to the
+error in SUAS localization estimates. In order to compensate the error
+in localization (Figure \ref{fltfig:4}), the algorithm made adjustment
+on the estimate of features parameters so that the combined
+result agrees with the measurement. Since all features are transformed
+into world frame using the estimated SUAS localization result, the
+combined final result shows a steady pattern. The deleted features no
+longer had their parameters updated every iteration. Therefore, after
+these value are transformed into world frame, they carries the error
+in SUAS localization estimates starting from their deletion.
+
+On the other hand, features
+mapping is not affected too much by the error in localization. Because
+their parameters are transformed in each iteration to the new camera
+frame using the estimated SUAS motion which carries the error. As long
+as their parameters are updated together with the estimated motion on
+that iteration, and transformed back to the world frame using the same
 estimated motion, the final result of features location in world frame
-is inaffected by the error in the SUAS localization. However, for
+is unaffected by the error in the SUAS localization. However, for
 feature removed from the filter, their parameters are no longer
 updated, therefore revealing the error in SUAS localization.
 
