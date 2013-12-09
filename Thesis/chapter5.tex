@@ -80,10 +80,13 @@ iteration. As a result, the accuracy of these parameters varies.
 Ideally, the coordinates should stay at a relatively fixed value.
 However, the plot indicates a variation as the vehicle travels along.
 Figure \ref{fltfig:2} shows the tracking of these parameters over the
-entire processed frames. All features added at first frame were stable
-until they are deleted from the filter. However, the newly added
-features shows drift on the initialization points, and big initial
-correction on $\varphi$ and $\theta$.
+entire processed frames. First column shows the feature initial point
+with its initial value removed. All feature initialized at $1^{st}$
+frame has a stable initialization coordinate with little variation.
+Second column shows the feature angle parameters with their initial
+value removed. Third column shows the angle parameters with their mean
+value removed, which shows a clearer variation pattern of these two
+angles.
 
 \begin{figure}[h]
 \centering
