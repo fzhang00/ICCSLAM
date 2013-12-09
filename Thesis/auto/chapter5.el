@@ -9,6 +9,7 @@
      "fltfig:4"
      "fltfig:5"
      "fltfig:6"
+     "sec:accuracy_features"
      "fltfig:7"
      "fltfig:8"
      "fltfig:9"
