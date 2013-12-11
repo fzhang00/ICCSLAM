@@ -80,13 +80,35 @@ iteration. As a result, the accuracy of these parameters varies.
 Ideally, the coordinates should stay at a relatively fixed value.
 However, the plot indicates a variation as the vehicle travels along.
 Figure \ref{fltfig:2} shows the tracking of these parameters over the
-entire processed frames. First column shows the feature initial point
-with its initial value removed. All feature initialized at $1^{st}$
-frame has a stable initialization coordinate with little variation.
-Second column shows the feature angle parameters with their initial
-value removed. Third column shows the angle parameters with their mean
-value removed, which shows a clearer variation pattern of these two
-angles.
+entire processed frames. 
+
+First column shows the feature initialization coordinates with the
+initial value removed. All feature initialized at $1^{st}$ frame has a
+stable initialization coordinate with little variation. However,
+features added at later frames shows a significant drift from their
+initial positions. This is a direct result of the filter correction
+process. When new features were added to the filter, it has not
+establish correlation with all the other features and the world frame
+parameters, which causes its correction on initialization point is
+slightly different than all the existing features and the world frame
+position. As a future improvement, it is more reasonable for the newly
+added features to inherent the cross-correlation on the initialization
+coordinates between the deleted features and the other state vector
+elements. 
+
+Second and third column show the feature angle parameters with their
+initial value and mean value removed. For all features, whether
+initialized at first frame, or later frames, these angle estimates all
+diverged slightly from the initial values. This is not surprising
+since the initial depth of the feature is unknown, to compensate for
+the incorrect gain, filter must change the angles estimates slightly
+to arrive at a predicted measurements that agree with the actual
+measurements. Secondly, the SUAS rotation motion contributes to the
+variation pattern of the angle estimates. $\varphi$ has a high
+correlation with the Z rotation, and $\theta$ is correlated to the X
+rotation. 
+% doesn't make sense. By definition, X rotation should have bigger
+% impact on varphi, Z rotation has bigger impact on theta
 
 \begin{figure}[h]
 \centering
@@ -190,7 +212,7 @@ will require a reset procedure to
 \end{enumerate}
 
 \noindent for any large area operation. 
-
+\FloatBarrier
 \section{Accuracy}
 \subsection{SUAS Localization}
 
@@ -216,7 +238,7 @@ diverging within the 400 frames processed.
 \caption{SUAS position and orientation}
 \label{fltfig:6}
 \end{figure}
-
+\FloatBarrier
 \subsection{Features Mapping}\label{sec:accuracy_features}
 
 Although raw ground truth data for the terrain was downloaded from
