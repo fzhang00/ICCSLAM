@@ -5,6 +5,7 @@
      "fltfig:1"
      "fltfig:1_1"
      "fltfig:2"
+     "fltfig:120"
      "fltfig:3"
      "fltfig:4"
      "fltfig:5"

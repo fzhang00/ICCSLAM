@@ -147,12 +147,13 @@ SUAS. On the other hand, camera rotation and world frame orientation
 variance has similar pattern and amplitude. The X component decreases
 with iterations. Y and Z components fluctuate around fix value and
 remain below 1.5e-5$^\circ$. Although world frame variance remains fix
-at prediction, camera rotations had a 1$^\circ$ noise added (as
-indicated by the GS-111m specification \cite{_athena_????}). The
-update process reduces the noise of camera rotation significantly and
-results in a variance estimates much lower than the specification.
-Affected by the camera rotation variance, features parameter $\varphi$
-and $\theta$ also carries a very small variance.
+at prediction, camera rotations had a 1$^\circ$ noise added at
+prediction (as indicated by the GS-111m specification
+\cite{_athena_????}). The update process reduces the noise of camera
+rotation significantly and results in a variance estimates much lower
+than the specification. Affected by the camera rotation variance,
+features parameter $\varphi$ and $\theta$ also carries a very small
+variance.
 
 \begin{figure}[h]
 \centering
@@ -170,9 +171,10 @@ and $\theta$ also carries a very small variance.
 \caption{Variance of features parameters}
 \label{fltfig:3}
 \end{figure}
+\FloatBarrier
 
 To see how variance affect the correction the filtered made on the
-state vector, the correction applied each iteration were plotted ni
+state vector, the correction applied each iteration were plotted in
 figure \ref{fltfig:4}. The $1^{st}$ column shows the correction on
 world frame position in camera frame. The $2^{nd}$ column shows the
 correction on feature initialization coordinate in camera frame. The
@@ -182,16 +184,16 @@ and Z component receive more correction than the X component, despite
 their variance is smaller than the X axis. Similarly, feature
 parameter $\theta$ and $\phi$ receive more correction than $\rho$
 despite their variance is smaller than the variance of $\rho$.
-Secondly, there is a strong inverse correlation between the Y and Z
-component of feature initialization position and the world frame
-position on Y and Z axis. Similarly, $\phi$ is correlated to world
-frame position Z component, $\theta$ is correlated to the world frame
-position Y component. Since the features initialization coordinate has
-high correlation with the world frame Y and Z position, the main
-contributor all the drift comes from the world frame position
+Secondly, there is a strong inverse correlation between the correction
+of feature initialization position and the world frame position on Y
+and Z axis. Similarly, $\phi$ correction is correlated to world frame
+position Z correction, $\theta$ correction is correlated to the world
+frame position Y correction. Since the features initialization
+coordinate has high correlation with the world frame Y and Z position,
+the main contributor all the drift comes from the world frame position
 correction. Figure \ref{fltfig:5} shows the Kalman Gain over the 5
 iteration for the first 35 elements in the state vector, which include
-world frame parameters, SUAS motion parameters, and parameters for the
+world frame parameters, camera motion parameters, and parameters for the
 first 4 features. At $1^{st}$ iteration, the high gain is on the
 feature parameter $\rho$. Starting from the $2^{nd}$ iteration, more
 and more weight goes into the Y and Z component of world frame
@@ -199,7 +201,7 @@ position, as well as the Y and Z component of features initialization
 position. Although the variance of these two parameters is small, it
 is possible that the linearization of the measurement model increased
 the correction gain on these parameter. This issue requires further
-digging, and will be analyze as a future work.  
+digging, and will be analyze as a future work.
 
 \begin{figure}[h]
 \centering
