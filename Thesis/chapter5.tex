@@ -135,22 +135,39 @@ rotation.
 \subsection{Consistency Analysis}
 A EKF system becomes inconsistent when the variance of state vector
 element becomes too small and forbid an effective update. In addition,
-the uncertainty of the SUAS position should increases as it move away
-from the origin. To examine the consistency of the CC\_EKF\_SLAM
-algorithm, the variance of all state vectors for all processed frames
-were extracted and plotted in figure \ref{fltfig:3}. The two plots on
-the left shows the variance of world frame position and orientation in
-camera frame. The three plots on the right show the variance of
-feature parameters. The variance of world frame position increases
-with iterations. On the other hand, world frame orientation decreases
-with iterations. Especially the orientation in Y and Z axis remain
-below $5\times10^{-7}$ for the most time. For feature parameters, all variance
-decreases with iterations, and their value is very small. 
+the uncertainty of the world frame should increase as the camera frame
+moves away from it. To examine the consistency of the CC\_EKF\_SLAM
+algorithm, the variance of world frame parameters and camera motions
+are plotted in \ref{fltfig:120}, and features parameters are plotted
+in figure and \ref{fltfig:3}. The variance of world frame position
+increases with iterations at the beginning, and after frame 100,
+$\sigma_{O_Y}$ and $\sigma_{O_Z}$ stabilized to a value. This is
+likely due to the little variation on the Y and Z translation of the
+SUAS. On the other hand, camera rotation and world frame orientation
+variance has similar pattern and amplitude. The X component decreases
+with iterations. Y and Z components fluctuate around fix value and
+remain below 1.5e-5$^\circ$. Although world frame variance remains fix
+at prediction, camera rotations had a 1$^\circ$ noise added (as
+indicated by the GS-111m specification \cite{_athena_????}). The
+update process reduces the noise of camera rotation significantly and
+results in a variance estimates much lower than the specification.
+Affected by the camera rotation variance, features parameter $\varphi$
+and $\theta$ also carries a very small variance.
+
 \begin{figure}[h]
 \centering
-\includegraphics[width=12cm, keepaspectratio=true]
+\includegraphics[width=14cm, keepaspectratio=true]
+{./Figures/fltfig/cut1/Figure120.png}
+\caption{Variance of world frame parameters and camera motion}
+\label{fltfig:120}
+\end{figure}
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=14cm, keepaspectratio=true]
 {./Figures/fltfig/cut1/Figure40.png}
-\caption{State vector variance}
+\caption{Variance of features parameters}
 \label{fltfig:3}
 \end{figure}
 
