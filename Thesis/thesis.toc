@@ -47,13 +47,12 @@
 \contentsline {section}{\numberline {4.2}Camera Calibration}{29}{section.4.2}
 \contentsline {section}{\numberline {4.3}Ground Truth Data Collection}{30}{section.4.3}
 \contentsline {chapter}{ \numberline {5}Result From Flight Data}{32}{section*.46}
-\contentsline {section}{\numberline {5.1}Convergence and Consistency}{32}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Convergence and Tracking}{32}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Consistency Analysis}{35}{subsection.5.1.2}
-\contentsline {section}{\numberline {5.2}Accuracy}{39}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}SUAS Localization}{39}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Features Mapping}{40}{subsection.5.2.2}
-\contentsline {section}{\numberline {5.3}Compare to Visually Corresponded Feature}{43}{section.5.3}
+\contentsline {section}{\numberline {5.1}Convergence}{32}{section.5.1}
+\contentsline {section}{\numberline {5.2}Accuracy}{35}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}SUAS Localization}{35}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Features Mapping}{36}{subsection.5.2.2}
+\contentsline {section}{\numberline {5.3}Consistency Analysis}{39}{section.5.3}
+\contentsline {section}{\numberline {5.4}Compare to Visually Corresponded Feature}{43}{section.5.4}
 \contentsline {chapter}{ \numberline {6}Error Analysis via Simulation}{47}{section*.64}
 \contentsline {section}{\numberline {6.1}An Ideal Case}{49}{section.6.1}
 \contentsline {subsection}{\numberline {6.1.1}UAS Localization}{49}{subsection.6.1.1}

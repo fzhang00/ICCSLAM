@@ -15,20 +15,20 @@
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 4.6}{\ignorespaces Coordinate transformation from UTM to world frame\relax }}{30}{figure.caption.45}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.1}{\ignorespaces Inverse Depth Convergence\relax }}{33}{figure.caption.47}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.2}{\ignorespaces Feature 13 at frame 50, 100, 150, 200, 250, 300, 350, and 398\relax }}{34}{figure.caption.48}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.2}{\ignorespaces Feature 13 at frame 50, 100, 150, 200, 250, 300, 350, and 398\relax }}{33}{figure.caption.48}
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.3}{\ignorespaces Feature parameters tracking\relax }}{35}{figure.caption.49}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.4}{\ignorespaces Variance of world frame parameters and camera motion\relax }}{36}{figure.caption.50}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.5}{\ignorespaces Variance of features parameters\relax }}{37}{figure.caption.51}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.6}{\ignorespaces State Vector Corrections\relax }}{38}{figure.caption.52}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.7}{\ignorespaces Kalman Gain Matrix for the first 35 State Vector Elements\relax }}{39}{figure.caption.53}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.8}{\ignorespaces SUAS position and orientation\relax }}{40}{figure.caption.54}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.9}{\ignorespaces Feature position error\relax }}{41}{figure.caption.55}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.10}{\ignorespaces Left: , right: \relax }}{42}{figure.caption.56}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.11}{\ignorespaces Feature position and error. Left: , right: \relax }}{42}{figure.caption.57}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.12}{\ignorespaces Terrain map. Left: estimated, right: ground truth \relax }}{43}{figure.caption.58}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.4}{\ignorespaces SUAS position and orientation\relax }}{36}{figure.caption.50}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.5}{\ignorespaces Feature position error\relax }}{37}{figure.caption.51}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.6}{\ignorespaces Left: , right: \relax }}{38}{figure.caption.52}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.7}{\ignorespaces Feature position and error. Left: , right: \relax }}{38}{figure.caption.53}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.8}{\ignorespaces Terrain map. Left: estimated, right: ground truth \relax }}{39}{figure.caption.54}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.9}{\ignorespaces Variance of world frame parameters and camera motion\relax }}{40}{figure.caption.55}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.10}{\ignorespaces Variance of features parameters\relax }}{40}{figure.caption.56}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.11}{\ignorespaces State Vector Corrections\relax }}{42}{figure.caption.57}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.12}{\ignorespaces Kalman Gain Matrix for the first 35 State Vector Elements\relax }}{42}{figure.caption.58}
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.13}{\ignorespaces Feature identified by algorithm \relax }}{43}{figure.caption.59}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.14}{\ignorespaces Common features idetified manually on Google Earth \relax }}{44}{figure.caption.60}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.15}{\ignorespaces SUAS position accuracy compared to GPS\relax }}{45}{figure.caption.61}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.14}{\ignorespaces Common features idetified manually on Google Earth \relax }}{43}{figure.caption.60}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.15}{\ignorespaces SUAS position accuracy compared to GPS\relax }}{44}{figure.caption.61}
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.16}{\ignorespaces SUAS orientation accuracy compared to ??\relax }}{45}{figure.caption.62}
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.17}{\ignorespaces Feature error on X and Y axis. \relax }}{46}{figure.caption.63}
 \addvspace {10\p@ }

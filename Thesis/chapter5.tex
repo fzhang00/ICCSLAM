@@ -7,9 +7,7 @@ examined by comparing to ground truth data. An another video where
 features can be manually matched was processed, and result was
 summarized in section three.
 
-\section{Convergence and Consistency}
-
-\subsection{Convergence and Tracking}
+\section{Convergence}
 Among the feature parameters, the feature initialization point were
 initialized to the zero which is the origin of the camera centric
 coordinate. $\phi$ and $\theta$ were calculated directly from the
@@ -101,11 +99,11 @@ initial value and mean value removed. For all features, whether
 initialized at first frame, or later frames, these angle estimates all
 diverged slightly from the initial values. This is not surprising
 since the initial depth of the feature is unknown, to compensate for
-the incorrect gain, filter must change the angles estimates slightly
+the incorrect depth, filter must change the angles estimates slightly
 to arrive at a predicted measurements that agree with the actual
 measurements. Secondly, the SUAS rotation motion contributes to the
-variation pattern of the angle estimates. $\varphi$ has a high
-correlation with the Z rotation, and $\theta$ is correlated to the X
+variation pattern of the angle estimates. $\varphi$ is highly
+correlated with the Z rotation, and $\theta$ is correlated to the X
 rotation. 
 % doesn't make sense. By definition, X rotation should have bigger
 % impact on varphi, Z rotation has bigger impact on theta
@@ -132,106 +130,6 @@ rotation.
 
 \FloatBarrier
 
-\subsection{Consistency Analysis}
-A EKF system becomes inconsistent when the variance of state vector
-element becomes too small and forbid an effective update. In addition,
-the uncertainty of the world frame should increase as the camera frame
-moves away from it. To examine the consistency of the CC\_EKF\_SLAM
-algorithm, the variance of world frame parameters and camera motions
-are plotted in \ref{fltfig:120}, and features parameters are plotted
-in figure and \ref{fltfig:3}. The variance of world frame position
-increases with iterations at the beginning, and after frame 100,
-$\sigma_{O_Y}$ and $\sigma_{O_Z}$ stabilized to a value. This is
-likely due to the little variation on the Y and Z translation of the
-SUAS. On the other hand, camera rotation and world frame orientation
-variance has similar pattern and amplitude. The X component decreases
-with iterations. Y and Z components fluctuate around fix value and
-remain below 1.5e-5$^\circ$. Although world frame variance remains fix
-at prediction, camera rotations had a 1$^\circ$ noise added at
-prediction (as indicated by the GS-111m specification
-\cite{_athena_????}). The update process reduces the noise of camera
-rotation significantly and results in a variance estimates much lower
-than the specification. Affected by the camera rotation variance,
-features parameter $\varphi$ and $\theta$ also carries a very small
-variance.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=14cm, keepaspectratio=true]
-{./Figures/fltfig/cut1/Figure120.png}
-\caption{Variance of world frame parameters and camera motion}
-\label{fltfig:120}
-\end{figure}
-
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=14cm, keepaspectratio=true]
-{./Figures/fltfig/cut1/Figure40.png}
-\caption{Variance of features parameters}
-\label{fltfig:3}
-\end{figure}
-\FloatBarrier
-
-To see how variance affect the correction the filtered made on the
-state vector, the correction applied each iteration were plotted in
-figure \ref{fltfig:4}. The $1^{st}$ column shows the correction on
-world frame position in camera frame. The $2^{nd}$ column shows the
-correction on feature initialization coordinate in camera frame. The
-$3^{rd}$ column shows the correction on features parameters $\rho$,
-$\phi$ and $\theta$. It can be observed that world frame position on Y
-and Z component receive more correction than the X component, despite
-their variance is smaller than the X axis. Similarly, feature
-parameter $\theta$ and $\phi$ receive more correction than $\rho$
-despite their variance is smaller than the variance of $\rho$.
-Secondly, there is a strong inverse correlation between the correction
-of feature initialization position and the world frame position on Y
-and Z axis. Similarly, $\phi$ correction is correlated to world frame
-position Z correction, $\theta$ correction is correlated to the world
-frame position Y correction. Since the features initialization
-coordinate has high correlation with the world frame Y and Z position,
-the main contributor all the drift comes from the world frame position
-correction. Figure \ref{fltfig:5} shows the Kalman Gain over the 5
-iteration for the first 35 elements in the state vector, which include
-world frame parameters, camera motion parameters, and parameters for the
-first 4 features. At $1^{st}$ iteration, the high gain is on the
-feature parameter $\rho$. Starting from the $2^{nd}$ iteration, more
-and more weight goes into the Y and Z component of world frame
-position, as well as the Y and Z component of features initialization
-position. Although the variance of these two parameters is small, it
-is possible that the linearization of the measurement model increased
-the correction gain on these parameter. This issue requires further
-digging, and will be analyze as a future work.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=12cm, keepaspectratio=true]
-{./Figures/fltfig/cut1/Figure112.png}
-\caption{State Vector Corrections}
-\label{fltfig:4}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=14cm, keepaspectratio=true]
-{./Figures/fltfig/cut1/Figure113.png}
-\caption{Kalman Gain Matrix for the first 35 State Vector Elements}
-\label{fltfig:5}
-\end{figure}
-
-In summary of the consistency analysis, the filter has not moved into
-inconsistent state at 400 iterations. However, the variance of
-parameters does decrease at each iteration that it is only a matter of
-time that the filter will become inconsistent. Therefore, the filter
-will require a reset procedure to 
-
-\begin{enumerate}
-  \item Resync the SUAS location with GPS. 
-  \item Reset its covariance matrix. 
-\end{enumerate}
-
-\noindent for any large area operation. 
-\FloatBarrier
 \section{Accuracy}
 \subsection{SUAS Localization}
 
@@ -242,13 +140,13 @@ in accuracy \cite{_gps_????}. For orientation, accuracy on the
 datasheet specified $0.1^{\circ}$ for roll and pitch, and
 $0.5^{\circ}$ for heading. Figure \ref{fltfig:6} shows the estimated
 SUAS position and orientation, ground truth data, and the error. From
-the comparison, X position error reached 20m maximum, while Y and Z
-position error is bigger, reaching 50 meter and 30 meters respectly.
-For orientation, the estimated value agrees with the ground truth
-pattern, with maximum error within 0.02 rad or $1.15^{\circ}$.
-Although the error of pitch is biased to the negative side, and error
-of heading is biased to the positive side. there was not sign of error
-diverging within the 400 frames processed.
+the comparison, X position error reached a maximum of 20 meters, while
+error on Y and Z are bigger, reaching 50 meters and 30 meters
+respectively. For orientation, the estimated value agrees with the
+ground truth pattern, with maximum error within 0.02 rad or
+$1.15^{\circ}$. Although the error of pitch is biased to the negative
+side, and error of heading is biased to the positive side. there was
+no clear sign of diverging within the 400 frames processed.
 
 \begin{figure}[h]
 \centering
@@ -260,16 +158,17 @@ diverging within the 400 frames processed.
 \FloatBarrier
 \subsection{Features Mapping}\label{sec:accuracy_features}
 
-Although raw ground truth data for the terrain was downloaded from
-\cite{_cgiar-csi_????} CGIAR-CSI website, making data correspondence
-with the estimated feature is non-trival for natual scene where it
-lacks of signature landmark sucn as building corners. From the
-experience of analyzing simulation data (chapter 6), the initialized
-feature deviation and elevation angle $\phi$ and $\theta$ agrees very
-well to the ground truth value. In addition, feature initialization
-position is set to $[0, 0, 0]$ in camera frame, therefore carris no
-error. Therefore, the following procedure are used the find the
-corresponding ground truth location for any estimated feature. 
+Although digital terrain map (DEM) can be downloaded from CGIAR-CSI
+website \cite{_cgiar-csi_????}, making data correspondence with the
+estimated feature is non-trival for natual scene where it lacks of
+signature landmark sucn as building corners or other man-made objects.
+From the experience of analyzing simulation data (chapter
+\ref{ch:simulation}), the initialized feature deviation and elevation
+angle $\phi$ and $\theta$ agrees very well to the ground truth value.
+In addition, feature initialization position is set to $[0, 0, 0]$ in
+camera frame, therefore carris no error. Therefore, the following
+procedure are used the find the corresponding ground truth location
+for any estimated feature.
 
 \begin{enumerate}
   \item The frame number at which feature was initialized was
@@ -361,6 +260,109 @@ also shown for comparison.
 \caption{Terrain map. Left: estimated, right: ground truth }
 \label{fltfig:10}
 \end{figure}
+
+\section{Consistency Analysis}
+A EKF system becomes inconsistent when the variance of state vector
+element becomes too small and forbid an effective update. In addition,
+the uncertainty of the world frame should increase as the camera frame
+moves away from it. To examine the consistency of the CC\_EKF\_SLAM
+algorithm, the variance of world frame parameters and camera motions
+are plotted in \ref{fltfig:120}, and variance of features parameters
+are plotted in figure and \ref{fltfig:3}. The variance of world frame
+position increases with iterations at the beginning, and after frame
+100, $\sigma_{O_Y}$ and $\sigma_{O_Z}$ stabilized to a value. This is
+likely due to the little variation on the Y and Z translation of the
+SUAS. On the other hand, camera rotation and world frame orientation
+variance has similar pattern and amplitude. The X component decreases
+with iterations. Y and Z components fluctuate around fix value and
+remain below 1.5e-5$^\circ$. Although world frame variance remains fix
+at prediction, camera rotations had a 1$^\circ$ noise added at
+prediction (as indicated by the GS-111m specification
+\cite{_athena_????}). The update process reduces the noise of camera
+rotation significantly and results in a variance estimates much lower
+than the specification. Affected by the camera rotation variance,
+features parameter $\varphi$ and $\theta$ also carries a very small
+variance.
+
+% does increasing measurement variance increases parameter variance? 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=14cm, keepaspectratio=true]
+{./Figures/fltfig/cut1/Figure120.png}
+\caption{Variance of world frame parameters and camera motion}
+\label{fltfig:120}
+\end{figure}
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=14cm, keepaspectratio=true]
+{./Figures/fltfig/cut1/Figure40.png}
+\caption{Variance of features parameters}
+\label{fltfig:3}
+\end{figure}
+\FloatBarrier
+
+To see how variance affect the correction the filtered made on the
+state vector, the correction applied each iteration were plotted in
+figure \ref{fltfig:4}. The $1^{st}$ column shows the correction on
+world frame position in camera frame. The $2^{nd}$ column shows the
+correction on feature initialization coordinate in camera frame. The
+$3^{rd}$ column shows the correction on features parameters $\rho$,
+$\phi$ and $\theta$. It can be observed that world frame position on Y
+and Z component receive more correction than the X component, despite
+their variance is smaller than the X axis. Similarly, feature
+parameter $\theta$ and $\phi$ receive more correction than $\rho$
+despite their variance is smaller than the variance of $\rho$.
+Secondly, there is a strong inverse correlation between the correction
+of feature initialization position and the world frame position on Y
+and Z axis. Similarly, $\phi$ correction is correlated to world frame
+position Z correction, $\theta$ correction is correlated to the world
+frame position Y correction. Since the features initialization
+coordinate has high correlation with the world frame Y and Z position,
+the main contributor all the drift comes from the world frame position
+correction. Figure \ref{fltfig:5} shows the Kalman Gain over the 5
+iteration for the first 35 elements in the state vector, which include
+world frame parameters, camera motion parameters, and parameters for the
+first 4 features. At $1^{st}$ iteration, the high gain is on the
+feature parameter $\rho$. Starting from the $2^{nd}$ iteration, more
+and more weight goes into the Y and Z component of world frame
+position, as well as the Y and Z component of features initialization
+position. Although the variance of these two parameters is small, it
+is possible that the linearization of the measurement model increased
+the correction gain on these parameter. This issue requires further
+digging, and will be analyze as a future work.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm, keepaspectratio=true]
+{./Figures/fltfig/cut1/Figure112.png}
+\caption{State Vector Corrections}
+\label{fltfig:4}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=14cm, keepaspectratio=true]
+{./Figures/fltfig/cut1/Figure113.png}
+\caption{Kalman Gain Matrix for the first 35 State Vector Elements}
+\label{fltfig:5}
+\end{figure}
+
+In summary of the consistency analysis, the filter has not moved into
+inconsistent state at 400 iterations. However, the variance of
+parameters does decrease at each iteration that it is only a matter of
+time that the filter will become inconsistent. Therefore, the filter
+will require a reset procedure to 
+
+\begin{enumerate}
+  \item Resync the SUAS location with GPS. 
+  \item Reset its covariance matrix. 
+\end{enumerate}
+
+\noindent for any large area operation. 
+\FloatBarrier
 
 \section{Compare to Visually Corresponded Feature}
 Because it is hard to correspond feature extracted from video to the
