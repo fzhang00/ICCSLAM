@@ -133,20 +133,22 @@ rotation.
 \section{Accuracy}
 \subsection{SUAS Localization}
 
-The SUAS location and orientation were verified in UTM coordinate.
-Ground truth data comes from the GPS for position, and magnetometer
-for orientation. The GPS positioning can generally achieve 7.8 meters
-in accuracy \cite{_gps_????}. For orientation, accuracy on the
-datasheet specified $0.1^{\circ}$ for roll and pitch, and
-$0.5^{\circ}$ for heading. Figure \ref{fltfig:6} shows the estimated
-SUAS position and orientation, ground truth data, and the error. From
-the comparison, X position error reached a maximum of 20 meters, while
-error on Y and Z are bigger, reaching 50 meters and 30 meters
-respectively. For orientation, the estimated value agrees with the
-ground truth pattern, with maximum error within 0.02 rad or
-$1.15^{\circ}$. Although the error of pitch is biased to the negative
-side, and error of heading is biased to the positive side. there was
-no clear sign of diverging within the 400 frames processed.
+The SUAS location and orientation were verified in UTM coordinate with
+initial position removed. Ground truth data comes from the GPS for
+position, and magnetometer for orientation. The GPS positioning can
+generally achieve 7.8 meters in accuracy \cite{_gps_????}. For
+orientation, accuracy on the GS-111m datasheet specified $0.1^{\circ}$
+for roll and pitch, and $0.5^{\circ}$ for heading. Figure
+\ref{fltfig:6} shows the estimated SUAS position and orientation,
+ground truth data, and the error. From the comparison, X position
+error reached a maximum of 20 meters, while error on Y and Z are
+bigger, reaching 50 meters and 30 meters respectively. The position
+error increases as the frame number grew bigger. For orientation, the
+estimated value agrees with the ground truth pattern, with maximum
+error within 0.02 rad or $1.15^{\circ}$. Although the error of pitch
+is biased to the negative side, and error of heading is biased to the
+positive side, there was no clear sign of diverging within the 400
+frames processed.
 
 \begin{figure}[h]
 \centering
@@ -158,87 +160,79 @@ no clear sign of diverging within the 400 frames processed.
 \FloatBarrier
 \subsection{Features Mapping}\label{sec:accuracy_features}
 
-Although digital terrain map (DEM) can be downloaded from CGIAR-CSI
-website \cite{_cgiar-csi_????}, making data correspondence with the
-estimated feature is non-trival for natual scene where it lacks of
-signature landmark sucn as building corners or other man-made objects.
-From the experience of analyzing simulation data (chapter
-\ref{ch:simulation}), the initialized feature deviation and elevation
-angle $\phi$ and $\theta$ agrees very well to the ground truth value.
-In addition, feature initialization position is set to $[0, 0, 0]$ in
-camera frame, therefore carris no error. Therefore, the following
-procedure are used the find the corresponding ground truth location
-for any estimated feature.
+The ground truth data came from digital terrain map (DEM) can be
+downloaded from CGIAR-CSI website \cite{_cgiar-csi_????}. Making data
+correspondence with the estimated feature is non-trivial for natural
+scene where it lacks of distinguishable landmark such as building corners or
+other man-made objects. From the experience of analyzing simulation
+data (chapter \ref{ch:simulation}), the initialized feature deviation
+and elevation angle $\phi$ and $\theta$ agrees very well to the ground
+truth value. In addition, feature initialization position is set to
+$[0, 0, 0]$ in camera frame, therefore carries no error. Therefore, the
+following procedure are used the find the corresponding ground truth
+location for any estimated feature.
 
 \begin{enumerate}
   \item The frame number at which feature was initialized was
-  identified, and ground truth location of the SUAS at that frame was
-  recorded.
-  \item Shift DEM to the initialization point using the SUAS ground
-  truth location recorded
-  \item Align the feature deviation $\theta$ and elevation $\phi$ angle to UTM frame.
-  (These angles were recorded in camera frame)
+  identified, and ground truth position and orientation of the SUAS at
+  that frame was recorded.
+  \item Create a reference frame on DEM at the feature initialization point.
+  \item Convert the feature deviation $\theta$ and elevation $\phi$
+  angle to UTM frame. (These angles were recorded in camera frame)
   \item Create a vertical plane using $\theta$ and slice the DEM to
-  form a 1D elevation plot (Figure \ref{fltfig:7} blue line)
+  form a 1D elevation plot (Example: figure \ref{fltfig:7} blue line)
   \item Create a line using $\phi$ and intersect the 1D elevation plot
-  (Figure \ref{fltfig:7} green line). The $1^{st}$ intersection point
-  is used as ground truth feature location.
+  (Figure \ref{fltfig:7} green line). 
+  \item The $1^{st}$ intersection point is used as ground truth
+  feature location.
 \end{enumerate}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm, keepaspectratio=true]
 {./Figures/fltfig/cut1/intersect0_0.png}
-\caption{Feature position error}
+\caption{Finding ground truth feature position on DEM}
 \label{fltfig:7}
 \end{figure}
 
-By comparing to the ground truth feature location extracted using the
-method describe above, figure \ref{fltfig:8} shows the feature
-position error convergence plot in world frame. Feature locations are
-compared in world frame for the ease of corresponding the estimated
-features and terrain plot with the video by eye. The error convergence
-is plotted in figure \ref{fltfig:8} top left. X component (along which
-axis the SUAS is traveling) of feature position converge to near zero
+Feature locations are compared in world frame for the ease of
+corresponding the estimated features the video by eye. The error
+convergence is plotted in figure \ref{fltfig:8}. X component (along
+which axis the SUAS is traveling) of feature position converge to zero
 in general with maximum error less than 120m for the converged
 features. Y component shows a clear offset for features not
 initialized at first frame. This behavior is similar to what's seen in
-the simulation analysis \ref{sec:featureMotion} where offset in features
-position estimates are caused by drift in SUAS localization
+the simulation analysis \ref{sec:featureMotion} where offset in
+features position estimates are caused by drift in SUAS localization
 estimation. In this case, the features position were converted into
-world frame using the estimated SUAS position, while the ground
-truth feature position are found using the ground truth SUAS position,
-which is different than the estimated. Therefore the offset error can
-be seen. Z component does not show such offset, but some features' Z
-component position drift away after new features were added into the
-filter. This drift could be related to the drift in estimates of angle
-$\phi$ (figure \ref{fltfig:2}).
+world frame using the estimated SUAS position, while the ground truth
+feature position are found using the ground truth SUAS position, which
+is different than the estimated. Therefore the offset error can be
+seen. Z component does not show such offset.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=7cm, keepaspectratio=true]
+\includegraphics[width=10cm, keepaspectratio=true]
 {./Figures/fltfig/cut1/Figure50.png}
-\includegraphics[width=7cm, keepaspectratio=true]
-{./Figures/fltfig/cut1/Figure80.png}
-\caption{Left: , right: }
+\caption{Feature position error convergence}
 \label{fltfig:8}
 \end{figure}
 
-Plotting the actual estimated and ground truth features position
-reveals relation between the error and the feature's position. Figure
-\ref{fltfig:9} bottom plots the feature positions and error at frame
-398. First on X axis, the biggest error occur on feature number 65
-which is initialized pretty late in the sequence, and has not
-converged properly. On Y axis, the position plot also shows feature
-number higher than 40 carries an offset error. In addition, the
-average error is increasing as feature number gets bigger, which
-indicate the further the feature initialization point is from the
-world origin, the bigger this offset error will me. On Z axis, besids
-the feature 65 carries a big error, features with ground truth Z
-position bigger than 25 generally has an error of 15-20 meters. If the
-error are plotted against the ground truth position (figure
-\ref{fltfig:8} right), it can be seen that these features all
-located within 600 meters to the camera. 
+Plotting the estimated and ground truth features position vs feature
+ID reveals more detail on the feature position error. Figure
+\ref{fltfig:9} plots the estimated and ground truth feature positions
+on the left, and error on the right. First for X component, the biggest
+error occur on feature number 65 which is initialized fairly late in
+the sequence, and has not converged properly. On Y axis, the position
+plot also shows feature number higher than 40 carries an offset error.
+In addition, the average error is increasing as feature number gets
+bigger, which indicate the further the feature initialization point is
+from the world origin, the bigger this offset error will me. On Z
+axis, besides the feature 65 carries a big error, features with ground
+truth Z position bigger than 25 generally has an error of 15-20
+meters. If the error are plotted against the ground truth position
+(figure \ref{fltfig:8} right), it can be seen that these features all
+located within 600 meters to the camera.
 
 \begin{figure}[h]
 \centering
