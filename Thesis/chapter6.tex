@@ -1,29 +1,35 @@
 \chapter{Error Analysis via Simulation}\label{ch:simulation}
-There are many factors impacts the accuracy in UAS localization and 
+The flight data result demonstrated the feasibility of the
+CC\_EKF\_SLAM algorithm for distance objects mapping. It also reveals
+that the result is not accurate, with error up to 30 meters for SUAS
+localization and several hundred meters for feature mapping. It is
+important to understand the cause of these error so an improvement on
+the algorithm can be made. 
+
+There are many factors affecting the accuracy in UAS localization and 
 feature position estimation, and they can be sorted into three main 
 categories: 
 
 \begin{enumerate}
   \item Error caused by the SLAM algorithm itself. The algorithm
   estimated features coordinate through a model that describe the
-  relation between SUAS location, feature location and SUAS motion. As
-  the model is non-linear, the linearization process introduces error
-  into the result.
+  relation between the SUAS and the feature. As the model is
+  non-linear, the linearization process introduces error into the
+  result.
   \item Noise in system intrinsic parameters. The system intrinsic
   parameters includes
   \begin{itemize}
     \item Camera intrinsic parameters
     \begin{itemize}
       \item Coordinate of optical center on image plane $[c_{x}, c_{y}]$
-      \item Scaling factor to project feature in 3D world to image
+      \item Scaling factor that projects feature in 3D world to image
       plane $ [f_{x}, f_{y}]$
       \item Lens distortion parameters $[k_{1}, k_{2}, p_{1}, p_{2}]$
     \end{itemize}
     \item Image resolution.
     \item Accelerometer bias 
   \end{itemize}
-  \item Error introduced by LK tracking algorithm. Reliable vision
-  tracking is an entire field of research in itself. Pyramid
+  \item Error introduced by LK tracking algorithm. Pyramid
   implementation of Lucas-Kanade (LK) tracking is used in this work,
   and there are a number of factors contribute to its performance.
   Firstly, LK tracking algorithm tracks features by comparing the
@@ -34,11 +40,15 @@ categories:
   maximum number (also set by user). Secondly, as scene evolve from
   frame to frame, the initial feature appears differently from frame
   to frame as the viewing distance and angle is different. Thirdly,
-  sudden intensity change in the image sequences significant noise in
-  the tracking. In outdoor setting, intensity change can be introduced
-  by many factors, such as changes of sky area in a image, sun glare,
-  SUAS enters or exits cloud shades, or camera auto-adjust its shutter
-  speed, etc.
+  sudden intensity change in the image sequences could results in
+  significant noise in the tracking. In outdoor setting, intensity
+  change can be introduced by many factors, such as changes of sky
+  area in a image, sun glare, SUAS enters or exits cloud shades, or
+  camera auto-adjust its shutter speed, etc. One example of this error
+  was demonstrated in chapter \ref{ch:FlightResult} figure
+  \ref{fltfig:1_1}. As reliable vision tracking algorithm is an
+  entire field of research in itself, it will not be discussed further
+  in this chapter.
 
 \end{enumerate}
 
@@ -47,7 +57,7 @@ parameters listed above. A simulation is performed to examine item 1
 and 2. The simulator first generates a 3D point cloud ranging between
 100 meters to 3000 meters from the camera (Figure \ref{fig:simfig51}).
 At each frame, the coordinates of the 3D points are first transformed
-to the new camera frame using the measured SUAS motion. Next, the 3D
+to the new camera frame using the simulated SUAS motion. Next, the 3D
 points are projected to the image plane using a camera model defined
 by $[c_{x}, c_{y}, f_{x}, f_{y}, k_{1}, k_{2}, p_{1}, p_{2}]$, and
 digitized to a resolution of choice. To simulate the error contributed
@@ -64,11 +74,11 @@ by the CC\_EKF\_SLAM may be different.
 \FloatBarrier
 
 \section{An Ideal Case}
-First of all, understanding the algorithm's performance under no noise, 
-or nearly no noise condition provide a solid ground for the analysis 
-later on. This simulation shows how much error the model itself 
-generates under the most basic flying condition, which is moving forward 
-at constant speed. The low noise environment is configure as such,
+First of all, understanding the algorithm's performance under nearly
+no noise condition provide a solid ground for the analysis later on.
+This simulation shows how much error the model itself generates under
+the most basic flying condition, which is moving forward at constant
+speed. The low noise environment is configure as such,
 
 \begin{itemize}
   \item SUAS is moving forward (X axis) with constant speed at 60 knots. 
@@ -112,16 +122,17 @@ within 3 frames; elevation-azimuth angles $[\varphi ,\theta]$ stay
 almost constant after initialization. A more detail graph can be seen
 from the error convergence plot for these parameters (Figure
 \ref{fig:simfig5-8} top right.) which shows the tracking error of
-these parameters for 400 frames. The error of feature distance$ d$
+these parameters for 400 frames. The error of feature distance $d$
 continues to approach zero as the tracking continues. $[\varphi
 ,\theta]$ show small drift within $+/-0.0002^{\circ}$ respectively.
 However, as tracking continue into later frames, error of $[\varphi
 ,\theta]$ gradually grew bigger. The resulting error for feature
 coordinate in world frame represented in standard Euclidean XYZ
-parameterization is plotted in figure \ref{fig:simfig5-8} bottom left
+parameterization are plotted against initialization sequence and frame
+number, and are shown in figure \ref{fig:simfig5-8} bottom left
 and right. The features positions errors in world frame converge to
-zero as tracking continues. During the process, certain features moved
-out of the FOV, and therefore its position estimation remained
+zero as tracking continues. During the process, some features moved
+out of the FOV, and therefore its position estimate remained
 unchanged since then. At the end of the 400 frames, the x axis
 position error of the feature reduced to +/-0.2 meters; y and z axis
 error reduce to +/-0.02 meters
@@ -132,49 +143,49 @@ error reduce to +/-0.02 meters
 \includegraphics[width=7cm, height=5cm]{./Figures/SimulationFigures/Figure7.png}
 \includegraphics[width=7cm, height=5cm]{./Figures/SimulationFigures/Figure5.png}
 \includegraphics[width=7cm, height=5cm]{./Figures/SimulationFigures/Figure8.png}
-\caption{Features parameters and error convergence under no noise condition}
+\caption{Features parameters and error convergence under low noise condition}
 \label{fig:simfig5-8}
 \end{figure}
 
 \section{Effect of UAS Motion}
 
-The simulation result from UAS forward travel shows that the 
-CC\_EKF\_SLAM algorithm does feature tracking and self localization 
-quite well under simple UAS motion. Next, the algorithm is tested with a 
-more complex and realistic scenario. A series of motion is added to the 
-simulation in addition to the forward motion. The remaining 5 types of 
-maneuver are added one at a time. These maneuvers are: translation on Y, 
-translation on Z, rotation on X, rotation on Y and rotation on Z. Each 
-motion is modelled by a sine wave with frequency at 1Hz, and variable 
-amplitude. For translation on Y and Z axis, the sine amplitude varies 
-from 1 meter to 19 meters with 2 meters increments. For X, Y, and Z axis 
-rotation, the amplitude varies from 0.001 radius to 0.018 radius with 
-0.001 radius increment. 
+The simulation result from UAS forward travel shows that the
+CC\_EKF\_SLAM algorithm does feature tracking and self localization
+quite well under simple SUAS motion. Next, the algorithm is tested with
+a more complex and realistic scenario. A series of motion is added to
+the simulation in addition to the forward motion. The remaining 5
+types of maneuver are added one at a time. These maneuvers are:
+translation on Y, translation on Z, rotation on X, rotation on Y and
+rotation on Z. Each motion is modelled by a sine wave with frequency
+at 1Hz, and variable amplitude. For translation simulations, the sine
+amplitude varies from 1 meter to 19 meters with 2 meters increments.
+For rotation simulations, the amplitude varies from 0.001 radius to
+0.018 radius with 0.001 radius increment.
 
 \subsection{UAS Localization under Motion}
 
-Figure \ref{fig:simfig9-10} shows the UAS localization error statistic
+Figure \ref{fig:simfig9-10} shows the SUAS localization error statistic
 under translation motion on Y and Z axis and rotation motion on X, Y,
 and Z axis. The blue dots mark the mean value $\mu$ of the error
-throughout the tracking, and the error bars mark the standard
+throughout 400 frames of tracking, and the error bars mark the standard
 deviation $\sigma$.
 
-The translation motion clearly increases the error of UAS localization. 
-However, the amount of increase is insignificant. With the Sine 
-amplitude increased to 19m, UAS position error increased by less than 
-0.02 meter. 
+The translation motion clearly increases the error of SUAS
+localization. However, the amount is insignificant. With the Sine
+amplitude increased to 19m, SUAS position error increased by less than
+0.02 meter.
 
-On the other hand, rotation motions have a big impact on the accuracy of 
-localization. Rotation on X axis has small effect on the accuracy of UAS 
-position and orientation estimate. No obvious increase on mean and 
-standard deviation of the error can be observed. Rotations on Y and Z 
-axis yield significant error increase on the position of the UAS. 
+On the other hand, rotation motions have a big impact on the accuracy
+of localization. Rotation on X axis(roll) has small effect on the
+accuracy of SUAS position and orientation estimate. No obvious
+increase on mean and standard deviation of the error can be observed.
+Rotations on Y and Z axis yield significant error.
 
 \begin{itemize}
-  \item Rotation on Y axis increases the UAS X position mean error, as
-  well as the standard deviation. For Z positioning of the UAS, the
+  \item Rotation on Y axis increases the SUAS X position mean error, as
+  well as the standard deviation. For Z position of the SUAS, the
   mean error stays zero, but standard deviation increase dramatically.
-  \item Same thing happens to the X and Y positioning for rotation on
+  \item Same thing happens to the X and Y position for rotation on
   Z axis.
 \end{itemize}
 

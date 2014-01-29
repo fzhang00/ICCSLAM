@@ -204,11 +204,7 @@ features. Y component shows a clear offset for features not
 initialized at first frame. This behavior is similar to what's seen in
 the simulation analysis \ref{sec:featureMotion} where offset in
 features position estimates are caused by drift in SUAS localization
-estimation. In this case, the features position were converted into
-world frame using the estimated SUAS position, while the ground truth
-feature position are found using the ground truth SUAS position, which
-is different than the estimated. Therefore the offset error can be
-seen. Z component does not show such offset.
+estimation. Z component does not show such offset.
 
 \begin{figure}[h]
 \centering
@@ -219,27 +215,37 @@ seen. Z component does not show such offset.
 \end{figure}
 
 Plotting the estimated and ground truth features position vs feature
-ID reveals more detail on the feature position error. Figure
-\ref{fltfig:9} plots the estimated and ground truth feature positions
-on the left, and error on the right. First for X component, the biggest
-error occur on feature number 65 which is initialized fairly late in
-the sequence, and has not converged properly. On Y axis, the position
-plot also shows feature number higher than 40 carries an offset error.
-In addition, the average error is increasing as feature number gets
-bigger, which indicate the further the feature initialization point is
-from the world origin, the bigger this offset error will me. On Z
-axis, besides the feature 65 carries a big error, features with ground
-truth Z position bigger than 25 generally has an error of 15-20
-meters. If the error are plotted against the ground truth position
-(figure \ref{fltfig:8} right), it can be seen that these features all
-located within 600 meters to the camera.
+initialization sequence reveals more detail on the feature position
+error. Figure \ref{fltfig:9} plots the estimated and ground truth
+feature positions on the left, and error on the right. First for X
+component, the biggest error occur on feature number 65 which is
+initialized fairly late in the sequence, and has not converged
+properly. On Y axis, the position plot also shows feature number
+higher than 40 carries an offset error. In addition, the average error
+is increasing as feature number gets bigger, which indicate the
+further the feature initialization point is from the world origin, the
+bigger this offset error will be. When plotting the feature error vs.
+feature's ground truth postion (figure \ref{fltfig:err_vs_gtpos}), it
+shows that the biggest Z axis error happens to the feature located
+closest to the camera and with the biggest Z ground truth position,
+which is the very bottom region of the image frame. This position
+suggested that the Z axis error might be related to the lens
+distortion that was not taken into account in this algorithm.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=14cm, keepaspectratio=true]
 {./Figures/fltfig/cut1/Figure60.png}
-\caption{Feature position and error. Left: , right: }
+\caption{Feature position error plotted vs initialization sequence. }
 \label{fltfig:9}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=14cm, keepaspectratio=true]
+{./Figures/fltfig/cut1/Figure80.png}
+\caption{Feature position error plotted vs. ground truth position. }
+\label{fltfig:err_vs_gtpos}
 \end{figure}
 
 Using the estimated feature position, a terrain map can be generated.
@@ -254,6 +260,7 @@ also shown for comparison.
 \caption{Terrain map. Left: estimated, right: ground truth }
 \label{fltfig:10}
 \end{figure}
+\FloatBarrier
 
 \section{Consistency Analysis}
 A EKF system becomes inconsistent when the variance of state vector
@@ -262,18 +269,18 @@ the uncertainty of the world frame should increase as the camera frame
 moves away from it. To examine the consistency of the CC\_EKF\_SLAM
 algorithm, the variance of world frame parameters and camera motions
 are plotted in \ref{fltfig:120}, and variance of features parameters
-are plotted in figure and \ref{fltfig:3}. The variance of world frame
+are plotted in figure \ref{fltfig:3}. The variance of world frame
 position increases with iterations at the beginning, and after frame
-100, $\sigma_{O_Y}$ and $\sigma_{O_Z}$ stabilized to a value. This is
+100, $\sigma^2_{O_Y}$ and $\sigma^2_{O_Z}$ converged. This is
 likely due to the little variation on the Y and Z translation of the
 SUAS. On the other hand, camera rotation and world frame orientation
 variance has similar pattern and amplitude. The X component decreases
-with iterations. Y and Z components fluctuate around fix value and
-remain below 1.5e-5$^\circ$. Although world frame variance remains fix
+with iterations. Y and Z components fluctuate around a fixed value and
+remain below 1.5e-5$^\circ$. Although world frame variance remains fixed
 at prediction, camera rotations had a 1$^\circ$ noise added at
 prediction (as indicated by the GS-111m specification
-\cite{_athena_????}). The update process reduces the noise of camera
-rotation significantly and results in a variance estimates much lower
+\cite{_athena_????}). The update process reduced the noise of camera
+rotation significantly and resulted in a variance estimates much lower
 than the specification. Affected by the camera rotation variance,
 features parameter $\varphi$ and $\theta$ also carries a very small
 variance.
@@ -299,34 +306,30 @@ variance.
 \FloatBarrier
 
 To see how variance affect the correction the filtered made on the
-state vector, the correction applied each iteration were plotted in
+state vector, the correction applied in camera frame were plotted in
 figure \ref{fltfig:4}. The $1^{st}$ column shows the correction on
-world frame position in camera frame. The $2^{nd}$ column shows the
-correction on feature initialization coordinate in camera frame. The
-$3^{rd}$ column shows the correction on features parameters $\rho$,
-$\phi$ and $\theta$. It can be observed that world frame position on Y
-and Z component receive more correction than the X component, despite
-their variance is smaller than the X axis. Similarly, feature
-parameter $\theta$ and $\phi$ receive more correction than $\rho$
-despite their variance is smaller than the variance of $\rho$.
-Secondly, there is a strong inverse correlation between the correction
-of feature initialization position and the world frame position on Y
-and Z axis. Similarly, $\phi$ correction is correlated to world frame
-position Z correction, $\theta$ correction is correlated to the world
-frame position Y correction. Since the features initialization
-coordinate has high correlation with the world frame Y and Z position,
-the main contributor all the drift comes from the world frame position
-correction. Figure \ref{fltfig:5} shows the Kalman Gain over the 5
-iteration for the first 35 elements in the state vector, which include
-world frame parameters, camera motion parameters, and parameters for the
-first 4 features. At $1^{st}$ iteration, the high gain is on the
-feature parameter $\rho$. Starting from the $2^{nd}$ iteration, more
-and more weight goes into the Y and Z component of world frame
-position, as well as the Y and Z component of features initialization
-position. Although the variance of these two parameters is small, it
-is possible that the linearization of the measurement model increased
-the correction gain on these parameter. This issue requires further
-digging, and will be analyze as a future work.
+world frame position. The $2^{nd}$ column shows the correction on
+feature initialization coordinate. The $3^{rd}$ column shows the
+correction on features parameters $\rho$, $\varphi$ and $\theta$. It
+can be observed that in general the correction amount agrees with the
+variance that bigger variance results in more correction, except for
+the world frame Y and Z position and camera Y and Z motion. These
+parameters receives more correction as tracking progress despite their
+variance stabilized or even decreased. Secondly, there is a strong
+correlation between the feature initialization position and the world
+frame position on Y and Z axis. At the same time, world frame and
+feature initialization is inversly correlated to the camera motion on
+Y and Z axis. Thirdly, the camera parameter corrections shows an
+obvious trend only on Y and Z motion. Due to these correlation, the
+main contributor for all the drift in SUAS position and offset in
+feature mapping should be coming from the camera motion correction on
+Y and Z axis. On the other hand, the big correction on these
+parameters could be caused by the small variance in the camera
+rotation variance. If not enough correction can be made into the
+camera rotation and $\varphi$ and $\theta$ angles, the algorithm has
+to compensate that by making more adjustment in the camera motion on Y
+and Z. This issue requires further investigation, and will be analyze as a
+future work.
 
 \begin{figure}[h]
 \centering
@@ -336,37 +339,17 @@ digging, and will be analyze as a future work.
 \label{fltfig:4}
 \end{figure}
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=14cm, keepaspectratio=true]
-{./Figures/fltfig/cut1/Figure113.png}
-\caption{Kalman Gain Matrix for the first 35 State Vector Elements}
-\label{fltfig:5}
-\end{figure}
-
-In summary of the consistency analysis, the filter has not moved into
-inconsistent state at 400 iterations. However, the variance of
-parameters does decrease at each iteration that it is only a matter of
-time that the filter will become inconsistent. Therefore, the filter
-will require a reset procedure to 
-
-\begin{enumerate}
-  \item Resync the SUAS location with GPS. 
-  \item Reset its covariance matrix. 
-\end{enumerate}
-
-\noindent for any large area operation. 
 \FloatBarrier
 
 \section{Compare to Visually Corresponded Feature}
-Because it is hard to correspond feature extracted from video to the
+Due to the difficulty of corresponding feature extracted from video to the
 actual data on DEM, a second piece of video was processed with
 man-made structure in the scene so that feature correspondence can be
 made manually. Figure \ref{fltfig:11} shows a zoomed in view of the
 features extracted by the CC\_EKF\_SLAM. All features are located at
 the bottom left corner of the image. Figure \ref{fltfig:12} shows the
-common features found manually on the satalite imaging on Google Earth
-\cite{}.
+common features found manually on the satalite image on Google Earth
+\cite{_google_????}.
 
 \begin{figure}[h]
 \centering
@@ -390,13 +373,14 @@ recording, and the result are plotted in figure \ref{fltfig:13} and
 figure \ref{fltfig:14}. Similar to the natual scene video, SUAS
 location is more accurate on X, and shows more drift on Y and Z
 coordinate. The drift become significant when frame number exceeds
-200. However, with the SUAS decending, drift on Z is less than when it
-is ascending. For orientation error, roll and pitch error oscillate
-around zero, but azimuth error drift away as frame number increases. 
+200. However, with the SUAS decending, drift on Z is less than the
+amount when it ascended. For orientation error, roll and pitch error
+oscillate around zero, but azimuth error drift away as frame number
+increases.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=10cm, keepaspectratio=true]
+\includegraphics[width=13cm, keepaspectratio=true]
 {./Figures/fltfig/airport/UAV_position_and_error.png}
 \caption{SUAS position accuracy compared to GPS}
 \label{fltfig:13}
@@ -404,22 +388,22 @@ around zero, but azimuth error drift away as frame number increases.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=10cm, keepaspectratio=true]
+\includegraphics[width=13cm, keepaspectratio=true]
 {./Figures/fltfig/airport/UAV_orientation_and_error.png}
-\caption{SUAS orientation accuracy compared to ??}
+\caption{SUAS orientation accuracy compared to magnetometer}
 \label{fltfig:14}
 \end{figure}
 \FloatBarrier
 
-Figure \ref{fltfig:15} shows the features location in X and Y axis.
-The google earth map provide a very rough elevation data, and was not
-used. The ground truth X and Y coordinate of the features were
+Figure \ref{fltfig:15} shows the features positions in X and Y axis.
+The google earth map provide very rough elevation data, therefore it
+was not used. The ground truth X and Y coordinate of the features were
 measured on Google Earth in GPS coordinates and converted into UTM.
 This plot shows a clear offset error between the ground truth and the
 estimated. X axis coordinate has a mean offset is about 100 meters,
 and Y axis coordinate has a offset of about 130m. Since all features
-are located in the bottom left corner of the FOV, it is possible that
-lens distortion plays a important part in contributing to these error. 
+are located in the bottom left corner of the FOV, it is more likely
+for the lens distortion to be the main contributor to these error.
 
 
 \begin{figure}[h]

@@ -13,43 +13,42 @@ A level-1 auxiliary file: appendix.aux
 A level-1 auxiliary file: appendix2.aux
 A level-1 auxiliary file: appendix3.aux
 Database file #1: ref.bib
-Warning--I didn't find a database entry for ""
 Warning--empty institution in james_geosurv_2008
 Warning--empty publisher in williams_efficient_2001
 Warning--empty publisher in chong_feature-based_1999
 Warning--empty booktitle in amzajerdian_lidar_2011
 Warning--empty publisher in csorba_simultaneous_1997
 Warning--empty publisher in bailey_mobile_2002
-You've used 73 entries,
+You've used 74 entries,
             1876 wiz_defined-function locations,
-            866 strings with 16294 characters,
-and the built_in function-call counts, 21387 in all, are:
-= -- 2180
-> -- 648
+            868 strings with 16318 characters,
+and the built_in function-call counts, 21481 in all, are:
+= -- 2187
+> -- 649
 < -- 0
-+ -- 247
++ -- 248
 - -- 174
-* -- 1385
-:= -- 2718
+* -- 1387
+:= -- 2725
 add.period$ -- 77
-call.type$ -- 73
-change.case$ -- 65
+call.type$ -- 74
+change.case$ -- 66
 chr.to.int$ -- 0
-cite$ -- 79
-duplicate$ -- 1173
-empty$ -- 2182
+cite$ -- 80
+duplicate$ -- 1177
+empty$ -- 2200
 format.name$ -- 174
-if$ -- 5346
+if$ -- 5373
 int.to.chr$ -- 0
-int.to.str$ -- 73
+int.to.str$ -- 74
 missing$ -- 74
-newline$ -- 232
+newline$ -- 235
 num.names$ -- 69
-pop$ -- 360
+pop$ -- 366
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 892
+skip$ -- 900
 stack$ -- 0
 substring$ -- 1694
 swap$ -- 503
@@ -59,6 +58,6 @@ top$ -- 0
 type$ -- 0
 warning$ -- 6
 while$ -- 217
-width$ -- 75
-write$ -- 670
-(There were 7 warnings)
+width$ -- 76
+write$ -- 675
+(There were 6 warnings)
