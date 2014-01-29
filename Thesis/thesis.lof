@@ -38,22 +38,22 @@
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.4}{\ignorespaces UAS localization error under translational motion\relax }}{54}{figure.caption.68}
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.5}{\ignorespaces UAS estimated position in world frame\relax }}{55}{figure.caption.69}
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.6}{\ignorespaces Feature mapping error under added motion\relax }}{56}{figure.caption.70}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.7}{\ignorespaces Feature mapping error under rotatioanl motion\relax }}{57}{figure.caption.71}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.8}{\ignorespaces Feature parameters error under rotatioanl motion\relax }}{58}{figure.caption.72}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.9}{\ignorespaces Error of $\phi $ in camera frame and world frame at initialization\relax }}{59}{figure.caption.73}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.10}{\ignorespaces UAS localization error statistic with varying $(c_x, c_y)$\relax }}{60}{figure.caption.74}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.11}{\ignorespaces Diverging UAS position error\relax }}{61}{figure.caption.75}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.7}{\ignorespaces Feature mapping error under rotational motion\relax }}{57}{figure.caption.71}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.8}{\ignorespaces Feature parameters error under rotational motion\relax }}{58}{figure.caption.72}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.9}{\ignorespaces Error of $\varphi $ in camera frame and world frame at initialization\relax }}{59}{figure.caption.73}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.10}{\ignorespaces SUAS localization error statistic with varying $(c_x, c_y)$\relax }}{60}{figure.caption.74}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.11}{\ignorespaces Diverging SUAS position error\relax }}{60}{figure.caption.75}
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.12}{\ignorespaces Feature mapping error statistic with varying $(c_x, c_y)$\relax }}{61}{figure.caption.76}
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.13}{\ignorespaces Feature mapping error vs. ground truth feature position\relax }}{62}{figure.caption.77}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.14}{\ignorespaces UAS localization error statistic with variable $(f_x, f_y)$\relax }}{62}{figure.caption.78}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.14}{\ignorespaces UAS localization error statistic with variable $(f_x, f_y)$\relax }}{63}{figure.caption.78}
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.15}{\ignorespaces Feature mapping error statistic with variable $(f_x, f_y)$\relax }}{63}{figure.caption.79}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.16}{\ignorespaces Feature mapping error plotted against feature ground truth for various $(f_x, f_y)$\relax }}{63}{figure.caption.80}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.17}{\ignorespaces UAS localization error with lens distortion\relax }}{64}{figure.caption.81}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.18}{\ignorespaces UAS localization error with lens distortion\relax }}{65}{figure.caption.82}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.19}{\ignorespaces UAS localization error with lens distortion\relax }}{65}{figure.caption.83}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.20}{\ignorespaces Error statistic for various image resolution\relax }}{66}{figure.caption.84}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.16}{\ignorespaces Feature mapping error plotted against feature ground truth for various $(f_x, f_y)$\relax }}{64}{figure.caption.80}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.17}{\ignorespaces SUAS localization error with lens distortion\relax }}{65}{figure.caption.81}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.18}{\ignorespaces Feather position error with lens distortion\relax }}{65}{figure.caption.82}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.19}{\ignorespaces Feather position error vs. ground truth position with lens distortion\relax }}{66}{figure.caption.83}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.20}{\ignorespaces Error statistic for various image resolution\relax }}{67}{figure.caption.84}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax A.1}{\ignorespaces A point in world and mobile frame\relax }}{78}{figure.caption.96}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax A.1}{\ignorespaces A point in world and mobile frame\relax }}{79}{figure.caption.96}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

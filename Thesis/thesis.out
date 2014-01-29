@@ -40,10 +40,10 @@
 \BOOKMARK [1][-]{section.5.4}{5.4 Compare to Visually Corresponded Feature}{section*.46}% 40
 \BOOKMARK [0][-]{section*.64}{ 6 Error Analysis via Simulation}{}% 41
 \BOOKMARK [1][-]{section.6.1}{6.1 An Ideal Case}{section*.64}% 42
-\BOOKMARK [2][-]{subsection.6.1.1}{6.1.1 UAS Localization}{section.6.1}% 43
+\BOOKMARK [2][-]{subsection.6.1.1}{6.1.1 SUAS Localization}{section.6.1}% 43
 \BOOKMARK [2][-]{subsection.6.1.2}{6.1.2 Features Mapping - Convergence and Accuracy}{section.6.1}% 44
-\BOOKMARK [1][-]{section.6.2}{6.2 Effect of UAS Motion}{section*.64}% 45
-\BOOKMARK [2][-]{subsection.6.2.1}{6.2.1 UAS Localization under Motion}{section.6.2}% 46
+\BOOKMARK [1][-]{section.6.2}{6.2 Effect of SUAS Motion}{section*.64}% 45
+\BOOKMARK [2][-]{subsection.6.2.1}{6.2.1 SUAS Localization under Motion}{section.6.2}% 46
 \BOOKMARK [2][-]{subsection.6.2.2}{6.2.2 Feature Mapping Accuracy under Motion}{section.6.2}% 47
 \BOOKMARK [1][-]{section.6.3}{6.3 Camera Intrinsic Parameters}{section*.64}% 48
 \BOOKMARK [2][-]{subsection.6.3.1}{6.3.1 Effect from \(cx, cy\)}{section.6.3}% 49

@@ -94,7 +94,7 @@ speed. The low noise environment is configure as such,
   by CC\_EKF\_SLAM algorithm.
 \end{itemize}
 
-\subsection{UAS Localization}
+\subsection{SUAS Localization}
 The estimation of UAS coordinate and orientation is first analyzed, as 
 these estimates are directly used to perform transformation between 
 camera and world frame. Figure \ref{fig:simfig1} plots the UAS 
@@ -147,7 +147,7 @@ error reduce to +/-0.02 meters
 \label{fig:simfig5-8}
 \end{figure}
 
-\section{Effect of UAS Motion}
+\section{Effect of SUAS Motion}
 
 The simulation result from UAS forward travel shows that the
 CC\_EKF\_SLAM algorithm does feature tracking and self localization
@@ -162,7 +162,7 @@ amplitude varies from 1 meter to 19 meters with 2 meters increments.
 For rotation simulations, the amplitude varies from 0.001 radius to
 0.018 radius with 0.001 radius increment.
 
-\subsection{UAS Localization under Motion}
+\subsection{SUAS Localization under Motion}
 
 Figure \ref{fig:simfig9-10} shows the SUAS localization error statistic
 under translation motion on Y and Z axis and rotation motion on X, Y,
@@ -202,24 +202,24 @@ Rotations on Y and Z axis yield significant error.
 \end{figure}
 %\FloatBarrier
 
-To understand how rotation motion affect the UAS localization
-estimation, the UAS position on X, Y, Z in world frame are plotted
+To understand how rotation motion affect the SUAS localization
+estimate, the SUAS position on X, Y, Z in world frame are plotted
 below (figure \ref{fig:simfig14}) with rotation amplitude on X, Y and
-Z set at 0.01 radius. With rotation on X axis, the position error of
-UAS shows some oscillation. The oscillation magnitude remains small
-(in the scale of millimeters) and around zero. For rotation on Y and
-Z, the situation is very different. Both rotation motions caused the
-UAS position error to oscillate with the oscillation amplitude
-increasing (diverging) as tracking goes on. The X position error of
-the UAS increases in positive value with both rotation on Y and Z, but
-the most significant impact happens on the Z position (for rotation on
-Y) and Y position (for rotation on Z), with error reaching 20 meters
-peak-to-peak at the end of the video sequence. With rotation rate
-increases (amplitude of the sine wave), the rate of error diverging
-from zero also increases, hence, resulting in an increasing error
-standard deviation in error statistic plots. This simulation result
-suggests that CC\_EKF\_SLAM algorithm is very sensitive to rotation on
-Y and Z axis.
+Z set at 0.01 radius. When rotation occurred on X axis, the position
+error of SUAS shows some oscillation. The oscillation magnitude
+remains small (in the scale of millimeters) and around zero. For
+rotation on Y and Z, the situation is very different. Both rotation
+motions caused the SUAS position error to oscillate with the
+oscillation amplitude increasing (diverging) as tracking goes on. The
+X position error of the SUAS increases in positive value with rotation
+occurring on Y and Z, but the most significant impact happens on the Z
+position (for rotation on Y) and Y position (for rotation on Z), with
+error reaching 20 meters peak-to-peak at the end of the 400 frames.
+With increasing rotation rate (amplitude of the sine wave), the rate of
+error diverging from zero also increases, hence, resulting in an
+increasing error standard deviation in error statistic plots. This
+simulation result suggests that CC\_EKF\_SLAM algorithm is very
+sensitive to rotation on Y and Z axis.
 
 \begin{figure}[h]
   \centering
@@ -230,7 +230,7 @@ Y and Z axis.
 \FloatBarrier
 \subsection{Feature Mapping Accuracy under Motion}\label{sec:featureMotion}
 
-Feature mapping error statistic are drawn from the feature error at
+Feature mapping error statistic are calculated from the feature error at
 last frame, since features error converge to zero as tracking goes on.
 Figure \ref{fig:simfig20-24} shows the feature mapping error statistic
 with added motions. Translation motions increase both the error mean
@@ -254,128 +254,135 @@ With maximum rate of rotation ranging from 0.001 rad/frame to 0.018
 rad/frame
 
 \begin{itemize}
-  \item Rotation on all three axis yields significant error increase
-  for feature position estimation
-  \item X axis rotation causes increase on standard deviation of Y and
-  Z axis feature position error, and by similar amount. The error are
-  in scale of meters with maximum rotation setting.
+  \item Rotations on all three axis yield significant error increase
+  for feature position estimate,
+  \item X axis rotation causes increase on standard deviation on Y and
+  Z axis by similar amount. The error are in the scale of meters with
+  maximum rotation setting.
   \item Y axis rotation causes increase on mean and standard deviation
-  of X and Z axis feature position error. Z axis feature position
-  receives the biggest impact with error in the scale of hundreds of
-  meters with maximum rotation setting
+  on X and Z axis. Z axis feature position receives the biggest impact
+  with error in the scale of hundreds of meters with maximum rotation
+  setting
   \item Z axis rotation impacts on X and Y axis feature position in a
   similar way as the Y axis rotation.
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[h]%redo plots
   \centering
   \includegraphics[width=7cm, height=5cm]{./Figures/SimulationFigures/Figure17.png}
   \includegraphics[width=7cm, height=5cm]{./Figures/SimulationFigures/Figure18.png}
   \includegraphics[width=7cm, height=5cm]{./Figures/SimulationFigures/Figure19.png}
-  \caption{Feature mapping error under rotatioanl motion}
+  \caption{Feature mapping error under rotational motion}
   \label{fig:simfig17-19}
 \end{figure}
 
-Figure \ref{fig:simfig17-19} shows the features position error at the last
-tracking frame for all three type of rotation motion. The errors are
-plotted against feature ID and it revealed some more characteristic of
-the features mapping errors.
+Figure \ref{fig:simfig17-19} shows the features position error at the
+last tracking frame plotted against initialization sequence, with line
+and marker color indicating various rotation amplitude setting.
 
 \begin{itemize}
   \item With rotation on Y and Z, the tracked features easily went out
   of FOV. This can be observed from total number of features went from
   80 to over 110 with Y axis rotation setting varied from 0.001rad/s
-  to 0.018rad/s. This caused frequent addition of new features.
+  to 0.018rad/s. This caused frequent additions of new features.
   \item Features added after first frame has much bigger error than
-  features added at first frame. At 1$^{st}$ frame, 40 features added
+  features added at first frame. At 1$^{st}$ frame, 40 features were added
   to the filter. Error plots from Y and Z axis rotation both shows
   that major feature mapping error came from features added after the
   1 $^{st}$ frame with ID bigger than 40.
 \end{itemize}
+\FloatBarrier
 
 To investigate how does rotation motion results in bigger error on
-features added after first frame, feature parameters error (converted
-to world frame) with $wy = 0.01$ are plotted in
-figure \ref{fig:simfig25}. It is found that the most significant
-error happen to parameter $\phi$ which is the feature elevation angle.
-This angle has the same definition as rotation angle around Y axis.
-The second contributor is $z_i$ (the Z axis coordinate of the feature
-initialization point). The both parameters have an offset error at
+features added after first frame, features parameters error (after
+being converted to world frame) with $w_y = 0.01$ are plotted in
+figure \ref{fig:simfig25}. It is found that the most significant error
+happen to parameter $\varphi$ which is the feature elevation angle. This
+angle has the same definition as rotation angle around Y axis. The
+second contributor is $z_i$, the Z axis coordinate of the feature
+initialization point. Both parameters have an offset error at
 initialization, and were never corrected throughout the tracking.
 
-Figure \ref{fig:simfig26} shows the $\phi$ error at 
-initialization in camera frame and world frame. The blue line shows the 
-error in camera frame. The red line shows the error in world frame 
-transformed using the estimated UAS position and orientation. It is 
-clear that it is the transformation process that introduced the offset 
-error in $\phi$. Offset error in $z_i$ is due to the same 
-reason. Recall that with Y axis rotation, UAS localization estimate has 
-biggest error in X and Z axis coordinates estimate. Features initialized 
-at first frame don't carry any offset error is because the 
-transformation process is using the same parameters in both way. During 
-tracking, these features are transformed to the new camera frame using 
-the estimated UAS position and orientation. These are the same 
-estimation being used to transform feature position from camera frame 
-into world frame. Therefore, although the UAS localization estimations 
-are different from the ground truth, feature initialized at first frame 
-were not affected. To conclude, the major contributor for feature 
-mapping error came from error in UAS localization estimation.
+Figure \ref{fig:simfig26} shows the $\varphi$ error at initialization
+in camera frame and world frame. The blue line shows the error in
+camera frame. The red line shows the error in world frame transformed
+using the estimated UAS position and orientation. It is clear that it
+is the transformation process that introduced the offset error in
+$\varphi$. Offset error in $z_i$ is due to the same reason. As the
+result from previous section indicated, with Y axis rotation, SUAS
+localization estimate has the biggest error in position on X and Z
+axis. In addition, ground truth features were transformed using the
+ground truth SUAS position and orientation, which is different than
+the estimated ones. It is not surprised that the transformation
+process introduced offset error into the feature parameters. Features
+initialized at first frame don't carry any offset error because the
+transformation process is using the same parameters in both way.
+During tracking, these features are transformed to the new camera
+frame using the estimated SUAS position and orientation. These are the
+same estimation being used to transform feature position from camera
+frame back into world frame. Therefore, although the SUAS localization
+estimations are different from the ground truth, feature initialized
+at first frame were not affected. To conclude, the major contributor
+for feature mapping error came from error in UAS localization
+estimation.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=10cm, height=12cm]{./Figures/SimulationFigures/Figure25.png}
-  \caption{Feature parameters error under rotatioanl motion}
+  \caption{Feature parameters error under rotational motion}
   \label{fig:simfig25}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[h] %redo figure, change phi to varphi
   \centering
   \includegraphics[width=10cm, height=7cm]{./Figures/SimulationFigures/Figure26.png}
-  \caption{Error of $\phi$ in camera frame and world frame at initialization}
+  \caption{Error of $\varphi$ in camera frame and world frame at initialization}
   \label{fig:simfig26}
 \end{figure}
 
 \FloatBarrier
 \section{Camera Intrinsic Parameters}
-This section summarizes the impact of inaccurate camera parameters 
-estimations. Error on camera intrinsic parameters is simulated by using 
-different values for camera models. One model is used in the simulator 
-to project 3D points onto image plane, and the other is used in the 
-measurement model of CC-LK-SLAM. $c_{x}$, $c_{y}$, $f_{x}$, and 
-$f_{y}$ are simulated individually and distortion parameters $[k1, 
-k2, p1, p2]$ are simulated as a group. Using the calibrated camera 
-model (see section \ref{sec:camcal}) as a base model,$ c_{x}$, $c_{y}$, $f_{x}
-$, and $f_{y}$ in simulator camera model varied from -50\% to 50\% of 
-the base model. Distortion parameters varied from 0\% to 140\% of the 
-base model. 
+This section summarizes the impact of inaccurate camera parameters
+estimates. Error on camera intrinsic parameters is simulated by using
+different values in the camera models used by the simulator and the
+CC\_EKF\_SLAM algorithm. $c_{x}$, $c_{y}$, $f_{x}$, and $f_{y}$ are
+simulated individually and distortion parameters $[k1, k2, p1, p2]$
+are simulated as a group. Using the calibrated camera model (see
+section \ref{sec:camcal}) as a base model,$ c_{x}$, $c_{y}$, $f_{x} $,
+and $f_{y}$ in simulator camera model varied from -50\% to 50\% of the
+base model. Distortion parameters varied from 0\% to 140\% of the base
+model.
 
 \subsection{Effect from $(c_{x}, c_{y})$}
 
-Figure \ref{fig:simfig34-35} show an over view of UAS localization
-error statistics with incorrect estimates of $ (c_{x}, c_{y})$.
+Figure \ref{fig:simfig34-35} show an overview of SUAS localization
+error statistics with incorrect estimates of $ (c_{x}, c_{y})$. From
+the statistic plot, it is found that $c_x$ has impact on SUAS position
+on X and Y, while $c_y$ has impact on SUAS position on X and Z. 
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=5cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure34.png}
   \includegraphics[width=5cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure35.png}
-  \caption{UAS localization error statistic with varying $(c_x, c_y)$}
+  \caption{SUAS localization error statistic with varying $(c_x, c_y)$}
   \label{fig:simfig34-35}
 \end{figure}
 
-UAS position error is dependent on $(c_{x}, c_{y})$ and time (figure
-\ref{fig:simfig36-37}). The UAS position error is diverging (increases
-in time), and can be modeled by 1 $^{st}$ order polynomial function,
-with the rate of diverging decided by the error of $(c_{x}, c_{y})$.
-$c_{x}$ affects UAS position on X and Y axis, and $c_{y}$ affects UAS
-position on X and Z axis.
+Figure \ref{fig:simfig36-37} shows the SUAS position error with
+various $c_x$ and $c_y$. SUAS position error is dependent on both
+$(c_{x}, c_{y})$ and time. The SUAS position error is diverging
+(increasing in time), and can be modeled by 1 $^{st}$ order polynomial
+function, with the rate of diverging decided by the error of $(c_{x},
+c_{y})$. 
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=7cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure36.png}
   \includegraphics[width=7cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure37.png}
-  \caption{Diverging UAS position error}
+  \caption{Diverging SUAS position error}
   \label{fig:simfig36-37}
 \end{figure}
+\FloatBarrier
 
 The feature mapping error statistics from incorrect estimate of $
 (c_{x}, c_{y})$ are plotted in figure \ref{fig:simfig28-29}. The
@@ -387,9 +394,8 @@ following characters can be observed from the plots:
   \begin{itemize}
     \item The further $c_{x}$ deviate from the true value, the further
     the features appear (positive X axis error).
-    \item On Y axis, smaller $c_{x}$ make feature appear further to
-    the optical axis than ground truth (positive error), and bigger
-    $c_{x}$ make features appear closer (negative error).
+    \item On Y axis, inaccurate $c_x$ causes offset error in feature
+    position. 
     \item Incorrect $c_{x}$ also affect Z axis feature position, but
     by a much smaller amount.
   \end{itemize}
@@ -400,36 +406,37 @@ following characters can be observed from the plots:
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=5cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure28.png}
-  \includegraphics[width=5cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure29.png}
+  \includegraphics[width=7cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure28.png}
+  \includegraphics[width=7cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure29.png}
   \caption{Feature mapping error statistic with varying $(c_x, c_y)$}
   \label{fig:simfig28-29}
 \end{figure}
 
-Plotting feature position error as a function of features ground truth 
-positions reveals more information on how incorrect $c_{x}$ and $
-c_{y}$ affect feature mapping. Feature position error is a function of 
-its ground truth position, and $c_{x}$ (or $c_{y}$). 
+Plotting feature position error as a function of features ground truth
+positions reveals more information on how incorrect $c_{x}$ and
+$c_{y}$ affect feature mapping. Feature position error is a function
+of its ground truth position, and $c_{x}$ (or $c_{y}$).
 
 \begin{itemize}
-  \item Error on X axis is proportional to the ground truth position
-  on X. The further the feature is, greater the error. The degree of
-  incorrectness in $c_{x}$ decide the slope of the error plot, greater
-  the error in $c_{x}$, steeper the slope (figure
-  \ref{fig:simfig32-33}, plot (a), subplot $[1,1]$).
-  \item Feature position error on Y axis is also proportional to the
-  ground truth position on X with the slope polarity dependent on the
-  polarity of the error of $c_{x}$, and error plot slope dependent on
-  the error of $c_{x}$.
-  \item Feature position error on Z axis is proportional to the ground
-  truth position on Z, with slope polarity dependent on the polarity
-  of error of $c_{x}$, and slope dependent on the error of $c_{x}$.
+  \item Feature position error on X axis is proportional to the
+  feature ground truth position on X. The further the feature is,
+  greater the error will be. The degree of incorrectness in $c_{x}$
+  decide the slope of the error plot, greater the error in $c_{x}$,
+  steeper the slope (figure \ref{fig:simfig32-33} left, subplot
+  $[1,1]$).
+  \item Feature position error on Y axis is also proportional to it's
+  ground truth position on X with the slope polarity dependable on the
+  polarity of the error of $c_{x}$, and slope dependable on
+  the error on $c_{x}$ (figure \ref{fig:simfig32-33} left, subplot
+  $[2,1]$).
+  \item Feature position error on Z axis is proportional to it's
+  ground truth position on Z, with slope polarity dependable on the
+  polarity of error of $c_{x}$, and slope dependable on the error of
+  $c_{x}$ (figure \ref{fig:simfig32-33} left, subplot $[3,3]$).
 \end{itemize}
 
 $c_{y}$ affects feature position similarly to $c_{x}$ (figure
-\ref{fig:simfig32-33}, plot (b)), except feature position error on Z
-is dependent on ground truth position on X, and error on Y is
-dependent on the ground truth position on Y.
+\ref{fig:simfig32-33}, right).
 
 \begin{figure}[h]
   \centering
@@ -443,12 +450,12 @@ dependent on the ground truth position on Y.
 \subsection{Effect from $(f_x, f_y)$}
 
 With $(f_x, f_y)$ varying from -50\% to +50\% of the calibrated
-value, the UAS localization error is shown in \ref{fig:simfig43-44}.
-For all $f_x$ and $f_y$ settings, UAS position error remained less than
+value, the SUAS localization error is shown in \ref{fig:simfig43-44}.
+For all $f_x$ and $f_y$ settings, SUAS position error remained less than
 +/-0.05 meters, and orientation error remained in less than 8e-6
 radius. Compared to the error obtained from the ideal case simulation,
-Error in $(f_x, f_y)$ estimation does not introduce any additional error into
-UAS localization estimate. 
+Error in $(f_x, f_y)$ does not introduce any additional error into
+SUAS localization estimate. 
 \begin{figure}[h]
   \centering
   \includegraphics[width=5cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure43.png}
@@ -457,16 +464,16 @@ UAS localization estimate.
   \label{fig:simfig43-44}
 \end{figure}
 
-Feature mapping, on the other hand, is unavoidably affected by the error
-in $(f_x, f_y)$ since these are the scaling factor that project
+Feature mapping, on the other hand, is unavoidably affected by the
+error in $(f_x, f_y)$ since these are the scaling factor that project
 features from 3D world onto image plane. Figure \ref{fig:simfig38-39}
-shows the error statistic of feature position estimation under
-variation of $(f_x, f_y)$. The effect on the X axis component is
-minimum, in the scale of milli meter. Y axis component receive the
-most impact with unmatched $f_x$, since this is the scale factor that
-map feature's Y component in world frame onto U axis on image plane by
-$u = Y/X*f_x$. Same goes for the Z axis component of the feature
-position estimate and its relation to $f_y$.
+shows the error statistic of feature position estimates under various
+$(f_x, f_y)$ settings. The effect on the X axis component is minimum,
+in the scale of millimeter. Y axis component receive the most impact
+with inaccurate $f_x$, since this is the scale factor that map
+feature's Y component in world frame onto U axis on image plane by $u
+= Y/X \cdot f_x$. Same behavior happens for the Z axis component of
+the feature position estimate and its relation to $f_y$.
 \begin{figure}[h]
   \centering
   \includegraphics[width=7cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure38.png}
@@ -476,22 +483,13 @@ position estimate and its relation to $f_y$.
 \end{figure}
 
 Plotting the feature mapping error against feature ground truth
-position reveals how error in $(f_x, f_y)$ estimate impact on feature
-position estimate. When $f_x$ estimate contains error, Y component of
-feature position is determined by the feature's ground truth position
-on X and Y components. The value of $Y_{error}$ is directly proportional
+position reveals how error in $(f_x, f_y)$ impact on feature
+position estimates. When $f_x$ contains error, Y component of
+feature position error is  directly proportional
 to the Y component of its ground truth position, with the error in
 $f_x$ determines the function's slope. Same relation can be found for
 $Z_{error}$ with $f_y$, and $Z_{ground truth}$.
 
-% TODO simfig38-39:Merge these two into one, showing only the related.
-%\begin{figure}[h]
-%  \centering
-%  \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure47.png}
-%  \caption{Feature mapping error plotted against feature ground truth
-%    for various $(f_x, f_y)$}
-%  \label{fig:simfig47}
-%\end{figure}
 \begin{figure}[h]
   \centering
   \includegraphics[width=7cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure41.png}
@@ -502,6 +500,7 @@ $Z_{error}$ with $f_y$, and $Z_{ground truth}$.
 \end{figure}
 
 \FloatBarrier
+
 \subsection{Effect from Distortion}
 
 The CC\_EKF\_SLAM algorithm does not consider camera lens distortion
@@ -509,50 +508,54 @@ at this stage. Therefore, the simulation evaluate the effect of
 distortion varying from 0\% to 150\% of the calibrated result to
 evaluate the amount error resulted by ignoring the lens distortion. 
 
-Figure \ref{fig:simfig48} (left) shows the UAS localization error for all
-lens distortion setting. Ignoring the distortion brings significant
-error into the UAS localization. UAS X position receives the most
-impact with error up to 100 meters with increasing standard deviation.
-Y and Z position shows less error, but standard deviation grows larger
-with distortion offset.Figure \ref{fig:simfig48} (right) reveals the cause of
-increasing standard deviation. The UAS position error was growing
-larger with time. The UAS orientation estimates also experience error
-increase going from maximum mean error of 5e-6 rad in low noise
-simulation to 2.5e-4 rad. The standard deviation of orientation
-estimates also increases with lens distortion offset. Similarly, the
+Figure \ref{fig:simfig48} (left) shows the SUAS localization error for
+all lens distortion setting. Ignoring the distortion brings
+significant error into the UAS localization. SUAS X position receives
+the most impact with error up to 100 meters with increasing standard
+deviation. Y and Z position shows less error, but standard deviation
+grows larger with the increase in distortion offset. Figure
+\ref{fig:simfig48} (right) reveals the cause of increasing standard
+deviation. The SUAS position error was diverging with time. The SUAS
+orientation error increased from maximum mean error of 5e-6 rad in low
+noise simulation to 2.5e-4 rad. The standard deviation of orientation
+estimates also increased with lens distortion offset. Similarly, the
 orientation error vs. frame number plots show that the error amplitude
-increase with time, although it fluctuates around zero. 
+increase with time, although it fluctuates around zero.
 
+%TODO regenerate figure to make X axis more readable. change UAS to SUAS
 \begin{figure}[h]
   \centering
   \includegraphics[width=5cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure47.png}
   \includegraphics[width=9cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure48.png}
-  \caption{UAS localization error with lens distortion}
+  \caption{SUAS localization error with lens distortion}
   \label{fig:simfig48}
 \end{figure}
 
-The feature mapping error statistic is shown in figure
+The feature position error statistic is shown in figure
 \ref{fig:simfig45}. The X axis of feature position shows the most
 error, with mean value reading -400 meters with distortion offset at
-\%150. Y, and Z axis position has less mean error, but the standard
-deviation is bigger. Plotting feature position error agains feature
+150\%. Y, and Z axis position has less mean error, but the standard
+deviation is bigger. Plotting feature position error against feature
 ground truth coordinate (figure \ref{fig:simfig46}) shows that the
 increasing standard deviation is due to the first order linear
-relation between the Y (or Z) and the Y (or Z) axis of feature ground
-truth coordinate, where distortion offset determine the slope of the
-line. 
+relation between the Y (or Z) axis of feature position error and the Y
+(or Z) axis of feature ground truth coordinate, where distortion
+offset determine the slope of the line. The relation indicates that
+feature lying around the sides of the image plane carries more error
+than features at the center of the image. This is exactly the kind of
+error that radial distortion corrects for. 
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure45.png}
-  \caption{UAS localization error with lens distortion}
+  \caption{Feather position error with lens distortion}
   \label{fig:simfig45}
 \end{figure}
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure46.png}
-  \caption{UAS localization error with lens distortion}
+  \caption{Feather position error vs. ground truth position with lens distortion}
   \label{fig:simfig46}
 \end{figure}
 
@@ -562,11 +565,13 @@ line.
 
 It is well known that higher resolution sensor will give more accuracy
 to the estimate. To know how high a resolution is good enough for the
-distance range that this work is targeting, a quantitive analysis is
-necessary. The ideal case simulation is ran with various image
-resolution setting, and the result is below (figure \ref{fig:simfig50}). 
+distance range that this research is targeting at, a quantitative analysis is
+necessary. A few simulation is ran with various image
+resolution settings, and the result is shown in figure \ref{fig:simfig50}. 
 
-\begin{figure}[h]
+%TODO regenerate top figure to give enough room for xlabel, change UAS
+%to SUAS
+\begin{figure}[h] 
   \centering
   \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure50.png}
   \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure49.png}
@@ -574,11 +579,11 @@ resolution setting, and the result is below (figure \ref{fig:simfig50}).
   \label{fig:simfig50}
 \end{figure}
 
-This test confirmed that higher resolution the image sensor is, the
+This test confirmed that the higher resolution the image sensor is, the
 more accuracy it will bring. The most significant error is seen at
 resolution 480x720 where the X axis of feature position error is +/-
-150m. At one 720x1080, which is one step up of 480x720, the X axis
-feature position error is hugely reduced to a few meters. For all
+150m. At 720x1080, which is one step up of 480x720, the X axis
+feature position error is greatly reduced to a few meters. For all
 other parameters, improvement at each level of resolution increase is
 nearly linear. This result suggests that to achieve reasonably good
 accuracy for obstacle detection, a resolution of 720x1080 or higher is
