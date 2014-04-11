@@ -80,5 +80,6 @@
 \contentsline {chapter}{List of References}{73}{section*.93}
 \contentsline {chapter}{Appendix \numberline {A}Coordinate Transformation}{79}{section*.95}
 \contentsline {chapter}{Appendix \numberline {B}Jacobian Matrix for Filter Initialization}{82}{section*.97}
-\contentsline {chapter}{Appendix \numberline {C}Linearization of Measurement Model}{85}{section*.98}
-\contentsline {subsubsection}{Jacobian Matrix of Composition Equations}{87}{section*.99}
+\contentsline {chapter}{Appendix \numberline {C}Linearization of Measurement Model and Composition Equations}{85}{section*.98}
+\contentsline {section}{\numberline {C.1}Linearization of Measurement Model}{85}{section.C.1}
+\contentsline {section}{\numberline {C.2}Jacobian Matrix of Composition Equations}{87}{section.C.2}

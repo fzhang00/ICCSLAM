@@ -1,3 +1,12 @@
+%%% Modification of BibTeX style file C:\Users\fan\Documents\HOME\GitHub\ICCSLAM\Thesis\cuthesis.sty
+%%% ... by urlbst, version 0.7 (marked with "% urlbst")
+%%% See <http://purl.org/nxg/dist/urlbst>
+%%% Added webpage entry type, and url and lastchecked fields.
+%%% Added eprint support.
+%%% Added DOI support.
+%%% Added PUBMED support.
+%%% Original headers follow...
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % This LaTeX package is used to create theses and dissertations at
 % the Carleton University.  It was was written by UNIVERSITY OF RHODE ISLAND
@@ -679,7 +688,7 @@
   \@ifundefined{@wantmanuscript}{
     \phantomsection
     \addcontentsline{toc}{chapter}{List of References}
-     \bibliographystyle{IEEEtran}
+     \bibliographystyle{ieeetr}
     \@ifundefined{@norefbib}{
       \bibliography{\@reffile}
     }{}
@@ -706,7 +715,7 @@
       \addcontentsline{toc}{section}{List of References}
 %      \addcontentsline{toc}{chapter}{List of References}
       \bibliography{\@reffile}
-      \bibliographystyle{IEEEtran}
+      \bibliographystyle{ieeetr}
       \newpage
     \fi
   }

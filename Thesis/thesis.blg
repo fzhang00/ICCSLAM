@@ -8,56 +8,67 @@ A level-1 auxiliary file: chapter4.aux
 A level-1 auxiliary file: chapter5.aux
 A level-1 auxiliary file: chapter6.aux
 A level-1 auxiliary file: chapter7.aux
-The style file: ieeetr.bst
+The style file: IEEEtran.bst
 A level-1 auxiliary file: appendix.aux
 A level-1 auxiliary file: appendix2.aux
 A level-1 auxiliary file: appendix3.aux
-Database file #1: ref.bib
-Warning--empty institution in james_geosurv_2008
-Warning--empty publisher in williams_efficient_2001
-Warning--empty publisher in chong_feature-based_1999
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: IEEEabrv.bib
+Database file #2: ref.bib
+-- IEEEtran.bst version 1.13 (2008/09/30) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--missing institution in james_geosurv_2008
+Warning--missing publisher in williams_efficient_2001
+Warning--missing publisher in chong_feature-based_1999
 Warning--empty booktitle in amzajerdian_lidar_2011
-Warning--empty publisher in csorba_simultaneous_1997
-Warning--empty publisher in bailey_mobile_2002
+Warning--missing publisher in csorba_simultaneous_1997
+Warning--missing publisher in bailey_mobile_2002
+
+Done.
 You've used 74 entries,
-            1876 wiz_defined-function locations,
-            868 strings with 16318 characters,
-and the built_in function-call counts, 21481 in all, are:
-= -- 2187
-> -- 649
-< -- 0
-+ -- 248
-- -- 174
-* -- 1387
-:= -- 2725
-add.period$ -- 77
+            4039 wiz_defined-function locations,
+            1615 strings with 28575 characters,
+and the built_in function-call counts, 56255 in all, are:
+= -- 4500
+> -- 1178
+< -- 516
++ -- 663
+- -- 181
+* -- 2669
+:= -- 8139
+add.period$ -- 146
 call.type$ -- 74
-change.case$ -- 66
-chr.to.int$ -- 0
+change.case$ -- 67
+chr.to.int$ -- 1263
 cite$ -- 80
-duplicate$ -- 1177
-empty$ -- 2200
-format.name$ -- 174
-if$ -- 5373
+duplicate$ -- 3965
+empty$ -- 4801
+format.name$ -- 227
+if$ -- 13101
 int.to.chr$ -- 0
 int.to.str$ -- 74
-missing$ -- 74
-newline$ -- 235
-num.names$ -- 69
-pop$ -- 366
+missing$ -- 658
+newline$ -- 281
+num.names$ -- 70
+pop$ -- 1619
 preamble$ -- 1
 purify$ -- 0
-quote$ -- 0
-skip$ -- 900
+quote$ -- 2
+skip$ -- 4427
 stack$ -- 0
-substring$ -- 1694
-swap$ -- 503
-text.length$ -- 0
+substring$ -- 3035
+swap$ -- 3259
+text.length$ -- 95
 text.prefix$ -- 0
-top$ -- 0
-type$ -- 0
+top$ -- 5
+type$ -- 74
 warning$ -- 6
-while$ -- 217
+while$ -- 268
 width$ -- 76
-write$ -- 675
+write$ -- 735
 (There were 6 warnings)

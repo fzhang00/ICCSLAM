@@ -62,6 +62,8 @@ ENTRY
     type
     volume
     year
+    url
+    urldate
   }
   {}
   { label }
@@ -270,6 +272,21 @@ FUNCTION {bbl.mthesis}
 
 FUNCTION {bbl.phdthesis}
 { "Ph.D. thesis" }
+
+FUNCTION {format.url}
+{ url empty$
+    { "" }
+    {   
+        ". \emph{Disponible}~\url{" * url * "}" *
+        urldate empty$
+         { "there is url but no urldate in " cite$ * warning$ }
+         { 
+            "~(\emph{consult\'e le} " * urldate * ")" *
+         }
+         if$
+    }
+  if$
+}
 
 MACRO {jan} {"January"}
 
@@ -1162,6 +1179,7 @@ FUNCTION {misc}
   format.date output
   fin.entry
   empty.misc.check
+  format.url "" output
 }
 FUNCTION {phdthesis}
 { output.bibitem

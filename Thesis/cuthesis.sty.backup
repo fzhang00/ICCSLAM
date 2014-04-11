@@ -679,7 +679,7 @@
   \@ifundefined{@wantmanuscript}{
     \phantomsection
     \addcontentsline{toc}{chapter}{List of References}
-     \bibliographystyle{IEEEtran}
+     \bibliographystyle{ieeetr}
     \@ifundefined{@norefbib}{
       \bibliography{\@reffile}
     }{}
@@ -706,7 +706,7 @@
       \addcontentsline{toc}{section}{List of References}
 %      \addcontentsline{toc}{chapter}{List of References}
       \bibliography{\@reffile}
-      \bibliographystyle{IEEEtran}
+      \bibliographystyle{ieeetr}
       \newpage
     \fi
   }

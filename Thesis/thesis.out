@@ -58,4 +58,6 @@
 \BOOKMARK [0][-]{section*.93}{List of References}{}% 58
 \BOOKMARK [0][-]{section*.95}{Appendix A Coordinate Transformation}{}% 59
 \BOOKMARK [0][-]{section*.97}{Appendix B Jacobian Matrix for Filter Initialization}{}% 60
-\BOOKMARK [0][-]{section*.98}{Appendix C Linearization of Measurement Model}{}% 61
+\BOOKMARK [0][-]{section*.98}{Appendix C Linearization of Measurement Model and Composition Equations}{}% 61
+\BOOKMARK [1][-]{section.C.1}{C.1 Linearization of Measurement Model}{section*.98}% 62
+\BOOKMARK [1][-]{section.C.2}{C.2 Jacobian Matrix of Composition Equations}{section*.98}% 63

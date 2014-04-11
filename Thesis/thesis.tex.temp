@@ -21,16 +21,14 @@
 \usepackage{multirow}
 \usepackage{float}
 \usepackage{color}
-%\usepackage{url}
-%\usepackage[style=numeric-comp]{biblatex}
-%\addbibresource{ref.bib}
+\usepackage[backend=biber]{biblatex}
 
 
 % Defines relative path to folder containing your figures
 \graphicspath{{figures/}}
 %\providecommand{\norm}[1]{\lvert#1\rvert} 
 
-% Set the document text spacing
+%Set the document text spacing
 %\singlespacing
 \onehalfspacing
 %\doublespacing
@@ -86,7 +84,8 @@
 
 % This is the name of the .bib files that holds all of your references.
 % It can be a comma separated list if there is more than one file.
-\reffile{IEEEabrv,ref}
+%\reffile{ref}
+\bibliography{ref}
 
 % Defines relative path to folder containing your figures
 \graphicspath{{figures/}}
@@ -124,7 +123,6 @@
 \newappendix{appendix}
 \newappendix{appendix2}
 \newappendix{appendix3}
-%\printbibliography
 \end{document}
 
 %%% Local Variables: 

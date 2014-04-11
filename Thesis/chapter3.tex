@@ -164,7 +164,7 @@ obtained through camera calibration.
 
 Since the measurement model is non-linear, the equation must be
 linearized to calculate the Kalman gain $K$. Detail formulation for
-linearization is given in appendix \ref{ch:appendix3}.
+linearization is given in appendix \ref{sec:jac_measurement}.
 
 \subsection{Composition Step}
 
@@ -252,7 +252,7 @@ P_{k}^{C_{k}}=J_{C_{k-1}\to C_{k}}P_{k}^{C_{k-1}}J_{C_{k-1}\to C_{k}}^{T}
 
 \noindent where $J_{C_{k-1} \to C_k}$ is the Jacobian matrix of the
 composition equations. Detail derivation of the Jacobian matrix is
-given in appendix D \ref{?}  
+given in appendix \ref{sec:jac_composition}  
 
 \subsection{Filter Initialization}
 \subsubsection{Initialize the State Vector}

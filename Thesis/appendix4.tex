@@ -1,0 +1,230 @@
+\chapter{Jacobian Matrix of Composition Equations}\label{ch:appendix4}
+
+The composition equations given in chapter \ref{ch:algorithm} is a
+nonlinear one. For the error matrix to propogate properly from one
+frame to another, the Jacobian matrix of the equations must be
+computed. The complete Jacobian matrix for the full state vector is
+given by 
+
+\begin{equation}
+\label{eq:J_x_2_x-1}
+ J_{C_{k-1} \to C_k} = \frac{\partial x_{k}}{\partial x_{k-1}}=
+\begin{bmatrix} 
+\frac{\partial x_{k}}{\partial OX_{W, k-1}^{C}} &
+\frac{\partial x_{k}}{\partial c_{k-1}} & 
+\frac{\partial x_{k}}{\partial r_{k-1}} & 
+\frac{\partial x_{k}}{\partial p_{1, k-1}^{C}} &
+\frac{\partial x_{k}}{\partial p_{2, k-1}^{C}} &
+\cdots 
+\end{bmatrix}
+\end{equation}
+
+
+First element of the matrix \ref{eq:J_x_2_x-1} $\frac{\partial
+  x_{k}}{\partial OX_{W, k-1}^{C}}$ can be expanded to
+
+$$
+{\partial x_{k}}{\partial OX_{W, k-1}^{C}}=\begin{bmatrix}
+\frac{\partial O_{W,k}^{C}}{\partial O_{W,k-1}^{C}} & 
+\frac{\partial O_{W,k}^{C}}{\partial W_{W,k-1}^{C}} \\
+\frac{\partial W_{W,k}^{C}}{\partial O_{W,k-1}^{C}} & 
+\frac{\partial W_{W,k}^{C}}{\partial W_{W,k-1}^{C}} \\
+\frac{\partial c_{k}}{\partial O_{W,k-1}^{C}} & 
+\frac{\partial c_{k}}{\partial W_{W,k-1}^{C}} \\
+\frac{\partial r_{k}}{\partial O_{W,k-1}^{C}} & 
+\frac{\partial r_{k}}{\partial W_{W,k-1}^{C}} \\
+\frac{\partial p_{i}^{C}}{\partial O_{W,k-1}^{C}} & 
+\frac{\partial p_{i}^{C}}{\partial W_{W,k-1}^{C}} \\
+\end{bmatrix} = \begin{bmatrix}
+R^{-1}(r^{C}) & 0 \\
+0 & 1 \\
+0 & 0 \\
+0 & 0 \\
+0 & 0 \\
+\end{bmatrix}
+$$
+
+The second and third elements in matrix \ref{eq:J_x_2_x-1} is with
+respect to $c$ and $p$. They can be expanded into
+
+$$
+\begin{bmatrix}\frac{\partial x_{k}}{\partial c_{k-1}} & 
+\frac{\partial x_{k}}{\partial r_{k-1}} \end{bmatrix} =
+\begin{bmatrix}
+\frac{\partial O_{W,k}^{C}}{\partial c_{k-1}} & 
+\frac{\partial O_{W,k}^{C}}{\partial r_{k-1}} \\
+\frac{\partial W_{W,k}^{C}}{\partial c_{k-1}} & 
+\frac{\partial W_{W,k}^{C}}{\partial r_{k-1}} \\
+\frac{\partial c_{k}}{\partial c_{k-1}} & 
+\frac{\partial c_{k}}{\partial r_{k-1}} \\
+\frac{\partial r_{k}}{\partial c_{k-1}} & 
+\frac{\partial r_{k}}{\partial r_{k-1}} \\
+\frac{\partial p(0:2)_{i}^{C}}{\partial c_{k-1}} & 
+\frac{\partial p(0:2)_{i}^{C}}{\partial r_{k-1}} \\
+\frac{\partial p(3:5)_{i}^{C}}{\partial c_{k-1}} & 
+\frac{\partial p(3:5)_{i}^{C}}{\partial r_{k-1}} \\
+\end{bmatrix} = \begin{bmatrix}
+-R^{-1}(r_{k}^{C_{k-1}}) & 
+\frac{\partial R^{-1}(r_{k}^{C_{k-1}})}{\partial r_{k-1}} \\
+0 & -I \\
+I & 0 \\
+0 & I \\
+-R^{-1}(r_{k}^{C_{k-1}}) & 
+\frac{\partial R^{-1}(r_{k}^{C_{k-1}})}{\partial r_{k-1}}\\
+0 & \frac{\partial p(3:5)_{i}^{C}}{\partial r_{k-1}} \\
+\end{bmatrix}
+$$
+
+\noincent $\frac{\partial p(3:5)_{i}^{C}}{\partial r_{k-1}}$ can be
+expanded to
+
+$$
+\frac{\partial p(3:5)_{i}^{C}}{\partial r_{k-1}}=\begin{bmatrix}
+1 & 0 & 0\\
+ & \frac{\partial \varphi _{i, k}^{C}}{\partial r_{k-1}} & \\
+ & \frac{\partial \theta _{i, k}^{C}}{\partial r_{k-1}} \\
+\end{bmatrix} = \begin{bmatrix}
+1 & 0 & 0 \\
+ & \frac{\partial m^{-1}(R^{-1}(r^{C_{k-1}})
+m(\varphi _{i, k}^{C_{k-1}}, \theta _{i, k}^{C_{k-1}}))}
+{\partial r_{k-1}} & \\
+\end{bmatrix}
+$$
+
+\noindent $m^{-1}$ is the operator that compute elevation-azimuth
+angles from a vector, and is defined in equation \ref{eq:m_inv_varphi}
+and \ref{eq:m_inv_theta}. Let
+$M=R^{-1}(r^{C_{k-1}})m(\varphi_{i,k}^{C_{k-1}},\theta_{i,k}^{C_{k-1}})$
+representing the $m$ vector seen by the camera at location $k$, then
+
+$$\frac{\partial m^{-1}}}{\partial r_{k-1}}=
+\frac{\partial m^{-1}}{\partial M} \cdot 
+\frac{\partial M}{\partial r_{k-1}}$$
+
+\noindent where
+
+$$
+\frac{\partial M}{\partial r_{k-1}}= 
+\frac{\partial R^{-1}(r_{k}^{C_{k-1}})}{\partial r_{k-1}}
+\cdot m(\varphi_{i,k}^{C_{k-1}}, \theta _{i, k}^{C_{k-1}}) 
+$$
+
+\noindent and $\frac{\partial m^{-1}}{\partial M}$ is $
+\frac{\partial \varphi _{k}^{C}}{\partial h_{k}^{R}}$ and $
+\frac{\partial \theta _{k}^{C}}{\partial h_{k}^{R}}$\end{center}
+
+With respect to $p_{i}^{C}$
+
+$\frac{\partial x_{k}}{\partial p_{i, k-1}^{C}}=\lbrack \begin{matrix}
+\begin{matrix}
+\frac{\partial O_{W,k}^{C}}{\partial p_{i, k-1}^{C}} & \\
+\frac{\partial W_{W,k}^{C}}{\partial p_{i, k-1}^{C}} & \\
+\frac{\partial c_{k}}{\partial p_{i, k-1}^{C}} & \\
+\end{matrix}
+ & \\
+\begin{matrix}
+\frac{\partial r_{k}}{\partial p_{i, k-1}^{C}} & \\
+\frac{\partial p_{i, k}^{C}}{\partial p_{i, k-1}^{C}} & \\
+\end{matrix}
+ & \\
+\end{matrix}
+\rbrack =\lbrack \begin{matrix}
+0 & \\
+0 & \\
+0 & \\
+0 & \\
+\frac{\partial p_{i, k}^{C}}{\partial p_{i, k-1}^{C}} & \\
+\end{matrix}
+\rbrack $\\
+
+
+$\frac{\partial p_{i,k}^{C}}{\partial p_{i,k-1}^{C}}=\lbrack 
+\begin{matrix}
+\frac{\partial x_{i,k}^{C}}{\partial p_{i,k-1}^{C}} & \\
+\frac{\partial y_{i,k}^{C}}{\partial p_{i,k-1}^{C}} & \\
+\frac{\partial z_{i,k}^{C}}{\partial p_{i,k-1}^{C}} & \\
+\frac{\partial \rho _{i,k}^{C}}{\partial p_{i,k-1}^{C}} & \\
+\frac{\partial \varphi _{i, k}^{C}}{\partial p_{i,k-1}^{C}} & \\
+\frac{\partial \theta _{i, k}^{C}}{\partial p_{i,k-1}^{C}} & \\
+\end{matrix}
+\rbrack =\lbrack \begin{matrix}
+R^{-1}(r^{C}) & 0 & \\
+0 & \frac{\partial \rho _{i,k}^{C}}{\partial p(3:5)_{i,k-1}^{C}} & \\
+0 & \frac{\partial \varphi _{i, k}^{C}}{\partial p(3:5)_{i,k-1}^{C}} & 
+\\
+0 & \frac{\partial \theta _{i, k}^{C}}{\partial p(3:5)_{i,k-1}^{C}} & \\
+\end{matrix}
+\rbrack $\\
+
+
+$\frac{\partial p_{i,k}^{C}}{\partial p_{i,k-1}^{C}}=\lbrack 
+\begin{matrix}
+0 & \\
+\frac{\partial \varphi _{i, k}^{C}}{\partial p_{i,k-1}^{C}} & \\
+\frac{\partial \theta _{i, k}^{C}}{\partial p_{i,k-1}^{C}} & \\
+\end{matrix}
+\rbrack =\lbrack \begin{matrix}
+0 & 0 & 0 & \\
+0 & \frac{\partial \varphi _{i, k}^{C}}{\partial \varphi _{i, k-1}^{C}} 
+& \frac{\partial \varphi _{i, k}^{C}}{\partial \theta _{i, k-1}^{C}} & 
+\\
+0 & \frac{\partial \theta _{i, k}^{C}}{\partial \varphi _{i, k-1}^{C}} & 
+\frac{\partial \theta _{i, k}^{C}}{\partial \theta _{i, k-1}^{C}} & \\
+\end{matrix}
+\rbrack =\lbrack \begin{matrix}
+0 & 0 & 0 & \\
+0 & \frac{\partial \varphi _{i, k}^{C}}{\partial h_{i,k}^{R}} 
+\frac{\partial h_{i,k}^{R}}{\partial \varphi _{i, k-1}^{C}} & 
+\frac{\partial \varphi _{i, k}^{C}}{\partial h_{i,k}^{R}} \frac{\partial 
+h_{i,k}^{R}}{\partial \theta _{i, k-1}^{C}} & \\
+0 & \frac{\partial \theta _{i, k}^{C}}{\partial h_{i,k}^{R}} 
+\frac{\partial h_{k}^{R}}{\partial \varphi _{i, k-1}^{C}} & 
+\frac{\partial \theta _{i, k}^{C}}{\partial h_{i,k}^{R}} \frac{\partial 
+h_{i,k}^{R}}{\partial \theta _{i, k-1}^{C}} & \\
+\end{matrix}
+\rbrack $\\
+
+
+For the ith feature point,
+
+$\frac{\partial \varphi _{k}^{C}}{\partial h_{k}^{R}}=\lbrack 
+\frac{\partial \varphi _{k}^{C}}{\partial h_{x,k}^{R}} \frac{\partial 
+\varphi _{ k}^{C}}{\partial h_{y,k}^{R}} \frac{\partial \varphi _{ 
+k}^{C}}{\partial h_{z,k}^{R}}\rbrack =\lbrack \begin{matrix}
+\frac{-h_{x,k}^{R}\cdot 
+h_{z,k}^{R}}{(h_{x,k}^{R}^{2}+h_{y,k}^{R}^{2}+h_{z,k}^{R}^{2})\sqrt{h_{x,k}^{R}^{2}+h_{y,k}^{R}^{2}}} 
+& \\
+\frac{-h_{y,k}^{R}\cdot 
+h_{z,k}^{C}}{(h_{x,k}^{R}^{2}+h_{y,k}^{R}^{2}+h_{z,k}^{R}^{2})\sqrt{h_{x,k}^{R}^{2}+h_{y,k}^{R}^{2}}} 
+& \\
+
+\frac{\sqrt{h_{x,k}^{R}^{2}+h_{y,k}^{R}^{2}}}{(h_{x,k}^{R}^{2}+h_{y,k}^{R}^{2}+h_{z,k}^{R}^{2})} 
+& \\
+\end{matrix}
+\rbrack ^{T}$\\
+
+
+$\frac{\partial \theta _{k}^{C}}{\partial h_{k}^{R}}=\lbrack 
+\begin{matrix}
+-\frac{h_{y,k}^{R}}{h_{x,k}^{R}^{2}+h_{y,k}^{R}^{2}} & 
+\frac{h_{x,k}^{R}}{h_{x,k}^{R}^{2}+h_{y,k}^{R}^{2}} & 0 & \\
+\end{matrix}
+\rbrack $\\
+
+
+$\frac{\partial h_{k}^{R}}{\partial \varphi _{k-1}^{C}}=R^{-1}(r^{C}) 
+\lbrack \begin{matrix}
+-\cos (\theta _{k-1}^{C})\sin (\varphi _{k-1}^{C}) & \\
+-\sin (\varphi _{k-1}^{C})\sin (\theta _{k-1}^{C}) & \\
+\cos (\varphi _{k-1}^{C}) & \\
+\end{matrix}
+\rbrack $\\
+
+
+$\frac{\partial h_{k}^{R}}{\partial \theta _{k-1}^{C}}=R^{-1}(r^{C}) 
+\lbrack \begin{matrix}
+-\cos (\varphi _{k-1}^{C})\sin (\theta _{k-1}^{C}) & \\
+\cos (\varphi _{k-1}^{C})\cos (\theta _{k-1}^{C}) & \\
+0 & \\
+\end{matrix}
+\rbrack $\\
