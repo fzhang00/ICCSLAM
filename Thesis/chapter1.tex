@@ -1,22 +1,25 @@
 \chapter{Introduction} \label{ch:intro}
-
-Generating an accurate and high precision model of its surrounding 
-environment to indicate hazard features is an important issue for any 
-autonomous vehicle. Knowing its own location in the map is essential for 
+% Word checked, no spell and gramma error. 
+For any autonomous vehicle, generating an accurate and high precision model of its surrounding 
+environment to indicate hazard features, and knowing its own location in the map is essential for 
 the vehicle to navigate and avoid obstacle autonomously. 
 
 In many applications, the mobile robot has a priori map. The given 
 priori map may be sufficient for localization purpose, but generally do 
-not have the resolution required for obstacle detection. Ground vehicles 
+not have sufficent resolution or up-to-date information required for obstacle detection. Ground vehicles 
 need to deal with temporary added road block and parked cars. Aerial 
 vehicles may not have a high enough resolution map that indicates tall 
-trees, steep hills or electrical towers. In addition, usable map do not 
-always exist. Without maps or externally referenced pose information, 
+trees, steep hills or electrical towers. In addition, usable map does not 
+always exist. Without maps and externally referenced pose information, 
 the robot must produce its own map and concurrently localize itself 
 within the map. This problem is referred to as the simultaneous 
 localization and mapping (SLAM). 
 
+<<<<<<< HEAD
+Traditional two-dimentional SLAM algorithms are well established in the past
+=======
 Traditional two-dimensional SLAM algorithms are well established in the past
+>>>>>>> 7011d400235f9f848f52318db5cf396e2b21b6c1
 decade. A SLAM algorithm typically utilises measurements from several
 types of sensor which can be divided into two groups, those that
 provide vehicles pose and orientation measurements, such as wheel
@@ -29,6 +32,7 @@ results from realistic aerial video data are rare \cite{nemra_robust_2010}
 \cite{jianli_unscented_2011} \cite{sunderhauf_using_2007} \cite{artieda_visual_2009}.
 
 \section{Problem Statement}\label{section:ProblemStatement}
+% Word checked.
 Obstacle detection has received a lot of research interest in recent
 years. Various algorithms were developed for ground, under water and
 aerial vehicle using different sensor such as sonar, radar, LIDAR, and
@@ -78,6 +82,7 @@ be in place to detect discrete threat, and operate automatically with
 minimum intervene from the operator. 
 
 \section{Contributions}\label{section:Contribution}
+% word checked.
 The thesis first reviews pros and cons of various sensors for obstacle
 detection, and point out the advantage and disadvantage of using
 imaging sensor in OD application. Different type of imaging sensor
@@ -85,7 +90,7 @@ configurations and sensor calibration method was described. Next, the
 thesis reviews the formulation and properties of a typical Extended
 Kalman Filter (EKF) based SLAM algorithm, and discusses the advantage
 and limitation of a typical SLAM algorithm. An inverse
-parameterization method was also described. 
+parameterization method was also described.
 
 These reviews and discussions motivates the development of an improved
 method by fusing multiple sensors into a mono vision EKF based SLAM
@@ -102,7 +107,7 @@ camera to estimate absolute landmark location and the position of the
 SUAS. Inverse parameterization was adopted to describe the landmark
 position so that distanced landmark can be included into the framework
 at initialization. Camera centric coordinate was used to improve the
-consistency of the framework for large area mapping. 
+consistency of the framework for large area mapping.
 
 Aerial flight data were collected to test the performance and accuracy
 of the algorithm in a scenario similar to the one where the UAV will
@@ -113,16 +118,17 @@ is capable of mapping features over 1000 meters away. The preliminary
 result of the test flight was published in \cite{zhang_obstacle_2012}.
 This paper is one of the first ones in the field that successfully
 applying monocular vision SLAM in large scale aerial SLAM application.
-In addition, a series simulations was done to thoroughly analyze the
-behavior of the algorithm under various circumstances, including
-simple forward motion, oscillatory motion for all other 5 d.o.f.,
+In addition, a series of simulations were done to thoroughly analyze
+the behavior of the algorithm under various circumstances, including
+simple forward motion, oscillatory motion for all other 5 D.O.F.,
 error embedded in calibration result of the camera intrinsic
-parameters, and image resolution. The result of these simulation is
+parameters, and image resolution. The results of these simulations are
 valuable for the design of suitable data acquisition requirement for
 obstacle detection purpose, and future improvement of the
 CC\_EKF\_SLAM algorithm.
 
 \section{Organization}\label{section:Organization}
+% word checked
 The thesis is organized as follows:
 
 \begin{itemize}
@@ -134,8 +140,7 @@ The thesis is organized as follows:
   setup for the aerial data collection, and data preparation steps.
   \item Chapter 5 presents detail analysis on the performance of the
   algorithm. Convergence and consistency of the algorithm is
-  discussed. Error analysis compared to ground truth data is presented
-  in and . 
+  discussed. Error analysis compared to ground truth data is presented. 
   \item Chapter 6 presents result of the simulations for understanding
   the behavior of the CC\_EKF\_SLAM algorithm under different
   conditions.  
