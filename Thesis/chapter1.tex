@@ -15,14 +15,10 @@ the robot must produce its own map and concurrently localize itself
 within the map. This problem is referred to as the simultaneous 
 localization and mapping (SLAM). 
 
-<<<<<<< HEAD
-Traditional two-dimentional SLAM algorithms are well established in the past
-=======
 Traditional two-dimensional SLAM algorithms are well established in the past
->>>>>>> 7011d400235f9f848f52318db5cf396e2b21b6c1
 decade. A SLAM algorithm typically utilises measurements from several
 types of sensor which can be divided into two groups, those that
-provide vehicles pose and orientation measurements, such as wheel
+provide vehicle poses and orientation measurements, such as wheel
 odometer, or GPS; and those that provide landmark bearing and range
 measurements, such as radar, sonar, laser range finder. In recent
 years, optical sensors are actively being incorporated into SLAM
@@ -33,17 +29,12 @@ results from realistic aerial video data are rare \cite{nemra_robust_2010}
 
 \section{Problem Statement}\label{section:ProblemStatement}
 % Word checked.
-Obstacle detection has received a lot of research interest in recent
+Obstacle detection (OD) has received a lot of research interest in recent
 years. Various algorithms were developed for ground, under water and
-aerial vehicle using different sensor such as sonar, radar, LIDAR, and
-vision. Most research focus on utilizing with only one sensor. Yet,
-research shows that using multiple sensors produces a better
-measurement than single sensor \cite{smith_approaches_2006}. With
-various sensors readily available on most UAV navigation hardware;
-such as accelerometers, gyroscope, GPS receiver, altimeter, etc.,
-fully utilizing these sensors to aid the main obstacle detection (OD)
-sensor helps to improve the accuracy and robustness of the range
-measurement, especially in harsh flying condition.
+aerial vehicle using different sensors such as sonar, radar, LIDAR, and
+vision. Most OD system focus on only one sensor. Yet, using multiple sensors produces a better
+measurement than single sensor \cite{smith_approaches_2006}. On most unmanned aerial vehicle (UAV) platforms, many sensors are readily available ,such as accelerometers, gyroscope, GPS receiver, altimeter, etc.
+Fully utilizing these sensors should improve the accuracy and robustness of an OD system, especially in harsh flying condition.
 
 This thesis focuses on developing an obstacle detection system by
 using a SLAM algorithm as a sensor fusion framework for medium size
