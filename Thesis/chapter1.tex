@@ -96,18 +96,22 @@ camera. Inverse parameterization was adopted to describe the landmarks
 positions so that distanced landmarks can be estimated. Camera centric coordinate was used to improve the
 consistency of the framework for large area mapping. The filter estimates the absolute landmarks coordinates and the position of the UAV directly. An interpolated map can be generated from the estimates to represent the surrounding environment of the UAV, and the location of the UAV within.
 
-To test the algorithm under true flying condition, aerial flight data were collected processed by the algorithm. A simulated unmanned aerial system (SUAS) was fabricated with various sensors installed . Flight data were collected by towing the SUAS with a helicopter flying at 60 knots. The test result proved that CC\_EKF\_SLAM algorithm
+To test the algorithm under true flying condition, aerial flight data were collected processed by the algorithm. A simulated unmanned aerial system (SUAS) was fabricated with various sensors installed . Flight data were collected by towing the SUAS with a helicopter flying at 60 knots, 100 meters above ground. The test result proved that CC\_EKF\_SLAM algorithm
 is capable of mapping features over 1000 meters away. The preliminary
 result of the test flight was published in \cite{zhang_obstacle_2012}.
-This paper is one of the first ones in the field that successfully
-applying monocular vision SLAM in large scale aerial SLAM application.
-In addition, a series of simulations were done to thoroughly analyze
-the behavior of the algorithm under various circumstances, including
-simple forward motion, oscillatory motion for all other 5 D.O.F.,
-error embedded in calibration result of the camera intrinsic
-parameters, and image resolution. The results of these simulations are
-valuable for the design of suitable data acquisition requirement for
-obstacle detection purpose, and future improvement of the
+This paper is one of the first in the field that successfully
+applying monocular vision SLAM in large scale aerial OD application.
+To further analyze the error seen in the flight test result, a series of simulations were done to thoroughly study
+the error of the algorithm under various circumstances, including
+\begin{itemize}
+\item UAV conducting simple forward only motion
+\item UAV conducting oscillatory motion on all other 5 degree of freedom (D.O.F.)
+\item error exists in camera calibration result
+\item quantization error introduced through image digitization 
+\end{itemize}
+The results of these simulations are
+valuable to the design of data acquisition hardware for
+obstacle detection purpose, and to the future improvement of the
 CC\_EKF\_SLAM algorithm.
 
 \section{Organization}\label{section:Organization}
@@ -116,14 +120,13 @@ The thesis is organized as follows:
 
 \begin{itemize}
   \item Chapter 2 presents an overview on sensors, and data fusion
-  framework (EKF AND SLAM) related to obstacle detection and range measurement.
+  framework (EKF and SLAM) related to obstacle detection and range measurement.
   \item Chapter 3 describes the detail implementation of the proposed
   CC\_EKF\_SLAM algorithm.
   \item Chapter 4 describes camera calibration procedure and result, equipments
   setup for the aerial data collection, and data preparation steps.
-  \item Chapter 5 presents detail analysis on the performance of the
-  algorithm. Convergence and consistency of the algorithm is
-  discussed. Error analysis compared to ground truth data is presented. 
+  \item Chapter 5 presents result of the flight test. Convergence and consistency of the algorithm is
+  discussed. Error analysis by comparing to the ground truth data is presented. 
   \item Chapter 6 presents result of the simulations for understanding
   the behavior of the CC\_EKF\_SLAM algorithm under different
   conditions.  
