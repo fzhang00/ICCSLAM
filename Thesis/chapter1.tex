@@ -94,13 +94,9 @@ filter to fuse camera motion measurements from inertial and gyroscope
 sensors and landmarks measurements from the video of a single wide angle
 camera. Inverse parameterization was adopted to describe the landmarks
 positions so that distanced landmarks can be estimated. Camera centric coordinate was used to improve the
-consistency of the framework for large area mapping. Absolute landmarks coordinates and the position of the UAV are estimated by the filter.
+consistency of the framework for large area mapping. The filter estimates the absolute landmarks coordinates and the position of the UAV directly. An interpolated map can be generated from the estimates to represent the surrounding environment of the UAV, and the location of the UAV within.
 
-Aerial flight data were collected to test the performance and accuracy
-of the algorithm in a scenario similar to the one where the UAV will
-be eventually deployed. The data was collected by installing all
-sensors on a simulated unmanned aerial vehicle (SUAS) which is towed
-by a helicopter. The test result proved that CC\_EKF\_SLAM algorithm
+To test the algorithm under true flying condition, aerial flight data were collected processed by the algorithm. A simulated unmanned aerial system (SUAS) was fabricated with various sensors installed . Flight data were collected by towing the SUAS with a helicopter flying at 60 knots. The test result proved that CC\_EKF\_SLAM algorithm
 is capable of mapping features over 1000 meters away. The preliminary
 result of the test flight was published in \cite{zhang_obstacle_2012}.
 This paper is one of the first ones in the field that successfully
