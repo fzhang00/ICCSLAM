@@ -37,26 +37,25 @@ measurement than single sensor \cite{smith_approaches_2006}. On most unmanned ae
 Fully utilizing these sensors should improve the accuracy and robustness of an OD system, especially in harsh flying condition.
 
 This thesis focuses on developing an obstacle detection system by
-using a SLAM algorithm as a sensor fusion framework for medium size
+using a SLAM algorithm as a sensor fusion framework to integrate measurements from various sensors on a typical UAV navigation device. The type of application targeted by this work is medium size
 UAV conducting low altitude terrain following flight in natural
-environment. The obstacles are static objects on ground, and moving
+environment. The obstacles are static objects on ground; moving
 objects are not considered. Research presented in this thesis
 contributes to the project of developing a mid-size UAV to perform
 geological survey, carried out by Carleton University in collaborated
 with Sander Geophysics Ltd., an Ottawa based company specialized in
 high precision geophysical survey. To achieve high resolution data
 acquisition, the UAV must be able to perform terrain following flight
-with altitude from ground as low as 10 meters at speed ranging from 60
-knots (30 m/s) to 100 knots (51.4 m/s). The rate of climb for the UAV
-is specified to 400ft of vertical rise per minutes (122 meters per
+with altitude from ground as low as 10 meters, and with ground speed ranging from 60
+knots (30 m/s) to 100 knots (51.4 m/s). The specified rate of climb for the UAV
+is 400ft of vertical rise per minutes (122 meters per
 minutes) \cite{james_geosurv_2008}. A quick analysis on the UAV
-specification and aerodynamic behavior reveals the requirement of a
-practical obstacle detection system. Assuming a tree height of 20
+specification and aerodynamic behavior reveals the detection requirement of the OD system. Assuming a tree height of 20
 meters, which is the average height for oak or pine, to allow for
 enough time to avoid obstacle, the UAV must be able to detect the
-threat at least 610 meters away from it (Figure \ref{ob}). This
+threat from a distance of at least 610 meters (Figure \ref{ob}). This
 analysis indicates that the obstacle detection must be able to map
-object up to a thousand meters away from the UAV.
+object up to a thousand meters from the UAV.
 
 \begin{figure}[h]
 \centering
@@ -68,37 +67,34 @@ object up to a thousand meters away from the UAV.
 Although digital terrain map are generally available for flight path 
 planning and in flight navigation, it does not have the resolution to 
 indicate all hazardous obstacle such as tall trees, steep hills, or 
-man-made tall objects. The obstacle detection and avoidance system must 
+man-made objects. The obstacle detection and avoidance system must 
 be in place to detect discrete threat, and operate automatically with 
 minimum intervene from the operator. 
 
 \section{Contributions}\label{section:Contribution}
 % word checked.
-The thesis first reviews pros and cons of various sensors for obstacle
-detection, and point out the advantage and disadvantage of using
-imaging sensor in OD application. Different type of imaging sensor
-configurations and sensor calibration method was described. Next, the
-thesis reviews the formulation and properties of a typical Extended
-Kalman Filter (EKF) based SLAM algorithm, and discusses the advantage
-and limitation of a typical SLAM algorithm. An inverse
-parameterization method was also described.
+The thesis first reviewed pros and cons of various sensors, and pointed out the advantage and disadvantage of using
+imaging sensor in OD application. Different types of imaging sensor
+configurations and sensor calibration method was also described. Next, the
+thesis reviewed the formulation and properties of a typical Extended
+Kalman Filter (EKF) based SLAM algorithm, and discussed the advantage
+and limitation of a typical SLAM algorithm. 
 
-These reviews and discussions motivates the development of an improved
-method by fusing multiple sensors into a mono vision EKF based SLAM
-framework. Using a monocular vision for mapping is a bearing only
-problem. The measurement is through projection, which loses
-information about the relative position of the feature since the range
-is unknown. Without camera motion measurements, map created by
-monocular vision can be scaled arbitrarily. A camera centric EKF based
+The reviews and discussions led to the development of an improved EKF SLAM
+method by fusing multiple sensors with monocular camera video. 
+%Using a monocular vision for mapping is a bearing only
+%problem. The measurement is through projection, which loses
+%information about the relative position of the feature since the range
+%is unknown. Without camera motion measurements, map created by
+%monocular vision can be scaled arbitrarily. 
+A camera centric EKF based
 SLAM algorithm (referred as CC\_EKF\_SLAM in the rest of the article)
-is described in this thesis. The algorithm utilizes an extended Kalman
+was described in this thesis. The algorithm utilizes an extended Kalman
 filter to fuse camera motion measurements from inertial and gyroscope
-sensors onboard the UAV and measurement from a single wide angle
-camera to estimate absolute landmark location and the position of the
-SUAS. Inverse parameterization was adopted to describe the landmark
-position so that distanced landmark can be included into the framework
-at initialization. Camera centric coordinate was used to improve the
-consistency of the framework for large area mapping.
+sensors and landmarks measurements from the video of a single wide angle
+camera. Inverse parameterization was adopted to describe the landmarks
+positions so that distanced landmarks can be estimated. Camera centric coordinate was used to improve the
+consistency of the framework for large area mapping. Absolute landmarks coordinates and the position of the UAV are estimated by the filter.
 
 Aerial flight data were collected to test the performance and accuracy
 of the algorithm in a scenario similar to the one where the UAV will
