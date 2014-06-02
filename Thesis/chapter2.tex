@@ -22,8 +22,8 @@ mechanism built in. Although LIDAR is becoming more and more popular
 on land robot, it is usually expensive, heavy,
 \cite{subharsanan_low_2013} and has high power requirement when long
 range measurement is required \cite{lemmens_airborne_2007}. Sonar is
-usually used in indoor or under water applications, and have wide beam
-profile which make it difficult to identify the origin of return
+usually used in indoor or under water applications, and has wide beam
+profile which makes it difficult to identify the origin of return
 signal, which results in low resolution range map. 3D flash LIDAR is
 capable of acquire 3D range measurement simultaneously by illuminating
 the entire field of view (FOV) of the camera with a single laser, and
@@ -163,21 +163,21 @@ this work.
 Just use them straight out of the opencv library. }
 % \subsubsection{Corner Detector}
 % %Direct copied: 
-% Corners, by Harris¡¯s definition, are places in the image where the
+% Corners, by Harrisï¿½ï¿½s definition, are places in the image where the
 % autocorrelation matrix of the second derivatives has two large
 % eigenvalues.Second derivatives are useful because they do not respond
 % to uniform gradients.* Th is definition has the further advantage
 % that, when we consider only the eigenvalues of the autocorrelation
 % matrix, we are considering quantities that are invariant also to
 % rotation, which is important because objects that we are tracking
-% might rotate as well as move. Harris¡¯s original definition involved
+% might rotate as well as move. Harrisï¿½ï¿½s original definition involved
 % taking the determinant of H(p), subtracting the trace of H(p) (with
 % some weighting coefficient), and then comparing this difference to a
 % predetermined threshold. It was later found by Shi and Tomasi [Shi94]
 % that good corners resulted as long as the smaller of the two
-% eigenvalues was greater than a minimum threshold. Shi and Tomasi¡¯s
+% eigenvalues was greater than a minimum threshold. Shi and Tomasiï¿½ï¿½s
 % method was not only sufficient but in many cases gave more
-% satisfactory results than Harris¡¯s method. (from opencv)
+% satisfactory results than Harrisï¿½ï¿½s method. (from opencv)
 
 % \subsection{Limitation of Optical Sensor in Recursive Algorithm}
 % \label{sec:OpticalSensorLimitation}
