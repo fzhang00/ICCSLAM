@@ -11,7 +11,7 @@ sensor, laser range finder, sonar, image sensor, or 3D flash LIDAR
 \cite{williams_efficient_2001} \cite{chong_feature-based_1999}
 \cite{hanna_obstacle_2008} \cite{lu_distance_2010}
 \cite{civera_inverse_2008} \cite{jirawimut_visual_2003}
-\cite{amzajerdian_lidar_2011}. Laser range finder and Ultrasonic
+\cite{amzajerdian_lidar_2011}. Laser range finder and ultrasonic
 sensors such as radar and sonar are capable of high accuracy range
 measurement up to centimeter level, but only provides point
 measurement at a given position and orientation. To acquire full 3D
@@ -24,87 +24,96 @@ on land robot, it is usually expensive, heavy,
 range measurement is required \cite{lemmens_airborne_2007}. Sonar is
 usually used in indoor or under water applications, and has wide beam
 profile which makes it difficult to identify the origin of return
-signal, which results in low resolution range map. 3D flash LIDAR is
-capable of acquire 3D range measurement simultaneously by illuminating
-the entire field of view (FOV) of the camera with a single laser, and
-capturing the reflected laser with a 2D imaging sensor
-\cite{amzajerdian_lidar_2011}. However, its high cost has limited its
-use in commercial application. In recent years, many researches use
-optical sensor as a passive range sensor for its low weight, low cost.
-With the help of computer vision technology, optical sensors have been
-successfully used for range mapping and obstacle detection in a number
-of platforms \cite{einhorn_cant_2010} \cite{hashimoto_detection_1996}
-\cite{yamaguchi_moving_2006} \cite{zhang_obstacle_2012}
-\cite{maier_self-supervised_2011} \cite{kubota_global_2007}
-\cite{xu_method_2009} \cite{hanna_obstacle_2008}
-\cite{zhang_real-time_2012} \cite{van_der_mark_stereo_2007}
-\cite{broggi_stereo_2011}.
+signal. This character results in a low resolution range map. 3D flash
+LIDAR is capable of acquire 3D range measurement simultaneously by
+illuminating the entire field of view (FOV) of the camera with a
+single laser, and capturing the reflected laser with a 2D imaging
+sensor \cite{amzajerdian_lidar_2011}. However, its high cost has
+limited its use in commercial application. In recent years, many
+researchers use image sensor as a passive range sensor for its low
+weight, and low cost. With the advances in computer vision technology,
+optical sensors have been successfully used for range mapping and
+obstacle detection in a number of platforms \cite{einhorn_cant_2010}
+\cite{hashimoto_detection_1996} \cite{yamaguchi_moving_2006}
+\cite{zhang_obstacle_2012} \cite{maier_self-supervised_2011}
+\cite{kubota_global_2007} \cite{xu_method_2009}
+\cite{hanna_obstacle_2008} \cite{zhang_real-time_2012}
+\cite{van_der_mark_stereo_2007} \cite{broggi_stereo_2011}.
 
 \subsection{Monocular Vision and Binocular Vision}
 % word checked
 Image sensors are bearing-only sensors, which provide measurement on
 the direction of the features, but not the range. Other sensors
 mentioned above, such as radar, LIDAR, are range and bearing sensor.
-The principle of range measurement for optical sensors is through
+The principle of range measurement for image sensors is through
 triangulating a common scene point in two or more images captured.
 There are two types of configuration: monocular, and binocular.
 
-For binocular camera setups, two cameras are placed apart from each
+For binocular camera setup, two cameras are placed apart from each
 other with their relative geometry (baseline separation and optical
-axis orientation) known and captures images simultaneously. If the
-position of a scene point can be accurately found by both cameras, its
-distance can be calculated by using the difference in position of the
-projected point in images, called disparity, and the separation of the
+axis orientation) known. The same scene must be captured by both
+cameras simultaneously. When the position of a landmark can be
+accurately found by both cameras, its disparity is defined by the
+difference in image location of the landmark in the left and right
+images. Then, the coordinate of the landmark from the cameras can be
+calculated by using disparity, and the relative geometry of the
 cameras. Because binocular setup acquires two images simultaneously,
-the feature distance can be obtained at time $0$. The challenge in
-binocular range sensing is feature correspondence between the two
-images. In addition, because of the limited distance in separation
-between the camera, and the vibration noise caused by vehicle motion,
-binocular range sensing are usually applied in short to medium range
+the landmark distance can be obtained at time $0$. The challenge in
+binocular range sensing is the correspondence problem between the two
+images. In addition, because of the limited separation between the
+camera, and the vibration noise caused by vehicle motion, binocular
+range sensing are usually applied in short to medium range
 measurement.
 
 For monocular camera setup, only one camera is used with an odometry
 sensors providing camera displacement measurement between frames. Then
-similar principle applies to triangulate the common scene point in two
-frames to measure the distance of the point. If camera is facing the
+similar principle applies to triangulate the common landmark in two
+consecutive frames to measure the distance. If camera is facing the
 direction of travel, data association is less difficult as image
 difference from frame to frame is usually small. Secondly, the
 baseline separation can be selected according to the targeted object
 distance by processing every frame, every other frames, or every n
-frames captured which allows monocular camera to be used for longer
-range measurement. On the other hand, since monocular camera captures
-1 frame at a time, the earliest range measurement is not available
-until two image frames were captured.
+frames captured. This flexibility allows monocular configuration to be
+used for longer range measurement. On the other hand, since monocular
+camera captures 1 frame at a time, the earliest range measurement is
+not available until two image frames were captured.
 
 \subsection{Camera Calibration}
 
 % word checked
 Camera model relates measurement on image plane to measurement of the
-real world. Camera calibration is the process of estimating the camera
+3D world. Camera calibration is the process of estimating the camera
 model, which includes projection geometry of a camera and distortion
 model of the lens. These models define the \textit{intrinsic
   parameters} of a camera.
 
 \subsubsection{Basic Projection Geometry}
 % word checked
-For a 3D scene point $P=(X, Y, Z)$ and the correspondent point
-$p=(x_{screen}, y_{screen})$ on the image plane, they are related by
-equation \cite{bradski_learning_2008}
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm, keepaspectratio=true]{./Figures/camera_model.jpg}
+\caption{Pinhole camera model}
+\label{figch2:cammodel}
+\end{figure}
+
+For a 3D point $P=(X, Y, Z)$ and the corresponding point
+$p=(x, y)$ on the image plane (figure
+\ref{figch2:cammodel}), they are related by equation
+\cite{bradski_learning_2008}
 
 \begin{equation}
 \begin{matrix}
-x_{screen} = f_x\left(\frac{X}{Z}\right)+c_x, &
-y_{screen}=f_y\left(\frac{Y}{Z}\right)+c_y
+x = f_x\left(\frac{X}{Z}\right)+c_x, &
+y=f_y\left(\frac{Y}{Z}\right)+c_y
 \end{matrix}
 \end{equation}
 
-\noindent where $(c_x, c_y)$ is the image plane coordinate at which
-optical axis intersects the image plane, $f_x$ and $f_y$ is the
-product of focal length $f$ (in millimeter) with the scaling factor
-$s_x$ and $s_y$ (in pixel/millimeter) for X and Y. Therefore $f_x$ and
-$f_y$ is in pixel. The parameter $c_x$, $c_y$, $f_x$, $f_y$ define the
-camera intrinsic matrix \cite{bradski_learning_2008}
-\cite{heikkila_four-step_1997}.
+\noindent where $(c_x, c_y)$ is the
+intersection of the optical axis and the image plane; $f_x$ and $f_y$
+(in pixel) is the product of focal length $f$ (in millimeter) and the
+scaling factor $s_x$ and $s_y$ (in pixel/millimeter) on X and Y axis.
+The parameters $c_x$, $c_y$, $f_x$, $f_y$ define the camera intrinsic
+matrix \cite{bradski_learning_2008} \cite{heikkila_four-step_1997}.
 
 \begin{equation}
 M = \begin{bmatrix}
@@ -117,44 +126,40 @@ f_x & 0 & c_x \\
 % word checked
 There are two main contributors to lens distortion: radial distortion
 and tangential distortion. Radial distortion arises as a result of the
-shape of lens. It cause noticeable distortion to the pixels close to
-the edge of the imager, resulting in ``fish-eye'' effect. The radial
-distortion is zero at the center of the imager, and increases with the
+shape of lens. It causes noticeable distortion to the pixels close to
+the edge of the image, resulting in ``fish-eye'' effect. The radial
+distortion is zero at the center of the image, and increases with the
 distance to the optical center. It is characterized by the first few
 terms of a Taylor series expansion \cite{bradski_learning_2008}
 
-$$ x_{corrected} = x_{screen}(1+k_1r^2+k_2r^4+k_3r^6)$$
-$$ y_{corrected} = y_{screen}(1+k_1r^2+k_2r^4+k_3r^6)$$
+$$ x_{corrected} = x(1+k_1r^2+k_2r^4+k_3r^6)$$
+$$ y_{corrected} = y(1+k_1r^2+k_2r^4+k_3r^6)$$
 
 \noindent Tangential distortion arises from the misalignment between
 the image sensor and the lens. It is minimally characterized by two
 additional parameters $p_1$ and $p_2$ \cite{bradski_learning_2008}
 
-$$x_{corrected} = x_{screen}+[2p_1y+p_2(r^2+2x^2)]$$
-$$y_{corrected} = y_{screen}+[p_1(r^2+2y^2)+2p_2x]$$
+$$x_{corrected} = x+[2p_1y+p_2(r^2+2x^2)]$$
+$$y_{corrected} = y+[p_1(r^2+2y^2)+2p_2x]$$
 
 \subsubsection{Camera Calibration Algorithm}
 % word checked
-Camera calibration is a process of finding the intrinsic parameter of
-a camera. In addition, since the camera's reference frame related to
-the world frame is usually unknown, the calibration process also
-calculate the status of the camera frame referenced to the world
-frame, which is referred as the extrinsic parameters of the camera.
-There are two popular camera calibration methods. Tsai
-\cite{tsai_efficient_1986} requires at least 5 points in 3D space with
-known coordinates, and their correspondent coordinates in the image
-plane. With Tsai's method, only one snapshot of the calibration target
-is needed. The disadvantage of this method is that the 3D position of
-the points is difficult to obtain. Zhang \cite{zhang_flexible_2000}
-proposed a more flexible method that requires at least two different
-views of a coplanar target, which is usually a black and white checker
-boards. However, to get more reliable result, 10 views of the
-checkerboard with different translation and rotation from the camera
-is desired. The target's coordinate in world frame need not to be
-known in advance. Instead, algorithm only requires the size of the
-square on the checker board. Zhang's method is implemented in OpenCV
-\cite{bradski_learning_2008}, and is used to calibrate the camera for
-this work.
+Camera calibration is a process of finding the intrinsic parameters of
+a camera. There are two popular camera calibration methods. Tsai
+\cite{tsai_efficient_1986} requires at least 5 feature points in 3D
+space with known coordinates, and their corresponding coordinates on
+the image plane. With Tsai's method, only one snapshot of the
+calibration target is needed. The disadvantage of this method is that
+the 3D positions of the feature points are difficult to obtain. Zhang
+\cite{zhang_flexible_2000} proposed a more flexible method that
+requires at least two different views of a coplanar target, which is
+usually a black and white checkerboard image. However, to get more
+reliable result, 10 views of the checkerboard with different
+translation and rotation from the camera is desired. The target's
+coordinates in world frame need not to be known in advance. Instead,
+algorithm only requires the size of the square on the checkerboard.
+Zhang's method is implemented in OpenCV \cite{bradski_learning_2008},
+and is used to calibrate the camera for this work.
 
 \section{Computer Vision Algorithms for Feature Detection and
   Tracking}
@@ -163,21 +168,21 @@ this work.
 Just use them straight out of the opencv library. }
 % \subsubsection{Corner Detector}
 % %Direct copied: 
-% Corners, by Harrisï¿½ï¿½s definition, are places in the image where the
+% Corners, by Harris¡¯s definition, are places in the image where the
 % autocorrelation matrix of the second derivatives has two large
 % eigenvalues.Second derivatives are useful because they do not respond
 % to uniform gradients.* Th is definition has the further advantage
 % that, when we consider only the eigenvalues of the autocorrelation
 % matrix, we are considering quantities that are invariant also to
 % rotation, which is important because objects that we are tracking
-% might rotate as well as move. Harrisï¿½ï¿½s original definition involved
+% might rotate as well as move. Harris¡¯s original definition involved
 % taking the determinant of H(p), subtracting the trace of H(p) (with
 % some weighting coefficient), and then comparing this difference to a
 % predetermined threshold. It was later found by Shi and Tomasi [Shi94]
 % that good corners resulted as long as the smaller of the two
-% eigenvalues was greater than a minimum threshold. Shi and Tomasiï¿½ï¿½s
+% eigenvalues was greater than a minimum threshold. Shi and Tomasi¡¯s
 % method was not only sufficient but in many cases gave more
-% satisfactory results than Harrisï¿½ï¿½s method. (from opencv)
+% satisfactory results than Harris¡¯s method. (from opencv)
 
 % \subsection{Limitation of Optical Sensor in Recursive Algorithm}
 % \label{sec:OpticalSensorLimitation}
