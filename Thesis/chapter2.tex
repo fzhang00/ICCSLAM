@@ -158,8 +158,8 @@ reliable result, 10 views of the checkerboard with different
 translation and rotation from the camera is desired. The target's
 coordinates in world frame need not to be known in advance. Instead,
 algorithm only requires the size of the square on the checkerboard.
-Zhang's method is implemented in OpenCV \cite{bradski_learning_2008},
-and is used to calibrate the camera for this work.
+Zhang's method was implemented in OpenCV \cite{bradski_learning_2008},
+and was used to calibrate the camera for this work.
 
 \section{Computer Vision Algorithms for Feature Detection and
   Tracking}
@@ -205,29 +205,22 @@ Just use them straight out of the opencv library. }
 \label{sec:SLAM}
 % word checked
 An essential aspect of autonomy for a mobile robot is the capability
-of determining its location. This capability is known as localization.
-Localization is typically a prerequisite for accomplishing real tasks,
-whether it is exploration, or navigation toward a known goal. In many
-applications, the mobile robot has an a priori map. Given a map, the
-robot may localize by matching current sensor observations to features
-in the map. Without maps or externally referenced pose information,
-the robot must produce its own map and concurrently localize within
-that map. This problem has been referred to as concurrent localization
-and mapping (CLM) and simultaneous localization and mapping (SLAM).
-There were considerably amount of researches done on the SLAM problem in
-the last two decades, and the theoretical SLAM can now be considered
-solved. The standard structure of a SLAM problem is a Bayesian form,
-and explains the evolution of the SLAM process. Most common
-computational solution is through the use of the extended Kalman
-filter (EKF).
+of obtaining a map and determining its location within. This problem
+has been referred to as the simultaneous localization and mapping
+(SLAM). There were considerably amount of researches done on the SLAM
+problem in the last two decades, and the theoretical SLAM can now be
+considered solved. The standard structure of a SLAM problem is a
+Bayesian form, and explains the evolution of the SLAM process. Most
+common computational solution is through the use of an extended
+Kalman filter (EKF).
 
 \subsection{Recursive Probabilistic Estimation using Extended Kalman Filter}
 \label{sec:SLAM_using_EKF}
 % word checked 
 
-The Kalman filter \cite{kalman_new_1960}published by R. E. Kalman in
-1960 is a very powerful recursive data processing algorithm for
-dynamic stochastic processes. The filter finds extensive use in
+The Kalman filter \cite{kalman_new_1960}, published by R. E. Kalman in
+1960, is a very powerful recursive data processing algorithm for
+dynamic stochastic processes. The filter is extensively used in
 control and navigation application for its ability to estimate past,
 present and even future state. It is an attractive candidate for data
 fusion framework as it can process all available measurements
@@ -236,7 +229,7 @@ precision, to estimate the current value of the variable of interest.
 Given a dynamic process that satisfies the assumptions that Kalman
 filter is based on, the filter is the optimal algorithm in minimizing
 the mean of squared error of the state variable. This section briefly
-summarized assumptions and formulations of Kalman filter that's
+summarized the assumptions and formulations of Kalman filter that's
 described in detail in \cite{sorenson_least-squares_1970}
 \cite{analytic_sciences_corporation_applied_1974}
 \cite{grewal_kalman_1993} \cite{lewis_optimal_1986}
@@ -249,7 +242,7 @@ found in chapter 1 of \cite{maybeck_stochastic_1979}.
 The Kalman filter has three assumptions. 1) The system model is
 linear. The linearity is desired in that the system model is more
 easily manipulated with engineering tool. When nonlinearities do
-exist, the typical approach is to linearize system model at some
+exist, the typical approach is to linearize the system model at some
 nominal points. 2) The noise embedded in system control and
 measurements is white. This assumption implies that the noise value is
 not correlated in time, and has equal power in all frequency. 3) The
@@ -257,53 +250,54 @@ probability density function (PDF) of system and measurement noise is
 Gaussian. A Gaussian distribution is fully represented by the first
 and second order statistic (mean and variance) of a process. Most
 other densities require endless number of orders of statistic to
-describe the shape fully. Hence, when the probability density function
-of a noise process is non-Gaussian, the Kalman filter that propagates
-the first and second order statistic only include some of the
-information of the PDF, instead of all.
+describe the shape fully. Hence, when the PDF of a noise process is
+non-Gaussian, the Kalman filter that propagates the first and second
+order statistic only includes partial information of the PDF.
 
 \subsubsection{Kalman Filter Models}
 % word checked
 
-The Kalman filter requires two models. The process model defines a
-discrete-time controlled process by a linear stochastic difference
-equation. The $n\times n$ matrix $A$ relates the state variables
+The Kalman filter requires two models: process model and measurement
+model. The process model defines a discrete-time controlled process
+using a linear stochastic difference equation.
+\begin{equation}
+\text{Process Model: }x_k = Ax_{k-1}+B\mu_{k-1}+w_{k-1}
+\end{equation}
+\noindent The $n\times n$ matrix $A$ relates the state variables
 $x_{k-1}$ in previous time step $k-1$ to the state variable $x_{k}$ in
 the current time step $k$. The matrix $B$ relates the optional control
 input $\mu$ to the state variables $x$. Given measurement vector $z_k$
 of size $1 \times m$, the measurement model relates the state
-variables to the measurements by matrix H of size $n \times m$. The
-random variables $w$ and $v$ represent the uncertainty or noise of the
-process model, and the measurement. $w$ and $v$ are assumed to be
-unrelated to each other, and has Gaussian distribution with covariance
+variables to the measurements by matrix H of size $n \times m$. 
+\begin{equation}
+\text{Measurement Model: }z_k = Hx_k+v_k
+\end{equation}
+The random variables $w$ and $v$ represent the uncertainty or noise of
+the process model, and the measurement. $w$ and $v$ are assumed to be
+unrelated to each other, and have Gaussian distribution with covariance
 $Q$ and $R$.
-
-\begin{align}
-&\text{Process Model: }x_k = Ax_{k-1}+B\mu_{k-1}+w_{k-1}\\
-&\text{Measurement Model: }z_k = Hx_k+v_k
-\end{align}
 
 \subsubsection{The Algorithm}
 % word checked
-The Kalman filter operates in prediction and correction cycle after
+The Kalman filter operates in prediction and correction cycles after
 being initialized (figure \ref{figch2:1}). The state vector estimates
 $\hat{x}^-_k, \hat{x}^+_k$ contain the variables of interest at time
 step k, and state covariance matrices $P^-_k, P^+_k$ represent the
-error covariance of the estimate. The superscript - indicates that the
-estimate is a priori (or predicted) estimate, and + indicates that the
-estimate is a posteriori (or corrected) estimate. The equations for
-prediction and correction cycles are listed in table \ref{tab:KF}. In
-prediction, an estimate of the state variables is made based on the
-known process model. Since there are always unknown factors not fully
-described by the process model, the errors of the estimates almost
-always increase in the prediction. During correction, a series of
-calculation were carried out to correct the a priori estimates. First,
-the predicted measurements $H\hat{x}^-_k$ are made through the
-measurement model, and are compared to the new measurement $z_k$.
-Their difference $z_k - H\hat{x}^-_k$ is called the measurement
-innovation, or residual. Next, the amount of residual is weighted by
+error covariance of the estimates. The superscript - indicates that
+the estimates are a priori (or predicted) estimates, and + indicates
+that the estimates are a posteriori (or corrected) estimates. The
+equations for prediction and correction cycles are listed in table
+\ref{tab:KF}. In prediction, an estimate of the state variables is
+made based on the known process model. Since there are always unknown
+factors not being fully described by the process model, the errors
+almost always increase in the prediction. During correction, a series
+of steps are carried out to correct the a priori estimate.
+First, predicted measurements $H\hat{x}^-_k$ are made through the
+measurement model, and are compared to the new measurements $z_k$.
+The difference $z_k - H\hat{x}^-_k$ is called measurement
+innovation, or residual. Next, the residuals are weighted by
 the Kalman gain $K$, and added to $\hat{x}^-_k$ as correction. The
-Kalman gain is formulated so that it minimize the a posteriori error
+Kalman gain is formulated so that it minimizes the a posteriori error
 covariance matrix $P^+_k$.
 
 \begin{figure}[h]
