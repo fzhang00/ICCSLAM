@@ -280,23 +280,21 @@ $Q$ and $R$.
 \subsubsection{The Algorithm}
 % word checked
 The Kalman filter operates in prediction and correction cycles after
-being initialized (figure \ref{figch2:1}). The state vector estimates
-$\hat{x}^-_k, \hat{x}^+_k$ contain the variables of interest at time
-step k, and state covariance matrices $P^-_k, P^+_k$ represent the
-error covariance of the estimates. The superscript - indicates that
-the estimates are a priori (or predicted) estimates, and + indicates
-that the estimates are a posteriori (or corrected) estimates. The
-equations for prediction and correction cycles are listed in table
-\ref{tab:KF}. In prediction, an estimate of the state variables is
-made based on the known process model. Since there are always unknown
-factors not being fully described by the process model, the errors
-almost always increase in the prediction. During correction, a series
-of steps are carried out to correct the a priori estimate.
-First, predicted measurements $H\hat{x}^-_k$ are made through the
-measurement model, and are compared to the new measurements $z_k$.
-The difference $z_k - H\hat{x}^-_k$ is called measurement
-innovation, or residual. Next, the residuals are weighted by
-the Kalman gain $K$, and added to $\hat{x}^-_k$ as correction. The
+initialization (figure \ref{figch2:1}). The state vector
+$\hat{x}^-_k$, $\hat{x}^+_k$ contain a priori and a posteriori
+estimates of the variables of interest at time step k. $P^-_k$ and
+$P^+_k$ are the a priori and a posteriori covariance matrices of the
+state vector. The equations for prediction and correction cycles are
+listed in table \ref{tab:KF}. In prediction, an estimate of the state
+vector is made based on the known process model. Since there are
+always unknown factors not being fully described by the process model,
+the errors almost always increase in the prediction. During
+correction, a number of steps are carried out to correct the a priori
+estimate. First, the predicted measurements $H\hat{x}^-_k$, made
+through the measurement model, are compared to the new measurements
+$z_k$. The difference $z_k - H\hat{x}^-_k$ is called measurement
+innovation, or residual. Next, the residuals are weighted by the
+Kalman gain $K$, and are added to $\hat{x}^-_k$ as correction. The
 Kalman gain is formulated so that it minimizes the a posteriori error
 covariance matrix $P^+_k$.
 
@@ -387,12 +385,12 @@ table \ref{tab:KF}.
 
 \subsubsection{Tuning}
 % word checked
-The tuning of the filter can be achieved by adjusting noise covariance
+The tuning of a Kalman filter can be achieved by adjusting noise covariance
 matrix $Q$ and $R$. The measurement noise covariance $R$ is usually
 easy to estimate, i.e., by taking some offline measurements to compute
 the variance. On the other hand, process noise covariance $Q$ is more
 difficult. One common way is to inject enough uncertainty into the
-process noise, and only rely on reliable measurements.
+process noise, and rely on reliable measurements.
  
 \subsection{SLAM with Extended Kalman Filter}
 % word checked
@@ -405,14 +403,14 @@ this section. A more complete tutorial to the SLAM problem is given in
 \subsubsection{General EKF Model for SLAM}
 % word checked
 Previous researches show that there is a high degree of correlation
-between the estimates of the landmark locations in map
+between the estimates of the landmarks
 \cite{smith_representation_1986} \cite{durrant-whyte_uncertain_1988}.
 This correlation exists because of the common error in the estimated
-vehicle locations \cite{leonard_simultaneous_1991}. The implication of
+vehicle poses \cite{leonard_simultaneous_1991}. The implication of
 these works is that a consistent full solution to the SLAM problem
 requires a joint state composed of the vehicle pose and all landmarks
-positions \cite{durrant-whyte_simultaneous_2006}. When the vehicle pose
-and landmarks positions are formulated as one single estimation
+positions \cite{durrant-whyte_simultaneous_2006}. When the vehicle
+pose and landmarks positions are formulated as one single estimation
 problem, the result is convergent. The correlation between landmarks
 plays an important role in the quality of the solution. The more the
 correlation grows, the better the solution becomes.

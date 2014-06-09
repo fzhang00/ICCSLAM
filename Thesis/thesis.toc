@@ -22,14 +22,14 @@
 \contentsline {subsubsection}{Kalman Filter Models}{11}{section*.20}
 \contentsline {subsubsection}{The Algorithm}{11}{section*.21}
 \contentsline {subsubsection}{Extended Kalman Filter}{12}{section*.24}
-\contentsline {subsubsection}{Tuning}{14}{section*.26}
+\contentsline {subsubsection}{Tuning}{13}{section*.26}
 \contentsline {subsection}{\numberline {2.3.2}SLAM with Extended Kalman Filter}{14}{subsection.2.3.2}
 \contentsline {subsubsection}{General EKF Model for SLAM}{14}{section*.27}
 \contentsline {subsubsection}{Properties of SLAM}{15}{section*.28}
-\contentsline {subsubsection}{Linearization Error and Consistency}{16}{section*.29}
+\contentsline {subsubsection}{Linearization Error and Consistency}{15}{section*.29}
 \contentsline {subsubsection}{SLAM for Building Large Scale Maps}{16}{section*.30}
 \contentsline {paragraph}{Robot Centric Coordinate System}{16}{section*.31}
-\contentsline {paragraph}{Submap Methods}{17}{section*.32}
+\contentsline {paragraph}{Submap Methods}{16}{section*.32}
 \contentsline {section}{\numberline {2.4}Inverse Depth Parameterization for Distance Object}{17}{section.2.4}
 \contentsline {chapter}{ \numberline {3}Algorithm Description}{18}{section*.33}
 \contentsline {section}{\numberline {3.1}Camera Centric Inverse Depth Parameterization}{18}{section.3.1}
