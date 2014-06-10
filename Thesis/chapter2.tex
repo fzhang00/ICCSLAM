@@ -168,21 +168,21 @@ and was used to calibrate the camera for this work.
 Just use them straight out of the opencv library. }
 % \subsubsection{Corner Detector}
 % %Direct copied: 
-% Corners, by Harris¡¯s definition, are places in the image where the
+% Corners, by Harrisï¿½ï¿½s definition, are places in the image where the
 % autocorrelation matrix of the second derivatives has two large
 % eigenvalues.Second derivatives are useful because they do not respond
 % to uniform gradients.* Th is definition has the further advantage
 % that, when we consider only the eigenvalues of the autocorrelation
 % matrix, we are considering quantities that are invariant also to
 % rotation, which is important because objects that we are tracking
-% might rotate as well as move. Harris¡¯s original definition involved
+% might rotate as well as move. Harrisï¿½ï¿½s original definition involved
 % taking the determinant of H(p), subtracting the trace of H(p) (with
 % some weighting coefficient), and then comparing this difference to a
 % predetermined threshold. It was later found by Shi and Tomasi [Shi94]
 % that good corners resulted as long as the smaller of the two
-% eigenvalues was greater than a minimum threshold. Shi and Tomasi¡¯s
+% eigenvalues was greater than a minimum threshold. Shi and Tomasiï¿½ï¿½s
 % method was not only sufficient but in many cases gave more
-% satisfactory results than Harris¡¯s method. (from opencv)
+% satisfactory results than Harrisï¿½ï¿½s method. (from opencv)
 
 % \subsection{Limitation of Optical Sensor in Recursive Algorithm}
 % \label{sec:OpticalSensorLimitation}
@@ -417,19 +417,19 @@ correlation grows, the better the solution becomes.
 \cite{durrant-whyte_localization_1996} \cite{csorba_new_1996}
 \cite{csorba_simultaneous_1997} \cite{dissanayake_solution_2001}
 
-At a given time step $k$, the following variables are defined
+To formulate a SLAM problem, the following variables are defined at a given time step $k$
 \begin{itemize}
   \item $x_k$: a vector that describes the vehicle position and
 orientation.
   \item $u_k$: the control vector applied at time $k-1$ to drive the
-vehicle to $x_k$ at time k
+vehicle to $x_k$ at time step k
   \item $p_i$: a vector that describes the location of the $i^{th}$
 landmark. All landmarks locations are assumed to be time invariant.
   \item $z_{i,k}$: observation of the location of the $i^{th}$
-landmark taken from the vehicle's location at time $k$
+landmark taken from the vehicle's location at time step $k$
 \end{itemize}
 
-\noindent Then a complete state vector contains 
+\noindent A complete state vector contains 
 
 $$\begin{bmatrix}\hat{x}_k \\ \hat{p}_k \end{bmatrix}$$ 
 
@@ -440,8 +440,8 @@ P_{xx} & P_{xp} \\
 P_{px} & P_{pp} 
 \end{bmatrix} $$
 
-The prediction and correction procedure can then be carried out
-following the standard EKF formulation. The landmarks are generally
+The prediction and correction cycles can then be carried out
+following the standard EKF algorithm. The landmarks are generally
 not updated at the prediction (i.e. only $x_k$ and $P_{xx}$ are
 updated) unless they are moving.
 
@@ -456,18 +456,18 @@ Dissanayake \cite{dissanayake_solution_2001} reached three important convergence
   \item in the limit the covariance associated with any single landmark location estimate reaches a lower bound determined only by the initial covariance in the vehicle location estimate at the time of the first sighting of the first landmark.
 \end{enumerate}}
 
-These results show that the complete knowledge of cross correlation
+These results show that a complete knowledge of the cross-correlation
 between landmark estimates is critical in maintaining the structure of
-a SLAM problem. The error in estimates of landmarks becomes more and
-more correlated as the vehicle venture through the unknown
-environment. The error eventually becomes fully correlated which means
+a SLAM problem. The errors in estimates of landmarks becomes more and
+more correlated as the vehicle ventures through the unknown
+environment. The error eventually become fully correlated which means
 that given the location of one landmark, the location of any other
 landmark can be determined with absolute certainty. As the map
-converges, the error in the estimates of landmarks reduces to a lower
-bound determined by the error when the first observation was made.
+converges, the errors in the estimates of landmarks reduce to a lower
+bound determined by the errors when the first observation was made.
 
 The results above only refer to the evolution of covariance matrices
-computed by linear model. In reality, SLAM problem is nonlinear, and
+computed by a linear model. In reality, most SLAM problems are nonlinear, and
 the computed covariance does not match the true estimation error. This
 leads to SLAM consistency issue.
 
