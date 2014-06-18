@@ -3,16 +3,15 @@
 The algorithm described in this chapter and its preliminary test
 result on real flight data was published in
 \cite{zhang_obstacle_2012}. The program was implemented in Python
-programming language \cite{_python_????}. An open source machine
-vision library OpenCV was utilized to perform feature extraction and
-tracking. The feature extraction method used was the Shi-Tomasi corner
-detector \cite{shi_good_1994}. Feature tracking was accomplished
-through the pyramid implementation of Lucas-Kanade optical flow method
-\cite{bouguet_pyramidal_1999}. Both algorithms were implemented in
-OpenCV. 
+programming language\cite{_python_????}. An open source machine
+vision library OpenCV\cite{_opencv_????} was utilized to perform feature extraction and
+tracking. The Shi-Tomasi corner detector \cite{shi_good_1994} was used
+to extract corner features from the image sequence. Feature tracking
+was accomplished through the pyramid implementation of Lucas-Kanade
+optical flow method \cite{bouguet_pyramidal_1999}.
 
 \section{Camera Centric Inverse Depth Parameterization}
-Figure \ref{fig:algo1} shows the parameters definition in inverse
+Figure \ref{fig:algo1} shows the feature parameters definition in inverse
 depth parameterization.
 
 \begin{figure}[h]
@@ -22,24 +21,24 @@ depth parameterization.
 \label{fig:algo1}
 \end{figure}
 
-A 3D scene point $p_{i}^{C}$ can be defined by 6 parameters with the 
-superscript $C$ representing a camera reference frame and $i$
-representing the feature number:
+\noindent A 3D scene point $p_{i}^{C}$ can be defined by 6 parameters
+with $i$ representing the feature number, and the superscript $C$
+indicating that the parameter is represented in camera reference frame.
 \begin{equation}
-p_{i}^{C}=\begin{bmatrix}
+\mathbf{p_{i}^{C}}=\begin{bmatrix}
 x_{i}^{C} & y_{i}^{C} & z_{i}^{C} & \rho _{i} & \varphi _{i}^{C} & 
 \theta _{i}^{C} 
 \end{bmatrix}
 \end{equation}
 The first three parameters $[x_{i}^{C}, y_{i}^{C}, z_{i}^{C}]$
-represent the initial position where the feature is first observed.
+represent the initialization point where the feature is first observed.
 $\rho_{i} = 1/d_i$ is the inverse distance from the initialization position
 to the feature. The elevation-azimuth pair $[\varphi_{i}^{C},
 \theta_{i}^{C}]$ encodes a unit vector pointing from the
 initialization point to the feature. The vector is given by
 \begin{equation}
 \label{eq:m}
-m(\varphi_{i}^{C}, \theta_{i}^{C})=\begin{bmatrix}
+\vec{\mathbf{m}}(\varphi_{i}^{C}, \theta_{i}^{C})=\begin{bmatrix}
 \cos\varphi_{i}^{C}\cos\theta _{i}^{C} \\
 \cos\varphi_{i}^{C}\sin\theta _{i}^{C} \\
 \sin\varphi_{i}^{C}
@@ -69,42 +68,48 @@ Filter}
 The EKF full state vector is defined as 
 
 \begin{equation}
-x=\begin{bmatrix}
-OX_{W}^{C} & c^{C} & r^{C} & p_{1}^{C} & p_{2}^{C} & \ldots 
+\mathbf{x}=\begin{bmatrix}
+\mathbf{OX_{W}^{C}} & \mathbf{c^{C}} & \mathbf{r^{C}} & 
+\mathbf{p_{1}^{C}} & \mathbf{p_{2}^{C}} & \ldots 
 \end{bmatrix}^T
 \end{equation}
 
-\noindent where $OX_{W}^{C}= \begin{bmatrix}O_{x}^{C} & O_{y}^{C} &
-  O_{z}^{C} & W_{x}^{C} & W_{y}^{C} & W_{z}^{C} \end{bmatrix}^{T}$
-contains translation parameters $O_{x,y,z}^{C}$ and rotation
-parameters $W_{x,y,z}^{C}$ that represents the world frame position
-and orientation referenced to the camera frame.
-$\left(c^{C},r^{C}\right)^{T}$ represents the camera translation and
-rotation motion frame by frame, and $p_{i}^{C}$ contains the feature
-parameters as described in the previous section.
+\noindent where $\mathbf{OX_{W}^{C}}= \begin{bmatrix}O_{x}^{C} &
+  O_{y}^{C} & O_{z}^{C} & W_{x}^{C} & W_{y}^{C} &
+  W_{z}^{C} \end{bmatrix}^{T}$ contains translation parameters
+$O_{x,y,z}^{C}$ and rotation parameters $W_{x,y,z}^{C}$ that represent
+the world frame position and orientation referenced to the camera
+frame. $\left(\mathbf{c^{C}},\mathbf{r^{C}}\right)^{T}$ represent the
+camera translation and rotation motion frame by frame.
+$\mathbf{p_{i}^{C}}$ contains the feature parameters described in
+the previous section.
 
 \subsection{Prediction}
 
-For a prediction step at time $k$, the world frame parameter $OX_W^C$
-and features parameters $p_i^C$ are kept unchanged from time $k-1$.
-The camera parameters are updated using the new inertial measurements:
-velocity $v^{C}$, acceleration $a^{C}$, and rate of change $w^{C}$ in
-roll, pitch, and azimuth. The camera motion parameters at time $k$ are
-then
-\begin{multline}
-\begin{bmatrix}
-OX_{W}^{C} & c^{C} & r^{C} & p_{1}^{C}& p_{2}^{C} & \vdots & p_n^C
-\end{bmatrix}_{k}^T \\
+For a prediction step at time $k$, the world frame parameter
+$\mathbf{OX_W^C}$ and features parameters $\mathbf{p_i^C}$ are kept
+unchanged from time $k-1$. The camera parameters are updated using the
+new inertial measurements: velocity $\mathbf{v^{C}}$, acceleration
+$\mathbf{a^{C}}$, and rate of change $\mathbf{w^{C}}$ in roll, pitch, and
+azimuth. The full state vector at time $k$ is
+\begin{equation}
+\mathbf{x_{predicted}}
 =\begin{bmatrix}
-OX_{W,k-1}^{C} & c_{measured}^{C} & r_{measured}^{C} & p_{1,k-1}^{C} &
-p_{2,k-1}^{C} & \vdots & p_{n,k-1}^C
+\mathbf{OX_{W,k-1}^{C}} & 
+\mathbf{c_{measured}^{C}} &
+\mathbf{r_{measured}^{C}} & 
+\mathbf{p_{1,k-1}^{C}} & 
+\mathbf{p_{2,k-1}^{C}} & 
+\ldots & 
+\mathbf{p_{n,k-1}^C}
 \end{bmatrix}^T
-\end{multline}
+\end{equation}
 
 \noindent where 
 
-$$c_{measured}^{C}=v_{measured}^{C}\Delta t+ \frac{1}{2}a_{measured}^{C}\Delta t^{2}$$
-$$r_{measured}^{C}=r_{k-1}^{C}+ w_{measured}^{C}$$
+$$\mathbf{c_{measured}^{C}}=\mathbf{v_{measured}^{C}}\Delta t+ 
+\frac{1}{2}\mathbf{a_{measured}^{C}}\Delta t^{2}$$
+$$\mathbf{r_{measured}^{C}}=\mathbf{r_{k-1}^{C}}+ \mathbf{w_{measured}^{C}}$$
 
 \noindent and $\Delta t$ is the time elapsed from frame to frame. 
 
@@ -117,16 +122,17 @@ parameters based on the features locations observed in the image.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=10cm, keepaspectratio=true]{./Figures/measurement_model.jpg}
+\includegraphics[width=9cm, keepaspectratio=true]{./Figures/measurement_model.jpg}
 \caption{Measurement Model}
 \label{fig:measurement_model}
 \end{figure}
-
-For a feature $p_{i}^{C}$, the vector $h^{R}$ pointing from the 
-predicted camera location to the feature initialization position is 
+\FloatBarrier
+For a feature $\mathbf{p_{i}^{C}}$, the vector $\mathbf{i^{C}}$
+pointing from the predicted camera location to the feature
+initialization position is
 
 \begin{equation}
-h_{k}^{R}=\begin{bmatrix}
+\mathbf{i_{k}^{C}}=\begin{bmatrix}
 x_{i}^{C} \\
 y_{i}^{C} \\
 z_{i}^{C} \\
@@ -139,18 +145,19 @@ c_{z}^{C} \\
 
 The normalized vector pointing from the predicted camera position to the 
 feature at time k is then 
-
 \begin{equation}
-  h_{k}^{C}=Q^{-1}\left(r_{k}^{C}\right)\left(\rho _{k}h_{k}^{R}+m\left(\varphi_{ 
-        k}^{C},\theta _{k}^{C}\right)\right)
+  \mathbf{h_{k}^{C}}=\mathbf{Q}^{-1}\left(\mathbf{r_{k}^{C}}\right)
+  \left(\rho_{k}\mathbf{i_{k}^{C}}+
+    \mathbf{m}\left(\varphi_k^{C},\theta _{k}^{C}\right)\right)
 \end{equation}
 
-\noindent where $Q^{-1}(r_{k}^{C})$ is the inverse rotation matrix from the 
-camera frame at time $k-1$ to camera frame at time $k$. From vector 
-$h_{k}^{C}$, the feature location on image plane can be found by
+\noindent where $\mathbf{Q}^{-1}(\mathbf{r_{k}^{C}})$ is the inverse
+rotation matrix from the camera frame at time $k-1$ to camera frame at
+time $k$. From vector $\mathbf{h_{k}^{C}}$, the feature location on
+image plane can be found by
 
 \begin{equation}
-h_{k}^{U}= \begin{bmatrix}
+\mathbf{h_{k}^{U}}= \begin{bmatrix}
 u_{k} \\
 v_{k} \\
 \end{bmatrix}=\begin{bmatrix}
@@ -168,19 +175,22 @@ linearization is given in appendix \ref{sec:jac_measurement}.
 
 \subsection{Composition Step}
 
-The correction using measurement model described above still has all
-its parameters defined in camera frame at step $k-1$. Therefore, a
-coordinate transformation must be done to transform all parameters,
-and error matrix into camera frame at step k so that the next cycle of
-tracking can be continued. World reference frame parameters from step
-$k-1$ to step $k$ is related by
+The corrected state vector has all its parameters defined in camera
+frame at time $k-1$. To keep reference frame up-to-date, a coordinate
+transformation is needed to transform all parameters, and error matrix
+into camera frame at step k so that the next cycle of tracking can be
+continued. This step is referred to as the composition. To
+differentiate the camera frame, a subscript $k$ and $k-1$ are added to
+the reference frame indicator $C$.
+
+World reference frame parameters is transformed using the equation
 
 \begin{equation}
 \begin{bmatrix}
 O_{x}^{C_{k}} \\
 O_{y}^{C_k} \\
 O_{z}^{C_k} \\
-\end{bmatrix}_{k}=Q^{-1}(r_{k}^{C_{k-1}})\left(
+\end{bmatrix}_{k}=\mathbf{Q}^{-1}(\mathbf{r_{k}^{C_{k-1}}})\left(
 \begin{bmatrix}
 O_{x}^{C_{k-1}} \\
 O_{y}^{C_{k-1}} \\
@@ -192,18 +202,19 @@ c_{z}^{C_{k-1}} \\
 \end{bmatrix}_{k}\right)
 \end{equation}
 
+\noindent and
 \begin{equation}
 \begin{bmatrix}
 W_{x}^{C_{k}} \\
 W_{y}^{C_{k}} \\
 W_{z}^{C_{k}} \\
-\end{bmatrix}_{k-1}= \begin{bmatrix}
+\end{bmatrix}_{k}= \begin{bmatrix}
 W_{x}^{C_{k-1}} \\
 W_{y}^{C_{k-1}} \\
 W_{z}^{C_{k-1}} \\
-\end{bmatrix}_{k}-r^{C_{k-1}}
+\end{bmatrix}_{k}-\mathbf{r_k^{C_{k-1}}}
 \end{equation}
-
+ 
 Feature parameters in the new camera frame are related to the previous frame 
 by
 
@@ -212,7 +223,7 @@ by
 x_{i}^{C_{k}} \\
 y_{i}^{C_{k}} \\
 z_{i}^{C_{k}} \\
-\end{bmatrix}_{k}=Q^{-1}(r^{C_{k-1}})\left(
+\end{bmatrix}_{k}=\mathbf{Q}^{-1}(\mathbf{r_k^{C_{k-1}}})\left(
 \begin{bmatrix}
 x_{i}^{C_{k-1}} \\
 y_{i}^{C_{k-1}} \\
@@ -224,6 +235,7 @@ c_{z}^{C_{k-1}} \\
 \end{bmatrix}_{k}\right)
 \end{equation}
 
+\noindent and
 \begin{equation}
 \begin{bmatrix}
 \rho_{i} \\
@@ -232,7 +244,7 @@ c_{z}^{C_{k-1}} \\
 \end{bmatrix}_{k}=
 \begin{bmatrix}
 \rho _{i} \\
-m^{-1}\left(Q^{-1}(r^{C_{k-1}})m(\varphi _{i, k}^{C_{k-1}}, \theta _{i, k}^{C_{k-1}})\right) \\
+\mathbf{m}^{-1}\left(\mathbf{Q}^{-1}(\mathbf{r_k^{C_{k-1}}})\mathbf{m}(\varphi _{i, k}^{C_{k-1}}, \theta _{i, k}^{C_{k-1}})\right) \\
 \end{bmatrix}
 \end{equation}
 
@@ -390,7 +402,7 @@ occurred, or the number of tracked feature is lower than a threshold. The
 feature addition occurs after the composition step of an 
 iteration, and follows the same procedure as the feature
 initialization described previously. Flow chart of the entire
-algorithm is shown in figure \ref{fig:flowcharg}. 
+algorithm is shown in figure \ref{fig:flowchart}. 
 
 \begin{figure}[h]
 \centering

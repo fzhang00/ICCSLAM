@@ -161,11 +161,11 @@ algorithm only requires the size of the square on the checkerboard.
 Zhang's method was implemented in OpenCV \cite{bradski_learning_2008},
 and was used to calibrate the camera for this work.
 
-\section{Computer Vision Algorithms for Feature Detection and
-  Tracking}
-\textcolor{blue}{Need to add? The corner detection and optical flow
-  algorithm belongs to this category. No improvement was done on them.
-Just use them straight out of the opencv library. }
+% \section{Computer Vision Algorithms for Feature Detection and
+%   Tracking}
+% \textcolor{blue}{Need to add? The corner detection and optical flow
+%   algorithm belongs to this category. No improvement was done on them.
+% Just use them straight out of the opencv library. }
 % \subsubsection{Corner Detector}
 % %Direct copied: 
 % Corners, by Harris��s definition, are places in the image where the
@@ -473,7 +473,7 @@ leads to SLAM consistency issue.
 
 \subsubsection{Linearization Error and Consistency}
 % word checked
-Many researchers reported and analyzed filter divergence due to
+Many researchers reported filter divergence due to
 linearization error \cite{martinelli_results_2005},
 \cite{julier_counter_2001}, \cite{bailey_consistency_2006},
 \cite{frese_discussion_2006}, \cite{castellanos_limits_2004}. As
@@ -484,17 +484,16 @@ covariance reduces to a value smaller than the actual error, over
 optimistic estimation occurs and the filter can no longer effectively
 update the estimates.
 
-Huang investigated \cite{huang_convergence_2007} on properties and
-consistency of nonlinear two-dimensional EKF based SLAM problem,
-derived and proved a number of theorems applicable to EKF SLAM
-convergence and consistency issue. Huang concluded that:
-
+Huang investigated on properties and consistency of nonlinear
+two-dimensional EKF SLAM problem, derived and proved a number of
+theorems applicable to EKF SLAM. The conclusions are
+\cite{huang_convergence_2007}: \textit{
 \begin{itemize}
-  \item Most of the convergence properties in
+  \item Most of the convergence properties in 
   \cite{dissanayake_solution_2001} are still true for the nonlinear
   case provided that the Jacobians used in the EKF equations are
   evaluated at the true states.
-  \item The main reasons for inconsistency in EKF SLAM are due to 
+  \item The main reasons for inconsistency in EKF SLAM are
   \begin{enumerate}
     \item the violation of some fundamental constraints governing the
     relationship between various Jacobians when they are evaluated at
@@ -506,48 +505,56 @@ convergence and consistency issue. Huang concluded that:
   \item The robot orientation uncertainty plays an important role in
   both the EKF SLAM convergence and the possible inconsistency.
 \end{itemize}
+}
 
-\subsubsection{SLAM for Building Large Scale Maps}
+\subsection{SLAM for Building Large Scale Maps}
 % word checked
-\paragraph{Robot Centric Coordinate System}In response to the
-consistency problem of classic EKF SLAM solution, some researches
-adopted the \emph{robotcentric mapping} \cite{castellanos_limits_2004}
-\cite{civera_1-point_2009}. This approach uses a reference frame
-attached to the robot as the base frame. All geometric measurements
-and estimations are referred to the robot frame. This method was shown
-to improve the consistency of EKF based solution to SLAM, but using
-local map joining to produce a large map gives better result.
+The consistency issue of EKF SLAM limits its application in mapping
+large area. In response, a number of methods were proposed.
 
-\paragraph{Submap Methods}The submap method is another mean to
-tackle large scale map problem. The submaps can be either globally
-referenced or relatively referenced. Global submaps estimate the
-location of the submap referenced to a common base frame
-\cite{estrada_hierarchical_2005} \cite{leonard_consistent_2003}.
-However, as the submap frames are referred to a common base frame,
-global submap does not improve the consistency issue caused by the
-robot pose uncertainty.\cite{bailey_simultaneous_2006}. Relatively
-referenced submap records its location referenced to the neighboring
-submaps \cite{chong_feature-based_1999}
-\cite{williams_efficient_2001}. Global map is then obtained through
-vector summation. The relatively referenced submap is able to alleviate
-linearization problem in large scale map, but does not converge on
-global level without an independent submap structure. This problem can
-be solved by using Atlas framework or network coupled feature maps
-\cite{bosse_slam_2004} \cite{bailey_mobile_2002}
+\subsubsection{Robot Centric Coordinate System}
+Robotcentric mapping was proposed by Castellanos et al.
+\cite{castellanos_limits_2004} and was adopted in
+\cite{civera_1-point_2009} to create large scale map on land. This
+approach uses a reference frame attached to the robot as the base
+frame. All geometric measurements and estimations were referred to the
+robot frame. This method was shown to improve the consistency of EKF
+based solution to SLAM, but using local map joining to produce a large
+map gives better result.
+
+\subsubsection{Submap Methods}
+The submap method is another mean to tackle large scale map problem.
+The submaps can be either globally referenced or relatively
+referenced. Global submaps estimate the location of the submap
+referenced to a common base frame \cite{estrada_hierarchical_2005}
+\cite{leonard_consistent_2003}. However, as the submap frames are
+referred to a common base frame, global submap does not improve the
+consistency issue caused by the robot pose
+uncertainty \cite{bailey_simultaneous_2006}. Relatively referenced
+submap records its location referenced to the neighboring submaps
+\cite{chong_feature-based_1999} \cite{williams_efficient_2001}. Global
+map is then obtained through vector summation. The relatively
+referenced submap is able to alleviate linearization problem in large
+scale map, but does not converge on global level without an
+independent submap structure. This problem can be solved by using
+Atlas framework or network coupled feature maps \cite{bosse_slam_2004}
+\cite{bailey_mobile_2002}
 
 \section{Inverse Depth Parameterization for Distance Object}
-The standard way of describing a landmark position is to use the
-Euclidean XYZ parameterization. In outdoor range estimation
-problem, the algorithm must deal with features located at near
-infinity. Inverse depth parameterization overcomes this problem by
-representing range $d$ in its inverse form $\rho =1/d$. In addition,
-features at infinity contribute in estimating the camera rotational
-motion even though they offer little information on camera
-translational motion. Furthermore, inverse depth parameterization
-allows for initializing features into the EKF framework before it is
-safely triangulated. Inverse depth concept is widely used in computer
-vision for its relation with the image disparity in stereo vision, and
-the optical flow vectors in motion stereo
+The standard way of describing a landmark position is through the
+Euclidean XYZ parameterization. In outdoor range estimation problem,
+the algorithm must deal with landmarks located at near infinity, which
+give poor linearity when being represetned in traditional Euclidean
+system. Furthermore, these landmarks cannot be added to the filter
+until their locations were determined with good certainty. Landmarks
+at infinity contribute in estimating the camera rotational motion even
+though they offer little information on camera translational motion.
+Inverse depth parameterization overcomes this problem by representing
+range $d$ in its inverse form $\rho =1/d$. It also allows for
+initializing long distance landmark into the EKF framework before the
+landmark can be safely triangulated. Inverse depth concept is widely
+used in computer vision for its relation with the image disparity in
+stereo vision, or the optical flow vectors in motion stereo
 \cite{okutomi_multiple-baseline_1991}, \cite{jepson_fast_1991},
 \cite{chowdhury_stochastic_2003}. Aidala et al.
 \cite{aidala_utilization_1983} shows that modified polar coordinates
