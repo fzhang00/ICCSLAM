@@ -38,13 +38,10 @@ N.~Sunderhauf, S.~Lange, and P.~Protzel, ``Using the unscented kalman filter in
   Rescue Robotics, 2007. {SSRR} 2007}, 2007, pp. 1--6.
 
 \bibitem{artieda_visual_2009}
-\BIBentryALTinterwordspacing
 J.~Artieda, J.~M. Sebastian, P.~Campoy, J.~F. Correa, I.~F. Mondragón,
   C.~Martínez, and M.~Olivares, ``\BIBforeignlanguage{en}{Visual 3-d {SLAM}
   from {UAVs}},'' \emph{\BIBforeignlanguage{en}{Journal of Intelligent and
-  Robotic Systems}}, vol.~55, no. 4-5, pp. 299--321, Aug. 2009. [Online].
-  Available: \url{http://link.springer.com/article/10.1007/s10846-008-9304-8}
-\BIBentrySTDinterwordspacing
+  Robotic Systems}}, vol.~55, no. 4-5, pp. 299--321, Aug. 2009.
 
 \bibitem{smith_approaches_2006}
 D.~Smith and S.~Singh, ``Approaches to multisensor data fusion in target
@@ -52,8 +49,8 @@ D.~Smith and S.~Singh, ``Approaches to multisensor data fusion in target
   Engineering}, vol.~18, no.~12, pp. 1696--1710, 2006.
 
 \bibitem{james_geosurv_2008}
-T.~James, ``{GeoSurv} {II} {UAV} system requirements document,'' Tech. Rep.,
-  Mar. 2008.
+T.~James, ``{GeoSurv} {II} {UAV} system requirements document,'' Carleton
+  University, Tech. Rep., Mar. 2008.
 
 \bibitem{zhang_obstacle_2012}
 F.~Zhang, R.~Goubran, and P.~Straznicky, ``Obstacle detection for low flying
@@ -85,12 +82,13 @@ M.~M. Saad, C.~J. Bleakley, and S.~Dobson, ``Robust high-accuracy ultrasonic
   Measurement}, vol.~60, no.~10, pp. 3334--3341, 2011.
 
 \bibitem{williams_efficient_2001}
-S.~B. Williams, \emph{Efficient Solutions to Autonomous Mapping and Navigation
-  Problems}, 2001.
+S.~B. Williams, ``Efficient solutions to autonomous mapping and navigation
+  problems,'' Ph.D. dissertation, University of Sydney, 2001.
 
 \bibitem{chong_feature-based_1999}
-K.~S. Chong and L.~Kleeman, \emph{Feature-based Mapping in Real, Large Scale
-  Environments using an Ultrasonic Array}, 1999.
+K.~S. Chong and L.~Kleeman, ``Feature-based mapping in real, large scale
+  environments using an ultrasonic array,'' \emph{Int. J. Robot. Res.},
+  vol.~18, no.~1, pp. 3--19, 1999.
 
 \bibitem{hanna_obstacle_2008}
 E.~Hanna, P.~Straznicky, and R.~Goubran, ``Obstacle detection for low flying
@@ -115,12 +113,9 @@ R.~Jirawimut, S.~Prakoonwit, F.~Cecelja, and W.~Balachandran, ``Visual odometer
   Measurement}, vol.~52, no.~4, pp. 1166--1173, 2003.
 
 \bibitem{amzajerdian_lidar_2011}
-\BIBentryALTinterwordspacing
 F.~Amzajerdian, D.~Pierrottet, L.~Petway, G.~Hines, and V.~Roback, ``Lidar
-  systems for precision navigation and safe landing on planetary bodies,'' vol.
-  8192, 2011, pp. 819\,202--819\,202--7. [Online]. Available:
-  \url{http://dx.doi.org/10.1117/12.904062}
-\BIBentrySTDinterwordspacing
+  systems for precision navigation and safe landing on planetary bodies,'' in
+  \emph{Proc. of {SPIE}}, vol. 8192, 2011, pp. 819\,202--819\,202--7.
 
 \bibitem{subharsanan_low_2013}
 \BIBentryALTinterwordspacing
@@ -207,11 +202,8 @@ Z.~Zhang, ``A flexible new technique for camera calibration,'' \emph{{IEEE}
   pp. 1330--1334, 2000.
 
 \bibitem{kalman_new_1960}
-\BIBentryALTinterwordspacing
 R.~E. Kalman, ``A new approach to linear filtering and prediction problems,''
   \emph{Journal of Basic Engineering}, vol.~82, no.~1, pp. 35--45, Mar. 1960.
-  [Online]. Available: \url{http://dx.doi.org/10.1115/1.3662552}
-\BIBentrySTDinterwordspacing
 
 \bibitem{sorenson_least-squares_1970}
 H.~Sorenson, ``Least-squares estimation: from gauss to kalman,'' \emph{{IEEE}
@@ -252,12 +244,10 @@ T.~Bailey and H.~Durrant-Whyte, ``Simultaneous localization and mapping
   no.~3, pp. 108--117, 2006.
 
 \bibitem{smith_representation_1986}
-\BIBentryALTinterwordspacing
 R.~C. Smith and P.~Cheeseman, ``\BIBforeignlanguage{en}{On the representation
   and estimation of spatial uncertainty},'' \emph{\BIBforeignlanguage{en}{The
   International Journal of Robotics Research}}, vol.~5, no.~4, pp. 56--68, Dec.
-  1986. [Online]. Available: \url{http://ijr.sagepub.com/content/5/4/56}
-\BIBentrySTDinterwordspacing
+  1986.
 
 \bibitem{durrant-whyte_uncertain_1988}
 H.~Durrant-Whyte, ``Uncertain geometry in robotics,'' \emph{{IEEE} Journal of
@@ -270,25 +260,20 @@ J.~Leonard and H.~Durrant-Whyte, ``Simultaneous map building and localization
   Systems, Proceedings {IROS} '91}, 1991, pp. 1442--1447 vol.3.
 
 \bibitem{durrant-whyte_localization_1996}
-\BIBentryALTinterwordspacing
 H.~Durrant-Whyte, D.~Rye, and E.~Nebot, ``\BIBforeignlanguage{en}{Localization
   of autonomous guided vehicles},'' in \emph{\BIBforeignlanguage{en}{Robotics
   Research}}, G.~Giralt and G.~H.~P. Dr.-Ing, Eds.\hskip 1em plus 0.5em minus
-  0.4em\relax Springer London, Jan. 1996, pp. 613--625. [Online]. Available:
-  \url{http://link.springer.com/chapter/10.1007/978-1-4471-1021-7_69}
-\BIBentrySTDinterwordspacing
+  0.4em\relax Springer London, Jan. 1996, pp. 613--625.
 
 \bibitem{csorba_new_1996}
-\BIBentryALTinterwordspacing
 M.~Csorba, J.~K. Uhlmann, and H.~F. Durrant-Whyte, ``New approach to
   simultaneous localization and dynamic map building,'' in \emph{Proc. {SPIE}
   2738, Navigation and Control Technologies for Unmanned Systems}, vol. 2738,
-  Orlando, {FL}, 1996, pp. 26--36. [Online]. Available:
-  \url{http://dx.doi.org/10.1117/12.241084}
-\BIBentrySTDinterwordspacing
+  Orlando, {FL}, 1996, pp. 26--36.
 
 \bibitem{csorba_simultaneous_1997}
-M.~Csorba, \emph{Simultaneous Localisation and Map Building}, 1997.
+M.~Csorba, ``Simultaneous localisation and map building,'' Ph.D. dissertation,
+  University of Oxford, 1997.
 
 \bibitem{dissanayake_solution_2001}
 M.~W. M.~G. Dissanayake, P.~Newman, S.~Clark, H.~Durrant-Whyte, and M.~Csorba,
@@ -314,12 +299,9 @@ T.~Bailey, J.~Nieto, J.~Guivant, M.~Stevens, and E.~Nebot, ``Consistency of the
   Intelligent Robots and Systems}, 2006, pp. 3562--3568.
 
 \bibitem{frese_discussion_2006}
-\BIBentryALTinterwordspacing
 U.~Frese, ``\BIBforeignlanguage{en}{A discussion of simultaneous localization
   and mapping},'' \emph{\BIBforeignlanguage{en}{Autonomous Robots}}, vol.~20,
-  no.~1, pp. 25--42, Jan. 2006. [Online]. Available:
-  \url{http://link.springer.com/article/10.1007/s10514-006-5735-x}
-\BIBentrySTDinterwordspacing
+  no.~1, pp. 25--42, Jan. 2006.
 
 \bibitem{castellanos_limits_2004}
 J.~A. Castellanos, J.~Neira, and J.~D. Tardós, ``Limits to the consistency of
@@ -338,14 +320,11 @@ S.~Huang and G.~Dissanayake, ``Convergence and consistency analysis for
   Robotics}, vol.~23, no.~5, pp. 1036--1049, 2007.
 
 \bibitem{civera_1-point_2009}
-\BIBentryALTinterwordspacing
 J.~Civera, O.~G. Grasa, A.~J. Davison, and J.~M.~M. Montiel, ``1-point {RANSAC}
   for {EKF-based} structure from motion,'' in \emph{Proceedings of the 2009
   {IEEE/RSJ} international conference on Intelligent robots and systems}, ser.
   {IROS'09}.\hskip 1em plus 0.5em minus 0.4em\relax Piscataway, {NJ}, {USA}:
-  {IEEE} Press, 2009, p. 3498–3504. [Online]. Available:
-  \url{http://dl.acm.org/citation.cfm?id=1733023.1733307}
-\BIBentrySTDinterwordspacing
+  {IEEE} Press, 2009, p. 3498–3504.
 
 \bibitem{estrada_hierarchical_2005}
 C.~Estrada, J.~Neira, and J.~Tardos, ``Hierarchical {SLAM:} real-time accurate
@@ -362,8 +341,8 @@ M.~Bosse, P.~Newman, J.~Leonard, and S.~Teller, ``{SLAM} in large-scale cyclic
   Robotics Research}, p. 1113–1139, 2004.
 
 \bibitem{bailey_mobile_2002}
-T.~Bailey, \emph{Mobile Robot Localisation and Mapping in Extensive Outdoor
-  Environments}, 2002.
+T.~Bailey, ``Mobile robot localisation and mapping in extensive outdoor
+  environments,'' Ph.D. dissertation, University of Sydney, 2002.
 
 \bibitem{okutomi_multiple-baseline_1991}
 M.~Okutomi and T.~Kanade, ``A multiple-baseline stereo,'' in \emph{, {IEEE}
@@ -376,13 +355,10 @@ A.~Jepson and D.~Heeger, ``A fast subspace algorithm for recovering rigid
   1991}, 1991, pp. 124--131.
 
 \bibitem{chowdhury_stochastic_2003}
-\BIBentryALTinterwordspacing
 A.~K.~R. Chowdhury and R.~Chellappa, ``\BIBforeignlanguage{en}{Stochastic
   approximation and rate-distortion analysis for robust structure and motion
   estimation},'' \emph{\BIBforeignlanguage{en}{International Journal of
-  Computer Vision}}, vol.~55, no.~1, pp. 27--53, Oct. 2003. [Online].
-  Available: \url{http://link.springer.com/article/10.1023/A%3A1024488407740}
-\BIBentrySTDinterwordspacing
+  Computer Vision}}, vol.~55, no.~1, pp. 27--53, Oct. 2003.
 
 \bibitem{aidala_utilization_1983}
 V.~Aidala and S.~Hammel, ``Utilization of modified polar coordinates for
@@ -392,6 +368,11 @@ V.~Aidala and S.~Hammel, ``Utilization of modified polar coordinates for
 \bibitem{_python_????}
 \BIBentryALTinterwordspacing
 ``Python.'' [Online]. Available: \url{http://www.python.org/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{_opencv_????}
+\BIBentryALTinterwordspacing
+``{OpenCV}.'' [Online]. Available: \url{http://opencv.org/}
 \BIBentrySTDinterwordspacing
 
 \bibitem{shi_good_1994}
@@ -406,8 +387,8 @@ J.~Y. Bouguet \emph{et~al.}, ``Pyramidal implementation of the lucas kanade
 
 \bibitem{_athena_????}
 \BIBentryALTinterwordspacing
-Athena. (2013) Athena 111m integrated flight control system. [Online].
-  Available: \url{http://www.rockwellcollins.com/}
+``Athena 111m integrated flight control system.'' [Online]. Available:
+  \url{http://www.rockwellcollins.com}
 \BIBentrySTDinterwordspacing
 
 \bibitem{_cgiar-csi_????}
@@ -424,8 +405,8 @@ Athena. (2013) Athena 111m integrated flight control system. [Online].
 
 \bibitem{_pyproj_????}
 \BIBentryALTinterwordspacing
-``pyproj - python interface to {PROJ.4} library - google project hosting.''
-  [Online]. Available: \url{http://code.google.com/p/pyproj/}
+``pyproj - python interface to {PROJ.4} library.'' [Online]. Available:
+  \url{http://code.google.com/p/pyproj/}
 \BIBentrySTDinterwordspacing
 
 \bibitem{_gps_????}

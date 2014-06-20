@@ -22,53 +22,46 @@ Database file #2: ref.bib
 -- IEEEtran.bst version 1.13 (2008/09/30) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
-Warning--missing institution in james_geosurv_2008
-Warning--missing publisher in williams_efficient_2001
-Warning--missing publisher in chong_feature-based_1999
-Warning--empty booktitle in amzajerdian_lidar_2011
-Warning--missing publisher in csorba_simultaneous_1997
-Warning--missing publisher in bailey_mobile_2002
 
 Done.
-You've used 74 entries,
+You've used 75 entries,
             4039 wiz_defined-function locations,
-            1615 strings with 28575 characters,
-and the built_in function-call counts, 56255 in all, are:
-= -- 4500
-> -- 1178
-< -- 516
-+ -- 663
-- -- 181
-* -- 2669
-:= -- 8139
-add.period$ -- 146
-call.type$ -- 74
-change.case$ -- 67
-chr.to.int$ -- 1263
-cite$ -- 80
-duplicate$ -- 3965
-empty$ -- 4801
-format.name$ -- 227
-if$ -- 13101
+            1614 strings with 28219 characters,
+and the built_in function-call counts, 56598 in all, are:
+= -- 4545
+> -- 1181
+< -- 524
++ -- 666
+- -- 180
+* -- 2661
+:= -- 8180
+add.period$ -- 152
+call.type$ -- 75
+change.case$ -- 72
+chr.to.int$ -- 1278
+cite$ -- 75
+duplicate$ -- 4022
+empty$ -- 4795
+format.name$ -- 226
+if$ -- 13185
 int.to.chr$ -- 0
-int.to.str$ -- 74
-missing$ -- 658
-newline$ -- 281
-num.names$ -- 70
-pop$ -- 1619
+int.to.str$ -- 75
+missing$ -- 670
+newline$ -- 268
+num.names$ -- 69
+pop$ -- 1635
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 4427
+skip$ -- 4435
 stack$ -- 0
-substring$ -- 3035
-swap$ -- 3259
-text.length$ -- 95
+substring$ -- 3075
+swap$ -- 3299
+text.length$ -- 98
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 74
-warning$ -- 6
-while$ -- 268
-width$ -- 76
-write$ -- 735
-(There were 6 warnings)
+type$ -- 75
+warning$ -- 0
+while$ -- 271
+width$ -- 77
+write$ -- 726
