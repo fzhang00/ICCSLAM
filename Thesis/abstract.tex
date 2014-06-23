@@ -1,14 +1,12 @@
 % first sentence describes what this algorithm is for, and what it is made of.
 This thesis describes an obstacle detection system for low flying
-autonomous unmanned aerial vehicle using an 
-extended Kalman filter (EKF) based simultaneous localization and
+autonomous unmanned aerial vehicle (UAV) using a simultaneous localization and
 mapping (SLAM) algorithm.
 % describe the algorithm and it's output
-The SLAM framework fuses inertial
-measurements with monocular image sensor measurements to estimate the
-positions of a number of landmarks as well as the position and
-orientation of the UAS. A high resolution sparse terrain elevation map
-and UAS trajectory can then be computed from the filter state vector.
+The SLAM framework utilizes an extended Kalman filter to fuse inertial
+measurements and monocular image sequence together to estimate the
+poses of the UAV and positions of landmarks. A high resolution sparse terrain elevation map
+and UAS trajectory can be computed from the filter state vector.
 An inverse depth parameterization is used to describe the positions of
 the landmarks so that features at all ranges can be tracked by the
 filter. Camera centric coordinate system was adopted to improve the
