@@ -1,34 +1,36 @@
-% first sentence describes what this algorithm is for, and what it is made of.
+% first sentence describes what this algorithm is for, and what it is
+% made of.
 This thesis describes an obstacle detection system for low flying
-autonomous unmanned aerial vehicle (UAV) using a simultaneous localization and
-mapping (SLAM) algorithm.
-% describe the algorithm and it's output
+autonomous unmanned aerial vehicle (UAV) using a simultaneous
+localization and mapping (SLAM) algorithm.
+% describe the algorithm and it's output 
 The SLAM framework utilizes an extended Kalman filter to fuse inertial
 measurements and monocular image sequence together to estimate the
-poses of the UAV and positions of landmarks. A high resolution sparse terrain elevation map
-and UAS trajectory can be computed from the filter state vector.
-An inverse depth parameterization is used to describe the positions of
-the landmarks so that features at all ranges can be tracked by the
-filter. Camera centric coordinate system was adopted to improve the
-consistency of the framework for large area mapping. A test flight is
-conducted to test the algorithm in a realistic scenario, and two video
-sequences of 400 frames were processed with the described algorithm.
-The result shows that when quality features can be extracted from the
-image sequence, the algorithm is capable of mapping features ranging
-as far as 1600 meters. The accuracy of the feature position estimates
-are quite good for those initialized at first frames. Features added
-at higher frame number carry offset error due to the error in aircraft
-localization estimates. To better understand the contributing factors
-of error seen in the flight data result, an series of simulations were
-performed to analyze the algorithm under different circumstanstance,
-including simple forward motion, oscillatory motion for all
-other 5 degree of freedom, error embedded in calibration result of the
-camera intrinsic parameters, and image resolution. The simulation
-proved that the algorithm perform very well under simple forward
-motion, but is very sensitive to rotational motion. Error in camera
-intrisic paramters all contribute to localization error and feature
-mappping error. Although not all of these error can be prevented, the
-len distortion correction procedure should be included into the
-algorithm.  The minimum image resultion suggested by the
-simulation is 720x1080, beyond which localization and mapping error
-were significantly reduced. 
+poses of the UAV and positions of landmarks. A high resolution sparse
+terrain map and UAV trajectory can be computed from the filter state
+vector. 
+\emph{(optional description of the algorithm)In order to
+detect long distance obstacle and handle large area mapping, inverse
+depth parameterization and camera centric coordinate system was
+adopted.}
+% Test flight and result
+The biggest contribution of this work is that the algorithm was tested
+and proven feasible with real arial video and navigation measurements.
+A test flight was conducted to collect data by using a simulated
+unmanned arial system (SUAS) towed by a helicopter. The result shows
+that when quality features can be extracted from the image sequence,
+the algorithm is capable of mapping landmarks ranging as far as 1600
+meters. The accuracy of the landmark position estimates were good for
+those initialized at the first frames. Landmarks added later carried
+offset error due to the error in aircraft localization estimates.
+% The simulations
+To better understand the errors seen in the real flight data result, a
+series of simulations were performed to analyze the algorithm. The
+simulated scenarios include simple forward motion, oscillatory motion
+on all other 5 degrees of freedom, the effect of camera calibration
+error, and the effect of various image resolution. The simulation
+showed that the algorithm is very sensitive to rotational motion,
+which caused significant error in both landmark position estimates and
+UAV localization estimates. Other improvements suggested by the
+simulation include adding len distortion model into the algorithm, and
+using camera with resolution higher than 720x1080.
