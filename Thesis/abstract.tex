@@ -13,24 +13,27 @@ vector.
 detect long distance obstacle and handle large area mapping, inverse
 depth parameterization and camera centric coordinate system was
 adopted.}
-% Test flight and result
+% Test flight and result 
 The biggest contribution of this work is that the algorithm was tested
-and proven feasible with real arial video and navigation measurements.
-A test flight was conducted to collect data by using a simulated
-unmanned arial system (SUAS) towed by a helicopter. The result shows
-that when quality features can be extracted from the image sequence,
-the algorithm is capable of mapping landmarks ranging as far as 1600
-meters. The accuracy of the landmark position estimates were good for
-those initialized at the first frames. Landmarks added later carried
-offset error due to the error in aircraft localization estimates.
+and was proven feasible with real aerial video and navigation measurements.
+A test flight was conducted to collect data by using a modeled UAV towed
+by a helicopter. The result showed that when good quality features can
+be extracted from the image sequence, the algorithm was capable of
+mapping landmarks ranging as far as 1600 meters when they were
+initialized at the first frame of the video. Landmarks added later
+carried offset errors due to the error in aircraft localization
+estimates.
 % The post analyzation 
-To better understand the errors seen in the real flight data result,
-the algorithm was further analyzed through a series of simulation. The
-simulated scenarios include simple forward motion, oscillatory motion
-on all other 5 degrees of freedom, the effect of camera calibration
-error, and the effect of various image resolution. The simulation
-showed that the algorithm is very sensitive to rotational motion,
-which caused significant error in both landmark position estimates and
-UAV localization estimates. Other improvements suggested by the
-simulation include adding len distortion model into the algorithm, and
-using camera with resolution higher than 720x1080.
+
+To better understand its strength and weakness, and to improve future
+design, the algorithm was further analyzed through a series of
+simulation. The simulated scenarios were designed to
+reconstruct what was seen in the real flight and included: simple
+forward motion, oscillatory motion on all other 5 degrees of freedom,
+the effect of camera calibration error, and the effect of image
+digitization. The simulation showed that the algorithm is very
+sensitive to rotational motion, which caused significant error in both
+landmark position estimates and UAV localization estimates. Other
+improvements suggested by the simulation include adding lens
+distortion model into the algorithm, and using camera with resolution
+higher than 720x1080.
