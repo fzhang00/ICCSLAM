@@ -13,7 +13,7 @@
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 4.3}{\ignorespaces Compact PCI data acquisition system (CDAC)\relax }}{29}{figure.caption.41}
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 4.4}{\ignorespaces Image from monocular camera with GPS second timestamp\relax }}{30}{figure.caption.42}
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 4.5}{\ignorespaces A Subset of Camera Calibration Inputs\relax }}{31}{figure.caption.43}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 4.6}{\ignorespaces Coordinate transformation from UTM to world frame\relax }}{32}{figure.caption.45}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 4.6}{\ignorespaces Coordinate transformation from UTM to world frame\relax }}{33}{figure.caption.45}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.1}{\ignorespaces Inverse Depth Convergence\relax }}{35}{figure.caption.47}
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.2}{\ignorespaces Feature 13 at frame 50, 100, 150, 200, 250, 300, 350, and 398\relax }}{35}{figure.caption.48}

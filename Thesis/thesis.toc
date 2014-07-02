@@ -41,10 +41,12 @@
 \contentsline {subsubsection}{Initialize the State Vector}{24}{section*.35}
 \contentsline {subsubsection}{Initialized the State Covariance Matrix}{24}{section*.36}
 \contentsline {subsection}{\numberline {3.2.6}Adding and Deleting Features}{26}{subsection.3.2.6}
-\contentsline {chapter}{ \numberline {4}Experiments with Real Data}{27}{section*.38}
+\contentsline {chapter}{ \numberline {4}Experiments with Real Aerial Data}{27}{section*.38}
 \contentsline {section}{\numberline {4.1}Equipment Setup and Data Collection}{27}{section.4.1}
 \contentsline {section}{\numberline {4.2}Camera Calibration}{31}{section.4.2}
-\contentsline {section}{\numberline {4.3}Ground Truth Data Collection}{32}{section.4.3}
+\contentsline {section}{\numberline {4.3}Data Preperation}{32}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Ground Truth Data Collection}{32}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Data Preperation}{32}{subsection.4.3.2}
 \contentsline {chapter}{ \numberline {5}Result From Flight Data}{34}{section*.46}
 \contentsline {section}{\numberline {5.1}Convergence}{34}{section.5.1}
 \contentsline {section}{\numberline {5.2}Accuracy}{37}{section.5.2}
