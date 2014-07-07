@@ -1,20 +1,25 @@
 \chapter{Result From Flight Data}\label{ch:FlightResult}
 
-This chapter is divided into three main sections. Firstly, a piece of
-video of 400 frames were processed and the algorithm's convergence and
-consistency was analyzed. Secondly, the accuracy of the algorithm is
-examined by comparing to ground truth data. An another video where
-features can be manually matched was processed, and result was
-summarized in section three.
+This chapter discussed the result of applying the proposed algorithm
+on realistic aerial video and navigation data. Firstly, a piece of
+video of 400 frames were processed by the CC\_EKF\_SLAM algorithm. The
+convergence, accuracy and consistency of the result were analyzed
+against ground truth, and described in section
+\ref{sec:flight-converge}-\ref{sec:flight-consistency}. While
+analyzing pure natural scene video where no man-made object can be
+seen, it was found that landmarks correspondence between the
+estimated and ground truth was difficult due to the
+similarity in apperance of the landmark. Therefore, an another video
+where landmarks can be manually and distinctively matched was
+processed, and result was summarized in section \ref{sec:flight-manual}.
 
-\section{Convergence}
-Among the feature parameters, the feature initialization point were
-initialized to the zero which is the origin of the camera centric
-coordinate. $\phi$ and $\theta$ were calculated directly from the
-feature position on image plane, have high accuracy and don't require
-convergence. The only parameter that goes through a converging process
-is the features' inverse depth $\rho$, which were initialized to 0.1
-for all features. 
+\section{Convergence}\label{sec:flight-converge}
+When a landmark was added to the filter, the landmark initialization
+point were initialized to the zero which is the origin of the camera
+centric coordinate. $\phi$ and $\theta$ were calculated directly from
+the feature position on image plane, had relatively high accuracy. The
+only parameter that went through a converging process was the inverse
+depth $\rho$, which were initialized to 0.1 for all landmarks.
 
 Figure \ref{fltfig:1} shows the $1/\rho$ plot for the entire 400
 frames. Features ID was shown on the right side of the plot for the
@@ -130,7 +135,7 @@ rotation.
 
 \FloatBarrier
 
-\section{Accuracy}
+\section{Accuracy}\label{sec:flight-accuracy}
 \subsection{SUAS Localization}
 
 The SUAS location and orientation were verified in UTM coordinate with
@@ -262,7 +267,7 @@ also shown for comparison.
 \end{figure}
 \FloatBarrier
 
-\section{Consistency Analysis}
+\section{Consistency Analysis}\label{sec:flight-consistency}
 A EKF system becomes inconsistent when the variance of state vector
 element becomes too small and forbid an effective update. In addition,
 the uncertainty of the world frame should increase as the camera frame
@@ -342,6 +347,7 @@ future work.
 \FloatBarrier
 
 \section{Compare to Visually Corresponded Feature}
+\label{sec:flight-manual}
 Due to the difficulty of corresponding feature extracted from video to the
 actual data on DEM, a second piece of video was processed with
 man-made structure in the scene so that feature correspondence can be
