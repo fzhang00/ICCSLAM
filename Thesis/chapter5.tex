@@ -17,24 +17,25 @@ processed, and result was summarized in section \ref{sec:flight-manual}.
 When a landmark was added to the filter, the landmark initialization
 point were initialized to the zero which is the origin of the camera
 centric coordinate. $\phi$ and $\theta$ were calculated directly from
-the feature position on image plane, had relatively high accuracy. The
-only parameter that went through a converging process was the inverse
-depth $\rho$, which were initialized to 0.1 for all landmarks.
+the feature position on image plane, had relatively high accuracy, and
+should stay relatively constant. The only parameter that experienced
+a converging process was the inverse depth $\rho$, which were
+initialized to 0.1 for all landmarks.
 
 Figure \ref{fltfig:1} shows the $1/\rho$ plot for the entire 400
-frames. Features ID was shown on the right side of the plot for the
-features whose values were still changing rapidly. The depth
-estimators went through rapid changes for several frames after their
-initialization. Within approximate 20 frames, most estimators settles
-to a stable value. Sharp spike in the middle of the tracking is due to
-feature added into filter. The estimated features distance ranged from
-400 meters to about 1200 meters, confirming the algorithm's capability
-for estimating features at great distance. On the other hands, some
-features take a long time to settle, while some other never settled
-and drift away as tracking continues, such as feature 32, 13, and 53.
-% is the non and slowly settled feature has any character in its
-% pattern? ie. is a line feature, instead of corner? A outlier filter
-% should be in place to get rid of the poor features (future work).
+frames. Landmark ID was shown on the right side of the plot for the
+landmarks that were not converging. The depth estimates went through
+rapid changes for several frames after initialization. Within
+approximate 20 frames, most inverse depth estimates settled to stable
+values. Sharp spike in the middle of the tracking is due to new
+landmarks added into the filter. The estimated landmarks distances
+ranged from 400 meters to about 1200 meters, confirming the
+algorithm's capability for estimating landmarks at great distance. On
+the other hands, some landmarks took a long time to settle, while some
+other never settled and drift away as tracking continued, such as
+landmark 32, 13, and 53. 
+% An outlier filter should be in place to get rid of the poor features
+% (future work).
 
 \begin{figure}[h]
 \centering
@@ -43,15 +44,19 @@ and drift away as tracking continues, such as feature 32, 13, and 53.
 \label{fltfig:1}
 \end{figure}
 
-As an example, pattern of feature 13 at frame 50, 100, 150, 200, 250,
-300, 350 and 400 are shown in figure \ref{fltfig:1_1}. It can be seen
-that the initial feature was detected at the edge of a hill top. As
-frame number advances, the view the camera becomes different. The
-pattern comparison in tracking algorithm normally allows for a small
-error at each iteration to tolerate the slight view change of the
-camera. This error accumulate slowly and eventually causes the tracked
-target to become a pattern located at a different location, which caused
-the estimated depth to change slowly.
+The non-converging landmarks were those located at the edge of a hill
+where objects with big difference in distance meet in the image. As an
+example, visual pattern of landmark 13 at frame 50, 100, 150, 200,
+250, 300, 350 and 398 were shown in figure \ref{fltfig:1_1}. It showed
+that the initial visual pattern for landmark 13 was detected at the
+edge of a hill top. As frame number advanced, the view the camera
+became different. The pattern comparison in tracking algorithm
+normally allows for a small error at each iteration to tolerate the
+slight view change of the camera. This error accumulated slowly and
+eventually caused the tracked target to become a pattern located at a
+different location, which explained the slow drift in depth estimate.
+To increase the reliability of the estimates, it is necessary to add
+procedure into the algorithm to detect and handle such behavior.
 
 \begin{figure}[h]
 \centering
@@ -75,41 +80,43 @@ keepaspectratio=true]{./Figures/fltfig/cut1/features/uav2_cut1_398_fID13.jpg}
 \label{fltfig:1_1}
 \end{figure}
 
-Although the features initialization point $[x_i, y_i, z_i]$, and the
-deviation-elevation angle pair $[\varphi, \theta]$ did not go through
-a converging stage, they do get updated and converted into the new
-camera coordinate using the estimated camera motion at every
-iteration. As a result, the accuracy of these parameters varies.
-Ideally, the coordinates should stay at a relatively fixed value.
-However, the plot indicates a variation as the vehicle travels along.
-Figure \ref{fltfig:2} shows the tracking of these parameters over the
-entire processed frames. 
+When landmarks were initialized, the initialization coordinate $[x_i,
+y_i, z_i]$, and the deviation-elevation angle pair $[\varphi, \theta]$
+did not go through a slow converging stage. Ideally, the parameters
+should stay at a relatively fixed value. As these parameters were used
+with the inverse depth to calculate landmark coordinates on image
+plane and received every iteration, their values were affected by the
+inverse depth, and varied at each iteration. The plots in figure
+\ref{fltfig:2} showed the variation of these parameters over the
+entire processed frames.
 
-First column shows the feature initialization coordinates with the
-initial value removed. All feature initialized at $1^{st}$ frame has a
-stable initialization coordinate with little variation. However,
-features added at later frames shows a significant drift from their
-initial positions. This is a direct result of the filter correction
-process. When new features were added to the filter, it has not
-establish correlation with all the other features and the world frame
-parameters, which causes its correction on initialization point is
-slightly different than all the existing features and the world frame
-position. As a future improvement, it is more reasonable for the newly
-added features to inherent the cross-correlation on the initialization
-coordinates between the deleted features and the other state vector
-elements. 
+First column of the plots showed landmark initialization coordinates
+with the initial value subtracted. All landmarks that were initialized
+at $1^{st}$ image frame had stable value with little variation.
+Landmarks that were added at later image frames showed significant
+drift from their initial value. This is a direct result of the filter
+correction process. When a new landmark were added to the filter, it
+had not established correlation with all the other landmarks and the
+world frame parameters, which caused its correction on initialization
+point slightly different than all the existing features and the world
+frame position. As a future improvement, it is reasonable for the
+newly added landmark to inherent the cross-correlation on the
+initialization coordinates from a landmark close to it. elements.
 
-Second and third column show the feature angle parameters with their
-initial value and mean value removed. For all features, whether
-initialized at first frame, or later frames, these angle estimates all
-diverged slightly from the initial values. This is not surprising
-since the initial depth of the feature is unknown, to compensate for
-the incorrect depth, filter must change the angles estimates slightly
-to arrive at a predicted measurements that agree with the actual
-measurements. Secondly, the SUAS rotation motion contributes to the
-variation pattern of the angle estimates. $\varphi$ is highly
-correlated with the Z rotation, and $\theta$ is correlated to the X
-rotation. 
+Second and third columns showed the landmarks' $\varphi$ and $\theta$
+parameters with their initial value or mean value subtracted. For all
+landmarks, whether initialized at first image frame, or later frames,
+these angle estimates all diverged slightly from the initial values.
+This is not surprising since the initial depths of the landmarks were
+unknown. To compensate for the incorrect depth, filter must change
+$\varphi$ and $\theta$ estimates slightly to arrive at a predicted
+measurements that agreed with the actual measurements. Secondly, the
+SUAS rotation motion contributes to the variation pattern of $\varphi$
+and $\theta$ estimates. \colorbox{yellow}{$\varphi$ is highly correlated with
+  the Z rotation, and $\theta$ is correlated to the X
+  rotation.(Verification required).} This behavior
+suggested that the algorithm might be highly sensitive to aircraft
+rotational motion.
 % doesn't make sense. By definition, X rotation should have bigger
 % impact on varphi, Z rotation has bigger impact on theta
 
@@ -117,10 +124,9 @@ rotation.
 \centering
 \includegraphics[width=14cm, keepaspectratio=true]
 {./Figures/fltfig/cut1/Figure20.png}
-\caption{Feature parameters tracking}
+\caption{Landmark parameters tracking}
 \label{fltfig:2}
 \end{figure}
-
 % THIS WAS THE OLD TEXT, MAY NOT BE TRUE. 
 % On the other hand, features
 % mapping is not affected too much by the error in localization. Because
@@ -132,7 +138,6 @@ rotation.
 % is unaffected by the error in the SUAS localization. However, for
 % feature removed from the filter, their parameters are no longer
 % updated, therefore revealing the error in SUAS localization.
-
 \FloatBarrier
 
 \section{Accuracy}\label{sec:flight-accuracy}

@@ -17,13 +17,13 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.1}{\ignorespaces Inverse Depth Convergence\relax }}{35}{figure.caption.47}
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.2}{\ignorespaces Feature 13 at frame 50, 100, 150, 200, 250, 300, 350, and 398\relax }}{36}{figure.caption.48}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.3}{\ignorespaces Feature parameters tracking\relax }}{37}{figure.caption.49}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.3}{\ignorespaces Landmark parameters tracking\relax }}{37}{figure.caption.49}
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.4}{\ignorespaces SUAS position and orientation\relax }}{38}{figure.caption.50}
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.5}{\ignorespaces Finding ground truth feature position on DEM\relax }}{39}{figure.caption.51}
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.6}{\ignorespaces Feature position error convergence\relax }}{40}{figure.caption.52}
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.7}{\ignorespaces Feature position error plotted vs initialization sequence. \relax }}{40}{figure.caption.53}
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.8}{\ignorespaces Feature position error plotted vs. ground truth position. \relax }}{41}{figure.caption.54}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.9}{\ignorespaces Terrain map. Left: estimated, right: ground truth \relax }}{41}{figure.caption.55}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.9}{\ignorespaces Terrain map. Left: estimated, right: ground truth \relax }}{42}{figure.caption.55}
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.10}{\ignorespaces Variance of world frame parameters and camera motion\relax }}{43}{figure.caption.56}
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.11}{\ignorespaces Variance of features parameters\relax }}{43}{figure.caption.57}
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.12}{\ignorespaces State Vector Corrections\relax }}{45}{figure.caption.58}
