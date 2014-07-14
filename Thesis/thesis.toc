@@ -47,40 +47,40 @@
 \contentsline {section}{\numberline {4.3}Data Preperation}{32}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Ground Truth Data Collection}{32}{subsection.4.3.1}
 \contentsline {subsection}{\numberline {4.3.2}Data Preperation}{32}{subsection.4.3.2}
-\contentsline {chapter}{ \numberline {5}Result From Flight Data}{34}{section*.46}
-\contentsline {section}{\numberline {5.1}Convergence}{34}{section.5.1}
-\contentsline {section}{\numberline {5.2}Accuracy}{37}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}SUAS Localization}{37}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Features Mapping}{38}{subsection.5.2.2}
-\contentsline {section}{\numberline {5.3}Consistency Analysis}{42}{section.5.3}
-\contentsline {section}{\numberline {5.4}Compare to Visually Corresponded Feature}{45}{section.5.4}
-\contentsline {chapter}{ \numberline {6}Error Analysis via Simulation}{50}{section*.64}
-\contentsline {section}{\numberline {6.1}An Ideal Case}{52}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}SUAS Localization}{52}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Features Mapping - Convergence and Accuracy}{53}{subsection.6.1.2}
-\contentsline {section}{\numberline {6.2}Effect of SUAS Motion}{54}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}SUAS Localization under Motion}{55}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Feature Mapping Accuracy under Motion}{57}{subsection.6.2.2}
-\contentsline {section}{\numberline {6.3}Camera Intrinsic Parameters}{61}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Effect from $(c_{x}, c_{y})$}{61}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}Effect from $(f_x, f_y)$}{64}{subsection.6.3.2}
-\contentsline {subsection}{\numberline {6.3.3}Effect from Distortion}{66}{subsection.6.3.3}
-\contentsline {subsection}{\numberline {6.3.4}Effect from Image Resolution}{68}{subsection.6.3.4}
-\contentsline {chapter}{ \numberline {7}Conclusion}{70}{section*.85}
-\contentsline {section}{\numberline {7.1}Result Summaries}{70}{section.7.1}
-\contentsline {subsection}{\numberline {7.1.1}Flight Data Processing}{70}{subsection.7.1.1}
-\contentsline {subsection}{\numberline {7.1.2}Noise Analysis through Simulation}{71}{subsection.7.1.2}
-\contentsline {subsubsection}{Low noise environment}{71}{section*.86}
-\contentsline {subsubsection}{Impact from motion}{72}{section*.87}
-\contentsline {subsubsection}{Impact from error in camera calibration}{72}{section*.88}
-\contentsline {paragraph}{Effect from ($c_x, c_y$)}{72}{section*.89}
-\contentsline {paragraph}{Effect from ($f_x, f_y$)}{72}{section*.90}
-\contentsline {paragraph}{Effect from Distortion}{73}{section*.91}
-\contentsline {paragraph}{Effect from Image Resolution}{73}{section*.92}
-\contentsline {section}{\numberline {7.2}Future Research}{73}{section.7.2}
-\contentsline {chapter}{List of References}{75}{section*.93}
-\contentsline {chapter}{Appendix \numberline {A}Coordinate Transformation}{81}{section*.95}
-\contentsline {chapter}{Appendix \numberline {B}Jacobian Matrix for Filter Initialization}{84}{section*.97}
-\contentsline {chapter}{Appendix \numberline {C}Linearization of Measurement Model and Composition Equations}{87}{section*.98}
-\contentsline {section}{\numberline {C.1}Linearization of Measurement Model}{87}{section.C.1}
-\contentsline {section}{\numberline {C.2}Jacobian Matrix of Composition Equations}{89}{section.C.2}
+\contentsline {chapter}{ \numberline {5}Result From Flight Data}{35}{section*.46}
+\contentsline {section}{\numberline {5.1}Convergence}{35}{section.5.1}
+\contentsline {section}{\numberline {5.2}Accuracy}{38}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}SUAS Localization}{38}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Features Mapping}{39}{subsection.5.2.2}
+\contentsline {section}{\numberline {5.3}Consistency Analysis}{43}{section.5.3}
+\contentsline {section}{\numberline {5.4}Compare to Visually Corresponded Feature}{46}{section.5.4}
+\contentsline {chapter}{ \numberline {6}Error Analysis via Simulation}{51}{section*.64}
+\contentsline {section}{\numberline {6.1}An Ideal Case}{53}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}SUAS Localization}{53}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Features Mapping - Convergence and Accuracy}{54}{subsection.6.1.2}
+\contentsline {section}{\numberline {6.2}Effect of SUAS Motion}{55}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}SUAS Localization under Motion}{56}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Feature Mapping Accuracy under Motion}{58}{subsection.6.2.2}
+\contentsline {section}{\numberline {6.3}Camera Intrinsic Parameters}{62}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Effect from $(c_{x}, c_{y})$}{62}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Effect from $(f_x, f_y)$}{65}{subsection.6.3.2}
+\contentsline {subsection}{\numberline {6.3.3}Effect from Distortion}{67}{subsection.6.3.3}
+\contentsline {subsection}{\numberline {6.3.4}Effect from Image Resolution}{69}{subsection.6.3.4}
+\contentsline {chapter}{ \numberline {7}Conclusion}{71}{section*.85}
+\contentsline {section}{\numberline {7.1}Result Summaries}{71}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}Flight Data Processing}{71}{subsection.7.1.1}
+\contentsline {subsection}{\numberline {7.1.2}Noise Analysis through Simulation}{72}{subsection.7.1.2}
+\contentsline {subsubsection}{Low noise environment}{72}{section*.86}
+\contentsline {subsubsection}{Impact from motion}{73}{section*.87}
+\contentsline {subsubsection}{Impact from error in camera calibration}{73}{section*.88}
+\contentsline {paragraph}{Effect from ($c_x, c_y$)}{73}{section*.89}
+\contentsline {paragraph}{Effect from ($f_x, f_y$)}{73}{section*.90}
+\contentsline {paragraph}{Effect from Distortion}{74}{section*.91}
+\contentsline {paragraph}{Effect from Image Resolution}{74}{section*.92}
+\contentsline {section}{\numberline {7.2}Future Research}{74}{section.7.2}
+\contentsline {chapter}{List of References}{76}{section*.93}
+\contentsline {chapter}{Appendix \numberline {A}Coordinate Transformation}{82}{section*.95}
+\contentsline {chapter}{Appendix \numberline {B}Jacobian Matrix for Filter Initialization}{85}{section*.97}
+\contentsline {chapter}{Appendix \numberline {C}Linearization of Measurement Model and Composition Equations}{88}{section*.98}
+\contentsline {section}{\numberline {C.1}Linearization of Measurement Model}{88}{section.C.1}
+\contentsline {section}{\numberline {C.2}Jacobian Matrix of Composition Equations}{90}{section.C.2}

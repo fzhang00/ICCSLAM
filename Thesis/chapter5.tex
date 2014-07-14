@@ -76,7 +76,7 @@ keepaspectratio=true]{./Figures/fltfig/cut1/features/uav2_cut1_300_fID13.jpg}
 keepaspectratio=true]{./Figures/fltfig/cut1/features/uav2_cut1_350_fID13.jpg}
 \includegraphics[width=3cm,
 keepaspectratio=true]{./Figures/fltfig/cut1/features/uav2_cut1_398_fID13.jpg}
-\caption{Feature 13 at frame 50, 100, 150, 200, 250, 300, 350, and 398}
+\caption{Landmark 13 at frame 50, 100, 150, 200, 250, 300, 350, and 398}
 \label{fltfig:1_1}
 \end{figure}
 
@@ -124,45 +124,42 @@ rotational motion.
 \centering
 \includegraphics[width=14cm, keepaspectratio=true]
 {./Figures/fltfig/cut1/Figure20.png}
-\caption{Landmark parameters tracking}
+\caption{Landmarks parameters tracking}
 \label{fltfig:2}
 \end{figure}
-% THIS WAS THE OLD TEXT, MAY NOT BE TRUE. 
-% On the other hand, features
-% mapping is not affected too much by the error in localization. Because
-% their parameters are transformed in each iteration to the new camera
-% frame using the estimated SUAS motion which carries the error. As long
-% as their parameters are updated together with the estimated motion on
-% that iteration, and transformed back to the world frame using the same
-% estimated motion, the final result of features location in world frame
-% is unaffected by the error in the SUAS localization. However, for
-% feature removed from the filter, their parameters are no longer
-% updated, therefore revealing the error in SUAS localization.
+% THIS WAS THE OLD TEXT, MAY NOT BE TRUE. On the other hand, features
+% mapping is not affected too much by the error in localization.
+% Because their parameters are transformed in each iteration to the
+% new camera frame using the estimated SUAS motion which carries the
+% error. As long as their parameters are updated together with the
+% estimated motion on that iteration, and transformed back to the
+% world frame using the same estimated motion, the final result of
+% features location in world frame is unaffected by the error in the
+% SUAS localization. However, for feature removed from the filter,
+% their parameters are no longer updated, therefore revealing the
+% error in SUAS localization.
 \FloatBarrier
 
 \section{Accuracy}\label{sec:flight-accuracy}
 \subsection{SUAS Localization}
 
-The SUAS location and orientation were verified in UTM coordinate with
-initial position removed. Ground truth data comes from the GPS for
-position, and magnetometer for orientation. The GPS positioning can
-generally achieve 7.8 meters in accuracy \cite{_gps_????}. For
-orientation, accuracy on the GS-111m datasheet specified $0.1^{\circ}$
-for roll and pitch, and $0.5^{\circ}$ for heading. Figure
-\ref{fltfig:6} shows the estimated SUAS position and orientation,
-ground truth data, and the error. From the comparison, X position
-error reached a maximum of 20 meters, while error on Y and Z are
-bigger, reaching 50 meters and 30 meters respectively. The position
-error increases as the frame number grew bigger. For orientation, the
-estimated value agrees with the ground truth pattern, with maximum
-error within 0.02 rad or $1.15^{\circ}$. Although the error of pitch
-is biased to the negative side, and error of heading is biased to the
-positive side, there was no clear sign of diverging within the 400
-frames processed.
+Ground truth for SUAS position and orientation came from the GPS, and
+magnetometer. The GPS positioning can generally achieve 7.8 meters in
+accuracy \cite{_gps_????}. For orientation, accuracy on the GS-111m
+datasheet specified $0.1^{\circ}$ for roll and pitch, and
+$0.5^{\circ}$ for heading. Figure \ref{fltfig:6} shows the estimated
+SUAS position and orientation, ground truth data, and the error. From
+the comparison, X position error reached a maximum of 4.8 meters,
+while error on Y and Z are bigger, reaching 60 meters and 28 meters
+respectively. The position on Y axis were clearly diverging from the
+ground truth by the end of 400 frames. For orientation, the estimated
+value agrees with the ground truth pattern, with maximum error within
+0.02 rad or $1.15^{\circ}$. There was no clear sign of diverging
+within the 400 frames processed.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=12cm, keepaspectratio=true]
+\includegraphics[width=15.5cm, keepaspectratio=true]
 {./Figures/fltfig/cut1/Figure30.png}
 \caption{SUAS position and orientation}
 \label{fltfig:6}
@@ -170,31 +167,36 @@ frames processed.
 \FloatBarrier
 \subsection{Features Mapping}\label{sec:accuracy_features}
 
-The ground truth data came from digital terrain map (DEM) can be
-downloaded from CGIAR-CSI website \cite{_cgiar-csi_????}. Making data
-correspondence with the estimated feature is non-trivial for natural
-scene where it lacks of distinguishable landmark such as building corners or
-other man-made objects. From the experience of analyzing simulation
-data (chapter \ref{ch:simulation}), the initialized feature deviation
-and elevation angle $\phi$ and $\theta$ agrees very well to the ground
-truth value. In addition, feature initialization position is set to
-$[0, 0, 0]$ in camera frame, therefore carries no error. Therefore, the
-following procedure are used the find the corresponding ground truth
-location for any estimated feature.
+The ground truth data came from digital terrain map (DEM) were
+downloaded from CGIAR-CSI website \cite{_cgiar-csi_????}. Data
+correspondence between the DEM and the estimated landmarks is
+non-trivial for natural scene where it lacks distinguishable visual
+features such as building corners or other man-made objects. The
+converging plots figure \ref{fltfig:2} showed that landmark parameters
+do experience drift as filter tracked landmarks in flight. The best
+time for making data correspondence with DEM is when landmarks were
+first initialized. The landmark initialization position $[x_i, y_i,
+z_i]$ were 0s when landmarks were initialied. $[\varphi,
+\theta]$ were calculated from landmark coordinates in image, and did
+not carry any error contributed by the $\rho$ or optical flow
+algorithm result. Therefore, the following procedure were used the find
+the corresponding ground truth location for every estimated landmark.
 
 \begin{enumerate}
-  \item The frame number at which feature was initialized was
-  identified, and ground truth position and orientation of the SUAS at
-  that frame was recorded.
-  \item Create a reference frame on DEM at the feature initialization point.
-  \item Convert the feature deviation $\theta$ and elevation $\phi$
-  angle to UTM frame. (These angles were recorded in camera frame)
-  \item Create a vertical plane using $\theta$ and slice the DEM to
-  form a 1D elevation plot (Example: figure \ref{fltfig:7} blue line)
-  \item Create a line using $\phi$ and intersect the 1D elevation plot
+  \item The frame number at which landmark was initialized was
+  identified. Ground truth position of the SUAS at that frame was
+  recorded.
+  \item Create a reference frame aligned with the UTM frame on DEM
+  using the ground truth SUAS position.
+  \item Convert the landmark parameters $\theta$ and $\varphi$
+  angle at initialization from camera frame to UTM frame. 
+  \item Create a vertical plane using $\theta$ to slice the DEM to
+  form a 1D elevation plot. A example result was shown in figure
+  \ref{fltfig:7} blue line.
+  \item Create a line using $\varphi$ to intersect the 1D elevation plot
   (Figure \ref{fltfig:7} green line). 
-  \item The $1^{st}$ intersection point is used as ground truth
-  feature location.
+  \item The $1^{st}$ intersection was used as ground truth landmark
+  location.
 \end{enumerate}
 
 \begin{figure}[h]
@@ -205,16 +207,14 @@ location for any estimated feature.
 \label{fltfig:7}
 \end{figure}
 
-Feature locations are compared in world frame for the ease of
-corresponding the estimated features the video by eye. The error
-convergence is plotted in figure \ref{fltfig:8}. X component (along
-which axis the SUAS is traveling) of feature position converge to zero
-in general with maximum error less than 120m for the converged
-features. Y component shows a clear offset for features not
-initialized at first frame. This behavior is similar to what's seen in
-the simulation analysis \ref{sec:featureMotion} where offset in
-features position estimates are caused by drift in SUAS localization
-estimation. Z component does not show such offset.
+The convergence of landmark position error was plotted in figure
+\ref{fltfig:8}. X component (along which axis the SUAS was traveling)
+converged to zero in general with error ranging from 2.8 meters to 120
+meters. Y component showed a clear offset for landmarks not initialized
+at first frame. This behavior is similar to what's seen in the
+error analysis \ref{sec:featureMotion} where offset in landmarks
+position estimates were caused by drift in SUAS localization
+estimation. Offset on Z component was much less obvious.
 
 \begin{figure}[h]
 \centering

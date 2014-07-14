@@ -141,20 +141,16 @@ a python interface to PROJ.4 library \cite{_pyproj_????} called pyproj
 the SUAS poses were brought to the world frame by substracting their
 value at time 0. The superscript Nav indicates that the value came
 from the navigation measurement.
-$$\text{True SUAS poses}^W = \text{poses}^{Nav} - \text{poses}^{Nav} \text{at Initialization}$$ 
 
-The estimated SUAS position can be obtained from the world
-frame estimates in the CC\_EKF\_SLAM state vector:
+$$\text{True SUAS position}^W = 
+Q_{step2}^{-1}Q_{step1}^{-1} \cdot\text{SUAS position}^{Nav}$$
 
-$$ \text{Estimated SUAS poses} = 
-[-O_{XYZ}^{C}, -W_{XYZ}^{C}]$$.
-
-
-To compare landmark position, longitude and latitude in DEM data were
-first converted into UTM. Secondly, the DEM data in UTM were converted
-into world frame using transformation matrix with initial SUAS
-position and orientation as input. The UTM to world frame
-transformation is illustrated in figure \ref{fig:utm_to_world}
+\noindent where $Q_{step1}^{-1}$ and $Q_{step2}^{-1}$ is the inverse
+transformation matrix for a reference frame evolving from UTM to world
+frame. Detail formulation for coordinate transformation was given in
+appendix \ref{ch:appendix1}. The UTM to world frame transformation is
+illustrated in figure \ref{fig:utm_to_world}, and the transformation
+parameters for step 1 and step 2 are listed below.
 
 \begin{figure}[h]
   \centering
@@ -162,10 +158,6 @@ transformation is illustrated in figure \ref{fig:utm_to_world}
   \caption{Coordinate transformation from UTM to world frame}
   \label{fig:utm_to_world}
 \end{figure}
-
-\noindent The translation and rotation parameters for step 1 and step
-2 are listed below. The DEM in world frame can be calculated using the
-coordinate transformation given in appendix \ref{ch:appendix1}.
 
 $$T_{step1} = \begin{bmatrix}Easting_{init}, Northing_{init},
   Height_{init}\end{bmatrix}$$
@@ -175,20 +167,43 @@ $$T_{step2} = \begin{bmatrix}0, 0, 0\end{bmatrix}$$
 $$R_{step2} = \begin{bmatrix}Roll_{init}, Pitch_{init},
   Azimuth_{init}\end{bmatrix}$$
 
-Landmarks estimated from the CC\_EKF\_SLAM algorithm can be converted to world frame using the estimated SUAS localization results. Let $[X_i^W,Y_i^W, Z_i^W]^T$ be the landmarks coordinates in world frame, then
+\noindent where $Easting_{init}$, $Northing_{init}$ and
+$Height_{init}$ are the SUAS's position in UTM when first image frame
+was captured. 
+
+SUAS orientation were represented in aircraft principle axes. This is
+the case for both ground truth and estimated data. For the ground
+truth to compare to the estimated data, the orientation at filter
+initialization ($1^{st}$ image frame) was subtracted. 
+$$\text{True SUAS orientation} =
+\text{Orientation}^{Nav} - \text{Orientation}^{Nav} \text{at Initialization}$$
+
+The estimated SUAS poses can be obtained from the world reference
+frame estimates in the filter state vector:
+
+$$ \text{Estimated SUAS poses} = 
+[-O_{XYZ}^{C}, -W_{XYZ}^{C}]$$.
+
+
+To compare landmark position, DEM data were converted into world frame
+following the same procedure as the SUAS position. Landmarks estimated
+from the CC\_EKF\_SLAM algorithm were converted to world frame using
+the estimated SUAS localization results for reference frame evolving
+parameters. Let $[X_i^W,Y_i^W, Z_i^W]^T_k$ be the $i^{th}$ landmarks
+coordinates in world frame at step $k$, then
 
 \begin{equation}
   \left[ \begin{array}{c}
     X_{i}^{W}  \\
     Y_{i}^{W}  \\
     Z_{i}^{W}  \\
-  \end{array} \right]=Q^{-1}(O_{XYZ}^{c}, W_{XYZ}^{c})\left(\left[
+  \end{array} \right]_k=Q^{-1}(\mathbf{O_{XYZ, k}^{c}}, \mathbf{W_{XYZ,k}^{c}})\left(\left[
     \begin{array}{c}
       x_{i}^{C} \\
       y_{i}^{C} \\
       z_{i}^{C} \\
     \end{array}
-  \right]+\frac{1}{\rho _{i}}m(\varphi _{i}^{C},\theta_{i}^{C})\right)
+  \right]_k+\frac{1}{\rho _{i,k}}\mathbf{m}(\varphi_{i,k}^{C},\theta_{i,k}^{C})\right)
 \end{equation}
 
 

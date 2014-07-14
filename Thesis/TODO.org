@@ -1,0 +1,24 @@
+#+TITLE: TODO.org
+#+AUTHOR: Fan Zhang
+#+DATE: <2014-07-10 Thu>
+
+** figure 5.3 [%]
+*** TODO First letter of the title should be capital
+*** TODO Change "removed" to "subtracted"
+*** TODO Verify correlation of \varphi with Z rotation and \theta with X rotation
+** 4.3.2 Data Prep
+*** TODO SUAS localization should be compared in WORLD frame
+To keep landmark and SUAS result in the same reference frame and
+avoid confusion
+[] Text needs update
+[] True SUAS position and orientation formula needs update
+
+** Figure 5.4 - change reference frame to world
+*** DONE update get_GroundTruth_UAS_Motion in process_motion_sim.py
+- [X] add variable gtUASMotion_world to contain SUAS position and
+  orientation reference to world frame
+
+*** DONE change SUAS localization error plot in Flight Result-cut1 notebook
+[] Call variable in world frame instead of UTM for comparison.
+** TODO Add xlabel to UAV poses plot.
+- Code done but not yet compile.
