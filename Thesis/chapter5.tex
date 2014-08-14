@@ -103,20 +103,20 @@ frame position. As a future improvement, it is reasonable for the
 newly added landmark to inherent the cross-correlation on the
 initialization coordinates from a landmark close to it. elements.
 
-Second and third columns showed the landmarks' $\varphi$ and $\theta$
-parameters with their initial value or mean value subtracted. For all
-landmarks, whether initialized at first image frame, or later frames,
-these angle estimates all diverged slightly from the initial values.
-This is not surprising since the initial depths of the landmarks were
-unknown. To compensate for the incorrect depth, filter must change
-$\varphi$ and $\theta$ estimates slightly to arrive at a predicted
-measurements that agreed with the actual measurements. Secondly, the
-SUAS rotation motion contributes to the variation pattern of $\varphi$
-and $\theta$ estimates. \colorbox{yellow}{$\varphi$ is highly correlated with
-  the Z rotation, and $\theta$ is correlated to the X
-  rotation.(Verification required).} This behavior
-suggested that the algorithm might be highly sensitive to aircraft
-rotational motion.
+Second and third columns showed elevation $\varphi$ and deviation
+$\theta$ with their initial value or mean value subtracted.
+For all landmarks, whether initialized at first image frame, or later
+frames, these angle estimates all diverged slightly from the initial
+values. This is not surprising since the initial depths of the
+landmarks were unknown. To compensate for the incorrect depth, filter
+must change $\varphi$ and $\theta$ estimates slightly to arrive at a
+predicted measurements that agreed with the actual measurements.
+Secondly, the SUAS rotation motion contributes to the variation
+pattern of $\varphi$ and $\theta$ estimates.
+\colorbox{yellow}{$\varphi$ is highly correlated with the Z rotation,
+  and $\theta$ is correlated to the X rotation.(Verification
+  required).} This behavior suggested that the algorithm might be
+highly sensitive to aircraft rotational motion.
 % doesn't make sense. By definition, X rotation should have bigger
 % impact on varphi, Z rotation has bigger impact on theta
 
@@ -153,9 +153,14 @@ the comparison, X position error reached a maximum of 4.8 meters,
 while error on Y and Z are bigger, reaching 60 meters and 28 meters
 respectively. The position on Y axis were clearly diverging from the
 ground truth by the end of 400 frames. For orientation, the estimated
-value agrees with the ground truth pattern, with maximum error within
+value agreed with the ground truth pattern, with maximum error within
 0.02 rad or $1.15^{\circ}$. There was no clear sign of diverging
-within the 400 frames processed.
+within the 400 frames processed. Another character that can be
+observed is the correlation between the position errors and the
+aircraft orientation. Error on Y position was correlated to
+orientation on Z axis; error on Z position was correlated to
+orientation change on Y axis. Clearly, aircraft rotational motion
+plays a crucial part in the accuracy of the estimates.
 
 \begin{figure}[h]
 \centering
@@ -165,7 +170,7 @@ within the 400 frames processed.
 \label{fltfig:6}
 \end{figure}
 \FloatBarrier
-\subsection{Features Mapping}\label{sec:accuracy_features}
+\subsection{Landmarks Mapping}\label{sec:accuracy_features}
 
 The ground truth data came from digital terrain map (DEM) were
 downloaded from CGIAR-CSI website \cite{_cgiar-csi_????}. Data
@@ -176,7 +181,7 @@ converging plots figure \ref{fltfig:2} showed that landmark parameters
 do experience drift as filter tracked landmarks in flight. The best
 time for making data correspondence with DEM is when landmarks were
 first initialized. The landmark initialization position $[x_i, y_i,
-z_i]$ were 0s when landmarks were initialied. $[\varphi,
+z_i]$ were zeros when landmarks were initialied. $[\varphi,
 \theta]$ were calculated from landmark coordinates in image, and did
 not carry any error contributed by the $\rho$ or optical flow
 algorithm result. Therefore, the following procedure were used the find
@@ -201,7 +206,7 @@ the corresponding ground truth location for every estimated landmark.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=12cm, keepaspectratio=true]
+\includegraphics[width=10cm, keepaspectratio=true]
 {./Figures/fltfig/cut1/intersect0_0.png}
 \caption{Finding ground truth feature position on DEM}
 \label{fltfig:7}
@@ -220,47 +225,53 @@ estimation. Offset on Z component was much less obvious.
 \centering
 \includegraphics[width=10cm, keepaspectratio=true]
 {./Figures/fltfig/cut1/Figure50.png}
-\caption{Feature position error convergence}
+\caption{Landmarks position error convergence in world frame}
 \label{fltfig:8}
 \end{figure}
 
-Plotting the estimated and ground truth features position vs feature
-initialization sequence reveals more detail on the feature position
-error. Figure \ref{fltfig:9} plots the estimated and ground truth
-feature positions on the left, and error on the right. First for X
-component, the biggest error occur on feature number 65 which is
-initialized fairly late in the sequence, and has not converged
-properly. On Y axis, the position plot also shows feature number
-higher than 40 carries an offset error. In addition, the average error
-is increasing as feature number gets bigger, which indicate the
-further the feature initialization point is from the world origin, the
-bigger this offset error will be. When plotting the feature error vs.
-feature's ground truth postion (figure \ref{fltfig:err_vs_gtpos}), it
-shows that the biggest Z axis error happens to the feature located
-closest to the camera and with the biggest Z ground truth position,
-which is the very bottom region of the image frame. This position
-suggested that the Z axis error might be related to the lens
-distortion that was not taken into account in this algorithm.
+Landmark IDs were assigned to landmarks sequencially when landmarks
+were initialized into the filter. Plotting the estimated and ground
+truth landmarks position against landmark ID revealed more detail on
+the errors. Figure \ref{fltfig:9} plotted the estimated and ground
+truth landmark positions on the left, and error on the right. On X and
+Z component, the biggest error occurred on landmark number 65 which
+was initialized fairly late in the sequence, and may not have
+converged properly. Other landmarks that carry big errors, such as
+landmark 13, 31, and 32, all located on hill top, which appeared as
+line feature in image (Figure \ref{fltfig:line_features}). As visual
+tracking drift discussed earlier applied to all these line features,
+distance estimates accuracy on these landmarks were affected. On Y
+axis, the plots showed landmark ID higher than 40 carried an offset
+error. All landmarks with ID higher than 40 were initialized after
+frame 180, at which point the SUAS has travelled away from the world
+frame origin for at least 200 meters. The average error increased as
+landmark ID got bigger, which indicated that the further the landmark
+initialization point was from the world frame origin, the bigger the
+offset error became. A more systematic analysis were done to find the
+source of these offset errors, and the result were presented in
+chapter \ref{ch:simulation}.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=14cm, keepaspectratio=true]
+\includegraphics[width=16cm, keepaspectratio=true]
 {./Figures/fltfig/cut1/Figure60.png}
-\caption{Feature position error plotted vs initialization sequence. }
+\caption{Landmark position error plotted against initialization sequence. }
 \label{fltfig:9}
 \end{figure}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=14cm, keepaspectratio=true]
-{./Figures/fltfig/cut1/Figure80.png}
-\caption{Feature position error plotted vs. ground truth position. }
-\label{fltfig:err_vs_gtpos}
+\includegraphics[width=7cm, keepaspectratio=true]
+{./Figures/fltfig/landmark_13_31_32.jpg}
+\includegraphics[width=7cm, keepaspectratio=true]
+{./Figures/fltfig/landmark_13_65_32.jpg}
+\caption{Landmarks on hill top carries bigger error during tracking.}
+\label{fltfig:line_features}
 \end{figure}
 
-Using the estimated feature position, a terrain map can be generated.
-Figure \ref{fltfig:10} shows the terrain map generated from the
-feature position analyzed above. On the right, the ground truth DEM is
+Using the estimated landmark position, a terrain map can be generated.
+Figure \ref{fltfig:10} showed the terrain map generated from the
+landmark position analyzed above. On the right, the ground truth DEM was
 also shown for comparison. 
 
 \begin{figure}[h]
@@ -273,29 +284,35 @@ also shown for comparison.
 \FloatBarrier
 
 \section{Consistency Analysis}\label{sec:flight-consistency}
-A EKF system becomes inconsistent when the variance of state vector
-element becomes too small and forbid an effective update. In addition,
-the uncertainty of the world frame should increase as the camera frame
-moves away from it. To examine the consistency of the CC\_EKF\_SLAM
-algorithm, the variance of world frame parameters and camera motions
-are plotted in \ref{fltfig:120}, and variance of features parameters
-are plotted in figure \ref{fltfig:3}. The variance of world frame
-position increases with iterations at the beginning, and after frame
-100, $\sigma^2_{O_Y}$ and $\sigma^2_{O_Z}$ converged. This is
-likely due to the little variation on the Y and Z translation of the
-SUAS. On the other hand, camera rotation and world frame orientation
-variance has similar pattern and amplitude. The X component decreases
-with iterations. Y and Z components fluctuate around a fixed value and
-remain below 1.5e-5$^\circ$. Although world frame variance remains fixed
-at prediction, camera rotations had a 1$^\circ$ noise added at
-prediction (as indicated by the GS-111m specification
-\cite{_athena_????}). The update process reduced the noise of camera
-rotation significantly and resulted in a variance estimates much lower
-than the specification. Affected by the camera rotation variance,
-features parameter $\varphi$ and $\theta$ also carries a very small
-variance.
+Researches on EKF SLAM properties indicated that 
+\begin{enumerate}
+  \item A EKF system becomes inconsistent when variance of a state
+  vector element becomes too small and forbids an effective update,
+  \item Uncertainty of the world frame should increase as the
+  camera frame moves away from it.
+\end{enumerate}
 
-% does increasing measurement variance increases parameter variance? 
+To examine the consistency of the CC\_EKF\_SLAM algorithm, the
+variance of world frame parameters and camera motions were plotted in
+\ref{fltfig:120}, and variance of landmarks parameters were plotted in
+figure \ref{fltfig:3}. The variance of world frame position increased
+with iterations at the beginning. After frame 100, $\sigma^2_{O_Y}$
+and $\sigma^2_{O_Z}$ converged to a relatively stable value. This is
+likely due to the small and slow variation on the Y and Z translation
+of the SUAS. On the other hand, camera rotation and world frame
+orientation variance had similar pattern and amplitude. The X
+component decreased with iterations. Y and Z components fluctuated
+around a fixed value and remained below 1.5e-5$^\circ$. Although world
+frame orientation variance remained fixed at prediction, camera
+rotation variances had 1$^\circ$ of noise added at the prediction step (as
+indicated by the GS-111m specification \cite{_athena_????}). The
+update process reduced the noise of camera rotation significantly and
+resulted in a variance estimates much lower than the specification.
+Affected by the camera rotation variance, landmarks parameters
+$\varphi$ and $\theta$ also had very small variance.
+
+% does increasing measurement variance increases parameter variance?
+% answer: NO 
 
 \begin{figure}[h]
 \centering
@@ -310,36 +327,36 @@ variance.
 \centering
 \includegraphics[width=14cm, keepaspectratio=true]
 {./Figures/fltfig/cut1/Figure40.png}
-\caption{Variance of features parameters}
+\caption{Variance of landmarks parameters}
 \label{fltfig:3}
 \end{figure}
 \FloatBarrier
 
-To see how variance affect the correction the filtered made on the
-state vector, the correction applied in camera frame were plotted in
-figure \ref{fltfig:4}. The $1^{st}$ column shows the correction on
-world frame position. The $2^{nd}$ column shows the correction on
-feature initialization coordinate. The $3^{rd}$ column shows the
-correction on features parameters $\rho$, $\varphi$ and $\theta$. It
-can be observed that in general the correction amount agrees with the
-variance that bigger variance results in more correction, except for
-the world frame Y and Z position and camera Y and Z motion. These
-parameters receives more correction as tracking progress despite their
-variance stabilized or even decreased. Secondly, there is a strong
-correlation between the feature initialization position and the world
-frame position on Y and Z axis. At the same time, world frame and
-feature initialization is inversly correlated to the camera motion on
-Y and Z axis. Thirdly, the camera parameter corrections shows an
-obvious trend only on Y and Z motion. Due to these correlation, the
-main contributor for all the drift in SUAS position and offset in
-feature mapping should be coming from the camera motion correction on
-Y and Z axis. On the other hand, the big correction on these
+% consider deleting first and second point in the paragraph. Only the
+% third point leads to explaination of error.
+To see the effect of small variance on EKF's update process, correction
+amount applied to the predicted state vector were plotted in figure
+\ref{fltfig:4}. It can be observed that in general the correction
+amount agreed with the variance that bigger variance resulted in more
+correction, except for the world frame position and camera translation
+on Y and Z axis. These parameters received more correction as tracking
+progress despite their variance stabilized or even decreased.
+Secondly, there was a strong correlation between the landmark
+initialization position, the world frame position, and camera
+translation estimates. World frame position and landmark
+initialization were inversly correlated to the camera translation on Y
+and Z axis. Thirdly, the camera parameter corrections showed an
+obvious trend only on Y and Z motion. The correction amounts on camera
+translation on Y and Z axis were increasing with time. Due to these
+relationship, the main contributor for drift in SUAS position and
+offset in landmark mapping should be the camera translation correction
+on Y and Z axis. On the other hand, the big correction on these
 parameters could be caused by the small variance in the camera
 rotation variance. If not enough correction can be made into the
-camera rotation and $\varphi$ and $\theta$ angles, the algorithm has
-to compensate that by making more adjustment in the camera motion on Y
-and Z. This issue requires further investigation, and will be analyze as a
-future work.
+camera rotation and $\varphi$ and $\theta$ angles, the algorithm must
+compensate that by making more adjustment in the camera translation on Y
+and Z axis. This issue requires further investigation, and will be analyzed
+in future work.
 
 \begin{figure}[h]
 \centering
@@ -351,22 +368,25 @@ future work.
 
 \FloatBarrier
 
-\section{Compare to Visually Corresponded Feature}
+\section{Compare to Visually Corresponded Landmark}
 \label{sec:flight-manual}
-Due to the difficulty of corresponding feature extracted from video to the
-actual data on DEM, a second piece of video was processed with
-man-made structure in the scene so that feature correspondence can be
-made manually. Figure \ref{fltfig:11} shows a zoomed in view of the
-features extracted by the CC\_EKF\_SLAM. All features are located at
-the bottom left corner of the image. Figure \ref{fltfig:12} shows the
-common features found manually on the satalite image on Google Earth
-\cite{_google_????}.
+Due to the difficulty in corresponding landmarks extracted from video
+to DEM, a second piece of video was processed with man-made structure
+in the scene so that landmarks correspondence can be made manually.
+Landmarks coordinates ground truth were taken from Google Earth. Since
+Google Earth provided very rough elevation data, elevation of the
+landmarks were taken from the GPS measurement of the helicopter when
+it was landed at the airport. Figure \ref{fltfig:11} showed a
+zoomed-in view of the landmarks extracted by the CC\_EKF\_SLAM. All
+landmarks were located at the bottom left corner of the image. Figure
+\ref{fltfig:12} showed the common landmarks found manually on the
+satalite image on Google Earth \cite{_google_????}.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=10cm, keepaspectratio=true]
-{./Figures/fltfig/airport/frame398_features.jpg}
-\caption{Feature identified by algorithm }
+{./Figures/fltfig/airport/frame398_landmarks.jpg}
+\caption{Landmark identified by algorithm }
 \label{fltfig:11}
 \end{figure}
 
@@ -374,54 +394,40 @@ common features found manually on the satalite image on Google Earth
 \centering
 \includegraphics[width=13cm, keepaspectratio=true]
 {./Figures/fltfig/airport/uav_and_identified_landmark.png}
-\caption{Common features idetified manually on Google Earth }
+\caption{Common landmarks identified manually on Google Earth }
 \label{fltfig:12}
 \end{figure}
-\FloatBarrier
-
-The SUAS position and orientation were compared to onboard GPS and INS
-recording, and the result are plotted in figure \ref{fltfig:13} and
-figure \ref{fltfig:14}. Similar to the natual scene video, SUAS
-location is more accurate on X, and shows more drift on Y and Z
-coordinate. The drift become significant when frame number exceeds
-200. However, with the SUAS decending, drift on Z is less than the
-amount when it ascended. For orientation error, roll and pitch error
-oscillate around zero, but azimuth error drift away as frame number
-increases.
+\FloatBarrier The estimated SUAS poses were compared to onboard GPS
+and IMU recordings in figure \ref{fltfig:13}. Similar to the natual
+scene video, SUAS position estimates were more accurate on X and Z,
+and experienced more drift on Y axis. The drift become significant
+when frame number exceeds 200. The correlation between position error
+and the rotational motion of the aircraft can also be found in this
+plot.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=13cm, keepaspectratio=true]
-{./Figures/fltfig/airport/UAV_position_and_error.png}
-\caption{SUAS position accuracy compared to GPS}
+\includegraphics[width=17cm, keepaspectratio=true]
+{./Figures/fltfig/airport/Figure10.png}
+\caption{SUAS poses accuracy compared to ground truth}
 \label{fltfig:13}
 \end{figure}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=13cm, keepaspectratio=true]
-{./Figures/fltfig/airport/UAV_orientation_and_error.png}
-\caption{SUAS orientation accuracy compared to magnetometer}
-\label{fltfig:14}
-\end{figure}
 \FloatBarrier
 
-Figure \ref{fltfig:15} shows the features positions in X and Y axis.
-The google earth map provide very rough elevation data, therefore it
-was not used. The ground truth X and Y coordinate of the features were
-measured on Google Earth in GPS coordinates and converted into UTM.
-This plot shows a clear offset error between the ground truth and the
-estimated. X axis coordinate has a mean offset is about 100 meters,
-and Y axis coordinate has a offset of about 130m. Since all features
-are located in the bottom left corner of the FOV, it is more likely
-for the lens distortion to be the main contributor to these error.
+Figure \ref{fltfig:15} showed the landmarks positions compared to
+ground truth. This plot showed a clear offset error between the ground
+truth and the estimated. X axis coordinate had a mean offset of about
+150 meters, and Y axis coordinate has a offset of about 60m. Since the
+error existed on all landmark regardless of their ID value, and all
+landmarks were located at the bottom left corner of the FOV, it is
+likely that lens distortion was the main contributor to these error.
 
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=13cm, keepaspectratio=true]
-{./Figures/fltfig/airport/Feature_plot_(x,y).png}
-\caption{Feature error on X and Y axis. }
+\includegraphics[width=17cm, keepaspectratio=true]
+{./Figures/fltfig/airport/Figure20.png}
+\caption{Landmarks positions compared to ground truth}
 \label{fltfig:15}
 \end{figure}
 

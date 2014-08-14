@@ -2,23 +2,35 @@
 #+AUTHOR: Fan Zhang
 #+DATE: <2014-07-10 Thu>
 
-** figure 5.3 [%]
-*** TODO First letter of the title should be capital
-*** TODO Change "removed" to "subtracted"
+* figure 5.3 [66%]
+*** DONE First letter of the title should be capital
+*** DONE Change "removed" to "subtracted"
 *** TODO Verify correlation of \varphi with Z rotation and \theta with X rotation
-** 4.3.2 Data Prep
-*** TODO SUAS localization should be compared in WORLD frame
+* DONE 4.3.2 Data Prep
+*** DONE SUAS localization should be compared in WORLD frame
 To keep landmark and SUAS result in the same reference frame and
 avoid confusion
-[] Text needs update
-[] True SUAS position and orientation formula needs update
+- [X] Text needs update
+- [X] True SUAS position and orientation formula needs update
 
-** Figure 5.4 - change reference frame to world
+* DONE Figure 5.4 - change reference frame to world
 *** DONE update get_GroundTruth_UAS_Motion in process_motion_sim.py
 - [X] add variable gtUASMotion_world to contain SUAS position and
   orientation reference to world frame
 
 *** DONE change SUAS localization error plot in Flight Result-cut1 notebook
-[] Call variable in world frame instead of UTM for comparison.
-** TODO Add xlabel to UAV poses plot.
+- [X] Call variable in world frame instead of UTM for comparison.
+
+* DONE Add xlabel to UAV poses plot.
 - Code done but not yet compile.
+
+* Merge figure 5.15 and 5.16 and make it the same format as previous [%]
+** TODO Found source data file
+*** TODO found source data file
+*** TODO is it workable by the process_sim...py file?
+*** TODO if not, output result from .mat file
+** TODO start another workbook and plot figure
+*** TODO import data file/result
+*** TODO use the same script to plot these figure. 
+
+** TODO Change figure 5.17 similar to previous format
