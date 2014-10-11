@@ -24,13 +24,37 @@ avoid confusion
 * DONE Add xlabel to UAV poses plot.
 - Code done but not yet compile.
 
-* Merge figure 5.15 and 5.16 and make it the same format as previous [%]
-** TODO Found source data file
-*** TODO found source data file
-*** TODO is it workable by the process_sim...py file?
-*** TODO if not, output result from .mat file
-** TODO start another workbook and plot figure
-*** TODO import data file/result
-*** TODO use the same script to plot these figure. 
+* Merge figure 5.15 and 5.16 and make it the same format as previous [100%]
+** DONE Found source data file
+*** DONE found source data file
+*** DONE is it workable by the process_sim...py file?
+*** DONE if not, output result from .mat file
+** DONE start another workbook and plot figure
+*** DONE import data file/result
+*** DONE use the same script to plot these figure. 
 
-** TODO Change figure 5.17 similar to previous format
+** DONE Change figure 5.16 similar to previous format
+* DONE change figure 6.12 title.
+* DONE change figure 6.15 title.
+* TODO figure 6.16 
+** DONE title and legend position.
+** TODO find out why some features were missing for largest f_x/y offset.
+   - bigger scaling factor caused features out of the FOV of the
+     camera, so landmarks with big y_groundtruth were removed during
+     tracking. But what about the big negative y_groundtruth?
+   - disable feature filtering showed that the missing landmarks were
+     those with tracking frames less than 5. Try re-run the
+     simulation with no noise on all 5 D.O.F. Result is the same
+   - The feature deletion in CC_EKF_SLAM is set to 50 pixel in from
+     right edge because of the black ban on the right edge of the
+     image. This might be why. 
+     
+
+** DONE make the figure larger
+* DONE regenerate figure 6.18 to make X axis more readable. change UAS to UAV
+* DONE Erase title on figure 6.20
+as well as set tick for xyz to make x ticks more readable.
+* DONE Erase title on figure 6.19, relocate x-axis label. 
+* DONE % regenerate to make room for x axis label. change feature to landmark
+* TODO Add average landmark error for 1st video and 2nd video. Correct average error number in conclusion for 2nd video
+* TODO findout why some landmark with position on Z bigger than 200m were deleted for all cx,cy setting

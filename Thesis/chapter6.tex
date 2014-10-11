@@ -14,7 +14,7 @@ categories:
 \begin{enumerate}
   \item Error caused by the SLAM algorithm itself. The algorithm
   estimated landmarks coordinates through a model that describes the
-  relation between the UAV and landmarkS. As the model is non-linear,
+  relation between the UAV and landmarks. As the model is non-linear,
   the linearization process introduces error into the result.
   \item Noise in system intrinsic parameters. The system intrinsic
   parameters include
@@ -37,7 +37,7 @@ categories:
   reached a maximum number (also set by user). As scene evolves from
   frame to frame, the initial landmark appears differently as viewing
   distance and angle changes. Allowing a small SSE between matched
-  windows is necessary to give tolerence for the matching. However, it
+  windows is necessary to give tolerance for the matching. However, it
   could also cause the window to move in the neighborhood of the
   landmark coordinate, and eventually drift off, resulting in a loss
   of the original landmark. An example was shown in figure
@@ -55,7 +55,7 @@ categories:
 To better understand the impact from the noise of system intrinsic
 parameters listed above. A simulation was performed to examine item 1
 and 2. The simulator first generated a 3D point cloud ranging between
-100 meters to 3000 meters from the camera (Figure \ref{fig:simfig51}).
+100 meters to 1500 meters from the camera (Figure \ref{fig:simfig51}).
 At each frame, the coordinates of the 3D points were first transformed
 to the new camera frame using a simulated UAV pose, which allows for
 studying the algorithm under various motion. Next, the 3D points were
@@ -64,7 +64,7 @@ $[c_{x}, c_{y}, f_{x}, f_{y}, k_{1}, k_{2}, p_{1}, p_{2}]$, and
 digitized to a resolution of choice. The resulting coordinates of the
 3D points were used directly as measurement in the update of the EKF.
 The procedure described above simulated the entire process of
-perceiving landmark through a digital camera under arbitary UAV
+perceiving landmark through a digital camera under arbitrary UAV
 motion. What it does not simulate is error contributed by visual
 tracking algorithm, and by navigation measurements.
 
@@ -85,38 +85,65 @@ the most basic flying condition, which is moving forward at constant
 speed. The low noise environment was configure as such,
 
 \begin{itemize}
-  \item SUAS was moving forward (X axis) with constant speed at 60 knots. 
+  \item UAV was moving forward (X axis) with constant speed at 60 knots. 
   \item Y axis and Z axis translation were limited to white noise with
   standard deviation of 0.08 meters and a mean of 0.
-  \item SUAS rotation were modelled by white noise with standard
-  deviation of 0.01 degree and a mean of 0
+  \item UAV rotation were modelled by white noise with standard
+  deviation of 0.01 degree and a mean of 0 degree.
   \item No image digitization (i.e. the projected landmark position on
   image plane was not digitized to any sensor resolution)
   \item No error was introduced from camera model mismatch (i.e.
-  camera model used by simulator is exactly the same as the one used
-  by CC\_EKF\_SLAM algorithm.
+  camera intrinsic parameters used by the simulator was exactly the
+  same as those used in CC\_EKF\_SLAM algorithm.
 \end{itemize}
 
 \subsection{UAV Localization}
 % word checked.
 UAV poses were plotted in Figure \ref{fig:simfig1}. The ground truth
-and estimated value are plotted in blue and green lines respectively.
-The error defined by $Estimated-Ground Truth$ is plotted in red line.
-Under a simple forward only motion, the algorithm tracked the UAS
-status quite well, with error on translational motion less than 1 cm
-and error on rotational motion less than 3e-3 degree.
+and estimated value were plotted in blue and green lines respectively.
+The error was plotted in red line. Under a simple forward only motion,
+the algorithm tracked the UAV status quite well. Error on
+translational motion was less than 1 cm and error on rotational motion
+less than 3e-3 degree. An obvious behavior of the error is that the
+error started from 0, experienced some rapid change during the first
+few frames, and settled to a relatively stable value. This matched the
+converging behavior of the landmark inverse depth $\rho$ which was
+shown next. This observation suggested that although inverse depth
+representation is more linear than direct depth representation, it has
+a negative impact on the accuracy of the estimates when being included
+in the filter vector before its approximate value is known. Hence,
+delaying integration of inverse depth till its value is approximately
+known should increase the accuracy of the state vector estimates. As
+triangulating a landmark requires 2 frames in monocular vision setup,
+the delay requires only one extra frame, and is insignificant in most
+scenario.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=15cm, height=7cm]{./Figures/SimulationFigures/Figure1.png}
-\caption{UAS localization error under no noise condition}
+\includegraphics[width=16cm, height=8cm]{./Figures/SimulationFigures/Figure1.png}
+\caption{UAV localization error under no noise condition}
 \label{fig:simfig1}
 \end{figure}
 \FloatBarrier
 
 \subsection{Landmarks Mapping - Convergence and Accuracy}
 % word checked.
-Figure \ref{fig:simfig5-8} top left shows landmark parameters $[d, \varphi ,\theta]$ (where $d=1/\rho $) plotted against frame number for the first 50 frames. The landmark depth $d$ for all landmarks converged within 3 frames; elevation-azimuth angles $[\varphi ,\theta]$ stay almost constant after initialization. A more detail graph can be seen from the error convergence plot for these parameters (Figure \ref{fig:simfig5-8} top right.) which shows the tracking error of these parameters for 400 frames. The error of landmark distance $d$ continues to approach zero as the tracking continues. $[\varphi ,\theta]$ show small drift within $+/-0.0002^{\circ}$ respectively. However, as tracking continue into later frames, error of $[\varphi ,\theta]$ gradually grew bigger. The resulting error for landmark coordinate in world frame represented in standard Euclidean XYZ parameterization are plotted against initialization sequence and frame number, and are shown in figure \ref{fig:simfig5-8} bottom left and right. The landmarks positions errors in world frame converge to zero as tracking continues. During the process, some landmarks moved out of the FOV, and therefore its position estimate remained unchanged since then. At the end of the 400 frames, the x axis position error of the landmark reduced to +/-0.2 meters; y and z axis error reduce to +/-0.02 meters
+Figure \ref{fig:simfig5-8} top left showed landmark parameters $[d,
+\varphi ,\theta]$ (where $d=1/\rho $) plotted against frame number for
+the first 50 frames. The landmark depth $d$ for all landmarks
+converged within the first 3 frames. The elevation-azimuth angles
+$[\varphi ,\theta]$ stayed almost constant after initialization. More
+detail can be seen from the error convergence plot for these
+parameters, plotted in Figure \ref{fig:simfig5-8} top right. The error
+of landmark distance $d$ slowly converged to zero as the tracking
+continued. $[\varphi ,\theta]$ errors started from 0 at frame 0, and
+converged to a small offset while landmark depth $d$ converged. As
+discussed in chapter \ref{ch:FlightResult}, in order to compensate for
+the inaccurate estimates on depth at filter initialization, the EKF
+made adjustment to $\varphi$ and $\theta$ so that the resulting
+coordinates of landmarks agreed with the measurement. Therefore early
+integration of landmark depth had negative impact on the estimates
+accuracy. 
 
 \begin{figure}[h]
 \centering
@@ -128,73 +155,155 @@ Figure \ref{fig:simfig5-8} top left shows landmark parameters $[d, \varphi ,\the
 \label{fig:simfig5-8}
 \end{figure}
 
-\section{Effect of SUAS Motion}
-% word checked. 
-The simulation result from UAS forward travel shows that the CC\_EKF\_SLAM algorithm does landmark tracking and self localization quite well under simple SUAS motion. Next, the algorithm is tested with a more complex and realistic scenario. A series of motion is added to the simulation in addition to the forward motion. The remaining 5 types of maneuvers were added one at a time. These maneuvers are: translation on Y, translation on Z, rotation on X, rotation on Y and rotation on Z. Each motion is modelled by a sine wave with frequency at 1Hz, and variable amplitude. For translation simulations, the sine amplitude varies from 1 meter to 19 meters with 2 meters increments. For rotation simulations, the amplitude varies from 0.001 radius to 0.018 radius with 0.001 radius increment.
-
-\subsection{SUAS Localization under Motion}
-
-Figure \ref{fig:simfig9-10} shows the SUAS localization error statistic under translation motion on Y and Z axis and rotation motion on X, Y, and Z axis. The blue dots mark the mean value $\mu$ of the error throughout 400 frames of tracking, and the error bars mark the standard deviation $\sigma$.
-
-The translation motion clearly increases the error of SUAS localization. However, the amount is insignificant. With the Sine amplitude increased to 19m, SUAS position error increased by less than 0.02 meter.
-
-On the other hand, rotation motions have a big impact on the accuracy
-of localization. Rotation on X axis (roll) has small effect on the accuracy of SUAS position and orientation estimate. No obvious increase on mean and standard deviation of the error can be observed. Rotations on Y and Z axis yield significant error.
+The error for landmarks coordinates in world frame were plotted
+against landmark ID and frame number in figure \ref{fig:simfig5-8}
+bottom left and right. The landmarks coordinates errors in world frame
+all converged toward zero. During the 400 frames period, some
+landmarks moved out of the FOV, and therefore their position estimates
+remained unchanged since then. At the end of the 400 frames, landmarks
+coordinates error on x axis reduced to +/-0.2 meters; on y and z axis,
+errors reduced to +/-0.02 meters. In summary, factors that cause
+error in landmarks positions were listed below. 
 
 \begin{itemize}
-  \item Rotation on Y axis increases the SUAS X position mean error, as well as the standard deviation. For Z position of the SUAS, the mean error stays zero, but standard deviation increase dramatically.
-  \item Same thing happens to the X and Y position for rotation on Z axis.
+  \item Error in UAV localization caused an offset error when new
+  landmark was added to the filter.
+  \item Early landmark integration caused offset error in $\varphi$
+  and $\theta$ estimates due to EKF compensating for landmark depth at
+  integration.
+  \item Some landmark moved out of FOV before fully converged.
+\end{itemize}
+\FloatBarrier
+
+\section{Effect of Motion}
+% word checked.
+The simulation result from UAV forward travel showed that the
+CC\_EKF\_SLAM algorithm does landmark tracking and self localization
+quite well under simple motion. Next, the algorithm was tested with a
+more complex and realistic scenario. A series of motion was added to
+the simulation in addition to the forward motion. The remaining 5
+types of maneuvers were examined independently. These maneuvers are:
+translation on Y, translation on Z, rotation on X, rotation on Y and
+rotation on Z. As motions on all other 5 D.O.F. are mostly oscillatory
+when the UAV moves forward, each motion was modelled by a Sine wave
+with frequency at 1Hz and variable amplitude. 
+
+$$\text{Added motion} = A_{\text{motion type}}\cdot sin(2\pi x+\pi/2)$$
+
+Motion type is denoted by $v_y$, $v_z$ for translation on Y and Z
+axes; $w_x$, $w_y$ and $w_z$ for rotation on X, Y, and Z axes. For
+translation, the Sine amplitude $A_{v_y,v_z}$ varied from 1 meter to
+19 meters with 2 meters increment. For rotation, the amplitude
+$A_{w_x,w_y,w_z}$ varied from 0.001 radius to 0.018 radius
+(0.057$^\circ$ to 1.031$^\circ$) with 0.001 radius increment.
+
+\subsection{UAV Localization under Motion}\label{localization_motion}
+
+Figure \ref{fig:simfig9-10} showed the UAV localization error
+statistic under oscillatory translation on Y and Z axis and
+oscillatory rotation on X, Y, and Z axis. The blue dots marked the mean
+value $\mu$ of the error throughout 400 frames of tracking, and the
+error bars marked the standard deviation $\sigma$.
+
+The translation motion clearly increased the error of UAV
+localization. However, the amount was insignificant. With the Sine
+amplitude increased to 19m, UAV position error increased by less than
+0.02 meter.
+
+On the other hand, rotational motions had a big impact on the accuracy
+of localization. Rotation on X axis (roll) had small effect. No
+obvious increase on mean and standard deviation can be
+observed. Rotations on Y and Z axis yielded significant error.
+
+\begin{itemize}
+  \item Rotation on Y axis increased the mean and standard deviation
+  of UAV position error on X. For UAV position on Z, the mean
+  error stays zero, but standard deviation increased dramatically.
+  \item The same behavior can be observed on the X and Y axes position
+  error for rotation on Z axis.
 \end{itemize}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=4.5cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure9.png}
-  \includegraphics[width=4.5cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure10.png}
-  \includegraphics[width=4.5cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure11.png}
-  \includegraphics[width=4.5cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure12.png}
-  \includegraphics[width=4.5cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure13.png}
-  \caption{UAS localization error under translational 
+  \includegraphics[width=7cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure9.png}
+  \includegraphics[width=7cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure10.png}
+  \includegraphics[width=7cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure11.png}
+  \includegraphics[width=7cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure12.png}
+  \includegraphics[width=7cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure13.png}
+  \caption{UAV localization errors under translational 
   \label{fig:simfig9-10}
     motion}
 \end{figure}
-%\FloatBarrier
+\FloatBarrier
 
-To understand how rotation motion affect the SUAS localization estimate, the SUAS position on X, Y, Z in world frame are plotted below (figure \ref{fig:simfig14}) with rotation amplitude on X, Y and Z set at 0.01 radius. When rotation occurred on X axis, the position error of SUAS shows some oscillation. The oscillation magnitude remains small (in the scale of millimeters) and around zero. For rotation on Y and Z, the situation is very different. Both rotation motions caused the SUAS position error to oscillate with the oscillation amplitude increasing (diverging) as tracking goes on. The X position error of the SUAS increases in positive value with rotation occurring on Y and Z, but the most significant impact happens on the Z position (for rotation on Y) and Y position (for rotation on Z), with error reaching 20 meters peak-to-peak at the end of the 400 frames. With increasing rotation rate (amplitude of the sine wave), the rate of error diverging from zero also increases, hence, resulting in an increasing error standard deviation in error statistic plots. This simulation result suggests that CC\_EKF\_SLAM algorithm is very sensitive to rotation on Y and Z axis.
+To understand how rotation affected the UAV localization estimates,
+UAV positions on X, Y, Z in world frame were plotted below (figure
+\ref{fig:simfig14}) with rotation Sine amplitude on X, Y and Z set at
+0.01 radius. When rotation occurred on X axis, the position error of
+the UAV showed some oscillation. The oscillation magnitude remained
+small (in the scale of millimeters) and around zero, hence, did not
+generate significant mean and standard deviation change on the error
+statistic plot. For rotation on Y and Z, increase of rotational motion
+caused an increasing oscillatory error on the UAV position estimates
+(diverging). The mean error on UAV X-axis position increased in
+positive value with rotational motion on both Y and Z axes. The most
+significant impact happened on the Z-axis position (for rotation on
+Y) and Y-axis position (for rotation on Z), with error reaching 20
+meters peak-to-peak at the end of the 400 frames. With an increasing
+rate of rotation (amplitude of the Sine wave), the rate of error
+diverging from zero also increased, hence, resulting in an increasing
+error standard deviation in the error statistic plots. This simulation
+result suggested that CC\_EKF\_SLAM algorithm is very sensitive to
+rotational motion on Y and Z axes.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=13cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure14.png}
-  \caption{UAS estimated position in world frame}
+  \caption{Estimated UAV position in world frame with rotational
+    motion on Y and Z axes set at 0.01 rad/s}
   \label{fig:simfig14}
 \end{figure}
 \FloatBarrier
+
 \subsection{Landmark Mapping Accuracy under Motion}\label{sec:landmarkMotion}
 % word checked.
-Landmark mapping error statistic are calculated from the landmark error at last frame, since landmarks error converge to zero as tracking goes on. Figure \ref{fig:simfig20-24} shows the landmark mapping error statistic with added motions. Translation motions increase both the error mean and standard deviation, but not by much. With the motion maximum amplitude ranging from 1 meter to 19 meters, the increases of landmarks position error mean and standard deviation are both in the scale of centimeters.
+Landmark mapping error statistics were calculated from the landmark
+errors at the last frame. Figure \ref{fig:simfig20-24} showed the
+landmark mapping error statistics with added motions. 
+
+Translational motions increased both the mean and standard deviation
+of landmark mapping errors, but not by much. With the motion maximum
+amplitude ranging from 1 meter to 19 meters, the increases on mean and
+standard deviation were both in the scale of centimeters.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=7cm, height=2.5cm]{./Figures/SimulationFigures/Figure20.png}
-  \includegraphics[width=7cm, height=2.5cm]{./Figures/SimulationFigures/Figure21.png}
-  \includegraphics[width=7cm, height=2.5cm]{./Figures/SimulationFigures/Figure22.png}
-  \includegraphics[width=7cm, height=2.5cm]{./Figures/SimulationFigures/Figure23.png}
-  \includegraphics[width=7cm, height=2.5cm]{./Figures/SimulationFigures/Figure24.png}
+  \includegraphics[width=10cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure20.png}
+  \includegraphics[width=10cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure21.png}
+  \includegraphics[width=10cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure22.png}
+  \includegraphics[width=10cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure23.png}
+  \includegraphics[width=10cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure24.png}
   \caption{Landmark mapping error under added motion}
   \label{fig:simfig20-24}
 \end{figure}
 
-With maximum rate of rotation ranging from 0.001 radius/frame to 0.018
-radius/frame
+Rotational motion had much bigger effect on the accuracy. With
+amplitude of Sine wave rotation ranging from 0.001 radius to 0.018
+radius (0.057$^\circ$ to 1.031$^\circ$)
 
 \begin{itemize}
-  \item Rotations on all three axis yield significant error increase for landmark position estimate,
-  \item X axis rotation causes increase on standard deviation on Y and Z axis by similar amount. The errors are in the scale of meters with maximum rotation setting.
-  \item Y axis rotation causes increase on mean and standard deviation on X and Z axis. Z axis landmark position receives the biggest impact with error in the scale of hundreds of meters with maximum rotation setting
-  \item Z axis rotation impacts on X and Y axis landmark position in a
-  similar way as the Y axis rotation does.
+  \item X axis rotation caused a small standard deviation increase on
+  the errors of landmarks positions on Y and Z axes. The errors were in the
+  scale of meters under maximum rotation setting.
+  \item Y axis rotation caused mean and standard deviation increase on
+  the errors of landmarks positions on X and Z axes. Landmarks positions on Z
+  received the biggest impact with error in the scale of hundreds of
+  meters under maximum rotation setting.
+  \item Z axis rotation affected landmark mapping on X and Y axes in a
+  similar way as the Y axis rotation did.
 \end{itemize}
-
-\begin{figure}[h]%redo plots
+\FloatBarrier
+\begin{figure}[h]
   \centering
   \includegraphics[width=7cm, height=5cm]{./Figures/SimulationFigures/Figure17.png}
   \includegraphics[width=7cm, height=5cm]{./Figures/SimulationFigures/Figure18.png}
@@ -203,24 +312,74 @@ radius/frame
   \label{fig:simfig17-19}
 \end{figure}
 
-Figure \ref{fig:simfig17-19} shows the landmarks position error at the last tracking frame plotted against initialization sequence, with line and marker color indicating various rotation amplitude setting.
+Figure \ref{fig:simfig17-19} showed landmarks positions errors at
+the last frame plotted against landmark IDs (initialization
+sequence), with line and marker color indicating various rotation setting.
 
 \begin{itemize}
-  \item With rotation on Y and Z, the tracked landmarks easily went out of FOV. This can be observed from total number of landmarks went from 80 to over 110 with Y axis rotation setting varied from 0.001rad/s to 0.018rad/s. This caused frequent additions of new landmarks.
-  \item Landmarks added after first frame has much bigger error than landmarks added at first frame. At 1$^{st}$ frame, 40 landmarks were added to the filter. Error plots from Y and Z axis rotation both shows that major landmark mapping error came from landmarks added after the 1 $^{st}$ frame with ID bigger than 40.
+  \item With rotation on Y and Z, tracked landmarks were easily lost
+  as they went out of FOV. This can be observed from from landmark ID
+  increasing from 80 to over 110 with Y axis rotation setting varied
+  from 0.001rad to 0.018rad. A frequent addition of new landmark
+  has negative impact on the overall result due to the correlation
+  between landmarks. 
+  \item Landmarks added after first frame has much bigger error than
+  landmarks added at first frame. At 1$^{st}$ frame, 40 landmarks were
+  added to the filter. All three plots in figure \ref{fig:simfig17-19}
+  showed that major landmark mapping error came from landmarks added
+  after the 1 $^{st}$ frame with ID bigger than 40.
 \end{itemize}
 \FloatBarrier
 
-To investigate how does rotation motion results in bigger error on landmarks added after first frame, landmarks parameters error (after being converted to world frame) with $w_y = 0.01$ are plotted in figure \ref{fig:simfig25}. It is found that the most significant error happen to parameter $\varphi$ which is the landmark elevation angle. This angle has the same definition as rotation angle around Y axis. The second contributor is $z_i$, the Z axis coordinate of the landmark initialization point. Both parameters have an offset error at initialization, and were never corrected throughout the tracking.
+To investigate how rotational motion resulted in bigger error on
+landmarks added after first frame, the scenario of UAV experiencing
+rotation on Y-axis with $A_{w_y}=0.01rad$ was analyzed. Landmarks
+parameters were converted into world frame and their error were
+plotted in figure \ref{fig:simfig25}. It was found that the most
+significant error occurred on parameter $\varphi$ which is the landmark
+elevation angle. This angle has the same definition as rotation angle
+around Y axis. The second biggest contributor was $z_i$, the landmark
+initialization coordinate on Z axis. Both parameters $\varphi$ and
+$z_i$ had offset error at initialization, and were never corrected
+throughout the tracking.
 
-Figure \ref{fig:simfig26} shows the $\varphi$ error at initialization in camera frame and world frame. The blue line shows the error in camera frame. The red line shows the error in world frame transformed using the estimated UAS position and orientation. It is clear that it is the transformation process that introduced the offset error in $\varphi$. Offset error in $z_i$ is due to the same reason. As the result from previous section indicated, with Y axis rotation, SUAS localization estimate has the biggest error in position on X and Z axis. In addition, ground truth landmarks were transformed using the ground truth SUAS position and orientation, which is different than the estimated ones. It is not surprised that the transformation process introduced offset error into the landmark parameters. Landmarks initialized at first frame don't carry any offset error because the transformation process is using the same parameters in both way. During tracking, these landmarks are transformed to the new camera frame using the estimated SUAS position and orientation. These are the same estimation being used to transform landmark position from camera frame back into world frame. Therefore, although the SUAS localization estimations are different from the ground truth, landmark initialized at first frame were not affected. To conclude, the major contributor for landmark mapping error came from error in UAS localization estimation.
+Regarding the offset error in $z_i$, as discussed in section
+\ref{localization_motion}, UAV localization estimates had the biggest
+position error on X and Z axes under Y-axis rotation. All landmarks
+not initialized at $1^{st}$ frame would be affected by the UAV
+localization error, since the initialization point and UAV position
+are correlated.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=10cm, height=12cm]{./Figures/SimulationFigures/Figure25.png}
-  \caption{Landmark parameters error under rotational motion}
+  \caption{Landmark parameters error under rotational motion on
+    Y-axis, $A_{w_y}=0.01rad$}
   \label{fig:simfig25}
 \end{figure}
+\FloatBarrier
+
+Figure \ref{fig:simfig26} showed the $\varphi$ error at initialization
+in camera frame and world frame. The blue line showed error in camera
+frame. The red line showed error in world frame transformed using the
+estimated UAV position and orientation. As $\varphi$ error was nearly
+0 in camera frame, it is clear that the reference frame transformation
+introduced the offset error. During reference frame transformation,
+ground truth landmarks were transformed using the ground truth UAV
+poses; estimated landmark were transformed using estimated UAV poses.
+Hence, even though the parameters were the same in camera frame,
+result in world frame would be different. Landmarks initialized at the
+first frame didn't carry any offset error because the reference frame
+transformation was using the same parameters in both way. During
+tracking, these landmarks were transformed to the new camera frame
+using the estimated UAV position and orientation. These were the same
+values being used to transform landmark position from camera frame
+back into world frame. Therefore, although the UAV localization
+estimates were different from the ground truth, landmark initialized
+at first frame were not affected. 
+
+To conclude, the main contributor for landmark mapping error came
+from error in UAV localization estimation.
 
 \begin{figure}[h] %redo figure, change phi to varphi
   \centering
@@ -232,161 +391,275 @@ Figure \ref{fig:simfig26} shows the $\varphi$ error at initialization in camera 
 
 \section{Camera Intrinsic Parameters}
 % word checked.
-This section summarizes the impact of inaccurate camera parameters estimates. Error on camera intrinsic parameters is simulated by using different values in the camera models used by the simulator and the CC\_EKF\_SLAM algorithm. $c_{x}$, $c_{y}$, $f_{x}$, and $f_{y}$ are simulated individually and distortion parameters $[k1, k2, p1, p2]$ are simulated as a group. Using the calibrated camera model (see section \ref{sec:camcal}) as a base model,$ c_{x}$, $c_{y}$, $f_{x} $, and $f_{y}$ in simulator camera model varied from -50\% to 50\% of the base model. Distortion parameters varied from 0\% to 140\% of the base model.
+This section discussed the effect on CC\_EKF\_SLAM accuracy from
+calibration error of camera intrinsic parameters. Errors on camera
+intrinsic parameters were simulated by using different values in the
+camera models used by the simulator and by the CC\_EKF\_SLAM algorithm.
+$c_{x}$, $c_{y}$, $f_{x}$, and $f_{y}$ were simulated individually and
+distortion parameters $[k1, k2, p1, p2]$ were simulated as a group.
+Using the calibrated camera model (see section \ref{sec:camcal}) as a
+base model, $c_{x}$, $c_{y}$, $f_{x}$, and $f_{y}$ in simulator
+camera model varied from -50\% to 50\% of the base model. Distortion
+parameters varied from 0\% to 140\% of the base model.
 
 \subsection{Effect from $(c_{x}, c_{y})$}
 % word checked.
-Figure \ref{fig:simfig34-35} show an overview of SUAS localization error statistics with incorrect estimates of $ (c_{x}, c_{y})$. From the statistic plot, it is found that $c_x$ has impact on SUAS position on X and Y, while $c_y$ has impact on SUAS position on X and Z. 
+Figure \ref{fig:simfig34-35} showed an overview of UAV poses error
+statistics with $(c_{x}, c_{y})$ calibration error introduced. From
+the statistic plot, it was found that $c_x$ had biggest impact on UAV
+position on X and Y, and $c_y$ had biggest impact on UAV position on X
+and Z.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=5cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure34.png}
-  \includegraphics[width=5cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure35.png}
-  \caption{SUAS localization error statistic with varying $(c_x, c_y)$}
+  \includegraphics[width=7cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure34.png}
+  \includegraphics[width=7cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure35.png}
+  \caption{UAV localization error statistics with varying $(c_x, c_y)$}
   \label{fig:simfig34-35}
 \end{figure}
 
-Figure \ref{fig:simfig36-37} shows the SUAS position error with various $c_x$ and $c_y$. SUAS position error is dependent on both $(c_{x}, c_{y})$ and time. The SUAS position error is diverging (increasing in time), and can be modeled by 1 $^{st}$ order polynomial function, with the rate of diverging decided by the error of $(c_{x}, c_{y})$. 
+Figure \ref{fig:simfig36-37} showed the UAV position error with $c_x$
+and $c_y$ at various offset from the base value. The resulted UAV
+positions errors were dependent on both $(c_{x}, c_{y})$ and were
+divergent in time. The divergence can be modeled by 1$^{st}$ order
+polynomial function, with the rate of divergence decided by the offset
+of $(c_{x}, c_{y})$ from the base value.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=7cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure36.png}
   \includegraphics[width=7cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure37.png}
-  \caption{Diverging SUAS position error}
+  \caption{Diverging UAV position error}
   \label{fig:simfig36-37}
 \end{figure}
 \FloatBarrier
 
-The landmark mapping error statistics from incorrect estimate of $ (c_{x}, c_{y})$ are plotted in figure \ref{fig:simfig28-29}. The following characters can be observed from the plots:
+The landmarks mapping errors statistics from calibration error of
+$(c_{x}, c_{y})$ were plotted in figure \ref{fig:simfig28-29}. The
+following characters can be observed from the plots:
 
 \begin{itemize}
-  \item Incorrect $c_{x}$ affect landmark position on all axis, among which, X and Y axis see the most significant error.
+  \item Calibration error on $c_{x}$ affected landmarks positions on all
+  axes, among which, X and Y axes showed the most significant error.
   \begin{itemize}
-    \item The further $c_{x}$ deviate from the true value, the further the landmarks appear (positive X axis error).
-    \item On Y axis, inaccurate $c_x$ causes offset error in landmark position. 
-    \item Incorrect $c_{x}$ also affect Z axis landmark position, but by a much smaller amount.
+    \item The further $c_{x}$ deviated from the base value, the further
+    the landmarks appeared in average (positive mean error on X).
+    \item Mean landmarks positions errors on Y axis was proportional to
+    the calibration error on $c_x$. Their relation can be modeled by
+    1$^{st}$ degree polynomial equation.
+    \item Error on $c_{x}$ also affected landmarks positions on Z
+    axis, but in the scales of a few meters.
   \end{itemize}
-  \item Incorrect $c_{y}$ affect landmark position on all axis similarly to $c_{x}$. Estimates on X and Z axis show most amount of error.
+  \item Calibration error on $c_{y}$ affected landmarks positions on
+  all axis similarly to $c_{x}$. Estimates on X and Z axes showed the
+  most amount of error.
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[h] % change plots title to "Landmarks Mapping Errors
+                  % Statistics
+                  % and C_x/C_y offset
   \centering
-  \includegraphics[width=7cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure28.png}
-  \includegraphics[width=7cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure29.png}
-  \caption{Landmark mapping error statistic with varying $(c_x, c_y)$}
+  \includegraphics[width=10cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure28.png}
+  \includegraphics[width=10cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure29.png}
+  \caption{Landmarks mapping errors statistics with varying $(c_x, c_y)$}
   \label{fig:simfig28-29}
 \end{figure}
 
-Plotting landmark position error as a function of landmarks ground truth positions reveals more information on how incorrect $c_{x}$ and $c_{y}$ affect landmark mapping. Landmark position error is a function of its ground truth position, and $c_{x}$ (or $c_{y}$).
+Plotting landmarks positions errors against landmarks ground truth
+positions revealed more information on how $c_{x}$ and $c_{y}$
+affected landmark mapping. Landmarks positions errors were dependent
+on their ground truth positions, and $c_{x}$ (or $c_{y}$).
 
 \begin{itemize}
-  \item Landmark position error on X axis is proportional to the landmark ground truth position on X. The further the landmark is, greater the error will be. The degree of incorrectness in $c_{x}$ decide the slope of the error plot, greater the error in $c_{x}$, steeper the slope (figure \ref{fig:simfig32-33} left, subplot $[1,1]$).
-  \item Landmark position error on Y axis is also proportional to it's ground truth position on X with the slope polarity dependable on the polarity of the error of $c_{x}$, and slope dependable on the error on $c_{x}$ (figure \ref{fig:simfig32-33} left, subplot $[2,1]$).
-  \item Landmark position error on Z axis is proportional to its ground truth position on Z, with slope polarity dependable on the polarity of error of $c_{x}$, and slope dependable on the error of $c_{x}$ (figure \ref{fig:simfig32-33} left, subplot $[3,3]$).
+  \item Landmarks positions errors on X axis were proportional to the
+  landmarks ground truth positions on X. The further the landmark was,
+  greater the error would be. The amount of incorrectness in $c_{x}$
+  decided the slope of the error plot. The greater the error was in
+  $c_{x}$, the steeper the slope became (figure \ref{fig:simfig32-33} left,
+  subplot $[1,1]$).
+  \item Landmarks positions errors on Y axis were also proportional to
+  their ground truth positions on X with the slope steepness and
+  polarity dependable on the amount and polarity of the error of
+  $c_{x}$ (figure \ref{fig:simfig32-33} left, subplot $[2,1]$).
+  \item Landmarks positions errors on Z axis were proportional to
+  their ground truth positions on Z, with slope steepness and polarity
+  dependable on the amount and polarity of error of $c_{x}$ (figure
+  \ref{fig:simfig32-33} left, subplot $[3,3]$).
 \end{itemize}
 
-$c_{y}$ affects landmark position similarly to $c_{x}$ (figure \ref{fig:simfig32-33}, right).
+$c_{y}$ affected landmarks positions similarly to $c_{x}$ (figure
+\ref{fig:simfig32-33}, right).
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=7cm, height=5cm]{./Figures/SimulationFigures/Figure32.png}
-  \includegraphics[width=7cm, height=5cm]{./Figures/SimulationFigures/Figure33.png}
-  \caption{Landmark mapping error vs. ground truth landmark position}
+  \includegraphics[width=13cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure32.png}
+  \includegraphics[width=13cm, keepaspectratio=true]{./Figures/SimulationFigures/Figure33.png}
+  \caption{Landmarks mapping errors vs. ground truth landmarks positions}
   \label{fig:simfig32-33}
 \end{figure}
 \FloatBarrier
 
 \subsection{Effect from $(f_x, f_y)$}
 
-With $(f_x, f_y)$ varying from -50\% to +50\% of the calibrated value, the SUAS localization error is shown in \ref{fig:simfig43-44}. For all $f_x$ and $f_y$ settings, SUAS position error remained less than +/-0.05 meters, and orientation error remained in less than 8e-6 radius. Compared to the error obtained from the ideal case simulation, Error in $(f_x, f_y)$ does not introduce any additional error into SUAS localization estimate. 
+With $(f_x, f_y)$ varying from -50\% to +50\% of the base value, the
+UAV localization errors were shown in \ref{fig:simfig43-44}. For all
+$f_x$ and $f_y$ settings, UAV position errors remained less than
++/-0.05 meters, and orientation errors remained less than 8e-6 radius.
+Compared to the errors obtained from the ideal case, calibration
+errors in $(f_x, f_y)$ did not introduce any additional error into UAV
+localization estimates.
 \begin{figure}[h]
   \centering
-  \includegraphics[width=5cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure43.png}
-  \includegraphics[width=5cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure44.png}
-  \caption{UAS localization error statistic with variable $(f_x, f_y)$}
+  \includegraphics[width=7cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure43.png}
+  \includegraphics[width=7cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure44.png}
+  \caption{UAV localization errors statistic with variable $(f_x, f_y)$}
   \label{fig:simfig43-44}
 \end{figure}
 
-Landmark mapping, on the other hand, is unavoidably affected by the
-error in $(f_x, f_y)$ since these are the scaling factor that project
-landmarks from 3D world onto image plane. Figure \ref{fig:simfig38-39}
-shows the error statistic of landmark position estimates under various
-$(f_x, f_y)$ settings. The effect on the X axis component is minimal
-and is in the scale of millimeter. Y axis component receive the most
-impact with inaccurate $f_x$, since this is the scale factor that map
-landmark's Y component in world frame onto U axis on image plane by $u
-= Y/X \cdot f_x$. Same behavior happens for the Z axis component of
-the landmark position estimate and its relation to $f_y$.
+On the other hand, landmarks mapping errors were unavoidably affected
+by the calibration errors in $(f_x, f_y)$ since these were the scaling
+factors that projected landmarks from 3D world onto image plane.
+Figure \ref{fig:simfig38-39} showed the errors statistics of landmarks
+positions estimates under various $(f_x, f_y)$ settings. The effect on
+the X axis was minimal and was in the scale of millimeter. Errors on Y
+axis received the most impact from error on $f_x$, since this was the
+scale factor that mapped the Y component of landmarks position in
+world onto u-axis on image plane by $u = Y/X \cdot f_x$. Same behavior
+happened on the landmarks positions estimates on Z axis and their
+relation to $f_y$.
 
-\begin{figure}[h]
+\begin{figure}[h]% Change title to "Landmarks mapping Errors
+                 % Statistics and Projection Scalling Factor (f_x/f_y)
   \centering
-  \includegraphics[width=7cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure38.png}
-  \includegraphics[width=7cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure39.png}
-  \caption{Landmark mapping error statistic with variable $(f_x, f_y)$}
+  \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure38.png}
+  \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure39.png}
+  \caption{Landmarks mapping errors statistics with variable $(f_x, f_y)$}
   \label{fig:simfig38-39}
 \end{figure}
 
-Plotting the landmark mapping error against landmark ground truth position reveals how error in $(f_x, f_y)$ impact on landmark position estimates. When $f_x$ contains error, Y component of landmark position error is directly proportional to the Y component of its ground truth position, with the error in $f_x$ determines the function's slope. Same relation can be found for $Z_{error}$ with $f_y$, and $Z_{ground truth}$.
+Plotting the landmarks mapping errors against landmarks ground truth
+positions also showed that the mapping errors were dependable on
+landmarks ground truth positions and error in $(f_x, f_y)$. When $f_x$
+contained error, landmarks positions errors on Y were directly
+proportional to the Y component of their ground truth positions, with the
+error in $f_x$ determining the steepness of the slope. Same relation can be
+found for $Z_{error}$ with $f_y$, and $Z_{ground truth}$.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=7cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure41.png}
-  \includegraphics[width=7cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure42.png}
-  \caption{Landmark mapping error plotted against landmark ground truth
+  \includegraphics[width=13cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure41.png}
+  \includegraphics[width=13cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure42.png}
+  \caption{Landmarks mapping errors plotted against ground truth
     for various $(f_x, f_y)$}
   \label{fig:simfig38-39}
 \end{figure}
-
 \FloatBarrier
 
 \subsection{Effect from Distortion}
 % word checked.
-The CC\_EKF\_SLAM algorithm does not consider camera lens distortion at this stage. Therefore, the simulation evaluate the effect of distortion varying from 0\% to 150\% of the calibrated result to evaluate the amount error resulted by ignoring the lens distortion. 
+The CC\_EKF\_SLAM algorithm did not consider camera lens distortion
+at this stage. Therefore, the simulation evaluated the effect of
+lens distortion varying from 0\% to 150\% of the base value to
+estimate the amount of error resulted from ignoring the lens distortion.
 
-Figure \ref{fig:simfig48} (left) shows the SUAS localization error for all lens distortion setting. Ignoring the distortion brings significant error into the UAS localization. SUAS X position receives the most impact with error up to 100 meters with increasing standard deviation. Y and Z position shows less error, but standard deviation grows larger with the increase in distortion offset. Figure \ref{fig:simfig48} (right) reveals the cause of increasing standard deviation. The SUAS position error was diverging with time. The SUAS orientation error increased from maximum mean error of 5e-6 radius in low noise simulation to 2.5e-4 rad. The standard deviation of orientation estimates also increased with lens distortion offset. Similarly, the plots of orientation error vs. frame number show that the error amplitude increases with time, although it fluctuates around zero.
+Figure \ref{fig:simfig47} showed the UAV localization error for
+various lens distortion setting. Ignoring the distortion brought
+significant error into the UAV localization. UAV position on X-axis
+received the most impact. The errors were up to 100 meters, and with
+increasing standard deviation. Positions on Y and Z axes showed less
+error, but standard deviation grew  larger with the increasing amount of
+distortion added. 
 
-%TODO regenerate figure to make X axis more readable. change UAS to SUAS
+Figure \ref{fig:simfig48} revealed the cause of increasing standard
+deviation. UAV position errors were diverging in time and with amount
+of lens distortion added. UAV orientation errors increased from
+maximum mean error of 5e-6 radius in low noise simulation to 2.5e-4
+rad. Similar to position error, the plots of orientation error vs.
+frame number showed that the error amplitude increases with time,
+but it fluctuated around zero.
+
 \begin{figure}[h]
   \centering
-  \includegraphics[width=5cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure47.png}
-  \includegraphics[width=9cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure48.png}
-  \caption{SUAS localization error with lens distortion}
+  \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure47.png}
+  \caption{UAV localization errors statistics with lens distortion}
+  \label{fig:simfig47}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=14cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure48.png}
+  \caption{UAV localization error plots with lens distortion}
   \label{fig:simfig48}
 \end{figure}
 
-The landmark position error statistic is shown in figure \ref{fig:simfig45}. The X axis of landmark position shows the most error, with mean value reading -400 meters with distortion offset at 150\%. Y, and Z axis position has less mean error, but the standard deviation is bigger. Plotting landmark position error against landmark ground truth coordinate (figure \ref{fig:simfig46}) shows that the increasing standard deviation is due to the first order linear relation between the Y (or Z) axis of landmark position error and the Y (or Z) axis of landmark ground truth coordinate, where distortion offset determine the slope of the line. The relation indicates that landmark lying around the sides of the image plane carries more error than landmarks at the center of the image. This is exactly the kind of error that radial distortion corrects for. 
+The landmarks positions errors statistics were shown in figure
+\ref{fig:simfig45}. The positions errors were also plotted against
+landmark ground truth positions in figure \ref{fig:simfig46}. The
+landmarks positions on X axis showed the most error, with mean error
+at -400 meters with distortion offset at 120\%. The amount of error
+was related to the landmarks' distance from X axis (Figure
+\ref{fig:simfig46}, subplots [1,2] and [1,3]). The further the
+landmarks lied away from the X axis, the bigger the errors became.
+Landmarks positions on Y, and Z axes had less mean error, but the
+standard deviation were bigger. Figure \ref{fig:simfig46} subplots
+[2,2] and [3,3] showed that the errors on Y (or Z) axes were loosely
+proportional to the landmarks ground truth coordinates on Y (or Z)
+axis, where distortion offset determined the slope of the line. The
+relation indicated that landmarks lying around the sides of the image
+plane carried more errors than landmarks at the center of the image on
+all axes. This was exactly the kind of error that radial distortion
+corrected for.
 
-\begin{figure}[h]
+\begin{figure}[h]% get rid of title and reposition x label
   \centering
   \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure45.png}
-  \caption{Feather position error with lens distortion}
+  \caption{Landmarks positions errors with lens distortion}
   \label{fig:simfig45}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[h] %get rid of the title. 
   \centering
-  \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure46.png}
-  \caption{Feather position error vs. ground truth position with lens distortion}
+  \includegraphics[width=13cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure46.png}
+  \caption{Landmarks positions errors vs. ground truth positions with lens distortion}
   \label{fig:simfig46}
 \end{figure}
-
 \FloatBarrier
 
 \subsection{Effect from Image Resolution}
 
-It is well known that higher resolution sensor will give more accuracy to the estimate. To know how high a resolution is good enough for the distance range that this research is targeting at, a quantitative analysis is necessary. A few simulation is ran with various image resolution settings, and the result is shown in figure \ref{fig:simfig50}. 
+It is well known that higher resolution sensors give more accuracy
+to the estimates. To know how high a resolution is good enough for the
+distance that this research was targeting at, a quantitative
+analysis was necessary. A few simulations were ran with various image
+resolution settings, and the results were shown in figure
+\ref{fig:simfig50}.
 
 %TODO regenerate top figure to give enough room for xlabel, change UAS
-%to SUAS
+%to UAV
 \begin{figure}[h] 
   \centering
   \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure50.png}
-  \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure49.png}
-  \caption{Error statistic for various image resolution}
+  \caption{Localization errors statistics for various image resolution}
   \label{fig:simfig50}
 \end{figure}
 
-This test confirmed that the higher resolution the image sensor is, the more accuracy it will bring. The most significant error is seen at resolution 480x720 where the X axis of landmark position error is +/- 150m. At 720x1080, which is one step up of 480x720, the X axis landmark position error is greatly reduced to a few meters. For all other parameters, improvement at each level of resolution increase is nearly linear. This result suggests that to achieve reasonably good accuracy for obstacle detection, a resolution of 720x1080 or higher is preferred. 
+\begin{figure}[h] % regenerate to make room for x axis label. change
+                  % feature to landmark
+  \centering
+  \includegraphics[width=10cm,keepaspectratio=true]{./Figures/SimulationFigures/Figure49.png}
+  \caption{Landmarks mapping errors statistics for various image resolution}
+  \label{fig:simfig51}
+\end{figure}
+
+This test confirmed that the higher resolution the image sensor had,
+the more accuracy it would bring. The most significant error was seen
+at resolution 480x720 where the landmarks positions errors on X were
++/- 150m. At 720x1080, the X axis landmarks positions errors were
+greatly reduced to a few meters. For all other parameters,
+improvements at each level of resolution increase were nearly linear.
+This result suggested that to achieve reasonably good accuracy for
+obstacle detection, a sensor with resolution of 720x1080 or higher is
+preferred.
 
 
 %%% Local Variables:

@@ -26,13 +26,13 @@
 \BOOKMARK [2][-]{subsection.3.2.3}{3.2.3 Measurement Model}{section.3.2}% 26
 \BOOKMARK [2][-]{subsection.3.2.4}{3.2.4 Composition Step}{section.3.2}% 27
 \BOOKMARK [2][-]{subsection.3.2.5}{3.2.5 Filter Initialization}{section.3.2}% 28
-\BOOKMARK [2][-]{subsection.3.2.6}{3.2.6 Adding and Deleting Features}{section.3.2}% 29
+\BOOKMARK [2][-]{subsection.3.2.6}{3.2.6 Adding and Deleting Landmarks}{section.3.2}% 29
 \BOOKMARK [0][-]{section*.38}{ 4 Experiments with Real Aerial Data}{}% 30
 \BOOKMARK [1][-]{section.4.1}{4.1 Equipment Setup and Data Collection}{section*.38}% 31
 \BOOKMARK [1][-]{section.4.2}{4.2 Camera Calibration}{section*.38}% 32
-\BOOKMARK [1][-]{section.4.3}{4.3 Data Preperation}{section*.38}% 33
+\BOOKMARK [1][-]{section.4.3}{4.3 Data Preparation}{section*.38}% 33
 \BOOKMARK [2][-]{subsection.4.3.1}{4.3.1 Ground Truth Data Collection}{section.4.3}% 34
-\BOOKMARK [2][-]{subsection.4.3.2}{4.3.2 Data Preperation}{section.4.3}% 35
+\BOOKMARK [2][-]{subsection.4.3.2}{4.3.2 Data Preparation}{section.4.3}% 35
 \BOOKMARK [0][-]{section*.46}{ 5 Result From Flight Data}{}% 36
 \BOOKMARK [1][-]{section.5.1}{5.1 Convergence}{section*.46}% 37
 \BOOKMARK [1][-]{section.5.2}{5.2 Accuracy}{section*.46}% 38
@@ -42,24 +42,24 @@
 \BOOKMARK [1][-]{section.5.4}{5.4 Compare to Visually Corresponded Landmark}{section*.46}% 42
 \BOOKMARK [0][-]{section*.63}{ 6 Error Analysis via Simulation}{}% 43
 \BOOKMARK [1][-]{section.6.1}{6.1 An Ideal Case}{section*.63}% 44
-\BOOKMARK [2][-]{subsection.6.1.1}{6.1.1 SUAS Localization}{section.6.1}% 45
+\BOOKMARK [2][-]{subsection.6.1.1}{6.1.1 UAV Localization}{section.6.1}% 45
 \BOOKMARK [2][-]{subsection.6.1.2}{6.1.2 Landmarks Mapping - Convergence and Accuracy}{section.6.1}% 46
-\BOOKMARK [1][-]{section.6.2}{6.2 Effect of SUAS Motion}{section*.63}% 47
-\BOOKMARK [2][-]{subsection.6.2.1}{6.2.1 SUAS Localization under Motion}{section.6.2}% 48
+\BOOKMARK [1][-]{section.6.2}{6.2 Effect of Motion}{section*.63}% 47
+\BOOKMARK [2][-]{subsection.6.2.1}{6.2.1 UAV Localization under Motion}{section.6.2}% 48
 \BOOKMARK [2][-]{subsection.6.2.2}{6.2.2 Landmark Mapping Accuracy under Motion}{section.6.2}% 49
 \BOOKMARK [1][-]{section.6.3}{6.3 Camera Intrinsic Parameters}{section*.63}% 50
 \BOOKMARK [2][-]{subsection.6.3.1}{6.3.1 Effect from \(cx, cy\)}{section.6.3}% 51
 \BOOKMARK [2][-]{subsection.6.3.2}{6.3.2 Effect from \(fx, fy\)}{section.6.3}% 52
 \BOOKMARK [2][-]{subsection.6.3.3}{6.3.3 Effect from Distortion}{section.6.3}% 53
 \BOOKMARK [2][-]{subsection.6.3.4}{6.3.4 Effect from Image Resolution}{section.6.3}% 54
-\BOOKMARK [0][-]{section*.84}{ 7 Conclusion}{}% 55
-\BOOKMARK [1][-]{section.7.1}{7.1 Result Summaries}{section*.84}% 56
+\BOOKMARK [0][-]{section*.86}{ 7 Conclusion}{}% 55
+\BOOKMARK [1][-]{section.7.1}{7.1 Result Summaries}{section*.86}% 56
 \BOOKMARK [2][-]{subsection.7.1.1}{7.1.1 Flight Data Processing}{section.7.1}% 57
 \BOOKMARK [2][-]{subsection.7.1.2}{7.1.2 Noise Analysis through Simulation}{section.7.1}% 58
-\BOOKMARK [1][-]{section.7.2}{7.2 Future Research}{section*.84}% 59
-\BOOKMARK [0][-]{section*.92}{List of References}{}% 60
-\BOOKMARK [0][-]{section*.94}{Appendix A Coordinate Transformation}{}% 61
-\BOOKMARK [0][-]{section*.96}{Appendix B Jacobian Matrix for Filter Initialization}{}% 62
-\BOOKMARK [0][-]{section*.97}{Appendix C Linearization of Measurement Model and Composition Equations}{}% 63
-\BOOKMARK [1][-]{section.C.1}{C.1 Linearization of Measurement Model}{section*.97}% 64
-\BOOKMARK [1][-]{section.C.2}{C.2 Jacobian Matrix of Composition Equations}{section*.97}% 65
+\BOOKMARK [1][-]{section.7.2}{7.2 Future Research}{section*.86}% 59
+\BOOKMARK [0][-]{section*.94}{List of References}{}% 60
+\BOOKMARK [0][-]{section*.96}{Appendix A Coordinate Transformation}{}% 61
+\BOOKMARK [0][-]{section*.98}{Appendix B Jacobian Matrix for Filter Initialization}{}% 62
+\BOOKMARK [0][-]{section*.99}{Appendix C Linearization of Measurement Model and Composition Equations}{}% 63
+\BOOKMARK [1][-]{section.C.1}{C.1 Linearization of Measurement Model}{section*.99}% 64
+\BOOKMARK [1][-]{section.C.2}{C.2 Jacobian Matrix of Composition Equations}{section*.99}% 65

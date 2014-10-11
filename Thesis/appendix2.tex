@@ -1,7 +1,7 @@
 \chapter{Jacobian Matrix for Filter Initialization}\label{ch:appendix2}
 The Jacobian matrix used in state covariance matrix initialization
 equation (\ref{eq:Pnew}) is derived in this section. The complete
-Jacobian matrix $J$ for initializing a feature covariance is given by
+Jacobian matrix $J$ for initializing a landmark covariance is given by
 
 \begin{equation}
 J=\begin{bmatrix}
@@ -16,7 +16,7 @@ J=\begin{bmatrix}
 \end{bmatrix}
 \end{equation}
 
-\noindent Whenever a new feature is added, it's initial position is
+\noindent Whenever a new landmark is added, it's initial position is
 always $[\begin{matrix}0&0&0\end{matrix}]$ in the camera frame, and
 the $[\begin{matrix}\rho&\varphi&\theta\end{matrix}]$ parameters are
 not a function of $ OX_{W}^{C}$, $c^{C}$,or $r^{C}$, therefore

@@ -9,7 +9,7 @@ against ground truth, and described in section
 analyzing pure natural scene video where no man-made object can be
 seen, it was found that landmarks correspondence between the
 estimated and ground truth was difficult due to the
-similarity in apperance of the landmark. Therefore, an another video
+similarity in appearance of the landmark. Therefore, an another video
 where landmarks can be manually and distinctively matched was
 processed, and result was summarized in section \ref{sec:flight-manual}.
 
@@ -181,7 +181,7 @@ converging plots figure \ref{fltfig:2} showed that landmark parameters
 do experience drift as filter tracked landmarks in flight. The best
 time for making data correspondence with DEM is when landmarks were
 first initialized. The landmark initialization position $[x_i, y_i,
-z_i]$ were zeros when landmarks were initialied. $[\varphi,
+z_i]$ were zeros when landmarks were initialized. $[\varphi,
 \theta]$ were calculated from landmark coordinates in image, and did
 not carry any error contributed by the $\rho$ or optical flow
 algorithm result. Therefore, the following procedure were used the find
@@ -217,8 +217,8 @@ The convergence of landmark position error was plotted in figure
 converged to zero in general with error ranging from 2.8 meters to 120
 meters. Y component showed a clear offset for landmarks not initialized
 at first frame. This behavior is similar to what's seen in the
-error analysis \ref{sec:featureMotion} where offset in landmarks
-position estimates were caused by drift in SUAS localization
+error analysis \ref{sec:landmarkMotion} where offset in landmarks
+position estimates were caused by drift in UAV localization
 estimation. Offset on Z component was much less obvious.
 
 \begin{figure}[h]
@@ -229,7 +229,7 @@ estimation. Offset on Z component was much less obvious.
 \label{fltfig:8}
 \end{figure}
 
-Landmark IDs were assigned to landmarks sequencially when landmarks
+Landmark IDs were assigned to landmarks sequentially when landmarks
 were initialized into the filter. Plotting the estimated and ground
 truth landmarks position against landmark ID revealed more detail on
 the errors. Figure \ref{fltfig:9} plotted the estimated and ground
@@ -334,7 +334,7 @@ $\varphi$ and $\theta$ also had very small variance.
 
 % consider deleting first and second point in the paragraph. Only the
 % third point leads to explaination of error.
-To see the effect of small variance on EKF's update process, correction
+To see the effect of small variance on the update process of EKF, correction
 amount applied to the predicted state vector were plotted in figure
 \ref{fltfig:4}. It can be observed that in general the correction
 amount agreed with the variance that bigger variance resulted in more
@@ -344,7 +344,7 @@ progress despite their variance stabilized or even decreased.
 Secondly, there was a strong correlation between the landmark
 initialization position, the world frame position, and camera
 translation estimates. World frame position and landmark
-initialization were inversly correlated to the camera translation on Y
+initialization were inversely correlated to the camera translation on Y
 and Z axis. Thirdly, the camera parameter corrections showed an
 obvious trend only on Y and Z motion. The correction amounts on camera
 translation on Y and Z axis were increasing with time. Due to these
@@ -360,7 +360,7 @@ in future work.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=12cm, keepaspectratio=true]
+\includegraphics[width=15cm, keepaspectratio=true]
 {./Figures/fltfig/cut1/Figure112.png}
 \caption{State Vector Corrections}
 \label{fltfig:4}
@@ -380,7 +380,7 @@ it was landed at the airport. Figure \ref{fltfig:11} showed a
 zoomed-in view of the landmarks extracted by the CC\_EKF\_SLAM. All
 landmarks were located at the bottom left corner of the image. Figure
 \ref{fltfig:12} showed the common landmarks found manually on the
-satalite image on Google Earth \cite{_google_????}.
+satellite image on Google Earth \cite{_google_????}.
 
 \begin{figure}[h]
 \centering
@@ -397,8 +397,8 @@ satalite image on Google Earth \cite{_google_????}.
 \caption{Common landmarks identified manually on Google Earth }
 \label{fltfig:12}
 \end{figure}
-\FloatBarrier The estimated SUAS poses were compared to onboard GPS
-and IMU recordings in figure \ref{fltfig:13}. Similar to the natual
+\FloatBarrier The estimated SUAS poses were compared to on-board GPS
+and IMU recordings in figure \ref{fltfig:13}. Similar to the natural
 scene video, SUAS position estimates were more accurate on X and Z,
 and experienced more drift on Y axis. The drift become significant
 when frame number exceeds 200. The correlation between position error
@@ -417,7 +417,7 @@ plot.
 Figure \ref{fltfig:15} showed the landmarks positions compared to
 ground truth. This plot showed a clear offset error between the ground
 truth and the estimated. X axis coordinate had a mean offset of about
-150 meters, and Y axis coordinate has a offset of about 60m. Since the
+150 meters, and Y axis coordinate has a offset of about 40m. Since the
 error existed on all landmark regardless of their ID value, and all
 landmarks were located at the bottom left corner of the FOV, it is
 likely that lens distortion was the main contributor to these error.

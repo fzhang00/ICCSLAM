@@ -5,13 +5,13 @@ The biggest contribution of the project is that the algorithm was
 tested and proven feasible with real flight data. The aerial video and
 navigation data were collected through a survey flight with the
 support of Sander Geophysics Ltd. A main purpose of the test flight is
-to obtain a piece of aerial video with the camera close to the ground
+to obtain aerial video with the camera close to the ground
 to mimic the scenario of a low flying UAV. This is difficult to
 achieve with any manned fixed wing aircraft. Therefore a simulated
 unmanned aircraft system (SUAS) was used to carry all sensors. The
-SUAS is towed by a helicopter via a tow rope of 33 meters long
-(Figure \ref{fig:towedSUAS})to complete the survey. Yet, to prevent
-the SUAS from being caught by tree top, sufficient clearance must be
+SUAS was towed by a helicopter via a tow rope of 33 meters long
+(Figure \ref{fig:towedSUAS}). Yet, to prevent
+the SUAS from being caught by tree branches, sufficient clearance must be
 established between the SUAS and the vegetation. As a result, the helicopter
 flew a planned path at approximately 100 meters above ground, and the SUAS
 was at approximately 70 meters above ground.
@@ -109,7 +109,7 @@ $p_2$ & 8.40e-003 \\
 \end{table}
 \FloatBarrier
 
-\section{Data Preperation}
+\section{Data Preparation}
 % word checked.
 \subsection{Ground Truth Data Collection}
 The localization ground truth data were obtained through the flight
@@ -119,14 +119,14 @@ obtained from the roll pitch and heading measurements. Roll and pitch
 accuracy has $0.1^\circ$ and $0.1^\circ$ in standard deviation.
 Heading accuracy can achieve $0.5^\circ$ \cite{_athena_????}.
 
-Landmark position groundtruth came from digital elevation map (DEM)
+Landmark position ground truth came from digital elevation map (DEM)
 downloaded from CGIAR-CSI website \cite{_cgiar-csi_????}. The DEM
 contains longitude, latitude and sea level elevation of the terrain
 with a resolution approximately 100 meters by 100 meters. 
 
 %consider adding the ground truth DEM figure here. 
 
-\subsection{Data Preperation}
+\subsection{Data Preparation}
 To compare the estimated UAV poses and landmark position to the ground
 truth, all data must be referenced to the same coordinate frame. For
 ease of viewing, the reference frame used for data analysis is the
@@ -138,7 +138,7 @@ software are readily available to do the conversion by taking GPS
 coordinate and zone number as input. The software used in this work is
 a python interface to PROJ.4 library \cite{_pyproj_????} called pyproj
 \cite{_pyproj_????}. Secondly, in UTM coordinate, the ground truth of
-the SUAS poses were brought to the world frame by substracting their
+the SUAS poses were brought to the world frame by subtracting their
 value at time 0. The superscript Nav indicates that the value came
 from the navigation measurement.
 

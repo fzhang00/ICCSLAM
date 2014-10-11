@@ -77,12 +77,12 @@ The EKF full state vector is defined as
 \noindent where $\mathbf{OX_{W}^{C}}= \begin{bmatrix}O_{x}^{C} &
   O_{y}^{C} & O_{z}^{C} & W_{x}^{C} & W_{y}^{C} &
   W_{z}^{C} \end{bmatrix}^{T}$ contains translation parameters
-$O_{x,y,z}^{C}$ and rotation parameters $W_{x,y,z}^{C}$ that represent
-the world frame position and orientation referenced to the camera
-frame. $\left(\mathbf{c^{C}},\mathbf{r^{C}}\right)^{T}$ represent the
-camera translation and rotation motion frame by frame.
-$\mathbf{p_{i}^{C}}$ contains the feature parameters described in
-the previous section.
+$\mathbf{O_{x,y,z}^{C}}$ and rotation parameters
+$\mathbf{W_{x,y,z}^{C}}$ that represent the world frame position and
+orientation referenced to the camera frame.
+$\left(\mathbf{c^{C}},\mathbf{r^{C}}\right)^{T}$ represent the camera
+translation and rotation motion frame by frame. $\mathbf{p_{i}^{C}}$
+contains the feature parameters described in the previous section.
 
 \subsection{Prediction}
 
@@ -215,7 +215,7 @@ W_{z}^{C_{k-1}} \\
 \end{bmatrix}_{k}-\mathbf{r_k^{C_{k-1}}}
 \end{equation}
  
-Feature parameters in the camera reference frame are related to the
+Landmarks parameters in the camera reference frame are related to the
 previous reference frame 
 by
 
@@ -258,10 +258,10 @@ The covariance matrix is also affected by this transformation. The new
 covariance matrix is related to the old one by
 
 \begin{equation}
-P_{k}^{C_{k}}=J_{C_{k-1}\to C_{k}}P_{k}^{C_{k-1}}J_{C_{k-1}\to C_{k}}^{T}
+\mathbf{P_{k}^{C_{k}}}=\mathbf{J_{C_{k-1}\to C_{k}}}\mathbf{P_{k}^{C_{k-1}}}\mathbf{J_{C_{k-1}\to C_{k}}^{T}}
 \end{equation}
 
-\noindent where $J_{C_{k-1} \to C_k}$ is the Jacobian matrix of the
+\noindent where $\mathbf{J_{C_{k-1} \to C_k}}$ is the Jacobian matrix of the
 composition equations. Detail derivation of the Jacobian matrix is
 given in appendix \ref{sec:jac_composition}  
 
@@ -287,6 +287,7 @@ equals to the smallest machine number.
 \end{equation}
 
 \begin{equation}
+\label{eq:pi_init}
 \mathbf{p_{i}^{C}}=\begin{bmatrix}0&0&0&\rho _{i}&\varphi_{i}^C&\theta_{i}^C\end{bmatrix}^T
 \end{equation}
 
@@ -314,7 +315,7 @@ h_{z}^{C}\\
 to image plane, $[c_x, c_y]$ is the coordinate at which the optical axis
 intersects the image plane. The elevation-azimuth pair $[\varphi
 _{i}^{C}, \theta _{i}^{C}]$ can be directly calculated from
-$h^{C}$ using equation (\ref{eq:m_inv_varphi}) and (\ref{eq:m_inv_theta})
+$\mathbf{h^{C}}$ using equation (\ref{eq:m_inv_varphi}) and (\ref{eq:m_inv_theta})
 
 \subsubsection{Initialized the State Covariance Matrix}
 
@@ -332,8 +333,8 @@ world reference frame position and orientation, and the camera motion is
 \noindent where $\epsilon $ is the lowest significant bit (LSB) of a
 computer.
 
-The covariance of features is added one by one as there is 
-correlation between them. For every new feature added, the new 
+The covariance of landmark is added one by one as there is 
+correlation between them. For every new landmark added, the new 
 covariance matrix becomes
 
 \begin{equation}
@@ -346,7 +347,7 @@ covariance matrix becomes
 \end{equation}
 
 \noindent where $\mathbf{P_{old}}$ is the covariance matrix of the existing
-state vector. The initial $\mathbf{P_{old}}$ before the first feature is
+state vector. The initial $\mathbf{P_{old}}$ before the first landmark is
 added is equation (\ref{eq:Pinit}). Matrix $\mathbf{R}$ is given by.
 
 \begin{equation}
@@ -372,22 +373,22 @@ added is equation (\ref{eq:Pinit}). Matrix $\mathbf{R}$ is given by.
 \noindent where $[\sigma_{x_{i}}^{C}, \sigma_{y_{i}}^{C}, \sigma
 _{z_{i}}^{C}]$ is the uncertainty of the camera optical center
 position, initialized to $\epsilon$. $\sigma_{image}$ is the
-variance of feature coordinate on image plane, set to 1 pixel. $\sigma
+variance of landmark coordinate on image plane, set to 1 pixel. $\sigma
 _{\rho }$ is the uncertainty of the inverse distance. Because the
-filter mainly deals with distanced feature, $ \sigma _{\rho }$ is
+filter mainly deals with distanced landmark, $ \sigma _{\rho }$ is
 initialized to 0.1 to cover distance from 50 meters to infinity.
 
 $\mathbf{J}$ in equation (\ref{eq:Pnew}) is the Jacobian matrix for
-the feature initialization equations given in equations
-(\ref{eq:OX_init})-(\ref{eq:init_feature_unit_vec}),
+the landmark initialization equations given in equations
+(\ref{eq:OX_init})-(\ref{eq:pi_init}),
 (\ref{eq:m_inv_varphi}), and (\ref{eq:m_inv_theta}). Detail
 formulation of the Jacobian matrix is given in appendix
 \ref{ch:appendix2}.
 
 
 
-\subsection{Adding and Deleting Features}
-To shorten processing time for each iteration, landmarkds that move
+\subsection{Adding and Deleting Landmarks}
+To shorten processing time for each iteration, landmarks that moved
 out of the camera's field of view (FOV) are removed from the filter
 state vector and covariance matrix. The removal is done by deleting
 the parameters from the state vector, and the related rows and columns
@@ -395,9 +396,9 @@ from the state covariance matrix. All tracked landmarks were recorded
 into a database. The deleted landmarks had their parameters updated
 based on the camera motion, but no Kalman correction were done.
 
-While some landmarkds were deleted, new landmarks were added to the
+While some landmarks were deleted, new landmarks were added to the
 filter to maintain sufficient amount of landmarks for mapping. The
-landmarks addition occured after the composition step of each
+landmarks addition occurred after the composition step of each
 iteration, and followed the same procedure as the filter
 initialization described in section \ref{sec:filter_initialization}.
 Flow chart of the entire algorithm is shown in figure
@@ -405,7 +406,7 @@ Flow chart of the entire algorithm is shown in figure
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=12cm, keepaspectratio=true]{./Figures/flow_chart.jpg}
+\includegraphics[width=14cm, keepaspectratio=true]{./Figures/flow_chart.jpg}
 \caption{Algorithm Flow Chart}
 \label{fig:flowchart}
 \end{figure}

@@ -13,7 +13,7 @@ sensor, laser range finder, sonar, image sensor, or 3D flash LIDAR
 \cite{civera_inverse_2008} \cite{jirawimut_visual_2003}
 \cite{amzajerdian_lidar_2011}. Laser range finder and ultrasonic
 sensors such as radar and sonar are capable of high accuracy range
-measurement up to centimeter level, but only provides point
+measurement up to centimeter level, but only provide point
 measurement at a given position and orientation. To acquire full 3D
 range map of a scene, 2D mechanical scanning are required, which
 limits the data acquisition rate of these devices. LIDAR operates in
@@ -43,8 +43,8 @@ obstacle detection in a number of platforms \cite{einhorn_cant_2010}
 \subsection{Monocular Vision and Binocular Vision}
 % word checked
 Image sensors are bearing-only sensors, which provide measurement on
-the direction of the features, but not the range. Other sensors
-mentioned above, such as radar, LIDAR, are range and bearing sensor.
+the direction of the landmarks, but not the range. Other sensors
+mentioned above, such as radar, LIDAR, are range and bearing sensors.
 The principle of range measurement for image sensors is through
 triangulating a common scene point in two or more images captured.
 There are two types of configuration: monocular, and binocular.
@@ -53,17 +53,17 @@ For binocular camera setup, two cameras are placed apart from each
 other with their relative geometry (baseline separation and optical
 axis orientation) known. The same scene must be captured by both
 cameras simultaneously. When the position of a landmark can be
-accurately found by both cameras, its disparity is defined by the
-difference in image location of the landmark in the left and right
-images. Then, the coordinate of the landmark from the cameras can be
-calculated by using disparity, and the relative geometry of the
-cameras. Because binocular setup acquires two images simultaneously,
-the landmark distance can be obtained at time $0$. The challenge in
-binocular range sensing is the correspondence problem between the two
-images. In addition, because of the limited separation between the
-camera, and the vibration noise caused by vehicle motion, binocular
-range sensing are usually applied in short to medium range
-measurement.
+accurately found in both images, its disparity is defined by the
+difference in coordinate of the landmark in left and right images.
+Then, the coordinate of the landmark in world can be calculated by
+using disparity, and the relative geometry of the cameras. Because
+binocular setup acquires two images simultaneously, landmark distance
+can be obtained at time $0$. The challenge in binocular range sensing
+is the correspondence between the two images, i.e., finding the same
+scene point in left and right images. In addition, because of the
+limited separation between the camera, and vibration noise caused
+by vehicle motion, binocular range sensing are usually applied in
+short to medium range measurement.
 
 For monocular camera setup, only one camera is used with an odometry
 sensors providing camera displacement measurement between frames. Then
@@ -76,12 +76,12 @@ distance by processing every frame, every other frames, or every n
 frames captured. This flexibility allows monocular configuration to be
 used for longer range measurement. On the other hand, since monocular
 camera captures 1 frame at a time, the earliest range measurement is
-not available until two image frames were captured.
+not available until two image frames are captured.
 
 \subsection{Camera Calibration}
 
 % word checked
-Camera model relates measurement on image plane to measurement of the
+Camera model relates measurement on image plane to measurement of
 3D world. Camera calibration is the process of estimating the camera
 model, which includes projection geometry of a camera and distortion
 model of the lens. These models define the \textit{intrinsic
@@ -98,21 +98,22 @@ model of the lens. These models define the \textit{intrinsic
 
 For a 3D point $P=(X, Y, Z)$ and the corresponding point
 $p=(x, y)$ on the image plane (figure
-\ref{figch2:cammodel}), they are related by equation
+\ref{figch2:cammodel}), they are related by equation \ref{eq:cam_projection}
 \cite{bradski_learning_2008}
 
 \begin{equation}
+\label{eq:cam_projection}
 \begin{matrix}
 x = f_x\left(\frac{X}{Z}\right)+c_x, &
 y=f_y\left(\frac{Y}{Z}\right)+c_y
 \end{matrix}
 \end{equation}
 
-\noindent where $(c_x, c_y)$ is the
-intersection of the optical axis and the image plane; $f_x$ and $f_y$
-(in pixel) is the product of focal length $f$ (in millimeter) and the
-scaling factor $s_x$ and $s_y$ (in pixel/millimeter) on X and Y axis.
-The parameters $c_x$, $c_y$, $f_x$, $f_y$ define the camera intrinsic
+\noindent where $(c_x, c_y)$ is the pixel coordinate at which optical
+axis intersects image plane; $f_x$ and $f_y$ (in pixel) are the product
+of focal length $f$ (in millimeter) and the world-to-image scaling
+factor $s_x$ and $s_y$ (in pixel/millimeter) for X and Y axis. The
+parameters $c_x$, $c_y$, $f_x$, $f_y$ define the camera intrinsic
 matrix \cite{bradski_learning_2008} \cite{heikkila_four-step_1997}.
 
 \begin{equation}
@@ -145,7 +146,7 @@ $$y_{corrected} = y+[p_1(r^2+2y^2)+2p_2x]$$
 \subsubsection{Camera Calibration Algorithm}
 % word checked
 Camera calibration is a process of finding the intrinsic parameters of
-a camera. There are two popular camera calibration methods. Tsai
+a camera. There are two popular camera calibration methods. Tsai's method
 \cite{tsai_efficient_1986} requires at least 5 feature points in 3D
 space with known coordinates, and their corresponding coordinates on
 the image plane. With Tsai's method, only one snapshot of the
@@ -225,10 +226,10 @@ control and navigation application for its ability to estimate past,
 present and even future state. It is an attractive candidate for data
 fusion framework as it can process all available measurements
 including previous knowledge of the process, regardless of their
-precision, to estimate the current value of the variable of interest.
+precision, to estimate the current value of the state variables.
 Given a dynamic process that satisfies the assumptions that Kalman
 filter is based on, the filter is the optimal algorithm in minimizing
-the mean of squared error of the state variable. This section briefly
+the mean of squared error of the state variables. This section briefly
 summarized the assumptions and formulations of Kalman filter that's
 described in detail in \cite{sorenson_least-squares_1970}
 \cite{analytic_sciences_corporation_applied_1974}
@@ -239,20 +240,21 @@ found in chapter 1 of \cite{maybeck_stochastic_1979}.
 %reference in Welch and bishop
 % intro to Kalman filter.
 
-The Kalman filter has three assumptions. 1) The system model is
-linear. The linearity is desired in that the system model is more
-easily manipulated with engineering tool. When nonlinearities do
-exist, the typical approach is to linearize the system model at some
-nominal points. 2) The noise embedded in system control and
-measurements is white. This assumption implies that the noise value is
-not correlated in time, and has equal power in all frequency. 3) The
-probability density function (PDF) of system and measurement noise is
-Gaussian. A Gaussian distribution is fully represented by the first
-and second order statistic (mean and variance) of a process. Most
-other densities require endless number of orders of statistic to
-describe the shape fully. Hence, when the PDF of a noise process is
-non-Gaussian, the Kalman filter that propagates the first and second
-order statistic only includes partial information of the PDF.
+The Kalman filter has three assumptions. 1) \textit{The system model
+  is linear}. The linearity is desired in that the system model is
+more easily manipulated with engineering tool. When nonlinearity
+exists, the typical approach is to linearize the system model at some
+nominal points. 2) \textit{The noise embedded in system control and
+  measurements is white}. This assumption implies that the noise value
+is not correlated in time, and has equal power in all frequency. 3)
+\textit{The probability density function (PDF) of system and
+  measurement noise is Gaussian}. A Gaussian distribution is fully
+represented by the first and second order statistic (mean and
+variance) of a process. Most other densities require endless number of
+orders of statistic to describe the shape fully. Hence, when the PDF
+of a noise process is non-Gaussian, the Kalman filter that propagates
+the first and second order statistic only includes partial information
+of the PDF.
 
 \subsubsection{Kalman Filter Models}
 % word checked
@@ -279,6 +281,13 @@ $Q$ and $R$.
 
 \subsubsection{The Algorithm}
 % word checked
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm, keepaspectratio=true]{./Figures/KalmanOperation.jpg}
+\caption{Kalman Operation Flow Diagram}
+\label{figch2:1}
+\end{figure}
+
 The Kalman filter operates in prediction and correction cycles after
 initialization (figure \ref{figch2:1}). The state vector
 $\hat{x}^-_k$, $\hat{x}^+_k$ contain a priori and a posteriori
@@ -297,13 +306,6 @@ innovation, or residual. Next, the residuals are weighted by the
 Kalman gain $K$, and are added to $\hat{x}^-_k$ as correction. The
 Kalman gain is formulated so that it minimizes the a posteriori error
 covariance matrix $P^+_k$.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=10cm, keepaspectratio=true]{./Figures/KalmanOperation.jpg}
-\caption{Kalman Operation Flow Diagram}
-\label{figch2:1}
-\end{figure}
 
 \begin{table}
 \caption{Kalman Filter Operation Equations}
@@ -451,7 +453,7 @@ updated) unless they are moving.
 Dissanayake \cite{dissanayake_solution_2001} reached three important convergence properties of Kalman filter based SLAM, namely that: 
 \textit{
 \begin{enumerate}
-  \item the determinant of any submatrix of the map covariance matrix decreases monotonically as observations are successively made;
+  \item the determinant of any sub-matrix of the map covariance matrix decreases monotonically as observations are successively made;
   \item in the limit as the number of observations increases, the landmark estimates become fully correlated;
   \item in the limit the covariance associated with any single landmark location estimate reaches a lower bound determined only by the initial covariance in the vehicle location estimate at the time of the first sighting of the first landmark.
 \end{enumerate}}
@@ -513,7 +515,7 @@ The consistency issue of EKF SLAM limits its application in mapping
 large area. In response, a number of methods were proposed.
 
 \subsubsection{Robot Centric Coordinate System}
-Robotcentric mapping was proposed by Castellanos et al.
+Robot-centric mapping was proposed by Castellanos et al.
 \cite{castellanos_limits_2004} and was adopted in
 \cite{civera_1-point_2009} to create large scale map on land. This
 approach uses a reference frame attached to the robot as the base
@@ -522,21 +524,21 @@ robot frame. This method was shown to improve the consistency of EKF
 based solution to SLAM, but using local map joining to produce a large
 map gives better result.
 
-\subsubsection{Submap Methods}
-The submap method is another mean to tackle large scale map problem.
-The submaps can be either globally referenced or relatively
-referenced. Global submaps estimate the location of the submap
+\subsubsection{Sub-map Methods}
+The sub-map method is another mean to tackle large scale map problem.
+The sub-maps can be either globally referenced or relatively
+referenced. Global sub-maps estimate the location of the sub-map
 referenced to a common base frame \cite{estrada_hierarchical_2005}
-\cite{leonard_consistent_2003}. However, as the submap frames are
-referred to a common base frame, global submap does not improve the
+\cite{leonard_consistent_2003}. However, as the sub-map frames are
+referred to a common base frame, global sub-map does not improve the
 consistency issue caused by the robot pose
 uncertainty \cite{bailey_simultaneous_2006}. Relatively referenced
-submap records its location referenced to the neighboring submaps
+sub-map records its location referenced to the neighboring sub-maps
 \cite{chong_feature-based_1999} \cite{williams_efficient_2001}. Global
 map is then obtained through vector summation. The relatively
-referenced submap is able to alleviate linearization problem in large
+referenced sub-map is able to alleviate linearization problem in large
 scale map, but does not converge on global level without an
-independent submap structure. This problem can be solved by using
+independent sub-map structure. This problem can be solved by using
 Atlas framework or network coupled feature maps \cite{bosse_slam_2004}
 \cite{bailey_mobile_2002}
 
@@ -544,7 +546,7 @@ Atlas framework or network coupled feature maps \cite{bosse_slam_2004}
 The standard way of describing a landmark position is through the
 Euclidean XYZ parameterization. In outdoor range estimation problem,
 the algorithm must deal with landmarks located at near infinity, which
-give poor linearity when being represetned in traditional Euclidean
+give poor linearity when being represented in traditional Euclidean
 system. Furthermore, these landmarks cannot be added to the filter
 until their locations were determined with good certainty. Landmarks
 at infinity contribute in estimating the camera rotational motion even
