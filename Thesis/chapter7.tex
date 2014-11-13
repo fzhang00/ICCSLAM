@@ -1,28 +1,31 @@
 \chapter{Conclusion}\label{ch:conclusion}
 % word checked.
-This thesis described a research that addressed obstacle detection
+This thesis described a research that addressed the obstacle detection
 problem for low flying UAV using monocular camera. The research
 focused on static obstacle detection for medium size UAV deployed in
 natural environment and performing low altitude terrain following
-flight. An EKF based SLAM algorithm was proposed in chapter
-\ref{ch:algorithm}. The algorithm utilized multiple sensors and
-inverse depth parametrization to detect long distanced objects that
-range up to a couple thousands meters. A flight test was performed to
-collect aerial video and sensor recordings to test the performance of
-the algorithm. In addition, to evaluate the accuracy of the algorithm,
-digital terrain map of the survey zone was processed to compare to the
-result from the algorithm. Further analysis of the algorithm and error
-source was performed through a series of simulation which simulated the
-motion seen in flight and camera calibration error. Both flight and
-simulation results were summarized in this chapter. Suggestions on
-future work were also described at the end. 
+flight. An EKF based SLAM algorithm CC-EKF-SLAM was proposed in
+chapter \ref{ch:algorithm}. The algorithm utilized multiple sensors
+and inverse depth parametrization to detect long distanced objects
+that range up to a thousand meters. A flight test was performed to
+collect aerial video and sensor recordings, accomplished by towing an
+sensor loaded SUAS with a helicopter. Two pieces of aerial video and
+data were processed by the CC-EKF-SLAM algorithm. Convergence and
+consistency character of the algorithm were studied. In addition, to
+evaluate the accuracy of the results, digital terrain map of the
+survey zone was processed to compare to the result from the algorithm.
+Further analysis of the algorithm and error source was performed
+through a series of simulations which simulated UAV motion as seen in
+flight and camera calibration error. Both flight and simulation
+results were summarized in this chapter. Suggestions on future work
+were also described at the end.
 
 \section{Result Summaries}
-\subsection{Flight Data Processing}
+\subsection{Test Result from Real Flight Data}
 % word checked.
 The flight data was processed, and results were discussed in chapter
 \ref{ch:FlightResult}. Sparse corner features were extracted from the
-flight image sequence, and were tracked by the CC\_EKF\_SLAM algorithm
+flight image sequence, and were tracked by the CC-EKF-SLAM algorithm
 to estimates landmarks positions. An estimated terrain map and the
 trajectory of the SUAS were generated from the video sequence. The
 estimated terrain map was compared to the downloaded DEM, and the SUAS
@@ -36,7 +39,8 @@ recording. Results from the flight data are as followed:
   three components.
   \item For landmarks mapping,  most landmarks tracked by the
   algorithm had their inverse depths converged to stable values, with the
-  furthest landmark located at 1600 meters from SUAS location at 1$^{st}$.
+  furthest landmark located at 1600 meters from SUAS location at
+  1$^{st}$ frame.
   \item The accuracy of the estimated landmarks locations achieved an
   average error of -56 meters on X axis, 13 meters on Y axis and 1.3
   meters on Z axis.
@@ -48,23 +52,21 @@ recording. Results from the flight data are as followed:
 
 Due to the difficulty in corresponding the tracked landmarks with DEM,
 an extra video was processed with the airport buildings in the scenes
-with which manual visual correspondence was possible. All landmarks
+which made manual visual correspondence possible. All landmarks
 were matched manually to the satellite images from Google Earth. In
-this test, landmarks positions had errors of 40 meters on Y and 20
-meters on Z components. Given that they were all located at the corner
+this test, landmarks positions had errors of 150 meters on X axis, 40
+meters on Y axis and 20
+meters on Z axis. Given that they were all located at the corner
 of the image plane, this error was likely to be due to lens
-distortion, which produced up to 400 meters of error on X, up to 150
-meters of error for Y, and up to 100 of meters error for Z according
-to simulation.
+distortion.
 
 \subsection{Noise Analysis through Simulation}
 % word checked.
-To better understand noise source in CC\_EKF\_SLAM algorithm, a series
-of simulations were done with variable error settings for the camera
+To better understand noise source in CC-EKF-SLAM algorithm, a series
+of simulations were done with variable settings for the camera
 motions, camera intrinsic parameters, and image resolutions. A nearly
 no noise environment was first simulated with UAV moving forward only.
-No error was introduced from image digitization or camera model
-mismatch. Effects from various UAV motions were simulated next. Then
+Effects from various UAV motions were simulated next. Then
 various camera model mismatch and image resolution settings were
 simulated. The discussion of the simulation results was presented in
 chapter \ref{ch:simulation}.
@@ -80,20 +82,20 @@ itself under simple forward motion was very minor.
 \subsubsection{Impact from motion}
 % word checked.
 The effects from complex UAV motions were analyzed next. The UAV
-remained forward traveling while the other 5 D.O.F. motion was added
-one at a time. The added motion was simulated with a 1Hz sine wave and
-with variable amplitude setting. Results showed that translational
-motion on Y axis and Z axis and rotation around X axis (roll) has
-little effect on the UAV localization accuracy. Rotation around Y axis
-(pitch) and rotation around Z axis (azimuth) caused UAV positioning
-errors up to 30 meters peak-to-peak on Z and Y respectfully depending
-on the amplitude of the rotation. For landmarks  mapping accuracy,
-translation motion only increased landmarks positions errors by
-centimeters; rotational motion increased landmarks positions errors by
-meters for rotation around X, and hundreds of meters for rotation
-around Y and Z. Most errors appeared on landmarks added after first frame,
-caused by an initialization offset on parameter $\varphi^W$ originated
-from the error in UAV localization.
+remained forward traveling while oscillatory motion on the other 5 DOF
+was added one at a time. The added motion was simulated with a 1Hz
+sine wave and with variable amplitude setting. Results showed that
+translational motion on Y axis and Z axis and rotation around X axis
+(roll) has little effect on the UAV localization accuracy. Rotation
+around Y axis (pitch) and rotation around Z axis (azimuth) caused UAV
+positioning errors up to 30 meters peak-to-peak on Z and Y
+respectfully depending on the amplitude of the rotation. For landmarks
+mapping accuracy, translation motion only increased landmarks
+positions errors by centimeters; rotational motion increased landmarks
+positions errors by meters for rotation around X, and hundreds of
+meters for rotation around Y and Z. Most errors appeared on landmarks
+added after first frame, caused by an initialization offset on
+parameter $\varphi^W$ originated from the errors in UAV localization.
 
 \subsubsection{Impact from error in camera calibration} 
 Second part of chapter \ref{ch:simulation} analyzed impact from the
@@ -106,19 +108,19 @@ error in camera calibration. Results were summarized below:
   \item Calibration error in $c_x$ or $c_y$ caused error in landmarks
   positions estimates on all three axes. $c_x$ affected the X and Y
   component, and $c_y$ affected X and Z component. The amount of error
-  was related to the distances of the landmarks from camera, and the
+  was related to the locations of the landmarks, and the
   amount of error in $c_x$ or $c_y$ through first order polynomial equation.
 \end{itemize}
 
 \paragraph{Effect from ($f_x, f_y$)}
 % word checked.
 \begin{itemize}
-  \item Calibration error in $f_x$ or $f_y$ did not affect UAV
+  \item Calibration error in $f_x$ or $f_y$ had little effect on UAV
   localization estimates.
   \item Calibration error in $f_x$ affected the landmarks positions on
   Y component, error in $f_y$ affected the Z component. The amount of
   error in landmarks positions estimates were dependable on the actual
-  landmarks distances from camera, and the amount of error in $f_x$
+  landmarks locations, and the amount of error in $f_x$
   or $f_y$ through first order polynomial equation.
 \end{itemize}
 
@@ -140,10 +142,10 @@ error in camera calibration. Results were summarized below:
 \begin{itemize}
   \item To achieve good accuracy on both self localization and landmarks
   mapping, higher image resolution is a must.
-  \item The 480x720 resolution used in the flight test resulted in
-  landmarks mapping error of +/-150 meters on X axis.
-  \item Increasing resolution to 720x1080 significantly reduced the
-  variance on both localization and mapping estimates.
+  \item The 480x720 resolution used in the flight test could result in
+  landmarks mapping error of up to +/-150 meters on X axis.
+  \item Increasing resolution to 1080x1440 significantly reduced the
+  variance of errors on both localization and mapping estimates.
 \end{itemize}
 
 \section{Future Research}
@@ -161,15 +163,15 @@ of improvements can be made to increase the its accuracy and reliability.
   the algorithm.
   \item Sensor resolution should be increased should future flight
   test opportunity arises.
-  \item A filter for checking corner feature quality of the landmark
-  should be added. Landmarks that have poor corner signature lead to
-  greater tracking error. In addition, due to the accumulated tracking
-  error, the corner feature of landmark can be completely different
-  from what it was first extracted after a few seconds of tracking.
-  Since there exist correlations between landmarks, these tracking
-  error has impact on other landmarks and UAV localization estimates.
-  Removing the bad landmarks, and replacing them with good quality one is
-  necessary to make the algorithm more robust.
+  \item A filter for checking quality of corner feature should be
+  added. Landmarks that have poor corner signature lead to greater
+  tracking error. In addition, due to the accumulated tracking error,
+  the corner feature of a landmark can be completely different from
+  what it was first extracted. Since there exist correlations between
+  landmarks, these tracking error has impact on other landmarks and
+  UAV localization estimates. Removing the bad landmarks, and
+  replacing them with good quality ones is necessary to make the
+  algorithm more robust.
   \item To enable large area mapping, a map joining algorithm should
   be added.
   \item Localization error has a big impact on the accuracy of the

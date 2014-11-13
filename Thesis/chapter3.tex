@@ -1,10 +1,11 @@
-\chapter{Algorithm Description}\label{ch:algorithm}
+\chapter{Description of CC-EKF-SLAM}\label{ch:algorithm}
 
-The algorithm described in this chapter and its preliminary test
-result on real flight data was published in
-\cite{zhang_obstacle_2012}. The program was implemented in Python
-programming language\cite{_python_????}. An open source machine
-vision library OpenCV\cite{_opencv_????} was utilized to perform feature extraction and
+The proposed algorithm: Camera Centric EKF SLAM (CC-EKF-SLAM), is
+described in this chapter. Its preliminary test result on real flight
+data was published in \cite{zhang_obstacle_2012}. The algorithm was
+implemented in Python programming language\cite{_python_????}. An open
+source machine vision library OpenCV\cite{_opencv_????} was utilized
+to perform machine vision tasks such as feature extraction and
 tracking. The Shi-Tomasi corner detector \cite{shi_good_1994} was used
 to extract corner features from the image sequence. Feature tracking
 was accomplished through the pyramid implementation of Lucas-Kanade
@@ -17,13 +18,13 @@ depth parameterization.
 \begin{figure}[h]
 \centering
 \includegraphics[width=10cm, keepaspectratio=true]{./Figures/idp.jpg}
-\caption{Inverse Depth Parameterization}
+\caption{Inverse depth parameterization}
 \label{fig:algo1}
 \end{figure}
 
 \noindent A 3D scene point $p_{i}^{C}$ can be defined by 6 parameters
-with $i$ representing the feature number, and the superscript $C$
-indicating that the parameter is represented in camera reference frame.
+with $i$ representing the landmark number. The superscript $C$
+indicates that the parameters are represented in camera reference frame.
 \begin{equation}
 \mathbf{p_{i}^{C}}=\begin{bmatrix}
 x_{i}^{C} & y_{i}^{C} & z_{i}^{C} & \rho _{i} & \varphi _{i}^{C} & 
@@ -31,11 +32,11 @@ x_{i}^{C} & y_{i}^{C} & z_{i}^{C} & \rho _{i} & \varphi _{i}^{C} &
 \end{bmatrix}
 \end{equation}
 The first three parameters $[x_{i}^{C}, y_{i}^{C}, z_{i}^{C}]$
-represent the initialization point where the feature is first observed.
+represent the initialization point where the landmark is first observed.
 $\rho_{i} = 1/d_i$ is the inverse distance from the initialization position
-to the feature. The elevation-azimuth pair $[\varphi_{i}^{C},
+to the landmark. The elevation-azimuth pair $[\varphi_{i}^{C},
 \theta_{i}^{C}]$ encodes a unit vector pointing from the
-initialization point to the feature. The vector is given by
+initialization point to the landmark. The vector is given by
 \begin{equation}
 \label{eq:m}
 \vec{\mathbf{m}}(\varphi_{i}^{C}, \theta_{i}^{C})=\begin{bmatrix}
@@ -77,23 +78,23 @@ The EKF full state vector is defined as
 \noindent where $\mathbf{OX_{W}^{C}}= \begin{bmatrix}O_{x}^{C} &
   O_{y}^{C} & O_{z}^{C} & W_{x}^{C} & W_{y}^{C} &
   W_{z}^{C} \end{bmatrix}^{T}$ contains translation parameters
-$\mathbf{O_{x,y,z}^{C}}$ and rotation parameters
+$\mathbf{O_{x,y,z}^{C}}$ and orientation parameters
 $\mathbf{W_{x,y,z}^{C}}$ that represent the world frame position and
 orientation referenced to the camera frame.
 $\left(\mathbf{c^{C}},\mathbf{r^{C}}\right)^{T}$ represent the camera
 translation and rotation motion frame by frame. $\mathbf{p_{i}^{C}}$
-contains the feature parameters described in the previous section.
+contains the landmark parameters described in the previous section.
 
 \subsection{Prediction}
 
 For a prediction step at time $k$, the world frame parameter
-$\mathbf{OX_W^C}$ and features parameters $\mathbf{p_i^C}$ are kept
+$\mathbf{OX_W^C}$ and landmarks parameters $\mathbf{p_i^C}$ are kept
 unchanged from time $k-1$. The camera parameters are updated using the
 new inertial measurements: velocity $\mathbf{v^{C}}$, acceleration
 $\mathbf{a^{C}}$, and rate of change $\mathbf{w^{C}}$ in roll, pitch, and
 azimuth. The full state vector at time $k$ is
 \begin{equation}
-\mathbf{x_{predicted}}
+\mathbf{\hat{x}_{k}^-}
 =\begin{bmatrix}
 \mathbf{OX_{W,k-1}^{C}} & 
 \mathbf{c_{measured}^{C}} &
@@ -115,20 +116,20 @@ $$\mathbf{r_{measured}^{C}}=\mathbf{r_{k-1}^{C}}+ \mathbf{w_{measured}^{C}}$$
 
 \subsection{Measurement Model}
 
-Each observed feature is related to the camera motion through the
+Each observed landmark is related to the camera motion through the
 measurement model (figure \ref{fig:measurement_model}). This
-relationship enables a correction on the camera motion and features
-parameters based on the features locations observed in the image.
+relationship enables a correction on the camera motion and landmarks
+parameters based on the landmarks locations observed in the image.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=9cm, keepaspectratio=true]{./Figures/measurement_model.jpg}
+\includegraphics[width=12cm, keepaspectratio=true]{./Figures/measurement_model.jpg}
 \caption{Measurement Model}
 \label{fig:measurement_model}
 \end{figure}
 \FloatBarrier
-For a feature $\mathbf{p_{i}^{C}}$, the vector $\mathbf{i^{C}}$
-pointing from the predicted camera location to the feature
+For a landmark $\mathbf{p_{i}^{C}}$, the vector $\mathbf{i^{C}}$
+pointing from the predicted camera location to the landmark
 initialization position is
 
 \begin{equation}
@@ -144,7 +145,7 @@ c_{z}^{C} \\
 \end{equation}
 
 The normalized vector pointing from the predicted camera position to the 
-feature at time k is then 
+landmark at time k is then 
 \begin{equation}
   \mathbf{h_{k}^{C}}=\mathbf{Q}^{-1}\left(\mathbf{r_{k}^{C}}\right)
   \left(\rho_{k}\mathbf{i_{k}^{C}}+
@@ -153,7 +154,7 @@ feature at time k is then
 
 \noindent where $\mathbf{Q}^{-1}(\mathbf{r_{k}^{C}})$ is the inverse
 rotation matrix from the camera frame at time $k-1$ to camera frame at
-time $k$. From vector $\mathbf{h_{k}^{C}}$, the feature location on
+time $k$. From vector $\mathbf{h_{k}^{C}}$, the landmark location on
 image plane can be found by
 
 \begin{equation}
@@ -173,7 +174,7 @@ Since the measurement model is non-linear, the equation must be
 linearized to calculate the Kalman gain $K$. Detail formulation for
 linearization is given in appendix \ref{sec:jac_measurement}.
 
-\subsection{Composition Step}
+\subsection{Composition}
 
 The corrected state vector has all its parameters defined in camera
 frame at time $k-1$. To keep reference frame up-to-date, a coordinate
@@ -266,10 +267,10 @@ composition equations. Detail derivation of the Jacobian matrix is
 given in appendix \ref{sec:jac_composition}  
 
 \subsection{Filter Initialization} \label{sec:filter_initialization}
-\subsubsection{Initialize the State Vector}
+\subsubsection{State Vector}
 
 State vector is initialized at the first frame. The world frame
-position and orientation, camera motions, and the feature
+position and orientation, camera motions, and the landmark
 initialization points are all initialized to zeros, with variance
 equals to the smallest machine number.
 
@@ -291,13 +292,13 @@ equals to the smallest machine number.
 \mathbf{p_{i}^{C}}=\begin{bmatrix}0&0&0&\rho _{i}&\varphi_{i}^C&\theta_{i}^C\end{bmatrix}^T
 \end{equation}
 
-The inverse distance $\rho$ of all features are initialized to 0.1
-($d=100 meters$). The features elevation-azimuth pair $[\varphi _{i}^{C},
-\theta _{i}^{C}]$ is extracted from features coordinates in image
-plane. First, a vector pointing from camera optical center to feature
+The inverse distance $\rho$ of all landmarks are initialized to 0.01
+($d=100 meters$). The landmarks elevation-azimuth pair $[\varphi _{i}^{C},
+\theta _{i}^{C}]$ is extracted from landmarks coordinates in image
+plane. A vector pointing from camera optical center to landmark
 can be defined by
 \begin{equation}
-\label{eq:init_feature_unit_vec}
+\label{eq:init_landmark_unit_vec}
 \mathbf{h^{C}}=\begin{bmatrix}
 h_{x}^{C}\\
 h_{y}^{C}\\
@@ -310,19 +311,19 @@ h_{z}^{C}\\
 \end{bmatrix}
 \end{equation}
 
-\noindent where $[u, v]$ is the feature coordinate in the image, $
+\noindent where $[u, v]$ is the landmark coordinate in the image, $
 [f_{x}, f_{y}]$ is the scaling factor of the projection from the scene
 to image plane, $[c_x, c_y]$ is the coordinate at which the optical axis
 intersects the image plane. The elevation-azimuth pair $[\varphi
 _{i}^{C}, \theta _{i}^{C}]$ can be directly calculated from
 $\mathbf{h^{C}}$ using equation (\ref{eq:m_inv_varphi}) and (\ref{eq:m_inv_theta})
 
-\subsubsection{Initialized the State Covariance Matrix}
+\subsubsection{State Covariance Matrix}
 
 As the world reference frame is defined by the camera reference frame
 at time 0, it allowed the filter to be initialized with minimum
 variance, which helps to reduce the lower bound of the filter error
-according to the EKF SLAM properties. The covariance matrix for the
+according to the EKF SLAM properties. The initial covariance matrix for the
 world reference frame position and orientation, and the camera motion is
 
 \begin{equation}
@@ -347,8 +348,7 @@ covariance matrix becomes
 \end{equation}
 
 \noindent where $\mathbf{P_{old}}$ is the covariance matrix of the existing
-state vector. The initial $\mathbf{P_{old}}$ before the first landmark is
-added is equation (\ref{eq:Pinit}). Matrix $\mathbf{R}$ is given by.
+state vector. The initial $\mathbf{P_{old}}$ before the addition of the first landmark is equation (\ref{eq:Pinit}). Matrix $\mathbf{R}$ is given by.
 
 \begin{equation}
 \label{eq:R}
@@ -376,7 +376,7 @@ position, initialized to $\epsilon$. $\sigma_{image}$ is the
 variance of landmark coordinate on image plane, set to 1 pixel. $\sigma
 _{\rho }$ is the uncertainty of the inverse distance. Because the
 filter mainly deals with distanced landmark, $ \sigma _{\rho }$ is
-initialized to 0.1 to cover distance from 50 meters to infinity.
+initialized to 0.01 to cover distance from 50 meters to infinity.
 
 $\mathbf{J}$ in equation (\ref{eq:Pnew}) is the Jacobian matrix for
 the landmark initialization equations given in equations
@@ -392,7 +392,7 @@ To shorten processing time for each iteration, landmarks that moved
 out of the camera's field of view (FOV) are removed from the filter
 state vector and covariance matrix. The removal is done by deleting
 the parameters from the state vector, and the related rows and columns
-from the state covariance matrix. All tracked landmarks were recorded
+of the state covariance matrix. All tracked landmarks were recorded
 into a database. The deleted landmarks had their parameters updated
 based on the camera motion, but no Kalman correction were done.
 
@@ -410,11 +410,91 @@ Flow chart of the entire algorithm is shown in figure
 \caption{Algorithm Flow Chart}
 \label{fig:flowchart}
 \end{figure}
-
+\FloatBarrier
 % \subsubsection{Bundle Correction with GPS (not yet implemented)}
 % Apply overall correction on the map at a sparser time interval using the 
 % GPS positions. 
 
+\section{Additional Procedures for Data Analysis}
+% word checked.
+To compare the estimated SUAS poses and landmark position to the ground
+truth, all data must be referenced to the same reference frame. For
+ease of viewing, the reference frame used for data analysis is the
+world frame defined by the camera frame at time 0. 
+
+The longitude and latitude of the SUAS position were first converted
+to UTM using the WGS84 world geodetic system \cite{_world_????}. Many
+software are readily available to do the conversion by taking GPS
+coordinate and zone number as input. The software used in this work is
+a python interface to PROJ.4 library \cite{_pyproj_????} called pyproj
+\cite{_pyproj_????}. Secondly, the ground truth of the SUAS positions
+were brought to the world frame by reference frame transformation.
+
+$$\text{True SUAS position}^W = 
+Q_{step2}^{-1}Q_{step1}^{-1} \cdot\text{SUAS position}^{UTM}$$
+
+\noindent where $Q_{step1}^{-1}$ and $Q_{step2}^{-1}$ is the inverse
+transformation matrix for a reference frame evolving from UTM to world
+frame. Detail formulation for coordinate transformation was given in
+appendix \ref{ch:appendix1}. The UTM to world frame transformation is
+illustrated in figure \ref{fig:utm_to_world}, and the transformation
+parameters for step 1 and step 2 are also listed.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=12cm,keepaspectratio=true]{./Figures/utm_to_world.jpg}
+  \caption{Coordinate transformation from UTM to world frame}
+  \label{fig:utm_to_world}
+\end{figure}
+
+$$T_{step1} = \begin{bmatrix}Easting_{init}, Northing_{init},
+  Height_{init}\end{bmatrix}$$
+$$R_{step1} = \begin{bmatrix}180^{\circ}, 0^{\circ},
+  -90^{\circ}\end{bmatrix}$$
+$$T_{step2} = \begin{bmatrix}0, 0, 0\end{bmatrix}$$
+$$R_{step2} = \begin{bmatrix}Roll_{init}, Pitch_{init},
+  Azimuth_{init}\end{bmatrix}$$
+
+\noindent where $Easting_{init}$, $Northing_{init}$ and
+$Height_{init}$ are the SUAS's position in UTM at time 0. 
+
+Ground truth SUAS orientations were captured by the UAV navigation
+unit GS-111m. Both ground truth and estimated orientation were
+represented in aircraft principle axes. Hence, for the ground truth
+SUAS orientation to be compared to the estimated data, the only step
+is to subtract the orientation at time 0.
+
+$$\text{SUAS orientation}_{\text{Ground truth}} =
+\text{Orientation}^{Nav} - \text{Orientation}^{Nav}_0$$
+
+The estimated SUAS poses can be obtained from the world reference
+frame estimates in the filter state vector:
+
+$$ \text{Estimated SUAS poses} = 
+[-O_{XYZ}^{C}, -W_{XYZ}^{C}]$$.
+
+
+To examine the accuracy of estimated landmark position, DEM data were
+converted into world frame following the same procedure as the SUAS
+position. Landmarks estimated from the CC-EKF-SLAM algorithm were
+converted to world frame using the estimated SUAS localization results
+as reference frame evolving parameters. Let $[X_i^W,Y_i^W,
+Z_i^W]^T_k$ be the $i^{th}$ landmarks coordinates in world frame at
+step $k$, then
+
+\begin{equation}
+  \left[ \begin{array}{c}
+    X_{i}^{W}  \\
+    Y_{i}^{W}  \\
+    Z_{i}^{W}  \\
+  \end{array} \right]_k=Q^{-1}(\mathbf{O_{XYZ, k}^{c}}, \mathbf{W_{XYZ,k}^{c}})\left(\left[
+    \begin{array}{c}
+      x_{i}^{C} \\
+      y_{i}^{C} \\
+      z_{i}^{C} \\
+    \end{array}
+  \right]_k+\frac{1}{\rho _{i,k}}\mathbf{m}(\varphi_{i,k}^{C},\theta_{i,k}^{C})\right)
+\end{equation}
 
 %%% Local Variables:
 %%% mode: latex

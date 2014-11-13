@@ -1,3 +1,5 @@
+
+
 #+TITLE: TODO.org
 #+AUTHOR: Fan Zhang
 #+DATE: <2014-07-10 Thu>
@@ -58,3 +60,12 @@ as well as set tick for xyz to make x ticks more readable.
 * DONE % regenerate to make room for x axis label. change feature to landmark
 * TODO Add average landmark error for 1st video and 2nd video. Correct average error number in conclusion for 2nd video
 * TODO findout why some landmark with position on Z bigger than 200m were deleted for all cx,cy setting
+* DONE move title of error vs. groundtruth plot lower
+* DONE move title of landmark error statistic plot higher
+* DONE add title back on for localization error statistic plot
+* TODO verify all figure/table references
+* DONE change motion statistic plot x label to "A_variable", figure 6.4, 6.6 ...
+* DONE find new and recent reference for SLAM for ground vehicle and UAV
+* DONE figure 5.5 (variance of landmark parameters), and 5.6 (corrections applied) needs xlabel
+* DONE figure 6.5, title need to change to "A_..."
+* DONE figure 6.17 x tick need to x100

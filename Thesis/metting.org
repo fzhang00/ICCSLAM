@@ -1,0 +1,26 @@
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
+presentation should be 15 minutes
+
+* slides:
+problem
+background, visual
+**contribution
+
+* thesis,
+** make capitalization consistent (some in title, some in figure title)
+** change chapter2 title to literature review.
+** chapter 3 title, proposed algorithm, or proposed "algorithm name", to show original
+** swap chapter 3 and 4. Use flight to excite user to keep them interested
+** font of "chapter #" might need to be bigger.
+** double check all figure has label
+Figure 5.8 "finding ground truth landmark position on DEM"
+** chapter 5.4 title, make them all noun.
+** title name should be consistent.
+** reference capitalization must be consistent. 
+** add some newer references
+** reference conference paper, add "in proc. of 
+
+

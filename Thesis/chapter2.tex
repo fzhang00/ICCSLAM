@@ -1,6 +1,6 @@
-\chapter{REVIEW}\label{ch:Review}
+\chapter{Literatures Review}\label{ch:Review}
 
-\section{SENSORS FOR OBSTACLE DETECTION}\label{sec:sensor}
+\section{Sensor for Obstacle Detection}\label{sec:sensor}
 
 \subsection{Overview}\label{sec:SensorOverview}
 % word checked
@@ -11,34 +11,36 @@ sensor, laser range finder, sonar, image sensor, or 3D flash LIDAR
 \cite{williams_efficient_2001} \cite{chong_feature-based_1999}
 \cite{hanna_obstacle_2008} \cite{lu_distance_2010}
 \cite{civera_inverse_2008} \cite{jirawimut_visual_2003}
-\cite{amzajerdian_lidar_2011}. Laser range finder and ultrasonic
-sensors such as radar and sonar are capable of high accuracy range
-measurement up to centimeter level, but only provide point
-measurement at a given position and orientation. To acquire full 3D
-range map of a scene, 2D mechanical scanning are required, which
-limits the data acquisition rate of these devices. LIDAR operates in
-the same manner as laser range finder, except with the scanning
-mechanism built in. Although LIDAR is becoming more and more popular
-on land robot, it is usually expensive, heavy,
+\cite{amzajerdian_lidar_2011} \cite{nieuwenhuisen_obstacle_2014}. Laser
+range finder and ultrasonic sensors such as radar and sonar are
+capable of high accuracy range measurement up to centimeter level, but
+only provide point measurement at a given position and orientation. To
+acquire full 3D range map of a scene, 2D mechanical scanning are
+required, which limits the data acquisition rate of these devices.
+LIDAR operates in the same manner as laser range finder, but with the
+scanning mechanism built in. Although LIDAR is becoming more and more
+popular on land robot, it is usually expensive, heavy,
 \cite{subharsanan_low_2013} and has high power requirement when long
-range measurement is required \cite{lemmens_airborne_2007}. Sonar is
+range measurement is required \cite{lemmens_airborne_2007}. These
+characters make it unsuitable for a mid-size economic UAV. Sonar is
 usually used in indoor or under water applications, and has wide beam
 profile which makes it difficult to identify the origin of return
-signal. This character results in a low resolution range map. 3D flash
-LIDAR is capable of acquire 3D range measurement simultaneously by
-illuminating the entire field of view (FOV) of the camera with a
-single laser, and capturing the reflected laser with a 2D imaging
-sensor \cite{amzajerdian_lidar_2011}. However, its high cost has
-limited its use in commercial application. In recent years, many
-researchers use image sensor as a passive range sensor for its low
-weight, and low cost. With the advances in computer vision technology,
-optical sensors have been successfully used for range mapping and
-obstacle detection in a number of platforms \cite{einhorn_cant_2010}
+signal and results in a low resolution range map. 3D flash LIDAR is
+capable of acquire 3D range measurement simultaneously by illuminating
+the entire field of view (FOV) of the camera with a single laser, and
+capturing the reflected laser with a 2D imaging sensor
+\cite{amzajerdian_lidar_2011}. However, its high cost has limited its
+use in commercial application. In recent years, many researchers use
+image sensor as a passive range sensor for its low weight, and low
+cost. With the advances in computer vision technology, image sensors
+have been successfully used for range mapping and obstacle detection
+in a number of platforms \cite{einhorn_cant_2010}
 \cite{hashimoto_detection_1996} \cite{yamaguchi_moving_2006}
 \cite{zhang_obstacle_2012} \cite{maier_self-supervised_2011}
 \cite{kubota_global_2007} \cite{xu_method_2009}
 \cite{hanna_obstacle_2008} \cite{zhang_real-time_2012}
-\cite{van_der_mark_stereo_2007} \cite{broggi_stereo_2011}.
+\cite{van_der_mark_stereo_2007} \cite{broggi_stereo_2011}
+\cite{plumet_toward_2014}.
 
 \subsection{Monocular Vision and Binocular Vision}
 % word checked
@@ -51,19 +53,19 @@ There are two types of configuration: monocular, and binocular.
 
 For binocular camera setup, two cameras are placed apart from each
 other with their relative geometry (baseline separation and optical
-axis orientation) known. The same scene must be captured by both
-cameras simultaneously. When the position of a landmark can be
-accurately found in both images, its disparity is defined by the
-difference in coordinate of the landmark in left and right images.
-Then, the coordinate of the landmark in world can be calculated by
-using disparity, and the relative geometry of the cameras. Because
-binocular setup acquires two images simultaneously, landmark distance
-can be obtained at time $0$. The challenge in binocular range sensing
-is the correspondence between the two images, i.e., finding the same
-scene point in left and right images. In addition, because of the
-limited separation between the camera, and vibration noise caused
-by vehicle motion, binocular range sensing are usually applied in
-short to medium range measurement.
+axis orientation) fixed and known. The same scene point must be
+captured by both cameras simultaneously. When the position of a
+landmark can be accurately found in both images, its disparity is
+defined by the difference in coordinate of the landmark in left and
+right images. Then, the coordinate of the landmark in world can be
+calculated by using disparity, and the relative geometry of the
+cameras. Because binocular camera configuration acquires two images
+simultaneously, landmark distance can be obtained at time $0$. The
+challenge in binocular range sensing is the correspondence between the
+two images, i.e., finding the same scene point in left and right
+images. In addition, because of the limited separation between the
+camera, and vibration noise caused by vehicle motion, binocular range
+sensing are usually applied in short to medium range measurement.
 
 For monocular camera setup, only one camera is used with an odometry
 sensors providing camera displacement measurement between frames. Then
@@ -73,7 +75,7 @@ direction of travel, data association is less difficult as image
 difference from frame to frame is usually small. Secondly, the
 baseline separation can be selected according to the targeted object
 distance by processing every frame, every other frames, or every n
-frames captured. This flexibility allows monocular configuration to be
+frames. This flexibility allows monocular configuration to be
 used for longer range measurement. On the other hand, since monocular
 camera captures 1 frame at a time, the earliest range measurement is
 not available until two image frames are captured.
@@ -81,7 +83,7 @@ not available until two image frames are captured.
 \subsection{Camera Calibration}
 
 % word checked
-Camera model relates measurement on image plane to measurement of
+Camera model relates measurements on image plane to measurements of
 3D world. Camera calibration is the process of estimating the camera
 model, which includes projection geometry of a camera and distortion
 model of the lens. These models define the \textit{intrinsic
@@ -157,7 +159,7 @@ requires at least two different views of a coplanar target, which is
 usually a black and white checkerboard image. However, to get more
 reliable result, 10 views of the checkerboard with different
 translation and rotation from the camera is desired. The target's
-coordinates in world frame need not to be known in advance. Instead,
+coordinates in world frame need not to be known in advance. Instead, Zhang's
 algorithm only requires the size of the square on the checkerboard.
 Zhang's method was implemented in OpenCV \cite{bradski_learning_2008},
 and was used to calibrate the camera for this work.
@@ -202,7 +204,7 @@ and was used to calibrate the camera for this work.
 % Furthermore, odometry provides some prior information on the robot 
 % motion which can help to disambiguate the solution.
 
-\section{SLAM as A Sensor Fusion Framework}
+\section{SLAM as a Sensor Fusion Framework}
 \label{sec:SLAM}
 % word checked
 An essential aspect of autonomy for a mobile robot is the capability
@@ -211,11 +213,11 @@ has been referred to as the simultaneous localization and mapping
 (SLAM). There were considerably amount of researches done on the SLAM
 problem in the last two decades, and the theoretical SLAM can now be
 considered solved. The standard structure of a SLAM problem is a
-Bayesian form, and explains the evolution of the SLAM process. Most
+Bayesian form, and explains the evolution of the SLAM process. The most
 common computational solution is through the use of an extended
 Kalman filter (EKF).
 
-\subsection{Recursive Probabilistic Estimation using Extended Kalman Filter}
+\subsection{Recursive Probabilistic Estimation Using Extended Kalman Filter}
 \label{sec:SLAM_using_EKF}
 % word checked 
 
@@ -240,17 +242,17 @@ found in chapter 1 of \cite{maybeck_stochastic_1979}.
 %reference in Welch and bishop
 % intro to Kalman filter.
 
-The Kalman filter has three assumptions. 1) \textit{The system model
-  is linear}. The linearity is desired in that the system model is
-more easily manipulated with engineering tool. When nonlinearity
-exists, the typical approach is to linearize the system model at some
-nominal points. 2) \textit{The noise embedded in system control and
+Kalman filter has three assumptions. 1) \textit{The system model is
+  linear}. The linearity is desired in that the system model is more
+easily manipulated with engineering tool. When nonlinearity exists,
+the typical approach is to linearize the system model at some nominal
+points. 2) \textit{The noise embedded in system control and
   measurements is white}. This assumption implies that the noise value
 is not correlated in time, and has equal power in all frequency. 3)
 \textit{The probability density function (PDF) of system and
   measurement noise is Gaussian}. A Gaussian distribution is fully
 represented by the first and second order statistic (mean and
-variance) of a process. Most other densities require endless number of
+variance) of a process. Most other PDFs require endless number of
 orders of statistic to describe the shape fully. Hence, when the PDF
 of a noise process is non-Gaussian, the Kalman filter that propagates
 the first and second order statistic only includes partial information
@@ -279,12 +281,12 @@ the process model, and the measurement. $w$ and $v$ are assumed to be
 unrelated to each other, and have Gaussian distribution with covariance
 $Q$ and $R$.
 
-\subsubsection{The Algorithm}
+\subsubsection{Kalman Filter Algorithm}
 % word checked
 \begin{figure}[h]
 \centering
 \includegraphics[width=10cm, keepaspectratio=true]{./Figures/KalmanOperation.jpg}
-\caption{Kalman Operation Flow Diagram}
+\caption{Kalman operation flow diagram}
 \label{figch2:1}
 \end{figure}
 
@@ -299,7 +301,7 @@ vector is made based on the known process model. Since there are
 always unknown factors not being fully described by the process model,
 the errors almost always increase in the prediction. During
 correction, a number of steps are carried out to correct the a priori
-estimate. First, the predicted measurements $H\hat{x}^-_k$, made
+estimate. First, the predicted measurements $H\hat{x}^-_k$, calculated
 through the measurement model, are compared to the new measurements
 $z_k$. The difference $z_k - H\hat{x}^-_k$ is called measurement
 innovation, or residual. Next, the residuals are weighted by the
@@ -308,7 +310,7 @@ Kalman gain is formulated so that it minimizes the a posteriori error
 covariance matrix $P^+_k$.
 
 \begin{table}
-\caption{Kalman Filter Operation Equations}
+\caption{Kalman Filter operation equations}
 \label{tab:KF}
 \centering
 \begin{tabular}{|l|c r|}
@@ -343,11 +345,11 @@ z_k=h(x_k, v_k),
 \end{equation}
 
 \noindent where the random variables $w_k$ and $v_k$ represent the
-process and measurement noise with variance $Q$ and $R$. The Extended
+process and measurement noise with variance $Q$ and $R$. The extended
 Kalman filter operation equations are given in table \ref{tab:EKF},
 
 \begin{table}[H]
-\caption{Extended Kalman Filter Operation Equations}
+\caption{Extended Kalman filter operation equations}
 \label{tab:EKF}
 \centering
 \begin{tabular}{|l|c r|}
@@ -404,15 +406,15 @@ this section. A more complete tutorial to the SLAM problem is given in
 
 \subsubsection{General EKF Model for SLAM}
 % word checked
-Previous researches show that there is a high degree of correlation
+Previous researches showed that there is a high degree of correlation
 between the estimates of the landmarks
 \cite{smith_representation_1986} \cite{durrant-whyte_uncertain_1988}.
 This correlation exists because of the common error in the estimated
 vehicle poses \cite{leonard_simultaneous_1991}. The implication of
 these works is that a consistent full solution to the SLAM problem
-requires a joint state composed of the vehicle pose and all landmarks
+requires a joint state composed of the vehicle poses and all landmarks
 positions \cite{durrant-whyte_simultaneous_2006}. When the vehicle
-pose and landmarks positions are formulated as one single estimation
+poses and landmarks positions are formulated as one single estimation
 problem, the result is convergent. The correlation between landmarks
 plays an important role in the quality of the solution. The more the
 correlation grows, the better the solution becomes.
@@ -421,30 +423,30 @@ correlation grows, the better the solution becomes.
 
 To formulate a SLAM problem, the following variables are defined at a given time step $k$
 \begin{itemize}
-  \item $x_k$: a vector that describes the vehicle position and
+  \item $\mathbf{x_k}$: a vector that describes the vehicle position and
 orientation.
-  \item $u_k$: the control vector applied at time $k-1$ to drive the
-vehicle to $x_k$ at time step k
-  \item $p_i$: a vector that describes the location of the $i^{th}$
+  \item $\mathbf{u_k}$: the control vector applied at time $k-1$ to drive the
+vehicle to $\mathbf{x_k}$ at time step k
+  \item $\mathbf{p_i}$: a vector that describes the location of the $i^{th}$
 landmark. All landmarks locations are assumed to be time invariant.
-  \item $z_{i,k}$: observation of the location of the $i^{th}$
+  \item $\mathbf{z_{i,k}}$: observation of the location of the $i^{th}$
 landmark taken from the vehicle's location at time step $k$
 \end{itemize}
 
 \noindent A complete state vector contains 
 
-$$\begin{bmatrix}\hat{x}_k \\ \hat{p}_k \end{bmatrix}$$ 
+$$\begin{bmatrix}\hat{\mathbf{x}}_k \\ \hat{\mathbf{p}}_k \end{bmatrix}$$ 
 
 \noindent and the state covariance matrix contains
 
 $$\begin{bmatrix}
-P_{xx} & P_{xp} \\
-P_{px} & P_{pp} 
+\mathbf{P_{xx}} & \mathbf{P_{xp}} \\
+\mathbf{P_{px}} & \mathbf{P_{pp}} 
 \end{bmatrix} $$
 
-The prediction and correction cycles can then be carried out
-following the standard EKF algorithm. The landmarks are generally
-not updated at the prediction (i.e. only $x_k$ and $P_{xx}$ are
+The prediction and correction cycles can then be carried out following
+the standard EKF algorithm. The landmarks are generally not updated at
+the prediction (i.e. only $\mathbf{x_k}$ and $\mathbf{P_{xx}}$ are
 updated) unless they are moving.
 
 \subsubsection{Properties of SLAM}
@@ -466,7 +468,8 @@ environment. The error eventually become fully correlated which means
 that given the location of one landmark, the location of any other
 landmark can be determined with absolute certainty. As the map
 converges, the errors in the estimates of landmarks reduce to a lower
-bound determined by the errors when the first observation was made.
+bound determined by the errors of vehicle poses when the first
+observation was made.
 
 The results above only refer to the evolution of covariance matrices
 computed by a linear model. In reality, most SLAM problems are nonlinear, and
@@ -483,8 +486,8 @@ defined in \cite{huang_analysis_2008}, a state estimator is consistent
 if the estimation errors (i) are zero-mean, and (ii) have covariance
 matrix smaller or equal to the one calculated by the filter. When
 covariance reduces to a value smaller than the actual error, over
-optimistic estimation occurs and the filter can no longer effectively
-update the estimates.
+optimistic estimation occurs and the filter can no longer 
+update the estimates effectively.
 
 Huang investigated on properties and consistency of nonlinear
 two-dimensional EKF SLAM problem, derived and proved a number of

@@ -3,8 +3,8 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: thesis.aux
 A level-1 auxiliary file: chapter1.aux
 A level-1 auxiliary file: chapter2.aux
-A level-1 auxiliary file: chapter3.aux
 A level-1 auxiliary file: chapter4.aux
+A level-1 auxiliary file: chapter3.aux
 A level-1 auxiliary file: chapter5.aux
 A level-1 auxiliary file: chapter6.aux
 A level-1 auxiliary file: chapter7.aux
@@ -24,44 +24,44 @@ Database file #2: ref.bib
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 
 Done.
-You've used 75 entries,
+You've used 77 entries,
             4039 wiz_defined-function locations,
-            1614 strings with 28219 characters,
-and the built_in function-call counts, 56598 in all, are:
-= -- 4545
-> -- 1181
-< -- 524
-+ -- 666
-- -- 180
-* -- 2661
-:= -- 8180
-add.period$ -- 152
-call.type$ -- 75
+            1612 strings with 27874 characters,
+and the built_in function-call counts, 58077 in all, are:
+= -- 4643
+> -- 1227
+< -- 545
++ -- 697
+- -- 181
+* -- 2738
+:= -- 8398
+add.period$ -- 155
+call.type$ -- 77
 change.case$ -- 72
-chr.to.int$ -- 1278
-cite$ -- 75
-duplicate$ -- 4022
-empty$ -- 4795
-format.name$ -- 226
-if$ -- 13185
+chr.to.int$ -- 1329
+cite$ -- 77
+duplicate$ -- 4113
+empty$ -- 4922
+format.name$ -- 234
+if$ -- 13520
 int.to.chr$ -- 0
-int.to.str$ -- 75
-missing$ -- 670
-newline$ -- 268
+int.to.str$ -- 77
+missing$ -- 690
+newline$ -- 274
 num.names$ -- 69
-pop$ -- 1635
+pop$ -- 1676
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 4435
+skip$ -- 4544
 stack$ -- 0
-substring$ -- 3075
-swap$ -- 3299
-text.length$ -- 98
+substring$ -- 3149
+swap$ -- 3374
+text.length$ -- 102
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 75
+type$ -- 77
 warning$ -- 0
-while$ -- 271
-width$ -- 77
-write$ -- 726
+while$ -- 286
+width$ -- 79
+write$ -- 744
