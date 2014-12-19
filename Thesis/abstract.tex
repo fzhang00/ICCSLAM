@@ -1,10 +1,12 @@
+% Commonts line start with %
+
 % first sentence describes what this algorithm is for, and what it is
 % made of.
-This thesis described an obstacle detection system for low flying
+This thesis describes an obstacle detection system for a low flying
 autonomous unmanned aerial vehicle (UAV) using a simultaneous
 localization and mapping (SLAM) algorithm, named CC-EKF-SLAM.
 % describe the algorithm and it's output 
-The SLAM framework utilized an extended Kalman filter to fuse inertial
+The SLAM framework utilizes an extended Kalman filter to fuse inertial
 measurements and monocular image sequence together to estimate the
 poses of the UAV and positions of landmarks. A high resolution sparse
 terrain map and UAV trajectory can be computed from the filter state
@@ -15,29 +17,32 @@ vector.
 %system.
 
 %flight and result 
-The biggest contribution of this work is that the algorithm was tested
-and was proven feasible with real aerial video and navigation
-measurements. A test flight was conducted to collect data by using a
-simulated unmanned aerial system (SUAS) towed by a helicopter. Video
-cameras and a number of sensors were mounted on the SUAS. Video and
-data were sent to and acquired by a data acquisition system installed
-in helicopter. The result from flight data showed that when good
-quality features can be extracted from the image sequence, the
-algorithm was capable of mapping landmarks ranging as far as 1600
-meters. Accuracy analysis on the flight result also showed that
-landmarks added to the framework after first frame carried offset
-errors.
+The most important contribution of this work is
+that the algorithm was tested and was proven feasible with real aerial
+video and navigation measurements. A test flight was conducted to
+collect data by using a simulated unmanned aerial system (SUAS) towed
+by a helicopter. Video cameras and a number of sensors were mounted on
+the SUAS. Video and data were sent to and acquired by a data
+acquisition system installed in helicopter. The results from flight
+data showed that when good quality visual features can be extracted
+from the image sequence, the algorithm was capable of mapping
+landmarks ranging as far as 1600 meters. Accuracy analysis on the
+flight data also showed that SUAS localization and landmark mapping
+results generally agree with the ground truth. Some noticeable errors
+of the result include: drift on SUAS position on the Y and Z axes, and
+offset error for landmarks added to the framework after the first
+frame.
 
-% The error analysis
-To better understand strength and weakness of the CC-EKF-SLAM, and to
-improve future design, the algorithm was further analyzed through a
-series of simulation. The simulated scenarios were designed to
-reconstruct what was seen in the real flight and included: simple
-forward motion, oscillatory motion on all other 5 degrees of freedom,
-the effect of camera calibration error, and the effect of image
-digitization. The simulation showed that the algorithm is very
-sensitive to oscillatory rotation, which caused significant error in
-both landmark mapping estimates and UAV localization estimates. Other
-improvements suggested by the simulation include adding lens
-distortion model into the algorithm, and using camera with resolution
-higher than 1440x1080.
+% The error analysis 
+To better understand the strength and weakness of
+the CC-EKF-SLAM algorithm, and to improve future designs, the
+algorithm was further analyzed through a series of simulations. The
+simulated scenarios were designed to reconstruct what was seen in the
+real flight and included: simple forward motion, oscillatory motion on
+all other 5 degrees of freedom, the effect of camera calibration
+error, and the effect of image digitization. The simulations showed
+that the algorithm is very sensitive to oscillatory rotation, which
+caused significant errors in both landmark mapping estimates and UAV
+localization estimates. Other improvements suggested by the
+simulations include adding a lens distortion model into the algorithm,
+and using a camera with resolution higher than 1080x1440.

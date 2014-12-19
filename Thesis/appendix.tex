@@ -1,43 +1,44 @@
 \chapter{Coordinate Transformation}\label{ch:appendix1}
 
-For a mobile robot traveling in world. A point $P$ in space has
-coordinate $[\begin{matrix}x & y & z\end{matrix}]$ in world frame, and
-$[\begin{matrix}x' & y' & z' \end{matrix}]$ in the mobile frame,
-illustrated in figure \ref{fig:appx1-1}
+For a mobile robot, a point $\boldsymbol{P}$ in space has
+coordinates $[\begin{matrix}x & y & z\end{matrix}]$ in the world frame, and
+$[\begin{matrix}x' & y' & z' \end{matrix}]$ in the mobile frame, as
+illustrated in Figure \ref{fig:appx1-1}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm, keepaspectratio=true]{./Figures/coordinate_transformation/coordinate_transformation.png}
-\caption{A point in world and mobile frame}
+\caption{A point in the world frame and the mobile frame}
 \label{fig:appx1-1}
 \end{figure}
 
-The two coordinate for point is related by
+The coordinates for the same point $\boldsymbol{P}$ in the world frame
+and the mobile frame are related by
 \begin{equation}
 \begin{bmatrix}
 x \\ y \\ z \\ 1 \\
-\end{bmatrix}_{World}=Q\cdot\begin{bmatrix}
+\end{bmatrix}_{World}=\boldsymbol{Q}\cdot\begin{bmatrix}
 x' \\ y' \\ z' \\ 1  \\
 \end{bmatrix}_{mobile}
 \end{equation}
 
-\noindent where Q is the transformation matrix composed by rotation
-and translation evolve world frame to mobile frame. The calculation of
-Q must follow the TRPY (translate-roll-pitch-yaw) convention, hence Q
-is given by
+\noindent where $\boldsymbol{Q}$ is the transformation matrix composed
+of rotation and translation that evolve the world frame to the mobile frame. The
+calculation of $\boldsymbol{Q}$ must follow the TRPY (translate-roll-pitch-yaw)
+convention, hence $\boldsymbol{Q}$ is given by
 
 \begin{equation}
-Q=Q_T(x_T, y_T, z_T)Q_{Rz}(r_{z})Q_{Ry}(r_{y}) 
-Q_{Rx}(r_{x})
+\boldsymbol{Q}= \boldsymbol{Q_TQ_{R_z}Q_{R_y}Q_{R_x}}
 \end{equation}
 
-$Q_T(x_T, y_T, z_T)$, $Q_{R_x}$, $Q_{R_y}$, $Q_{R_z}$ is the
-translation and rotation matrix for axis $X$, $Y$ and $Z$. They are
-give in equation (\ref{eq:translate}) to (\ref{eq:rotz}). 
+$\boldsymbol{Q_T}$, $\boldsymbol{Q_{R_x}}$, $\boldsymbol{Q_{R_y}}$,
+$\boldsymbol{Q_{R_z}}$ are the translation and rotation matrices for axes
+$X$, $Y$ and $Z$. They are give in Equation (\ref{eq:translate}) to
+(\ref{eq:rotz}).
 
 \begin{equation}
 \label{eq:translate}
-Q_T(x_T, y_T, z_T) = \begin{bmatrix}
+\boldsymbol{Q_T} = \begin{bmatrix}
 1 & 0 & 0 & x_T \\
 0 & 1 & 0 & y_T \\
 0 & 0 & 1 & z_T \\
@@ -46,7 +47,7 @@ Q_T(x_T, y_T, z_T) = \begin{bmatrix}
 
 \begin{equation}
 \label{eq:rotx}
-Q_{Rx}(r_{x})=\lbrack \begin{bmatrix}
+\boldsymbol{Q_{R_x}}= \begin{bmatrix}
 1 & 0 & 0 & 0 & \\
 0 & \cos (r_{x}) & -\sin (r_{x}) & 0 & \\
 0 & \sin (r_{x}) & \cos (r_{x}) & 0 & \\
@@ -57,7 +58,7 @@ Q_{Rx}(r_{x})=\lbrack \begin{bmatrix}
 
 \begin{equation}
 \label{eq:roty}
-Q_{Ry}(r_{y})= \begin{bmatrix}
+\boldsymbol{Q_{R_y}}= \begin{bmatrix}
 \cos (r_{y}) & 0 & \sin (r_{y}) & 0 & \\
 0 & 1 & 0 & 0 & \\
 -sin(r_{y}) & 0 & \cos (r_{y}) & 0 & \\
@@ -68,7 +69,7 @@ Q_{Ry}(r_{y})= \begin{bmatrix}
 
 \begin{equation}
 \label{eq:rotz}
-Q_{Rz}(r_{z})=\begin{bmatrix}
+\boldsymbol{Q_{R_z}}=\begin{bmatrix}
 \cos (r_{z}) & -\sin (r_{z}) & 0 & 0 & \\
 \sin (r_{z}) & \cos (r_{z}) & 0 & 0 & \\
 0 & 0 & 1 & 0 & \\
@@ -76,20 +77,22 @@ Q_{Rz}(r_{z})=\begin{bmatrix}
 \end{bmatrix}
 \end{equation}
 
-The forward transformation calculate point $P$'s coordinate in world
-frame given its location in mobile frame. To calculate point $P$'s
-coordinate in mobile frame give its location is known in world frame.
-inverse transformation can be used. The inverse transformation matrix
-formula is give in equation (\ref{eq:Qinv}) - (\ref{eq:rotz_inv})
+The forward transformation calculates point $\boldsymbol{P}$'s
+coordinates in the world frame given its location in the mobile frame.
+To calculate point $\boldsymbol{P}$'s coordinates in the mobile frame
+from its location in the world frame, inverse transformation can
+be used. The inverse transformation matrix is given in Equation
+(\ref{eq:Qinv}) - (\ref{eq:rotz_inv})
 
 \begin{equation}
 \label{eq:Qinv}
-Q^{-1}=Q_{Rx}^{-1} Q_{Ry}^{-1} Q_{Rz}^{-1} Q_T^{-1}
+\boldsymbol{Q}^{-1}=\boldsymbol{Q_{R_x}}^{-1}\boldsymbol{Q_{R_y}}^{-1}
+\boldsymbol{Q_{R_z}}^{-1} \boldsymbol{Q_T}^{-1}
 \end{equation}
 
 \begin{equation}
 \label{eq:translate_inv}
-Q_{T}^{-1}=\begin{bmatrix}
+\boldsymbol{Q_{T}}^{-1}=\begin{bmatrix}
 1 & 0 & 0 & -x_T \\
 0 & 1 & 0 & -y_T \\
 0 & 0 & 1 & -z_T \\
@@ -98,17 +101,17 @@ Q_{T}^{-1}=\begin{bmatrix}
 
 \begin{equation}
 \label{eq:rotx_inv}
-Q_{Rx}^{-1}=Q_{Rx}^{T}
+\boldsymbol{Q_{R_x}}^{-1}=\boldsymbol{Q_{R_x}}^{T}
 \end{equation}
 
 \begin{equation}
 \label{eq:roty_inv}
-Q_{Ry}^{-1}=Q_{Ry}^{T}
+\boldsymbol{Q_{R_y}}^{-1}=\boldsymbol{Q_{R_y}}^{T}
 \end{equation}
 
 \begin{equation}
 \label{eq:rotz_inv}
-Q_{Rz}^{-1}=Q_{Rz}^{T}
+\boldsymbol{Q_{R_z}}^{-1}=\boldsymbol{Q_{R_z}}^{T}
 \end{equation}
 
 

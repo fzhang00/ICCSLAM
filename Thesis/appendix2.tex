@@ -1,92 +1,107 @@
 \chapter{Jacobian Matrix for Filter Initialization Equations}\label{ch:appendix2}
-The Jacobian matrix used in state covariance matrix initialization
-equation (\ref{eq:Pnew}) is derived in this section. The complete
-Jacobian matrix $J$ for initializing a landmark covariance is given by
+The Jacobian matrix used in the state covariance matrix initialization
+Equation (\ref{eq:Pnew}) is derived in this section. The complete
+Jacobian matrix $\boldsymbol{J}$ for initializing a landmark
+covariance is given by
 
 \begin{equation}
-J=\begin{bmatrix}
- & & & & & &0\\
- & &I& & & &\vdots\\ 
- & & & & & &0\\
-\frac{\partial p_{i}}{\partial OX_{W}^{C}} &
-\frac{\partial p_{i}}{\partial c^{C}} & 
-\frac{\partial p_{i}}{\partial r^{C}} & 
-0 & \ldots & 0 & 
-\frac{\partial p_{i}}{\partial g_{i}} 
+\boldsymbol{J}=\begin{bmatrix}
+ & & & & & &\boldsymbol{0}\\
+ & &\boldsymbol{I}& & & &\vdots\\ 
+ & & & & & &\boldsymbol{0}\\
+\boldsymbol{\frac{\partial p_{i}}{\partial OX_{W}^{C}}} &
+\boldsymbol{\frac{\partial p_{i}}{\partial c^{C}}} & 
+\boldsymbol{\frac{\partial p_{i}}{\partial r^{C}}} & 
+\boldsymbol{0} & \ldots & \boldsymbol{0} & 
+\boldsymbol{\frac{\partial p_{i}}{\partial g_{i}}}
 \end{bmatrix}
 \end{equation}
 
-\noindent Whenever a new landmark is added, it's initial position is
+\noindent Whenever a new landmark is added, its initial position is
 always $[\begin{matrix}0&0&0\end{matrix}]$ in the camera frame, and
 the $[\begin{matrix}\rho&\varphi&\theta\end{matrix}]$ parameters are
-not a function of $ OX_{W}^{C}$, $c^{C}$,or $r^{C}$, therefore
+not a function of $ \boldsymbol{OX_{W}^{C}}$, $\boldsymbol{c^{C}}$,or
+$\boldsymbol{r^{C}}$, therefore
 
 \begin{equation}
 \begin{matrix}
-\frac{\partial p_{i}}{\partial OX_{W}^{C}}=0_{6\times 6}, & 
-\frac{\partial p_{i}}{\partial c^{C}}=0_{6\times 3}, &
-\frac{\partial p_{i}}{\partial r^{C}}= 0_{6\times 3}
+\boldsymbol{\frac{\partial p_{i}}{\partial OX_{W}^{C}}}=\boldsymbol{0_{6\times 6}}, & 
+\boldsymbol{\frac{\partial p_{i}}{\partial c^{C}}}=\boldsymbol{0_{6\times 3}}, &
+\boldsymbol{\frac{\partial p_{i}}{\partial r^{C}}}= \boldsymbol{0_{6\times 3}}
 \end{matrix}
 \end{equation}
 
-\noindent $J$ can then be simplified as
+\noindent $\boldsymbol{J}$ can then be simplified as
 
 \begin{equation}
-J=\begin{bmatrix}
-I & 0 & \\
-0 & \frac{\partial p_{i}}{\partial g_{i}} & \\
+\boldsymbol{J}=\begin{bmatrix}
+\boldsymbol{I} & \boldsymbol{0} & \\
+\boldsymbol{0} & \boldsymbol{\frac{\partial p_{i}}{\partial g_{i}}} & \\
 \end{bmatrix} 
 \end{equation}
 
 
-\noindent where $g_{i}$ includes the variable in matrix $R$ given in
-equation(\ref{eq:R}): $ g_{i}=[\begin{matrix} x_{i}^{C} & y_{i}^{C} &
+\noindent where $\boldsymbol{g_{i}}$ includes the variable in matrix $\boldsymbol{R}$ given in
+Equation(\ref{eq:R}): $\boldsymbol{g_{i}}=[\begin{matrix} x_{i}^{C} & y_{i}^{C} &
   z_{i}^{C} & \rho _{i} & u_{i} & v_{i}\end{matrix}]$. Then 
 
 \begin{equation}
-\frac{\partial p_{i}}{\partial g_{i}}=\begin{bmatrix}
-I_{3\times 3} & & 0_{3\times 3} & \\
+\label{eq:b4}
+\boldsymbol{\frac{\partial p_{i}}{\partial g_{i}}}=\begin{bmatrix}
+\boldsymbol{I_{3\times 3}} & & \boldsymbol{0_{3\times 3}} & \\
  & \frac{\partial \rho_{i}}{\partial \rho_{i}} & 
 \frac{\partial \rho_{i}}{\partial u_{i}} & 
 \frac{\partial \rho _{i}}{\partial v_{i}}\\
-0_{3\times 3} & \frac{\partial \varphi_{i}^{C}}{\partial \rho_{i}} & 
+\boldsymbol{0_{3\times 3}} & \frac{\partial \varphi_{i}^{C}}{\partial \rho_{i}} & 
 \frac{\partial \varphi_{i}^{C}}{\partial u_{i}} & 
 \frac{\partial \varphi_{i}^{C}}{\partial v_{i}} \\
  & \frac{\partial \theta_{i}^{C}}{\partial \rho_{i}} & 
 \frac{\partial \theta_{i}^{C}}{\partial u_{i}} & 
 \frac{\partial \theta_{i}^{C}}{\partial v_{i}} \\
 \end{bmatrix} = \begin{bmatrix}
-I_{3\times 3} & & 0_{3\times 3} & \\
+\boldsymbol{I_{3\times 3}} & & \boldsymbol{0_{3\times 3}} & \\
  & 1 & 0 & 0 \\
-0_{3\times 3} & 0 & \frac{\partial \varphi _{i}^{C}}{\partial u_{i}} 
+\boldsymbol{0_{3\times 3}} & 0 & \frac{\partial \varphi _{i}^{C}}{\partial u_{i}} 
 & \frac{\partial \varphi_{i}^{C}}{\partial v_{i}} \\
  & 0 & \frac{\partial \theta_{i}^{C}}{\partial u_{i}} & 
 \frac{\partial \theta_{i}^{C}}{\partial v_{i}} \\
 \end{bmatrix}
 \end{equation}
 
-\noindent Based on the rule of derivation, 
+\noindent Based on the chain rule of differentiation, the partial
+derivatives in Equation \ref{eq:b4} is given by
 
-$$\frac{\partial \varphi_{i}^{C}}{\partial u_{i}}=\frac{\partial 
-\varphi_{i}^{C}}{\partial h^{C}}\frac{\partial h^{C}}{\partial u_{i}}$$
+\begin{equation}
+\label{eq:b5}
+\frac{\partial \varphi_{i}^{C}}{\partial u_{i}}=
+\boldsymbol{\frac{\partial \varphi_{i}^{C}}{\partial h^{C}}\frac{\partial h^{C}}{\partial u_{i}}}
+\end{equation}
 
+\begin{equation}
+\label{eq:b6}
+\frac{\partial \theta _{i}^{C}}{\partial u_{i}}=
+\boldsymbol{\frac{\partial \theta_{i}^{C}}{\partial h^{C}}\frac{\partial h^{C}}{\partial u_{i}}}
+\end{equation}
 
-$$\frac{\partial \theta _{i}^{C}}{\partial u_{i}}=\frac{\partial \theta 
-_{i}^{C}}{\partial h^{C}}\frac{\partial h^{C}}{\partial u_{i}}$$
+\begin{equation}
+\label{eq:b7}
+\frac{\partial \varphi _{i}^{C}}{\partial v_{i}}=
+\boldsymbol{\frac{\partial \varphi _{i}^{C}}{\partial h^{C}}\frac{\partial h^{C}}{\partial v_{i}}}
+\end{equation}
 
-
-$$\frac{\partial \varphi _{i}^{C}}{\partial v_{i}}=\frac{\partial 
-\varphi _{i}^{C}}{\partial h^{C}}\frac{\partial h^{C}}{\partial v_{i}}$$
-
-$$\frac{\partial \theta _{i}^{C}}{\partial v_{i}}=\frac{\partial \theta 
-_{i}^{C}}{\partial h^{C}}\frac{\partial h^{C}}{\partial v_{i}}$$
-
+\begin{equation}
+\label{eq:b8}
+\frac{\partial \theta _{i}^{C}}{\partial v_{i}}=
+\boldsymbol{\frac{\partial \theta_{i}^{C}}{\partial h^{C}}\frac{\partial h^{C}}{\partial v_{i}}}
+\end{equation}
 
 \noindent When lens distortion is ignored,
+Equation \ref{eq:b5}-\ref{eq:b8} can be calculated using Equation
+\ref{eq:par_varphi_h} through \ref{eq:par_h_v}.
 
 \begin{equation}
 \label{eq:par_varphi_h}
-\frac{\partial \varphi_{i}^{C}}{\partial h^{C}}= 
+\boldsymbol{\frac{\partial \varphi_{i}^{C}}{\partial h^{C}}}= 
 \begin{bmatrix}
 \frac{\partial \varphi_{i}^{C}}{\partial h_{x}^{C}} & 
 \frac{\partial \varphi_{i}^{C}}{\partial h_{y}^{C}} & 
@@ -100,7 +115,7 @@ _{i}^{C}}{\partial h^{C}}\frac{\partial h^{C}}{\partial v_{i}}$$
 
 \begin{equation}
 \label{eq:par_theta_h}
-\frac{\partial \theta_{i}^{C}}{\partial h^{C}}=\begin{bmatrix}
+\boldsymbol{\frac{\partial \theta_{i}^{C}}{\partial h^{C}}}=\begin{bmatrix}
 \frac{\partial \theta_{i}^{C}}{\partial h_{x}^{C}} & 
 \frac{\partial \theta_{i}^{C}}{\partial h_{y}^{C}} & 
 \frac{\partial \theta_{i}^{C}}{\partial h_{z}^{C}} \end{bmatrix}
@@ -111,7 +126,7 @@ _{i}^{C}}{\partial h^{C}}\frac{\partial h^{C}}{\partial v_{i}}$$
 \end{equation}
 
 \begin{equation}
-\frac{\partial h^{C}}{\partial u_{i}}=\begin{bmatrix}
+\boldsymbol{\frac{\partial h^{C}}{\partial u_{i}}}=\begin{bmatrix}
 \frac{\partial h_{x}^{C}}{\partial u_{i}} \\
 \frac{\partial h_{y}^{C}}{\partial u_{i}} \\
 \frac{\partial h_{z}^{C}}{\partial u_{i}} \\
@@ -123,7 +138,8 @@ s_{x}\\
 \end{equation}
 
 \begin{equation}
-\frac{\partial h^{C}}{\partial v_{i}}=\begin{bmatrix}
+\label{eq:par_h_v}
+\boldsymbol{\frac{\partial h^{C}}{\partial v_{i}}}=\begin{bmatrix}
 \frac{\partial h_{x}^{C}}{\partial v_{i}}\\
 \frac{\partial h_{y}^{C}}{\partial v_{i}}\\
 \frac{\partial h_{z}^{C}}{\partial v_{i}}\\
@@ -134,7 +150,7 @@ s_{y}\\
 \end{bmatrix}
 \end{equation}
 
-Equations given above completes the Jacobian matrix calculation.
+\noindent Equations given above completes the Jacobian matrix calculation.
 
 %%% Local Variables:
 %%% mode: latex

@@ -1,22 +1,22 @@
 \contentsline {chapter}{Abstract}{iii}{section*.2}
-\contentsline {chapter}{Acknowledgments}{iv}{section*.4}
-\contentsline {chapter}{Table of Contents}{v}{section*.5}
-\contentsline {chapter}{List of Tables}{viii}{section*.7}
-\contentsline {chapter}{List of Figures}{ix}{section*.9}
-\contentsline {chapter}{List of Acronyms}{xii}{section*.12}
+\contentsline {chapter}{Acknowledgments}{v}{section*.4}
+\contentsline {chapter}{Table of Contents}{vi}{section*.5}
+\contentsline {chapter}{List of Tables}{ix}{section*.7}
+\contentsline {chapter}{List of Figures}{x}{section*.9}
+\contentsline {chapter}{List of Acronyms}{xiii}{section*.12}
 \contentsline {chapter}{ \numberline {1}Introduction}{1}{section*.13}
 \contentsline {section}{\numberline {1.1}Problem Statement}{2}{section.1.1}
 \contentsline {section}{\numberline {1.2}Contributions}{3}{section.1.2}
 \contentsline {section}{\numberline {1.3}Organization}{4}{section.1.3}
-\contentsline {chapter}{ \numberline {2}Literatures Review}{6}{section*.15}
-\contentsline {section}{\numberline {2.1}Sensor for Obstacle Detection}{6}{section.2.1}
+\contentsline {chapter}{ \numberline {2}Literature Review}{6}{section*.15}
+\contentsline {section}{\numberline {2.1}Sensors for Obstacle Detection}{6}{section.2.1}
 \contentsline {subsection}{\numberline {2.1.1}Overview}{6}{subsection.2.1.1}
 \contentsline {subsection}{\numberline {2.1.2}Monocular Vision and Binocular Vision}{7}{subsection.2.1.2}
-\contentsline {subsection}{\numberline {2.1.3}Camera Calibration}{7}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.3}Camera Calibration}{8}{subsection.2.1.3}
 \contentsline {subsubsection}{Basic Projection Geometry}{8}{section*.16}
-\contentsline {subsubsection}{Lens Distortion}{8}{section*.18}
+\contentsline {subsubsection}{Lens Distortion}{9}{section*.18}
 \contentsline {subsubsection}{Camera Calibration Algorithm}{9}{section*.19}
-\contentsline {section}{\numberline {2.2}SLAM as a Sensor Fusion Framework}{9}{section.2.2}
+\contentsline {section}{\numberline {2.2}SLAM as a Sensor Fusion Framework}{10}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}Recursive Probabilistic Estimation Using Extended Kalman Filter}{10}{subsection.2.2.1}
 \contentsline {subsubsection}{Kalman Filter Models}{11}{section*.20}
 \contentsline {subsubsection}{Kalman Filter Algorithm}{11}{section*.21}
@@ -27,9 +27,9 @@
 \contentsline {subsubsection}{Properties of SLAM}{15}{section*.28}
 \contentsline {subsubsection}{Linearization Error and Consistency}{16}{section*.29}
 \contentsline {subsection}{\numberline {2.2.3}SLAM for Building Large Scale Maps}{16}{subsection.2.2.3}
-\contentsline {subsubsection}{Robot Centric Coordinate System}{17}{section*.30}
+\contentsline {subsubsection}{Robot Centric Coordinate System}{16}{section*.30}
 \contentsline {subsubsection}{Sub-map Methods}{17}{section*.31}
-\contentsline {section}{\numberline {2.3}Inverse Depth Parameterization for Distance Object}{17}{section.2.3}
+\contentsline {section}{\numberline {2.3}Inverse Depth Parameterization for Distant Object}{17}{section.2.3}
 \contentsline {chapter}{ \numberline {3}Experiments with Real Aerial Data}{19}{section*.32}
 \contentsline {section}{\numberline {3.1}Equipment Setup and Flight Data Collection}{19}{section.3.1}
 \contentsline {section}{\numberline {3.2}Camera Calibration}{24}{section.3.2}
@@ -40,48 +40,48 @@
 \contentsline {subsection}{\numberline {4.2.1}Full State Vector}{27}{subsection.4.2.1}
 \contentsline {subsection}{\numberline {4.2.2}Prediction}{28}{subsection.4.2.2}
 \contentsline {subsection}{\numberline {4.2.3}Measurement Model}{28}{subsection.4.2.3}
-\contentsline {subsection}{\numberline {4.2.4}Composition}{29}{subsection.4.2.4}
+\contentsline {subsection}{\numberline {4.2.4}Composition}{30}{subsection.4.2.4}
 \contentsline {subsection}{\numberline {4.2.5}Filter Initialization}{31}{subsection.4.2.5}
 \contentsline {subsubsection}{State Vector}{31}{section*.43}
-\contentsline {subsubsection}{State Covariance Matrix}{31}{section*.44}
+\contentsline {subsubsection}{State Covariance Matrix}{32}{section*.44}
 \contentsline {subsection}{\numberline {4.2.6}Adding and Deleting Landmarks}{33}{subsection.4.2.6}
 \contentsline {section}{\numberline {4.3}Additional Procedures for Data Analysis}{35}{section.4.3}
-\contentsline {chapter}{ \numberline {5}Result From Flight Data}{37}{section*.47}
+\contentsline {chapter}{ \numberline {5}Results From Flight Data}{37}{section*.47}
 \contentsline {section}{\numberline {5.1}Convergence Analysis}{37}{section.5.1}
 \contentsline {subsection}{\numberline {5.1.1}Convergence of Inverse Depth}{37}{subsection.5.1.1}
 \contentsline {subsection}{\numberline {5.1.2}Convergence of the Other Landmark Parameters}{39}{subsection.5.1.2}
-\contentsline {section}{\numberline {5.2}Consistency Analysis}{40}{section.5.2}
-\contentsline {section}{\numberline {5.3}Accuracy Analysis}{43}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}SUAS Localization}{43}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}Landmarks Mapping}{44}{subsection.5.3.2}
-\contentsline {section}{\numberline {5.4}Accuracy Verification through Visually Corresponded Landmarks}{47}{section.5.4}
-\contentsline {chapter}{ \numberline {6}Error Analysis via Simulation}{50}{section*.64}
-\contentsline {section}{\numberline {6.1}An Ideal Case}{52}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}UAV Localization}{53}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Landmarks Mapping}{54}{subsection.6.1.2}
-\contentsline {section}{\numberline {6.2}Effect from UAV Oscillatory Motion}{55}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}UAV Localization}{55}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Landmarks Mapping}{58}{subsection.6.2.2}
-\contentsline {section}{\numberline {6.3}Effect from Error in Camera Intrinsic Parameters}{64}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Effect from $(c_{x}, c_{y})$}{64}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}Effect from $(f_x, f_y)$}{69}{subsection.6.3.2}
-\contentsline {subsection}{\numberline {6.3.3}Effect from Distortion}{72}{subsection.6.3.3}
-\contentsline {subsection}{\numberline {6.3.4}Effect from Image Resolution}{74}{subsection.6.3.4}
-\contentsline {chapter}{ \numberline {7}Conclusion}{76}{section*.87}
-\contentsline {section}{\numberline {7.1}Result Summaries}{76}{section.7.1}
-\contentsline {subsection}{\numberline {7.1.1}Test Result from Real Flight Data}{76}{subsection.7.1.1}
-\contentsline {subsection}{\numberline {7.1.2}Noise Analysis through Simulation}{77}{subsection.7.1.2}
-\contentsline {subsubsection}{Low noise environment}{78}{section*.88}
-\contentsline {subsubsection}{Impact from motion}{78}{section*.89}
-\contentsline {subsubsection}{Impact from error in camera calibration}{78}{section*.90}
-\contentsline {paragraph}{Effect from ($c_x, c_y$)}{78}{section*.91}
-\contentsline {paragraph}{Effect from ($f_x, f_y$)}{79}{section*.92}
-\contentsline {paragraph}{Effect from Distortion}{79}{section*.93}
-\contentsline {paragraph}{Effect from Image Resolution}{79}{section*.94}
-\contentsline {section}{\numberline {7.2}Future Research}{79}{section.7.2}
-\contentsline {chapter}{List of References}{81}{section*.95}
-\contentsline {chapter}{Appendix \numberline {A}Coordinate Transformation}{87}{section*.97}
-\contentsline {chapter}{Appendix \numberline {B}Jacobian Matrix for Filter Initialization Equations}{90}{section*.99}
-\contentsline {chapter}{Appendix \numberline {C}Linearization of Measurement Model and Composition Equations}{93}{section*.100}
-\contentsline {section}{\numberline {C.1}Linearization of Measurement Model}{93}{section.C.1}
-\contentsline {section}{\numberline {C.2}Jacobian Matrix of Composition Equations}{94}{section.C.2}
+\contentsline {section}{\numberline {5.2}Consistency Analysis}{41}{section.5.2}
+\contentsline {section}{\numberline {5.3}Accuracy Analysis}{44}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}SUAS Localization}{44}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Landmarks Mapping}{45}{subsection.5.3.2}
+\contentsline {section}{\numberline {5.4}Accuracy Verification through Manually Corresponded Landmarks}{49}{section.5.4}
+\contentsline {chapter}{ \numberline {6}Error Analysis through Simulation}{52}{section*.64}
+\contentsline {section}{\numberline {6.1}An Ideal Case}{54}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}UAV Localization}{55}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Landmarks Mapping}{56}{subsection.6.1.2}
+\contentsline {section}{\numberline {6.2}Effect of UAV Oscillatory Motion}{57}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}UAV Localization}{57}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Landmark Mapping}{61}{subsection.6.2.2}
+\contentsline {section}{\numberline {6.3}Effect of Errors in Camera Intrinsic Parameters}{66}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Effect of Errors in $(c_{x}, c_{y})$}{66}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Effect of Errors in $(f_x, f_y)$}{71}{subsection.6.3.2}
+\contentsline {subsection}{\numberline {6.3.3}Effect of Errors in Distortion Model}{74}{subsection.6.3.3}
+\contentsline {subsection}{\numberline {6.3.4}Effect of Image Digitization}{76}{subsection.6.3.4}
+\contentsline {chapter}{ \numberline {7}Conclusion}{78}{section*.87}
+\contentsline {section}{\numberline {7.1}Result Summaries}{78}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}Test Results from Real Flight Data}{78}{subsection.7.1.1}
+\contentsline {subsection}{\numberline {7.1.2}Noise Analysis through Simulation}{79}{subsection.7.1.2}
+\contentsline {subsubsection}{Low noise environment}{80}{section*.88}
+\contentsline {subsubsection}{Impact from motion}{80}{section*.89}
+\contentsline {subsubsection}{Impact from error in camera calibration}{80}{section*.90}
+\contentsline {paragraph}{Effect of Error in ($c_x, c_y$)}{80}{section*.91}
+\contentsline {paragraph}{Effect of Error in ($f_x, f_y$)}{81}{section*.92}
+\contentsline {paragraph}{Effect of Distortion}{81}{section*.93}
+\contentsline {paragraph}{Effect of Image Resolution}{81}{section*.94}
+\contentsline {section}{\numberline {7.2}Future Research}{81}{section.7.2}
+\contentsline {chapter}{List of References}{83}{section*.95}
+\contentsline {chapter}{Appendix \numberline {A}Coordinate Transformation}{89}{section*.97}
+\contentsline {chapter}{Appendix \numberline {B}Jacobian Matrix for Filter Initialization Equations}{92}{section*.99}
+\contentsline {chapter}{Appendix \numberline {C}Linearization of Measurement Model and Composition Equations}{95}{section*.100}
+\contentsline {section}{\numberline {C.1}Linearization of Measurement Model}{95}{section.C.1}
+\contentsline {section}{\numberline {C.2}Jacobian Matrix of Composition Equations}{97}{section.C.2}

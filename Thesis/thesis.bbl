@@ -28,18 +28,18 @@ A.~Nemra and N.~Aouf, ``Robust cooperative {UAV} visual {SLAM},'' in
 
 \bibitem{jianli_unscented_2011}
 S.~Jianli, P.~Shuang, W.~Yugiang, and W.~Xibin, ``Unscented {FastSLAM} for
-  {UAV},'' in \emph{Proceedings f the International Conference on Computer
+  {UAV},'' in \emph{Proceedings of the International Conference on Computer
   Science and Network Technology}, vol.~4, 2011, pp. 2529--2532.
 
 \bibitem{sunderhauf_using_2007}
-N.~Sunderhauf, S.~Lange, and P.~Protzel, ``Using the unscented kalman filter in
-  mono-{SLAM} with inverse depth parametrization for autonomous airship
+N.~Sunderhauf, S.~Lange, and P.~Protzel, ``Using the unscented {K}alman filter
+  in mono-{SLAM} with inverse depth parametrization for autonomous airship
   control,'' in \emph{Proceedings of the {IEEE} International Workshop on
   Safety, Security and Rescue Robotics}, 2007, pp. 1--6.
 
 \bibitem{artieda_visual_2009}
 J.~Artieda, J.~M. Sebastian, P.~Campoy, J.~F. Correa, I.~F. Mondragón,
-  C.~Martínez, and M.~Olivares, ``\BIBforeignlanguage{en}{Visual 3-d {SLAM}
+  C.~Martínez, and M.~Olivares, ``\BIBforeignlanguage{en}{Visual 3-{D} {SLAM}
   from {UAVs}},'' \emph{\BIBforeignlanguage{en}{Journal of Intelligent and
   Robotic Systems}}, vol.~55, no. 4-5, pp. 299--321, Aug. 2009.
 
@@ -120,7 +120,7 @@ F.~Amzajerdian, D.~Pierrottet, L.~Petway, G.~Hines, and V.~Roback, ``Lidar
 M.~Nieuwenhuisen, D.~Droeschel, M.~Beul, and S.~Behnke, ``Obstacle detection
   and navigation planning for autonomous micro aerial vehicles,'' in
   \emph{Proceedings of the 2014 International Conference on Unmanned Aircraft
-  Systems ({ICUAS})}, May 2014, pp. 1040--1047.
+  Systems}, May 2014, pp. 1040--1047.
 
 \bibitem{subharsanan_low_2013}
 \BIBentryALTinterwordspacing
@@ -137,15 +137,15 @@ M.~Lemmens, ``Airborne {LiDAR} sensors,'' Feb. 2007. [Online]. Available:
 
 \bibitem{einhorn_cant_2010}
 E.~Einhorn, C.~Schröter, and H.~M. Gross, ``Can't take my eye off you:
-  Attention-driven monocular obstacle detection and 3d mapping,'' in
+  Attention-driven monocular obstacle detection and {3D} mapping,'' in
   \emph{Proceedings of the {IEEE}/{RSJ} International Conference on Intelligent
   Robots and Systems}, 2010, pp. 816--821.
 
 \bibitem{hashimoto_detection_1996}
 H.~Hashimoto, T.~Yamaura, and M.~Higashiguchi, ``Detection of obstacle from
   monocular vision based on histogram matching method,'' in \emph{Proceedings
-  of the {IEEE} {IECON} 22nd International Conference on Industrial
-  Electronics, Control, and Instrumentation}, vol.~2, 1996, pp. 1047--1051.
+  of the 22nd {IEEE} International Conference on Industrial Electronics,
+  Control, and Instrumentation}, vol.~2, 1996, pp. 1047--1051.
 
 \bibitem{yamaguchi_moving_2006}
 K.~Yamaguchi, T.~Kato, and Y.~Ninomiya, ``Moving obstacle detection using
@@ -155,7 +155,7 @@ K.~Yamaguchi, T.~Kato, and Y.~Ninomiya, ``Moving obstacle detection using
 \bibitem{maier_self-supervised_2011}
 D.~Maier, M.~Bennewitz, and C.~Stachniss, ``Self-supervised obstacle detection
   for humanoid navigation using monocular vision and sparse laser data,'' in
-  \emph{Proceedings fo the {IEEE} International Conference on Robotics and
+  \emph{Proceedings of the {IEEE} International Conference on Robotics and
   Automation}, 2011, pp. 1263--1269.
 
 \bibitem{kubota_global_2007}
@@ -203,9 +203,9 @@ J.~Heikkila and O.~Silven, ``A four-step camera calibration procedure with
   1106--1112.
 
 \bibitem{tsai_efficient_1986}
-R.~Tsai, ``An efficient and accurate camera calibration technique for 3d
+R.~Tsai, ``An efficient and accurate camera calibration technique for {3D}
   machine vision,'' in \emph{Proceedings of the {IEEE} Conference on Computer
-  Vision and Pattern Recognition}, Miami Beach, {FL}., 1986, pp. 364--374.
+  Vision and Pattern Recognition}, 1986, pp. 364--374.
 
 \bibitem{zhang_flexible_2000}
 Z.~Zhang, ``A flexible new technique for camera calibration,'' \emph{{IEEE}
@@ -217,17 +217,16 @@ R.~E. Kalman, ``A new approach to linear filtering and prediction problems,''
   \emph{Journal of Basic Engineering}, vol.~82, no.~1, pp. 35--45, Mar. 1960.
 
 \bibitem{sorenson_least-squares_1970}
-H.~Sorenson, ``Least-squares estimation: from gauss to kalman,'' \emph{{IEEE}
-  Spectrum}, vol.~7, no.~7, pp. 63--68, 1970.
+H.~Sorenson, ``Least-squares estimation: from {Gauss} to {Kalman},''
+  \emph{{IEEE} Spectrum}, vol.~7, no.~7, pp. 63--68, 1970.
 
 \bibitem{analytic_sciences_corporation_applied_1974}
 {Analytic Sciences Corporation}, \emph{Applied Optimal Estimation}.\hskip 1em
   plus 0.5em minus 0.4em\relax Cambridge, Mass: M.I.T. Press, 1974.
 
 \bibitem{grewal_kalman_1993}
-M.~S. Grewal, \emph{Kalman Filtering: Theory and Practice}, ser. Prentice-Hall
-  information and system sciences series.\hskip 1em plus 0.5em minus
-  0.4em\relax Englewood Cliffs, N.J: Prentice-Hall, 1993.
+M.~S. Grewal, \emph{Kalman Filtering: Theory and Practice}.\hskip 1em plus
+  0.5em minus 0.4em\relax Englewood Cliffs, N.J: Prentice-Hall, 1993.
 
 \bibitem{lewis_optimal_1986}
 F.~L. Lewis, \emph{Optimal Estimation: with an Introduction to Stochastic
@@ -235,19 +234,18 @@ F.~L. Lewis, \emph{Optimal Estimation: with an Introduction to Stochastic
   1986.
 
 \bibitem{brown_introduction_1993}
-R.~G. Brown, \emph{Introduction to Random Signals and Applied Kalman
+R.~G. Brown, \emph{Introduction to Random Signals and Applied {K}alman
   Filtering}, 2nd~ed.\hskip 1em plus 0.5em minus 0.4em\relax New York: John
   Wiley \& Sons, Inc., 1993.
 
 \bibitem{maybeck_stochastic_1979}
-P.~S. Maybeck, \emph{Stochastic Models, Estimation and Control}, ser.
-  Mathematics in science and engineering.\hskip 1em plus 0.5em minus
-  0.4em\relax New York: Academic Press, 1979, no. v.141.
+P.~S. Maybeck, \emph{Stochastic Models, Estimation and Control}.\hskip 1em plus
+  0.5em minus 0.4em\relax New York: Academic Press, 1979, no. v.141.
 
 \bibitem{durrant-whyte_simultaneous_2006}
 H.~Durrant-Whyte and T.~Bailey, ``Simultaneous localization and mapping: Part
-  i,'' \emph{{IEEE} Robotics Automation Magazine}, vol.~13, no.~2, pp. 99--110,
-  2006.
+  {I},'' \emph{{IEEE} Robotics Automation Magazine}, vol.~13, no.~2, pp.
+  99--110, 2006.
 
 \bibitem{bailey_simultaneous_2006}
 T.~Bailey and H.~Durrant-Whyte, ``Simultaneous localization and mapping
@@ -280,7 +278,7 @@ H.~Durrant-Whyte, D.~Rye, and E.~Nebot, ``\BIBforeignlanguage{en}{Localization
 M.~Csorba, J.~K. Uhlmann, and H.~F. Durrant-Whyte, ``New approach to
   simultaneous localization and dynamic map building,'' in \emph{Proceeding of
   the {SPIE} 2738, Navigation and Control Technologies for Unmanned Systems},
-  vol. 2738, Orlando, {FL}, 1996, pp. 26--36.
+  vol. 2738, 1996, pp. 26--36.
 
 \bibitem{csorba_simultaneous_1997}
 M.~Csorba, ``Simultaneous localisation and map building,'' Ph.D. dissertation,
@@ -318,17 +316,17 @@ U.~Frese, ``\BIBforeignlanguage{en}{A discussion of simultaneous localization
 \bibitem{castellanos_limits_2004}
 J.~A. Castellanos, J.~Neira, and J.~D. Tardós, ``Limits to the consistency of
   {EKF}-based {SLAM},'' in \emph{Proceedings of the 5th {IFAC} Symposium
-  Intelligent Autonomous Vehicles}, Lisbon, Portugal, 2004.
+  Intelligent Autonomous Vehicles}, 2004.
 
 \bibitem{huang_analysis_2008}
 G.~P. Huang, A.~Mourikis, and S.~Roumeliotis, ``Analysis and improvement of the
-  consistency of extended kalman filter based {SLAM},'' in \emph{Proceedings of
-  the {IEEE} International Conference on Robotics and Automation}, 2008, pp.
+  consistency of extended {Kalman} filter based {SLAM},'' in \emph{Proceedings
+  of the {IEEE} International Conference on Robotics and Automation}, 2008, pp.
   473--479.
 
 \bibitem{huang_convergence_2007}
 S.~Huang and G.~Dissanayake, ``Convergence and consistency analysis for
-  extended kalman filter based {SLAM},'' \emph{{IEEE} Transactions on
+  extended {Kalman} filter based {SLAM},'' \emph{{IEEE} Transactions on
   Robotics}, vol.~23, no.~5, pp. 1036--1049, 2007.
 
 \bibitem{civera_1-point_2009}
@@ -349,7 +347,7 @@ J.~Leonard and P.~Newman, ``Consistent, convergent, and constant-time {SLAM},''
 
 \bibitem{bosse_slam_2004}
 M.~Bosse, P.~Newman, J.~Leonard, and S.~Teller, ``{SLAM} in large-scale cyclic
-  environments using the atlas framework,'' \emph{International Journal of
+  environments using the {Atlas} framework,'' \emph{International Journal of
   Robotics Research}, pp. 1113--1139, 2004.
 
 \bibitem{bailey_mobile_2002}
@@ -405,19 +403,19 @@ J.~Shi and C.~Tomasi, ``Good features to track,'' in \emph{Proceedings of the
   Recognition}, 1994, pp. 593--600.
 
 \bibitem{bouguet_pyramidal_1999}
-J.~Y. Bouguet \emph{et~al.}, ``Pyramidal implementation of the lucas kanade
-  feature tracker, description of the algorithm,'' \emph{Intel Corporation,
+J.~Y. Bouguet, ``Pyramidal implementation of the {Lucas} {Kanade} feature
+  tracker, description of the algorithm,'' \emph{Intel Corporation,
   Microprocessor Research Labs, {OpenCV} Documents}, 1999.
 
 \bibitem{_world_????}
 \BIBentryALTinterwordspacing
-``World geodetic system - wikipedia, the free encyclopedia.'' [Online].
+``World geodetic system - {Wikipedia}, the free encyclopedia.'' [Online].
   Available: \url{https://en.wikipedia.org/wiki/World_Geodetic_System}
 \BIBentrySTDinterwordspacing
 
 \bibitem{_pyproj_????}
 \BIBentryALTinterwordspacing
-``pyproj - python interface to {PROJ}.4 library.'' [Online]. Available:
+``pyproj - {Python} interface to {PROJ}.4 library.'' [Online]. Available:
   \url{http://code.google.com/p/pyproj/}
 \BIBentrySTDinterwordspacing
 
@@ -429,7 +427,7 @@ J.~Y. Bouguet \emph{et~al.}, ``Pyramidal implementation of the lucas kanade
 
 \bibitem{_google_????}
 \BIBentryALTinterwordspacing
-``Google earth.'' [Online]. Available: \url{http://www.google.com/earth/}
+``Google {Earth}.'' [Online]. Available: \url{http://www.google.com/earth/}
 \BIBentrySTDinterwordspacing
 
 \end{thebibliography}

@@ -2,18 +2,18 @@
 \section{Equipment Setup and Flight Data Collection}
 % word checked.
 The biggest contribution of the project is that the proposed algorithm
-was tested and proven feasible with real flight data collected by
+was tested and proven feasible with real flight data collected by the
 author. The aerial video and navigation data were collected through a
 survey flight with the support of Sander Geophysics Ltd. A main
-purpose of the test flight is to obtain aerial video with the camera
+purpose of the test flight was to obtain aerial video with the camera
 close to the ground to mimic the scenario of a low flying UAV. This is
 difficult to achieve with any manned fixed wing aircraft since terrain
 following flight at low altitude is very dangerous. Therefore, a
 helicopter was used to conduct the survey flight to achieve the
 terrain following action. To get sensors close to the ground and to
-allow for flexible sensors mounting, a simulated unmanned aircraft
+allow for flexible sensor mounting, a simulated unmanned aircraft
 system (SUAS) was used to carry all sensors. The SUAS was towed by a
-helicopter via a tow rope of 33 meters long (Figure
+helicopter via a tow rope of 33 meters length (Figure
 \ref{fig:towedSUAS}). Yet, sufficient clearance must be established
 between the SUAS and the vegetation to prevent the SUAS from being
 caught by tree branches. As a result, the helicopter flew a planned
@@ -26,31 +26,32 @@ approximately 70 meters above ground.
 \includegraphics[width=6cm,keepaspectratio=true]{./Figures/SUAS_TAKEOFF3.jpg}
 \includegraphics[width=6cm,keepaspectratio=true]{./Figures/SUAS_TAKEOFF4.jpg}
 \includegraphics[width=6cm,keepaspectratio=true]{./Figures/towed_SUAS.jpg}
-\caption{Simulated UAS towed by helicopter}
+\caption{SUAS towed by a helicopter}
 \label{fig:towedSUAS}
 \end{figure}
 \FloatBarrier
 
-Sensors mounted on the SUAS included one wide angle CCD camera with
-6mm focal length lens capturing monocular image sequence at 30 fps, a
-pair of narrow angle CCD cameras for binocular images, one GPS
-antenna, and one flight control INS/GPS navigation unit Athena GS-111m
-\cite{_athena_????} (Figure \ref{fig:SUAS}) which captures vehicle
-velocity, acceleration, rotation, sea level altitude, etc. Analog
-video and navigation data were sent to the helicopter via three BNC
-cables and one data cable for recording. Installed in the helicopter
-were two SGL data acquisition systems CDAC. This system records video
-and navigation data from the SUAS, as well as data from sensors
-installed on the helicopter, including GPS, radar altimeter, laser
-altimeter, air pressure, temperature, humidity, etc. (figure
-\ref{fig:CDAC}). Videos from the three cameras were digitized to a
-resolution of 720 pixels by 480 pixels using an Parvus MPEG4 video
-encoder installed in CDAC. Video were time-stamped with GPS second on
-the image screen \ref{fig:video_snapshot} for post-flight
-synchronization with the navigation data. Because the test flight
-recorded data from all available sensors on board the SUAS and the
-helicopter, should any future research require more sensor data, these
-recordings would still be useful.
+Sensors mounted on the SUAS (Figure \ref{fig:SUAS}) included one wide
+angle CCD camera with 6mm focal length lens capturing monocular image
+sequences at 30 frames per second, a pair of narrow angle CCD cameras
+for binocular image sequences, a GPS antenna, a three-axes fluxgate
+sensor, and Athena GS-111m, a flight control INS/GPS navigation unit
+\cite{_athena_????} which captures vehicle velocity, acceleration,
+rotation, altitude. Analog video and navigation data were sent to the
+helicopter via three BNC cables and one data cable for recording.
+Installed in the helicopter were two SGL data acquisition systems,
+named CDAC. This system records video and navigation data from the
+SUAS, as well as data from sensors installed on the helicopter,
+including GPS, radar altimeter, laser altimeter, air pressure,
+temperature, humidity, etc. (Figure \ref{fig:CDAC}). Videos from the
+three cameras were digitized to a resolution of 720 pixels by 480
+pixels using three Parvus MPEG4 video encoders installed in the CDACs.
+Videos were time-stamped with GPS second on the image screen (Figure
+\ref{fig:video_snapshot}) for post-flight synchronization with the
+navigation data. Because the test flight recorded data from all
+available sensors on board the SUAS and the helicopter, these
+recordings would still be useful should any future research require
+more sensor data.
 
 \begin{figure}[h]
   \centering
@@ -93,10 +94,10 @@ number of environmental conditions, such as temperature, and humidity.
 To extract the camera parameters at a camera condition as close as
 possible to the one during test flight, camera calibration was
 performed right after the SUAS returned to the SGL hanger. A camera
-calibration was done by taking a video of a checker board pattern with
-various translation and rotation from the camera. A total of 20 views
+calibration was done by taking a video of a checkerboard pattern with
+various translations and rotations from the camera. A total of 20 views
 of the calibration target were chosen from the video, and fed to the
-calibration algorithm. A few examples are shown in figure
+calibration algorithm. A few examples are shown in Figure
 \ref{fig:camcal}.
 
 \begin{figure}[h]
@@ -111,7 +112,10 @@ calibration algorithm. A few examples are shown in figure
   \label{fig:camcal}
 \end{figure}
 
-The program ``calibration.exe'' was used to calibrate the camera. This program came with the OpenCV installation. The digitized images have a resolution of 720 pixels in width and 480 pixels in height. Table \ref{tab:camcalresult} below lists the calibration results.
+The program ``calibration.exe'' was used to calibrate the camera. This
+program came with the OpenCV installation. The digitized images have a
+resolution of 720 pixels in width and 480 pixels in height. Table
+\ref{tab:camcalresult} below lists the calibration results.
 
 \begin{table}[h]
 \caption{Camera calibration result}
@@ -136,15 +140,15 @@ $p_2$ & 8.40e-003 \\
 \section{Ground Truth Data Collection}
 The localization ground truth was obtained through the flight
 control unit GS-111m on board the SUAS. The unit recorded the SUAS
-position in GPS longitude and latitude coordinate. Orientation was
+position in GPS longitude and latitude coordinates. Orientation was
 obtained from the roll pitch and heading measurements. Roll and pitch
-accuracy has $0.1^\circ$ and $0.1^\circ$ in standard deviation.
+accuracy has $0.1^\circ$ and $0.1^\circ$ standard deviation.
 Heading accuracy can achieve $0.5^\circ$ \cite{_athena_????}.
 
-Landmark position ground truth came from digital elevation map (DEM)
-downloaded from CGIAR-CSI website \cite{_cgiar-csi_????}. The DEM
+Landmark position ground truth came from a digital elevation map (DEM)
+downloaded from the CGIAR-CSI website \cite{_cgiar-csi_????}. The DEM
 contains longitude, latitude and sea level elevation of the terrain
-with a resolution approximately 100 meters by 100 meters. 
+with a resolution of approximately 100 meters by 100 meters. 
 
 %consider adding the ground truth DEM figure here. 
 

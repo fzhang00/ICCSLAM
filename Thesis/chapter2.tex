@@ -1,10 +1,10 @@
-\chapter{Literatures Review}\label{ch:Review}
+\chapter{Literature Review}\label{ch:Review}
 
-\section{Sensor for Obstacle Detection}\label{sec:sensor}
+\section{Sensors for Obstacle Detection}\label{sec:sensor}
 
 \subsection{Overview}\label{sec:SensorOverview}
 % word checked
-Many sensors can be used for obstacle detection such as ultrasonic
+Many types of sensors can be used for obstacle detection such as ultrasonic
 sensor, laser range finder, sonar, image sensor, or 3D flash LIDAR
 \cite{de_angelis_low-cost_2007} \cite{alonge_novel_2009}
 \cite{harb_neural_2008} \cite{saad_robust_2011}
@@ -12,27 +12,27 @@ sensor, laser range finder, sonar, image sensor, or 3D flash LIDAR
 \cite{hanna_obstacle_2008} \cite{lu_distance_2010}
 \cite{civera_inverse_2008} \cite{jirawimut_visual_2003}
 \cite{amzajerdian_lidar_2011} \cite{nieuwenhuisen_obstacle_2014}. Laser
-range finder and ultrasonic sensors such as radar and sonar are
-capable of high accuracy range measurement up to centimeter level, but
+range finders and ultrasonic sensors such as radar and sonar are
+capable of high accuracy range measurement to centimeter level, but
 only provide point measurement at a given position and orientation. To
-acquire full 3D range map of a scene, 2D mechanical scanning are
+acquire a full 3D range map of a scene, 2D mechanical scanning is
 required, which limits the data acquisition rate of these devices.
-LIDAR operates in the same manner as laser range finder, but with the
+LIDAR operates in the same manner as a laser range finder, but with the
 scanning mechanism built in. Although LIDAR is becoming more and more
-popular on land robot, it is usually expensive, heavy,
-\cite{subharsanan_low_2013} and has high power requirement when long
+popular on land robots, it is usually expensive, heavy
+\cite{subharsanan_low_2013}, and has a high power requirement when long
 range measurement is required \cite{lemmens_airborne_2007}. These
-characters make it unsuitable for a mid-size economic UAV. Sonar is
-usually used in indoor or under water applications, and has wide beam
+characteristics make it unsuitable for a mid-size economical UAV. Sonar is
+usually used in indoor or underwater applications, and has a wide beam
 profile which makes it difficult to identify the origin of return
-signal and results in a low resolution range map. 3D flash LIDAR is
-capable of acquire 3D range measurement simultaneously by illuminating
+signals and results in a low resolution range map. 3D flash LIDAR is
+capable of acquiring 3D range measurements simultaneously by illuminating
 the entire field of view (FOV) of the camera with a single laser, and
 capturing the reflected laser with a 2D imaging sensor
 \cite{amzajerdian_lidar_2011}. However, its high cost has limited its
-use in commercial application. In recent years, many researchers use
-image sensor as a passive range sensor for its low weight, and low
-cost. With the advances in computer vision technology, image sensors
+use in commercial applications. In recent years, many researchers have used
+image sensors as passive range sensors due to their low weight, and low
+cost. With advances in computer vision technology, image sensors
 have been successfully used for range mapping and obstacle detection
 in a number of platforms \cite{einhorn_cant_2010}
 \cite{hashimoto_detection_1996} \cite{yamaguchi_moving_2006}
@@ -51,31 +51,31 @@ The principle of range measurement for image sensors is through
 triangulating a common scene point in two or more images captured.
 There are two types of configuration: monocular, and binocular.
 
-For binocular camera setup, two cameras are placed apart from each
+For a binocular camera setup, two cameras are placed apart from each
 other with their relative geometry (baseline separation and optical
 axis orientation) fixed and known. The same scene point must be
 captured by both cameras simultaneously. When the position of a
 landmark can be accurately found in both images, its disparity is
-defined by the difference in coordinate of the landmark in left and
-right images. Then, the coordinate of the landmark in world can be
+defined by the difference in coordinates of the landmark in left and
+right images. Then, the coordinates of the landmark in world can be
 calculated by using disparity, and the relative geometry of the
-cameras. Because binocular camera configuration acquires two images
+cameras. Because a binocular camera configuration acquires two images
 simultaneously, landmark distance can be obtained at time $0$. The
 challenge in binocular range sensing is the correspondence between the
 two images, i.e., finding the same scene point in left and right
 images. In addition, because of the limited separation between the
-camera, and vibration noise caused by vehicle motion, binocular range
-sensing are usually applied in short to medium range measurement.
+cameras, and vibration noise caused by vehicle motion, binocular range
+sensing is usually applied in short to medium range measurement.
 
-For monocular camera setup, only one camera is used with an odometry
-sensors providing camera displacement measurement between frames. Then
-similar principle applies to triangulate the common landmark in two
-consecutive frames to measure the distance. If camera is facing the
+For a monocular camera setup, only one camera is used with an odometry
+sensor providing camera displacement measurement between frames. Then
+a similar principle is applied to triangulate the common landmark in two
+consecutive frames to measure the distance. If the camera is facing the
 direction of travel, data association is less difficult as image
-difference from frame to frame is usually small. Secondly, the
+differences from frame to frame are usually small. Secondly, the
 baseline separation can be selected according to the targeted object
-distance by processing every frame, every other frames, or every n
-frames. This flexibility allows monocular configuration to be
+distance by processing every frame, every other frame, or every n
+frames. This flexibility allows a monocular configuration to be
 used for longer range measurement. On the other hand, since monocular
 camera captures 1 frame at a time, the earliest range measurement is
 not available until two image frames are captured.
@@ -83,8 +83,8 @@ not available until two image frames are captured.
 \subsection{Camera Calibration}
 
 % word checked
-Camera model relates measurements on image plane to measurements of
-3D world. Camera calibration is the process of estimating the camera
+The camera model relates measurements on the image plane to measurements of
+the 3D world. Camera calibration is the process of estimating the camera
 model, which includes projection geometry of a camera and distortion
 model of the lens. These models define the \textit{intrinsic
   parameters} of a camera.
@@ -98,9 +98,9 @@ model of the lens. These models define the \textit{intrinsic
 \label{figch2:cammodel}
 \end{figure}
 
-For a 3D point $P=(X, Y, Z)$ and the corresponding point
-$p=(x, y)$ on the image plane (figure
-\ref{figch2:cammodel}), they are related by equation \ref{eq:cam_projection}
+A 3D point $\boldsymbol{P}=(X, Y, Z)$ and the corresponding point
+$\boldsymbol{p}=(x, y)$ on the image plane (Figure
+\ref{figch2:cammodel}), are related by equation \ref{eq:cam_projection}
 \cite{bradski_learning_2008}
 
 \begin{equation}
@@ -111,10 +111,10 @@ y=f_y\left(\frac{Y}{Z}\right)+c_y
 \end{matrix}
 \end{equation}
 
-\noindent where $(c_x, c_y)$ is the pixel coordinate at which optical
-axis intersects image plane; $f_x$ and $f_y$ (in pixel) are the product
-of focal length $f$ (in millimeter) and the world-to-image scaling
-factor $s_x$ and $s_y$ (in pixel/millimeter) for X and Y axis. The
+\noindent where $(c_x, c_y)$ is the pixel coordinate at which the optical
+axis intersects the image plane; $f_x$ and $f_y$ (in pixels) are the product
+of focal length $f$ (in millimeters) and the world-to-image scaling
+factor $s_x$ and $s_y$ (in pixels/millimeter) for the X and Y axes. The
 parameters $c_x$, $c_y$, $f_x$, $f_y$ define the camera intrinsic
 matrix \cite{bradski_learning_2008} \cite{heikkila_four-step_1997}.
 
@@ -130,7 +130,7 @@ f_x & 0 & c_x \\
 There are two main contributors to lens distortion: radial distortion
 and tangential distortion. Radial distortion arises as a result of the
 shape of lens. It causes noticeable distortion to the pixels close to
-the edge of the image, resulting in ``fish-eye'' effect. The radial
+the edge of the image, resulting in a ``fish-eye'' effect. The radial
 distortion is zero at the center of the image, and increases with the
 distance to the optical center. It is characterized by the first few
 terms of a Taylor series expansion \cite{bradski_learning_2008}
@@ -138,9 +138,11 @@ terms of a Taylor series expansion \cite{bradski_learning_2008}
 $$ x_{corrected} = x(1+k_1r^2+k_2r^4+k_3r^6)$$
 $$ y_{corrected} = y(1+k_1r^2+k_2r^4+k_3r^6)$$
 
-\noindent Tangential distortion arises from the misalignment between
-the image sensor and the lens. It is minimally characterized by two
-additional parameters $p_1$ and $p_2$ \cite{bradski_learning_2008}
+\noindent where $r$ is the distance of the landmark from the optical
+center on the image plane. Tangential distortion arises from
+misalignment between the image sensor and the lens. It is minimally
+characterized by two additional parameters $p_1$ and $p_2$
+\cite{bradski_learning_2008}
 
 $$x_{corrected} = x+[2p_1y+p_2(r^2+2x^2)]$$
 $$y_{corrected} = y+[p_1(r^2+2y^2)+2p_2x]$$
@@ -148,21 +150,22 @@ $$y_{corrected} = y+[p_1(r^2+2y^2)+2p_2x]$$
 \subsubsection{Camera Calibration Algorithm}
 % word checked
 Camera calibration is a process of finding the intrinsic parameters of
-a camera. There are two popular camera calibration methods. Tsai's method
-\cite{tsai_efficient_1986} requires at least 5 feature points in 3D
-space with known coordinates, and their corresponding coordinates on
-the image plane. With Tsai's method, only one snapshot of the
-calibration target is needed. The disadvantage of this method is that
-the 3D positions of the feature points are difficult to obtain. Zhang
-\cite{zhang_flexible_2000} proposed a more flexible method that
-requires at least two different views of a coplanar target, which is
-usually a black and white checkerboard image. However, to get more
-reliable result, 10 views of the checkerboard with different
-translation and rotation from the camera is desired. The target's
-coordinates in world frame need not to be known in advance. Instead, Zhang's
-algorithm only requires the size of the square on the checkerboard.
-Zhang's method was implemented in OpenCV \cite{bradski_learning_2008},
-and was used to calibrate the camera for this work.
+a camera. There are two popular camera calibration methods. Tsai's
+method \cite{tsai_efficient_1986} requires at least 5 feature points
+in 3D space with known coordinates, and their corresponding
+coordinates on the image plane. With Tsai's method, only one snapshot
+of the calibration target is needed. The disadvantage of this method
+is that the 3D positions of the feature points are difficult to
+obtain. Zhang \cite{zhang_flexible_2000} proposed a more flexible
+method that requires at least two different views of a coplanar
+target, which is usually a black and white checkerboard image.
+However, to get a more reliable result, 10 views of the checkerboard
+with different translations and rotations from the camera are desired.
+The target's coordinates in the world frame need not be known in
+advance. Instead, Zhang's algorithm only requires the size of the
+square on the checkerboard. Zhang's method was implemented in OpenCV
+\cite{bradski_learning_2008}, and was used to calibrate the camera for
+this work.
 
 % \section{Computer Vision Algorithms for Feature Detection and
 %   Tracking}
@@ -208,9 +211,9 @@ and was used to calibrate the camera for this work.
 \label{sec:SLAM}
 % word checked
 An essential aspect of autonomy for a mobile robot is the capability
-of obtaining a map and determining its location within. This problem
-has been referred to as the simultaneous localization and mapping
-(SLAM). There were considerably amount of researches done on the SLAM
+of obtaining a map and determining its location within it. This problem
+has been referred to as simultaneous localization and mapping
+(SLAM). There has been a considerable amount of research done on the SLAM
 problem in the last two decades, and the theoretical SLAM can now be
 considered solved. The standard structure of a SLAM problem is a
 Bayesian form, and explains the evolution of the SLAM process. The most
@@ -224,16 +227,16 @@ Kalman filter (EKF).
 The Kalman filter \cite{kalman_new_1960}, published by R. E. Kalman in
 1960, is a very powerful recursive data processing algorithm for
 dynamic stochastic processes. The filter is extensively used in
-control and navigation application for its ability to estimate past,
-present and even future state. It is an attractive candidate for data
-fusion framework as it can process all available measurements
+control and navigation applications for its ability to estimate past,
+present and even future states. It is an attractive candidate for a
+data fusion framework as it can process all available measurements
 including previous knowledge of the process, regardless of their
-precision, to estimate the current value of the state variables.
-Given a dynamic process that satisfies the assumptions that Kalman
+precision, to estimate the current value of the state variables. Given
+a dynamic process that satisfies the assumptions that the Kalman
 filter is based on, the filter is the optimal algorithm in minimizing
-the mean of squared error of the state variables. This section briefly
-summarized the assumptions and formulations of Kalman filter that's
-described in detail in \cite{sorenson_least-squares_1970}
+the mean squared error of the state variables. This section briefly
+summarizes the assumptions and formulations of the Kalman filter which
+is described in detail in \cite{sorenson_least-squares_1970}
 \cite{analytic_sciences_corporation_applied_1974}
 \cite{grewal_kalman_1993} \cite{lewis_optimal_1986}
 \cite{brown_introduction_1993}. A more intuitive introduction can be
@@ -242,88 +245,99 @@ found in chapter 1 of \cite{maybeck_stochastic_1979}.
 %reference in Welch and bishop
 % intro to Kalman filter.
 
-Kalman filter has three assumptions. 1) \textit{The system model is
+A Kalman filter has three assumptions. 1) \textit{The system model is
   linear}. The linearity is desired in that the system model is more
 easily manipulated with engineering tool. When nonlinearity exists,
 the typical approach is to linearize the system model at some nominal
 points. 2) \textit{The noise embedded in system control and
   measurements is white}. This assumption implies that the noise value
-is not correlated in time, and has equal power in all frequency. 3)
+is not correlated in time, and has equal power at all frequencies. 3)
 \textit{The probability density function (PDF) of system and
   measurement noise is Gaussian}. A Gaussian distribution is fully
 represented by the first and second order statistic (mean and
-variance) of a process. Most other PDFs require endless number of
-orders of statistic to describe the shape fully. Hence, when the PDF
+variance) of a process. Most other PDFs require many higher 
+order of statistics to describe the shape fully. Hence, when the PDF
 of a noise process is non-Gaussian, the Kalman filter that propagates
-the first and second order statistic only includes partial information
+the first and second order statistics only includes partial information
 of the PDF.
 
 \subsubsection{Kalman Filter Models}
 % word checked
 
-The Kalman filter requires two models: process model and measurement
+The Kalman filter requires two models: a process model and a measurement
 model. The process model defines a discrete-time controlled process
 using a linear stochastic difference equation.
 \begin{equation}
-\text{Process Model: }x_k = Ax_{k-1}+B\mu_{k-1}+w_{k-1}
+\text{Process Model: }
+\boldsymbol{x_k} = \boldsymbol{Ax_{k-1}}+
+\boldsymbol{B}\boldsymbol{\mu_{k-1}}+\boldsymbol{w_{k-1}}
 \end{equation}
-\noindent The $n\times n$ matrix $A$ relates the state variables
-$x_{k-1}$ in previous time step $k-1$ to the state variable $x_{k}$ in
-the current time step $k$. The matrix $B$ relates the optional control
-input $\mu$ to the state variables $x$. Given measurement vector $z_k$
-of size $1 \times m$, the measurement model relates the state
-variables to the measurements by matrix H of size $n \times m$. 
+\noindent The $n\times n$ matrix $\boldsymbol{A}$ relates the state
+variables $\boldsymbol{x_{k-1}}$ in the previous time step $k-1$ to the
+state variable $\boldsymbol{x_{k}}$ in the current time step $k$. The
+matrix $\boldsymbol{B}$ relates the optional control input $\boldsymbol{\mu}$
+to the state variables $\boldsymbol{x}$. Given measurement vector
+$\boldsymbol{z_k}$ of size $1 \times m$, the measurement model relates the
+state variables to the measurements by matrix H of size $n \times m$.
 \begin{equation}
-\text{Measurement Model: }z_k = Hx_k+v_k
+\text{Measurement Model: }\boldsymbol{z_k} = \boldsymbol{Hx_k}+\boldsymbol{v_k}
 \end{equation}
-The random variables $w$ and $v$ represent the uncertainty or noise of
-the process model, and the measurement. $w$ and $v$ are assumed to be
-unrelated to each other, and have Gaussian distribution with covariance
-$Q$ and $R$.
+The random variables $\boldsymbol{w}$ and $\boldsymbol{v}$ represent the
+uncertainty or noise of the process model, and the measurement.
+$\boldsymbol{w}$ and $\boldsymbol{v}$ are assumed to be unrelated to each
+other, and have Gaussian distribution with covariance $\boldsymbol{Q}$ and $\boldsymbol{R}$.
 
 \subsubsection{Kalman Filter Algorithm}
 % word checked
 \begin{figure}[h]
 \centering
 \includegraphics[width=10cm, keepaspectratio=true]{./Figures/KalmanOperation.jpg}
-\caption{Kalman operation flow diagram}
+\caption{Kalman filter operation flow diagram}
 \label{figch2:1}
 \end{figure}
 
 The Kalman filter operates in prediction and correction cycles after
-initialization (figure \ref{figch2:1}). The state vector
-$\hat{x}^-_k$, $\hat{x}^+_k$ contain a priori and a posteriori
-estimates of the variables of interest at time step k. $P^-_k$ and
-$P^+_k$ are the a priori and a posteriori covariance matrices of the
-state vector. The equations for prediction and correction cycles are
-listed in table \ref{tab:KF}. In prediction, an estimate of the state
-vector is made based on the known process model. Since there are
-always unknown factors not being fully described by the process model,
-the errors almost always increase in the prediction. During
-correction, a number of steps are carried out to correct the a priori
-estimate. First, the predicted measurements $H\hat{x}^-_k$, calculated
-through the measurement model, are compared to the new measurements
-$z_k$. The difference $z_k - H\hat{x}^-_k$ is called measurement
+initialization (Figure \ref{figch2:1}). The state vector
+$\boldsymbol{\hat{x}^-_k}$, $\boldsymbol{\hat{x}^+_k}$ contain a
+priori and a posteriori estimates of the variables of interest at time
+step k. $\boldsymbol{P^-_k}$ and $\boldsymbol{P^+_k}$ are the a priori
+and a posteriori covariance matrices of the state vector. The
+equations for prediction and correction cycles are listed in Table
+\ref{tab:KF}. In prediction, an estimate of the state vector is made
+based on the known process model. Since there are always unknown
+factors not being fully described by the process model, the errors
+almost always increase in the prediction. During correction, a number
+of steps are carried out to correct the a priori estimate. First, the
+predicted measurements $\boldsymbol{H\hat{x}^-_k}$, calculated through
+the measurement model, are compared to the new measurements
+$\boldsymbol{z_k}$. The difference
+$\boldsymbol{z_k}-\boldsymbol{H\hat{x}^-_k}$ is called measurement
 innovation, or residual. Next, the residuals are weighted by the
-Kalman gain $K$, and are added to $\hat{x}^-_k$ as correction. The
-Kalman gain is formulated so that it minimizes the a posteriori error
-covariance matrix $P^+_k$.
+Kalman gain $\boldsymbol{K}$, and are added to
+$\boldsymbol{\hat{x}^-_k}$ as correction. The Kalman gain is
+formulated so that it minimizes the a posteriori error covariance
+matrix $\boldsymbol{P^+_k}$.
 
 \begin{table}
-\caption{Kalman Filter operation equations}
+\caption{Kalman filter operation equations}
 \label{tab:KF}
 \centering
 \begin{tabular}{|l|c r|}
-\hline
-\multirow{2}{*}{Prediction} 
-& $\hat{x}^-_k=A\hat{x}^+_{k-1}+B\mu_{k-1}$ & \stepcounter{equation}\thetag{\theequation}\\
-& $P^-_k = AP^+_{k-1}A^T+Q$ & \stepcounter{equation}\thetag{\theequation}\\
-\hline
-\multirow{3}{*}{Correction}
-& $K_k=P^-_kH^T(HP^-_kH^T+R)^{-1}$  & \stepcounter{equation}\thetag{\theequation}\\
-& $\hat{x}^+_k = \hat{x}^-_k+K_k(z_k-H\hat{x}^-_k)$ & \stepcounter{equation}\thetag{\theequation}\\
-& $P^+_k = (I-K_kH)P^-_k$ & \stepcounter{equation}\thetag{\theequation}\\
-\hline
+  \hline
+  \multirow{2}{*}{Prediction} 
+  & $\boldsymbol{\hat{x}^-_k}=\boldsymbol{A\hat{x}^+_{k-1}}+\boldsymbol{B\mu_{k-1}}$ 
+  & \stepcounter{equation}\thetag{\theequation}\\
+  & $\boldsymbol{P^-_k} = \boldsymbol{AP^+_{k-1}A^T}+\boldsymbol{Q}$ 
+  & \stepcounter{equation}\thetag{\theequation}\\
+  \hline
+  \multirow{3}{*}{Correction}
+  & $\boldsymbol{K_k}=\boldsymbol{P^-_kH^T}(\boldsymbol{HP^-_kH^T}+\boldsymbol{R})^{-1}$  
+  & \stepcounter{equation}\thetag{\theequation}\\
+  & $\boldsymbol{\hat{x}^+_k}=\boldsymbol{\hat{x}^-_k}+\boldsymbol{K_k}(\boldsymbol{z_k}-\boldsymbol{H\hat{x}^-_k})$ 
+  & \stepcounter{equation}\thetag{\theequation}\\
+  & $\boldsymbol{P^+_k}=(\boldsymbol{I}-\boldsymbol{K_kH})\boldsymbol{P^-_k}$ 
+  & \stepcounter{equation}\thetag{\theequation}\\
+  \hline
 \end{tabular}
 \end{table}
 \FloatBarrier
@@ -333,20 +347,20 @@ covariance matrix $P^+_k$.
 When a discrete-time controlled process, or its relationship with the
 measurements is non-linear, a Kalman filter must be linearized about
 the estimated trajectory. The filter is referred to as an extended
-Kalman filter or EKF. A process with state vector $x$ and measurement
-$z$ that is governed by non-linear stochastic difference equation has
-process and measurement model
+Kalman filter or EKF. A process with state vector $\boldsymbol{x}$ and
+measurement $\boldsymbol{z}$ that is governed by a non-linear
+stochastic difference equation has process and measurement model
 
 \begin{equation}
-x_k=f(x_{k-1}, u_{k-1}, w_{k-1}),
+\boldsymbol{x_k}=f(\boldsymbol{x_{k-1}}, \boldsymbol{\mu_{k-1}}, \boldsymbol{w_{k-1}}),
 \end{equation}
 \begin{equation}
-z_k=h(x_k, v_k),
+\boldsymbol{z_k}=h(\boldsymbol{x_k}, \boldsymbol{v_k}),
 \end{equation}
 
-\noindent where the random variables $w_k$ and $v_k$ represent the
-process and measurement noise with variance $Q$ and $R$. The extended
-Kalman filter operation equations are given in table \ref{tab:EKF},
+\noindent where the random variables $\boldsymbol{w_k}$ and $\boldsymbol{v_k}$ represent the
+process and measurement noise with covariance $\boldsymbol{Q}$ and $\boldsymbol{R}$. The extended
+Kalman filter operation equations are given in Table \ref{tab:EKF},
 
 \begin{table}[H]
 \caption{Extended Kalman filter operation equations}
@@ -355,50 +369,55 @@ Kalman filter operation equations are given in table \ref{tab:EKF},
 \begin{tabular}{|l|c r|}
 \hline
 \multirow{2}{*}{Prediction} 
-& $\hat{x}^-_k=f(\hat{x}^+_{k-1},\mu_{k-1},0)$ & \stepcounter{equation}\thetag{\theequation}\\
-& $P^-_k = A_kP^+_{k-1}A_k^T+W_kQ_{k-1}W_k^T$ & \stepcounter{equation}\thetag{\theequation}\\
+& $\boldsymbol{\hat{x}}^-_k=f(\boldsymbol{\hat{x}^+_{k-1}},\boldsymbol{\mu_{k-1}},\boldsymbol{0})$ 
+& \stepcounter{equation}\thetag{\theequation}\\
+& $\boldsymbol{P^-_k} = \boldsymbol{A_kP^+_{k-1}A_k^T}+\boldsymbol{W_kQ_{k-1}W_k^T}$ & \stepcounter{equation}\thetag{\theequation}\\
 \hline
 \multirow{3}{*}{Correction}
-& $K_k=P^-_kH_k^T(H_kP^-_kH_k^T+V_kR_kV_k^T)^{-1}$  & \stepcounter{equation}\thetag{\theequation}\\
-& $\hat{x}^+_k = \hat{x}^-_k+K_k(z_k-h(\hat{x}^-_k,0))$ & \stepcounter{equation}\thetag{\theequation}\\
-& $P^+_k = (I-K_kH)P^-_k$ & \stepcounter{equation}\thetag{\theequation}\\
+& $\boldsymbol{K_k}=\boldsymbol{P^-_kH_k^T}(\boldsymbol{H_kP^-_kH_k^T}+\boldsymbol{V_kR_kV_k^T})^{-1}$  
+& \stepcounter{equation}\thetag{\theequation}\\
+& $\boldsymbol{\hat{x}^+_k}=\boldsymbol{\hat{x}^-_k}+\boldsymbol{K_k}(\boldsymbol{z_k}-h(\boldsymbol{\hat{x}^-_k},\boldsymbol{0}))$ 
+& \stepcounter{equation}\thetag{\theequation}\\
+& $\boldsymbol{P^+_k}=(\boldsymbol{I}-\boldsymbol{K_kH})\boldsymbol{P^-_k}$ 
+& \stepcounter{equation}\thetag{\theequation}\\
 \hline
 \end{tabular}
 \end{table}
 \FloatBarrier
 
-\noindent where (subscript $k$ omitted)
+\noindent where (subscript $k$ is omitted)
 \begin{itemize}
-  \item $A$ is the Jacobian matrix of partial derivatives of $f$ with
-  respect to $x$, $$A_{[i,j]}= \frac{\partial f_i(\hat{x}_{k-1}^+,
-    \mu_{k-1}, 0)}{\partial x_j}$$
-  \item $W$ is the Jacobian matrix of partial derivatives of $f$ with
-  respect to $w$, $$W_{[i,j]}= \frac{\partial f_i(\hat{x}_{k-1}^+,
-    \mu_{k-1}, 0)}{\partial w_j}$$
-  \item $H$ is the Jacobian matrix of partial derivatives of $h$ with
-  respect to $x$, $$H_{[i,j]}= \frac{\partial h_i(\hat{x}_k^-,
+  \item $\boldsymbol{A}$ is the Jacobian matrix of partial derivatives of $f$ with
+  respect to $\boldsymbol{x}$, $$A_{[i,j]}= \frac{\partial f_i(\boldsymbol{\hat{x}_{k-1}^+},
+    \boldsymbol{\mu_{k-1}}, 0)}{\partial x_j}$$
+  \item $\boldsymbol{W}$ is the Jacobian matrix of partial derivatives of $f$ with
+  respect to $\boldsymbol{w}$, $$W_{[i,j]}= \frac{\partial f_i(\boldsymbol{\hat{x}_{k-1}^+},
+    \boldsymbol{\mu_{k-1}}, 0)}{\partial w_j}$$
+  \item $\boldsymbol{H}$ is the Jacobian matrix of partial derivatives of $h$ with
+  respect to $\boldsymbol{x}$, $$H_{[i,j]}= \frac{\partial h_i(\boldsymbol{\hat{x}_k^-},
     0)}{\partial x_j}$$
-  \item $V$ is the Jacobian matrix of partial derivatives of $h$ with
-  respect to $v$, $$V_{[i,j]}= \frac{\partial
-    h_i(\hat{x}_k^-,0)}{\partial v_j}$$
+  \item $\boldsymbol{V}$ is the Jacobian matrix of partial derivatives of $h$ with
+  respect to $\boldsymbol{v}$, $$V_{[i,j]}= \frac{\partial
+    h_i(\boldsymbol{\hat{x}_k^-},0)}{\partial v_j}$$
 \end{itemize}
 
-\noindent Note that when $w$ and $v$ directly describe the noise of
-state vector and measurement, the table \ref{tab:EKF} is the same as
-table \ref{tab:KF}.
+\noindent Note that when $\boldsymbol{w}$ and $\boldsymbol{v}$ directly describe the noise of
+state vector and measurement, the Table \ref{tab:EKF} is the same as
+Table \ref{tab:KF}.
 
 \subsubsection{Tuning}
 % word checked
-The tuning of a Kalman filter can be achieved by adjusting noise covariance
-matrix $Q$ and $R$. The measurement noise covariance $R$ is usually
-easy to estimate, i.e., by taking some offline measurements to compute
-the variance. On the other hand, process noise covariance $Q$ is more
-difficult. One common way is to inject enough uncertainty into the
-process noise, and rely on reliable measurements.
+The tuning of a Kalman filter can be achieved by adjusting the noise
+covariance matrices $\boldsymbol{Q}$ and $\boldsymbol{R}$. The
+measurement noise covariance $\boldsymbol{R}$ is usually easy to
+estimate, i.e., by taking some offline measurements to compute the
+covariance. On the other hand, process noise covariance
+$\boldsymbol{Q}$ is more difficult. One common way is to inject enough
+uncertainty into the process noise, and rely on reliable measurements.
  
 \subsection{SLAM with Extended Kalman Filter}
 % word checked
-The structure of SLAM problem has evolved to a standard
+The structure of the SLAM problem has evolved to a standard
 Bayesian form. The EKF implementation of a SLAM problem is reviewed in
 this section. A more complete tutorial to the SLAM problem is given in
 \cite{durrant-whyte_simultaneous_2006}
@@ -406,47 +425,47 @@ this section. A more complete tutorial to the SLAM problem is given in
 
 \subsubsection{General EKF Model for SLAM}
 % word checked
-Previous researches showed that there is a high degree of correlation
+Previous research showed that there is a high degree of correlation
 between the estimates of the landmarks
 \cite{smith_representation_1986} \cite{durrant-whyte_uncertain_1988}.
 This correlation exists because of the common error in the estimated
 vehicle poses \cite{leonard_simultaneous_1991}. The implication of
 these works is that a consistent full solution to the SLAM problem
-requires a joint state composed of the vehicle poses and all landmarks
+requires a joint state composed of the vehicle poses and all landmark
 positions \cite{durrant-whyte_simultaneous_2006}. When the vehicle
-poses and landmarks positions are formulated as one single estimation
+poses and landmark positions are formulated as one single estimation
 problem, the result is convergent. The correlation between landmarks
 plays an important role in the quality of the solution. The more the
-correlation grows, the better the solution becomes.
+correlation grows, the better the solution becomes
 \cite{durrant-whyte_localization_1996} \cite{csorba_new_1996}
-\cite{csorba_simultaneous_1997} \cite{dissanayake_solution_2001}
+\cite{csorba_simultaneous_1997} \cite{dissanayake_solution_2001}.
 
 To formulate a SLAM problem, the following variables are defined at a given time step $k$
 \begin{itemize}
-  \item $\mathbf{x_k}$: a vector that describes the vehicle position and
+  \item $\boldsymbol{x_k}$: a vector that describes the vehicle position and
 orientation.
-  \item $\mathbf{u_k}$: the control vector applied at time $k-1$ to drive the
-vehicle to $\mathbf{x_k}$ at time step k
-  \item $\mathbf{p_i}$: a vector that describes the location of the $i^{th}$
+  \item $\boldsymbol{u_k}$: the control vector applied at time $k-1$ to drive the
+vehicle to $\boldsymbol{x_k}$ at time step k
+  \item $\boldsymbol{p_i}$: a vector that describes the location of the $i^{th}$
 landmark. All landmarks locations are assumed to be time invariant.
-  \item $\mathbf{z_{i,k}}$: observation of the location of the $i^{th}$
+  \item $\boldsymbol{z_{i,k}}$: observation of the location of the $i^{th}$
 landmark taken from the vehicle's location at time step $k$
 \end{itemize}
 
 \noindent A complete state vector contains 
 
-$$\begin{bmatrix}\hat{\mathbf{x}}_k \\ \hat{\mathbf{p}}_k \end{bmatrix}$$ 
+$$\begin{bmatrix}\boldsymbol{\hat{x}_k} \\ \boldsymbol{\hat{p}_k} \end{bmatrix}$$ 
 
 \noindent and the state covariance matrix contains
 
 $$\begin{bmatrix}
-\mathbf{P_{xx}} & \mathbf{P_{xp}} \\
-\mathbf{P_{px}} & \mathbf{P_{pp}} 
+\boldsymbol{P_{xx}} & \boldsymbol{P_{xp}} \\
+\boldsymbol{P_{px}} & \boldsymbol{P_{pp}} 
 \end{bmatrix} $$
 
 The prediction and correction cycles can then be carried out following
 the standard EKF algorithm. The landmarks are generally not updated at
-the prediction (i.e. only $\mathbf{x_k}$ and $\mathbf{P_{xx}}$ are
+the prediction (i.e. only $\boldsymbol{x_k}$ and $\boldsymbol{P_{xx}}$ are
 updated) unless they are moving.
 
 \subsubsection{Properties of SLAM}
@@ -462,9 +481,9 @@ Dissanayake \cite{dissanayake_solution_2001} reached three important convergence
 
 These results show that a complete knowledge of the cross-correlation
 between landmark estimates is critical in maintaining the structure of
-a SLAM problem. The errors in estimates of landmarks becomes more and
+a SLAM problem. The errors in the estimates of landmarks become more and
 more correlated as the vehicle ventures through the unknown
-environment. The error eventually become fully correlated which means
+environment. The errors eventually become fully correlated which means
 that given the location of one landmark, the location of any other
 landmark can be determined with absolute certainty. As the map
 converges, the errors in the estimates of landmarks reduce to a lower
@@ -474,23 +493,23 @@ observation was made.
 The results above only refer to the evolution of covariance matrices
 computed by a linear model. In reality, most SLAM problems are nonlinear, and
 the computed covariance does not match the true estimation error. This
-leads to SLAM consistency issue.
+leads to a SLAM consistency issue.
 
 \subsubsection{Linearization Error and Consistency}
 % word checked
-Many researchers reported filter divergence due to
-linearization error \cite{martinelli_results_2005},
-\cite{julier_counter_2001}, \cite{bailey_consistency_2006},
-\cite{frese_discussion_2006}, \cite{castellanos_limits_2004}. As
-defined in \cite{huang_analysis_2008}, a state estimator is consistent
-if the estimation errors (i) are zero-mean, and (ii) have covariance
-matrix smaller or equal to the one calculated by the filter. When
-covariance reduces to a value smaller than the actual error, over
-optimistic estimation occurs and the filter can no longer 
-update the estimates effectively.
+Many researchers reported filter divergence due to linearization
+errors \cite{martinelli_results_2005} \cite{julier_counter_2001}
+\cite{bailey_consistency_2006} \cite{frese_discussion_2006}
+\cite{castellanos_limits_2004}. As defined in
+\cite{huang_analysis_2008}, a state estimator is consistent if the
+estimation errors (i) are zero-mean, and (ii) have covariance matrix
+smaller or equal to the one calculated by the filter. When covariance
+reduces to a value smaller than the actual error, over-optimistic
+estimation occurs and the filter can no longer update the estimates
+effectively.
 
-Huang investigated on properties and consistency of nonlinear
-two-dimensional EKF SLAM problem, derived and proved a number of
+Huang investigated the properties and consistency of the nonlinear
+two-dimensional EKF SLAM problem. He derived and proved a number of
 theorems applicable to EKF SLAM. The conclusions are
 \cite{huang_convergence_2007}: \textit{
 \begin{itemize}
@@ -514,60 +533,62 @@ theorems applicable to EKF SLAM. The conclusions are
 
 \subsection{SLAM for Building Large Scale Maps}
 % word checked
-The consistency issue of EKF SLAM limits its application in mapping
+The consistency issue of EKF SLAM limits its application in mapping a
 large area. In response, a number of methods were proposed.
 
 \subsubsection{Robot Centric Coordinate System}
 Robot-centric mapping was proposed by Castellanos et al.
 \cite{castellanos_limits_2004} and was adopted in
-\cite{civera_1-point_2009} to create large scale map on land. This
+\cite{civera_1-point_2009} to create a large scale map on land. This
 approach uses a reference frame attached to the robot as the base
 frame. All geometric measurements and estimations were referred to the
-robot frame. This method was shown to improve the consistency of EKF
-based solution to SLAM, but using local map joining to produce a large
+robot frame. This method was shown to improve the consistency of the EKF
+based solution to SLAM problem, but using local map joining to produce a large
 map gives better result.
 
 \subsubsection{Sub-map Methods}
-The sub-map method is another mean to tackle large scale map problem.
+The sub-map method is another way to tackle the large scale map problem.
 The sub-maps can be either globally referenced or relatively
 referenced. Global sub-maps estimate the location of the sub-map
 referenced to a common base frame \cite{estrada_hierarchical_2005}
 \cite{leonard_consistent_2003}. However, as the sub-map frames are
-referred to a common base frame, global sub-map does not improve the
+referred to a common base frame, a global sub-map does not improve the
 consistency issue caused by the robot pose
-uncertainty \cite{bailey_simultaneous_2006}. Relatively referenced
+uncertainty \cite{bailey_simultaneous_2006}. A relatively referenced
 sub-map records its location referenced to the neighboring sub-maps
-\cite{chong_feature-based_1999} \cite{williams_efficient_2001}. Global
+\cite{chong_feature-based_1999} \cite{williams_efficient_2001}. A global
 map is then obtained through vector summation. The relatively
-referenced sub-map is able to alleviate linearization problem in large
-scale map, but does not converge on global level without an
+referenced sub-map is able to alleviate linearization problems in a large
+scale map, but does not converge at a global level without an
 independent sub-map structure. This problem can be solved by using
-Atlas framework or network coupled feature maps \cite{bosse_slam_2004}
-\cite{bailey_mobile_2002}
+the Atlas framework or network coupled feature maps \cite{bosse_slam_2004}
+\cite{bailey_mobile_2002}.
 
-\section{Inverse Depth Parameterization for Distance Object}
+\section{Inverse Depth Parameterization for Distant Object}
 The standard way of describing a landmark position is through the
-Euclidean XYZ parameterization. In outdoor range estimation problem,
-the algorithm must deal with landmarks located at near infinity, which
-give poor linearity when being represented in traditional Euclidean
-system. Furthermore, these landmarks cannot be added to the filter
-until their locations were determined with good certainty. Landmarks
-at infinity contribute in estimating the camera rotational motion even
-though they offer little information on camera translational motion.
-Inverse depth parameterization overcomes this problem by representing
-range $d$ in its inverse form $\rho =1/d$. It also allows for
-initializing long distance landmark into the EKF framework before the
-landmark can be safely triangulated. Inverse depth concept is widely
-used in computer vision for its relation with the image disparity in
-stereo vision, or the optical flow vectors in motion stereo
-\cite{okutomi_multiple-baseline_1991}, \cite{jepson_fast_1991},
-\cite{chowdhury_stochastic_2003}. Aidala et al.
-\cite{aidala_utilization_1983} shows that modified polar coordinates
-leads to a stable extended Kalman filter in bearing-only target motion
-analysis. Civera et al. \cite{civera_inverse_2008} introduced an
-inverse depth parameterization in polar coordinates. The inverse depth
-of a landmark is referenced to the position at which the landmark was
-first observed. This method results in measurement equations with high
+Euclidean XYZ parameterization. In an outdoor range estimation
+problem, the algorithm must deal with landmarks located at near
+infinity, which give poor linearity when being represented in a
+traditional Euclidean system. Furthermore, these landmarks cannot be
+added to the filter until their locations have been determined with
+good certainty. On the other hand, the benefit of including landmarks
+at infinity is that they contribute in estimating the camera
+rotational motion even though they offer little information on camera
+translational motion. Inverse depth parameterization overcomes this
+problem by representing range $d$ in its inverse form $\rho =1/d$. It
+also allows for initializing long distance landmark into the EKF
+framework before the landmark can be safely triangulated. The inverse
+depth concept is widely used in computer vision for its relation with
+the image disparity in stereo vision, or the optical flow vectors in
+motion stereo \cite{okutomi_multiple-baseline_1991}
+\cite{jepson_fast_1991} \cite{chowdhury_stochastic_2003}. Research
+from Aidala et al. \cite{aidala_utilization_1983} shows that modified
+polar coordinates leads to a stable extended Kalman filter in
+bearing-only target motion analysis. Civera et al.
+\cite{civera_inverse_2008} introduced an inverse depth
+parameterization in polar coordinates. The inverse depth of a landmark
+is referenced to the position at which the landmark was first
+observed. This method results in measurement equations with high
 degree of linearity.
 %%% Local Variables:
 %%% mode: latex

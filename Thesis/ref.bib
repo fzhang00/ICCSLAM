@@ -13,7 +13,6 @@
 
 @book{grewal_kalman_1993,
 	address = {Englewood Cliffs, N.J},
-	series = {Prentice-Hall information and system sciences series},
 	title = {Kalman Filtering: Theory and Practice},
 	isbn = {013211335X},
 	shorttitle = {Kalman filtering},
@@ -144,7 +143,7 @@
 	volume = {2},
 	doi = {10.1109/IECON.1996.566023},
 	abstract = {This paper proposes a detection method of an unknown obstacle trespassing upon the field of view from a monocular vision installed in an autonomous land vehicle which moves in the unknown static environment. Taking account of the motion restriction of the vehicle, we investigate the vanishing point of motion and the direction of each optical flow as the motion vector observed on a 2D-image. Then, in the case of no obstacles, it is shown that the vector field forms a uniform radial configuration centered at the vanishing point of motion. In this paper, the obstacle detection is performed by extracting a certain disturbed region in the vector field caused by the trespassing obstacle. The normalized histogram matching method suitable for obtaining the vector field is introduced. The experimental result for the real images in the case of an obstacle trespassing upon the field of view is shown},
-	booktitle = {Proceedings of the {IEEE} {IECON} 22nd International Conference on Industrial Electronics, Control, and Instrumentation},
+	booktitle = {Proceedings of the 22nd {IEEE} International Conference on Industrial Electronics, Control, and Instrumentation},
 	author = {Hashimoto, H. and Yamaura, T. and Higashiguchi, M.},
 	year = {1996},
 	keywords = {2D-image, Automotive engineering, autonomous land vehicle, Cameras, histogram matching method, Histograms, Image motion analysis, Land vehicles, mobile robots, monocular vision, motion vanishing point, object detection, obstacle detection, optical flow direction, Optical noise, Remotely operated vehicles, robot vision, Testing, uniform radial configuration, unknown static environment, Vehicle detection, Working environment noise},
@@ -181,7 +180,7 @@
 }
 
 @article{sorenson_least-squares_1970,
-	title = {Least-squares Estimation: from Gauss to Kalman},
+	title = {Least-squares Estimation: from {Gauss} to {Kalman}},
 	volume = {7},
 	issn = {0018-9235},
 	shorttitle = {Least-squares estimation},
@@ -230,7 +229,7 @@
 	volume = {4},
 	doi = {10.1109/ICCSNT.2011.6182484},
 	abstract = {Simultaneous localization and mapping ({SLAM}) is a necessary prerequisite to make mobile vehicle truly autonomous, which is a hot research topic today. {FastSLAM} as a successful {SLAM} method abstracts many researchers' attentions. {FastSLAM} factors the {SLAM} problem into a localization problem and a mapping problem in which the landmark position is estimated by {EKF}. A modified {FastSLAM} is presented for uninhabited aerial vehicle ({UAV}), using {UKF} to replace the {EKF} to estimate the landmark position. So we can improve the estimation precision, at the same time no need to linearize the sensor observation model and to compute its Jacobian matrix.},
-	booktitle = {Proceedings f the  International Conference on Computer Science and Network Technology},
+	booktitle = {Proceedings of the  International Conference on Computer Science and Network Technology},
 	author = {Jianli, Shi and Shuang, Pan and Yugiang, Wu and Xibin, Wang},
 	year = {2011},
 	keywords = {autonomous aerial vehicles, autonomous mobile vehicle, Boolean functions, Data structures, {EKF}, extend Kalman filter ({EKF}), {FastSLAM}, Jacobian matrices, Jacobian matrix, Kalman filters, landmark position estimation, nonlinear filters, sensor observation model, Simultaneous localization and mapping, simultaneous localization and mapping ({SLAM}), {SLAM} (robots), {SLAM} method, {UAV}, {UKF}, uninhabited aerial vehicle, unscented {FastSLAM}, unscented Kalman filter ({UKF})},
@@ -270,7 +269,7 @@
 }
 
 @article{artieda_visual_2009,
-	title = {Visual 3-D {SLAM} from {UAVs}},
+	title = {Visual 3-{D} {SLAM} from {UAVs}},
 	volume = {55},
 	issn = {0921-0296, 1573-0409},
 	doi = {10.1007/s10846-008-9304-8},
@@ -374,7 +373,7 @@
 }
 
 @inproceedings{huang_analysis_2008,
-	title = {Analysis and Improvement of the Consistency of Extended Kalman Filter Based {SLAM}},
+	title = {Analysis and Improvement of the Consistency of Extended {Kalman} Filter Based {SLAM}},
 	doi = {10.1109/ROBOT.2008.4543252},
 	abstract = {In this work, we study the inconsistency of {EKF}- based {SLAM} from the perspective of observability. We analytically prove that when the Jacobians of the state and measurement models are evaluated at the latest state estimates during every time step, the linearized error-state system model of the {EKF}- based {SLAM} has observable subspace of dimension higher than that of the actual, nonlinear, {SLAM} system. As a result, the covariance estimates of the {EKF} undergo reduction in directions of the state space where no information is available, which is a primary cause of inconsistency. To address this issue, a new "first estimates Jacobian" ({FEJ}) {EKF} is proposed, which is shown to perform better in terms of consistency. In the {FEJ}- {EKF}, the filter Jacobians are calculated using the first-ever available estimates for each state variable, which insures that the observable subspace of the error-state system model is of the same dimension as that of the underlying nonlinear {SLAM} system. The theoretical analysis is validated through extensive simulations.},
 	booktitle = {Proceedings of the {IEEE} International Conference on Robotics and Automation},
@@ -506,7 +505,7 @@
 	title = {Self-supervised Obstacle Detection for Humanoid Navigation Using Monocular Vision and Sparse Laser Data},
 	doi = {10.1109/ICRA.2011.5979661},
 	abstract = {In this paper, we present an approach to obstacle detection for collision-free, efficient humanoid robot navigation based on monocular images and sparse laser range data. To detect arbitrary obstacles in the surroundings of the robot, we analyze 3D data points obtained from a 2D laser range finder installed in the robot's head. Relying only on this laser data, however, can be problematic. While walking, the floor close to the robot's feet is not observable by the laser sensor, which inherently increases the risk of collisions, especially in nonstatic scenes. Furthermore, it is time-consuming to frequently stop walking and tilting the head to obtain reliable information about close obstacles. We therefore present a technique to train obstacle detectors for images obtained from a monocular camera also located in the robot's head. The training is done online based on sparse laser data in a self-supervised fashion. Our approach projects the obstacles identified from the laser data into the camera image and learns a classifier that considers color and texture information. While the robot is walking, it then applies the learned classifiers to the images to decide which areas are traversable. As we illustrate in experiments with a real humanoid, our approach enables the robot to reliably avoid obstacles during navigation. Furthermore, the results show that our technique leads to significantly more efficient navigation compared to extracting obstacles solely based on 3D laser range data acquired while the robot is standing at certain intervals.},
-	booktitle = {Proceedings fo the {IEEE} International Conference on Robotics and Automation},
+	booktitle = {Proceedings of the {IEEE} International Conference on Robotics and Automation},
 	author = {Maier, D. and Bennewitz, M. and Stachniss, C.},
 	year = {2011},
 	keywords = {arbitrary obstacle detection, close obstacles, collision avoidance, color information, control engineering computing, humanoid robot navigation, humanoid robots, Lasers, Legged locomotion, monocular images, monocular vision, Navigation, robot feet, robot head, Robot sensing systems, robot vision, self-supervised obstacle detection, sparse laser range data, texture information, Three dimensional displays},
@@ -527,8 +526,7 @@
 }
 
 @inproceedings{tsai_efficient_1986,
-	address = {Miami Beach, {FL}.},
-	title = {An Efficient and Accurate Camera Calibration Technique for 3D Machine Vision},
+	title = {An Efficient and Accurate Camera Calibration Technique for {3D} Machine Vision},
 	booktitle = {Proceedings of the {IEEE} Conference on Computer Vision and Pattern Recognition},
 	author = {Tsai, R.Y.},
 	year = {1986},
@@ -582,7 +580,7 @@
 }
 
 @article{bosse_slam_2004,
-	title = {{SLAM} in Large-scale Cyclic Environments Using the Atlas Framework},
+	title = {{SLAM} in Large-scale Cyclic Environments Using the {Atlas} Framework},
 	abstract = {This paper describes Atlas, a hybrid metrical/topological approach to simultaneous localization and mapping ({SLAM}) that achieves efficient mapping of large-scale environments. The representation is a graph of coordinate frames, with each vertex in the graph representing a local frame and each edge representing the transformation between adjacent frames. In each frame, we build a map that captures the local environment and the current robot pose along with the uncertainties of each. Each map’s uncertainties are modeled with respect to its own frame. Probabilities of entities with respect to arbitrary frames are generated by following a path formed by the edges between adjacent frames, computed using either Dijkstra’s shortest path algorithm or breath-first search. Loop closing is achieved via an efficient map matching algorithm coupled with a cycle verification step. We demonstrate the performance of the technique for post-processing large data sets, including an indoor structured environment (2.2 km path length) with multiple nested loops using laser or ultrasonic ranging sensors. 1},
 	journal = {International Journal of Robotics Research},
 	author = {Bosse, Michael and Newman, Paul and Leonard, John and Teller, Seth},
@@ -697,7 +695,7 @@
 }
 
 @misc{_world_????,
-	title = {World Geodetic System - Wikipedia, the free encyclopedia},
+	title = {World Geodetic System - {Wikipedia}, the free encyclopedia},
 	url = {https://en.wikipedia.org/wiki/World_Geodetic_System},
 	urldate = {2013-06-02},
 	file = {World Geodetic System - Wikipedia, the free encyclopedia:C\:\\Users\\fan\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\ovsi675t.default\\zotero\\storage\\PV4H27F8\\World_Geodetic_System.html:text/html}
@@ -716,7 +714,7 @@
 }
 
 @article{huang_convergence_2007,
-	title = {Convergence and Consistency Analysis for Extended Kalman Filter Based {SLAM}},
+	title = {Convergence and Consistency Analysis for Extended {Kalman} Filter Based {SLAM}},
 	volume = {23},
 	issn = {1552-3098},
 	doi = {10.1109/TRO.2007.903811},
@@ -755,9 +753,9 @@
 }
 
 @article{bouguet_pyramidal_1999,
-	title = {Pyramidal Implementation of the Lucas Kanade Feature Tracker, Description of the Algorithm},
+	title = {Pyramidal Implementation of the {Lucas} {Kanade} Feature Tracker, Description of the Algorithm},
 	journal = {Intel Corporation, Microprocessor Research Labs, {OpenCV} Documents},
-	author = {Bouguet, J. Y and others},
+	author = {Bouguet, J. Y},
 	year = {1999}
 }
 
@@ -813,7 +811,7 @@
 }
 
 @misc{_pyproj_????,
-	title = {pyproj - Python Interface to {PROJ}.4 Library},
+	title = {pyproj - {Python} Interface to {PROJ}.4 Library},
 	url = {http://code.google.com/p/pyproj/},
 	urldate = {2013-06-02},
 	file = {pyproj - Python interface to PROJ.4 library - Google Project Hosting:C\:\\Users\\fan\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\ovsi675t.default\\zotero\\storage\\CFKHKMA4\\pyproj.html:text/html}
@@ -899,7 +897,6 @@
 }
 
 @inproceedings{csorba_new_1996,
-	address = {Orlando, {FL}},
 	title = {New Approach to Simultaneous Localization and Dynamic Map Building},
 	volume = {2738},
 	doi = {10.1117/12.241084},
@@ -913,7 +910,6 @@
 
 @book{maybeck_stochastic_1979,
 	address = {New York},
-	series = {Mathematics in science and engineering},
 	title = {Stochastic Models, Estimation and Control},
 	isbn = {0124807011},
 	number = {v.141},
@@ -933,7 +929,7 @@
 }
 
 @article{yu_robust_2008,
-	title = {Robust 3-D Motion Tracking From Stereo Images: A Model-Less Method},
+	title = {Robust 3-{D} Motion Tracking From Stereo Images: A Model-Less Method},
 	volume = {57},
 	issn = {0018-9456},
 	shorttitle = {Robust 3-D Motion Tracking From Stereo Images},
@@ -995,7 +991,7 @@
 }
 
 @article{durrant-whyte_simultaneous_2006,
-	title = {Simultaneous Localization and Mapping: Part I},
+	title = {Simultaneous Localization and Mapping: Part {I}},
 	volume = {13},
 	issn = {1070-9932},
 	shorttitle = {Simultaneous localization and mapping},
@@ -1093,7 +1089,7 @@
 	title = {Obstacle detection and navigation planning for autonomous micro aerial vehicles},
 	doi = {10.1109/ICUAS.2014.6842355},
 	abstract = {Obstacle detection and real-time planning of collision-free trajectories are key for the fully autonomous operation of micro aerial vehicles in restricted environments. In this paper, we propose a complete system with a multimodal sensor setup for omnidirectional obstacle perception consisting of a 3D laser scanner, two stereo camera pairs, and ultrasonic distance sensors. Detected obstacles are aggregated in egocentric local multiresolution grid maps. We generate trajectories in a multi-layered approach: from mission planning to global and local trajectory planning, to reactive obstacle avoidance. We evaluate our approach in simulation and with the real autonomous micro aerial vehicle.},
-	booktitle = {Proceedings of the 2014 International Conference on Unmanned Aircraft Systems ({ICUAS})},
+	booktitle = {Proceedings of the 2014 International Conference on Unmanned Aircraft Systems},
 	author = {Nieuwenhuisen, M. and Droeschel, D. and Beul, M. and Behnke, S.},
 	month = may,
 	year = {2014},
@@ -1105,7 +1101,7 @@
 @book{brown_introduction_1993,
 	address = {New York},
 	edition = {2nd ed},
-	title = {Introduction to Random Signals and Applied Kalman Filtering},
+	title = {Introduction to Random Signals and Applied {K}alman Filtering},
 	isbn = {0471525731},
 	publisher = {John Wiley \& Sons, Inc.},
 	author = {Brown, Robert Grover},
@@ -1238,14 +1234,13 @@
 }
 
 @misc{_google_????,
-	title = {Google Earth},
+	title = {Google {Earth}},
 	url = {http://www.google.com/earth/},
 	urldate = {2013-06-12},
 	file = {Athena 111m Integrated Flight Control System:C\:\\Users\\fan\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\ovsi675t.default\\zotero\\storage\\K666RZVI\\Athena_111m_Integrated_Flight_Control_System.html:text/html}
 }
 
 @inproceedings{castellanos_limits_2004,
-	address = {Lisbon, Portugal},
 	title = {Limits to the Consistency of {EKF}-Based {SLAM}},
 	abstract = {Abstract: This paper analyzes the consistency of the classical extended Kalman filter ({EKF}) solution to the simultaneous localization and map building ({SLAM}) problem. Our results show that in large environments the map quickly becomes inconsistent due to linearization errors. We propose a new {EKF}-based {SLAM} algorithm, robocentric mapping, that greatly reduces linearization errors, improving map consistency. We also present results showing that large-scale mapping methods based on building local maps with a local uncertainty representation (Tardós et al., 2002) have better consistency than methods that work with global uncertainties.},
 	booktitle = {Proceedings of the 5th {IFAC} Symposium Intelligent Autonomous Vehicles},
@@ -1255,7 +1250,7 @@
 }
 
 @inproceedings{sunderhauf_using_2007,
-	title = {Using the Unscented Kalman Filter in Mono-{SLAM} with Inverse Depth Parametrization for Autonomous Airship Control},
+	title = {Using the Unscented {K}alman Filter in Mono-{SLAM} with Inverse Depth Parametrization for Autonomous Airship Control},
 	doi = {10.1109/SSRR.2007.4381265},
 	abstract = {In this paper, we present an approach for aiding control of an autonomous airship by the means of {SLAM}. We show how the Unscented Kalman Filter can be applied in a {SLAM} context with monocular vision. The recently published Inverse Depth Parametrization is used for undelayed single-hypothesis landmark initialization and modelling. The novelty of the presented approach lies in the combination of {UKF}, Inverse Depth Parametrization and bearing-only {SLAM} and its application for autonomous airship control and {UAV} control in general.},
 	booktitle = {Proceedings of the {IEEE} International Workshop on Safety, Security and Rescue Robotics},
@@ -1267,7 +1262,7 @@
 }
 
 @inproceedings{einhorn_cant_2010,
-	title = {Can't Take My Eye Off You: Attention-driven Monocular Obstacle Detection and 3D Mapping},
+	title = {Can't Take My Eye Off You: Attention-driven Monocular Obstacle Detection and {3D} Mapping},
 	shorttitle = {Can't take my eye off you},
 	doi = {10.1109/IROS.2010.5651741},
 	abstract = {Robust and reliable obstacle detection is an important capability for mobile robots. In our previous works we have presented an approach for visual obstacle detection based on feature based monocular scene-reconstruction. Most existing feature-based approaches for visual {SLAM} and scene reconstruction select their features uniformly over the whole image based on visual saliency only. In this paper we present a novel attention-driven approach that guides the feature selection to image areas that provide the most information for mapping and obstacle detection. Therefore, we present an information theoretic derivation of the expected information gain that results from the selection of new image features. Additionally, we present a method for building a volumetric representation of the robots environment in terms of an occupancy voxel map. The voxel map provides top-down information that is needed for computing the expected information gain. We show that our approach for guided feature selection improves the quality of the created voxel maps and improves the obstacle detection by reducing the risk of missing obstacles.},

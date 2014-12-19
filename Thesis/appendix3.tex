@@ -4,54 +4,90 @@ composition equations are derived in this section.
 
 \section{Linearization of Measurement Model}
 \label{sec:jac_measurement}
-The measurement
-model of the algorithm is not linear, and must be linearized by
-evaluating first derivative of the measurement equation at the
-predicted camera location. Since the measurement model is not a
-function of world origin coordinate and orientation, the Jacobian
+The measurement model of the algorithm is not linear, and must be
+linearized by evaluating the first derivative of the measurement equation
+at the predicted camera location. Since the measurement model is not a
+function of the world origin coordinate and orientation, the Jacobian
 matrix of the measurement model is
 
 \begin{multline}
-\frac{\partial h_{k}^{U}(x)}{\partial x}=
+\boldsymbol{\frac{\partial h_{k}^{U}(x)}{\partial x_k}}=
 \begin{bmatrix}
-0_{2n\times 6} & \frac{\partial h_{k}^{U}(x)}{\partial c^{C}} &
-\frac{\partial h_{k}^{U}(x)}{\partial r^{C}} &
-\frac{\partial h_{k}^{U}(x)}{\partial p_{1}} & 
-\ldots & \frac{\partial h_{k}^{U}(x)}{\partial p_{n}}
-\end{bmatrix} = \\ \begin{bmatrix}
-0_{2n\times 6} & 
-\frac{\partial h_{k}^{U}}{\partial h_{k}^{C}} \cdot 
-\frac{\partial h_{k}^{C}}{\partial c^{C}} & 
-\frac{\partial h_{k}^{U}}{\partial h_{k}^{C}} \cdot 
-\frac{\partial h_{k}^{C}}{\partial r^{C}} & 
-\frac{\partial h_{k}^{U}}{\partial h_{k}^{C}} \cdot 
-\frac{\partial h_{k}^{C}}{\partial p_{1}} & 
+& 
+\boldsymbol{\frac{\partial h_{1,k}^{U}(x)}{\partial c_k^{C}}} &
+\boldsymbol{\frac{\partial h_{1,k}^{U}(x)}{\partial r_k^{C}}} &
+\boldsymbol{\frac{\partial h_{1,k}^{U}(x)}{\partial p_{1,k}}} & 
 \ldots & 
-\frac{\partial h_{k}^{U}}{\partial h_{k}^{C}} \cdot 
-\frac{\partial h_{k}^{C}}{\partial p_{n}}
-\end{bmatrix}
+\boldsymbol{\frac{\partial h_{1,k}^{U}(x)}{\partial p_{n,k}}}\\
+\boldsymbol{0_{2n\times 6}} & \vdots & \vdots & \vdots & \ddots &
+\vdots \\
+& 
+\boldsymbol{\frac{\partial h_{n,k}^{U}(x)}{\partial c_k^{C}}} &
+\boldsymbol{\frac{\partial h_{n,k}^{U}(x)}{\partial r_k^{C}}} &
+\boldsymbol{\frac{\partial h_{n,k}^{U}(x)}{\partial p_{1,k}}} & 
+\ldots & 
+\boldsymbol{\frac{\partial h_{n,k}^{U}(x)}{\partial p_{n,k}}}\\
+\end{bmatrix} \\
+= \begin{bmatrix}
+& 
+\boldsymbol{\frac{\partial h_{1,k}^{U}(x)}{\partial c_k^{C}}} &
+\boldsymbol{\frac{\partial h_{1,k}^{U}(x)}{\partial r_k^{C}}} &
+\boldsymbol{\frac{\partial h_{1,k}^{U}(x)}{\partial p_{1,k}}} & 
+\ldots & 
+\boldsymbol{0}\\
+\boldsymbol{0_{2n\times 6}} & \vdots & \vdots & \vdots & \ddots &
+\vdots \\
+& 
+\boldsymbol{\frac{\partial h_{n,k}^{U}(x)}{\partial c_k^{C}}} &
+\boldsymbol{\frac{\partial h_{n,k}^{U}(x)}{\partial r_k^{C}}} &
+\boldsymbol{0} & 
+\ldots & 
+\boldsymbol{\frac{\partial h_{n,k}^{U}(x)}{\partial p_{n,k}}}\\
+\end{bmatrix} 
 \end{multline}
 
 
-Elements in the matrix above are given in - . The formula for 
-calculating $Q^{-1}$ in can be found in 
+\noindent Elements in the matrix above for landmark $i$ at time step
+$k$ are given in Equations (\ref{eq:par_hu_c})-(\ref{eq:par_hc_pi}).
+Subscript $k$ is omitted.
 
 \begin{equation}
-\frac{\partial h_{k}^{U}}{\partial h_{k}^{C}}= \begin{bmatrix}
--\frac{s_{x}h_{y,k}^{C}}{{h_{x,k}^{C}}^{2}} & \frac{s_{x}}{h_{x,k}^{C}} & 0 \\
--\frac{s_{y}h_{z,k}^{C}}{{h_{x,k}^{C}}^{2}} & 0 & \frac{s_{y}}{h_{x,k}^{C}}
+\label{eq:par_hu_c}
+\boldsymbol{\frac{\partial h_{i}^{U}(x)}{\partial c^{C}}}=
+\boldsymbol{\frac{\partial h_{i}^{U}}{\partial h_{i}^{C}}}\cdot 
+\boldsymbol{\frac{\partial h_{i}^{C}}{\partial c^{C}}}
+\end{equation}
+
+\begin{equation}
+\label{eq:par_hu_r}
+\boldsymbol{\frac{\partial h_{i}^{U}(x)}{\partial r^{C}}}=
+\boldsymbol{\frac{\partial h_{i}^{U}}{\partial h_{i}^{C}}}\cdot 
+\boldsymbol{\frac{\partial h_{i}^{C}}{\partial r^{C}}}
+\end{equation}
+
+\begin{equation}
+\label{eq:par_hu_p}
+\boldsymbol{\frac{\partial h_{i}^{U}(x)}{\partial p_{i}^{C}}}=
+\boldsymbol{\frac{\partial h_{i}^{U}}{\partial h_{i}^{C}}}\cdot 
+\boldsymbol{\frac{\partial h_{i}^{C}}{\partial p_{i}^{C}}}
+\end{equation}
+
+\begin{equation}
+\boldsymbol{\frac{\partial h_{i}^{U}}{\partial h_{i}^{C}}}= \begin{bmatrix}
+-\frac{s_{x}h_{i,y}^{C}}{{h_{i,x}^{C}}^{2}} & \frac{s_{x}}{h_{i,x}^{C}} & 0 \\
+-\frac{s_{y}h_{i,z}^{C}}{{h_{i,x}^{C}}^{2}} & 0 & \frac{s_{y}}{h_{i,x}^{C}}
 \end{bmatrix}
 \end{equation}
 
 \begin{equation}
-\frac{\partial h^{C}}{\partial c^{C}}=-R^{-1}(r_{k}^{C})\rho _{k}
+\boldsymbol{\frac{\partial h_i^{C}}{\partial c^{C}}}=-\boldsymbol{Q^{-1}(r^{C})}\rho _{i}
 \end{equation}
 
 \begin{equation}
-\frac{\partial h(x)}{\partial r^{C}}=\begin{bmatrix} 
-\frac{\partial h^{C}}{\partial r_{x}^{C}} & 
-\frac{\partial h^{C}}{\partial r_{y}^{C}} & 
-\frac{\partial h^{C}}{\partial r_{z}^{C}}\end{bmatrix}
+\boldsymbol{\frac{\partial h_i^C}{\partial r^{C}}}=\begin{bmatrix} 
+\boldsymbol{\frac{\partial h_i^{C}}{\partial r_{x}^{C}}} & 
+\boldsymbol{\frac{\partial h_i^{C}}{\partial r_{y}^{C}}} & 
+\boldsymbol{\frac{\partial h_i^{C}}{\partial r_{z}^{C}}}\end{bmatrix}
 \end{equation}
 
 
@@ -91,44 +127,46 @@ calculating $Q^{-1}$ in can be found in
 % \end{equation}
 
 \begin{equation}
-\frac{\partial h^{C}}{\partial p_{i}}=\begin{bmatrix}
-\frac{\partial h^{C}}{\partial x_{i}^{C}} & 
-\frac{\partial h^{C}}{\partial y_{i}^{C}} & 
-\frac{\partial h^{C}}{\partial z_{i}^{C}} & 
-\frac{\partial h^{C}}{\partial \rho _{i}} &
-\frac{\partial h^{C}}{\partial \theta _{i}} &
-\frac{\partial h^{C}}{\partial \varphi _{i}}
+\label{eq:par_hc_pi}
+\boldsymbol{\frac{\partial h_i^{C}}{\partial p_{i}}}=\begin{bmatrix}
+\frac{\partial \boldsymbol{h_i^{C}}}{\partial x_{i}^{C}} & 
+\frac{\partial \boldsymbol{h_i^{C}}}{\partial y_{i}^{C}} & 
+\frac{\partial \boldsymbol{h_i^{C}}}{\partial z_{i}^{C}} & 
+\frac{\partial \boldsymbol{h_i^{C}}}{\partial \rho _{i}} &
+\frac{\partial \boldsymbol{h_i^{C}}}{\partial \theta _{i}} &
+\frac{\partial \boldsymbol{h_i^{C}}}{\partial \varphi _{i}}
 \end{bmatrix}
 \end{equation}
 
-Equation above is a 3x6 matrix
+\noindent where $\boldsymbol{Q^{-1}}$ can be found in
+Appendix \ref{ch:appendix1}. Equation (\ref{eq:par_hc_pi}) is a 3x6 matrix
 
 \begin{equation}
 \begin{bmatrix}
-\frac{\partial h^{C}}{\partial x_{i}^{C}} & 
-\frac{\partial h^{C}}{\partial y_{i}^{C}} & 
-\frac{\partial h^{C}}{\partial z_{i}^{C}}
+\frac{\partial \boldsymbol{h_i^{C}}}{\partial x_{i}^{C}} & 
+\frac{\partial \boldsymbol{h_i^{C}}}{\partial y_{i}^{C}} & 
+\frac{\partial \boldsymbol{h_i^{C}}}{\partial z_{i}^{C}}
 \end{bmatrix}
- =Q^{-1}(r_{k}^{C})\rho _{k}
+ =\boldsymbol{Q^{-1}(r^{C})}\rho _{i}
 \end{equation}
 
 
 \begin{equation}
-\frac{\partial h^{C}}{\partial \rho _{i}}=-Q^{-1}(r_{k}^{C})\cdot c_{k}
+\frac{\partial \boldsymbol{h_i^{C}}}{\partial \rho _{i}}=-\boldsymbol{Q^{-1}(r^{C})\cdot c}
 \end{equation}
 
 
 \begin{equation}
-\frac{\partial h^{C}}{\partial \theta _{i}}=
-Q^{-1}(r_{k}^{C}) \begin{bmatrix}
+\frac{\partial \boldsymbol{h_i^{C}}}{\partial \theta _{i}}=
+\boldsymbol{Q^{-1}(r^{C})} \begin{bmatrix}
 -cos(\varphi _{i})\sin(\theta _{i}) \\
 \cos (\varphi _{i})cos(\theta _{i}) \\
 0 \end{bmatrix}
 \end{equation}
 
 \begin{equation}
-\frac{\partial h^{C}}{\partial \varphi _{i}}= 
-Q^{-1}(r_{k}^{C}) \begin{bmatrix}
+\frac{\partial \boldsymbol{h_i^{C}}}{\partial \varphi _{i}}= 
+\boldsymbol{Q^{-1}(r^{C})} \begin{bmatrix}
 -cos(\varphi _{i})sin(\theta _{i}) \\
 -sin(\varphi _{i})sin(\theta _{i}) \\
 cos(\varphi _{i})
@@ -138,73 +176,81 @@ cos(\varphi _{i})
 \section{Jacobian Matrix of Composition Equations}
 \label{sec:jac_composition}
 
-The composition equations given in chapter \ref{ch:algorithm} is
+The composition equations given in Chapter \ref{ch:algorithm} are
 nonlinear. For the error matrix to propagate properly from one
 frame to another, the Jacobian matrix of the equations must be
 computed. The complete Jacobian matrix for the full state vector is
 given by 
 
 \begin{equation}
-J_{C_{k-1}\to C_{k}}=\frac{\partial x_{k}}{\partial x_{k-1}}=\begin{bmatrix}
-\frac{\partial x_{k}}{\partial OX_{W, k-1}^{C}} &
-\frac{\partial x_{k}}{\partial c_{k-1}} & 
-\frac{\partial x_{k}}{\partial r_{k-1}} & 
-\frac{\partial x_{k}}{\partial p_{1, k-1}^{C}} &
-\frac{\partial x_{k}}{\partial p_{2, k-1}^{C}} &
-\cdots 
+  \boldsymbol{J_{C_{k-1}\to C_{k}}}=
+  \boldsymbol{\frac{\partial x_k^{C_k}}{\partial x_k^{C_{k-1}}}}
+  =\begin{bmatrix}
+    \boldsymbol{\frac{\partial x_{k}^{C_k}}{\partial OX_{W, k}^{C_{k-1}}}} &
+    \boldsymbol{\frac{\partial x_{k}^{C_k}}{\partial c_{k}^{C_{k-1}}}} & 
+    \boldsymbol{\frac{\partial x_{k}^{C_k}}{\partial r_{k}^{C_{k-1}}}} & 
+    \boldsymbol{\frac{\partial x_{k}^{C_k}}{\partial p_{1, k}^{C_{k-1}}}} &
+    \boldsymbol{\frac{\partial x_{k}^{C_k}}{\partial p_{2, k}^{C_{k-1}}}} &
+    \cdots 
 \end{bmatrix}
 \end{equation}
 
-$\frac{\partial x_{k}}{\partial OX_{W, k-1}^{C}}$is given by:
+\noindent where superscript $C_k$ refers to the new camera frame after
+composition, and superscript $C_{k-1}$ refers to the camera frame
+before composition.
+$\boldsymbol{\frac{\partial x_k^{C_k}}{\partial OX_{W,k}^{C_{k-1}}}}$ is
+given by:
 
 \begin{equation}
-\frac{\partial x_{k}}{\partial OX_{W, k-1}^{C}}=\begin{bmatrix}
-\frac{\partial O_{W,k}^{C}}{\partial O_{W,k-1}^{C}} & 
-\frac{\partial O_{W,k}^{C}}{\partial W_{W,k-1}^{C}} \\
-\frac{\partial W_{W,k}^{C}}{\partial O_{W,k-1}^{C}} & 
-\frac{\partial W_{W,k}^{C}}{\partial W_{W,k-1}^{C}} \\
-\frac{\partial c_{k}}{\partial O_{W,k-1}^{C}} &
-\frac{\partial c_{k}}{\partial W_{W,k-1}^{C}} \\
-\frac{\partial r_{k}}{\partial O_{W,k-1}^{C}} &
-\frac{\partial r_{k}}{\partial W_{W,k-1}^{C}} \\
-\frac{\partial p_{i}^{C}}{\partial O_{W,k-1}^{C}} & 
-\frac{\partial p_{i}^{C}}{\partial W_{W,k-1}^{C}} \\
+\boldsymbol{\frac{\partial x_{k}^{C_k}}{\partial OX_{W,k-1}^{C_{k-1}}}}=
+\begin{bmatrix}
+\boldsymbol{\frac{\partial O_{W,k}^{C_k}}{\partial O_{W,k}^{C_{k-1}}}} & 
+\boldsymbol{\frac{\partial O_{W,k}^{C_k}}{\partial W_{W,k}^{C_{k-1}}}} \\
+\boldsymbol{\frac{\partial W_{W,k}^{C_k}}{\partial O_{W,k}^{C_{k-1}}}} & 
+\boldsymbol{\frac{\partial W_{W,k}^{C_k}}{\partial W_{W,k}^{C_{k-1}}}} \\
+\boldsymbol{\frac{\partial c_{k}^{C_k}}{\partial O_{W,k}^{C_{k-1}}}} &
+\boldsymbol{\frac{\partial c_{k}^{C_k}}{\partial W_{W,k}^{C_{k-1}}}} \\
+\boldsymbol{\frac{\partial r_{k}^{C_k}}{\partial O_{W,k}^{C_{k-1}}}} &
+\boldsymbol{\frac{\partial r_{k}^{C_k}}{\partial W_{W,k}^{C_{k-1}}}} \\
+\boldsymbol{\frac{\partial p_{i}^{C_k}}{\partial O_{W,k}^{C_{k-1}}}} & 
+\boldsymbol{\frac{\partial p_{i}^{C_k}}{\partial W_{W,k}^{C_{k-1}}}} \\
 \end{bmatrix}= \begin{bmatrix}
-Q^{-1}(r^{C}) & 0 \\
-0 & I_{3\times 3} \\
-0 & 0 \\
-0 & 0 \\
-0 & 0 
+\boldsymbol{Q^{-1}(r_k^{C_{k-1}})} & \boldsymbol{0} \\
+\boldsymbol{0} & \boldsymbol{I_{3\times 3}} \\
+\boldsymbol{0} & \boldsymbol{0} \\
+\boldsymbol{0} & \boldsymbol{0} \\
+\boldsymbol{0} & \boldsymbol{0} 
 \end{bmatrix}
 \end{equation}
 
 
-Derivatives of $x_{k}$with respect to $c$ and $p$ are 
+The derivatives of $\boldsymbol{x_{k}^{C{k-1}}}$ with respect to $\boldsymbol{c}$
+and $\boldsymbol{r}$ are
 
 
 \begin{equation}
 \begin{bmatrix}
-\frac{\partial O_{W,k}^{C}}{\partial c_{k-1}} & 
-\frac{\partial O_{W,k}^{C}}{\partial r_{k-1}} \\
-\frac{\partial W_{W,k}^{C}}{\partial c_{k-1}} &
-\frac{\partial W_{W,k}^{C}}{\partial r_{k-1}} \\
-\frac{\partial c_{k}}{\partial c_{k-1}} & 
-\frac{\partial c_{k}}{\partial r_{k-1}} \\
-\frac{\partial r_{k}}{\partial c_{k-1}} & 
-\frac{\partial r_{k}}{\partial r_{k-1}} \\
-\frac{\partial p(0:2)_{i}^{C}}{\partial c_{k-1}} & 
-\frac{\partial p(0:2)_{i}^{C}}{\partial r_{k-1}} \\
-\frac{\partial p(3:5)_{i}^{C}}{\partial c_{k-1}} & 
-\frac{\partial p(3:5)_{i}^{C}}{\partial r_{k-1}} \\
+\boldsymbol{\frac{\partial O_{W,k}^{C_{k}}}{\partial c_{k}^{C_{k-1}}}} & 
+\boldsymbol{\frac{\partial O_{W,k}^{C_{k}}}{\partial r_{k}^{C_{k-1}}}} \\
+\boldsymbol{\frac{\partial W_{W,k}^{C_{k}}}{\partial c_{k}^{C_{k-1}}}} &
+\boldsymbol{\frac{\partial W_{W,k}^{C_{k}}}{\partial r_{k}^{C_{k-1}}}} \\
+\boldsymbol{\frac{\partial c_{k}^{C_{k}}}{\partial c_{k}^{C_{k-1}}}} & 
+\boldsymbol{\frac{\partial c_{k}^{C_{k}}}{\partial r_{k}^{C_{k-1}}}} \\
+\boldsymbol{\frac{\partial r_{k}^{C_{k}}}{\partial c_{k}^{C_{k-1}}}} & 
+\boldsymbol{\frac{\partial r_{k}^{C_{k}}}{\partial r_{k}^{C_{k-1}}}} \\
+\boldsymbol{\frac{\partial p(0:2)_{i}^{C_{k}}}{\partial c_{k}^{C_{k-1}}}} & 
+\boldsymbol{\frac{\partial p(0:2)_{i}^{C_{k}}}{\partial r_{k}^{C_{k-1}}}} \\
+\boldsymbol{\frac{\partial p(3:5)_{i}^{C_{k}}}{\partial c_{k}^{C_{k-1}}}} & 
+\boldsymbol{\frac{\partial p(3:5)_{i}^{C_{k}}}{\partial r_{k}^{C_{k-1}}}} \\
 \end{bmatrix}= \begin{bmatrix}
--Q^{-1}(r_{k}^{C_{k-1}}) & 
-\frac{\partial Q^{-1}(r_{k}^{C_{k-1}})}{\partial r_{k-1}} \\
-0_{3\times 3} & -I_{3\times 3} \\
-I_{3\times 3} & 0_{3\times 3} \\
-0_{3\times 3} & I_{3\times 3} \\
--Q^{-1}(r_{k}^{C_{k-1}}) & 
-\frac{\partial Q^{-1}(r_{k}^{C_{k-1}})}{\partial r_{k-1}} \\
-0_{3\times 3} & pr 
+-\boldsymbol{Q^{-1}(r_{k}^{C_{k-1}})} & 
+\boldsymbol{\frac{\partial Q^{-1}(r_{k}^{C_{k-1}})}{\partial r_{k}^{C_{k-1}}}} \\
+\boldsymbol{0_{3\times 3}} & -\boldsymbol{I_{3\times 3}} \\
+\boldsymbol{I_{3\times 3}} & \boldsymbol{0_{3\times 3}} \\
+\boldsymbol{0_{3\times 3}} & \boldsymbol{I_{3\times 3}} \\
+\boldsymbol{-Q^{-1}(r_{k}^{C_{k-1}})} & 
+\boldsymbol{\frac{\partial Q^{-1}(r_{k}^{C_{k-1}})}{\partial r_{k}^{C_{k-1}}}} \\
+\boldsymbol{0_{3\times 3}} & \boldsymbol{pr} 
 \end{bmatrix}
 \end{equation}
 
@@ -213,80 +259,80 @@ I_{3\times 3} & 0_{3\times 3} \\
 \begin{equation}
 pr=\begin{bmatrix}
 1 & 0 & 0 & \\
-&\frac{\partial \varphi _{i, k}^{C}}{\partial r_{k-1}} & \\
-&\frac{\partial \theta _{i, k}^{C}}{\partial r_{k-1}} & \\
+&\boldsymbol{\frac{\partial \varphi _{i, k}^{C_k}}{\partial r_{k}^{C_{k-1}}}} & \\
+&\boldsymbol{\frac{\partial \theta _{i, k}^{C_k}}{\partial r_{k}^{C_{k-1}}}} & \\
 \end{bmatrix}= \begin{bmatrix}
 1 & 0 & 0 \\
-&\frac{\partial m^{-1}(Q^{-1}(r_{k}^{C_{k-1}})m(\varphi _{i, 
-k}^{C_{k-1}}, \theta _{i, k}^{C_{k-1}}))}{\partial r_{k-1}} & \\
+&\boldsymbol{\frac{\partial m^{-1}(Q^{-1}(r_{k}^{C_{k-1}})m(\varphi _{i, 
+k}^{C_{k-1}}, \theta _{i, k}^{C_{k-1}}))}{\partial r_{k}^{C_{k-1}}}} & \\
 \end{bmatrix}
 \end{equation}
 
-Let $M=Q^{-1}(r_{k}^{C_{k-1}})m(\varphi_{i, k}^{C_{k-1}}, \theta _{i, 
-k}^{C_{k-1}})$ representing the vector $m$ seen by camera at location
-$k$, and $m^{-1}=m^{-1}(M)$, then
+Let $\boldsymbol{M}=\boldsymbol{Q^{-1}(r_{k}^{C_{k-1}})m(\varphi_{i, k}^{C_{k-1}}, \theta _{i, 
+k}^{C_{k-1}})}$ represent the vector $\boldsymbol{m}$ seen by the camera at location
+$k$, and $\boldsymbol{m}^{-1}=\boldsymbol{m}^{-1}(\boldsymbol{M})$. Then
 
 \begin{equation}
-\frac{\partial m^{-1}}{\partial r_{k}^{C_{k-1}}}=
-\frac{\partial m^{-1}}{\partial M}\cdot 
-\frac{\partial M}{\partial r_{k}^{C_{k-1}}}
+\boldsymbol{\frac{\partial m^{-1}}{\partial r_{k}^{C_{k-1}}}}=
+\boldsymbol{\frac{\partial m^{-1}}{\partial M}\cdot 
+\frac{\partial M}{\partial r_{k}^{C_{k-1}}}}
 \end{equation}
 
 \noindent where
 
 \begin{equation}
-\frac{\partial M}{\partial r_{k}^{C_{k-1}}}= 
-\frac{\partial Q^{-1}(r_{k}^{C_{k-1}})}{\partial r_{k-1}}
-\cdot m(\varphi_{i, k}^{C_{k-1}}, \theta_{i, k}^{C_{k-1}})
+\boldsymbol{\frac{\partial M}{\partial r_{k}^{C_{k-1}}}}= 
+\boldsymbol{\frac{\partial Q^{-1}(r_{k}^{C_{k-1}})}{\partial r_{k}^{C_{k-1}}}
+\cdot m(\varphi_{i, k}^{C_{k-1}}, \theta_{i, k}^{C_{k-1}})}
 \end{equation}
 
 
-\noindent as $m^{-1}$ is the function that calculate
+\noindent as $\boldsymbol{m}^{-1}$ is the function that calculates
 $\lbrack\begin{matrix}\varphi & \theta \end{matrix}\rbrack$ from a
-vector,$\frac{\partial m^{-1}}{\partial M}$ is the same as equation
-\ref{eq:par_varphi_h} and \ref{eq:par_theta_h}.
+given vector. $\boldsymbol{\frac{\partial m^{-1}}{\partial M}}$ is the
+same as Equation \ref{eq:par_varphi_h} and \ref{eq:par_theta_h}.
 
-Derivatives of $x_{k}$ with respect to landmark parameters $p_{i}^{C}$
-are given in
+The derivatives of $\boldsymbol{x_{k}^{C_{k}}}$ with respect to landmark parameters
+$\boldsymbol{p_{i,k}^{C_{k-1}}}$ are given in
 
 \begin{equation}
-\frac{\partial x_{k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}}=
+\boldsymbol{\frac{\partial x_{k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}}}=
 \begin{bmatrix}
-\frac{\partial O_{W,k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}} \\
-\frac{\partial W_{W,k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}} \\
-\frac{\partial c_{k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}} \\
-\frac{\partial r_{k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}} \\
-\frac{\partial p_{i, k}^{C}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\boldsymbol{\frac{\partial O_{W,k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}}} \\
+\boldsymbol{\frac{\partial W_{W,k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}}} \\
+\boldsymbol{\frac{\partial c_{k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}}} \\
+\boldsymbol{\frac{\partial r_{k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}}} \\
+\boldsymbol{\frac{\partial p_{i, k}^{C_k}}{\partial p_{i,k}^{C_{k-1 }}}} \\
 \end{bmatrix} = \begin{bmatrix}
-0 \\
-0 \\
-0 \\
-0 \\
-\frac{\partial p_{i,k}^{C_{k }}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\boldsymbol{0} \\
+\boldsymbol{0} \\
+\boldsymbol{0} \\
+\boldsymbol{0} \\
+\boldsymbol{\frac{\partial p_{i,k}^{C_{k }}}{\partial p_{i,k}^{C_{k-1 }}}} \\
 \end{bmatrix}
 \end{equation}
 
-\noindent the last element is computed as
+\noindent The last element is computed as
 \begin{equation}
-\frac{\partial p_{i,k}^{C_{k }}}{\partial p_{i,k}^{C_{k-1 }}}=
+\boldsymbol{\frac{\partial p_{i,k}^{C_{k }}}{\partial p_{i,k}^{C_{k-1 }}}}=
 \begin{bmatrix}
-\frac{\partial x_{i,k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}} \\
-\frac{\partial y_{i,k}^{C}}{\partial p_{i,k}^{C_{k-1 }}} \\
-\frac{\partial z_{i,k}^{C}}{\partial p_{i,k}^{C_{k-1 }}} \\
-\frac{\partial \rho _{i,k}^{C}}{\partial p_{i,k}^{C_{k-1 }}} \\
-\frac{\partial \varphi _{i, k}^{C}}{\partial p_{i,k}^{C_{k-1 }}} \\
-\frac{\partial \theta _{i, k}^{C}}{\partial p_{i,k}^{C_{k-1 }}} \\
+\boldsymbol{\frac{\partial x_{i,k}^{C_{k}}}{\partial p_{i,k}^{C_{k-1 }}}} \\
+\boldsymbol{\frac{\partial y_{i,k}^{C}}{\partial p_{i,k}^{C_{k-1 }}}} \\
+\boldsymbol{\frac{\partial z_{i,k}^{C}}{\partial p_{i,k}^{C_{k-1 }}}} \\
+\boldsymbol{\frac{\partial \rho _{i,k}^{C}}{\partial p_{i,k}^{C_{k-1 }}}} \\
+\boldsymbol{\frac{\partial \varphi _{i, k}^{C}}{\partial p_{i,k}^{C_{k-1 }}}} \\
+\boldsymbol{\frac{\partial \theta _{i, k}^{C}}{\partial p_{i,k}^{C_{k-1 }}}} \\
 \end{bmatrix}=\begin{bmatrix}
-Q^{-1}(r_{k}^{C_{k-1}}) & 0_{3\times 3} \\
-0_{3\times 3} & 
-\frac{\partial p(3:5)_{i,k}^{C_{k}}}{\partial p(3:5)_{i,k}^{C_{k-1}}} \\
+\boldsymbol{Q^{-1}(r_{k}^{C_{k-1}})} & \boldsymbol{0_{3\times 3}} \\
+\boldsymbol{0_{3\times 3}} & 
+\boldsymbol{\frac{\partial p(3:5)_{i,k}^{C_{k}}}{\partial p(3:5)_{i,k}^{C_{k-1}}}} \\
 \end{bmatrix}
 \end{equation}
 
 \noindent where
 \begin{equation}
-\frac{\partial p(3:5)_{i,k}^{C_{k}}}{\partial p(3:5)_{i,k}^{C_{k-1}}}=
- \begin{bmatrix}
+\boldsymbol{\frac{\partial p(3:5)_{i,k}^{C_{k}}}{\partial p(3:5)_{i,k}^{C_{k-1}}}}=
+\begin{bmatrix}
 1 & 0 & 0 \\
 0 & 
 \frac{\partial \varphi_{i, k}^{C_{k}}}
@@ -301,28 +347,29 @@ Q^{-1}(r_{k}^{C_{k-1}}) & 0_{3\times 3} \\
 \end{bmatrix}=\begin{bmatrix}
 1 & 0 & 0 \\
 0 & 
-\frac{\partial \varphi _{i, k}^{C_{k}}}{\partial M}
-\frac{\partial M}{\partial \varphi _{i, k}^{C_{k-1}}} & 
-\frac{\partial \varphi _{i,k}^{C_{k}}}
-{\partial M}\frac{\partial M}{\partial \theta _{i,k}^{C_{k-1}}}\\
+\boldsymbol{\frac{\partial \varphi _{i, k}^{C_{k}}}{\partial M}
+\frac{\partial M}{\partial \varphi _{i, k}^{C_{k-1}}}} & 
+\boldsymbol{\frac{\partial \varphi _{i,k}^{C_{k}}}{\partial M}
+\frac{\partial M}{\partial \theta _{i,k}^{C_{k-1}}}}\\
 0 & 
-\frac{\partial \theta _{i, k}^{C_{k}}}{\partial M}
-\frac{\partial M}{\partial \varphi _{i, k}^{C_{k-1}}} & 
-\frac{\partial \theta _{i,k}^{C_{k}}}{\partial M}
-\frac{\partial M}{\partial \theta _{i, k}^{C_{k-1}}} \\
+\boldsymbol{\frac{\partial \theta _{i, k}^{C_{k}}}{\partial M}}
+\boldsymbol{\frac{\partial M}{\partial \varphi _{i, k}^{C_{k-1}}}} & 
+\boldsymbol{\frac{\partial \theta _{i,k}^{C_{k}}}{\partial M}}
+\boldsymbol{\frac{\partial M}{\partial \theta _{i, k}^{C_{k-1}}}} \\
 \end{bmatrix}
 \end{equation}
 
-\noindent in which $\frac{\partial \varphi _{i, k}^{C_{k}}}{\partial
-  M}$ is the same as equation \ref{eq:par_varphi_h}. $\frac{\partial
-  \theta _{i, k}^{C_{k}}}{\partial M}$ is the same as equation
-\ref{eq:par_theta_h}. $\frac{\partial M}{\partial \varphi
-  _{i,k}^{C_{k-1}}}$ and $ \frac{\partial M}{\partial \theta _{i,
-    k}^{C_{k-1}}}$ is given below.
+\noindent in which \boldsymbol{$\frac{\partial \varphi _{i,
+      k}^{C_{k}}}{\partial M}}$ is the same as Equation
+(\ref{eq:par_varphi_h}). $\boldsymbol{\frac{\partial \theta _{i,
+      k}^{C_{k}}}{\partial M}}$ is the same as Equation
+(\ref{eq:par_theta_h}). $\boldsymbol{\frac{\partial M}{\partial \varphi
+  _{i,k}^{C_{k-1}}}}$ and $\boldsymbol{\frac{\partial M}{\partial \theta _{i,
+    k}^{C_{k-1}}}}$ are given below.
 
 \begin{equation}
-\frac{\partial M}{\partial \varphi_{i,k}^{C_{k-1}}}=
-R^{-1}(r^{C})\begin{bmatrix}
+\boldsymbol{\frac{\partial M}{\partial \varphi_{i,k}^{C_{k-1}}}}=
+\boldsymbol{Q^{-1}(r^{C_{k-1}}_k)}\begin{bmatrix}
 -\cos(\theta_{i, k}^{C_{k-1}})\sin(\varphi_{i,k}^{C_{k-1}}) \\
 -\sin(\varphi_{i,k}^{C_{k-1}})\sin(\theta_{i, k}^{C_{k-1}}) \\
 \cos (\varphi_{i,k}^{C_{k-1}})
@@ -330,8 +377,8 @@ R^{-1}(r^{C})\begin{bmatrix}
 \end{equation}
 
 \begin{equation}
-\frac{\partial M}{\partial \theta _{i,k}^{C_{k-1}}}=
-R^{-1}(r^{C}) \begin{bmatrix}
+\boldsymbol{\frac{\partial M}{\partial \theta _{i,k}^{C_{k-1}}}}=
+\boldsymbol{Q^{-1}(r^{C_{k-1}}_k)} \begin{bmatrix}
 -\cos(\varphi_{i,k}^{C_{k-1}})\sin(\theta_{i, k}^{C_{k-1}})\\
 \cos(\varphi_{i,k}^{C_{k-1}})\cos(\theta_{i, k}^{C_{k-1}})\\
 0\\
