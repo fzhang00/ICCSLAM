@@ -2,10 +2,10 @@
 
 This chapter discusses the results of applying the proposed
 CC-EKF-SLAM algorithm on realistic aerial video and navigation data.
-Firstly, a piece of video of 400 frames was processed by the
+Firstly, a video of 400 frames was processed by the
 CC-EKF-SLAM algorithm. The convergence, consistency, and accuracy of
 the result were analyzed against ground truth, and described in
-section \ref{sec:flight-converge}-\ref{sec:flight-accuracy}. While
+Section \ref{sec:flight-converge}-\ref{sec:flight-accuracy}. While
 analyzing pure natural scene video, it was difficult to make an accurate
 correspondence between estimated landmarks and ground truth due to the
 lack of distinguishable visual features. Therefore, an another video
@@ -16,7 +16,7 @@ processed, and the result is summarized in Section
 \section{Convergence Analysis}\label{sec:flight-converge}
 When a landmark was added to the filter, the landmark initialization
 point was initialized to the zero which is the origin of the camera
-reference frame. $\phi$ and $\theta$ were calculated directly from
+reference frame. $\varphi$ and $\theta$ were calculated directly from
 the landmark position on the image plane. Therefore they had relatively
 high accuracy, and should stay relatively constant. The only parameter
 that experienced a converging process was the inverse depth $\rho$,
@@ -28,7 +28,7 @@ frames. Landmark IDs are shown on the right side of the plot for the
 landmarks that are not converging. The depth estimates go through
 rapid changes for several frames after initialization. Within
 approximately 20 frames, most inverse depth estimates have settled to stable
-values. Sharp spikes in the middle of the tracking are due to
+values. Sharp spikes in the middle of the tracking are due to the
 addition of new landmarks into the filter. The estimated
 landmark distances ranged from 400 meters to about 1200 meters,
 confirming the algorithm's capability for estimating landmarks at
@@ -55,9 +55,9 @@ becomes different. The pattern comparison in the tracking algorithm
 normally allows for a small error at each iteration to tolerate the
 slight view change of the camera. This error accumulates slowly and
 eventually causes the tracked target to become a pattern located at a
-different location, which explaines the slow drift in the depth
+different location, which explains the slow drift in the depth
 estimate. To increase the reliability of the estimates, it is
-necessary to add a procedure into the algorithm to detect and handle
+necessary to add a procedure into the algorithm that detect and handle
 such behavior.
 
 \begin{figure}[h]
@@ -84,15 +84,15 @@ keepaspectratio=true]{./Figures/fltfig/cut1/features/uav2_cut1_398_fID13.jpg}
 
 \subsection{Convergence of the Other Landmark Parameters}
 When landmarks were initialized, the initialization coordinates $[x_i,
-y_i, z_i]$, and the elevation-deviation angle pair $[\varphi, \theta]$
-do not go through a slow converging stage. Ideally, the parameters
+y_i, z_i]$, and the elevation-azimuth angle pair $[\varphi, \theta]$
+do not go through a slow converging stage. Ideally, these parameters
 should stay at a relatively fixed value. As these parameters were used
 with the inverse depth to calculate landmark coordinates on the image
 plane and received a corrections at every iteration, their values were
 affected by the inverse depth, and varied at each iteration. The plots
 in Figure \ref{fltfig:2} show these parameters and their errors over
 the entire length of processed frames. The ground truth values of these
-paramteres were extracted using the method described in Section
+parameters were extracted using the method described in Section
 \ref{sec:flight-accuracy}
 
 The first column of the plots shows landmark initialization coordinates.
@@ -111,29 +111,29 @@ cross-correlation on the initialization coordinates from a landmark
 close to it. The biggest errors on landmark initialization
 coordinates for landmarks added at later frames come from the offset
 errors. The offset errors are very significant on the Y axis.
-Since the landmark intialization coordinates are highly
+Since the landmark initialization coordinates are highly
 correlated to the SUAS location estimates, the offset errors are a
 direct result of the errors in SUAS localization estimates. A more detail
 analysis is given in Section \ref{sec:landmarkMotion}
 
 The third and fourth columns of Figure \ref{fltfig:2} show elevation
-angle $\varphi$, deviation angle $\theta$, and their errors. For all
-landmarks, whether initialized at first image frame or later frames,
+angle $\varphi$, azimuth angle $\theta$, and their errors. For all
+landmarks, whether initialized at the first image frame or later frames,
 these angle estimates all diverged slightly from the initial values.
-There were two factors that contributed to the variation of $\theta$
-and $\varphi$. Firstly, the initial depths of the landmarks were
+There were two factors that contributed to the variation of $\varphi$
+and $\theta$. Firstly, the initial depths of the landmarks were
 unknown. To compensate for the incorrect depth, the filter must adjust
 $\varphi$ and $\theta$ estimates slightly so that the predicted
-measurements would agree with the actual measurements. Secondly, big
+measurements agree with the actual measurements. Secondly, big
 variations in the estimates were seen at around frame 200 when a lot
 of new landmarks were added to the filter. This observation suggested
 that an addition of new landmark had negative impact on the accuracy of
 estimates. Therefore additions of new landmarks should not be allowed
-to happen too frequenctly in order to limit their effects. For
+to happen too frequently in order to limit their effects. For
 landmarks initialized at later frames, offset errors at initialization
 were much more significant, and were accounted for the majority of the
 mapping errors seen in those landmarks. Further discussion on the offset
-errors for those landmarks are presented in Section
+errors for these landmarks are presented in Section
 \ref{sec:landmarkMotion}
 % doesn't make sense. By definition, X rotation should have bigger
 % impact on varphi, Z rotation has bigger impact on theta
@@ -160,12 +160,12 @@ errors for those landmarks are presented in Section
 \FloatBarrier
 
 \section{Consistency Analysis}\label{sec:flight-consistency}
-Researche on EKF SLAM properties indicated that 
+Research on EKF SLAM properties indicated that 
 \begin{enumerate}
   \item An EKF system becomes inconsistent when the variance of a state
-  vector element becomes too small and forbids an effective update,
+  vector element becomes too small and forbids an effective correction,
   \item Uncertainty of the world frame should increase as the
-  camera frame moves away from it.
+  camera frame moves away from the world frame origin.
 \end{enumerate}
 
 To examine the consistency of the CC-EKF-SLAM algorithm, the variance
@@ -183,9 +183,9 @@ below 1.5e-5$^\circ$. Landmark parameters $\varphi$ and $\theta$ also
 have very small variance since they are affected by the variance of
 camera rotation. In the CC-EKF-SLAM algorithm, although the world
 frame orientation variance remains fixed at the prediction step,
-camera rotation variances have 1$^\circ$ of noise added (as indicated
+camera rotation variances have 0.1$^\circ$ of noise added (as indicated
 by the GS-111m specification \cite{_athena_????}). An investigation
-into the algorithm shows that the EKF update step reduces the noise of
+into the algorithm shows that the EKF correction step reduces the noise of
 camera rotation significantly and results in a variance estimate much
 lower than the specification.
 
@@ -212,7 +212,7 @@ lower than the specification.
 
 % consider deleting first and second point in the paragraph. Only the
 % third point leads to explaination of error.
-To see the effect of small variance on the update process of
+To see the effect of small variance on the correction process of
 CC-EKF-SLAM, correction amounts applied to the predicted state vector
 are plotted in Figure \ref{fltfig:4}. It can be observed that in
 general the correction amounts agree with the variance in that a
@@ -224,11 +224,11 @@ correlation between the landmark initialization positions, the world
 frame positions, and camera translation estimates. World frame
 positions and landmark initialization positions are inversely
 correlated to the camera translations on Y and Z axes. Thirdly, the
-camera parameter corrections show an obvious trend only on Y and Z
-motion. The correction amounts on camera translation on Y and Z axes
+camera parameter corrections show an obvious trend on Y and Z
+translation. The correction amounts on camera translation on Y and Z axes
 are increasing with time. Due to these relationships, the main
 contributor for drift in SUAS position and offset in landmark mapping
-should be the camera translation correction on Y and Z axis. On the
+should be the camera translation correction on Y and Z axes. On the
 other hand, the big correction on these parameters could be caused by
 the small variance in the camera rotation. If not enough correction
 can be made into the camera rotation and $\varphi$ and $\theta$
@@ -253,7 +253,7 @@ and magnetometer. The GPS positioning can generally achieve 7.8 meters
 in accuracy \cite{_gps_????}. For orientation, accuracy on the GS-111m
 datasheet specifies $0.1^{\circ}$ for roll and pitch, and
 $0.5^{\circ}$ for heading. Figure \ref{fltfig:6} shows the estimated
-SUAS position and orientation, ground truth, and the error. From the
+SUAS position and orientation, the ground truth, and the error. From the
 comparison, X position error reaches a maximum of 4.8 meters, while
 error in Y and Z are bigger, reaching 60 meters and 28 meters
 respectively. The position on the Y axis is clearly diverging from the
@@ -278,7 +278,7 @@ plays a crucial part on the accuracy of the estimates.
 
 \subsection{Landmarks Mapping}\label{sec:accuracy_features}
 
-The ground truth data came from the digital terrain map (DEM) which
+The ground truth data came from the digital elevation map (DEM) which
 was downloaded from the CGIAR-CSI website \cite{_cgiar-csi_????}.
 Establishing a data correspondence between the DEM and the estimated
 landmarks is non-trivial for a natural scene which lacks
@@ -300,7 +300,7 @@ estimated landmark.
   \item Create a reference frame aligned with the UTM frame on DEM
   using the ground truth SUAS position.
   \item Convert the landmark parameters $\theta$ and $\varphi$
-  angle at initialization from camera frame to UTM frame. 
+  angles at initialization from the camera frame to the reference frame created in step 2. 
   \item Create a vertical plane using $\theta$ to slice the DEM to
   form a 1D elevation plot. An example is shown by the blue line in Figure
   \ref{fltfig:7}.
@@ -352,7 +352,7 @@ affected. On the Y axis, the plots show that landmarks with IDs higher
 than 40 have offset errors. All landmarks with IDs higher than 40
 were initialized after frame 180, at which point the SUAS had
 travelled away from the world frame origin for at least 200 meters.
-The average error increases as landmark ID gets bigger, which indicates
+In general, the average error increases as landmark ID gets bigger, which indicates
 that the further the landmark initialization point is from the world
 frame origin, the bigger the offset error becomes. A more systematic
 analysis was done to find the source of these offset errors, and the
@@ -397,9 +397,9 @@ comparison.
 Due to the difficulty in corresponding estimated landmarks to the DEM,
 a second piece of video was processed with man-made
 structures in the scene so that landmark correspondence can be made
-manually. Ground truths for landmark coordinates were taken from Google
+manually. Ground truth on landmark coordinates were taken from Google
 Earth. Since Google Earth provides very rough elevation data,
-ground truths on landmark elevations were taken from the GPS measurements of the
+ground truth on landmark elevations were taken from the GPS measurements of the
 helicopter after it had landed at the airport. Figure \ref{fltfig:11}
 shows a zoomed-in view of the landmarks extracted by the CC-EKF-SLAM.
 All landmarks are located at the bottom left corner of the image.
@@ -423,7 +423,7 @@ the satellite image on Google Earth \cite{_google_????}.
 \end{figure}
 \FloatBarrier 
 
-The estimated SUAS poses are compared to the on-board GPS
+The estimated SUAS poses are compared to the GPS
 and IMU recordings in Figure \ref{fltfig:13}. Similar to the natural
 scene video, SUAS position estimates are more accurate on X and Z,
 and experience more drift on the Y axis. The drift becomes significant
@@ -446,7 +446,7 @@ truth and the estimated. The X component has a mean offset of about
 150 meters, and the Y component has an offset of about 40m. Since the
 error existed on all landmarks regardless of their ID value, and all
 landmarks are located at the bottom left corner of the FOV, it is
-likely that lens distortion is the main contributor to these errors.
+likely that lens distortion is the main contributor for these errors.
 
 
 \begin{figure}[h]

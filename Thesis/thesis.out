@@ -47,11 +47,11 @@
 \BOOKMARK [2][-]{subsection.6.1.2}{6.1.2 Landmarks Mapping}{section.6.1}% 47
 \BOOKMARK [1][-]{section.6.2}{6.2 Effect of UAV Oscillatory Motion}{section*.64}% 48
 \BOOKMARK [2][-]{subsection.6.2.1}{6.2.1 UAV Localization}{section.6.2}% 49
-\BOOKMARK [2][-]{subsection.6.2.2}{6.2.2 Landmark Mapping}{section.6.2}% 50
+\BOOKMARK [2][-]{subsection.6.2.2}{6.2.2 Landmarks Mapping}{section.6.2}% 50
 \BOOKMARK [1][-]{section.6.3}{6.3 Effect of Errors in Camera Intrinsic Parameters}{section*.64}% 51
 \BOOKMARK [2][-]{subsection.6.3.1}{6.3.1 Effect of Errors in \(cx, cy\)}{section.6.3}% 52
 \BOOKMARK [2][-]{subsection.6.3.2}{6.3.2 Effect of Errors in \(fx, fy\)}{section.6.3}% 53
-\BOOKMARK [2][-]{subsection.6.3.3}{6.3.3 Effect of Errors in Distortion Model}{section.6.3}% 54
+\BOOKMARK [2][-]{subsection.6.3.3}{6.3.3 Effect of Errors in Lens Distortion}{section.6.3}% 54
 \BOOKMARK [2][-]{subsection.6.3.4}{6.3.4 Effect of Image Digitization}{section.6.3}% 55
 \BOOKMARK [0][-]{section*.87}{ 7 Conclusion}{}% 56
 \BOOKMARK [1][-]{section.7.1}{7.1 Result Summaries}{section*.87}% 57

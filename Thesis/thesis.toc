@@ -1,9 +1,9 @@
 \contentsline {chapter}{Abstract}{iii}{section*.2}
-\contentsline {chapter}{Acknowledgments}{v}{section*.4}
-\contentsline {chapter}{Table of Contents}{vi}{section*.5}
-\contentsline {chapter}{List of Tables}{ix}{section*.7}
-\contentsline {chapter}{List of Figures}{x}{section*.9}
-\contentsline {chapter}{List of Acronyms}{xiii}{section*.12}
+\contentsline {chapter}{Acknowledgments}{iv}{section*.4}
+\contentsline {chapter}{Table of Contents}{v}{section*.5}
+\contentsline {chapter}{List of Tables}{viii}{section*.7}
+\contentsline {chapter}{List of Figures}{ix}{section*.9}
+\contentsline {chapter}{List of Acronyms}{xii}{section*.12}
 \contentsline {chapter}{ \numberline {1}Introduction}{1}{section*.13}
 \contentsline {section}{\numberline {1.1}Problem Statement}{2}{section.1.1}
 \contentsline {section}{\numberline {1.2}Contributions}{3}{section.1.2}
@@ -61,11 +61,11 @@
 \contentsline {subsection}{\numberline {6.1.2}Landmarks Mapping}{56}{subsection.6.1.2}
 \contentsline {section}{\numberline {6.2}Effect of UAV Oscillatory Motion}{57}{section.6.2}
 \contentsline {subsection}{\numberline {6.2.1}UAV Localization}{57}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Landmark Mapping}{61}{subsection.6.2.2}
+\contentsline {subsection}{\numberline {6.2.2}Landmarks Mapping}{61}{subsection.6.2.2}
 \contentsline {section}{\numberline {6.3}Effect of Errors in Camera Intrinsic Parameters}{66}{section.6.3}
 \contentsline {subsection}{\numberline {6.3.1}Effect of Errors in $(c_{x}, c_{y})$}{66}{subsection.6.3.1}
 \contentsline {subsection}{\numberline {6.3.2}Effect of Errors in $(f_x, f_y)$}{71}{subsection.6.3.2}
-\contentsline {subsection}{\numberline {6.3.3}Effect of Errors in Distortion Model}{74}{subsection.6.3.3}
+\contentsline {subsection}{\numberline {6.3.3}Effect of Errors in Lens Distortion}{74}{subsection.6.3.3}
 \contentsline {subsection}{\numberline {6.3.4}Effect of Image Digitization}{76}{subsection.6.3.4}
 \contentsline {chapter}{ \numberline {7}Conclusion}{78}{section*.87}
 \contentsline {section}{\numberline {7.1}Result Summaries}{78}{section.7.1}

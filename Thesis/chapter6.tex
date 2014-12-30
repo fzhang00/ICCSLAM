@@ -13,7 +13,7 @@ categories:
 
 \begin{enumerate}
   \item Error caused by the SLAM algorithm itself. The algorithm
-  estimates landmarks coordinates through a model that describes the
+  estimates landmark coordinates through a model that describes the
   relation between the UAV and landmarks. As the model is non-linear,
   the linearization process introduces error into the result.
   \item Noise in system intrinsic parameters. The system intrinsic
@@ -21,11 +21,11 @@ categories:
   \begin{itemize}
     \item Camera intrinsic parameters
     \begin{itemize}
-      \item Coordinate of optical center on image plane $[c_{x}, c_{y}]$
-      \item Scaling factors that project landmarks in 3D world to image plane $ [f_{x}, f_{y}]$
+      \item Coordinate of optical center on the image plane $[c_{x}, c_{y}]$
+      \item Scaling factors that project landmarks in 3D world to the image plane $ [f_{x}, f_{y}]$
       \item Lens distortion parameters $[k_{1}, k_{2}, p_{1}, p_{2}]$
     \end{itemize}
-    \item Image resolution.
+    \item Image resolution
     \item Accelerometer bias % expand
   \end{itemize}
   \item Error introduced by Lucas-Kanade (LK) tracking algorithm.
@@ -68,8 +68,8 @@ and digitized to a resolution of choice. The camera model used by the
 simulator may be different than the model used by the CC-EKF-SLAM
 algorithm, which allows for injection of camera calibration errors.
 The resulting coordinates of the 3D points were used directly as
-measurements in the update of the EKF. The simulator does not simulate 
-errors contributed by the visual tracking algorithm, and by navigation
+measurements in the correction step of the EKF. The simulator does not simulate 
+errors contributed by the visual tracking algorithm, or by navigation
 measurements.
 
 \begin{figure}[h]
@@ -104,7 +104,7 @@ speed. The low noise environment was configured as follows,
 
 \subsection{UAV Localization}
 % word checked.
-Acuracy of UAV poses estimates are plotted in Figure
+Accuracy of UAV poses estimates are plotted in Figure
 \ref{fig:simfig1}. The ground truth and estimated value are plotted
 in blue and green lines respectively. The error is plotted in red
 line. Under a simple forward motion, the algorithm tracks the
@@ -269,7 +269,7 @@ sensitive to rotational motion around Y and Z axes.
 \end{figure}
 \FloatBarrier
 
-\subsection{Landmark Mapping}\label{sec:landmarkMotion}
+\subsection{Landmarks Mapping}\label{sec:landmarkMotion}
 % word checked.
 Landmark mapping error statistics were calculated from the landmark
 errors at the last frame. Figure \ref{fig:simfig20-24} shows the
@@ -405,8 +405,8 @@ $c_{x}$, $c_{y}$, $f_{x}$, and $f_{y}$ were simulated individually and
 distortion parameters $[k1, k2, p1, p2]$ were simulated as a group.
 Using the calibration result (see Section \ref{sec:camcal}) as a
 base model, $c_{x}$, $c_{y}$, $f_{x}$, and $f_{y}$ in the simulator
-varied from -50\% to 50\% of the base model. Distortion
-parameters varied from 0\% to 140\% of the base model.
+varied from -50\% to 50\% of the base model. Lens distortion
+parameters varied from 0\% to 120\% of the base model.
 
 \subsection{Effect of Errors in $(c_{x}, c_{y})$}
 % word checked.
@@ -512,9 +512,9 @@ on their ground truth positions, and the amount of error in $c_{x}$
 \subsection{Effect of Errors in $(f_x, f_y)$}
 
 With $(f_x, f_y)$ varying from -50\% to +50\% of the base value, the
-UAV localization errors are shown in \ref{fig:simfig43-44}. For all
+UAV localization errors are shown in Figure \ref{fig:simfig43-44}. For all
 $f_x$ and $f_y$ settings, UAV position errors remain less than
-+/-0.05 meters, and orientation errors remains less than 8e-6 radius.
++/-0.05 meters, and orientation errors remains less than 8e-6 radians.
 Compared to the errors obtained from the ideal case, calibration
 errors in $(f_x, f_y)$ introduce minor errors into UAV localization
 estimates.
@@ -567,11 +567,11 @@ found for $Z_{error}$ with $f_y$, and $Z_{\text{ground truth}}$.
 \end{figure}
 \FloatBarrier
 
-\subsection{Effect of Errors in Distortion Model}
+\subsection{Effect of Errors in Lens Distortion}
 % word checked.
 The CC-EKF-SLAM algorithm does not consider camera lens distortion
 at this stage. Therefore, the simulation evaluated the effect of
-lens distortion varying from 0\% to 150\% of the base value to
+lens distortion varying from 0\% to 120\% of the base value to
 estimate the amount of error resulting from ignoring the lens distortion.
 
 Figure \ref{fig:simfig47} shows the UAV localization error for
@@ -620,7 +620,7 @@ mean error, but the standard deviation are bigger. Figure
 Y (or Z) axis are loosely proportional to the landmark ground truth
 coordinates on the Y (or Z) axis, where the amount of error in distortion
 determines the slope of the line. The relation indicates that
-landmarks lying around the sides of the image plane carry more
+landmarks lying around the edges of the image plane carry more
 errors than landmarks at the center of the image on all axes. This is
 exactly the kind of error that radial distortion corrects for.
 
@@ -647,7 +647,7 @@ It is well known that higher resolution sensors give more accuracy
 to the estimates. To know how high a resolution is good enough for the
 distance that this research is targeting at, a quantitative
 analysis is necessary. Simulations were run with various image
-resolution settings, and the results are shown in figure
+resolution settings, and the results are shown in Figure
 \ref{fig:simfig50}.
 \begin{figure}[h] 
   \centering

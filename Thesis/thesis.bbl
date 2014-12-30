@@ -55,12 +55,14 @@ T.~James, ``{GeoSurv} {II} {UAV} system requirements document,'' Carleton
 \bibitem{zhang_obstacle_2012}
 F.~Zhang, R.~Goubran, and P.~Straznicky, ``Obstacle detection for low flying
   {UAS} using monocular camera,'' in \emph{Proceedings of the {IEEE}
-  Instrumentation and Measurement Technology Conference}, 2012, pp. 2133--2137.
+  International Instrumentation and Measurement Technology Conference}, 2012,
+  pp. 2133--2137.
 
 \bibitem{de_angelis_low-cost_2007}
 A.~De~Angelis, M.~Dionigi, A.~Moschitta, and P.~Carbone, ``A low-cost
   ultra-wideband indoor ranging technique,'' in \emph{Proceedings of the {IEEE}
-  Instrumentation and Measurement Technology Conference}, 2007, pp. 1--6.
+  International Instrumentation and Measurement Technology Conference}, 2007,
+  pp. 1--6.
 
 \bibitem{alonge_novel_2009}
 F.~Alonge, M.~Branciforte, and F.~Motta, ``A novel method of distance
@@ -71,8 +73,8 @@ F.~Alonge, M.~Branciforte, and F.~Motta, ``A novel method of distance
 \bibitem{harb_neural_2008}
 M.~Harb, R.~Abielmona, K.~Naji, and E.~Petriu, ``Neural networks for
   environmental recognition and navigation of a mobile robot,'' in
-  \emph{Proceedings of the {IEEE} Instrumentation and Measurement Technology
-  Conference}, 2008, pp. 1123--1128.
+  \emph{Proceedings of the {IEEE} International Instrumentation and Measurement
+  Technology Conference}, 2008, pp. 1123--1128.
 
 \bibitem{saad_robust_2011}
 M.~M. Saad, C.~J. Bleakley, and S.~Dobson, ``Robust high-accuracy ultrasonic
@@ -91,14 +93,14 @@ K.~S. Chong and L.~Kleeman, ``Feature-based mapping in real, large scale
 \bibitem{hanna_obstacle_2008}
 E.~Hanna, P.~Straznicky, and R.~Goubran, ``Obstacle detection for low flying
   unmanned aerial vehicles using stereoscopic imaging,'' in \emph{Proceedings
-  of the {IEEE} Instrumentation and Measurement Technology Conference}, 2008,
-  pp. 113--118.
+  of the {IEEE} International Instrumentation and Measurement Technology
+  Conference}, 2008, pp. 113--118.
 
 \bibitem{lu_distance_2010}
 M.~C. Lu, C.~C. Hsu, and Y.~Y. Lu, ``Distance and angle measurement of distant
   objects on an oblique plane based on pixel variation of {CCD} image,'' in
-  \emph{Proceedings of the {IEEE} Instrumentation and Measurement Technology
-  Conference}, 2010, pp. 318--322.
+  \emph{Proceedings of the {IEEE} International Instrumentation and Measurement
+  Technology Conference}, 2010, pp. 318--322.
 
 \bibitem{civera_inverse_2008}
 J.~Civera, A.~Davison, and J.~Montiel, ``Inverse depth parametrization for
