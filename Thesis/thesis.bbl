@@ -58,6 +58,27 @@ F.~Zhang, R.~Goubran, and P.~Straznicky, ``Obstacle detection for low flying
   International Instrumentation and Measurement Technology Conference}, 2012,
   pp. 2133--2137.
 
+\bibitem{lu_distance_2010}
+M.~C. Lu, C.~C. Hsu, and Y.~Y. Lu, ``Distance and angle measurement of distant
+  objects on an oblique plane based on pixel variation of {CCD} image,'' in
+  \emph{Proceedings of the {IEEE} International Instrumentation and Measurement
+  Technology Conference}, 2010, pp. 318--322.
+
+\bibitem{Byrne_stereo_2006}
+J.~Byrne, M.~Cosgrove, and R.~Mehra, ``Stereo based obstacle detection for an
+  unmanned air vehicle,'' in \emph{Proceedings of IEEE International Conference
+  on Robotics and Automation}, 2006, pp. 2830--2835.
+
+\bibitem{pinies_inertial_2007}
+P.~Pinies, T.~Lupton, S.~Sukkarieh, and J.~Tardos, ``Inertial aiding of inverse
+  depth {SLAM} using a monocular camera,'' in \emph{Proceedings of IEEE
+  International Conference on Robotics and Automation}, 2007, pp. 2797--2802.
+
+\bibitem{li_scene_2012}
+Y.~Li, Q.~Pan, C.~Zhao, and F.~Yang, ``Scene matching based {EKF-SLAM} visual
+  navigation,'' in \emph{Proceedings of the 2012 31st Chinese Control
+  Conference}, 2012, pp. 5094--5099.
+
 \bibitem{de_angelis_low-cost_2007}
 A.~De~Angelis, M.~Dionigi, A.~Moschitta, and P.~Carbone, ``A low-cost
   ultra-wideband indoor ranging technique,'' in \emph{Proceedings of the {IEEE}
@@ -95,12 +116,6 @@ E.~Hanna, P.~Straznicky, and R.~Goubran, ``Obstacle detection for low flying
   unmanned aerial vehicles using stereoscopic imaging,'' in \emph{Proceedings
   of the {IEEE} International Instrumentation and Measurement Technology
   Conference}, 2008, pp. 113--118.
-
-\bibitem{lu_distance_2010}
-M.~C. Lu, C.~C. Hsu, and Y.~Y. Lu, ``Distance and angle measurement of distant
-  objects on an oblique plane based on pixel variation of {CCD} image,'' in
-  \emph{Proceedings of the {IEEE} International Instrumentation and Measurement
-  Technology Conference}, 2010, pp. 318--322.
 
 \bibitem{civera_inverse_2008}
 J.~Civera, A.~Davison, and J.~Montiel, ``Inverse depth parametrization for

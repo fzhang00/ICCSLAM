@@ -2,7 +2,7 @@
 % word checked.
 The flight test results proved the feasibility of using the CC-EKF-SLAM
 algorithm for distant object mapping. It also revealed there existed
-some error in the result of the algorithm, with error of up to 30
+some error in the result of the algorithm, with error of up to 60
 meters for SUAS localization and up to 150 meters for most landmarks
 positions. It is important to understand the cause of these errors so
 that improvement on the algorithm can be made.
@@ -12,12 +12,22 @@ landmarks mapping results, and they can be sorted into three main
 categories:
 
 \begin{enumerate}
-  \item Error caused by the SLAM algorithm itself. The algorithm
-  estimates landmark coordinates through a model that describes the
-  relation between the UAV and landmarks. As the model is non-linear,
-  the linearization process introduces error into the result.
-  \item Noise in system intrinsic parameters. The system intrinsic
-  parameters include
+  \item Error caused by the SLAM algorithm itself. 
+  \begin{itemize}
+    \item Firstly, the algorithm estimates landmark coordinates
+    through a model that describes the relation between the UAV poses,
+    the landmark positions in 3D world, and the landmark coordinates on
+    the image plane. The model may not be describing every aspect of
+    the relation fully. Any relation not included in the model introduces
+    error into the result.
+    \item Secondly, as the model is non-linear, the linearization
+    process can introduce error into the result. The amount of error
+    may be different for different kind of maneuver. In the test
+    flight, besides moving forward, the SUAS do experience oscillatory
+    rotation on all three axes.
+  \end{itemize}
+  \item Error in system intrinsic parameters estimates. The system
+  intrinsic parameters include
   \begin{itemize}
     \item Camera intrinsic parameters
     \begin{itemize}
@@ -28,48 +38,56 @@ categories:
     \item Image resolution
     \item Accelerometer bias % expand
   \end{itemize}
-  \item Error introduced by Lucas-Kanade (LK) tracking algorithm.
-  Firstly, LK tracking algorithm tracks landmarks by comparing the
-  intensity of a windowed image centered at the landmark coordinate
-  from one frame to another. The searching of the matching window
-  terminates when the sum of squared error (SSE) on the windowed image
-  is lower than a threshold set by the user, or when the number of
-  iterations of the search has reached a maximum number (also set by
-  user). As the scene evolves from frame to frame, the initial
-  landmark appears differently as viewing distance and angle changes.
-  Allowing a small SSE between matched windows is necessary to give
-  tolerance for the matching. However, it could also cause the window
-  to move in the neighborhood of the landmark coordinate, and
-  eventually drift off, resulting in a loss of the original landmark.
-  An example was shown in Figure \ref{fltfig:1_1} in Chapter
+  \item Error introduced by pyramid Lucas-Kanade (LK) tracking
+  algorithm. Firstly, LK tracking algorithm tracks landmarks by
+  comparing the intensity of a windowed image centered at the landmark
+  coordinate from one frame to another. The searching of the matching
+  window terminates when the sum of squared error (SSE) on the
+  windowed image is lower than a threshold set by the user, or when
+  the number of iterations of the search has reached a maximum number
+  (also set by user). As the scene evolves from frame to frame, the
+  initial landmark appears differently as viewing distance and angle
+  changes. Allowing a small SSE between matched windows is necessary
+  to give tolerance for the matching. However, it could also cause the
+  window to move in the neighborhood of the landmark coordinate, and
+  eventually drift off, resulting in a loss of the original visual
+  pattern. An example was shown in Figure \ref{fltfig:1_1} in Chapter
   \ref{ch:FlightResult}. Secondly, sudden intensity changes in image
   sequences could result in significant noise in the tracking. In an
   outdoor setting, intensity change can be introduced by many factors,
   such as changes of sky portion in an image, sun glare, UAV entering
   or exiting cloud shade, or the camera auto-adjusting its shutter
-  speed, etc. As a reliable vision tracking algorithm is an entire
-  field of research in itself, it will not be discussed further in
-  this chapter.
+  speed, etc. In this work, error from illumination changes were
+  reduced by feeding the pyramid LK algorithm with the predicted
+  landmark coordinates on the image plane. No significant error can be
+  observed due to illumination variation in the video processed. As a
+  reliable vision tracking algorithm is an entire field of research in
+  itself, it will not be discussed further in this chapter.
 
 \end{enumerate}
 
-To better understand the impact from the noise of system intrinsic
-parameters listed above, a series of simulations were performed to
-examine items 1 and 2. The procedure described below simulates the
-entire process of perceiving landmarks through a digital camera under
-arbitrary UAV motion. The simulator first generates a 3D point cloud
-ranging between 100 meters to 1500 meters from the camera (Figure
-\ref{fig:simfig51}). At each frame, the coordinates of the 3D points
-are transformed to the new camera frame using a simulated UAV pose,
-which allows for studying the algorithm under various motions. Next,
-the 3D points are projected onto the image plane using a camera model
-defined by $[c_{x}, c_{y}, f_{x}, f_{y}, k_{1}, k_{2}, p_{1}, p_{2}]$,
-and digitized to a resolution of choice. The camera model used by the
-simulator may be different than the model used by the CC-EKF-SLAM
-algorithm, which allows for injection of camera calibration errors.
-The resulting coordinates of the 3D points were used directly as
-measurements in the correction step of the EKF. The simulator does not simulate 
-errors contributed by the visual tracking algorithm, or by navigation
+To better understand the impact from different UAV motion and error in
+system intrinsic parameters, a series of simulations were performed to
+examine factors discussed in item 1 and 2 independently. Result from
+the analysis will help improving the CC-EKF-SLAM itself, selecting
+appropriate hardware for the system, as well as quantifying the
+specification of the OD system.
+
+The procedure described below simulates the entire process
+of perceiving landmarks through a digital camera under arbitrary UAV
+motion. The simulator first generates a 3D point cloud ranging between
+100 meters to 1500 meters from the camera (Figure \ref{fig:simfig51}).
+At each frame, the coordinates of the 3D points are transformed to the
+new camera frame using a simulated UAV pose, which allows for studying
+the algorithm under various motions. Next, the 3D points are projected
+onto the image plane using a camera model defined by $[c_{x}, c_{y},
+f_{x}, f_{y}, k_{1}, k_{2}, p_{1}, p_{2}]$, and digitized to a
+resolution of choice. The camera model used by the simulator may be
+different than the model used by the CC-EKF-SLAM algorithm, which
+allows for injection of camera calibration errors. The resulting
+coordinates of the 3D points were used directly as measurements in the
+correction step of the EKF. The simulator does not simulate errors
+contributed by the visual tracking algorithm, or by navigation
 measurements.
 
 \begin{figure}[h]
@@ -168,30 +186,33 @@ all converge toward zero. During the 400 frames period, some
 landmarks move out of the FOV, and therefore their position estimates
 remain unchanged afterward. At the end of the 400 frames, landmark
 coordinate errors on X axis are reduced to +/-0.2 meters; on Y and Z axes,
-errors are reduced to +/-0.02 meters. In summary, factors that cause
-error in landmark positions are listed below. 
+errors are reduced to +/-0.02 meters. 
 
+The findings of simple forward motion analysis are summarized below.
 \begin{itemize}
-  \item Errors in UAV localization cause an offset error when a new
-  landmark is added to the filter.
-  \item Early landmark integration causes offset errors in $\varphi$
-  and $\theta$ estimates due to the EKF compensating for landmark depth at
-  integration.
-  \item Some landmarks move out of FOV before fully converged.
+  \item Early landmark integration causes offset errors in UAV
+  self-localization, and $[\varphi, \theta]$ estimates due to the EKF
+  compensating for landmark depth at integration.
+  \item Error caused by CC-EKF-SLAM non-linearity under simple forward
+  motion is very small, and negligible compared to the object
+  distance. This observation indicates that when analyzing other
+  factors, such as oscillatory motion or camera calibration error,
+  any significant error that appears would be due to the added factor,
+  and not the forward motion.
 \end{itemize}
 \FloatBarrier
 
 \section{Effect of UAV Oscillatory Motion}
 % word checked.
-The simulation of UAV forward travel shows that the
-CC-EKF-SLAM algorithm does landmark tracking and self localization
-quite well under simple motion. Next, the algorithm was tested with a
-more complex and realistic scenario. The remaining 5 types of
-maneuvers were examined independently. These maneuvers are:
-translation on Y, translation on Z, rotation on X, rotation on Y and
-rotation on Z. As motions on all other 5 DOFs are mostly oscillatory
-when the UAV moves forward, each motion was modelled by a Sine wave
-with frequency at 1Hz and variable amplitude.
+The simulation of UAV forward travel shows that the CC-EKF-SLAM
+algorithm does landmark tracking and self localization quite well
+under simple motion. Next, the algorithm was tested with a more
+complex and realistic scenario. The remaining 5 types of maneuvers
+were examined independently. These maneuvers are: translation on Y,
+translation on Z, rotation on X, rotation on Y and rotation on Z. In
+the test flight, motions on these 5 DOFs were mostly oscillatory,
+especially the rotations. Each motion was modelled by a Sine wave with
+frequency at 1Hz with variable amplitude.
 
 $$\text{Added motion} = A_{\text{motion type}}\cdot sin(2\pi x+\pi/2)$$
 
@@ -200,7 +221,9 @@ axes; $w_x$, $w_y$ and $w_z$ for rotation on X, Y, and Z axes. For
 translation, the Sine amplitude $A_{v_y,v_z}$ varied from 1 meter to
 19 meters with 2 meter increments. For rotation, the amplitude
 $A_{w_x,w_y,w_z}$ varied from 0.001 radians to 0.018 radians
-(0.057$^\circ$ to 1.031$^\circ$) with 0.001 radian increments.
+(0.057$^\circ$ to 1.031$^\circ$) with 0.001 radian increments. By
+setting different amplitude of the Sine function, a wide range of
+rate of change for specific motion can be simulated. 
 
 \subsection{UAV Localization}\label{localization_motion}
 
@@ -208,7 +231,7 @@ Figure \ref{fig:simfig9-10} shows the UAV localization error statistic
 under oscillatory translation on Y and Z axes and oscillatory rotation
 on X, Y, and Z axes. The blue dots marks the mean value $\mu$ of the
 error averaged throughout 400 frames of tracking, and the error bars
-marks the standard deviation $\sigma$.
+mark the standard deviation $\sigma$.
 
 The translation motion clearly increases the error of UAV
 localization. However, the amount is insignificant. With the Sine
@@ -328,11 +351,10 @@ setting. The following observations can be made from the plots:
   landmark IDs when Y axis rotation setting is increased from 0.001rad to
   0.018rad. A frequent addition of new landmarks has a negative impact on
   the overall result due to the correlation between landmarks.
-  \item Landmarks added after first frame have a much bigger error than
-  landmarks added at the first frame. At the first frame, 40 landmarks were
-  added to the filter. All three plots in Figure \ref{fig:simfig17-19}
-  show that major landmark mapping errors come from landmarks added
-  after the first frame with ID bigger than 40.
+  \item Landmarks added after the first frame have a much bigger error
+  than landmarks added at the first frame. All three plots in Figure
+  \ref{fig:simfig17-19} show that major landmark mapping errors come
+  from landmarks added after the first frame with ID bigger than 40.
 \end{itemize}
 \FloatBarrier
 
@@ -399,14 +421,13 @@ from errors in UAV localization estimation.
 % word checked.
 This section discusses the effect on CC-EKF-SLAM accuracy from
 calibration errors of camera intrinsic parameters. Errors in camera
-intrinsic parameters were simulated by using different 
-camera models in the simulator and in CC-EKF-SLAM algorithm.
-$c_{x}$, $c_{y}$, $f_{x}$, and $f_{y}$ were simulated individually and
-distortion parameters $[k1, k2, p1, p2]$ were simulated as a group.
-Using the calibration result (see Section \ref{sec:camcal}) as a
-base model, $c_{x}$, $c_{y}$, $f_{x}$, and $f_{y}$ in the simulator
-varied from -50\% to 50\% of the base model. Lens distortion
-parameters varied from 0\% to 120\% of the base model.
+intrinsic parameters were simulated by using slightly varied camera
+models in the simulator. $c_{x}$, $c_{y}$, $f_{x}$, and $f_{y}$ were
+simulated individually and distortion parameters $[k1, k2, p1, p2]$
+were simulated as a group. Using the calibration result (see Section
+\ref{sec:camcal}) as a base model, $c_{x}$, $c_{y}$, $f_{x}$, and
+$f_{y}$ in the simulator varied from -50\% to 50\% of the base model.
+Lens distortion parameters varied from 0\% to 120\% of the base model.
 
 \subsection{Effect of Errors in $(c_{x}, c_{y})$}
 % word checked.
@@ -441,9 +462,10 @@ of $(c_{x}, c_{y})$ from the base value.
 \end{figure}
 \FloatBarrier
 
-The statistics of the landmark mapping errors due to the calibration errors of
-$(c_{x}, c_{y})$ are plotted in Figure \ref{fig:simfig28-29}. The
-following characteristics can be observed from the plots:
+The statistics of the landmark mapping errors due to the calibration
+errors in $(c_{x}, c_{y})$ are plotted in Figure
+\ref{fig:simfig28-29}. The following characteristics can be observed
+from the plots:
 
 \begin{itemize}
   \item Calibration error in $c_{x}$ affects landmark positions on all
@@ -487,11 +509,11 @@ on their ground truth positions, and the amount of error in $c_{x}$
   $c_{x}$, the steeper the slope becomes (Figure \ref{fig:simfig32-33},
   top plot, subplot $[1,1]$).
   \item Landmark position errors on the Y axis are also proportional to
-  their ground truth positions on X with the slope steepness and
+  their ground truth positions on X with the slope and
   polarity dependent on the amount and polarity of the error in
   $c_{x}$ (Figure \ref{fig:simfig32-33}, top plot, subplot $[2,1]$).
   \item Landmark position errors on the Z axis are proportional to
-  their ground truth positions on Z, with slope steepness and polarity
+  their ground truth positions on Z, with slope and polarity
   dependent on the amount and polarity of error in $c_{x}$ (Figure
   \ref{fig:simfig32-33}, top plot, subplot $[3,3]$).
   \item Error in $c_{y}$ affects landmark positions similarly to
@@ -585,7 +607,7 @@ distortion added.
 Figure \ref{fig:simfig48} reveals the cause of increasing standard
 deviation. UAV position errors are diverging in time and with the amount
 of lens distortion added. UAV orientation errors increase from
-maximum mean error of 5e-6 rad in low noise simulation to 2.5e-4
+maximum error of 5e-6 rad in low noise simulation to 2.5e-4
 rad. Similar to position error, the plots of orientation error vs.
 frame number shows that the error amplitude increases with time
 but fluctuates around zero.
@@ -610,7 +632,7 @@ The landmark position error statistics are shown in Figure
 \ref{fig:simfig45}. The position errors are also plotted against
 landmark ground truth positions in Figure \ref{fig:simfig46}. The
 landmark positions on the X axis show the most error. The mean error
-reaches -140 meters with distortion offset at 120\%. The amount of
+reaches 400 meters with distortion offset at 120\%. The amount of
 error is related to the landmarks' distance from the X axis which aligns
 with the optical axis (Figure \ref{fig:simfig46}, subplots [1,2] and
 [1,3]). The further the landmarks lay from the X axis, the bigger the
@@ -645,7 +667,7 @@ exactly the kind of error that radial distortion corrects for.
 
 It is well known that higher resolution sensors give more accuracy
 to the estimates. To know how high a resolution is good enough for the
-distance that this research is targeting at, a quantitative
+distance that this research is targeting for, a quantitative
 analysis is necessary. Simulations were run with various image
 resolution settings, and the results are shown in Figure
 \ref{fig:simfig50}.
@@ -668,7 +690,7 @@ the more accuracy it will bring. The most significant error is seen
 at resolution 480x720 where the landmark position errors on X are
 +/- 150m. At 1080x1440, landmark position errors on the X axis are
 greatly reduced to a few meters. For all other parameter estimates,
-improvements at each increase of resolution are nearly linear.
+improvements at each increment of resolution are nearly linear.
 This result suggests that, to achieve reasonably good accuracy for
 obstacle detection, a sensor with resolution of 1080x1440 or higher is
 preferred.

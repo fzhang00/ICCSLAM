@@ -2,16 +2,23 @@
 
 This chapter discusses the results of applying the proposed
 CC-EKF-SLAM algorithm on realistic aerial video and navigation data.
-Firstly, a video of 400 frames was processed by the
-CC-EKF-SLAM algorithm. The convergence, consistency, and accuracy of
-the result were analyzed against ground truth, and described in
-Section \ref{sec:flight-converge}-\ref{sec:flight-accuracy}. While
-analyzing pure natural scene video, it was difficult to make an accurate
-correspondence between estimated landmarks and ground truth due to the
-lack of distinguishable visual features. Therefore, an another video
-where landmarks can be manually and distinctively matched was
-processed, and the result is summarized in Section
+Firstly, a video of 400 frames was processed by the CC-EKF-SLAM
+algorithm. The convergence, consistency, and accuracy of the result
+were analyzed against ground truth, and described in Section
+\ref{sec:flight-converge}-\ref{sec:flight-accuracy}. While analyzing
+pure natural scene video, it was difficult to judge the correctness of
+the correspondence between the estimated landmarks and the ground
+truth due to the lack of distinguishable visual features. Therefore,
+an another video where landmarks can be manually and distinctively
+matched was processed, and the result is summarized in Section
 \ref{sec:flight-manual}.
+
+The flight test result proved the feasibility of the CC-EKF-SLAM in
+mapping object at over 1000 meters distance. When equipped with a high
+resolution high dynamic range camera, the system would be able to
+produce high resolution model of the surrounding environment, and
+detect static obstacles such as tall trees, steep hills, electrical
+power line towers, etc.
 
 \section{Convergence Analysis}\label{sec:flight-converge}
 When a landmark was added to the filter, the landmark initialization
@@ -24,23 +31,25 @@ which was initialized to 0.01 for all landmarks.
 
 \subsection{Convergence of Inverse Depth}
 Figure \ref{fltfig:1} shows the $1/\rho$ plot for the entire 400
-frames. Landmark IDs are shown on the right side of the plot for the
-landmarks that are not converging. The depth estimates go through
-rapid changes for several frames after initialization. Within
-approximately 20 frames, most inverse depth estimates have settled to stable
-values. Sharp spikes in the middle of the tracking are due to the
-addition of new landmarks into the filter. The estimated
-landmark distances ranged from 400 meters to about 1200 meters,
-confirming the algorithm's capability for estimating landmarks at
-great distance. On the other hand, some landmarks take a long time to
-settle, while some others never settle and drift away as tracking
+frames. Landmarks added at the 1$^{st}$ frame are drawn in grey lines.
+Landmarks added at later frames are drawn in blue lines. Landmarks
+that drifted away are drawn in red line. The Landmark IDs are also
+shown on the right side of the plot for these drifting landmarks. The depth
+estimates go through rapid changes for several frames after
+initialization. Within approximately 20 frames, most inverse depth
+estimates have settled to stable values. Sharp spikes in the middle of
+the tracking are due to the addition of new landmarks into the filter.
+The estimated landmark distances ranged from 400 meters to about 1200
+meters, confirming the algorithm's capability for estimating landmarks
+at great distance. On the other hand, some landmarks take a long time
+to settle, while some others never settle and drift away as tracking
 continues, such as landmarks 32, 13, and 53.
 % An outlier filter should be in place to get rid of the poor features
 % (future work).
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=12cm, keepaspectratio=true]{./Figures/fltfig/cut1/Figure10.png}
+\includegraphics[width=12cm, keepaspectratio=true]{./Figures/fltfig/cut1/Figure131.png}
 \caption{Inverse depth convergence}
 \label{fltfig:1}
 \end{figure}
@@ -50,13 +59,13 @@ where objects with a big difference in distance meet in the image. As
 an example, the visual pattern of landmark 13 at frame 50, 100, 150,
 200, 250, 300, 350 and 398 are shown in Figure \ref{fltfig:1_1}. It
 shows that the initial visual pattern for landmark 13 is detected at
-the edge of a hill top. As the frame number advances, the camera view
-becomes different. The pattern comparison in the tracking algorithm
-normally allows for a small error at each iteration to tolerate the
-slight view change of the camera. This error accumulates slowly and
-eventually causes the tracked target to become a pattern located at a
-different location, which explains the slow drift in the depth
-estimate. To increase the reliability of the estimates, it is
+the immediate hill top. As the frame number advances, the camera view
+becomes different. The pattern comparison in the pyramid LK tracking
+algorithm normally allows for a small error at each iteration to
+tolerate the slight view change of the camera. This error accumulates
+slowly and eventually causes the tracked target to become a pattern
+located at a different location, which explains the slow drift in the
+depth estimate. To increase the reliability of the estimates, it is
 necessary to add a procedure into the algorithm that detect and handle
 such behavior.
 
@@ -91,30 +100,32 @@ with the inverse depth to calculate landmark coordinates on the image
 plane and received a corrections at every iteration, their values were
 affected by the inverse depth, and varied at each iteration. The plots
 in Figure \ref{fltfig:2} show these parameters and their errors over
-the entire length of processed frames. The ground truth values of these
+the entire length of processed frames. The colors of the lines
+represents the landmark IDs, which were assigned sequentially when
+landmarks were initialized. The ground truth values of these
 parameters were extracted using the method described in Section
-\ref{sec:flight-accuracy}
+\ref{sec:flight-accuracy}.
 
-The first column of the plots shows landmark initialization coordinates.
-The second column shows the errors of landmark initialization coordinates.
-All landmarks initialized at time 0 had stable values on
-initialization coordinates, with little variation and little error.
-Landmarks that were added at later frames showed drift from their
-initial values, as well as offset. The drift is a direct result of the
-filter correction process. When a new landmark was added to the
-filter, it had not established correlation with all the other
+The first column of the plots shows landmark initialization
+coordinates. The second column shows the errors of landmark
+initialization coordinates. All landmarks initialized at time 0 had
+stable values on initialization coordinates, with little variation and
+little error. Landmarks that were added at later frames showed drift
+from their initial values, as well as offset. The drift is a direct
+result of the filter correction process. When a new landmark was added
+to the filter, it had not established correlation with all the other
 landmarks and the world frame parameters, which caused its correction
-on the initialization point to be slightly different than all the existing
-landmarks and the world frame position. As a future improvement, it is
-reasonable for the newly added landmark to inherit the
-cross-correlation on the initialization coordinates from a landmark
-close to it. The biggest errors on landmark initialization
+on the initialization point to be slightly different than all the
+existing landmarks and the world frame position. As a future
+improvement, it is reasonable for the newly added landmark to inherit
+the cross-correlation on the initialization coordinates from a
+landmark close to it. The biggest errors on landmark initialization
 coordinates for landmarks added at later frames come from the offset
-errors. The offset errors are very significant on the Y axis.
-Since the landmark initialization coordinates are highly
-correlated to the SUAS location estimates, the offset errors are a
-direct result of the errors in SUAS localization estimates. A more detail
-analysis is given in Section \ref{sec:landmarkMotion}
+errors. The offset errors are very significant on the Y axis. Since
+the landmark initialization coordinates are highly correlated to the
+SUAS location estimates, the offset errors are direct results of the
+errors in SUAS localization estimates. A more detail analysis is given
+in Section \ref{sec:landmarkMotion}
 
 The third and fourth columns of Figure \ref{fltfig:2} show elevation
 angle $\varphi$, azimuth angle $\theta$, and their errors. For all
@@ -126,8 +137,8 @@ unknown. To compensate for the incorrect depth, the filter must adjust
 $\varphi$ and $\theta$ estimates slightly so that the predicted
 measurements agree with the actual measurements. Secondly, big
 variations in the estimates were seen at around frame 200 when a lot
-of new landmarks were added to the filter. This observation suggested
-that an addition of new landmark had negative impact on the accuracy of
+of new landmarks were added to the filter. This observation suggests
+that an addition of new landmark has negative impact on the accuracy of
 estimates. Therefore additions of new landmarks should not be allowed
 to happen too frequently in order to limit their effects. For
 landmarks initialized at later frames, offset errors at initialization
@@ -140,7 +151,7 @@ errors for these landmarks are presented in Section
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=14cm, keepaspectratio=true]
+\includegraphics[width=15cm, keepaspectratio=true]
 {./Figures/fltfig/cut1/Figure20.png}
 \caption{Convergence and errors of all other landmark parameters
   besides inverse depth}
@@ -279,7 +290,11 @@ plays a crucial part on the accuracy of the estimates.
 \subsection{Landmarks Mapping}\label{sec:accuracy_features}
 
 The ground truth data came from the digital elevation map (DEM) which
-was downloaded from the CGIAR-CSI website \cite{_cgiar-csi_????}.
+was downloaded from the CGIAR-CSI website \cite{_cgiar-csi_????}. The
+DEM has approximately 90 meters resolution, and the reported vertical
+error is less than 16 meters. The map was interpolated when being
+compared to the estimated landmark position. 
+
 Establishing a data correspondence between the DEM and the estimated
 landmarks is non-trivial for a natural scene which lacks
 distinguishable visual features such as building corners or other
@@ -319,19 +334,22 @@ estimated landmark.
 \end{figure}
 
 The convergence of landmark position errors is plotted in Figure
-\ref{fltfig:8}. The error on the X component (along which axis the
-SUAS was traveling) converges to zero in general, with the amount
-ranging from 2.8 meters to 120 meters. The error on the Y component
-shows a clear offset for landmarks not initialized at the first frame. This
-behavior is similar to what is seen in the error analysis in Section
-\ref{sec:landmarkMotion} where offset in landmark position estimates
-are caused by drift in UAV localization estimation. Offsets on the Z
-component are much less obvious.
+\ref{fltfig:8}. Landmarks added at the 1$^{st}$ frame are drawn in
+grey lines. Landmarks added at later frames are drawn in blue lines.
+Landmarks that drifted away are drawn in red lines. The errors on the
+X component (along which axis the SUAS was traveling) converge to zero
+in general, with the amount ranging from 2.8 meters to 120 meters. The
+errors on the Y component show clear offsets for landmarks not
+initialized at the first frame. This behavior is similar to what is
+seen in the error analysis in Section \ref{sec:landmarkMotion} where
+offset in landmark position estimates are caused by drift in UAV
+localization estimation. Offsets on the Z component are much less
+obvious.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=10cm, keepaspectratio=true]
-{./Figures/fltfig/cut1/Figure50.png}
+\includegraphics[width=14cm, keepaspectratio=true]
+{./Figures/fltfig/cut1/Figure500.png}
 \caption{Landmark position errors convergence in world frame}
 \label{fltfig:8}
 \end{figure}
@@ -340,23 +358,24 @@ Landmark IDs were assigned to landmarks sequentially when landmarks
 were initialized into the filter. Plotting the estimated and ground
 truth landmark positions against landmark IDs revealed more detail on
 the errors. Figure \ref{fltfig:9} shows the estimated and ground truth
-landmark positions on the left, and the errors on the right. On X and Z
-axes, the biggest error occurs on landmark 65 which was
-initialized fairly late in the sequence, and may not have converged
-properly. Other landmarks that carry big errors, such as landmarks
-13, 31, and 32, are all located on the hill top which appears as a line
-feature in the image of Figure \ref{fltfig:line_features}. The visual
-tracking problem discussed earlier applies to all these line features.
-Hence, accuracy of distance estimates on these landmarks were
-affected. On the Y axis, the plots show that landmarks with IDs higher
-than 40 have offset errors. All landmarks with IDs higher than 40
-were initialized after frame 180, at which point the SUAS had
-travelled away from the world frame origin for at least 200 meters.
-In general, the average error increases as landmark ID gets bigger, which indicates
-that the further the landmark initialization point is from the world
-frame origin, the bigger the offset error becomes. A more systematic
-analysis was done to find the source of these offset errors, and the
-results are presented in Chapter \ref{ch:simulation}.
+landmark positions on the left, and the errors on the right. On X and
+Z axes, the biggest error occurs on landmark 65 which was initialized
+fairly late in the sequence, and may not have converged properly.
+Other landmarks that carry big errors, such as landmarks 13, 31, and
+32, are all located on the hill top in the image of Figure
+\ref{fltfig:line_features}. The visual tracking problem discussed
+earlier applies to all these line features. Hence, accuracy of
+distance estimates on these landmarks were affected. On the Y axis,
+the plots show that landmarks with IDs higher than 40 have offset
+errors. All landmarks with IDs higher than 40 were initialized after
+frame 180, at which point the SUAS had travelled away from the world
+frame origin for at least 200 meters. In general, the average error
+increases as landmark ID gets bigger, which indicates that the further
+the landmark initialization point is from the world frame origin, the
+bigger the offset error becomes. A more detail analysis was done to
+find the source of these offset errors, and the results are presented
+in Chapter \ref{ch:simulation}. The statistics of landmark position
+errors are summarized in Table \ref{tab:lm_err_stats_nat}.
 
 \begin{figure}[h]
 \centering
@@ -366,6 +385,19 @@ results are presented in Chapter \ref{ch:simulation}.
   sequence for the natural scene video}
 \label{fltfig:9}
 \end{figure}
+\FloatBarrier
+\begin{table}[h]
+\caption{Landmark mapping error statistics for natural scene}
+\label{tab:lm_err_stats_nat}
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+          & Mean       & Standard Deviation \\ \hline
+$X_{error}$ & -56.21 meters    & 136.23 meters            \\ \hline
+$Y_{error}$ & 13.75 meters     & 31.01 meters             \\ \hline
+$Z_{error}$ & 1.34 meters      & 9.09 meters              \\ \hline
+\end{tabular}
+\end{table}      
 
 \begin{figure}[h]
 \centering
@@ -379,8 +411,11 @@ results are presented in Chapter \ref{ch:simulation}.
 
 Using the estimated landmark positions, a terrain map can be
 generated. Figure \ref{fltfig:10} shows the resulting terrain map on
-the left. On the right, the ground truth DEM is also shown for
-comparison.
+the left with landmarks marked by circle markers. On the right, the
+ground truth DEM is also shown for comparison. The estimated terrain
+map agrees with the DEM at location where sufficient amount of
+landmarks can be established, such as the front and right side of the
+map.
 
 \begin{figure}[h]
 \centering
@@ -440,13 +475,21 @@ plot.
 \end{figure}
 \FloatBarrier
 
-Figure \ref{fltfig:15} shows the landmark positions compared to
-ground truth. This plot shows a clear offset error between the ground
-truth and the estimated. The X component has a mean offset of about
-150 meters, and the Y component has an offset of about 40m. Since the
-error existed on all landmarks regardless of their ID value, and all
-landmarks are located at the bottom left corner of the FOV, it is
-likely that lens distortion is the main contributor for these errors.
+Figure \ref{fltfig:15} shows the landmark positions compared to ground
+truth. This plot shows a clear offset error between the ground truth
+and the estimated. The error statistics are given in Table
+\ref{tab:lm_err_stats_airport}. Compared to the landmark error
+statistic from natural scene video, these errors have bigger mean, but
+much smaller standard deviation. This suggests that the landmarks
+might be affected by specific error source. Since the offset errors
+exist on all landmarks regardless of their ID value, and all landmarks
+are located at the bottom left corner of the FOV, it is likely that
+lens distortion is the main contributor for these errors. On the other
+hand, the error from airport landing video are within $3\sigma$ of the
+error statistics established in the natural scene video. The
+statistics comparison confirms that the accuracy analysis result from
+both videos agrees in general, and that the ground truth to estimated
+landmark correspondence method used in natural scene is valid.
 
 
 \begin{figure}[h]
@@ -456,6 +499,21 @@ likely that lens distortion is the main contributor for these errors.
 \caption{Landmark positions and errors for the airport landing video}
 \label{fltfig:15}
 \end{figure}
+
+\begin{table}[h]
+\caption{Landmark mapping error statistics for airport landing scene}
+\label{tab:lm_err_stats_airport}
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+          & Mean       & Standard Deviation \\ \hline
+$X_{error}$ & 154.33 meters    & 44.86 meters            \\ \hline
+$Y_{error}$ & -53.15 meters     & 17.98 meters             \\ \hline
+$Z_{error}$ & 17.27 meters      & 5.44 meters              \\ \hline
+\end{tabular}
+\end{table} 
+
+
 
 %%% Local Variables:
 %%% mode: latex

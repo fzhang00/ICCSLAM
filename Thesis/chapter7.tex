@@ -51,14 +51,14 @@ recording. Results from the flight data are as follows:
   frame.
 \end{itemize}
 
-Due to the difficulty in matching the tracked landmarks with the DEM,
-an extra video was processed with the airport buildings in the scenes
-which makes manual visual correspondence possible. All landmarks were
-matched manually to the satellite image from Google Earth. In this
-test, landmark positions had errors of 150 meters on the X axis, 40
-meters on the Y axis and 20 meters on the Z axis. Given that they are
-all located at the corner of the image plane, this error is likely due
-to lens distortion.
+Due to the difficulty in matching the tracked landmarks with the DEM
+in natural scene, an extra video was processed with the airport
+buildings in the scenes which makes manual visual correspondence
+possible. All landmarks were matched manually to the satellite image
+from Google Earth. In this test, landmark positions had errors of 150
+meters on the X axis, 40 meters on the Y axis and 20 meters on the Z
+axis. Given that they are all located at the corner of the image
+plane, this error is likely due to lens distortion.
 
 \subsection{Noise Analysis through Simulation}
 % word checked.
@@ -83,11 +83,11 @@ itself under simple forward motion was very minor.
 % word checked.
 The effects of oscillatory UAV motions were analyzed next. The UAV
 remained forward motion while oscillatory motion on each of the other
-5 DOF was added one at a time. The added motion was simulated with a
+5 DOFs was added one at a time. The added motion was simulated with a
 1Hz Sine wave and with variable amplitude settings. Results show that
 translational motion on the Y axis and the Z axis and rotation around X axis
 (roll) have little effect on the UAV localization accuracy. Rotation
-around the Y axis (pitch) and rotation around the Z axis (azimuth) cause UAV
+around the Y axis (pitch) and rotation around the Z axis (heading) cause UAV
 positioning errors up to 30 meters peak-to-peak on Z and Y
 respectively, depending on the amplitude of the rotation. For landmark
 mapping accuracy, translation motion only increase landmark
@@ -156,11 +156,9 @@ algorithm for mapping landmarks more than 1 thousand meters away.
 To make the algorithm practical in a realistic survey environment, a number
 of improvements can be made to increase its accuracy and reliability.
 \begin{enumerate}
-  \item In the current implementation, lens distortion was ignored. As
-  the simulation suggested, this introduced significant error to
-  landmarks positioned close to the edge of the FOV. Including lens
-  distortion into the measurement model should improve the accuracy of
-  the algorithm.
+  \item Including lens distortion into the measurement model should
+  improve the accuracy of the algorithm, as suggested by the error
+  analysis.
   \item Sensor resolution should be increased if a future flight
   test opportunity arises.
   \item A filter for checking the quality of corner features should be
@@ -183,7 +181,7 @@ of improvements can be made to increase its accuracy and reliability.
 \end{enumerate}
 
 Besides the improvements listed above, the cause of the sensitivity of
-the algorithm to rotational motion on the Y and Z axes should be
+the algorithm to rotation on the Y and Z axes should be
 studied further, and a method of compensating for the error should be
 developed.
 

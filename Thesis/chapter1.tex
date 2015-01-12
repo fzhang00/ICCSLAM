@@ -42,29 +42,31 @@ accelerometers, gyroscope, GPS receiver, altimeter, etc. Fully
 utilizing these sensors should improve the accuracy and robustness of
 an OD system, especially in harsh flying conditions.
 
-This thesis focused on developing and testing an obstacle detection system by
-using a SLAM algorithm as a sensor fusion framework to integrate
-measurements from various sensors on a typical UAV navigation device.
-The type of application targeted by this work is a medium size UAV
-conducting low altitude terrain following flight in a natural
-environment. The obstacles are static objects on ground; moving
-objects are not considered. Research presented in this thesis
+This thesis focused on developing and testing an obstacle detection
+system by using a SLAM algorithm as a sensor fusion framework to
+integrate measurements from various sensors on a typical UAV
+navigation device. The type of application targeted by this work is a
+medium size UAV conducting low altitude terrain following flight in a
+natural environment. The obstacles are static objects on ground;
+moving objects are not considered. Research presented in this thesis
 contributed to the project of developing a mid-size UAV to perform
 geological surveys, carried out by Carleton University in
 collaboration with Sander Geophysics Ltd. which is an Ottawa based
 company specializing in high precision geophysical survey. To achieve
 high resolution data acquisition, the UAV must be able to perform
 terrain following flight with altitude as low as 10 meters from
-ground, and with a ground speed ranging from 60 knots (30.87 m/s) to 100
-knots (51.44 m/s). The specified rate of climb for the UAV is 400ft of
-vertical rise per minute (122 meters per minute)
+ground, and with a ground speed ranging from 60 knots (30.87 m/s) to
+100 knots (51.44 m/s). The specified rate of climb for the UAV is
+400ft of vertical rise per minute (122 meters per minute)
 \cite{james_geosurv_2008}. A quick analysis on the UAV specification
 and aerodynamic behavior reveals the detection requirement of the OD
 system. Assuming a tree height of 20 meters, which is the average
-height for oak or pine, to allow for enough time to avoid obstacle,
-the UAV must be able to detect the threat at 610 meters or further
-(Figure \ref{ob}). This analysis indicates that the obstacle detection
-must be able to map objects up to a thousand meters from the UAV.
+height for oak or pine, and giving approximately 10 meters of
+clearance, the UAV must be able to detect the threat at 303 meters or
+further when flying at 60 knots, or 505 meters or further when flying
+at 100 knots. (Figure \ref{ob}). This analysis indicates that the
+obstacle detection must be able to map objects up to a thousand meters
+from the UAV.
 
 \begin{figure}[h]
 \centering
@@ -122,10 +124,16 @@ The helicopter flew at a speed of 60 knots, and at an altitude of 100
 meters above ground, with the SUAS at approximately 70 meters above
 ground. Two pieces of video and data were processed by the CC-EKF-SLAM
 algorithm. The result proved that the CC-EKF-SLAM algorithm was
-capable of mapping landmarks over 1000 meters away. The preliminary
-result of the test flight was published in \cite{zhang_obstacle_2012}.
-This paper was one of the first in the field that successfully applied
-monocular vision SLAM in large scale aerial OD application.
+capable of mapping landmarks over 1000 meters away. When equipped with
+a high resolution high dynamic range camera, the system would be able
+to produce high resolution model of the surrounding environment, and
+detect static obstacles. The preliminary result of the test flight was
+published in \cite{zhang_obstacle_2012}. This paper was one of the
+first in the field that successfully applied monocular vision SLAM in
+large scale aerial OD application. Most researches on UAV OD or SLAM
+had no real aerial data result, or not tested for distant objects
+\cite{lu_distance_2010}, \cite{Byrne_stereo_2006},
+\cite{pinies_inertial_2007}, \cite{li_scene_2012}.
 
 To further analyze errors seen in the flight test results, a series
 of simulations were done to thoroughly study the behavior of the
@@ -133,7 +141,7 @@ algorithm under various circumstances, including
 \begin{itemize}
 \item UAV conducting simple forward motion
 \item UAV experiencing oscillatory motion on all other 5 degree of
-freedom (DOF)
+freedoms (DOFs)
 \item error in camera calibration
 \item quantization error introduced through image digitization 
 \end{itemize}

@@ -56,7 +56,7 @@ other with their relative geometry (baseline separation and optical
 axis orientation) fixed and known. The same scene point must be
 captured by both cameras simultaneously. When the position of a
 landmark can be accurately found in both images, its disparity is
-defined by the difference in coordinates of the landmark in left and
+defined by the difference in coordinates of the landmark in the left and
 right images. Then, the coordinates of the landmark in world can be
 calculated by using disparity, and the relative geometry of the
 cameras. Because a binocular camera configuration acquires two images
@@ -277,8 +277,8 @@ variables $\boldsymbol{x_{k-1}}$ in the previous time step $k-1$ to the
 state variable $\boldsymbol{x_{k}}$ in the current time step $k$. The
 matrix $\boldsymbol{B}$ relates the optional control input $\boldsymbol{\mu}$
 to the state variables $\boldsymbol{x}$. Given measurement vector
-$\boldsymbol{z_k}$ of size $1 \times m$, the measurement model relates the
-state variables to the measurements by matrix H of size $n \times m$.
+$\boldsymbol{z_k}$ of size $m \times 1$, the measurement model relates the
+state variables to the measurements by matrix H of size $m \times n$.
 \begin{equation}
 \text{Measurement Model: }\boldsymbol{z_k} = \boldsymbol{Hx_k}+\boldsymbol{v_k}
 \end{equation}
@@ -417,6 +417,15 @@ uncertainty into the process noise, and rely on reliable measurements.
  
 \subsection{SLAM with Extended Kalman Filter}
 % word checked
+A simultaneous localization and mapping (SLAM) algorithm allows a
+robot to build a map of its surrounding, and simultaneously
+determining its location within the map. The mapping is achieved by
+estimating the position of a number of landmarks, which are arbitrary
+points in the environment that are detected and tracked by the
+algorithm. When sufficient amount of landmarks can be established, and
+evenly distributed among the scene, a high resolution map can be
+obtained. 
+
 The structure of the SLAM problem has evolved to a standard
 Bayesian form. The EKF implementation of a SLAM problem is reviewed in
 this section. A more complete tutorial to the SLAM problem is given in

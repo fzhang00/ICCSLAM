@@ -2,7 +2,7 @@
 \section{Equipment Setup and Flight Data Collection}
 % word checked.
 The biggest contribution of the project is that the proposed algorithm
-was tested and proven feasible with real flight data collected by the
+was tested and proved feasible with real flight data collected by the
 author. The aerial video and navigation data were collected through a
 survey flight with the support of Sander Geophysics Ltd. A main
 purpose of the test flight was to obtain aerial video with the camera
@@ -32,26 +32,28 @@ approximately 70 meters above ground.
 \FloatBarrier
 
 Sensors mounted on the SUAS (Figure \ref{fig:SUAS}) included one wide
-angle CCD camera with 6mm focal length lens capturing monocular image
-sequences at 30 frames per second, a pair of narrow angle CCD cameras
-for binocular image sequences, a GPS antenna, a three-axes fluxgate
-sensor, and Athena GS-111m, a flight control INS/GPS navigation unit
-\cite{_athena_????} which captures vehicle velocity, acceleration,
-rotation, altitude. Analog video and navigation data were sent to the
-helicopter via three BNC cables and one data cable for recording.
+angle CCD camera with 480x720 resolution and 6mm focal length lens
+capturing monocular image sequence at 30 frames per second, a pair of
+narrow angle CCD cameras for binocular image sequences, a GPS antenna,
+a three-axes fluxgate sensor, and Athena GS-111m. The Athena GS-111m
+is a flight control INS/GPS navigation unit \cite{_athena_????} that
+captures, estimates and outputs 16 channels of data, such as velocity,
+acceleration, rotation, altitude, GPS coordinates, at a sample rate of
+up to 100Hz per channel. Analog video and navigation data were sent to
+the helicopter via three BNC cables and one data cable for recording.
 Installed in the helicopter were two SGL data acquisition systems,
-named CDAC. This system records video and navigation data from the
-SUAS, as well as data from sensors installed on the helicopter,
-including GPS, radar altimeter, laser altimeter, air pressure,
-temperature, humidity, etc. (Figure \ref{fig:CDAC}). Videos from the
-three cameras were digitized to a resolution of 720 pixels by 480
-pixels using three Parvus MPEG4 video encoders installed in the CDACs.
-Videos were time-stamped with GPS second on the image screen (Figure
-\ref{fig:video_snapshot}) for post-flight synchronization with the
-navigation data. Because the test flight recorded data from all
-available sensors on board the SUAS and the helicopter, these
-recordings would still be useful should any future research require
-more sensor data.
+named CDAC (Figure \ref{fig:CDAC}). The CDAC on top recorded video
+from the monocular camera, navigation data from the Athena GS-111m, as
+well as data from sensors installed on the helicopter, including GPS,
+radar altimeter, laser altimeter, air pressure, temperature, humidity,
+etc. The CDAC at the bottom recorded video from the binocular cameras.
+Videos from the three cameras were digitized using three Parvus MPEG4
+video encoders installed in the CDACs, and time-stamped with GPS
+second on the image screen (Figure \ref{fig:video_snapshot}) for
+post-flight synchronization with the navigation data. Because the test
+flight recorded data from all available sensors on board the SUAS and
+the helicopter, these recordings would still be useful should any
+future research require more sensor data.
 
 \begin{figure}[h]
   \centering
@@ -93,9 +95,9 @@ actual 3D world. The intrinsic parameters could be affected by a
 number of environmental conditions, such as temperature, and humidity.
 To extract the camera parameters at a camera condition as close as
 possible to the one during test flight, camera calibration was
-performed right after the SUAS returned to the SGL hanger. A camera
+performed right after the SUAS returned to the SGL hanger. The camera
 calibration was done by taking a video of a checkerboard pattern with
-various translations and rotations from the camera. A total of 20 views
+various translations and orientations from the camera. A total of 20 views
 of the calibration target were chosen from the video, and fed to the
 calibration algorithm. A few examples are shown in Figure
 \ref{fig:camcal}.
@@ -148,7 +150,8 @@ Heading accuracy can achieve $0.5^\circ$ \cite{_athena_????}.
 Landmark position ground truth came from a digital elevation map (DEM)
 downloaded from the CGIAR-CSI website \cite{_cgiar-csi_????}. The DEM
 contains longitude, latitude and sea level elevation of the terrain
-with a resolution of approximately 100 meters by 100 meters. 
+with a resolution of approximately 90 meters by 90 meters. The
+reported vertical error of the DEM is less than 16 meters. 
 
 %consider adding the ground truth DEM figure here. 
 

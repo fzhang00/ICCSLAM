@@ -5,7 +5,11 @@
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {\global \advance \c@mytablecount \c@table \relax 3.1}{\ignorespaces Camera calibration result\relax }}{25}{table.caption.39}
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {\global \advance \c@mytablecount \c@table \relax 4.1}{\ignorespaces Hardware and software configuration for CC-EKF-SLAM prototyping\relax }}{35}{table.caption.46}
+\contentsline {table}{\numberline {\global \advance \c@mytablecount \c@table \relax 4.2}{\ignorespaces Typical runtime for CC-EKF-SLAM\relax }}{35}{table.caption.47}
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {\global \advance \c@mytablecount \c@table \relax 5.1}{\ignorespaces Landmark mapping error statistics for natural scene\relax }}{49}{table.caption.60}
+\contentsline {table}{\numberline {\global \advance \c@mytablecount \c@table \relax 5.2}{\ignorespaces Landmark mapping error statistics for airport landing scene\relax }}{52}{table.caption.67}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -6,7 +6,7 @@ This thesis describes the research of an obstacle detection system for a low fly
 autonomous unmanned aerial vehicle (UAV). The system utilized an
 extended Kalman filter based simultaneous localization and mapping
 algorithm which fuses navigation measurements with
-monocular image sequence to estimate the poses of the UAV and positions
+monocular image sequence to estimate the poses of the UAV and the positions
 of landmarks.
 %A high resolution sparse terrain map and UAV trajectory can be computed from the filter state vector. 
 %The algorithm was specially designed to detect long distance
@@ -20,8 +20,7 @@ To test the algorithm with real aerial data, a test flight was conducted to
 collect data by using a sensors loaded simulated unmanned aerial system(SUAS) towed
 by a helicopter. 
 %Video cameras and a number of sensors were mounted on the SUAS. Video and data were sent to and acquired by a data acquisition system installed in helicopter. 
-The results from flight
-data showed that the algorithm was capable of mapping
+The results showed that the algorithm is capable of mapping
 landmarks ranging more than 1000 meters. Accuracy analysis also showed that SUAS localization and landmark mapping
 results generally agreed with the ground truth. 
 %Some noticeable errors of the result include: drift on SUAS position on the Y and Z axes, and offset error for landmarks added to the framework after the first frame.

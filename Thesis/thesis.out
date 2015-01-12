@@ -30,37 +30,37 @@
 \BOOKMARK [2][-]{subsection.4.2.3}{4.2.3 Measurement Model}{section.4.2}% 30
 \BOOKMARK [2][-]{subsection.4.2.4}{4.2.4 Composition}{section.4.2}% 31
 \BOOKMARK [2][-]{subsection.4.2.5}{4.2.5 Filter Initialization}{section.4.2}% 32
-\BOOKMARK [2][-]{subsection.4.2.6}{4.2.6 Adding and Deleting Landmarks}{section.4.2}% 33
+\BOOKMARK [2][-]{subsection.4.2.6}{4.2.6 CC-EKF-SLAM Flow Chart and Run Time}{section.4.2}% 33
 \BOOKMARK [1][-]{section.4.3}{4.3 Additional Procedures for Data Analysis}{section*.40}% 34
-\BOOKMARK [0][-]{section*.47}{ 5 Results From Flight Data}{}% 35
-\BOOKMARK [1][-]{section.5.1}{5.1 Convergence Analysis}{section*.47}% 36
+\BOOKMARK [0][-]{section*.49}{ 5 Results From Flight Data}{}% 35
+\BOOKMARK [1][-]{section.5.1}{5.1 Convergence Analysis}{section*.49}% 36
 \BOOKMARK [2][-]{subsection.5.1.1}{5.1.1 Convergence of Inverse Depth}{section.5.1}% 37
 \BOOKMARK [2][-]{subsection.5.1.2}{5.1.2 Convergence of the Other Landmark Parameters}{section.5.1}% 38
-\BOOKMARK [1][-]{section.5.2}{5.2 Consistency Analysis}{section*.47}% 39
-\BOOKMARK [1][-]{section.5.3}{5.3 Accuracy Analysis}{section*.47}% 40
+\BOOKMARK [1][-]{section.5.2}{5.2 Consistency Analysis}{section*.49}% 39
+\BOOKMARK [1][-]{section.5.3}{5.3 Accuracy Analysis}{section*.49}% 40
 \BOOKMARK [2][-]{subsection.5.3.1}{5.3.1 SUAS Localization}{section.5.3}% 41
 \BOOKMARK [2][-]{subsection.5.3.2}{5.3.2 Landmarks Mapping}{section.5.3}% 42
-\BOOKMARK [1][-]{section.5.4}{5.4 Accuracy Verification through Manually Corresponded Landmarks}{section*.47}% 43
-\BOOKMARK [0][-]{section*.64}{ 6 Error Analysis through Simulation}{}% 44
-\BOOKMARK [1][-]{section.6.1}{6.1 An Ideal Case}{section*.64}% 45
+\BOOKMARK [1][-]{section.5.4}{5.4 Accuracy Verification through Manually Corresponded Landmarks}{section*.49}% 43
+\BOOKMARK [0][-]{section*.68}{ 6 Error Analysis through Simulation}{}% 44
+\BOOKMARK [1][-]{section.6.1}{6.1 An Ideal Case}{section*.68}% 45
 \BOOKMARK [2][-]{subsection.6.1.1}{6.1.1 UAV Localization}{section.6.1}% 46
 \BOOKMARK [2][-]{subsection.6.1.2}{6.1.2 Landmarks Mapping}{section.6.1}% 47
-\BOOKMARK [1][-]{section.6.2}{6.2 Effect of UAV Oscillatory Motion}{section*.64}% 48
+\BOOKMARK [1][-]{section.6.2}{6.2 Effect of UAV Oscillatory Motion}{section*.68}% 48
 \BOOKMARK [2][-]{subsection.6.2.1}{6.2.1 UAV Localization}{section.6.2}% 49
 \BOOKMARK [2][-]{subsection.6.2.2}{6.2.2 Landmarks Mapping}{section.6.2}% 50
-\BOOKMARK [1][-]{section.6.3}{6.3 Effect of Errors in Camera Intrinsic Parameters}{section*.64}% 51
+\BOOKMARK [1][-]{section.6.3}{6.3 Effect of Errors in Camera Intrinsic Parameters}{section*.68}% 51
 \BOOKMARK [2][-]{subsection.6.3.1}{6.3.1 Effect of Errors in \(cx, cy\)}{section.6.3}% 52
 \BOOKMARK [2][-]{subsection.6.3.2}{6.3.2 Effect of Errors in \(fx, fy\)}{section.6.3}% 53
 \BOOKMARK [2][-]{subsection.6.3.3}{6.3.3 Effect of Errors in Lens Distortion}{section.6.3}% 54
 \BOOKMARK [2][-]{subsection.6.3.4}{6.3.4 Effect of Image Digitization}{section.6.3}% 55
-\BOOKMARK [0][-]{section*.87}{ 7 Conclusion}{}% 56
-\BOOKMARK [1][-]{section.7.1}{7.1 Result Summaries}{section*.87}% 57
+\BOOKMARK [0][-]{section*.91}{ 7 Conclusion}{}% 56
+\BOOKMARK [1][-]{section.7.1}{7.1 Result Summaries}{section*.91}% 57
 \BOOKMARK [2][-]{subsection.7.1.1}{7.1.1 Test Results from Real Flight Data}{section.7.1}% 58
 \BOOKMARK [2][-]{subsection.7.1.2}{7.1.2 Noise Analysis through Simulation}{section.7.1}% 59
-\BOOKMARK [1][-]{section.7.2}{7.2 Future Research}{section*.87}% 60
-\BOOKMARK [0][-]{section*.95}{List of References}{}% 61
-\BOOKMARK [0][-]{section*.97}{Appendix A Coordinate Transformation}{}% 62
-\BOOKMARK [0][-]{section*.99}{Appendix B Jacobian Matrix for Filter Initialization Equations}{}% 63
-\BOOKMARK [0][-]{section*.100}{Appendix C Linearization of Measurement Model and Composition Equations}{}% 64
-\BOOKMARK [1][-]{section.C.1}{C.1 Linearization of Measurement Model}{section*.100}% 65
-\BOOKMARK [1][-]{section.C.2}{C.2 Jacobian Matrix of Composition Equations}{section*.100}% 66
+\BOOKMARK [1][-]{section.7.2}{7.2 Future Research}{section*.91}% 60
+\BOOKMARK [0][-]{section*.99}{List of References}{}% 61
+\BOOKMARK [0][-]{section*.101}{Appendix A Coordinate Transformation}{}% 62
+\BOOKMARK [0][-]{section*.103}{Appendix B Jacobian Matrix for Filter Initialization Equations}{}% 63
+\BOOKMARK [0][-]{section*.104}{Appendix C Linearization of Measurement Model and Composition Equations}{}% 64
+\BOOKMARK [1][-]{section.C.1}{C.1 Linearization of Measurement Model}{section*.104}% 65
+\BOOKMARK [1][-]{section.C.2}{C.2 Jacobian Matrix of Composition Equations}{section*.104}% 66

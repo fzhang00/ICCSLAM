@@ -1,26 +1,23 @@
 \chapter{Description of CC-EKF-SLAM}\label{ch:algorithm}
 
 The proposed algorithm: Camera Centric EKF SLAM (CC-EKF-SLAM), is
-described in this chapter. Its preliminary test result on real flight
-data was published in \cite{zhang_obstacle_2012}. The algorithm was
-implemented in Python programming language\cite{_python_????}. An open
-source machine vision library OpenCV\cite{_opencv_????} was utilized
-to perform machine vision tasks such as feature extraction and
-tracking. The Shi-Tomasi corner detector \cite{shi_good_1994} was used
-to extract corner features from the image sequence. Feature tracking
-was accomplished through the pyramid implementation of the Lucas-Kanade
-optical flow method \cite{bouguet_pyramidal_1999}.
+described in this chapter. The inverse depth parameterization is
+described first, then followed by the EKF models and procedures. The
+overall flow chart of the algorithm, and the run time of the current
+implementation are also given. The preliminary test result on real
+flight data was published in \cite{zhang_obstacle_2012}.
+
+The algorithm was implemented in Python programming
+language\cite{_python_????}. An open source machine vision library
+OpenCV\cite{_opencv_????} was utilized to perform machine vision tasks
+such as feature extraction and tracking. The Shi-Tomasi corner
+detector \cite{shi_good_1994} was used to extract corner features from
+the image. The visual tracking is accomplished by the pyramid
+implementation of the Lucas-Kanade optical flow method
+\cite{bouguet_pyramidal_1999}, referred to as pyramid LK in the rest
+of the thesis.
 
 \section{Camera Centric Inverse Depth Parameterization}
-Figure \ref{fig:algo1} shows the landmark parameters definition in inverse
-depth parameterization.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=10cm, keepaspectratio=true]{./Figures/idp.jpg}
-\caption{Inverse depth parameterization}
-\label{fig:algo1}
-\end{figure}
 
 \noindent A 3D scene point $\boldsymbol{p_{i}^{C}}$ can be defined by 6 parameters
 with $i$ representing the landmark number. The superscript $C$
@@ -31,12 +28,22 @@ x_{i}^{C} & y_{i}^{C} & z_{i}^{C} & \rho _{i} & \varphi _{i}^{C} &
 \theta _{i}^{C} 
 \end{bmatrix}
 \end{equation}
-The first three parameters $[x_{i}^{C}, y_{i}^{C}, z_{i}^{C}]$
-represent the initialization point where the landmark is first observed.
-$\rho_{i} = 1/d_i$ is the inverse distance from the initialization position
-to the landmark. The elevation-azimuth pair $[\varphi_{i}^{C},
-\theta_{i}^{C}]$ encodes a unit vector pointing from the
-initialization point to the landmark. The vector is given by
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm, keepaspectratio=true]{./Figures/idp.jpg}
+\caption{Inverse depth parameterization}
+\label{fig:algo1}
+\end{figure}
+
+Figure \ref{fig:algo1} shows the landmark parameters definition in
+inverse depth parameterization. The first three parameters
+$[x_{i}^{C}, y_{i}^{C}, z_{i}^{C}]$ represent the initialization point
+where the landmark is first observed. $\rho_{i} = 1/d_i$ is the
+inverse distance from the initialization position to the landmark. The
+elevation-azimuth pair $[\varphi_{i}^{C}, \theta_{i}^{C}]$ encodes a
+unit vector pointing from the initialization point to the landmark.
+The vector is given by
 \begin{equation}
 \label{eq:m}
 \vec{\boldsymbol{m}}(\varphi_{i}^{C}, \theta_{i}^{C})=\begin{bmatrix}
@@ -85,14 +92,15 @@ $\boldsymbol{c^{C}}$ and $\boldsymbol{r^{C}}$ represent the camera
 translation and rotation motion frame by frame. $\boldsymbol{p_{i}^{C}}$
 contains the $i^{th}$ landmark parameters described in the previous section.
 
-\subsection{Prediction}
+\subsection{Prediction}\label{sec:prediction}
 
 For a prediction step at time $k$, the world frame parameter
-$\boldsymbol{OX_W^C}$ and landmarks parameters $\boldsymbol{p_i^C}$ are kept
-unchanged from time $k-1$. The camera parameters are updated using the
-new inertial measurements: velocity $\boldsymbol{v^{C}}$, acceleration
-$\boldsymbol{a^{C}}$, and rate of change $\boldsymbol{w^{C}}$ in roll, pitch, and
-azimuth. The full state vector at time $k$ is
+$\boldsymbol{OX_W^C}$ and landmarks parameters $\boldsymbol{p_i^C}$
+are kept unchanged from time $k-1$. The camera parameters are updated
+using the new inertial measurements: velocity $\boldsymbol{v^{C}}$,
+acceleration $\boldsymbol{a^{C}}$, and rate of change
+$\boldsymbol{w^{C}}$ in roll, pitch, and heading. The full state
+vector at time $k$ is
 \begin{equation}
 \boldsymbol{\hat{x}_{k}^-}
 =\begin{bmatrix}
@@ -114,7 +122,7 @@ $$\boldsymbol{r_{measured}^{C}}=\boldsymbol{r_{k-1}^{C}}+ \boldsymbol{w_{measure
 
 \noindent and $\Delta t$ is the time elapsed from frame to frame. 
 
-\subsection{Measurement Model}
+\subsection{Measurement Model}\label{sec:measurement_model}
 
 Each observed landmark is related to the camera motion through the
 measurement model (Figure \ref{fig:measurement_model}). This
@@ -384,22 +392,39 @@ given in Appendix \ref{ch:appendix2}.
 
 
 
-\subsection{Adding and Deleting Landmarks}
-To shorten processing time for each iteration, landmarks that moved
+\subsection{CC-EKF-SLAM Flow Chart and Run Time}
+The flow chart of the entire algorithm is shown in Figure
+\ref{fig:flowchart}. The algorithm initialize the EKF by detecting 40
+corner features from the 1$^{st}$ image frame, and adding the
+associated landmarks into the EKF state vector. Starting from the
+2$^{nd}$ image frame, CC-EKF-SLAM operates on
+prediction-correction-composition cycles. The prediction is done as
+described in Section \ref{sec:prediction}. At the same time, a
+prediction is also made on the landmark coordinates on the image plane
+according to the predicted camera motion. In correction process,
+CC-EKF-SLAM feed the predicted landmark coordinates to the pyramid LK
+algorithm so that the visual tracking algorithm can start the search
+for matching pattern at the predicted coordinates. The benefit is
+shorter search time, and higher accuracy when image illumination level
+changes. Then, correction to the state vector is made by taking the
+landmark coordinates returned by the pyramid LK as measurements.
+
+To shorten processing time for each iteration, landmarks that move
 out of the camera's field of view (FOV) are removed from the filter
 state vector and covariance matrix. The removal is done by deleting
 the parameters from the state vector, and the related rows and columns
 of the state covariance matrix. All tracked landmarks are recorded
 into a database. The deleted landmarks have their parameters updated
 based on the camera motion without any further Kalman corrections.
+Because the deleted landmarks remain in database and are continuously
+updated, they can be re-injected into the state vector if they
+re-enter the FOV of the camera.
 
-While some landmarks are deleted, new landmarks are added to the
-filter to maintain sufficient amount of landmarks for mapping. The
+While some landmarks are deleted, new landmarks are added. The
 landmark addition occurs after the composition step of each
 iteration, and follows the same procedure as the filter
 initialization described in Section \ref{sec:filter_initialization}.
-The flow chart of the entire algorithm is shown in Figure
-\ref{fig:flowchart}.
+
 
 \begin{figure}[h]
 \centering
@@ -408,9 +433,50 @@ The flow chart of the entire algorithm is shown in Figure
 \label{fig:flowchart}
 \end{figure}
 \FloatBarrier
-% \subsubsection{Bundle Correction with GPS (not yet implemented)}
-% Apply overall correction on the map at a sparser time interval using the 
-% GPS positions. 
+
+The prototype of non-optimized CC-EKF-SLAM was run on a laptop with
+Windows 7 operating system installed. A list of hardware and software
+configuration for the laptop is listed in table \ref{tab:hardware},
+and the runtime of key component of CC-EKF-SLAM is listed in table
+\ref{tab:runtime}. 
+
+\begin{table}[h]
+\caption{Hardware and software configuration for CC-EKF-SLAM prototyping}
+\label{tab:hardware}
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Hardware Configuration}} \\ \hline
+CPU & Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz \\ \hline
+RAM & 6.00GB \\ \hline \hline
+\multicolumn{2}{|c|}{\textbf{Software Configuration}} \\ \hline
+Operation System & Windows 7 Home Premium Service Pack 1 64-bit \\ \hline
+Python Distribution & Python(x,y) 2.7.3.1 (32-bit) \\ \hline
+% Python Modules Used & Numpy 1.6.2 \\
+%                     & Scipy 0.11.0 \\
+%                     & OpenCV 2.4.2 \\
+%                     & Matplotlib 1.1.1 \\
+%                     & h5py 2.1.0 \\
+%                     & PyQt4 4.9.5-2 \\
+%                     & pyproj 1.9.4 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\caption{Typical runtime for CC-EKF-SLAM}
+\label{tab:runtime}
+\centering
+\begin{tabular}{|l|c|}
+\hline
+Operation & Time Elapsed\\ \hline
+Visual feature extraction & 24.99 ms \\ \hline
+EKF initialization & 23.00 ms \\ \hline
+EKF prediction & 9.99 ms \\ \hline
+EKF correction & 19.99 ms \\ \hline
+Composition & 28.99 ms \\ \hline
+\end{tabular}
+\end{table}
+\FloatBarrier
 
 \section{Additional Procedures for Data Analysis}
 % word checked.
@@ -450,11 +516,11 @@ $$R_{step1} = \begin{bmatrix}180^{\circ}, 0^{\circ},
   -90^{\circ}\end{bmatrix}$$
 $$T_{step2} = \begin{bmatrix}0, 0, 0\end{bmatrix}$$
 $$R_{step2} = \begin{bmatrix}Roll_{init}, Pitch_{init},
-  Azimuth_{init}\end{bmatrix}$$
+  Heading_{init}\end{bmatrix}$$
 
 \noindent where $Easting_{init}$, $Northing_{init}$,
 $Height_{init}$, $Roll_{init}$, $Pitch_{init}$, and
-$Azimuth_{init}$ are the SUAS's position and orientation in UTM at time 0. 
+$Heading_{init}$ are the SUAS's position and orientation in UTM at time 0. 
 
 Ground truth SUAS orientations were captured by the UAV navigation
 unit GS-111m. Both ground truth and estimated orientation were
