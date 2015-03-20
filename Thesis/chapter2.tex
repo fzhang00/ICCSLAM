@@ -135,8 +135,8 @@ distortion is zero at the center of the image, and increases with the
 distance to the optical center. It is characterized by the first few
 terms of a Taylor series expansion \cite{bradski_learning_2008}
 
-$$ x_{corrected} = x(1+k_1r^2+k_2r^4+k_3r^6)$$
-$$ y_{corrected} = y(1+k_1r^2+k_2r^4+k_3r^6)$$
+\begin{equation}x_{corrected} = x(1+k_1r^2+k_2r^4+k_3r^6)\end{equation}
+\begin{equation}y_{corrected} = y(1+k_1r^2+k_2r^4+k_3r^6)\end{equation}
 
 \noindent where $r$ is the distance of the landmark from the optical
 center on the image plane. Tangential distortion arises from
@@ -144,8 +144,8 @@ misalignment between the image sensor and the lens. It is minimally
 characterized by two additional parameters $p_1$ and $p_2$
 \cite{bradski_learning_2008}
 
-$$x_{corrected} = x+[2p_1y+p_2(r^2+2x^2)]$$
-$$y_{corrected} = y+[p_1(r^2+2y^2)+2p_2x]$$
+\begin{equation}x_{corrected} = x+[2p_1y+p_2(r^2+2x^2)]\end{equation}
+\begin{equation}y_{corrected} = y+[p_1(r^2+2y^2)+2p_2x]\end{equation}
 
 \subsubsection{Camera Calibration Algorithm}
 % word checked
@@ -388,17 +388,21 @@ Kalman filter operation equations are given in Table \ref{tab:EKF},
 \noindent where (subscript $k$ is omitted)
 \begin{itemize}
   \item $\boldsymbol{A}$ is the Jacobian matrix of partial derivatives of $f$ with
-  respect to $\boldsymbol{x}$, $$A_{[i,j]}= \frac{\partial f_i(\boldsymbol{\hat{x}_{k-1}^+},
-    \boldsymbol{\mu_{k-1}}, 0)}{\partial x_j}$$
+  respect to $\boldsymbol{x}$, 
+\begin{equation}A_{[i,j]}= \frac{\partial f_i(\boldsymbol{\hat{x}_{k-1}^+},
+    \boldsymbol{\mu_{k-1}}, 0)}{\partial x_j}\end{equation}
   \item $\boldsymbol{W}$ is the Jacobian matrix of partial derivatives of $f$ with
-  respect to $\boldsymbol{w}$, $$W_{[i,j]}= \frac{\partial f_i(\boldsymbol{\hat{x}_{k-1}^+},
-    \boldsymbol{\mu_{k-1}}, 0)}{\partial w_j}$$
+  respect to $\boldsymbol{w}$, 
+\begin{equation}W_{[i,j]}= \frac{\partial f_i(\boldsymbol{\hat{x}_{k-1}^+},
+    \boldsymbol{\mu_{k-1}}, 0)}{\partial w_j}\end{equation}
   \item $\boldsymbol{H}$ is the Jacobian matrix of partial derivatives of $h$ with
-  respect to $\boldsymbol{x}$, $$H_{[i,j]}= \frac{\partial h_i(\boldsymbol{\hat{x}_k^-},
-    0)}{\partial x_j}$$
+  respect to $\boldsymbol{x}$, 
+\begin{equation}H_{[i,j]}= \frac{\partial h_i(\boldsymbol{\hat{x}_k^-},
+    0)}{\partial x_j}\end{equation}
   \item $\boldsymbol{V}$ is the Jacobian matrix of partial derivatives of $h$ with
-  respect to $\boldsymbol{v}$, $$V_{[i,j]}= \frac{\partial
-    h_i(\boldsymbol{\hat{x}_k^-},0)}{\partial v_j}$$
+  respect to $\boldsymbol{v}$, 
+\begin{equation}V_{[i,j]}= \frac{\partial
+    h_i(\boldsymbol{\hat{x}_k^-},0)}{\partial v_j}\end{equation}
 \end{itemize}
 
 \noindent Note that when $\boldsymbol{w}$ and $\boldsymbol{v}$ directly describe the noise of
@@ -463,14 +467,14 @@ landmark taken from the vehicle's location at time step $k$
 
 \noindent A complete state vector contains 
 
-$$\begin{bmatrix}\boldsymbol{\hat{x}_k} \\ \boldsymbol{\hat{p}_k} \end{bmatrix}$$ 
+\begin{equation}\begin{bmatrix}\boldsymbol{\hat{x}_k} \\ \boldsymbol{\hat{p}_k} \end{bmatrix}\end{equation}
 
 \noindent and the state covariance matrix contains
 
-$$\begin{bmatrix}
+\begin{equation}\begin{bmatrix}
 \boldsymbol{P_{xx}} & \boldsymbol{P_{xp}} \\
 \boldsymbol{P_{px}} & \boldsymbol{P_{pp}} 
-\end{bmatrix} $$
+\end{bmatrix}\end{equation}
 
 The prediction and correction cycles can then be carried out following
 the standard EKF algorithm. The landmarks are generally not updated at

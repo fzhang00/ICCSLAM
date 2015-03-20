@@ -4,63 +4,63 @@
 \BOOKMARK [0][-]{section*.7}{List of Tables}{}% 4
 \BOOKMARK [0][-]{section*.9}{List of Figures}{}% 5
 \BOOKMARK [0][-]{section*.12}{List of Acronyms}{}% 6
-\BOOKMARK [0][-]{section*.13}{ 1 Introduction}{}% 7
-\BOOKMARK [1][-]{section.1.1}{1.1 Problem Statement}{section*.13}% 8
-\BOOKMARK [1][-]{section.1.2}{1.2 Contributions}{section*.13}% 9
-\BOOKMARK [1][-]{section.1.3}{1.3 Organization}{section*.13}% 10
-\BOOKMARK [0][-]{section*.15}{ 2 Literature Review}{}% 11
-\BOOKMARK [1][-]{section.2.1}{2.1 Sensors for Obstacle Detection}{section*.15}% 12
-\BOOKMARK [2][-]{subsection.2.1.1}{2.1.1 Overview}{section.2.1}% 13
-\BOOKMARK [2][-]{subsection.2.1.2}{2.1.2 Monocular Vision and Binocular Vision}{section.2.1}% 14
-\BOOKMARK [2][-]{subsection.2.1.3}{2.1.3 Camera Calibration}{section.2.1}% 15
-\BOOKMARK [1][-]{section.2.2}{2.2 SLAM as a Sensor Fusion Framework}{section*.15}% 16
-\BOOKMARK [2][-]{subsection.2.2.1}{2.2.1 Recursive Probabilistic Estimation Using Extended Kalman Filter}{section.2.2}% 17
-\BOOKMARK [2][-]{subsection.2.2.2}{2.2.2 SLAM with Extended Kalman Filter}{section.2.2}% 18
-\BOOKMARK [2][-]{subsection.2.2.3}{2.2.3 SLAM for Building Large Scale Maps}{section.2.2}% 19
-\BOOKMARK [1][-]{section.2.3}{2.3 Inverse Depth Parameterization for Distant Object}{section*.15}% 20
-\BOOKMARK [0][-]{section*.32}{ 3 Experiments with Real Aerial Data}{}% 21
-\BOOKMARK [1][-]{section.3.1}{3.1 Equipment Setup and Flight Data Collection}{section*.32}% 22
-\BOOKMARK [1][-]{section.3.2}{3.2 Camera Calibration}{section*.32}% 23
-\BOOKMARK [1][-]{section.3.3}{3.3 Ground Truth Data Collection}{section*.32}% 24
-\BOOKMARK [0][-]{section*.40}{ 4 Description of CC-EKF-SLAM}{}% 25
-\BOOKMARK [1][-]{section.4.1}{4.1 Camera Centric Inverse Depth Parameterization}{section*.40}% 26
-\BOOKMARK [1][-]{section.4.2}{4.2 Modeling the System with Extended Kalman Filter}{section*.40}% 27
-\BOOKMARK [2][-]{subsection.4.2.1}{4.2.1 Full State Vector}{section.4.2}% 28
-\BOOKMARK [2][-]{subsection.4.2.2}{4.2.2 Prediction}{section.4.2}% 29
-\BOOKMARK [2][-]{subsection.4.2.3}{4.2.3 Measurement Model}{section.4.2}% 30
-\BOOKMARK [2][-]{subsection.4.2.4}{4.2.4 Composition}{section.4.2}% 31
-\BOOKMARK [2][-]{subsection.4.2.5}{4.2.5 Filter Initialization}{section.4.2}% 32
-\BOOKMARK [2][-]{subsection.4.2.6}{4.2.6 CC-EKF-SLAM Flow Chart and Run Time}{section.4.2}% 33
-\BOOKMARK [1][-]{section.4.3}{4.3 Additional Procedures for Data Analysis}{section*.40}% 34
-\BOOKMARK [0][-]{section*.49}{ 5 Results From Flight Data}{}% 35
-\BOOKMARK [1][-]{section.5.1}{5.1 Convergence Analysis}{section*.49}% 36
-\BOOKMARK [2][-]{subsection.5.1.1}{5.1.1 Convergence of Inverse Depth}{section.5.1}% 37
-\BOOKMARK [2][-]{subsection.5.1.2}{5.1.2 Convergence of the Other Landmark Parameters}{section.5.1}% 38
-\BOOKMARK [1][-]{section.5.2}{5.2 Consistency Analysis}{section*.49}% 39
-\BOOKMARK [1][-]{section.5.3}{5.3 Accuracy Analysis}{section*.49}% 40
-\BOOKMARK [2][-]{subsection.5.3.1}{5.3.1 SUAS Localization}{section.5.3}% 41
-\BOOKMARK [2][-]{subsection.5.3.2}{5.3.2 Landmarks Mapping}{section.5.3}% 42
-\BOOKMARK [1][-]{section.5.4}{5.4 Accuracy Verification through Manually Corresponded Landmarks}{section*.49}% 43
-\BOOKMARK [0][-]{section*.68}{ 6 Error Analysis through Simulation}{}% 44
-\BOOKMARK [1][-]{section.6.1}{6.1 An Ideal Case}{section*.68}% 45
-\BOOKMARK [2][-]{subsection.6.1.1}{6.1.1 UAV Localization}{section.6.1}% 46
-\BOOKMARK [2][-]{subsection.6.1.2}{6.1.2 Landmarks Mapping}{section.6.1}% 47
-\BOOKMARK [1][-]{section.6.2}{6.2 Effect of UAV Oscillatory Motion}{section*.68}% 48
-\BOOKMARK [2][-]{subsection.6.2.1}{6.2.1 UAV Localization}{section.6.2}% 49
-\BOOKMARK [2][-]{subsection.6.2.2}{6.2.2 Landmarks Mapping}{section.6.2}% 50
-\BOOKMARK [1][-]{section.6.3}{6.3 Effect of Errors in Camera Intrinsic Parameters}{section*.68}% 51
-\BOOKMARK [2][-]{subsection.6.3.1}{6.3.1 Effect of Errors in \(cx, cy\)}{section.6.3}% 52
-\BOOKMARK [2][-]{subsection.6.3.2}{6.3.2 Effect of Errors in \(fx, fy\)}{section.6.3}% 53
-\BOOKMARK [2][-]{subsection.6.3.3}{6.3.3 Effect of Errors in Lens Distortion}{section.6.3}% 54
-\BOOKMARK [2][-]{subsection.6.3.4}{6.3.4 Effect of Image Digitization}{section.6.3}% 55
-\BOOKMARK [0][-]{section*.91}{ 7 Conclusion}{}% 56
-\BOOKMARK [1][-]{section.7.1}{7.1 Result Summaries}{section*.91}% 57
-\BOOKMARK [2][-]{subsection.7.1.1}{7.1.1 Test Results from Real Flight Data}{section.7.1}% 58
-\BOOKMARK [2][-]{subsection.7.1.2}{7.1.2 Noise Analysis through Simulation}{section.7.1}% 59
-\BOOKMARK [1][-]{section.7.2}{7.2 Future Research}{section*.91}% 60
+\BOOKMARK [0][-]{section*.13}{ Introduction}{}% 7
+\BOOKMARK [1][-]{section.1.1}{Problem Statement}{section*.13}% 8
+\BOOKMARK [1][-]{section.1.2}{Contributions}{section*.13}% 9
+\BOOKMARK [1][-]{section.1.3}{Organization}{section*.13}% 10
+\BOOKMARK [0][-]{section*.15}{ Literature Review}{}% 11
+\BOOKMARK [1][-]{section.2.1}{Sensors for Obstacle Detection}{section*.15}% 12
+\BOOKMARK [2][-]{subsection.2.1.1}{Overview}{section.2.1}% 13
+\BOOKMARK [2][-]{subsection.2.1.2}{Monocular Vision and Binocular Vision}{section.2.1}% 14
+\BOOKMARK [2][-]{subsection.2.1.3}{Camera Calibration}{section.2.1}% 15
+\BOOKMARK [1][-]{section.2.2}{SLAM as a Sensor Fusion Framework}{section*.15}% 16
+\BOOKMARK [2][-]{subsection.2.2.1}{Recursive Probabilistic Estimation Using Extended Kalman Filter}{section.2.2}% 17
+\BOOKMARK [2][-]{subsection.2.2.2}{SLAM with Extended Kalman Filter}{section.2.2}% 18
+\BOOKMARK [2][-]{subsection.2.2.3}{SLAM for Building Large Scale Maps}{section.2.2}% 19
+\BOOKMARK [1][-]{section.2.3}{Inverse Depth Parameterization for Distant Object}{section*.15}% 20
+\BOOKMARK [0][-]{section*.32}{ Experiments with Real Aerial Data}{}% 21
+\BOOKMARK [1][-]{section.3.1}{Equipment Setup and Flight Data Collection}{section*.32}% 22
+\BOOKMARK [1][-]{section.3.2}{Camera Calibration}{section*.32}% 23
+\BOOKMARK [1][-]{section.3.3}{Ground Truth Data Collection}{section*.32}% 24
+\BOOKMARK [0][-]{section*.40}{ Description of CC-EKF-SLAM}{}% 25
+\BOOKMARK [1][-]{section.4.1}{Camera Centric Inverse Depth Parameterization}{section*.40}% 26
+\BOOKMARK [1][-]{section.4.2}{Modeling the System with Extended Kalman Filter}{section*.40}% 27
+\BOOKMARK [2][-]{subsection.4.2.1}{Full State Vector}{section.4.2}% 28
+\BOOKMARK [2][-]{subsection.4.2.2}{Prediction}{section.4.2}% 29
+\BOOKMARK [2][-]{subsection.4.2.3}{Measurement Model}{section.4.2}% 30
+\BOOKMARK [2][-]{subsection.4.2.4}{Composition}{section.4.2}% 31
+\BOOKMARK [2][-]{subsection.4.2.5}{Filter Initialization}{section.4.2}% 32
+\BOOKMARK [2][-]{subsection.4.2.6}{CC-EKF-SLAM Flow Chart and Run Time}{section.4.2}% 33
+\BOOKMARK [1][-]{section.4.3}{Additional Procedures for Data Analysis}{section*.40}% 34
+\BOOKMARK [0][-]{section*.49}{ Results From Flight Data}{}% 35
+\BOOKMARK [1][-]{section.5.1}{Convergence Analysis}{section*.49}% 36
+\BOOKMARK [2][-]{subsection.5.1.1}{Convergence of Inverse Depth}{section.5.1}% 37
+\BOOKMARK [2][-]{subsection.5.1.2}{Convergence of the Other Landmark Parameters}{section.5.1}% 38
+\BOOKMARK [1][-]{section.5.2}{Consistency Analysis}{section*.49}% 39
+\BOOKMARK [1][-]{section.5.3}{Accuracy Analysis}{section*.49}% 40
+\BOOKMARK [2][-]{subsection.5.3.1}{SUAS Localization}{section.5.3}% 41
+\BOOKMARK [2][-]{subsection.5.3.2}{Landmarks Mapping}{section.5.3}% 42
+\BOOKMARK [1][-]{section.5.4}{Accuracy Verification through Manually Corresponded Landmarks}{section*.49}% 43
+\BOOKMARK [0][-]{section*.68}{ Error Analysis through Simulation}{}% 44
+\BOOKMARK [1][-]{section.6.1}{An Ideal Case}{section*.68}% 45
+\BOOKMARK [2][-]{subsection.6.1.1}{UAV Localization}{section.6.1}% 46
+\BOOKMARK [2][-]{subsection.6.1.2}{Landmarks Mapping}{section.6.1}% 47
+\BOOKMARK [1][-]{section.6.2}{Effect of UAV Oscillatory Motion}{section*.68}% 48
+\BOOKMARK [2][-]{subsection.6.2.1}{UAV Localization}{section.6.2}% 49
+\BOOKMARK [2][-]{subsection.6.2.2}{Landmarks Mapping}{section.6.2}% 50
+\BOOKMARK [1][-]{section.6.3}{Effect of Errors in Camera Intrinsic Parameters}{section*.68}% 51
+\BOOKMARK [2][-]{subsection.6.3.1}{Effect of Errors in \(cx, cy\)}{section.6.3}% 52
+\BOOKMARK [2][-]{subsection.6.3.2}{Effect of Errors in \(fx, fy\)}{section.6.3}% 53
+\BOOKMARK [2][-]{subsection.6.3.3}{Effect of Errors in Lens Distortion}{section.6.3}% 54
+\BOOKMARK [2][-]{subsection.6.3.4}{Effect of Image Digitization}{section.6.3}% 55
+\BOOKMARK [0][-]{section*.91}{ Conclusion}{}% 56
+\BOOKMARK [1][-]{section.7.1}{Result Summaries}{section*.91}% 57
+\BOOKMARK [2][-]{subsection.7.1.1}{Test Results from Real Flight Data}{section.7.1}% 58
+\BOOKMARK [2][-]{subsection.7.1.2}{Noise Analysis through Simulation}{section.7.1}% 59
+\BOOKMARK [1][-]{section.7.2}{Future Research}{section*.91}% 60
 \BOOKMARK [0][-]{section*.99}{List of References}{}% 61
-\BOOKMARK [0][-]{section*.101}{Appendix A Coordinate Transformation}{}% 62
-\BOOKMARK [0][-]{section*.103}{Appendix B Jacobian Matrix for Filter Initialization Equations}{}% 63
-\BOOKMARK [0][-]{section*.104}{Appendix C Linearization of Measurement Model and Composition Equations}{}% 64
-\BOOKMARK [1][-]{section.C.1}{C.1 Linearization of Measurement Model}{section*.104}% 65
-\BOOKMARK [1][-]{section.C.2}{C.2 Jacobian Matrix of Composition Equations}{section*.104}% 66
+\BOOKMARK [0][-]{section*.101}{Appendix Coordinate Transformation}{}% 62
+\BOOKMARK [0][-]{section*.103}{Appendix Jacobian Matrix for Filter Initialization Equations}{}% 63
+\BOOKMARK [0][-]{section*.104}{Appendix Linearization of Measurement Model and Composition Equations}{}% 64
+\BOOKMARK [1][-]{section.C.1}{Linearization of Measurement Model}{section*.104}% 65
+\BOOKMARK [1][-]{section.C.2}{Jacobian Matrix of Composition Equations}{section*.104}% 66

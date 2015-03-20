@@ -116,9 +116,9 @@ vector at time $k$ is
 
 \noindent where 
 
-$$\boldsymbol{c_{measured}^{C}}=\boldsymbol{v_{measured}^{C}}\Delta t+ 
-\frac{1}{2}\boldsymbol{a_{measured}^{C}}\Delta t^{2}$$
-$$\boldsymbol{r_{measured}^{C}}=\boldsymbol{r_{k-1}^{C}}+ \boldsymbol{w_{measured}^{C}}$$
+\begin{equation}\boldsymbol{c_{measured}^{C}}=\boldsymbol{v_{measured}^{C}}\Delta t+ 
+\frac{1}{2}\boldsymbol{a_{measured}^{C}}\Delta t^{2}\end{equation}
+\begin{equation}\boldsymbol{r_{measured}^{C}}=\boldsymbol{r_{k-1}^{C}}+ \boldsymbol{w_{measured}^{C}}\end{equation}
 
 \noindent and $\Delta t$ is the time elapsed from frame to frame. 
 
@@ -493,8 +493,8 @@ a Python interface to PROJ.4 library \cite{_pyproj_????} called pyproj
 \cite{_pyproj_????}. Secondly, the ground truth of the SUAS positions
 were brought to the world frame by reference frame transformation.
 
-$$\text{True SUAS position}^W = 
-Q_{step2}^{-1}Q_{step1}^{-1} \cdot\text{SUAS position}^{UTM}$$
+\begin{equation}\text{True SUAS position}^W = 
+Q_{step2}^{-1}Q_{step1}^{-1} \cdot\text{SUAS position}^{UTM}\end{equation}
 
 \noindent where $Q_{step1}^{-1}$ and $Q_{step2}^{-1}$ is the inverse
 transformation matrix for a reference frame evolving from UTM to world
@@ -510,13 +510,15 @@ parameters for step 1 and step 2 are also listed.
   \label{fig:utm_to_world}
 \end{figure}
 
-$$T_{step1} = \begin{bmatrix}Easting_{init}, Northing_{init},
-  Height_{init}\end{bmatrix}$$
-$$R_{step1} = \begin{bmatrix}180^{\circ}, 0^{\circ},
-  -90^{\circ}\end{bmatrix}$$
-$$T_{step2} = \begin{bmatrix}0, 0, 0\end{bmatrix}$$
-$$R_{step2} = \begin{bmatrix}Roll_{init}, Pitch_{init},
-  Heading_{init}\end{bmatrix}$$
+\begin{equation}T_{step1} = \begin{bmatrix}Easting_{init}, Northing_{init},
+  Height_{init}\end{bmatrix}\end{equation}
+\begin{equation}R_{step1} = \begin{bmatrix}180^{\circ}, 0^{\circ},
+  -90^{\circ}\end{bmatrix}\end{equation}
+\begin{equation}T_{step2} = \begin{bmatrix}0, 0, 0\end{bmatrix}\end{equation}
+\begin{equation}
+R_{step2} = \begin{bmatrix}Roll_{init}, Pitch_{init},
+  Heading_{init}\end{bmatrix}
+\end{equation}
 
 \noindent where $Easting_{init}$, $Northing_{init}$,
 $Height_{init}$, $Roll_{init}$, $Pitch_{init}$, and
@@ -528,15 +530,16 @@ represented in aircraft principal axes. Hence, for the ground truth
 SUAS orientation to be compared to the estimated data, the only step
 is to subtract the orientation at time 0.
 
-$$\text{SUAS orientation}_{\text{Ground truth}} =
-\text{Orientation}^{Nav} - \text{Orientation}^{Nav}_0$$
+\begin{equation}\text{SUAS orientation}_{\text{Ground truth}} =
+\text{Orientation}^{Nav} - \text{Orientation}^{Nav}_0\end{equation}
 
 The estimated SUAS poses can be obtained from the world reference
 frame estimates in the filter state vector:
 
-$$ \text{Estimated SUAS poses} = 
-[-O_{XYZ}^{C}, -W_{XYZ}^{C}]$$.
-
+\begin{equation}
+ \text{Estimated SUAS poses} = 
+[-O_{XYZ}^{C}, -W_{XYZ}^{C}]
+\end{equation}
 
 To examine the accuracy of estimated landmark positions, DEM data were
 converted into the world frame following the same procedure as the SUAS

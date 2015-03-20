@@ -1,62 +1,62 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 1.1}{\ignorespaces Case study for obstacle detection requirement\relax }}{3}{figure.caption.14}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 2.1}{\ignorespaces Pinhole camera model\relax }}{8}{figure.caption.17}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 2.2}{\ignorespaces Kalman filter operation flow diagram\relax }}{11}{figure.caption.22}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 2.1}{\ignorespaces Pinhole camera model\relax }}{10}{figure.caption.17}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 2.2}{\ignorespaces Kalman filter operation flow diagram\relax }}{14}{figure.caption.22}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 3.1}{\ignorespaces SUAS towed by a helicopter\relax }}{20}{figure.caption.33}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 3.2}{\ignorespaces Sensors mounting location on SUAS\relax }}{21}{figure.caption.34}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 3.3}{\ignorespaces Sensors mounted on SUAS. Top left: Athena GS-111m, top right: GPS antenna, bottom: monocular CCD camera\relax }}{22}{figure.caption.35}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 3.4}{\ignorespaces Compact PCI data acquisition system (CDAC)\relax }}{23}{figure.caption.36}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 3.5}{\ignorespaces Image from monocular camera with GPS second timestamp\relax }}{23}{figure.caption.37}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 3.6}{\ignorespaces A subset of camera calibration input images\relax }}{24}{figure.caption.38}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 3.1}{\ignorespaces SUAS towed by a helicopter\relax }}{24}{figure.caption.33}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 3.2}{\ignorespaces Sensors mounting location on SUAS\relax }}{25}{figure.caption.34}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 3.3}{\ignorespaces Sensors mounted on SUAS. Top left: Athena GS-111m, top right: GPS antenna, bottom: monocular CCD camera\relax }}{26}{figure.caption.35}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 3.4}{\ignorespaces Compact PCI data acquisition system (CDAC)\relax }}{27}{figure.caption.36}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 3.5}{\ignorespaces Image from monocular camera with GPS second timestamp\relax }}{27}{figure.caption.37}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 3.6}{\ignorespaces A subset of camera calibration input images\relax }}{28}{figure.caption.38}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 4.1}{\ignorespaces Inverse depth parameterization\relax }}{27}{figure.caption.41}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 4.2}{\ignorespaces Measurement model\relax }}{29}{figure.caption.42}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 4.3}{\ignorespaces Algorithm flow chart\relax }}{34}{figure.caption.45}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 4.4}{\ignorespaces Coordinate transformation from UTM to world frame\relax }}{36}{figure.caption.48}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 4.1}{\ignorespaces Inverse depth parameterization\relax }}{31}{figure.caption.41}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 4.2}{\ignorespaces Measurement model\relax }}{33}{figure.caption.42}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 4.3}{\ignorespaces Algorithm flow chart\relax }}{40}{figure.caption.45}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 4.4}{\ignorespaces Coordinate transformation from UTM to world frame\relax }}{42}{figure.caption.48}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.1}{\ignorespaces Inverse depth convergence\relax }}{39}{figure.caption.50}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.2}{\ignorespaces Landmark 13 at frame 50, 100, 150, 200, 250, 300, 350, and 398\relax }}{40}{figure.caption.51}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.3}{\ignorespaces Convergence and errors of all other landmark parameters besides inverse depth\relax }}{42}{figure.caption.52}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.4}{\ignorespaces Variance of world frame parameters and camera motion\relax }}{43}{figure.caption.53}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.5}{\ignorespaces Variance of landmark parameters\relax }}{44}{figure.caption.54}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.6}{\ignorespaces Plot of corrections applied to state vector\relax }}{45}{figure.caption.55}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.7}{\ignorespaces SUAS poses compared to ground truth for the natural scene video\relax }}{46}{figure.caption.56}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.8}{\ignorespaces Finding ground truth landmark position on DEM\relax }}{47}{figure.caption.57}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.9}{\ignorespaces Landmark position errors convergence in world frame\relax }}{48}{figure.caption.58}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.10}{\ignorespaces Landmark positions and errors plotted against initialization sequence for the natural scene video\relax }}{49}{figure.caption.59}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.11}{\ignorespaces Visual appearance of landmark 13, 31, 32, and 65\relax }}{49}{figure.caption.61}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.12}{\ignorespaces Terrain map comparison. Left: terrain map generated from estimated landmarks. Right: the digital elevation map (DEM). \relax }}{50}{figure.caption.62}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.13}{\ignorespaces Landmarks extracted by algorithm from the airport landing video \relax }}{50}{figure.caption.63}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.14}{\ignorespaces Common landmarks manually identified on Google Earth \relax }}{51}{figure.caption.64}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.15}{\ignorespaces SUAS poses compared to ground truth for the airport landing video\relax }}{51}{figure.caption.65}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.16}{\ignorespaces Landmark positions and errors for the airport landing video\relax }}{52}{figure.caption.66}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.1}{\ignorespaces Inverse depth convergence\relax }}{47}{figure.caption.50}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.2}{\ignorespaces Landmark 13 at frame 50, 100, 150, 200, 250, 300, 350, and 398\relax }}{48}{figure.caption.51}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.3}{\ignorespaces Convergence and errors of all other landmark parameters besides inverse depth\relax }}{50}{figure.caption.52}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.4}{\ignorespaces Variance of world frame parameters and camera motion\relax }}{51}{figure.caption.53}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.5}{\ignorespaces Variance of landmark parameters\relax }}{52}{figure.caption.54}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.6}{\ignorespaces Plot of corrections applied to state vector\relax }}{53}{figure.caption.55}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.7}{\ignorespaces SUAS poses compared to ground truth for the natural scene video\relax }}{55}{figure.caption.56}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.8}{\ignorespaces Finding ground truth landmark position on DEM\relax }}{56}{figure.caption.57}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.9}{\ignorespaces Landmark position errors convergence in world frame\relax }}{57}{figure.caption.58}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.10}{\ignorespaces Landmark positions and errors plotted against initialization sequence for the natural scene video\relax }}{58}{figure.caption.59}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.11}{\ignorespaces Visual appearance of landmark 13, 31, 32, and 65\relax }}{59}{figure.caption.61}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.12}{\ignorespaces Terrain map comparison. Left: terrain map generated from estimated landmarks. Right: the digital elevation map (DEM). \relax }}{59}{figure.caption.62}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.13}{\ignorespaces Landmarks extracted by algorithm from the airport landing video \relax }}{60}{figure.caption.63}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.14}{\ignorespaces Common landmarks manually identified on Google Earth \relax }}{60}{figure.caption.64}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.15}{\ignorespaces SUAS poses compared to ground truth for the airport landing video\relax }}{61}{figure.caption.65}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 5.16}{\ignorespaces Landmark positions and errors for the airport landing video\relax }}{62}{figure.caption.66}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.1}{\ignorespaces Randomly generated 3D landmark points\relax }}{55}{figure.caption.69}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.2}{\ignorespaces UAV localization errors under low noise condition and forward motion\relax }}{57}{figure.caption.70}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.3}{\ignorespaces Landmark parameters and errors convergence under low noise condition and forward motion\relax }}{58}{figure.caption.71}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.4}{\ignorespaces UAV localization error statistics under oscillatory motion\relax }}{60}{figure.caption.72}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.5}{\ignorespaces Estimated UAV position in world frame with oscillatory rotation, $A_{w_x,w_y,w_z} = 0.01 rad$\relax }}{61}{figure.caption.73}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.6}{\ignorespaces Landmark mapping error statistics under oscillatory motion\relax }}{63}{figure.caption.74}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.7}{\ignorespaces Landmark mapping errors plotted against initialization sequence under oscillatory rotation\relax }}{64}{figure.caption.75}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.8}{\ignorespaces Landmark parameter errors under oscillatory rotation around the Y-axis, $A_{w_y}=0.01rad$\relax }}{66}{figure.caption.76}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.9}{\ignorespaces Error of $\varphi $ at initialization in camera frame and world frame\relax }}{67}{figure.caption.77}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.10}{\ignorespaces UAV localization error statistics with various $(c_x, c_y)$ settings\relax }}{68}{figure.caption.78}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.11}{\ignorespaces Diverging UAV position errors with error in$(c_x, c_y)$ \relax }}{69}{figure.caption.79}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.12}{\ignorespaces Landmark mapping error statistics with various $(c_x, c_y)$ settings\relax }}{70}{figure.caption.80}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.13}{\ignorespaces Landmark mapping errors versus ground truth landmark positions for various $(c_x, c_y)$ settings\relax }}{71}{figure.caption.81}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.14}{\ignorespaces UAV localization error statistics with various $(f_x, f_y)$ settings\relax }}{72}{figure.caption.82}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.15}{\ignorespaces Landmark mapping error statistics with various $(f_x, f_y)$ settings\relax }}{73}{figure.caption.83}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.16}{\ignorespaces Landmark mapping errors versus ground truth landmark positions for various $(f_x, f_y)$ settings\relax }}{74}{figure.caption.84}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.17}{\ignorespaces UAV localization error statistics with various lens distortion setting\relax }}{75}{figure.caption.85}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.18}{\ignorespaces Diverging UAV localization errors for various lens distortion settings\relax }}{76}{figure.caption.86}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.19}{\ignorespaces Landmark mapping error statistics with various lens distortion settings\relax }}{77}{figure.caption.87}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.20}{\ignorespaces Landmark mapping errors versus landmark distance to optical axis with error in lens distortion\relax }}{77}{figure.caption.88}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.21}{\ignorespaces UAV localization error statistics for various image resolutions\relax }}{78}{figure.caption.89}
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.22}{\ignorespaces Landmark mapping error statistics for various image resolutions\relax }}{78}{figure.caption.90}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.1}{\ignorespaces Randomly generated 3D landmark points\relax }}{66}{figure.caption.69}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.2}{\ignorespaces UAV localization errors under low noise condition and forward motion\relax }}{68}{figure.caption.70}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.3}{\ignorespaces Landmark parameters and errors convergence under low noise condition and forward motion\relax }}{69}{figure.caption.71}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.4}{\ignorespaces UAV localization error statistics under oscillatory motion\relax }}{72}{figure.caption.72}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.5}{\ignorespaces Estimated UAV position in world frame with oscillatory rotation, $A_{w_x,w_y,w_z} = 0.01 rad$\relax }}{73}{figure.caption.73}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.6}{\ignorespaces Landmark mapping error statistics under oscillatory motion\relax }}{75}{figure.caption.74}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.7}{\ignorespaces Landmark mapping errors plotted against initialization sequence under oscillatory rotation\relax }}{76}{figure.caption.75}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.8}{\ignorespaces Landmark parameter errors under oscillatory rotation around the Y-axis, $A_{w_y}=0.01rad$\relax }}{78}{figure.caption.76}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.9}{\ignorespaces Error of $\varphi $ at initialization in camera frame and world frame\relax }}{79}{figure.caption.77}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.10}{\ignorespaces UAV localization error statistics with various $(c_x, c_y)$ settings\relax }}{80}{figure.caption.78}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.11}{\ignorespaces Diverging UAV position errors with error in$(c_x, c_y)$ \relax }}{81}{figure.caption.79}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.12}{\ignorespaces Landmark mapping error statistics with various $(c_x, c_y)$ settings\relax }}{82}{figure.caption.80}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.13}{\ignorespaces Landmark mapping errors versus ground truth landmark positions for various $(c_x, c_y)$ settings\relax }}{84}{figure.caption.81}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.14}{\ignorespaces UAV localization error statistics with various $(f_x, f_y)$ settings\relax }}{85}{figure.caption.82}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.15}{\ignorespaces Landmark mapping error statistics with various $(f_x, f_y)$ settings\relax }}{86}{figure.caption.83}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.16}{\ignorespaces Landmark mapping errors versus ground truth landmark positions for various $(f_x, f_y)$ settings\relax }}{87}{figure.caption.84}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.17}{\ignorespaces UAV localization error statistics with various lens distortion setting\relax }}{89}{figure.caption.85}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.18}{\ignorespaces Diverging UAV localization errors for various lens distortion settings\relax }}{89}{figure.caption.86}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.19}{\ignorespaces Landmark mapping error statistics with various lens distortion settings\relax }}{90}{figure.caption.87}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.20}{\ignorespaces Landmark mapping errors versus landmark distance to optical axis with error in lens distortion\relax }}{91}{figure.caption.88}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.21}{\ignorespaces UAV localization error statistics for various image resolutions\relax }}{91}{figure.caption.89}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax 6.22}{\ignorespaces Landmark mapping error statistics for various image resolutions\relax }}{92}{figure.caption.90}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax A.1}{\ignorespaces A point in the world frame and the mobile frame\relax }}{90}{figure.caption.102}
+\contentsline {figure}{\numberline {\global \advance \c@myfigcount \c@figure \relax A.1}{\ignorespaces A point in the world frame and the mobile frame\relax }}{107}{figure.caption.102}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

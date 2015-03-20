@@ -1,32 +1,18 @@
-% Commonts line start with %
-
-% first sentence describes what this algorithm is for, and what it is
-% made of.
+\doublespacing
 This thesis describes the research of an obstacle detection system for a low flying
 autonomous unmanned aerial vehicle (UAV). The system utilized an
 extended Kalman filter based simultaneous localization and mapping
 algorithm which fuses navigation measurements with
 monocular image sequence to estimate the poses of the UAV and the positions
 of landmarks.
-%A high resolution sparse terrain map and UAV trajectory can be computed from the filter state vector. 
-%The algorithm was specially designed to detect long distance
-%obstacle ranging from several hundreds to one thousand meters by
-%adopting inverse depth parameterization and camera centric coordinate
-%system.
 
-%flight and result 
-%The most important contribution of this work is that the algorithm was tested and was proven feasible with real aerial video and navigation measurements. 
 To test the algorithm with real aerial data, a test flight was conducted to
 collect data by using a sensors loaded simulated unmanned aerial system(SUAS) towed
 by a helicopter. 
-%Video cameras and a number of sensors were mounted on the SUAS. Video and data were sent to and acquired by a data acquisition system installed in helicopter. 
 The results showed that the algorithm is capable of mapping
 landmarks ranging more than 1000 meters. Accuracy analysis also showed that SUAS localization and landmark mapping
 results generally agreed with the ground truth. 
-%Some noticeable errors of the result include: drift on SUAS position on the Y and Z axes, and offset error for landmarks added to the framework after the first frame.
 
-% The error analysis 
 To better understand the strength and weakness of
 the system, and to improve future designs, the
 algorithm was further analyzed through a series of simulations which simulates oscillatory motion of the UAV, error embedded in camera calibration result, and quantization error from image digitization.
-%The simulations showed that the algorithm is very sensitive to oscillatory rotation, which caused significant errors in both landmark mapping estimates and UAV localization estimates. Other improvements suggested by the simulations include adding a lens distortion model into the algorithm, and using a camera with resolution higher than 1080x1440.
